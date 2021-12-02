@@ -155,16 +155,6 @@ namespace Tarla
 			return ((int)(result.ReturnValue));
 		}
 		
-		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.GetUserPermissions")]
-		public int GetUserPermissions([global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> userId, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="Setting", DbType="Bit")] ref System.Nullable<bool> setting, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="Bank", DbType="Bit")] ref System.Nullable<bool> bank, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="User", DbType="Bit")] ref System.Nullable<bool> user)
-		{
-			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), userId, setting, bank, user);
-			setting = ((System.Nullable<bool>)(result.GetParameterValue(1)));
-			bank = ((System.Nullable<bool>)(result.GetParameterValue(2)));
-			user = ((System.Nullable<bool>)(result.GetParameterValue(3)));
-			return ((int)(result.ReturnValue));
-		}
-		
 		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.ExistsSetting")]
 		public int ExistsSetting([global::System.Data.Linq.Mapping.ParameterAttribute(Name="Exists", DbType="Bit")] ref System.Nullable<bool> exists)
 		{
@@ -256,6 +246,17 @@ namespace Tarla
 		public int UpdateSetting([global::System.Data.Linq.Mapping.ParameterAttribute(Name="Company", DbType="NVarChar(100)")] string company, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="FactorAddress", DbType="NVarChar(MAX)")] string factorAddress, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="FactortTell", DbType="NVarChar(20)")] string factortTell, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="Theme", DbType="NVarChar(50)")] string theme, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="FontSize", DbType="Float")] System.Nullable<double> fontSize)
 		{
 			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), company, factorAddress, factortTell, theme, fontSize);
+			return ((int)(result.ReturnValue));
+		}
+		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.GetUserPermissions")]
+		public int GetUserPermissions([global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> userId, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="Setting", DbType="Bit")] ref System.Nullable<bool> setting, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="Bank", DbType="Bit")] ref System.Nullable<bool> bank, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="User", DbType="Bit")] ref System.Nullable<bool> user, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="Factor", DbType="Bit")] ref System.Nullable<bool> factor)
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), userId, setting, bank, user, factor);
+			setting = ((System.Nullable<bool>)(result.GetParameterValue(1)));
+			bank = ((System.Nullable<bool>)(result.GetParameterValue(2)));
+			user = ((System.Nullable<bool>)(result.GetParameterValue(3)));
+			factor = ((System.Nullable<bool>)(result.GetParameterValue(4)));
 			return ((int)(result.ReturnValue));
 		}
 	}

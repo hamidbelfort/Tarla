@@ -6,6 +6,7 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -18,14 +19,23 @@ namespace Tarla
         public static bool BankPermission = false;
         public static bool SettingPermission = false;
         public static bool UserPermission = false;
+        public static bool FactorPermission = false;
         bool? roleExists;
         bool? userExists;
         bool? settingExists;
+        
         public frmMain()
         {
+            Thread t = new Thread(new ThreadStart(runSplash));
+            t.Start();
+            Thread.Sleep(5000);
             InitializeComponent();
+            t.Abort();
         }
-
+        private void runSplash()
+        {
+            Application.Run(new frmSplash());
+        }
         private void frmMain_Load(object sender, EventArgs e)
         {
             db.ExistsRoles(ref roleExists);

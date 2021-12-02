@@ -75,13 +75,6 @@
     <Parameter Name="FontSize" Parameter="fontSize" Type="System.Double" DbType="Float" />
     <Return Type="System.Int32" />
   </Function>
-  <Function Name="dbo.GetUserPermissions" Method="GetUserPermissions">
-    <Parameter Name="userId" Type="System.Int32" DbType="Int" />
-    <Parameter Name="Setting" Parameter="setting" Type="System.Boolean" DbType="Bit" Direction="InOut" />
-    <Parameter Name="Bank" Parameter="bank" Type="System.Boolean" DbType="Bit" Direction="InOut" />
-    <Parameter Name="User" Parameter="user" Type="System.Boolean" DbType="Bit" Direction="InOut" />
-    <Return Type="System.Int32" />
-  </Function>
   <Function Name="dbo.ExistsSetting" Method="ExistsSetting">
     <Parameter Name="Exists" Parameter="exists" Type="System.Boolean" DbType="Bit" Direction="InOut" />
     <Return Type="System.Int32" />
@@ -169,6 +162,14 @@
     <Parameter Name="FactortTell" Parameter="factortTell" Type="System.String" DbType="NVarChar(20)" />
     <Parameter Name="Theme" Parameter="theme" Type="System.String" DbType="NVarChar(50)" />
     <Parameter Name="FontSize" Parameter="fontSize" Type="System.Double" DbType="Float" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.GetUserPermissions" Method="GetUserPermissions">
+    <Parameter Name="userId" Type="System.Int32" DbType="Int" />
+    <Parameter Name="Setting" Parameter="setting" Type="System.Boolean" DbType="Bit" Direction="InOut" />
+    <Parameter Name="Bank" Parameter="bank" Type="System.Boolean" DbType="Bit" Direction="InOut" />
+    <Parameter Name="User" Parameter="user" Type="System.Boolean" DbType="Bit" Direction="InOut" />
+    <Parameter Name="Factor" Parameter="factor" Type="System.Boolean" DbType="Bit" Direction="InOut" />
     <Return Type="System.Int32" />
   </Function>
 </Database>
