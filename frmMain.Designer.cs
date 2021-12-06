@@ -45,6 +45,7 @@
             this.groupPanel2 = new DevComponents.DotNetBar.Controls.GroupPanel();
             this.btnExit = new DevComponents.DotNetBar.ButtonX();
             this.btnSave = new DevComponents.DotNetBar.ButtonX();
+            this.textBoxX1 = new DevComponents.DotNetBar.Controls.TextBoxX();
             this.ribbonControl1.SuspendLayout();
             this.ribbonPanel1.SuspendLayout();
             this.groupPanel2.SuspendLayout();
@@ -322,12 +323,27 @@
             this.btnSave.Text = "   ثـبت";
             this.btnSave.TextAlignment = DevComponents.DotNetBar.eButtonTextAlignment.Right;
             // 
+            // textBoxX1
+            // 
+            // 
+            // 
+            // 
+            this.textBoxX1.Border.Class = "TextBoxBorder";
+            this.textBoxX1.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.textBoxX1.Location = new System.Drawing.Point(453, 406);
+            this.textBoxX1.Name = "textBoxX1";
+            this.textBoxX1.PreventEnterBeep = true;
+            this.textBoxX1.Size = new System.Drawing.Size(243, 23);
+            this.textBoxX1.TabIndex = 11;
+            this.textBoxX1.WatermarkText = "الزامی";
+            // 
             // frmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(799, 565);
             this.ControlBox = false;
+            this.Controls.Add(this.textBoxX1);
             this.Controls.Add(this.groupPanel2);
             this.Controls.Add(this.buttonX2);
             this.Controls.Add(this.buttonX1);
@@ -364,5 +380,6 @@
         private DevComponents.DotNetBar.Controls.GroupPanel groupPanel2;
         private DevComponents.DotNetBar.ButtonX btnExit;
         private DevComponents.DotNetBar.ButtonX btnSave;
+        private DevComponents.DotNetBar.Controls.TextBoxX textBoxX1;
     }
 }

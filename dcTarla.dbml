@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?><Database Name="TarlaDB" Class="dcTarlaDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
   <Connection Mode="AppSettings" ConnectionString="Data Source=.;Initial Catalog=TarlaDB;Integrated Security=True" SettingsObjectName="Tarla.Properties.Settings" SettingsPropertyName="TarlaDBConnectionString" Provider="System.Data.SqlClient" />
   <Table Name="dbo.Setting" Member="Settings">
-    <Type Name="Setting" Id="ID2">
+    <Type Name="Setting" Id="ID2" Modifier="Sealed">
       <Column Name="SettingId" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
       <Column Name="CompanyName" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
       <Column Name="FactorAddress" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
@@ -11,7 +11,7 @@
     </Type>
   </Table>
   <Table Name="dbo.Roles" Member="Roles">
-    <Type Name="Role" Id="ID1">
+    <Type Name="Role" Id="ID1" Modifier="Sealed">
       <Column Name="RoleId" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
       <Column Name="RoleName" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
       <Column Name="SettingPermission" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
@@ -22,13 +22,29 @@
     </Type>
   </Table>
   <Table Name="dbo.Users" Member="Users">
-    <Type Name="User">
+    <Type Name="User" Modifier="Sealed">
       <Column Name="UserId" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
       <Column Name="RoleId" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="Fullname" Type="System.String" DbType="NVarChar(30)" CanBeNull="true" />
       <Column Name="LoginUser" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
       <Column Name="LoginPass" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
       <Association Name="Role_User" Member="Role" ThisKey="RoleId" OtherKey="RoleId" Type="Role" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Products" Member="Products">
+    <Type Name="Product" Id="ID4" Modifier="Sealed">
+      <Column Name="ProductId" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="GroupId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ProductName" Type="System.String" DbType="NVarChar(30)" CanBeNull="true" />
+      <Column Name="Description" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Association Name="ProductGroup_Product" Member="ProductGroup" ThisKey="GroupId" OtherKey="GroupId" Type="ProductGroup" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.ProductGroups" Member="ProductGroups">
+    <Type Name="ProductGroup" Id="ID3" Modifier="Sealed">
+      <Column Name="GroupId" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="GroupName" Type="System.String" DbType="NVarChar(30)" CanBeNull="true" />
+      <Association Name="ProductGroup_Product" Member="Products" ThisKey="GroupId" OtherKey="GroupId" Type="Product" />
     </Type>
   </Table>
   <Function Name="dbo.InsertLog" Method="InsertLog">
@@ -171,5 +187,59 @@
     <Parameter Name="User" Parameter="user" Type="System.Boolean" DbType="Bit" Direction="InOut" />
     <Parameter Name="Factor" Parameter="factor" Type="System.Boolean" DbType="Bit" Direction="InOut" />
     <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.DeleteGroups" Method="DeleteGroups">
+    <Parameter Name="GroupId" Parameter="groupId" Type="System.Int32" DbType="Int" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.DeleteProducts" Method="DeleteProducts">
+    <Parameter Name="ProductId" Parameter="productId" Type="System.Int32" DbType="Int" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.FillGroups" Method="FillGroups">
+    <ElementType IdRef="ID3" />
+  </Function>
+  <Function Name="dbo.FillGroupsById" Method="FillGroupsById">
+    <Parameter Name="GroupId" Parameter="groupId" Type="System.Int32" DbType="Int" />
+    <ElementType IdRef="ID3" />
+  </Function>
+  <Function Name="dbo.FillProductsById" Method="FillProductsById">
+    <Parameter Name="ProductId" Parameter="productId" Type="System.Int32" DbType="Int" />
+    <ElementType IdRef="ID4" />
+  </Function>
+  <Function Name="dbo.FilterProductsByName" Method="FilterProductsByName">
+    <Parameter Name="ProductName" Parameter="productName" Type="System.String" DbType="NVarChar(30)" />
+    <ElementType IdRef="ID4" />
+  </Function>
+  <Function Name="dbo.InsertGroups" Method="InsertGroups">
+    <Parameter Name="GroupName" Parameter="groupName" Type="System.String" DbType="NVarChar(30)" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.InsertProducts" Method="InsertProducts">
+    <Parameter Name="ProductName" Parameter="productName" Type="System.String" DbType="NVarChar(30)" />
+    <Parameter Name="GroupId" Parameter="groupId" Type="System.Int32" DbType="Int" />
+    <Parameter Name="Description" Parameter="description" Type="System.String" DbType="NVarChar(MAX)" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.UpdateProducts" Method="UpdateProducts">
+    <Parameter Name="ProductId" Parameter="productId" Type="System.Int32" DbType="Int" />
+    <Parameter Name="ProductName" Parameter="productName" Type="System.String" DbType="NVarChar(30)" />
+    <Parameter Name="GroupId" Parameter="groupId" Type="System.Int32" DbType="Int" />
+    <Parameter Name="Description" Parameter="description" Type="System.String" DbType="NVarChar(MAX)" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.UpdateGroups" Method="UpdateGroups">
+    <Parameter Name="GroupId" Parameter="groupId" Type="System.Int32" DbType="Int" />
+    <Parameter Name="GroupName" Parameter="groupName" Type="System.String" DbType="NVarChar(30)" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.FilterProductsByGroup" Method="FilterProductsByGroup">
+    <Parameter Name="GroupId" Parameter="groupId" Type="System.Int32" DbType="Int" />
+    <Parameter Name="ProductName" Parameter="productName" Type="System.String" DbType="NVarChar(30)" />
+    <ElementType IdRef="ID4" />
+  </Function>
+  <Function Name="dbo.FilterProducts" Method="FilterProducts">
+    <Parameter Name="ProductName" Parameter="productName" Type="System.String" DbType="NVarChar(30)" />
+    <ElementType IdRef="ID4" />
   </Function>
 </Database>
