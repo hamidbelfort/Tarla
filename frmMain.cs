@@ -9,7 +9,8 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-
+using Tarla.MainForms;
+using Tarla.OperationForms;
 namespace Tarla
 {
     public partial class frmMain : Form
@@ -64,6 +65,21 @@ namespace Tarla
                 frmSettings.ExitType = true;
                 new frmSettings().ShowDialog();
             }
+        }
+
+        private void btnProduct_Click(object sender, EventArgs e)
+        {
+            new frmShowProducts().ShowDialog();
+        }
+
+        private void btnCategory_Click(object sender, EventArgs e)
+        {
+            new frmShowGroups().ShowDialog();
+        }
+
+        private void btnCompany_Click(object sender, EventArgs e)
+        {
+            new frmShowCompany().ShowDialog();
         }
     }
 }

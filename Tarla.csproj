@@ -107,6 +107,12 @@
     <Compile Include="MainForms\frmAddGroup.Designer.cs">
       <DependentUpon>frmAddGroup.cs</DependentUpon>
     </Compile>
+    <Compile Include="MainForms\frmAddPerson.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MainForms\frmAddPerson.Designer.cs">
+      <DependentUpon>frmAddPerson.cs</DependentUpon>
+    </Compile>
     <Compile Include="MainForms\frmAddProduct.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -124,6 +130,12 @@
     </Compile>
     <Compile Include="MainForms\frmShowGroups.Designer.cs">
       <DependentUpon>frmShowGroups.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MainForms\frmShowPerson.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MainForms\frmShowPerson.Designer.cs">
+      <DependentUpon>frmShowPerson.cs</DependentUpon>
     </Compile>
     <Compile Include="MainForms\frmShowProducts.cs">
       <SubType>Form</SubType>
@@ -161,14 +173,26 @@
     <EmbeddedResource Include="frmSplash.resx">
       <DependentUpon>frmSplash.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="MainForms\frmAddCompany.resx">
+      <DependentUpon>frmAddCompany.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="MainForms\frmAddGroup.resx">
       <DependentUpon>frmAddGroup.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MainForms\frmAddPerson.resx">
+      <DependentUpon>frmAddPerson.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MainForms\frmAddProduct.resx">
       <DependentUpon>frmAddProduct.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="MainForms\frmShowCompany.resx">
+      <DependentUpon>frmShowCompany.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="MainForms\frmShowGroups.resx">
       <DependentUpon>frmShowGroups.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MainForms\frmShowPerson.resx">
+      <DependentUpon>frmShowPerson.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MainForms\frmShowProducts.resx">
       <DependentUpon>frmShowProducts.cs</DependentUpon>
@@ -191,9 +215,13 @@
       <LastGenOutput>dcTarla.designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
     </None>
+    <None Include="Properties\DataSources\Buyer.datasource" />
+    <None Include="Properties\DataSources\Company.datasource" />
     <None Include="Properties\DataSources\Product.datasource" />
     <None Include="Properties\DataSources\ProductGroup.datasource" />
+    <None Include="Properties\DataSources\Receiver.datasource" />
     <None Include="Properties\DataSources\Role.datasource" />
+    <None Include="Properties\DataSources\Seller.datasource" />
     <None Include="Properties\DataSources\Setting.datasource" />
     <None Include="Properties\DataSources\User.datasource" />
     <None Include="Properties\Settings.settings">

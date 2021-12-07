@@ -422,6 +422,7 @@
             this.btnCompany.Name = "btnCompany";
             this.btnCompany.SubItemsExpandWidth = 14;
             this.btnCompany.Tooltip = "مشتریان";
+            this.btnCompany.Click += new System.EventHandler(this.btnCompany_Click);
             // 
             // btnBuyers
             // 
@@ -468,6 +469,7 @@
             this.btnCategory.SubItemsExpandWidth = 14;
             this.btnCategory.Text = "دسته بندی";
             this.btnCategory.Tooltip = "دسته بندی";
+            this.btnCategory.Click += new System.EventHandler(this.btnCategory_Click);
             // 
             // btnProduct
             // 
@@ -480,6 +482,7 @@
             this.btnProduct.SubItemsExpandWidth = 14;
             this.btnProduct.Text = "محصول";
             this.btnProduct.Tooltip = "محصول";
+            this.btnProduct.Click += new System.EventHandler(this.btnProduct_Click);
             // 
             // frmMain
             // 

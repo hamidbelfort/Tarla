@@ -45,6 +45,18 @@ namespace Tarla
     partial void InsertProductGroup(ProductGroup instance);
     partial void UpdateProductGroup(ProductGroup instance);
     partial void DeleteProductGroup(ProductGroup instance);
+    partial void InsertSeller(Seller instance);
+    partial void UpdateSeller(Seller instance);
+    partial void DeleteSeller(Seller instance);
+    partial void InsertReceiver(Receiver instance);
+    partial void UpdateReceiver(Receiver instance);
+    partial void DeleteReceiver(Receiver instance);
+    partial void InsertBuyer(Buyer instance);
+    partial void UpdateBuyer(Buyer instance);
+    partial void DeleteBuyer(Buyer instance);
+    partial void InsertCompany(Company instance);
+    partial void UpdateCompany(Company instance);
+    partial void DeleteCompany(Company instance);
     #endregion
 		
 		public dcTarlaDataContext() : 
@@ -114,6 +126,38 @@ namespace Tarla
 			get
 			{
 				return this.GetTable<ProductGroup>();
+			}
+		}
+		
+		public System.Data.Linq.Table<Seller> Sellers
+		{
+			get
+			{
+				return this.GetTable<Seller>();
+			}
+		}
+		
+		public System.Data.Linq.Table<Receiver> Receivers
+		{
+			get
+			{
+				return this.GetTable<Receiver>();
+			}
+		}
+		
+		public System.Data.Linq.Table<Buyer> Buyers
+		{
+			get
+			{
+				return this.GetTable<Buyer>();
+			}
+		}
+		
+		public System.Data.Linq.Table<Company> Companies
+		{
+			get
+			{
+				return this.GetTable<Company>();
 			}
 		}
 		
@@ -364,6 +408,146 @@ namespace Tarla
 		{
 			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), productName);
 			return ((ISingleResult<Product>)(result.ReturnValue));
+		}
+		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.DeleteBuyer")]
+		public int DeleteBuyer([global::System.Data.Linq.Mapping.ParameterAttribute(Name="BuyerId", DbType="Int")] System.Nullable<int> buyerId)
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), buyerId);
+			return ((int)(result.ReturnValue));
+		}
+		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.DeleteCompany")]
+		public int DeleteCompany([global::System.Data.Linq.Mapping.ParameterAttribute(Name="CompanyId", DbType="Int")] System.Nullable<int> companyId)
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), companyId);
+			return ((int)(result.ReturnValue));
+		}
+		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.DeleteReceiver")]
+		public int DeleteReceiver([global::System.Data.Linq.Mapping.ParameterAttribute(Name="ReceiverId", DbType="Int")] System.Nullable<int> receiverId)
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), receiverId);
+			return ((int)(result.ReturnValue));
+		}
+		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.DeleteSeller")]
+		public int DeleteSeller([global::System.Data.Linq.Mapping.ParameterAttribute(Name="SellerId", DbType="Int")] System.Nullable<int> sellerId)
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), sellerId);
+			return ((int)(result.ReturnValue));
+		}
+		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.FillBuyer")]
+		public ISingleResult<Buyer> FillBuyer()
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())));
+			return ((ISingleResult<Buyer>)(result.ReturnValue));
+		}
+		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.FillBuyerById")]
+		public ISingleResult<Buyer> FillBuyerById([global::System.Data.Linq.Mapping.ParameterAttribute(Name="BuyerId", DbType="Int")] System.Nullable<int> buyerId)
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), buyerId);
+			return ((ISingleResult<Buyer>)(result.ReturnValue));
+		}
+		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.FillCompanyById")]
+		public ISingleResult<Company> FillCompanyById([global::System.Data.Linq.Mapping.ParameterAttribute(Name="CompanyId", DbType="Int")] System.Nullable<int> companyId)
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), companyId);
+			return ((ISingleResult<Company>)(result.ReturnValue));
+		}
+		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.FillCompany")]
+		public ISingleResult<Company> FillCompany()
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())));
+			return ((ISingleResult<Company>)(result.ReturnValue));
+		}
+		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.FillReceiver")]
+		public ISingleResult<Receiver> FillReceiver()
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())));
+			return ((ISingleResult<Receiver>)(result.ReturnValue));
+		}
+		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.FillReceiverById")]
+		public ISingleResult<Receiver> FillReceiverById([global::System.Data.Linq.Mapping.ParameterAttribute(Name="ReceiverId", DbType="Int")] System.Nullable<int> receiverId)
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), receiverId);
+			return ((ISingleResult<Receiver>)(result.ReturnValue));
+		}
+		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.FillSeller")]
+		public ISingleResult<Seller> FillSeller()
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())));
+			return ((ISingleResult<Seller>)(result.ReturnValue));
+		}
+		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.FillSellerById")]
+		public ISingleResult<Seller> FillSellerById([global::System.Data.Linq.Mapping.ParameterAttribute(Name="SellerId", DbType="Int")] System.Nullable<int> sellerId)
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), sellerId);
+			return ((ISingleResult<Seller>)(result.ReturnValue));
+		}
+		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.InsertBuyer")]
+		public int InsertBuyer([global::System.Data.Linq.Mapping.ParameterAttribute(Name="BuyerName", DbType="NVarChar(50)")] string buyerName, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="Phone", DbType="NVarChar(12)")] string phone, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="Address", DbType="NVarChar(200)")] string address, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="Description", DbType="NVarChar(MAX)")] string description)
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), buyerName, phone, address, description);
+			return ((int)(result.ReturnValue));
+		}
+		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.InsertCompany")]
+		public int InsertCompany([global::System.Data.Linq.Mapping.ParameterAttribute(Name="CompanyName", DbType="NVarChar(100)")] string companyName, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="Chief", DbType="NVarChar(30)")] string chief, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="Phone", DbType="NVarChar(12)")] string phone, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="Address", DbType="NVarChar(MAX)")] string address)
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), companyName, chief, phone, address);
+			return ((int)(result.ReturnValue));
+		}
+		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.InsertReceiver")]
+		public int InsertReceiver([global::System.Data.Linq.Mapping.ParameterAttribute(Name="ReceiverName", DbType="NVarChar(50)")] string receiverName, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="Phone", DbType="NVarChar(12)")] string phone, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="Address", DbType="NVarChar(200)")] string address, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="Description", DbType="NVarChar(MAX)")] string description)
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), receiverName, phone, address, description);
+			return ((int)(result.ReturnValue));
+		}
+		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.InsertSeller")]
+		public int InsertSeller([global::System.Data.Linq.Mapping.ParameterAttribute(Name="SellerName", DbType="NVarChar(50)")] string sellerName, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="Phone", DbType="NVarChar(12)")] string phone, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="Address", DbType="NVarChar(200)")] string address, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="Description", DbType="NVarChar(MAX)")] string description)
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), sellerName, phone, address, description);
+			return ((int)(result.ReturnValue));
+		}
+		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.UpdateBuyer")]
+		public int UpdateBuyer([global::System.Data.Linq.Mapping.ParameterAttribute(Name="BuyerId", DbType="Int")] System.Nullable<int> buyerId, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="BuyerName", DbType="NVarChar(50)")] string buyerName, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="Phone", DbType="NVarChar(12)")] string phone, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="Address", DbType="NVarChar(200)")] string address, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="Description", DbType="NVarChar(MAX)")] string description)
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), buyerId, buyerName, phone, address, description);
+			return ((int)(result.ReturnValue));
+		}
+		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.UpdateCompany")]
+		public int UpdateCompany([global::System.Data.Linq.Mapping.ParameterAttribute(Name="CompanyId", DbType="Int")] System.Nullable<int> companyId, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="CompanyName", DbType="NVarChar(100)")] string companyName, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="Chief", DbType="NVarChar(30)")] string chief, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="Phone", DbType="NVarChar(12)")] string phone, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="Address", DbType="NVarChar(MAX)")] string address)
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), companyId, companyName, chief, phone, address);
+			return ((int)(result.ReturnValue));
+		}
+		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.UpdateReceiver")]
+		public int UpdateReceiver([global::System.Data.Linq.Mapping.ParameterAttribute(Name="ReceiverId", DbType="Int")] System.Nullable<int> receiverId, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="ReceiverName", DbType="NVarChar(50)")] string receiverName, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="Phone", DbType="NVarChar(12)")] string phone, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="Address", DbType="NVarChar(200)")] string address, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="Description", DbType="NVarChar(MAX)")] string description)
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), receiverId, receiverName, phone, address, description);
+			return ((int)(result.ReturnValue));
+		}
+		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.UpdateSeller")]
+		public int UpdateSeller([global::System.Data.Linq.Mapping.ParameterAttribute(Name="SellerId", DbType="Int")] System.Nullable<int> sellerId, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="SellerName", DbType="NVarChar(50)")] string sellerName, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="Phone", DbType="NVarChar(12)")] string phone, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="Address", DbType="NVarChar(200)")] string address, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="Description", DbType="NVarChar(MAX)")] string description)
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), sellerId, sellerName, phone, address, description);
+			return ((int)(result.ReturnValue));
 		}
 	}
 	
@@ -1244,6 +1428,638 @@ namespace Tarla
 		{
 			this.SendPropertyChanging();
 			entity.ProductGroup = null;
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Sellers")]
+	public sealed partial class Seller : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _SellerId;
+		
+		private string _SellerName;
+		
+		private string _Phone;
+		
+		private string _Address;
+		
+		private string _Description;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnSellerIdChanging(int value);
+    partial void OnSellerIdChanged();
+    partial void OnSellerNameChanging(string value);
+    partial void OnSellerNameChanged();
+    partial void OnPhoneChanging(string value);
+    partial void OnPhoneChanged();
+    partial void OnAddressChanging(string value);
+    partial void OnAddressChanged();
+    partial void OnDescriptionChanging(string value);
+    partial void OnDescriptionChanged();
+    #endregion
+		
+		public Seller()
+		{
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_SellerId", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public int SellerId
+		{
+			get
+			{
+				return this._SellerId;
+			}
+			set
+			{
+				if ((this._SellerId != value))
+				{
+					this.OnSellerIdChanging(value);
+					this.SendPropertyChanging();
+					this._SellerId = value;
+					this.SendPropertyChanged("SellerId");
+					this.OnSellerIdChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_SellerName", DbType="NVarChar(50)")]
+		public string SellerName
+		{
+			get
+			{
+				return this._SellerName;
+			}
+			set
+			{
+				if ((this._SellerName != value))
+				{
+					this.OnSellerNameChanging(value);
+					this.SendPropertyChanging();
+					this._SellerName = value;
+					this.SendPropertyChanged("SellerName");
+					this.OnSellerNameChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Phone", DbType="NVarChar(12)")]
+		public string Phone
+		{
+			get
+			{
+				return this._Phone;
+			}
+			set
+			{
+				if ((this._Phone != value))
+				{
+					this.OnPhoneChanging(value);
+					this.SendPropertyChanging();
+					this._Phone = value;
+					this.SendPropertyChanged("Phone");
+					this.OnPhoneChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Address", DbType="NVarChar(200)")]
+		public string Address
+		{
+			get
+			{
+				return this._Address;
+			}
+			set
+			{
+				if ((this._Address != value))
+				{
+					this.OnAddressChanging(value);
+					this.SendPropertyChanging();
+					this._Address = value;
+					this.SendPropertyChanged("Address");
+					this.OnAddressChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Description", DbType="NVarChar(MAX)")]
+		public string Description
+		{
+			get
+			{
+				return this._Description;
+			}
+			set
+			{
+				if ((this._Description != value))
+				{
+					this.OnDescriptionChanging(value);
+					this.SendPropertyChanging();
+					this._Description = value;
+					this.SendPropertyChanged("Description");
+					this.OnDescriptionChanged();
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		private void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		private void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Receivers")]
+	public sealed partial class Receiver : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _ReceiverId;
+		
+		private string _ReceiverName;
+		
+		private string _Phone;
+		
+		private string _Address;
+		
+		private string _Description;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnReceiverIdChanging(int value);
+    partial void OnReceiverIdChanged();
+    partial void OnReceiverNameChanging(string value);
+    partial void OnReceiverNameChanged();
+    partial void OnPhoneChanging(string value);
+    partial void OnPhoneChanged();
+    partial void OnAddressChanging(string value);
+    partial void OnAddressChanged();
+    partial void OnDescriptionChanging(string value);
+    partial void OnDescriptionChanged();
+    #endregion
+		
+		public Receiver()
+		{
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ReceiverId", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public int ReceiverId
+		{
+			get
+			{
+				return this._ReceiverId;
+			}
+			set
+			{
+				if ((this._ReceiverId != value))
+				{
+					this.OnReceiverIdChanging(value);
+					this.SendPropertyChanging();
+					this._ReceiverId = value;
+					this.SendPropertyChanged("ReceiverId");
+					this.OnReceiverIdChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ReceiverName", DbType="NVarChar(30)")]
+		public string ReceiverName
+		{
+			get
+			{
+				return this._ReceiverName;
+			}
+			set
+			{
+				if ((this._ReceiverName != value))
+				{
+					this.OnReceiverNameChanging(value);
+					this.SendPropertyChanging();
+					this._ReceiverName = value;
+					this.SendPropertyChanged("ReceiverName");
+					this.OnReceiverNameChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Phone", DbType="NVarChar(12)")]
+		public string Phone
+		{
+			get
+			{
+				return this._Phone;
+			}
+			set
+			{
+				if ((this._Phone != value))
+				{
+					this.OnPhoneChanging(value);
+					this.SendPropertyChanging();
+					this._Phone = value;
+					this.SendPropertyChanged("Phone");
+					this.OnPhoneChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Address", DbType="NVarChar(200)")]
+		public string Address
+		{
+			get
+			{
+				return this._Address;
+			}
+			set
+			{
+				if ((this._Address != value))
+				{
+					this.OnAddressChanging(value);
+					this.SendPropertyChanging();
+					this._Address = value;
+					this.SendPropertyChanged("Address");
+					this.OnAddressChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Description", DbType="NVarChar(MAX)")]
+		public string Description
+		{
+			get
+			{
+				return this._Description;
+			}
+			set
+			{
+				if ((this._Description != value))
+				{
+					this.OnDescriptionChanging(value);
+					this.SendPropertyChanging();
+					this._Description = value;
+					this.SendPropertyChanged("Description");
+					this.OnDescriptionChanged();
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		private void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		private void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Buyers")]
+	public sealed partial class Buyer : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _BuyerId;
+		
+		private string _BuyerName;
+		
+		private string _Phone;
+		
+		private string _Address;
+		
+		private string _Description;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnBuyerIdChanging(int value);
+    partial void OnBuyerIdChanged();
+    partial void OnBuyerNameChanging(string value);
+    partial void OnBuyerNameChanged();
+    partial void OnPhoneChanging(string value);
+    partial void OnPhoneChanged();
+    partial void OnAddressChanging(string value);
+    partial void OnAddressChanged();
+    partial void OnDescriptionChanging(string value);
+    partial void OnDescriptionChanged();
+    #endregion
+		
+		public Buyer()
+		{
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_BuyerId", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public int BuyerId
+		{
+			get
+			{
+				return this._BuyerId;
+			}
+			set
+			{
+				if ((this._BuyerId != value))
+				{
+					this.OnBuyerIdChanging(value);
+					this.SendPropertyChanging();
+					this._BuyerId = value;
+					this.SendPropertyChanged("BuyerId");
+					this.OnBuyerIdChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_BuyerName", DbType="NVarChar(50)")]
+		public string BuyerName
+		{
+			get
+			{
+				return this._BuyerName;
+			}
+			set
+			{
+				if ((this._BuyerName != value))
+				{
+					this.OnBuyerNameChanging(value);
+					this.SendPropertyChanging();
+					this._BuyerName = value;
+					this.SendPropertyChanged("BuyerName");
+					this.OnBuyerNameChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Phone", DbType="NVarChar(12)")]
+		public string Phone
+		{
+			get
+			{
+				return this._Phone;
+			}
+			set
+			{
+				if ((this._Phone != value))
+				{
+					this.OnPhoneChanging(value);
+					this.SendPropertyChanging();
+					this._Phone = value;
+					this.SendPropertyChanged("Phone");
+					this.OnPhoneChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Address", DbType="NVarChar(200)")]
+		public string Address
+		{
+			get
+			{
+				return this._Address;
+			}
+			set
+			{
+				if ((this._Address != value))
+				{
+					this.OnAddressChanging(value);
+					this.SendPropertyChanging();
+					this._Address = value;
+					this.SendPropertyChanged("Address");
+					this.OnAddressChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Description", DbType="NVarChar(MAX)")]
+		public string Description
+		{
+			get
+			{
+				return this._Description;
+			}
+			set
+			{
+				if ((this._Description != value))
+				{
+					this.OnDescriptionChanging(value);
+					this.SendPropertyChanging();
+					this._Description = value;
+					this.SendPropertyChanged("Description");
+					this.OnDescriptionChanged();
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		private void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		private void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Companies")]
+	public sealed partial class Company : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _CompanyId;
+		
+		private string _CompanyName;
+		
+		private string _Chief;
+		
+		private string _Phone;
+		
+		private string _Address;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnCompanyIdChanging(int value);
+    partial void OnCompanyIdChanged();
+    partial void OnCompanyNameChanging(string value);
+    partial void OnCompanyNameChanged();
+    partial void OnChiefChanging(string value);
+    partial void OnChiefChanged();
+    partial void OnPhoneChanging(string value);
+    partial void OnPhoneChanged();
+    partial void OnAddressChanging(string value);
+    partial void OnAddressChanged();
+    #endregion
+		
+		public Company()
+		{
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CompanyId", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public int CompanyId
+		{
+			get
+			{
+				return this._CompanyId;
+			}
+			set
+			{
+				if ((this._CompanyId != value))
+				{
+					this.OnCompanyIdChanging(value);
+					this.SendPropertyChanging();
+					this._CompanyId = value;
+					this.SendPropertyChanged("CompanyId");
+					this.OnCompanyIdChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CompanyName", DbType="NVarChar(100)")]
+		public string CompanyName
+		{
+			get
+			{
+				return this._CompanyName;
+			}
+			set
+			{
+				if ((this._CompanyName != value))
+				{
+					this.OnCompanyNameChanging(value);
+					this.SendPropertyChanging();
+					this._CompanyName = value;
+					this.SendPropertyChanged("CompanyName");
+					this.OnCompanyNameChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Chief", DbType="NVarChar(30)")]
+		public string Chief
+		{
+			get
+			{
+				return this._Chief;
+			}
+			set
+			{
+				if ((this._Chief != value))
+				{
+					this.OnChiefChanging(value);
+					this.SendPropertyChanging();
+					this._Chief = value;
+					this.SendPropertyChanged("Chief");
+					this.OnChiefChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Phone", DbType="NVarChar(12)")]
+		public string Phone
+		{
+			get
+			{
+				return this._Phone;
+			}
+			set
+			{
+				if ((this._Phone != value))
+				{
+					this.OnPhoneChanging(value);
+					this.SendPropertyChanging();
+					this._Phone = value;
+					this.SendPropertyChanged("Phone");
+					this.OnPhoneChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Address", DbType="NVarChar(MAX)")]
+		public string Address
+		{
+			get
+			{
+				return this._Address;
+			}
+			set
+			{
+				if ((this._Address != value))
+				{
+					this.OnAddressChanging(value);
+					this.SendPropertyChanging();
+					this._Address = value;
+					this.SendPropertyChanged("Address");
+					this.OnAddressChanged();
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		private void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		private void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
 		}
 	}
 	

@@ -47,6 +47,42 @@
       <Association Name="ProductGroup_Product" Member="Products" ThisKey="GroupId" OtherKey="GroupId" Type="Product" />
     </Type>
   </Table>
+  <Table Name="dbo.Sellers" Member="Sellers">
+    <Type Name="Seller" Id="ID8" Modifier="Sealed">
+      <Column Name="SellerId" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="SellerName" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Phone" Type="System.String" DbType="NVarChar(12)" CanBeNull="true" />
+      <Column Name="Address" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="Description" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Receivers" Member="Receivers">
+    <Type Name="Receiver" Id="ID7" Modifier="Sealed">
+      <Column Name="ReceiverId" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="ReceiverName" Type="System.String" DbType="NVarChar(30)" CanBeNull="true" />
+      <Column Name="Phone" Type="System.String" DbType="NVarChar(12)" CanBeNull="true" />
+      <Column Name="Address" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="Description" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Buyers" Member="Buyers">
+    <Type Name="Buyer" Id="ID5" Modifier="Sealed">
+      <Column Name="BuyerId" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="BuyerName" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Phone" Type="System.String" DbType="NVarChar(12)" CanBeNull="true" />
+      <Column Name="Address" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="Description" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Companies" Member="Companies">
+    <Type Name="Company" Id="ID6" Modifier="Sealed">
+      <Column Name="CompanyId" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="CompanyName" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="Chief" Type="System.String" DbType="NVarChar(30)" CanBeNull="true" />
+      <Column Name="Phone" Type="System.String" DbType="NVarChar(12)" CanBeNull="true" />
+      <Column Name="Address" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+    </Type>
+  </Table>
   <Function Name="dbo.InsertLog" Method="InsertLog">
     <Parameter Name="UserId" Parameter="userId" Type="System.Int32" DbType="Int" />
     <Parameter Name="Login" Parameter="login" Type="System.String" DbType="NVarChar(20)" />
@@ -241,5 +277,109 @@
   <Function Name="dbo.FilterProducts" Method="FilterProducts">
     <Parameter Name="ProductName" Parameter="productName" Type="System.String" DbType="NVarChar(30)" />
     <ElementType IdRef="ID4" />
+  </Function>
+  <Function Name="dbo.DeleteBuyer" Method="DeleteBuyer">
+    <Parameter Name="BuyerId" Parameter="buyerId" Type="System.Int32" DbType="Int" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.DeleteCompany" Method="DeleteCompany">
+    <Parameter Name="CompanyId" Parameter="companyId" Type="System.Int32" DbType="Int" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.DeleteReceiver" Method="DeleteReceiver">
+    <Parameter Name="ReceiverId" Parameter="receiverId" Type="System.Int32" DbType="Int" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.DeleteSeller" Method="DeleteSeller">
+    <Parameter Name="SellerId" Parameter="sellerId" Type="System.Int32" DbType="Int" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.FillBuyer" Method="FillBuyer">
+    <ElementType IdRef="ID5" />
+  </Function>
+  <Function Name="dbo.FillBuyerById" Method="FillBuyerById">
+    <Parameter Name="BuyerId" Parameter="buyerId" Type="System.Int32" DbType="Int" />
+    <ElementType IdRef="ID5" />
+  </Function>
+  <Function Name="dbo.FillCompanyById" Method="FillCompanyById">
+    <Parameter Name="CompanyId" Parameter="companyId" Type="System.Int32" DbType="Int" />
+    <ElementType IdRef="ID6" />
+  </Function>
+  <Function Name="dbo.FillCompany" Method="FillCompany">
+    <ElementType IdRef="ID6" />
+  </Function>
+  <Function Name="dbo.FillReceiver" Method="FillReceiver">
+    <ElementType IdRef="ID7" />
+  </Function>
+  <Function Name="dbo.FillReceiverById" Method="FillReceiverById">
+    <Parameter Name="ReceiverId" Parameter="receiverId" Type="System.Int32" DbType="Int" />
+    <ElementType IdRef="ID7" />
+  </Function>
+  <Function Name="dbo.FillSeller" Method="FillSeller">
+    <ElementType IdRef="ID8" />
+  </Function>
+  <Function Name="dbo.FillSellerById" Method="FillSellerById">
+    <Parameter Name="SellerId" Parameter="sellerId" Type="System.Int32" DbType="Int" />
+    <ElementType IdRef="ID8" />
+  </Function>
+  <Function Name="dbo.InsertBuyer" Method="InsertBuyer">
+    <Parameter Name="BuyerName" Parameter="buyerName" Type="System.String" DbType="NVarChar(50)" />
+    <Parameter Name="Phone" Parameter="phone" Type="System.String" DbType="NVarChar(12)" />
+    <Parameter Name="Address" Parameter="address" Type="System.String" DbType="NVarChar(200)" />
+    <Parameter Name="Description" Parameter="description" Type="System.String" DbType="NVarChar(MAX)" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.InsertCompany" Method="InsertCompany">
+    <Parameter Name="CompanyName" Parameter="companyName" Type="System.String" DbType="NVarChar(100)" />
+    <Parameter Name="Chief" Parameter="chief" Type="System.String" DbType="NVarChar(30)" />
+    <Parameter Name="Phone" Parameter="phone" Type="System.String" DbType="NVarChar(12)" />
+    <Parameter Name="Address" Parameter="address" Type="System.String" DbType="NVarChar(MAX)" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.InsertReceiver" Method="InsertReceiver">
+    <Parameter Name="ReceiverName" Parameter="receiverName" Type="System.String" DbType="NVarChar(50)" />
+    <Parameter Name="Phone" Parameter="phone" Type="System.String" DbType="NVarChar(12)" />
+    <Parameter Name="Address" Parameter="address" Type="System.String" DbType="NVarChar(200)" />
+    <Parameter Name="Description" Parameter="description" Type="System.String" DbType="NVarChar(MAX)" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.InsertSeller" Method="InsertSeller">
+    <Parameter Name="SellerName" Parameter="sellerName" Type="System.String" DbType="NVarChar(50)" />
+    <Parameter Name="Phone" Parameter="phone" Type="System.String" DbType="NVarChar(12)" />
+    <Parameter Name="Address" Parameter="address" Type="System.String" DbType="NVarChar(200)" />
+    <Parameter Name="Description" Parameter="description" Type="System.String" DbType="NVarChar(MAX)" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.UpdateBuyer" Method="UpdateBuyer">
+    <Parameter Name="BuyerId" Parameter="buyerId" Type="System.Int32" DbType="Int" />
+    <Parameter Name="BuyerName" Parameter="buyerName" Type="System.String" DbType="NVarChar(50)" />
+    <Parameter Name="Phone" Parameter="phone" Type="System.String" DbType="NVarChar(12)" />
+    <Parameter Name="Address" Parameter="address" Type="System.String" DbType="NVarChar(200)" />
+    <Parameter Name="Description" Parameter="description" Type="System.String" DbType="NVarChar(MAX)" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.UpdateCompany" Method="UpdateCompany">
+    <Parameter Name="CompanyId" Parameter="companyId" Type="System.Int32" DbType="Int" />
+    <Parameter Name="CompanyName" Parameter="companyName" Type="System.String" DbType="NVarChar(100)" />
+    <Parameter Name="Chief" Parameter="chief" Type="System.String" DbType="NVarChar(30)" />
+    <Parameter Name="Phone" Parameter="phone" Type="System.String" DbType="NVarChar(12)" />
+    <Parameter Name="Address" Parameter="address" Type="System.String" DbType="NVarChar(MAX)" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.UpdateReceiver" Method="UpdateReceiver">
+    <Parameter Name="ReceiverId" Parameter="receiverId" Type="System.Int32" DbType="Int" />
+    <Parameter Name="ReceiverName" Parameter="receiverName" Type="System.String" DbType="NVarChar(50)" />
+    <Parameter Name="Phone" Parameter="phone" Type="System.String" DbType="NVarChar(12)" />
+    <Parameter Name="Address" Parameter="address" Type="System.String" DbType="NVarChar(200)" />
+    <Parameter Name="Description" Parameter="description" Type="System.String" DbType="NVarChar(MAX)" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.UpdateSeller" Method="UpdateSeller">
+    <Parameter Name="SellerId" Parameter="sellerId" Type="System.Int32" DbType="Int" />
+    <Parameter Name="SellerName" Parameter="sellerName" Type="System.String" DbType="NVarChar(50)" />
+    <Parameter Name="Phone" Parameter="phone" Type="System.String" DbType="NVarChar(12)" />
+    <Parameter Name="Address" Parameter="address" Type="System.String" DbType="NVarChar(200)" />
+    <Parameter Name="Description" Parameter="description" Type="System.String" DbType="NVarChar(MAX)" />
+    <Return Type="System.Int32" />
   </Function>
 </Database>
