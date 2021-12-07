@@ -133,6 +133,7 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <None Include="DB_Backup\tarlaDB" />
     <None Include="dcTarla.dbml.layout">
       <DependentUpon>dcTarla.dbml</DependentUpon>
     </None>
