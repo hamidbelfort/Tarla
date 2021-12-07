@@ -95,6 +95,12 @@
     <Compile Include="frmSplash.Designer.cs">
       <DependentUpon>frmSplash.cs</DependentUpon>
     </Compile>
+    <Compile Include="MainForms\frmAddCompany.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MainForms\frmAddCompany.Designer.cs">
+      <DependentUpon>frmAddCompany.cs</DependentUpon>
+    </Compile>
     <Compile Include="MainForms\frmAddGroup.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -107,17 +113,17 @@
     <Compile Include="MainForms\frmAddProduct.Designer.cs">
       <DependentUpon>frmAddProduct.cs</DependentUpon>
     </Compile>
+    <Compile Include="MainForms\frmShowCompany.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MainForms\frmShowCompany.Designer.cs">
+      <DependentUpon>frmShowCompany.cs</DependentUpon>
+    </Compile>
     <Compile Include="MainForms\frmShowGroups.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="MainForms\frmShowGroups.Designer.cs">
       <DependentUpon>frmShowGroups.cs</DependentUpon>
-    </Compile>
-    <Compile Include="MainForms\frmShowProduct.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="MainForms\frmShowProduct.Designer.cs">
-      <DependentUpon>frmShowProduct.cs</DependentUpon>
     </Compile>
     <Compile Include="MainForms\frmShowProducts.cs">
       <SubType>Form</SubType>
@@ -163,9 +169,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="MainForms\frmShowGroups.resx">
       <DependentUpon>frmShowGroups.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="MainForms\frmShowProduct.resx">
-      <DependentUpon>frmShowProduct.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MainForms\frmShowProducts.resx">
       <DependentUpon>frmShowProducts.cs</DependentUpon>
@@ -250,6 +253,33 @@
   </ItemGroup>
   <ItemGroup>
     <Service Include="{3259AA49-8AA1-44D3-9025-A0B520596A8C}" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\category.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\product.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Groups-Meeting-Light-icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\seller-icon-1.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\seller-icon-11.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\seller.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\receiver.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\company.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\company1.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

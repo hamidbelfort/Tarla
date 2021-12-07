@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace Tarla.MainForms
 {
-    public partial class frmShowProduct : Form
+    public partial class frmShowCompany : Form
     {
-        public frmShowProduct()
+        public frmShowCompany()
         {
             InitializeComponent();
         }

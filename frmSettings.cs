@@ -65,7 +65,7 @@ namespace Tarla
                     errorProvider1.Clear();
                     if (cmbFontSize.SelectedIndex>=0)
                     {
-                        fontSize = (float)(cmbFontSize.SelectedValue);
+                        fontSize = float.Parse(cmbFontSize.Text);
                     }
                     else
                     {
@@ -73,7 +73,7 @@ namespace Tarla
                     }
                     if (cmbTheme.SelectedIndex >= 0)
                     {
-                        themeName = cmbTheme.SelectedValue.ToString(); ;
+                        themeName = cmbTheme.Text;
                     }
                     else
                     {

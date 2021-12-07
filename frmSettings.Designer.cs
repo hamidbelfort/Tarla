@@ -35,13 +35,12 @@
             this.btnExit = new DevComponents.DotNetBar.ButtonX();
             this.btnSave = new DevComponents.DotNetBar.ButtonX();
             this.groupPanel1 = new DevComponents.DotNetBar.Controls.GroupPanel();
+            this.cmbTheme = new System.Windows.Forms.ComboBox();
+            this.cmbFontSize = new System.Windows.Forms.ComboBox();
+            this.txtFactorTel = new DevComponents.DotNetBar.Controls.MaskedTextBoxAdv();
+            this.settingBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.labelX4 = new DevComponents.DotNetBar.LabelX();
-            this.cmbTheme = new DevComponents.DotNetBar.Controls.ComboBoxEx();
             this.labelX2 = new DevComponents.DotNetBar.LabelX();
-            this.cmbFontSize = new DevComponents.DotNetBar.Controls.ComboBoxEx();
-            this.comboItem1 = new DevComponents.Editors.ComboItem();
-            this.comboItem2 = new DevComponents.Editors.ComboItem();
-            this.comboItem3 = new DevComponents.Editors.ComboItem();
             this.txtCompanyName = new DevComponents.DotNetBar.Controls.TextBoxX();
             this.txtFactorAddress = new DevComponents.DotNetBar.Controls.TextBoxX();
             this.labelX3 = new DevComponents.DotNetBar.LabelX();
@@ -49,15 +48,12 @@
             this.labelX1 = new DevComponents.DotNetBar.LabelX();
             this.bsSetting = new System.Windows.Forms.BindingSource(this.components);
             this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
-            this.settingBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.txtFactorTel = new DevComponents.DotNetBar.Controls.MaskedTextBoxAdv();
-            this.comboItem4 = new DevComponents.Editors.ComboItem();
             this.panelEx1.SuspendLayout();
             this.groupPanel2.SuspendLayout();
             this.groupPanel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.settingBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bsSetting)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.settingBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // panelEx1
@@ -118,7 +114,7 @@
             // 
             // 
             this.groupPanel2.StyleMouseOver.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.groupPanel2.TabIndex = 11;
+            this.groupPanel2.TabIndex = 1;
             // 
             // btnExit
             // 
@@ -160,11 +156,11 @@
             this.groupPanel1.BackColor = System.Drawing.Color.White;
             this.groupPanel1.CanvasColor = System.Drawing.SystemColors.Control;
             this.groupPanel1.ColorSchemeStyle = DevComponents.DotNetBar.eDotNetBarStyle.Office2007;
+            this.groupPanel1.Controls.Add(this.cmbTheme);
+            this.groupPanel1.Controls.Add(this.cmbFontSize);
             this.groupPanel1.Controls.Add(this.txtFactorTel);
             this.groupPanel1.Controls.Add(this.labelX4);
-            this.groupPanel1.Controls.Add(this.cmbTheme);
             this.groupPanel1.Controls.Add(this.labelX2);
-            this.groupPanel1.Controls.Add(this.cmbFontSize);
             this.groupPanel1.Controls.Add(this.txtCompanyName);
             this.groupPanel1.Controls.Add(this.txtFactorAddress);
             this.groupPanel1.Controls.Add(this.labelX3);
@@ -202,8 +198,50 @@
             // 
             // 
             this.groupPanel1.StyleMouseOver.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.groupPanel1.TabIndex = 4;
+            this.groupPanel1.TabIndex = 0;
             this.groupPanel1.Text = "تنظیمات برنامه";
+            // 
+            // cmbTheme
+            // 
+            this.cmbTheme.FormattingEnabled = true;
+            this.cmbTheme.Location = new System.Drawing.Point(168, 126);
+            this.cmbTheme.Name = "cmbTheme";
+            this.cmbTheme.Size = new System.Drawing.Size(170, 24);
+            this.cmbTheme.TabIndex = 4;
+            // 
+            // cmbFontSize
+            // 
+            this.cmbFontSize.FormattingEnabled = true;
+            this.cmbFontSize.Items.AddRange(new object[] {
+            "9",
+            "10",
+            "11",
+            "12"});
+            this.cmbFontSize.Location = new System.Drawing.Point(168, 97);
+            this.cmbFontSize.Name = "cmbFontSize";
+            this.cmbFontSize.Size = new System.Drawing.Size(170, 24);
+            this.cmbFontSize.TabIndex = 3;
+            // 
+            // txtFactorTel
+            // 
+            // 
+            // 
+            // 
+            this.txtFactorTel.BackgroundStyle.Class = "TextBoxBorder";
+            this.txtFactorTel.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.txtFactorTel.ButtonClear.Visible = true;
+            this.txtFactorTel.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.settingBindingSource, "FactorTel", true));
+            this.txtFactorTel.Location = new System.Drawing.Point(168, 69);
+            this.txtFactorTel.Mask = "00000000000";
+            this.txtFactorTel.Name = "txtFactorTel";
+            this.txtFactorTel.Size = new System.Drawing.Size(170, 22);
+            this.txtFactorTel.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.txtFactorTel.TabIndex = 2;
+            this.txtFactorTel.Text = "";
+            // 
+            // settingBindingSource
+            // 
+            this.settingBindingSource.DataSource = typeof(Tarla.Setting);
             // 
             // labelX4
             // 
@@ -217,18 +255,6 @@
             this.labelX4.TabIndex = 7;
             this.labelX4.Text = "تم برنامه";
             // 
-            // cmbTheme
-            // 
-            this.cmbTheme.DisplayMember = "Text";
-            this.cmbTheme.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
-            this.cmbTheme.FormattingEnabled = true;
-            this.cmbTheme.ItemHeight = 17;
-            this.cmbTheme.Location = new System.Drawing.Point(168, 126);
-            this.cmbTheme.Name = "cmbTheme";
-            this.cmbTheme.Size = new System.Drawing.Size(170, 23);
-            this.cmbTheme.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.cmbTheme.TabIndex = 6;
-            // 
             // labelX2
             // 
             // 
@@ -240,35 +266,6 @@
             this.labelX2.Size = new System.Drawing.Size(137, 23);
             this.labelX2.TabIndex = 5;
             this.labelX2.Text = "سایز فونت";
-            // 
-            // cmbFontSize
-            // 
-            this.cmbFontSize.DisplayMember = "Text";
-            this.cmbFontSize.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
-            this.cmbFontSize.FormattingEnabled = true;
-            this.cmbFontSize.ItemHeight = 17;
-            this.cmbFontSize.Items.AddRange(new object[] {
-            this.comboItem1,
-            this.comboItem2,
-            this.comboItem3,
-            this.comboItem4});
-            this.cmbFontSize.Location = new System.Drawing.Point(168, 97);
-            this.cmbFontSize.Name = "cmbFontSize";
-            this.cmbFontSize.Size = new System.Drawing.Size(170, 23);
-            this.cmbFontSize.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.cmbFontSize.TabIndex = 4;
-            // 
-            // comboItem1
-            // 
-            this.comboItem1.Text = "9";
-            // 
-            // comboItem2
-            // 
-            this.comboItem2.Text = "10";
-            // 
-            // comboItem3
-            // 
-            this.comboItem3.Text = "11";
             // 
             // txtCompanyName
             // 
@@ -350,31 +347,6 @@
             // 
             this.errorProvider1.ContainerControl = this;
             // 
-            // settingBindingSource
-            // 
-            this.settingBindingSource.DataSource = typeof(Tarla.Setting);
-            // 
-            // txtFactorTel
-            // 
-            // 
-            // 
-            // 
-            this.txtFactorTel.BackgroundStyle.Class = "TextBoxBorder";
-            this.txtFactorTel.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.txtFactorTel.ButtonClear.Visible = true;
-            this.txtFactorTel.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.settingBindingSource, "FactorTel", true));
-            this.txtFactorTel.Location = new System.Drawing.Point(168, 69);
-            this.txtFactorTel.Mask = "000000000000";
-            this.txtFactorTel.Name = "txtFactorTel";
-            this.txtFactorTel.Size = new System.Drawing.Size(170, 22);
-            this.txtFactorTel.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.txtFactorTel.TabIndex = 8;
-            this.txtFactorTel.Text = "";
-            // 
-            // comboItem4
-            // 
-            this.comboItem4.Text = "12";
-            // 
             // frmSettings
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
@@ -392,9 +364,9 @@
             this.panelEx1.ResumeLayout(false);
             this.groupPanel2.ResumeLayout(false);
             this.groupPanel1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.settingBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.bsSetting)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.settingBindingSource)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -409,12 +381,7 @@
         private DevComponents.DotNetBar.LabelX labelX11;
         private DevComponents.DotNetBar.LabelX labelX1;
         private DevComponents.DotNetBar.LabelX labelX4;
-        private DevComponents.DotNetBar.Controls.ComboBoxEx cmbTheme;
         private DevComponents.DotNetBar.LabelX labelX2;
-        private DevComponents.DotNetBar.Controls.ComboBoxEx cmbFontSize;
-        private DevComponents.Editors.ComboItem comboItem1;
-        private DevComponents.Editors.ComboItem comboItem2;
-        private DevComponents.Editors.ComboItem comboItem3;
         private DevComponents.DotNetBar.Controls.GroupPanel groupPanel2;
         private DevComponents.DotNetBar.ButtonX btnExit;
         private DevComponents.DotNetBar.ButtonX btnSave;
@@ -422,6 +389,7 @@
         private System.Windows.Forms.ErrorProvider errorProvider1;
         private DevComponents.DotNetBar.Controls.MaskedTextBoxAdv txtFactorTel;
         private System.Windows.Forms.BindingSource settingBindingSource;
-        private DevComponents.Editors.ComboItem comboItem4;
+        private System.Windows.Forms.ComboBox cmbTheme;
+        private System.Windows.Forms.ComboBox cmbFontSize;
     }
 }
