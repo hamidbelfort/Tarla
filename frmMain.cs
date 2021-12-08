@@ -81,5 +81,23 @@ namespace Tarla
         {
             new frmShowCompany().ShowDialog();
         }
+
+        private void btnBuyers_Click(object sender, EventArgs e)
+        {
+            frmShowPerson.personType = 1;
+            new frmShowPerson().ShowDialog();
+        }
+
+        private void btnSellers_Click(object sender, EventArgs e)
+        {
+            frmShowPerson.personType = 2;
+            new frmShowPerson().ShowDialog();
+        }
+
+        private void btnReceivers_Click(object sender, EventArgs e)
+        {
+            frmShowPerson.personType = 3;
+            new frmShowPerson().ShowDialog();
+        }
     }
 }

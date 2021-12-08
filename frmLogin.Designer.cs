@@ -125,7 +125,7 @@
             // 
             this.btnExit.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
             this.btnExit.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
-            this.btnExit.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            this.btnExit.FocusCuesEnabled = false;
             this.btnExit.Image = global::Tarla.Properties.Resources.Exit_icon;
             this.btnExit.Location = new System.Drawing.Point(3, 105);
             this.btnExit.Name = "btnExit";
@@ -141,7 +141,7 @@
             // 
             this.btnEnter.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
             this.btnEnter.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
-            this.btnEnter.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            this.btnEnter.FocusCuesEnabled = false;
             this.btnEnter.Image = global::Tarla.Properties.Resources.Actions_edit_redo_icon;
             this.btnEnter.Location = new System.Drawing.Point(170, 105);
             this.btnEnter.Name = "btnEnter";
@@ -222,6 +222,7 @@
             // errorProvider1
             // 
             this.errorProvider1.ContainerControl = this;
+            this.errorProvider1.RightToLeft = true;
             // 
             // frmLogin
             // 

@@ -33,37 +33,28 @@ namespace Tarla
         {
             try
             {
-                if (!string.IsNullOrEmpty(txtUsername.Text))
+                db.CheckUsersName(ref checkUsername, txtUsername.Text.Trim());
+                db.CheckUserPass(ref checkPass, txtPassword.Text.Trim());
+                if (checkUsername == true && checkPass == true)
                 {
-                    db.CheckUsersName(ref checkUsername, txtUsername.Text.Trim());
-                    db.CheckUserPass(ref checkPass, txtPassword.Text.Trim());
-                    if (checkUsername==true && checkPass==true)
-                    {
-                        db.GetLoginId(ref userId, txtUsername.Text.Trim(), txtPassword.Text.Trim());
-                        db.GetUserPermissions(userId, ref Setting, ref Bank, ref User,ref factor);
-                        frmMain.LoginId = (int)userId;
+                    db.GetLoginId(ref userId, txtUsername.Text.Trim(), txtPassword.Text.Trim());
+                    db.GetUserPermissions(userId, ref Setting, ref Bank, ref User, ref factor);
+                    frmMain.LoginId = (int)userId;
 
-                        frmMain.BankPermission = (bool)Bank;
-                        frmMain.SettingPermission = (bool)Setting;
-                        frmMain.UserPermission = (bool)User;
-                        frmMain.FactorPermission = (bool)factor;
-                        strToday = pd.getShortDateTime();
+                    frmMain.BankPermission = (bool)Bank;
+                    frmMain.SettingPermission = (bool)Setting;
+                    frmMain.UserPermission = (bool)User;
+                    frmMain.FactorPermission = (bool)factor;
+                    strToday = pd.getShortDateTime();
 
-                        db.InsertLog(userId, strToday);
+                    db.InsertLog(userId, strToday);
 
-                        this.Close();
-                    }
-                    else
-                    {
-                        errorProvider1.SetError(txtPassword, "مشخصات کاربری اشتباه است");
-                        txtPassword.Focus();
-                    }
+                    Close();
                 }
                 else
                 {
-                    errorProvider1.SetError(txtUsername, "نام کاربری را وارد کنید");
-                    errorProvider1.SetError(txtPassword, "کلمه عبور را وارد کنید");
-                    txtUsername.Focus();
+                    errorProvider1.SetError(txtPassword, "مشخصات کاربری اشتباه است");
+                    txtPassword.Focus();
                 }
             }
             catch

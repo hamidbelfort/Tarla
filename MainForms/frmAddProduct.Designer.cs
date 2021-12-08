@@ -36,6 +36,7 @@
             this.btnSave = new DevComponents.DotNetBar.ButtonX();
             this.groupPanel1 = new DevComponents.DotNetBar.Controls.GroupPanel();
             this.cmbGroup = new DevComponents.DotNetBar.Controls.ComboBoxEx();
+            this.bsGroups = new System.Windows.Forms.BindingSource(this.components);
             this.labelX3 = new DevComponents.DotNetBar.LabelX();
             this.labelX2 = new DevComponents.DotNetBar.LabelX();
             this.txtProductName = new DevComponents.DotNetBar.Controls.TextBoxX();
@@ -43,13 +44,12 @@
             this.labelX1 = new DevComponents.DotNetBar.LabelX();
             this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
             this.bsProduct = new System.Windows.Forms.BindingSource(this.components);
-            this.bsGroups = new System.Windows.Forms.BindingSource(this.components);
             this.panelEx1.SuspendLayout();
             this.groupPanel2.SuspendLayout();
             this.groupPanel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.bsGroups)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bsProduct)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.bsGroups)).BeginInit();
             this.SuspendLayout();
             // 
             // panelEx1
@@ -195,6 +195,7 @@
             // 
             // cmbGroup
             // 
+            this.cmbGroup.DataSource = this.bsGroups;
             this.cmbGroup.DisplayMember = "GroupName";
             this.cmbGroup.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
             this.cmbGroup.FormattingEnabled = true;
@@ -205,6 +206,10 @@
             this.cmbGroup.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.cmbGroup.TabIndex = 0;
             this.cmbGroup.ValueMember = "GroupId";
+            // 
+            // bsGroups
+            // 
+            this.bsGroups.DataSource = typeof(Tarla.ProductGroup);
             // 
             // labelX3
             // 
@@ -237,6 +242,7 @@
             // 
             this.txtProductName.Border.Class = "TextBoxBorder";
             this.txtProductName.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.txtProductName.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.bsProduct, "ProductName", true));
             this.txtProductName.Location = new System.Drawing.Point(30, 44);
             this.txtProductName.MaxLength = 30;
             this.txtProductName.Name = "txtProductName";
@@ -252,6 +258,7 @@
             // 
             this.txtDesc.Border.Class = "TextBoxBorder";
             this.txtDesc.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.txtDesc.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.bsProduct, "Description", true));
             this.txtDesc.Location = new System.Drawing.Point(30, 73);
             this.txtDesc.MaxLength = 200;
             this.txtDesc.Multiline = true;
@@ -281,10 +288,6 @@
             // 
             this.bsProduct.DataSource = typeof(Tarla.Product);
             // 
-            // bsGroups
-            // 
-            this.bsGroups.DataSource = typeof(Tarla.ProductGroup);
-            // 
             // frmAddProduct
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
@@ -302,9 +305,9 @@
             this.panelEx1.ResumeLayout(false);
             this.groupPanel2.ResumeLayout(false);
             this.groupPanel1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.bsGroups)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.bsProduct)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.bsGroups)).EndInit();
             this.ResumeLayout(false);
 
         }
