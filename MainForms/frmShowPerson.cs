@@ -56,11 +56,13 @@ namespace Tarla.MainForms
             {
                 btnDelete.Enabled = false;
                 btnEdit.Enabled = false;
+                
             }
             else
             {
                 btnDelete.Enabled = true;
                 btnEdit.Enabled = true;
+                dgvTarget.Columns[0].Visible = false;
             }
         }
         private void loadAgain(int bsTarget)
@@ -70,6 +72,7 @@ namespace Tarla.MainForms
                 switch (bsTarget)
                 {
                     case 1://buyer
+                        
                         bsBuyer.DataSource = db.FillBuyer();
                         checkData(dgvBuyer);
                         break;
@@ -112,12 +115,15 @@ namespace Tarla.MainForms
                 switch (personType)
                 {
                     case 1://buyer
+                        frmAddPerson.personType = 1;
                         frmAddPerson.personId = (int)dgvBuyer.CurrentRow.Cells[0].Value;
                         break;
                     case 2://seller
+                        frmAddPerson.personType = 2;
                         frmAddPerson.personId = (int)dgvSeller.CurrentRow.Cells[0].Value;
                         break;
                     case 3://receiver
+                        frmAddPerson.personType = 3;
                         frmAddPerson.personId = (int)dgvReceiver.CurrentRow.Cells[0].Value;
                         break;
                 }

@@ -107,6 +107,18 @@
     <Compile Include="MainForms\frmAddGroup.Designer.cs">
       <DependentUpon>frmAddGroup.cs</DependentUpon>
     </Compile>
+    <Compile Include="MainForms\frmAddItem.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MainForms\frmAddItem.Designer.cs">
+      <DependentUpon>frmAddItem.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MainForms\frmAddItemGroup.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MainForms\frmAddItemGroup.Designer.cs">
+      <DependentUpon>frmAddItemGroup.cs</DependentUpon>
+    </Compile>
     <Compile Include="MainForms\frmAddPerson.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -130,6 +142,18 @@
     </Compile>
     <Compile Include="MainForms\frmShowGroups.Designer.cs">
       <DependentUpon>frmShowGroups.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MainForms\frmShowItem.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MainForms\frmShowItem.Designer.cs">
+      <DependentUpon>frmShowItem.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MainForms\frmShowItemGroup.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MainForms\frmShowItemGroup.Designer.cs">
+      <DependentUpon>frmShowItemGroup.cs</DependentUpon>
     </Compile>
     <Compile Include="MainForms\frmShowPerson.cs">
       <SubType>Form</SubType>
@@ -179,6 +203,12 @@
     <EmbeddedResource Include="MainForms\frmAddGroup.resx">
       <DependentUpon>frmAddGroup.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="MainForms\frmAddItem.resx">
+      <DependentUpon>frmAddItem.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MainForms\frmAddItemGroup.resx">
+      <DependentUpon>frmAddItemGroup.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="MainForms\frmAddPerson.resx">
       <DependentUpon>frmAddPerson.cs</DependentUpon>
     </EmbeddedResource>
@@ -190,6 +220,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="MainForms\frmShowGroups.resx">
       <DependentUpon>frmShowGroups.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MainForms\frmShowItem.resx">
+      <DependentUpon>frmShowItem.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MainForms\frmShowItemGroup.resx">
+      <DependentUpon>frmShowItemGroup.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MainForms\frmShowPerson.resx">
       <DependentUpon>frmShowPerson.cs</DependentUpon>
@@ -217,6 +253,8 @@
     </None>
     <None Include="Properties\DataSources\Buyer.datasource" />
     <None Include="Properties\DataSources\Company.datasource" />
+    <None Include="Properties\DataSources\Item.datasource" />
+    <None Include="Properties\DataSources\ItemGroup.datasource" />
     <None Include="Properties\DataSources\Product.datasource" />
     <None Include="Properties\DataSources\ProductGroup.datasource" />
     <None Include="Properties\DataSources\Receiver.datasource" />

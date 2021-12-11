@@ -40,16 +40,16 @@
             this.labelX3 = new DevComponents.DotNetBar.LabelX();
             this.labelX2 = new DevComponents.DotNetBar.LabelX();
             this.txtProductName = new DevComponents.DotNetBar.Controls.TextBoxX();
+            this.bsProduct = new System.Windows.Forms.BindingSource(this.components);
             this.txtDesc = new DevComponents.DotNetBar.Controls.TextBoxX();
             this.labelX1 = new DevComponents.DotNetBar.LabelX();
             this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
-            this.bsProduct = new System.Windows.Forms.BindingSource(this.components);
             this.panelEx1.SuspendLayout();
             this.groupPanel2.SuspendLayout();
             this.groupPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.bsGroups)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bsProduct)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             this.SuspendLayout();
             // 
             // panelEx1
@@ -251,6 +251,10 @@
             this.txtProductName.TabIndex = 1;
             this.txtProductName.WatermarkText = "الزامی";
             // 
+            // bsProduct
+            // 
+            this.bsProduct.DataSource = typeof(Tarla.Product);
+            // 
             // txtDesc
             // 
             // 
@@ -283,10 +287,7 @@
             // errorProvider1
             // 
             this.errorProvider1.ContainerControl = this;
-            // 
-            // bsProduct
-            // 
-            this.bsProduct.DataSource = typeof(Tarla.Product);
+            this.errorProvider1.RightToLeft = true;
             // 
             // frmAddProduct
             // 
@@ -306,8 +307,8 @@
             this.groupPanel2.ResumeLayout(false);
             this.groupPanel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.bsGroups)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.bsProduct)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
             this.ResumeLayout(false);
 
         }

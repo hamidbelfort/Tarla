@@ -36,8 +36,8 @@
             this.btnSave = new DevComponents.DotNetBar.ButtonX();
             this.groupPanel1 = new DevComponents.DotNetBar.Controls.GroupPanel();
             this.txtName = new DevComponents.DotNetBar.Controls.TextBoxX();
-            this.labelX1 = new DevComponents.DotNetBar.LabelX();
             this.bsGroup = new System.Windows.Forms.BindingSource(this.components);
+            this.labelX1 = new DevComponents.DotNetBar.LabelX();
             this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
             this.panelEx1.SuspendLayout();
             this.groupPanel2.SuspendLayout();
@@ -199,6 +199,10 @@
             this.txtName.TabIndex = 1;
             this.txtName.WatermarkText = "الزامی";
             // 
+            // bsGroup
+            // 
+            this.bsGroup.DataSource = typeof(Tarla.ProductGroup);
+            // 
             // labelX1
             // 
             // 
@@ -211,13 +215,10 @@
             this.labelX1.TabIndex = 0;
             this.labelX1.Text = "نام دسته بندی";
             // 
-            // bsGroup
-            // 
-            this.bsGroup.DataSource = typeof(Tarla.ProductGroup);
-            // 
             // errorProvider1
             // 
             this.errorProvider1.ContainerControl = this;
+            this.errorProvider1.RightToLeft = true;
             // 
             // frmAddGroup
             // 

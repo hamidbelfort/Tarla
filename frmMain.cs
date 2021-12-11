@@ -9,6 +9,7 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Tarla.Classes;
 using Tarla.MainForms;
 using Tarla.OperationForms;
 namespace Tarla
@@ -24,7 +25,8 @@ namespace Tarla
         bool? roleExists;
         bool? userExists;
         bool? settingExists;
-        
+        double? fontSize;
+        string themeName;
         public frmMain()
         {
             Thread t = new Thread(new ThreadStart(runSplash));
@@ -64,6 +66,13 @@ namespace Tarla
             {
                 frmSettings.ExitType = true;
                 new frmSettings().ShowDialog();
+                db.GetThemeSetting(ref themeName,ref fontSize);
+            }
+            else
+            {
+                db.GetThemeSetting(ref themeName, ref fontSize);
+                styleManager1.ManagerStyle = StyleTheme.getTheme(themeName);
+                this.Font = new Font("Tahoma", (float)fontSize, FontStyle.Regular);
             }
         }
 

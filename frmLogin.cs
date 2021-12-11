@@ -24,6 +24,8 @@ namespace Tarla
         bool? factor = false;
         PersianDate pd = new PersianDate();
         string strToday;
+        public static float fontSize;
+        public static string themeName;
         public frmLogin()
         {
             InitializeComponent();
@@ -69,6 +71,12 @@ namespace Tarla
             {
                 Application.Exit();
             }
+        }
+
+        private void frmLogin_Load(object sender, EventArgs e)
+        {
+            //styleManager1.ManagerStyle = StyleTheme.getTheme(themeName);
+            //this.Font = new Font("Tahoma", fontSize, FontStyle.Regular);
         }
     }
 }

@@ -125,6 +125,7 @@
             // 
             this.btnExit.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
             this.btnExit.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
+            this.btnExit.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.btnExit.FocusCuesEnabled = false;
             this.btnExit.Image = global::Tarla.Properties.Resources.Exit_icon;
             this.btnExit.Location = new System.Drawing.Point(3, 105);
@@ -240,6 +241,7 @@
             this.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "ورود";
+            this.Load += new System.EventHandler(this.frmLogin_Load);
             this.panelEx1.ResumeLayout(false);
             this.groupPanel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();

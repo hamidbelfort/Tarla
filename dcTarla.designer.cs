@@ -57,6 +57,12 @@ namespace Tarla
     partial void InsertCompany(Company instance);
     partial void UpdateCompany(Company instance);
     partial void DeleteCompany(Company instance);
+    partial void InsertItemGroup(ItemGroup instance);
+    partial void UpdateItemGroup(ItemGroup instance);
+    partial void DeleteItemGroup(ItemGroup instance);
+    partial void InsertItem(Item instance);
+    partial void UpdateItem(Item instance);
+    partial void DeleteItem(Item instance);
     #endregion
 		
 		public dcTarlaDataContext() : 
@@ -158,6 +164,22 @@ namespace Tarla
 			get
 			{
 				return this.GetTable<Company>();
+			}
+		}
+		
+		public System.Data.Linq.Table<ItemGroup> ItemGroups
+		{
+			get
+			{
+				return this.GetTable<ItemGroup>();
+			}
+		}
+		
+		public System.Data.Linq.Table<Item> Items
+		{
+			get
+			{
+				return this.GetTable<Item>();
 			}
 		}
 		
@@ -547,6 +569,94 @@ namespace Tarla
 		public int UpdateSeller([global::System.Data.Linq.Mapping.ParameterAttribute(Name="SellerId", DbType="Int")] System.Nullable<int> sellerId, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="SellerName", DbType="NVarChar(50)")] string sellerName, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="Phone", DbType="NVarChar(12)")] string phone, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="Address", DbType="NVarChar(200)")] string address, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="Description", DbType="NVarChar(MAX)")] string description)
 		{
 			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), sellerId, sellerName, phone, address, description);
+			return ((int)(result.ReturnValue));
+		}
+		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.GetAddressSetting")]
+		public int GetAddressSetting([global::System.Data.Linq.Mapping.ParameterAttribute(Name="CompanyName", DbType="NVarChar(100)")] ref string companyName, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="FactorAddress", DbType="NVarChar(MAX)")] ref string factorAddress, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="FactorTel", DbType="NVarChar(20)")] ref string factorTel)
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), companyName, factorAddress, factorTel);
+			companyName = ((string)(result.GetParameterValue(0)));
+			factorAddress = ((string)(result.GetParameterValue(1)));
+			factorTel = ((string)(result.GetParameterValue(2)));
+			return ((int)(result.ReturnValue));
+		}
+		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.GetThemeSetting")]
+		public int GetThemeSetting([global::System.Data.Linq.Mapping.ParameterAttribute(Name="ThemeName", DbType="NVarChar(50)")] ref string themeName, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="FontSize", DbType="Float")] ref System.Nullable<double> fontSize)
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), themeName, fontSize);
+			themeName = ((string)(result.GetParameterValue(0)));
+			fontSize = ((System.Nullable<double>)(result.GetParameterValue(1)));
+			return ((int)(result.ReturnValue));
+		}
+		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.DeleteItemGroup")]
+		public int DeleteItemGroup([global::System.Data.Linq.Mapping.ParameterAttribute(Name="ItemGroupId", DbType="Int")] System.Nullable<int> itemGroupId)
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), itemGroupId);
+			return ((int)(result.ReturnValue));
+		}
+		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.DeleteItems")]
+		public int DeleteItems([global::System.Data.Linq.Mapping.ParameterAttribute(Name="ItemId", DbType="Int")] System.Nullable<int> itemId)
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), itemId);
+			return ((int)(result.ReturnValue));
+		}
+		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.FillItemGroupById")]
+		public ISingleResult<Item> FillItemGroupById([global::System.Data.Linq.Mapping.ParameterAttribute(Name="ItemGroupId", DbType="Int")] System.Nullable<int> itemGroupId)
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), itemGroupId);
+			return ((ISingleResult<Item>)(result.ReturnValue));
+		}
+		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.FillItemGroup")]
+		public ISingleResult<ItemGroup> FillItemGroup()
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())));
+			return ((ISingleResult<ItemGroup>)(result.ReturnValue));
+		}
+		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.FillItems")]
+		public ISingleResult<Item> FillItems()
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())));
+			return ((ISingleResult<Item>)(result.ReturnValue));
+		}
+		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.FillItemsById")]
+		public ISingleResult<Item> FillItemsById([global::System.Data.Linq.Mapping.ParameterAttribute(Name="ItemId", DbType="Int")] System.Nullable<int> itemId)
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), itemId);
+			return ((ISingleResult<Item>)(result.ReturnValue));
+		}
+		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.InsertItems")]
+		public void InsertItems([global::System.Data.Linq.Mapping.ParameterAttribute(Name="ItemGroupId", DbType="Int")] System.Nullable<int> itemGroupId, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="ItemName", DbType="NVarChar(50)")] string itemName)
+		{
+			this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), itemGroupId, itemName);
+		}
+		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.InsertItemGroup")]
+		public int InsertItemGroup([global::System.Data.Linq.Mapping.ParameterAttribute(Name="GroupName", DbType="NVarChar(30)")] string groupName, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="Unit1", DbType="NVarChar(20)")] string unit1, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="Unit2", DbType="NVarChar(20)")] string unit2)
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), groupName, unit1, unit2);
+			return ((int)(result.ReturnValue));
+		}
+		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.UpdateItemGroup")]
+		public int UpdateItemGroup([global::System.Data.Linq.Mapping.ParameterAttribute(Name="ItemGroupId", DbType="Int")] System.Nullable<int> itemGroupId, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="GroupName", DbType="NVarChar(30)")] string groupName, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="Unit1", DbType="NVarChar(20)")] string unit1, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="Unit2", DbType="NVarChar(20)")] string unit2)
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), itemGroupId, groupName, unit1, unit2);
+			return ((int)(result.ReturnValue));
+		}
+		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.UpdateItems")]
+		public int UpdateItems([global::System.Data.Linq.Mapping.ParameterAttribute(Name="ItemId", DbType="Int")] System.Nullable<int> itemId, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="ItemGroupId", DbType="Int")] System.Nullable<int> itemGroupId, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="ItemName", DbType="NVarChar(50)")] string itemName)
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), itemId, itemGroupId, itemName);
 			return ((int)(result.ReturnValue));
 		}
 	}
@@ -2038,6 +2148,343 @@ namespace Tarla
 					this._Address = value;
 					this.SendPropertyChanged("Address");
 					this.OnAddressChanged();
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		private void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		private void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.ItemGroups")]
+	public sealed partial class ItemGroup : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _ItemGroupId;
+		
+		private string _GroupName;
+		
+		private string _Unit1;
+		
+		private string _Unit2;
+		
+		private EntitySet<Item> _Items;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnItemGroupIdChanging(int value);
+    partial void OnItemGroupIdChanged();
+    partial void OnGroupNameChanging(string value);
+    partial void OnGroupNameChanged();
+    partial void OnUnit1Changing(string value);
+    partial void OnUnit1Changed();
+    partial void OnUnit2Changing(string value);
+    partial void OnUnit2Changed();
+    #endregion
+		
+		public ItemGroup()
+		{
+			this._Items = new EntitySet<Item>(new Action<Item>(this.attach_Items), new Action<Item>(this.detach_Items));
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ItemGroupId", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public int ItemGroupId
+		{
+			get
+			{
+				return this._ItemGroupId;
+			}
+			set
+			{
+				if ((this._ItemGroupId != value))
+				{
+					this.OnItemGroupIdChanging(value);
+					this.SendPropertyChanging();
+					this._ItemGroupId = value;
+					this.SendPropertyChanged("ItemGroupId");
+					this.OnItemGroupIdChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_GroupName", DbType="NVarChar(30)")]
+		public string GroupName
+		{
+			get
+			{
+				return this._GroupName;
+			}
+			set
+			{
+				if ((this._GroupName != value))
+				{
+					this.OnGroupNameChanging(value);
+					this.SendPropertyChanging();
+					this._GroupName = value;
+					this.SendPropertyChanged("GroupName");
+					this.OnGroupNameChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Unit1", DbType="NVarChar(20)")]
+		public string Unit1
+		{
+			get
+			{
+				return this._Unit1;
+			}
+			set
+			{
+				if ((this._Unit1 != value))
+				{
+					this.OnUnit1Changing(value);
+					this.SendPropertyChanging();
+					this._Unit1 = value;
+					this.SendPropertyChanged("Unit1");
+					this.OnUnit1Changed();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Unit2", DbType="NVarChar(20)")]
+		public string Unit2
+		{
+			get
+			{
+				return this._Unit2;
+			}
+			set
+			{
+				if ((this._Unit2 != value))
+				{
+					this.OnUnit2Changing(value);
+					this.SendPropertyChanging();
+					this._Unit2 = value;
+					this.SendPropertyChanged("Unit2");
+					this.OnUnit2Changed();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="ItemGroup_Item", Storage="_Items", ThisKey="ItemGroupId", OtherKey="ItemGroupId")]
+		public EntitySet<Item> Items
+		{
+			get
+			{
+				return this._Items;
+			}
+			set
+			{
+				this._Items.Assign(value);
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		private void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		private void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+		
+		private void attach_Items(Item entity)
+		{
+			this.SendPropertyChanging();
+			entity.ItemGroup = this;
+		}
+		
+		private void detach_Items(Item entity)
+		{
+			this.SendPropertyChanging();
+			entity.ItemGroup = null;
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Items")]
+	public sealed partial class Item : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _ItemId;
+		
+		private System.Nullable<int> _ItemGroupId;
+		
+		private string _ItemName;
+		
+		private string _ItemDesc;
+		
+		private EntityRef<ItemGroup> _ItemGroup;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnItemIdChanging(int value);
+    partial void OnItemIdChanged();
+    partial void OnItemGroupIdChanging(System.Nullable<int> value);
+    partial void OnItemGroupIdChanged();
+    partial void OnItemNameChanging(string value);
+    partial void OnItemNameChanged();
+    partial void OnItemDescChanging(string value);
+    partial void OnItemDescChanged();
+    #endregion
+		
+		public Item()
+		{
+			this._ItemGroup = default(EntityRef<ItemGroup>);
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ItemId", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public int ItemId
+		{
+			get
+			{
+				return this._ItemId;
+			}
+			set
+			{
+				if ((this._ItemId != value))
+				{
+					this.OnItemIdChanging(value);
+					this.SendPropertyChanging();
+					this._ItemId = value;
+					this.SendPropertyChanged("ItemId");
+					this.OnItemIdChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ItemGroupId", DbType="Int")]
+		public System.Nullable<int> ItemGroupId
+		{
+			get
+			{
+				return this._ItemGroupId;
+			}
+			set
+			{
+				if ((this._ItemGroupId != value))
+				{
+					if (this._ItemGroup.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.OnItemGroupIdChanging(value);
+					this.SendPropertyChanging();
+					this._ItemGroupId = value;
+					this.SendPropertyChanged("ItemGroupId");
+					this.OnItemGroupIdChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ItemName", DbType="NVarChar(50)")]
+		public string ItemName
+		{
+			get
+			{
+				return this._ItemName;
+			}
+			set
+			{
+				if ((this._ItemName != value))
+				{
+					this.OnItemNameChanging(value);
+					this.SendPropertyChanging();
+					this._ItemName = value;
+					this.SendPropertyChanged("ItemName");
+					this.OnItemNameChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ItemDesc", DbType="NVarChar(MAX)")]
+		public string ItemDesc
+		{
+			get
+			{
+				return this._ItemDesc;
+			}
+			set
+			{
+				if ((this._ItemDesc != value))
+				{
+					this.OnItemDescChanging(value);
+					this.SendPropertyChanging();
+					this._ItemDesc = value;
+					this.SendPropertyChanged("ItemDesc");
+					this.OnItemDescChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="ItemGroup_Item", Storage="_ItemGroup", ThisKey="ItemGroupId", OtherKey="ItemGroupId", IsForeignKey=true)]
+		public ItemGroup ItemGroup
+		{
+			get
+			{
+				return this._ItemGroup.Entity;
+			}
+			set
+			{
+				ItemGroup previousValue = this._ItemGroup.Entity;
+				if (((previousValue != value) 
+							|| (this._ItemGroup.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._ItemGroup.Entity = null;
+						previousValue.Items.Remove(this);
+					}
+					this._ItemGroup.Entity = value;
+					if ((value != null))
+					{
+						value.Items.Add(this);
+						this._ItemGroupId = value.ItemGroupId;
+					}
+					else
+					{
+						this._ItemGroupId = default(Nullable<int>);
+					}
+					this.SendPropertyChanged("ItemGroup");
 				}
 			}
 		}

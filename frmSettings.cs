@@ -1,4 +1,5 @@
 ﻿using BehComponents;
+using DevComponents.DotNetBar;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -77,7 +78,7 @@ namespace Tarla
                     }
                     else
                     {
-                        themeName = StyleTheme.styles.OfficeMobile2014.ToString();
+                        themeName = eStyle.Office2007VistaGlass.ToString();
                     }
                     if (ExistSetting == true)
                     {

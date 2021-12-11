@@ -32,15 +32,18 @@ namespace Tarla.MainForms
                     {
                         case 1: //buyer
                             groupPanel1.Text = "ثبت مشخصات مشتری";
-                            bsBuyer.DataSource = db.FillBuyer();
+                            bsBuyer.DataSource = db.FillBuyerById(personId);
+                            prepareForm(personType);
                             break;
                         case 2://seller
                             groupPanel1.Text = "ثبت مشخصات فروشنده محصول";
-                            bsSeller.DataSource = db.FillSeller();
+                            bsSeller.DataSource = db.FillSellerById(personId);
+                            prepareForm(personType);
                             break;
                         case 3://receiver
                             groupPanel1.Text = "ثبت مشخصات تحویل گیرنده بار";
-                            bsReceiver.DataSource = db.FillReceiver();
+                            bsReceiver.DataSource = db.FillReceiverById(personId);
+                            prepareForm(personType);
                             break;
                     }
                 }
@@ -50,7 +53,7 @@ namespace Tarla.MainForms
                 MessageBoxFarsi.Show("ارتباط با سرور اطلاعاتی قطع شده است", "اخطار", MessageBoxFarsiButtons.OK, MessageBoxFarsiIcon.Error, MessageBoxFarsiDefaultButton.Button1);
             }
         }
-        private void perpareForm(int target)
+        private void prepareForm(int target)
         {
             txtName.DataBindings.Clear();
             txtPhone.DataBindings.Clear();

@@ -83,6 +83,24 @@
       <Column Name="Address" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
     </Type>
   </Table>
+  <Table Name="dbo.ItemGroups" Member="ItemGroups">
+    <Type Name="ItemGroup" Id="ID10" Modifier="Sealed">
+      <Column Name="ItemGroupId" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="GroupName" Type="System.String" DbType="NVarChar(30)" CanBeNull="true" />
+      <Column Name="Unit1" Type="System.String" DbType="NVarChar(20)" CanBeNull="true" />
+      <Column Name="Unit2" Type="System.String" DbType="NVarChar(20)" CanBeNull="true" />
+      <Association Name="ItemGroup_Item" Member="Items" ThisKey="ItemGroupId" OtherKey="ItemGroupId" Type="Item" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Items" Member="Items">
+    <Type Name="Item" Id="ID9" Modifier="Sealed">
+      <Column Name="ItemId" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="ItemGroupId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ItemName" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="ItemDesc" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Association Name="ItemGroup_Item" Member="ItemGroup" ThisKey="ItemGroupId" OtherKey="ItemGroupId" Type="ItemGroup" IsForeignKey="true" />
+    </Type>
+  </Table>
   <Function Name="dbo.InsertLog" Method="InsertLog">
     <Parameter Name="UserId" Parameter="userId" Type="System.Int32" DbType="Int" />
     <Parameter Name="Login" Parameter="login" Type="System.String" DbType="NVarChar(20)" />
@@ -380,6 +398,62 @@
     <Parameter Name="Phone" Parameter="phone" Type="System.String" DbType="NVarChar(12)" />
     <Parameter Name="Address" Parameter="address" Type="System.String" DbType="NVarChar(200)" />
     <Parameter Name="Description" Parameter="description" Type="System.String" DbType="NVarChar(MAX)" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.GetAddressSetting" Method="GetAddressSetting">
+    <Parameter Name="CompanyName" Parameter="companyName" Type="System.String" DbType="NVarChar(100)" Direction="InOut" />
+    <Parameter Name="FactorAddress" Parameter="factorAddress" Type="System.String" DbType="NVarChar(MAX)" Direction="InOut" />
+    <Parameter Name="FactorTel" Parameter="factorTel" Type="System.String" DbType="NVarChar(20)" Direction="InOut" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.GetThemeSetting" Method="GetThemeSetting">
+    <Parameter Name="ThemeName" Parameter="themeName" Type="System.String" DbType="NVarChar(50)" Direction="InOut" />
+    <Parameter Name="FontSize" Parameter="fontSize" Type="System.Double" DbType="Float" Direction="InOut" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.DeleteItemGroup" Method="DeleteItemGroup">
+    <Parameter Name="ItemGroupId" Parameter="itemGroupId" Type="System.Int32" DbType="Int" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.DeleteItems" Method="DeleteItems">
+    <Parameter Name="ItemId" Parameter="itemId" Type="System.Int32" DbType="Int" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.FillItemGroupById" Method="FillItemGroupById">
+    <Parameter Name="ItemGroupId" Parameter="itemGroupId" Type="System.Int32" DbType="Int" />
+    <ElementType IdRef="ID9" />
+  </Function>
+  <Function Name="dbo.FillItemGroup" Method="FillItemGroup">
+    <ElementType IdRef="ID10" />
+  </Function>
+  <Function Name="dbo.FillItems" Method="FillItems">
+    <ElementType IdRef="ID9" />
+  </Function>
+  <Function Name="dbo.FillItemsById" Method="FillItemsById">
+    <Parameter Name="ItemId" Parameter="itemId" Type="System.Int32" DbType="Int" />
+    <ElementType IdRef="ID9" />
+  </Function>
+  <Function Name="dbo.InsertItems" Method="InsertItems">
+    <Parameter Name="ItemGroupId" Parameter="itemGroupId" Type="System.Int32" DbType="Int" />
+    <Parameter Name="ItemName" Parameter="itemName" Type="System.String" DbType="NVarChar(50)" />
+  </Function>
+  <Function Name="dbo.InsertItemGroup" Method="InsertItemGroup">
+    <Parameter Name="GroupName" Parameter="groupName" Type="System.String" DbType="NVarChar(30)" />
+    <Parameter Name="Unit1" Parameter="unit1" Type="System.String" DbType="NVarChar(20)" />
+    <Parameter Name="Unit2" Parameter="unit2" Type="System.String" DbType="NVarChar(20)" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.UpdateItemGroup" Method="UpdateItemGroup">
+    <Parameter Name="ItemGroupId" Parameter="itemGroupId" Type="System.Int32" DbType="Int" />
+    <Parameter Name="GroupName" Parameter="groupName" Type="System.String" DbType="NVarChar(30)" />
+    <Parameter Name="Unit1" Parameter="unit1" Type="System.String" DbType="NVarChar(20)" />
+    <Parameter Name="Unit2" Parameter="unit2" Type="System.String" DbType="NVarChar(20)" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.UpdateItems" Method="UpdateItems">
+    <Parameter Name="ItemId" Parameter="itemId" Type="System.Int32" DbType="Int" />
+    <Parameter Name="ItemGroupId" Parameter="itemGroupId" Type="System.Int32" DbType="Int" />
+    <Parameter Name="ItemName" Parameter="itemName" Type="System.String" DbType="NVarChar(50)" />
     <Return Type="System.Int32" />
   </Function>
 </Database>
