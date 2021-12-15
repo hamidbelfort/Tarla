@@ -1,11 +1,11 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<ordesignerObjectsDiagram dslVersion="1.0.0.0" absoluteBounds="0, 0, 11.375, 10.75" name="dcTarla">
+<ordesignerObjectsDiagram dslVersion="1.0.0.0" absoluteBounds="0, 0, 11.375, 11.875" name="dcTarla">
   <DataContextMoniker Name="/dcTarlaDataContext" />
   <nestedChildShapes>
-    <classShape Id="79e380d7-a80b-4229-afd3-1e4ff6e06398" absoluteBounds="6.75, 0.75, 2, 1.9631982421875003">
+    <classShape Id="79e380d7-a80b-4229-afd3-1e4ff6e06398" absoluteBounds="6, 0.625, 2, 1.9631982421875003">
       <DataClassMoniker Name="/dcTarlaDataContext/Setting" />
       <nestedChildShapes>
-        <elementListCompartment Id="8d62077f-014d-480b-84c7-a1d2895c1d8b" absoluteBounds="6.765, 1.21, 1.9700000000000002, 1.4031982421875" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+        <elementListCompartment Id="8d62077f-014d-480b-84c7-a1d2895c1d8b" absoluteBounds="6.015, 1.085, 1.9700000000000002, 1.4031982421875" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
     <classShape Id="8bc6ee74-13a7-4ef9-9dc4-103ab8e75f6e" absoluteBounds="0.75, 3.875, 2, 1.9631982427090406">
@@ -20,7 +20,7 @@
         <elementListCompartment Id="0a6c828e-811d-4402-b5a7-c88648a91746" absoluteBounds="3.5150000005960464, 4.46000000089407, 1.9700000000000002, 1.2108968098958333" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
-    <associationConnector edgePoints="[(2.75 : 4.88544840458781); (3.5 : 4.88544840458781)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+    <associationConnector edgePoints="[(2.75 : 4.34375); (3.5 : 4.34375)]" fixedFrom="NotFixed" fixedTo="NotFixed">
       <AssociationMoniker Name="/dcTarlaDataContext/Role/Role_User" />
       <nodes>
         <classShapeMoniker Id="8bc6ee74-13a7-4ef9-9dc4-103ab8e75f6e" />
@@ -82,12 +82,38 @@
         <elementListCompartment Id="5bac0f5c-7df3-4145-93bc-508a2dd7d694" absoluteBounds="9.14, 9.335, 1.9700000000000002, 1.0185953776041665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
-    <associationConnector edgePoints="[(8.375 : 9.66429768880208); (9.125 : 9.66429768880208)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+    <associationConnector edgePoints="[(8.375 : 9.66429768880208); (9.125 : 9.66429768880208)]" fixedFrom="NotFixed" fixedTo="NotFixed">
       <AssociationMoniker Name="/dcTarlaDataContext/ItemGroup/ItemGroup_Item" />
       <nodes>
         <classShapeMoniker Id="856db89d-37c8-487a-9464-bc03082dbf62" />
         <classShapeMoniker Id="ae3d3f9f-6d15-4ca4-867e-f0ec440b0c3c" />
       </nodes>
     </associationConnector>
+    <classShape Id="b2305d10-e827-4ea2-9320-013b5f5982b4" absoluteBounds="8.375, 0.625, 2, 2.3478011067708335">
+      <DataClassMoniker Name="/dcTarlaDataContext/BuyItem" />
+      <nestedChildShapes>
+        <elementListCompartment Id="3306aca9-946a-40ea-b943-3dde572dc564" absoluteBounds="8.39, 1.085, 1.9700000000000002, 1.7878011067708335" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <associationConnector edgePoints="[(8 : 6.88544840494792); (9.59375 : 6.88544840494792); (9.59375 : 2.97280110677083)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/dcTarlaDataContext/Company/Company_BuyItem" />
+      <nodes>
+        <classShapeMoniker Id="839f6a5c-0222-448d-b46f-325a49c4b4df" />
+        <classShapeMoniker Id="b2305d10-e827-4ea2-9320-013b5f5982b4" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(10.046875 : 8.875); (10.046875 : 2.97280110677083)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/dcTarlaDataContext/Item/Item_BuyItem" />
+      <nodes>
+        <classShapeMoniker Id="ae3d3f9f-6d15-4ca4-867e-f0ec440b0c3c" />
+        <classShapeMoniker Id="b2305d10-e827-4ea2-9320-013b5f5982b4" />
+      </nodes>
+    </associationConnector>
+    <classShape Id="bf85d96e-0a78-4bc6-875d-c13cd719a89c" absoluteBounds="3.625, 9.125, 2, 2.5401025390625">
+      <DataClassMoniker Name="/dcTarlaDataContext/BuyItemView" />
+      <nestedChildShapes>
+        <elementListCompartment Id="ee160d54-e51c-42cd-b276-2dcdcfd7c216" absoluteBounds="3.64, 9.585, 1.9700000000000002, 1.9801025390625" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
   </nestedChildShapes>
 </ordesignerObjectsDiagram>

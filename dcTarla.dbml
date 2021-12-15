@@ -81,6 +81,7 @@
       <Column Name="Chief" Type="System.String" DbType="NVarChar(30)" CanBeNull="true" />
       <Column Name="Phone" Type="System.String" DbType="NVarChar(12)" CanBeNull="true" />
       <Column Name="Address" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Association Name="Company_BuyItem" Member="BuyItems" ThisKey="CompanyId" OtherKey="CompanyId" Type="BuyItem" />
     </Type>
   </Table>
   <Table Name="dbo.ItemGroups" Member="ItemGroups">
@@ -98,7 +99,35 @@
       <Column Name="ItemGroupId" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="ItemName" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
       <Column Name="ItemDesc" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Association Name="Item_BuyItem" Member="BuyItems" ThisKey="ItemId" OtherKey="ItemId" Type="BuyItem" />
       <Association Name="ItemGroup_Item" Member="ItemGroup" ThisKey="ItemGroupId" OtherKey="ItemGroupId" Type="ItemGroup" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.BuyItems" Member="BuyItems">
+    <Type Name="BuyItem" Id="ID11" Modifier="Sealed">
+      <Column Name="BuyId" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="BuyDate" Type="System.String" DbType="NVarChar(10)" CanBeNull="true" />
+      <Column Name="ItemId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="CompanyId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Quantity" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Price" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="TotalPrice" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="BuyDesc" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Association Name="Company_BuyItem" Member="Company" ThisKey="CompanyId" OtherKey="CompanyId" Type="Company" IsForeignKey="true" />
+      <Association Name="Item_BuyItem" Member="Item" ThisKey="ItemId" OtherKey="ItemId" Type="Item" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.BuyItemView" Member="BuyItemViews">
+    <Type Name="BuyItemView" Id="ID12" Modifier="Sealed">
+      <Column Name="BuyId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="ItemId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="CompanyId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="BuyDate" Type="System.String" DbType="NVarChar(10)" CanBeNull="true" />
+      <Column Name="CompanyName" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="ItemName" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Quantity" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Price" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="TotalPrice" Type="System.Int32" DbType="Int" CanBeNull="true" />
     </Type>
   </Table>
   <Function Name="dbo.InsertLog" Method="InsertLog">
@@ -433,9 +462,10 @@
     <Parameter Name="ItemId" Parameter="itemId" Type="System.Int32" DbType="Int" />
     <ElementType IdRef="ID9" />
   </Function>
-  <Function Name="dbo.InsertItems" Method="InsertItems">
+  <Function Name="dbo.InsertItems" Method="InsertItems" IsComposable="true">
     <Parameter Name="ItemGroupId" Parameter="itemGroupId" Type="System.Int32" DbType="Int" />
     <Parameter Name="ItemName" Parameter="itemName" Type="System.String" DbType="NVarChar(50)" />
+    <Return Type="object" />
   </Function>
   <Function Name="dbo.InsertItemGroup" Method="InsertItemGroup">
     <Parameter Name="GroupName" Parameter="groupName" Type="System.String" DbType="NVarChar(30)" />
@@ -455,5 +485,42 @@
     <Parameter Name="ItemGroupId" Parameter="itemGroupId" Type="System.Int32" DbType="Int" />
     <Parameter Name="ItemName" Parameter="itemName" Type="System.String" DbType="NVarChar(50)" />
     <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.DeleteBuyItem" Method="DeleteBuyItem">
+    <Parameter Name="BuyId" Parameter="buyId" Type="System.Int32" DbType="Int" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.FillBuyItem" Method="FillBuyItem">
+    <ElementType IdRef="ID11" />
+  </Function>
+  <Function Name="dbo.FillBuyItemById" Method="FillBuyItemById">
+    <Parameter Name="BuyId" Parameter="buyId" Type="System.Int32" DbType="Int" />
+    <ElementType IdRef="ID11" />
+  </Function>
+  <Function Name="dbo.InsertBuyItem" Method="InsertBuyItem">
+    <Parameter Name="Date" Parameter="date" Type="System.String" DbType="NVarChar(10)" />
+    <Parameter Name="CompanyId" Parameter="companyId" Type="System.Int32" DbType="Int" />
+    <Parameter Name="ItemId" Parameter="itemId" Type="System.Int32" DbType="Int" />
+    <Parameter Name="Quantity" Parameter="quantity" Type="System.Int32" DbType="Int" />
+    <Parameter Name="Price" Parameter="price" Type="System.Int32" DbType="Int" />
+    <Parameter Name="TotalPrice" Parameter="totalPrice" Type="System.Int32" DbType="Int" />
+    <Parameter Name="Desc" Parameter="desc" Type="System.String" DbType="NVarChar(MAX)" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.UpdateBuyItem" Method="UpdateBuyItem">
+    <Parameter Name="BuyId" Parameter="buyId" Type="System.Int32" DbType="Int" />
+    <Parameter Name="Date" Parameter="date" Type="System.String" DbType="NVarChar(10)" />
+    <Parameter Name="CompanyId" Parameter="companyId" Type="System.Int32" DbType="Int" />
+    <Parameter Name="ItemId" Parameter="itemId" Type="System.Int32" DbType="Int" />
+    <Parameter Name="Quantity" Parameter="quantity" Type="System.Int32" DbType="Int" />
+    <Parameter Name="Price" Parameter="price" Type="System.Int32" DbType="Int" />
+    <Parameter Name="TotalPrice" Parameter="totalPrice" Type="System.Int32" DbType="Int" />
+    <Parameter Name="Desc" Parameter="desc" Type="System.String" DbType="NVarChar(MAX)" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.FillBuyItembyDate" Method="FillBuyItembyDate">
+    <Parameter Name="StartDate" Parameter="startDate" Type="System.String" DbType="NVarChar(10)" />
+    <Parameter Name="EndDate" Parameter="endDate" Type="System.String" DbType="NVarChar(10)" />
+    <ElementType IdRef="ID12" />
   </Function>
 </Database>
