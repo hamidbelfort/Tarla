@@ -315,6 +315,7 @@
             this.txtUser.Size = new System.Drawing.Size(223, 23);
             this.txtUser.TabIndex = 1;
             this.txtUser.WatermarkText = "الزامی";
+            this.txtUser.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtUser_KeyPress);
             // 
             // labelX2
             // 

@@ -33,6 +33,8 @@
             this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
             this.panelEx1 = new DevComponents.DotNetBar.PanelEx();
             this.groupPanel3 = new DevComponents.DotNetBar.Controls.GroupPanel();
+            this.btnExit = new DevComponents.DotNetBar.ButtonX();
+            this.btnSave = new DevComponents.DotNetBar.ButtonX();
             this.gp2 = new DevComponents.DotNetBar.Controls.GroupPanel();
             this.txtRePass = new DevComponents.DotNetBar.Controls.TextBoxX();
             this.txtNewPass = new DevComponents.DotNetBar.Controls.TextBoxX();
@@ -42,8 +44,6 @@
             this.txtOldPass = new DevComponents.DotNetBar.Controls.TextBoxX();
             this.labelX4 = new DevComponents.DotNetBar.LabelX();
             this.labelX1 = new DevComponents.DotNetBar.LabelX();
-            this.btnExit = new DevComponents.DotNetBar.ButtonX();
-            this.btnSave = new DevComponents.DotNetBar.ButtonX();
             this.bsUser = new System.Windows.Forms.BindingSource(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             this.panelEx1.SuspendLayout();
@@ -119,6 +119,39 @@
             this.groupPanel3.StyleMouseOver.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.groupPanel3.TabIndex = 2;
             // 
+            // btnExit
+            // 
+            this.btnExit.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
+            this.btnExit.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
+            this.btnExit.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            this.btnExit.FocusCuesEnabled = false;
+            this.btnExit.Image = ((System.Drawing.Image)(resources.GetObject("btnExit.Image")));
+            this.btnExit.Location = new System.Drawing.Point(3, 2);
+            this.btnExit.Name = "btnExit";
+            this.btnExit.Shape = new DevComponents.DotNetBar.RoundRectangleShapeDescriptor(10, 4, 4, 10);
+            this.btnExit.Size = new System.Drawing.Size(90, 30);
+            this.btnExit.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.btnExit.TabIndex = 1;
+            this.btnExit.Text = "  خـروج";
+            this.btnExit.TextAlignment = DevComponents.DotNetBar.eButtonTextAlignment.Right;
+            this.btnExit.Click += new System.EventHandler(this.btnExit_Click);
+            // 
+            // btnSave
+            // 
+            this.btnSave.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
+            this.btnSave.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
+            this.btnSave.FocusCuesEnabled = false;
+            this.btnSave.Image = ((System.Drawing.Image)(resources.GetObject("btnSave.Image")));
+            this.btnSave.Location = new System.Drawing.Point(322, 2);
+            this.btnSave.Name = "btnSave";
+            this.btnSave.Shape = new DevComponents.DotNetBar.RoundRectangleShapeDescriptor(10, 4, 4, 10);
+            this.btnSave.Size = new System.Drawing.Size(80, 30);
+            this.btnSave.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.btnSave.TabIndex = 0;
+            this.btnSave.Text = "   ثـبت";
+            this.btnSave.TextAlignment = DevComponents.DotNetBar.eButtonTextAlignment.Right;
+            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
+            // 
             // gp2
             // 
             this.gp2.BackColor = System.Drawing.Color.White;
@@ -176,7 +209,9 @@
             this.txtRePass.FocusHighlightEnabled = true;
             this.txtRePass.ForeColor = System.Drawing.Color.Black;
             this.txtRePass.Location = new System.Drawing.Point(45, 46);
+            this.txtRePass.MaxLength = 30;
             this.txtRePass.Name = "txtRePass";
+            this.txtRePass.PasswordChar = '*';
             this.txtRePass.PreventEnterBeep = true;
             this.txtRePass.Size = new System.Drawing.Size(209, 23);
             this.txtRePass.TabIndex = 1;
@@ -196,7 +231,9 @@
             this.txtNewPass.FocusHighlightEnabled = true;
             this.txtNewPass.ForeColor = System.Drawing.Color.Black;
             this.txtNewPass.Location = new System.Drawing.Point(45, 17);
+            this.txtNewPass.MaxLength = 30;
             this.txtNewPass.Name = "txtNewPass";
+            this.txtNewPass.PasswordChar = '*';
             this.txtNewPass.PreventEnterBeep = true;
             this.txtNewPass.Size = new System.Drawing.Size(209, 23);
             this.txtNewPass.TabIndex = 0;
@@ -285,12 +322,15 @@
             this.txtOldPass.FocusHighlightEnabled = true;
             this.txtOldPass.ForeColor = System.Drawing.Color.Black;
             this.txtOldPass.Location = new System.Drawing.Point(45, 13);
+            this.txtOldPass.MaxLength = 30;
             this.txtOldPass.Name = "txtOldPass";
+            this.txtOldPass.PasswordChar = '*';
             this.txtOldPass.PreventEnterBeep = true;
             this.txtOldPass.Size = new System.Drawing.Size(209, 23);
             this.txtOldPass.TabIndex = 0;
             this.txtOldPass.UseSystemPasswordChar = true;
             this.txtOldPass.WatermarkText = "کلمه عبور فعلی را وارد کنید ...";
+            this.txtOldPass.TextChanged += new System.EventHandler(this.txtOldPass_TextChanged);
             // 
             // labelX4
             // 
@@ -319,41 +359,11 @@
             this.labelX1.TabIndex = 1;
             this.labelX1.Text = "کلمه عبور جاری";
             // 
-            // btnExit
-            // 
-            this.btnExit.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
-            this.btnExit.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
-            this.btnExit.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.btnExit.FocusCuesEnabled = false;
-            this.btnExit.Image = ((System.Drawing.Image)(resources.GetObject("btnExit.Image")));
-            this.btnExit.Location = new System.Drawing.Point(3, 2);
-            this.btnExit.Name = "btnExit";
-            this.btnExit.Shape = new DevComponents.DotNetBar.RoundRectangleShapeDescriptor(10, 4, 4, 10);
-            this.btnExit.Size = new System.Drawing.Size(90, 30);
-            this.btnExit.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.btnExit.TabIndex = 1;
-            this.btnExit.Text = "  خـروج";
-            this.btnExit.TextAlignment = DevComponents.DotNetBar.eButtonTextAlignment.Right;
-            // 
-            // btnSave
-            // 
-            this.btnSave.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
-            this.btnSave.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
-            this.btnSave.FocusCuesEnabled = false;
-            this.btnSave.Image = ((System.Drawing.Image)(resources.GetObject("btnSave.Image")));
-            this.btnSave.Location = new System.Drawing.Point(322, 2);
-            this.btnSave.Name = "btnSave";
-            this.btnSave.Shape = new DevComponents.DotNetBar.RoundRectangleShapeDescriptor(10, 4, 4, 10);
-            this.btnSave.Size = new System.Drawing.Size(80, 30);
-            this.btnSave.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.btnSave.TabIndex = 0;
-            this.btnSave.Text = "   ثـبت";
-            this.btnSave.TextAlignment = DevComponents.DotNetBar.eButtonTextAlignment.Right;
-            // 
             // frmChangePass
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.CancelButton = this.btnExit;
             this.ClientSize = new System.Drawing.Size(435, 273);
             this.Controls.Add(this.panelEx1);
             this.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
@@ -363,6 +373,7 @@
             this.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "frmChangePass";
+            this.Load += new System.EventHandler(this.frmChangePass_Load);
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
             this.panelEx1.ResumeLayout(false);
             this.groupPanel3.ResumeLayout(false);

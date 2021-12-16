@@ -15,6 +15,7 @@ namespace Tarla.MiscForms
         public frmBackUp()
         {
             InitializeComponent();
+            
         }
     }
 }

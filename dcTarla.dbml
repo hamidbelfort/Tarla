@@ -148,12 +148,6 @@
     <Parameter Name="Logout" Parameter="logout" Type="System.String" DbType="NVarChar(20)" />
     <Return Type="System.Int32" />
   </Function>
-  <Function Name="dbo.GetLogId" Method="GetLogId">
-    <Parameter Name="LogId" Parameter="logId" Type="System.Int32" DbType="Int" Direction="InOut" />
-    <Parameter Name="UserId" Parameter="userId" Type="System.Int32" DbType="Int" />
-    <Parameter Name="Logout" Parameter="logout" Type="System.String" DbType="NVarChar(20)" />
-    <Return Type="System.Int32" />
-  </Function>
   <Function Name="dbo.DeleteUsers" Method="DeleteUsers">
     <Parameter Name="UserId" Parameter="userId" Type="System.Int32" DbType="Int" />
     <Return Type="System.Int32" />
@@ -527,5 +521,25 @@
   </Function>
   <Function Name="dbo.FillUsers" Method="FillUsers">
     <ElementType IdRef="ID14" />
+  </Function>
+  <Function Name="dbo.GetLogId" Method="GetLogId">
+    <Parameter Name="LogId" Parameter="logId" Type="System.Int32" DbType="Int" Direction="InOut" />
+    <Parameter Name="UserId" Parameter="userId" Type="System.Int32" DbType="Int" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.DeleteRole" Method="DeleteRole">
+    <Parameter Name="RoleId" Parameter="roleId" Type="System.Int32" DbType="Int" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.CheckLoginPassById" Method="CheckLoginPassById">
+    <Parameter Name="Id" Parameter="id" Type="System.Int32" DbType="Int" />
+    <Parameter Name="Pass" Parameter="pass" Type="System.String" DbType="NVarChar(20)" />
+    <Parameter Name="Check" Parameter="check" Type="System.Boolean" DbType="Bit" Direction="InOut" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.UpdateLoginPass" Method="UpdateLoginPass">
+    <Parameter Name="Id" Parameter="id" Type="System.Int32" DbType="Int" />
+    <Parameter Name="Pass" Parameter="pass" Type="System.String" DbType="NVarChar(20)" />
+    <Return Type="System.Int32" />
   </Function>
 </Database>

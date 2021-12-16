@@ -54,6 +54,7 @@
   <ItemGroup>
     <Compile Include="Classes\PersianDate.cs" />
     <Compile Include="Classes\StyleTheme.cs" />
+    <Compile Include="Classes\Util.cs" />
     <Compile Include="dcTarla.designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -295,6 +296,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="MiscForms\frmAddUser.resx">
       <DependentUpon>frmAddUser.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MiscForms\frmBackUp.resx">
+      <DependentUpon>frmBackUp.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MiscForms\frmChangePass.resx">
       <DependentUpon>frmChangePass.cs</DependentUpon>

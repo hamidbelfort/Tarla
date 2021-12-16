@@ -17,6 +17,7 @@ namespace Tarla
     public partial class frmMain : Form
     {
         dcTarlaDataContext db = new dcTarlaDataContext();
+        PersianDate pd = new PersianDate();
         public static int LoginId = 0;
         public static bool BankPermission = false;
         public static bool SettingPermission = false;
@@ -25,8 +26,10 @@ namespace Tarla
         bool? roleExists;
         bool? userExists;
         bool? settingExists;
+        int? logId;
         double? fontSize;
         string themeName;
+        string strToday;
         public frmMain()
         {
             Thread t = new Thread(new ThreadStart(runSplash));
@@ -117,6 +120,20 @@ namespace Tarla
         private void btnItemGroup_Click(object sender, EventArgs e)
         {
             new frmShowItemGroup().ShowDialog();
+        }
+
+        private void frmMain_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            try
+            {
+                strToday = pd.getShortDateTime();
+                db.GetLogId(ref logId, LoginId);
+                db.UpdateLog(LoginId, strToday);
+            }
+            catch
+            {
+
+            }
         }
     }
 }

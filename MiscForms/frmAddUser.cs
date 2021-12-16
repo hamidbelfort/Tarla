@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using BehComponents;
+using Tarla.Classes;
 
 namespace Tarla.MiscForms
 {
@@ -70,6 +71,7 @@ namespace Tarla.MiscForms
                 }
                 else
                 {
+                    
                     errorProvider1.Clear();
                     if (IsEdit)
                     {
@@ -116,6 +118,22 @@ namespace Tarla.MiscForms
         private void btnExit_Click(object sender, EventArgs e)
         {
             Close();
+        }
+
+        private void txtUser_KeyPress(object sender, KeyPressEventArgs e)
+        {
+
+            Keys key = (Keys)e.KeyChar;
+
+            if (key == Keys.Back)
+            {
+                return;
+            }
+
+            if (!Util.IsEnglishCharacter(e.KeyChar))
+            {
+                e.Handled = true;
+            }
         }
     }
 }
