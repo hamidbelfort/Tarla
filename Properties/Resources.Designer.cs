@@ -113,6 +113,16 @@ namespace Tarla.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap buyitem {
+            get {
+                object obj = ResourceManager.GetObject("buyitem", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap category {
             get {
                 object obj = ResourceManager.GetObject("category", resourceCulture);
@@ -223,6 +233,26 @@ namespace Tarla.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap product_icon {
+            get {
+                object obj = ResourceManager.GetObject("product-icon", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap productGroup2 {
+            get {
+                object obj = ResourceManager.GetObject("productGroup2", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap receiver {
             get {
                 object obj = ResourceManager.GetObject("receiver", resourceCulture);
@@ -233,9 +263,29 @@ namespace Tarla.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap sell {
+            get {
+                object obj = ResourceManager.GetObject("sell", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap seller {
             get {
                 object obj = ResourceManager.GetObject("seller", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap shopping_bag_icon {
+            get {
+                object obj = ResourceManager.GetObject("shopping-bag-icon", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

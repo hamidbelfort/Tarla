@@ -22,7 +22,7 @@
     </Type>
   </Table>
   <Table Name="dbo.Users" Member="Users">
-    <Type Name="User" Modifier="Sealed">
+    <Type Name="User" Id="ID14" Modifier="Sealed">
       <Column Name="UserId" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
       <Column Name="RoleId" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="Fullname" Type="System.String" DbType="NVarChar(30)" CanBeNull="true" />
@@ -130,6 +130,14 @@
       <Column Name="TotalPrice" Type="System.Int32" DbType="Int" CanBeNull="true" />
     </Type>
   </Table>
+  <Table Name="dbo.Logs" Member="Logs">
+    <Type Name="Log" Id="ID13" Modifier="Sealed">
+      <Column Name="LogId" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="UserId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="LogIn" Type="System.String" DbType="NVarChar(30)" CanBeNull="true" />
+      <Column Name="LogOut" Type="System.String" DbType="NVarChar(30)" CanBeNull="true" />
+    </Type>
+  </Table>
   <Function Name="dbo.InsertLog" Method="InsertLog">
     <Parameter Name="UserId" Parameter="userId" Type="System.Int32" DbType="Int" />
     <Parameter Name="Login" Parameter="login" Type="System.String" DbType="NVarChar(20)" />
@@ -213,16 +221,6 @@
     <Parameter Name="Bank" Parameter="bank" Type="System.Boolean" DbType="Bit" />
     <Parameter Name="Factor" Parameter="factor" Type="System.Boolean" DbType="Bit" />
     <Return Type="System.Int32" />
-  </Function>
-  <Function Name="dbo.FillUsers" Method="FillUsers">
-    <Parameter Name="UserId" Parameter="userId" Type="System.Int32" DbType="Int" />
-    <ElementType Name="FillUsersResult">
-      <Column Name="UserId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="RoleId" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="Fullname" Type="System.String" DbType="NVarChar(30)" CanBeNull="true" />
-      <Column Name="LoginUser" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
-      <Column Name="LoginPass" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
-    </ElementType>
   </Function>
   <Function Name="dbo.FillUsersById" Method="FillUsersById">
     <Parameter Name="UserId" Parameter="userId" Type="System.Int32" DbType="Int" />
@@ -522,5 +520,12 @@
     <Parameter Name="StartDate" Parameter="startDate" Type="System.String" DbType="NVarChar(10)" />
     <Parameter Name="EndDate" Parameter="endDate" Type="System.String" DbType="NVarChar(10)" />
     <ElementType IdRef="ID12" />
+  </Function>
+  <Function Name="dbo.FillLogs" Method="FillLogs">
+    <Parameter Name="UserId" Parameter="userId" Type="System.Int32" DbType="Int" />
+    <ElementType IdRef="ID13" />
+  </Function>
+  <Function Name="dbo.FillUsers" Method="FillUsers">
+    <ElementType IdRef="ID14" />
   </Function>
 </Database>

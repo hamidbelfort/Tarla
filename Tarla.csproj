@@ -119,6 +119,12 @@
     <Compile Include="MainForms\frmAddItemGroup.Designer.cs">
       <DependentUpon>frmAddItemGroup.cs</DependentUpon>
     </Compile>
+    <Compile Include="MainForms\frmAddPacking.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MainForms\frmAddPacking.Designer.cs">
+      <DependentUpon>frmAddPacking.cs</DependentUpon>
+    </Compile>
     <Compile Include="MainForms\frmAddPerson.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -155,6 +161,12 @@
     <Compile Include="MainForms\frmShowItemGroup.Designer.cs">
       <DependentUpon>frmShowItemGroup.cs</DependentUpon>
     </Compile>
+    <Compile Include="MainForms\frmShowPacking.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MainForms\frmShowPacking.Designer.cs">
+      <DependentUpon>frmShowPacking.cs</DependentUpon>
+    </Compile>
     <Compile Include="MainForms\frmShowPerson.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -166,6 +178,42 @@
     </Compile>
     <Compile Include="MainForms\frmShowProducts.Designer.cs">
       <DependentUpon>frmShowProducts.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MiscForms\frmAddUser.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MiscForms\frmAddUser.Designer.cs">
+      <DependentUpon>frmAddUser.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MiscForms\frmBackUp.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MiscForms\frmBackUp.Designer.cs">
+      <DependentUpon>frmBackUp.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MiscForms\frmChangePass.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MiscForms\frmChangePass.Designer.cs">
+      <DependentUpon>frmChangePass.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MiscForms\frmLogs.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MiscForms\frmLogs.Designer.cs">
+      <DependentUpon>frmLogs.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MiscForms\frmShowRoles.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MiscForms\frmShowRoles.Designer.cs">
+      <DependentUpon>frmShowRoles.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MiscForms\frmShowUsers.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MiscForms\frmShowUsers.Designer.cs">
+      <DependentUpon>frmShowUsers.cs</DependentUpon>
     </Compile>
     <Compile Include="OperationForms\frmAddInvoice.cs">
       <SubType>Form</SubType>
@@ -245,6 +293,21 @@
     <EmbeddedResource Include="MainForms\frmShowProducts.resx">
       <DependentUpon>frmShowProducts.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="MiscForms\frmAddUser.resx">
+      <DependentUpon>frmAddUser.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MiscForms\frmChangePass.resx">
+      <DependentUpon>frmChangePass.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MiscForms\frmLogs.resx">
+      <DependentUpon>frmLogs.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MiscForms\frmShowRoles.resx">
+      <DependentUpon>frmShowRoles.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MiscForms\frmShowUsers.resx">
+      <DependentUpon>frmShowUsers.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="OperationForms\frmAddInvoice.resx">
       <DependentUpon>frmAddInvoice.cs</DependentUpon>
     </EmbeddedResource>
@@ -275,6 +338,7 @@
     <None Include="Properties\DataSources\Company.datasource" />
     <None Include="Properties\DataSources\Item.datasource" />
     <None Include="Properties\DataSources\ItemGroup.datasource" />
+    <None Include="Properties\DataSources\Log.datasource" />
     <None Include="Properties\DataSources\Product.datasource" />
     <None Include="Properties\DataSources\ProductGroup.datasource" />
     <None Include="Properties\DataSources\Receiver.datasource" />
@@ -366,6 +430,21 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\company1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\buyitem.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\shopping-bag-icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\sell.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\productGroup2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\product-icon.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

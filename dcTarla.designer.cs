@@ -66,6 +66,9 @@ namespace Tarla
     partial void InsertBuyItem(BuyItem instance);
     partial void UpdateBuyItem(BuyItem instance);
     partial void DeleteBuyItem(BuyItem instance);
+    partial void InsertLog(Log instance);
+    partial void UpdateLog(Log instance);
+    partial void DeleteLog(Log instance);
     #endregion
 		
 		public dcTarlaDataContext() : 
@@ -202,6 +205,14 @@ namespace Tarla
 			}
 		}
 		
+		public System.Data.Linq.Table<Log> Logs
+		{
+			get
+			{
+				return this.GetTable<Log>();
+			}
+		}
+		
 		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.InsertLog")]
 		public int InsertLog([global::System.Data.Linq.Mapping.ParameterAttribute(Name="UserId", DbType="Int")] System.Nullable<int> userId, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="Login", DbType="NVarChar(20)")] string login)
 		{
@@ -305,13 +316,6 @@ namespace Tarla
 		{
 			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), roleId, roleName, settings, user, bank, factor);
 			return ((int)(result.ReturnValue));
-		}
-		
-		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.FillUsers")]
-		public ISingleResult<FillUsersResult> FillUsers([global::System.Data.Linq.Mapping.ParameterAttribute(Name="UserId", DbType="Int")] System.Nullable<int> userId)
-		{
-			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), userId);
-			return ((ISingleResult<FillUsersResult>)(result.ReturnValue));
 		}
 		
 		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.FillUsersById")]
@@ -719,6 +723,20 @@ namespace Tarla
 		{
 			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), startDate, endDate);
 			return ((ISingleResult<BuyItemView>)(result.ReturnValue));
+		}
+		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.FillLogs")]
+		public ISingleResult<Log> FillLogs([global::System.Data.Linq.Mapping.ParameterAttribute(Name="UserId", DbType="Int")] System.Nullable<int> userId)
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), userId);
+			return ((ISingleResult<Log>)(result.ReturnValue));
+		}
+		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.FillUsers")]
+		public ISingleResult<User> FillUsers()
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())));
+			return ((ISingleResult<User>)(result.ReturnValue));
 		}
 	}
 	
@@ -3110,6 +3128,140 @@ namespace Tarla
 		}
 	}
 	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Logs")]
+	public sealed partial class Log : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _LogId;
+		
+		private System.Nullable<int> _UserId;
+		
+		private string _LogIn;
+		
+		private string _LogOut;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnLogIdChanging(int value);
+    partial void OnLogIdChanged();
+    partial void OnUserIdChanging(System.Nullable<int> value);
+    partial void OnUserIdChanged();
+    partial void OnLogInChanging(string value);
+    partial void OnLogInChanged();
+    partial void OnLogOutChanging(string value);
+    partial void OnLogOutChanged();
+    #endregion
+		
+		public Log()
+		{
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_LogId", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public int LogId
+		{
+			get
+			{
+				return this._LogId;
+			}
+			set
+			{
+				if ((this._LogId != value))
+				{
+					this.OnLogIdChanging(value);
+					this.SendPropertyChanging();
+					this._LogId = value;
+					this.SendPropertyChanged("LogId");
+					this.OnLogIdChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_UserId", DbType="Int")]
+		public System.Nullable<int> UserId
+		{
+			get
+			{
+				return this._UserId;
+			}
+			set
+			{
+				if ((this._UserId != value))
+				{
+					this.OnUserIdChanging(value);
+					this.SendPropertyChanging();
+					this._UserId = value;
+					this.SendPropertyChanged("UserId");
+					this.OnUserIdChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_LogIn", DbType="NVarChar(30)")]
+		public string LogIn
+		{
+			get
+			{
+				return this._LogIn;
+			}
+			set
+			{
+				if ((this._LogIn != value))
+				{
+					this.OnLogInChanging(value);
+					this.SendPropertyChanging();
+					this._LogIn = value;
+					this.SendPropertyChanged("LogIn");
+					this.OnLogInChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_LogOut", DbType="NVarChar(30)")]
+		public string LogOut
+		{
+			get
+			{
+				return this._LogOut;
+			}
+			set
+			{
+				if ((this._LogOut != value))
+				{
+					this.OnLogOutChanging(value);
+					this.SendPropertyChanging();
+					this._LogOut = value;
+					this.SendPropertyChanged("LogOut");
+					this.OnLogOutChanged();
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		private void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		private void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+	}
+	
 	public partial class FillRolesByIdResult
 	{
 		
@@ -3221,104 +3373,6 @@ namespace Tarla
 				if ((this._FactorPermission != value))
 				{
 					this._FactorPermission = value;
-				}
-			}
-		}
-	}
-	
-	public partial class FillUsersResult
-	{
-		
-		private int _UserId;
-		
-		private System.Nullable<int> _RoleId;
-		
-		private string _Fullname;
-		
-		private string _LoginUser;
-		
-		private string _LoginPass;
-		
-		public FillUsersResult()
-		{
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_UserId", DbType="Int NOT NULL")]
-		public int UserId
-		{
-			get
-			{
-				return this._UserId;
-			}
-			set
-			{
-				if ((this._UserId != value))
-				{
-					this._UserId = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_RoleId", DbType="Int")]
-		public System.Nullable<int> RoleId
-		{
-			get
-			{
-				return this._RoleId;
-			}
-			set
-			{
-				if ((this._RoleId != value))
-				{
-					this._RoleId = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Fullname", DbType="NVarChar(30)")]
-		public string Fullname
-		{
-			get
-			{
-				return this._Fullname;
-			}
-			set
-			{
-				if ((this._Fullname != value))
-				{
-					this._Fullname = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_LoginUser", DbType="NVarChar(50)")]
-		public string LoginUser
-		{
-			get
-			{
-				return this._LoginUser;
-			}
-			set
-			{
-				if ((this._LoginUser != value))
-				{
-					this._LoginUser = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_LoginPass", DbType="NVarChar(50)")]
-		public string LoginPass
-		{
-			get
-			{
-				return this._LoginPass;
-			}
-			set
-			{
-				if ((this._LoginPass != value))
-				{
-					this._LoginPass = value;
 				}
 			}
 		}

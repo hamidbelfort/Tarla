@@ -108,5 +108,15 @@ namespace Tarla
             frmShowPerson.personType = 3;
             new frmShowPerson().ShowDialog();
         }
+
+        private void btnItem_Click(object sender, EventArgs e)
+        {
+            new frmShowItem().ShowDialog();
+        }
+
+        private void btnItemGroup_Click(object sender, EventArgs e)
+        {
+            new frmShowItemGroup().ShowDialog();
+        }
     }
 }
