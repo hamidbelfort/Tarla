@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<ordesignerObjectsDiagram dslVersion="1.0.0.0" absoluteBounds="0, 0, 11.375, 11.875" name="dcTarla">
+<ordesignerObjectsDiagram dslVersion="1.0.0.0" absoluteBounds="0, 0, 11.375, 12.75" name="dcTarla">
   <DataContextMoniker Name="/dcTarlaDataContext" />
   <nestedChildShapes>
     <classShape Id="79e380d7-a80b-4229-afd3-1e4ff6e06398" absoluteBounds="6, 0.625, 2, 1.9631982421875003">
@@ -39,7 +39,7 @@
         <elementListCompartment Id="684309d1-c4d0-4749-b061-ae12399f7134" absoluteBounds="0.76500000059604645, 1.5850000008940697, 1.9700000000000002, 0.63399251302083326" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
-    <associationConnector edgePoints="[(2.75 : 1.72199625615031); (3.5 : 1.72199625615031)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+    <associationConnector edgePoints="[(2.75 : 1.72199625615031); (3.5 : 1.72199625615031)]" fixedFrom="Algorithm" fixedTo="Algorithm">
       <AssociationMoniker Name="/dcTarlaDataContext/ProductGroup/ProductGroup_Product" />
       <nodes>
         <classShapeMoniker Id="c2fea54a-720f-4ae9-9370-a454e4405a81" />
@@ -119,6 +119,12 @@
       <DataClassMoniker Name="/dcTarlaDataContext/Log" />
       <nestedChildShapes>
         <elementListCompartment Id="b9e41809-0a85-4c9b-844d-4c34aba65036" absoluteBounds="4.14, 3.46, 1.9700000000000002, 1.0185953776041665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="da2b23af-87a5-4ecd-8922-53ec8128a4c8" absoluteBounds="8.75, 11.25, 2, 1.1939925130208333">
+      <DataClassMoniker Name="/dcTarlaDataContext/ProductPacking" />
+      <nestedChildShapes>
+        <elementListCompartment Id="e24f4bf2-0e64-43d2-9ea6-d9e4cc4a9824" absoluteBounds="8.765, 11.71, 1.9700000000000002, 0.63399251302083326" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
   </nestedChildShapes>

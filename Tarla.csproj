@@ -270,6 +270,9 @@
     <EmbeddedResource Include="MainForms\frmAddItemGroup.resx">
       <DependentUpon>frmAddItemGroup.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="MainForms\frmAddPacking.resx">
+      <DependentUpon>frmAddPacking.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="MainForms\frmAddPerson.resx">
       <DependentUpon>frmAddPerson.cs</DependentUpon>
     </EmbeddedResource>
@@ -287,6 +290,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="MainForms\frmShowItemGroup.resx">
       <DependentUpon>frmShowItemGroup.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MainForms\frmShowPacking.resx">
+      <DependentUpon>frmShowPacking.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MainForms\frmShowPerson.resx">
       <DependentUpon>frmShowPerson.cs</DependentUpon>
@@ -345,6 +351,7 @@
     <None Include="Properties\DataSources\Log.datasource" />
     <None Include="Properties\DataSources\Product.datasource" />
     <None Include="Properties\DataSources\ProductGroup.datasource" />
+    <None Include="Properties\DataSources\ProductPacking.datasource" />
     <None Include="Properties\DataSources\Receiver.datasource" />
     <None Include="Properties\DataSources\Role.datasource" />
     <None Include="Properties\DataSources\Seller.datasource" />
@@ -449,6 +456,24 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\product-icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\register_icon.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\chart.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\backup-restore-icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\sorting_icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\distributions-kubuntu-linux.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\fruits_wallpaper.jpg" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

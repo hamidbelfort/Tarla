@@ -138,6 +138,12 @@
       <Column Name="LogOut" Type="System.String" DbType="NVarChar(30)" CanBeNull="true" />
     </Type>
   </Table>
+  <Table Name="dbo.ProductPacking" Member="ProductPackings">
+    <Type Name="ProductPacking" Id="ID15" Modifier="Sealed">
+      <Column Name="PackingId" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="PackingType" Type="System.String" DbType="NVarChar(30)" CanBeNull="true" />
+    </Type>
+  </Table>
   <Function Name="dbo.InsertLog" Method="InsertLog">
     <Parameter Name="UserId" Parameter="userId" Type="System.Int32" DbType="Int" />
     <Parameter Name="Login" Parameter="login" Type="System.String" DbType="NVarChar(20)" />
@@ -540,6 +546,26 @@
   <Function Name="dbo.UpdateLoginPass" Method="UpdateLoginPass">
     <Parameter Name="Id" Parameter="id" Type="System.Int32" DbType="Int" />
     <Parameter Name="Pass" Parameter="pass" Type="System.String" DbType="NVarChar(20)" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.DeletePacking" Method="DeletePacking">
+    <Parameter Name="PackingId" Parameter="packingId" Type="System.Int32" DbType="Int" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.FillPacking" Method="FillPacking">
+    <ElementType IdRef="ID15" />
+  </Function>
+  <Function Name="dbo.FillPackingById" Method="FillPackingById">
+    <Parameter Name="PackingId" Parameter="packingId" Type="System.Int32" DbType="Int" />
+    <ElementType IdRef="ID15" />
+  </Function>
+  <Function Name="dbo.InsertPacking" Method="InsertPacking">
+    <Parameter Name="PackingType" Parameter="packingType" Type="System.String" DbType="NVarChar(30)" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.UpdatePacking" Method="UpdatePacking">
+    <Parameter Name="PackingId" Parameter="packingId" Type="System.Int32" DbType="Int" />
+    <Parameter Name="PackingType" Parameter="packingType" Type="System.String" DbType="NVarChar(30)" />
     <Return Type="System.Int32" />
   </Function>
 </Database>

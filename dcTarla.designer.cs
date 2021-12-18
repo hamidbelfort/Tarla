@@ -69,6 +69,9 @@ namespace Tarla
     partial void InsertLog(Log instance);
     partial void UpdateLog(Log instance);
     partial void DeleteLog(Log instance);
+    partial void InsertProductPacking(ProductPacking instance);
+    partial void UpdateProductPacking(ProductPacking instance);
+    partial void DeleteProductPacking(ProductPacking instance);
     #endregion
 		
 		public dcTarlaDataContext() : 
@@ -210,6 +213,14 @@ namespace Tarla
 			get
 			{
 				return this.GetTable<Log>();
+			}
+		}
+		
+		public System.Data.Linq.Table<ProductPacking> ProductPackings
+		{
+			get
+			{
+				return this.GetTable<ProductPacking>();
 			}
 		}
 		
@@ -758,6 +769,41 @@ namespace Tarla
 		public int UpdateLoginPass([global::System.Data.Linq.Mapping.ParameterAttribute(Name="Id", DbType="Int")] System.Nullable<int> id, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="Pass", DbType="NVarChar(20)")] string pass)
 		{
 			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), id, pass);
+			return ((int)(result.ReturnValue));
+		}
+		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.DeletePacking")]
+		public int DeletePacking([global::System.Data.Linq.Mapping.ParameterAttribute(Name="PackingId", DbType="Int")] System.Nullable<int> packingId)
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), packingId);
+			return ((int)(result.ReturnValue));
+		}
+		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.FillPacking")]
+		public ISingleResult<ProductPacking> FillPacking()
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())));
+			return ((ISingleResult<ProductPacking>)(result.ReturnValue));
+		}
+		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.FillPackingById")]
+		public ISingleResult<ProductPacking> FillPackingById([global::System.Data.Linq.Mapping.ParameterAttribute(Name="PackingId", DbType="Int")] System.Nullable<int> packingId)
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), packingId);
+			return ((ISingleResult<ProductPacking>)(result.ReturnValue));
+		}
+		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.InsertPacking")]
+		public int InsertPacking([global::System.Data.Linq.Mapping.ParameterAttribute(Name="PackingType", DbType="NVarChar(30)")] string packingType)
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), packingType);
+			return ((int)(result.ReturnValue));
+		}
+		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.UpdatePacking")]
+		public int UpdatePacking([global::System.Data.Linq.Mapping.ParameterAttribute(Name="PackingId", DbType="Int")] System.Nullable<int> packingId, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="PackingType", DbType="NVarChar(30)")] string packingType)
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), packingId, packingType);
 			return ((int)(result.ReturnValue));
 		}
 	}
@@ -3259,6 +3305,92 @@ namespace Tarla
 					this._LogOut = value;
 					this.SendPropertyChanged("LogOut");
 					this.OnLogOutChanged();
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		private void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		private void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.ProductPacking")]
+	public sealed partial class ProductPacking : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _PackingId;
+		
+		private string _PackingType;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnPackingIdChanging(int value);
+    partial void OnPackingIdChanged();
+    partial void OnPackingTypeChanging(string value);
+    partial void OnPackingTypeChanged();
+    #endregion
+		
+		public ProductPacking()
+		{
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PackingId", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public int PackingId
+		{
+			get
+			{
+				return this._PackingId;
+			}
+			set
+			{
+				if ((this._PackingId != value))
+				{
+					this.OnPackingIdChanging(value);
+					this.SendPropertyChanging();
+					this._PackingId = value;
+					this.SendPropertyChanged("PackingId");
+					this.OnPackingIdChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PackingType", DbType="NVarChar(30)")]
+		public string PackingType
+		{
+			get
+			{
+				return this._PackingType;
+			}
+			set
+			{
+				if ((this._PackingType != value))
+				{
+					this.OnPackingTypeChanging(value);
+					this.SendPropertyChanging();
+					this._PackingType = value;
+					this.SendPropertyChanged("PackingType");
+					this.OnPackingTypeChanged();
 				}
 			}
 		}

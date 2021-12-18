@@ -113,6 +113,16 @@ namespace Tarla.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap backup_restore_icon {
+            get {
+                object obj = ResourceManager.GetObject("backup-restore-icon", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap buyitem {
             get {
                 object obj = ResourceManager.GetObject("buyitem", resourceCulture);
@@ -126,6 +136,16 @@ namespace Tarla.Properties {
         internal static System.Drawing.Bitmap category {
             get {
                 object obj = ResourceManager.GetObject("category", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap chart {
+            get {
+                object obj = ResourceManager.GetObject("chart", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -163,6 +183,16 @@ namespace Tarla.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap distributions_kubuntu_linux {
+            get {
+                object obj = ResourceManager.GetObject("distributions-kubuntu-linux", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap dollar_folder_icon {
             get {
                 object obj = ResourceManager.GetObject("dollar-folder-icon", resourceCulture);
@@ -186,6 +216,16 @@ namespace Tarla.Properties {
         internal static System.Drawing.Bitmap fa {
             get {
                 object obj = ResourceManager.GetObject("fa", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap fruits_wallpaper {
+            get {
+                object obj = ResourceManager.GetObject("fruits_wallpaper", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -263,6 +303,16 @@ namespace Tarla.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap register_icon {
+            get {
+                object obj = ResourceManager.GetObject("register_icon", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap sell {
             get {
                 object obj = ResourceManager.GetObject("sell", resourceCulture);
@@ -286,6 +336,16 @@ namespace Tarla.Properties {
         internal static System.Drawing.Bitmap shopping_bag_icon {
             get {
                 object obj = ResourceManager.GetObject("shopping-bag-icon", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap sorting_icon {
+            get {
+                object obj = ResourceManager.GetObject("sorting_icon", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
