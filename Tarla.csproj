@@ -96,6 +96,12 @@
     <Compile Include="frmSplash.Designer.cs">
       <DependentUpon>frmSplash.cs</DependentUpon>
     </Compile>
+    <Compile Include="MainForms\frmShowBank.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MainForms\frmShowBank.Designer.cs">
+      <DependentUpon>frmShowBank.cs</DependentUpon>
+    </Compile>
     <Compile Include="MainForms\frmAddCompany.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -137,6 +143,12 @@
     </Compile>
     <Compile Include="MainForms\frmAddProduct.Designer.cs">
       <DependentUpon>frmAddProduct.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MainForms\frmAddBank.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MainForms\frmAddBank.Designer.cs">
+      <DependentUpon>frmAddBank.cs</DependentUpon>
     </Compile>
     <Compile Include="MainForms\frmShowCompany.cs">
       <SubType>Form</SubType>
@@ -236,7 +248,7 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <None Include="DB_Backup\tarlaDB" />
+    <None Include="DB_Backup\tarlaDB.bak" />
     <None Include="dcTarla.dbml.layout">
       <DependentUpon>dcTarla.dbml</DependentUpon>
     </None>
@@ -258,6 +270,9 @@
     <EmbeddedResource Include="frmSplash.resx">
       <DependentUpon>frmSplash.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="MainForms\frmShowBank.resx">
+      <DependentUpon>frmShowBank.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="MainForms\frmAddCompany.resx">
       <DependentUpon>frmAddCompany.cs</DependentUpon>
     </EmbeddedResource>
@@ -278,6 +293,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="MainForms\frmAddProduct.resx">
       <DependentUpon>frmAddProduct.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MainForms\frmAddBank.resx">
+      <DependentUpon>frmAddBank.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MainForms\frmShowCompany.resx">
       <DependentUpon>frmShowCompany.cs</DependentUpon>
@@ -342,6 +360,7 @@
       <LastGenOutput>dcTarla.designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
     </None>
+    <None Include="Properties\DataSources\Bank.datasource" />
     <None Include="Properties\DataSources\Buyer.datasource" />
     <None Include="Properties\DataSources\BuyItem.datasource" />
     <None Include="Properties\DataSources\BuyItemView.datasource" />
@@ -474,6 +493,27 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\fruits_wallpaper.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\packing.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\calculator5665-icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Money-Increase-icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\wallet.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\wallet2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\credit-cards5-icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\check-icon.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

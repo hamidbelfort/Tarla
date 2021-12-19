@@ -144,6 +144,15 @@
       <Column Name="PackingType" Type="System.String" DbType="NVarChar(30)" CanBeNull="true" />
     </Type>
   </Table>
+  <Table Name="dbo.Bank" Member="Banks">
+    <Type Name="Bank" Id="ID16" Modifier="Sealed">
+      <Column Name="BankId" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="BankName" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="BankNumber" Type="System.String" DbType="NVarChar(30)" CanBeNull="true" />
+      <Column Name="BankOwner" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="BankDescription" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+    </Type>
+  </Table>
   <Function Name="dbo.InsertLog" Method="InsertLog">
     <Parameter Name="UserId" Parameter="userId" Type="System.Int32" DbType="Int" />
     <Parameter Name="Login" Parameter="login" Type="System.String" DbType="NVarChar(20)" />
@@ -566,6 +575,32 @@
   <Function Name="dbo.UpdatePacking" Method="UpdatePacking">
     <Parameter Name="PackingId" Parameter="packingId" Type="System.Int32" DbType="Int" />
     <Parameter Name="PackingType" Parameter="packingType" Type="System.String" DbType="NVarChar(30)" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.DeleteBank" Method="DeleteBank">
+    <Parameter Name="BankId" Parameter="bankId" Type="System.Int32" DbType="Int" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.FillBank" Method="FillBank">
+    <ElementType IdRef="ID16" />
+  </Function>
+  <Function Name="dbo.FillBankById" Method="FillBankById">
+    <Parameter Name="BankId" Parameter="bankId" Type="System.Int32" DbType="Int" />
+    <ElementType IdRef="ID16" />
+  </Function>
+  <Function Name="dbo.InsertBank" Method="InsertBank">
+    <Parameter Name="BankName" Parameter="bankName" Type="System.String" DbType="NVarChar(100)" />
+    <Parameter Name="BankNumber" Parameter="bankNumber" Type="System.String" DbType="NVarChar(30)" />
+    <Parameter Name="BankOwner" Parameter="bankOwner" Type="System.String" DbType="NVarChar(100)" />
+    <Parameter Name="BankDesc" Parameter="bankDesc" Type="System.String" DbType="NVarChar(MAX)" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.UpdateBank" Method="UpdateBank">
+    <Parameter Name="BankId" Parameter="bankId" Type="System.Int32" DbType="Int" />
+    <Parameter Name="BankName" Parameter="bankName" Type="System.String" DbType="NVarChar(100)" />
+    <Parameter Name="BankNumber" Parameter="bankNumber" Type="System.String" DbType="NVarChar(30)" />
+    <Parameter Name="BankOwner" Parameter="bankOwner" Type="System.String" DbType="NVarChar(100)" />
+    <Parameter Name="BankDesc" Parameter="bankDesc" Type="System.String" DbType="NVarChar(MAX)" />
     <Return Type="System.Int32" />
   </Function>
 </Database>

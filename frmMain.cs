@@ -69,16 +69,26 @@ namespace Tarla
             {
                 frmSettings.ExitType = true;
                 new frmSettings().ShowDialog();
-                db.GetThemeSetting(ref themeName,ref fontSize);
+                getThemSetting();
             }
             else
+            {
+                getThemSetting();
+            }
+        }
+        private void getThemSetting()
+        {
+            try
             {
                 db.GetThemeSetting(ref themeName, ref fontSize);
                 styleManager1.ManagerStyle = StyleTheme.getTheme(themeName);
                 this.Font = new Font("Tahoma", (float)fontSize, FontStyle.Regular);
             }
-        }
+            catch
+            {
 
+            }
+        }
         private void btnProduct_Click(object sender, EventArgs e)
         {
             new frmShowProducts().ShowDialog();
@@ -134,6 +144,21 @@ namespace Tarla
             {
 
             }
+        }
+
+        private void btnPacking_Click(object sender, EventArgs e)
+        {
+            new frmShowPacking().ShowDialog();
+        }
+
+        private void btnSell_Click(object sender, EventArgs e)
+        {
+            new frmAddInvoice().ShowDialog();
+        }
+
+        private void buttonItem1_Click(object sender, EventArgs e)
+        {
+            new frmShowBank().ShowDialog();
         }
     }
 }

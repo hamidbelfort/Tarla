@@ -21,24 +21,7 @@ namespace Tarla.MainForms
 
         private void frmShowCompany_Load(object sender, EventArgs e)
         {
-            try
-            {
-                bsCompany.DataSource = db.FillCompany();
-                if (dgvCompany.Rows.Count == 0)
-                {
-                    btnDelete.Enabled = false;
-                    btnEdit.Enabled = false;
-                }
-                else
-                {
-                    btnDelete.Enabled = true;
-                    btnEdit.Enabled = true;
-                }
-            }
-            catch
-            {
-                MessageBoxFarsi.Show("ارتباط با سرور اطلاعاتی قطع شده است", "اخطار", MessageBoxFarsiButtons.OK, MessageBoxFarsiIcon.Error, MessageBoxFarsiDefaultButton.Button1);
-            }
+            loadAgain();
         }
 
         private void btnAdd_Click(object sender, EventArgs e)

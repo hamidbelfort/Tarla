@@ -72,6 +72,9 @@ namespace Tarla
     partial void InsertProductPacking(ProductPacking instance);
     partial void UpdateProductPacking(ProductPacking instance);
     partial void DeleteProductPacking(ProductPacking instance);
+    partial void InsertBank(Bank instance);
+    partial void UpdateBank(Bank instance);
+    partial void DeleteBank(Bank instance);
     #endregion
 		
 		public dcTarlaDataContext() : 
@@ -221,6 +224,14 @@ namespace Tarla
 			get
 			{
 				return this.GetTable<ProductPacking>();
+			}
+		}
+		
+		public System.Data.Linq.Table<Bank> Banks
+		{
+			get
+			{
+				return this.GetTable<Bank>();
 			}
 		}
 		
@@ -804,6 +815,41 @@ namespace Tarla
 		public int UpdatePacking([global::System.Data.Linq.Mapping.ParameterAttribute(Name="PackingId", DbType="Int")] System.Nullable<int> packingId, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="PackingType", DbType="NVarChar(30)")] string packingType)
 		{
 			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), packingId, packingType);
+			return ((int)(result.ReturnValue));
+		}
+		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.DeleteBank")]
+		public int DeleteBank([global::System.Data.Linq.Mapping.ParameterAttribute(Name="BankId", DbType="Int")] System.Nullable<int> bankId)
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), bankId);
+			return ((int)(result.ReturnValue));
+		}
+		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.FillBank")]
+		public ISingleResult<Bank> FillBank()
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())));
+			return ((ISingleResult<Bank>)(result.ReturnValue));
+		}
+		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.FillBankById")]
+		public ISingleResult<Bank> FillBankById([global::System.Data.Linq.Mapping.ParameterAttribute(Name="BankId", DbType="Int")] System.Nullable<int> bankId)
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), bankId);
+			return ((ISingleResult<Bank>)(result.ReturnValue));
+		}
+		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.InsertBank")]
+		public int InsertBank([global::System.Data.Linq.Mapping.ParameterAttribute(Name="BankName", DbType="NVarChar(100)")] string bankName, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="BankNumber", DbType="NVarChar(30)")] string bankNumber, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="BankOwner", DbType="NVarChar(100)")] string bankOwner, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="BankDesc", DbType="NVarChar(MAX)")] string bankDesc)
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), bankName, bankNumber, bankOwner, bankDesc);
+			return ((int)(result.ReturnValue));
+		}
+		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.UpdateBank")]
+		public int UpdateBank([global::System.Data.Linq.Mapping.ParameterAttribute(Name="BankId", DbType="Int")] System.Nullable<int> bankId, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="BankName", DbType="NVarChar(100)")] string bankName, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="BankNumber", DbType="NVarChar(30)")] string bankNumber, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="BankOwner", DbType="NVarChar(100)")] string bankOwner, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="BankDesc", DbType="NVarChar(MAX)")] string bankDesc)
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), bankId, bankName, bankNumber, bankOwner, bankDesc);
 			return ((int)(result.ReturnValue));
 		}
 	}
@@ -3391,6 +3437,164 @@ namespace Tarla
 					this._PackingType = value;
 					this.SendPropertyChanged("PackingType");
 					this.OnPackingTypeChanged();
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		private void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		private void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Bank")]
+	public sealed partial class Bank : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _BankId;
+		
+		private string _BankName;
+		
+		private string _BankNumber;
+		
+		private string _BankOwner;
+		
+		private string _BankDescription;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnBankIdChanging(int value);
+    partial void OnBankIdChanged();
+    partial void OnBankNameChanging(string value);
+    partial void OnBankNameChanged();
+    partial void OnBankNumberChanging(string value);
+    partial void OnBankNumberChanged();
+    partial void OnBankOwnerChanging(string value);
+    partial void OnBankOwnerChanged();
+    partial void OnBankDescriptionChanging(string value);
+    partial void OnBankDescriptionChanged();
+    #endregion
+		
+		public Bank()
+		{
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_BankId", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public int BankId
+		{
+			get
+			{
+				return this._BankId;
+			}
+			set
+			{
+				if ((this._BankId != value))
+				{
+					this.OnBankIdChanging(value);
+					this.SendPropertyChanging();
+					this._BankId = value;
+					this.SendPropertyChanged("BankId");
+					this.OnBankIdChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_BankName", DbType="NVarChar(100)")]
+		public string BankName
+		{
+			get
+			{
+				return this._BankName;
+			}
+			set
+			{
+				if ((this._BankName != value))
+				{
+					this.OnBankNameChanging(value);
+					this.SendPropertyChanging();
+					this._BankName = value;
+					this.SendPropertyChanged("BankName");
+					this.OnBankNameChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_BankNumber", DbType="NVarChar(30)")]
+		public string BankNumber
+		{
+			get
+			{
+				return this._BankNumber;
+			}
+			set
+			{
+				if ((this._BankNumber != value))
+				{
+					this.OnBankNumberChanging(value);
+					this.SendPropertyChanging();
+					this._BankNumber = value;
+					this.SendPropertyChanged("BankNumber");
+					this.OnBankNumberChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_BankOwner", DbType="NVarChar(100)")]
+		public string BankOwner
+		{
+			get
+			{
+				return this._BankOwner;
+			}
+			set
+			{
+				if ((this._BankOwner != value))
+				{
+					this.OnBankOwnerChanging(value);
+					this.SendPropertyChanging();
+					this._BankOwner = value;
+					this.SendPropertyChanged("BankOwner");
+					this.OnBankOwnerChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_BankDescription", DbType="NVarChar(100)")]
+		public string BankDescription
+		{
+			get
+			{
+				return this._BankDescription;
+			}
+			set
+			{
+				if ((this._BankDescription != value))
+				{
+					this.OnBankDescriptionChanging(value);
+					this.SendPropertyChanging();
+					this._BankDescription = value;
+					this.SendPropertyChanged("BankDescription");
+					this.OnBankDescriptionChanged();
 				}
 			}
 		}

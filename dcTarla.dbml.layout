@@ -20,7 +20,7 @@
         <elementListCompartment Id="0a6c828e-811d-4402-b5a7-c88648a91746" absoluteBounds="3.5150000005960464, 4.46000000089407, 1.9700000000000002, 1.2108968098958333" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
-    <associationConnector edgePoints="[(2.75 : 4.88544840458781); (3.5 : 4.88544840458781)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+    <associationConnector edgePoints="[(2.75 : 5.17714680953572); (3.5 : 5.17714680953572)]" fixedFrom="Algorithm" fixedTo="Algorithm">
       <AssociationMoniker Name="/dcTarlaDataContext/Role/Role_User" />
       <nodes>
         <classShapeMoniker Id="8bc6ee74-13a7-4ef9-9dc4-103ab8e75f6e" />
@@ -125,6 +125,12 @@
       <DataClassMoniker Name="/dcTarlaDataContext/ProductPacking" />
       <nestedChildShapes>
         <elementListCompartment Id="e24f4bf2-0e64-43d2-9ea6-d9e4cc4a9824" absoluteBounds="8.765, 11.71, 1.9700000000000002, 0.63399251302083326" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="f0da4e7a-5be1-4f11-9fff-aa084cb3c2f2" absoluteBounds="3.25, 2.75, 2, 1.7708968098958331">
+      <DataClassMoniker Name="/dcTarlaDataContext/Bank" />
+      <nestedChildShapes>
+        <elementListCompartment Id="268b7b1e-8a3a-4185-9153-e7a77cde7a3d" absoluteBounds="3.265, 3.21, 1.9700000000000002, 1.2108968098958333" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
   </nestedChildShapes>

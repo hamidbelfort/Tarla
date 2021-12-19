@@ -12,9 +12,15 @@ namespace Tarla.OperationForms
 {
     public partial class frmAddInvoice : Form
     {
+        dcTarlaDataContext db = new dcTarlaDataContext();
         public frmAddInvoice()
         {
             InitializeComponent();
+        }
+
+        private void btnExit_Click(object sender, EventArgs e)
+        {
+            Close();
         }
     }
 }
