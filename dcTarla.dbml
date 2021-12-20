@@ -153,6 +153,14 @@
       <Column Name="BankDescription" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
     </Type>
   </Table>
+  <Table Name="dbo.SystemLog" Member="SystemLogs">
+    <Type Name="SystemLog" Modifier="Sealed">
+      <Column Name="SysLogId" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Date" Type="System.String" DbType="NVarChar(30)" CanBeNull="true" />
+      <Column Name="LogMessage" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="FormName" Type="System.String" DbType="NVarChar(30)" CanBeNull="true" />
+    </Type>
+  </Table>
   <Function Name="dbo.InsertLog" Method="InsertLog">
     <Parameter Name="UserId" Parameter="userId" Type="System.Int32" DbType="Int" />
     <Parameter Name="Login" Parameter="login" Type="System.String" DbType="NVarChar(20)" />
@@ -601,6 +609,12 @@
     <Parameter Name="BankNumber" Parameter="bankNumber" Type="System.String" DbType="NVarChar(30)" />
     <Parameter Name="BankOwner" Parameter="bankOwner" Type="System.String" DbType="NVarChar(100)" />
     <Parameter Name="BankDesc" Parameter="bankDesc" Type="System.String" DbType="NVarChar(MAX)" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.InsertSystemLog" Method="InsertSystemLog">
+    <Parameter Name="Date" Parameter="date" Type="System.String" DbType="NVarChar(30)" />
+    <Parameter Name="Message" Parameter="message" Type="System.String" DbType="NVarChar(MAX)" />
+    <Parameter Name="FormName" Parameter="formName" Type="System.String" DbType="NVarChar(30)" />
     <Return Type="System.Int32" />
   </Function>
 </Database>

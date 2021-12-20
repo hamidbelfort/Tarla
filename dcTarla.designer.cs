@@ -75,6 +75,9 @@ namespace Tarla
     partial void InsertBank(Bank instance);
     partial void UpdateBank(Bank instance);
     partial void DeleteBank(Bank instance);
+    partial void InsertSystemLog(SystemLog instance);
+    partial void UpdateSystemLog(SystemLog instance);
+    partial void DeleteSystemLog(SystemLog instance);
     #endregion
 		
 		public dcTarlaDataContext() : 
@@ -232,6 +235,14 @@ namespace Tarla
 			get
 			{
 				return this.GetTable<Bank>();
+			}
+		}
+		
+		public System.Data.Linq.Table<SystemLog> SystemLogs
+		{
+			get
+			{
+				return this.GetTable<SystemLog>();
 			}
 		}
 		
@@ -850,6 +861,13 @@ namespace Tarla
 		public int UpdateBank([global::System.Data.Linq.Mapping.ParameterAttribute(Name="BankId", DbType="Int")] System.Nullable<int> bankId, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="BankName", DbType="NVarChar(100)")] string bankName, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="BankNumber", DbType="NVarChar(30)")] string bankNumber, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="BankOwner", DbType="NVarChar(100)")] string bankOwner, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="BankDesc", DbType="NVarChar(MAX)")] string bankDesc)
 		{
 			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), bankId, bankName, bankNumber, bankOwner, bankDesc);
+			return ((int)(result.ReturnValue));
+		}
+		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.InsertSystemLog")]
+		public int InsertSystemLog([global::System.Data.Linq.Mapping.ParameterAttribute(Name="Date", DbType="NVarChar(30)")] string date, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="Message", DbType="NVarChar(MAX)")] string message, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="FormName", DbType="NVarChar(30)")] string formName)
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), date, message, formName);
 			return ((int)(result.ReturnValue));
 		}
 	}
@@ -3595,6 +3613,140 @@ namespace Tarla
 					this._BankDescription = value;
 					this.SendPropertyChanged("BankDescription");
 					this.OnBankDescriptionChanged();
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		private void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		private void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.SystemLog")]
+	public sealed partial class SystemLog : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _SysLogId;
+		
+		private string _Date;
+		
+		private string _LogMessage;
+		
+		private string _FormName;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnSysLogIdChanging(int value);
+    partial void OnSysLogIdChanged();
+    partial void OnDateChanging(string value);
+    partial void OnDateChanged();
+    partial void OnLogMessageChanging(string value);
+    partial void OnLogMessageChanged();
+    partial void OnFormNameChanging(string value);
+    partial void OnFormNameChanged();
+    #endregion
+		
+		public SystemLog()
+		{
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_SysLogId", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public int SysLogId
+		{
+			get
+			{
+				return this._SysLogId;
+			}
+			set
+			{
+				if ((this._SysLogId != value))
+				{
+					this.OnSysLogIdChanging(value);
+					this.SendPropertyChanging();
+					this._SysLogId = value;
+					this.SendPropertyChanged("SysLogId");
+					this.OnSysLogIdChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Date", DbType="NVarChar(30)")]
+		public string Date
+		{
+			get
+			{
+				return this._Date;
+			}
+			set
+			{
+				if ((this._Date != value))
+				{
+					this.OnDateChanging(value);
+					this.SendPropertyChanging();
+					this._Date = value;
+					this.SendPropertyChanged("Date");
+					this.OnDateChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_LogMessage", DbType="NVarChar(MAX)")]
+		public string LogMessage
+		{
+			get
+			{
+				return this._LogMessage;
+			}
+			set
+			{
+				if ((this._LogMessage != value))
+				{
+					this.OnLogMessageChanging(value);
+					this.SendPropertyChanging();
+					this._LogMessage = value;
+					this.SendPropertyChanged("LogMessage");
+					this.OnLogMessageChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_FormName", DbType="NVarChar(30)")]
+		public string FormName
+		{
+			get
+			{
+				return this._FormName;
+			}
+			set
+			{
+				if ((this._FormName != value))
+				{
+					this.OnFormNameChanging(value);
+					this.SendPropertyChanging();
+					this._FormName = value;
+					this.SendPropertyChanged("FormName");
+					this.OnFormNameChanged();
 				}
 			}
 		}

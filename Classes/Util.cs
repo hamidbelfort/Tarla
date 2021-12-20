@@ -17,5 +17,19 @@ namespace Tarla.Classes
 
             return false;
         }
+        public void SaveLog(string formName,string message)
+        {
+            dcTarlaDataContext db = new dcTarlaDataContext();
+            try
+            {
+                PersianDate pd = new PersianDate();
+                string strDate = pd.getShortDateTime();
+                db.InsertSystemLog(strDate,message,formName);
+            }
+            catch
+            {
+
+            }
+        }
     }
 }

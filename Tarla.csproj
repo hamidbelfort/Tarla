@@ -38,6 +38,22 @@
       <HintPath>bin\Debug\BehComponents.dll</HintPath>
     </Reference>
     <Reference Include="DevComponents.DotNetBar2, Version=12.4.0.2, Culture=neutral, PublicKeyToken=c39c3242a43eee2b, processorArchitecture=MSIL" />
+    <Reference Include="Microsoft.SqlServer.ConnectionInfo, Version=12.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\Program Files\Microsoft SQL Server\120\SDK\Assemblies\Microsoft.SqlServer.ConnectionInfo.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.SqlServer.ConnectionInfoExtended, Version=12.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\Program Files\Microsoft SQL Server\120\SDK\Assemblies\Microsoft.SqlServer.ConnectionInfoExtended.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.SqlServer.Smo, Version=12.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\Program Files\Microsoft SQL Server\120\SDK\Assemblies\Microsoft.SqlServer.Smo.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.SqlServer.SmoExtended, Version=12.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\Program Files\Microsoft SQL Server\120\SDK\Assemblies\Microsoft.SqlServer.SmoExtended.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Data.Linq" />
@@ -216,6 +232,12 @@
     <Compile Include="MiscForms\frmLogs.Designer.cs">
       <DependentUpon>frmLogs.cs</DependentUpon>
     </Compile>
+    <Compile Include="MiscForms\frmRestore.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MiscForms\frmRestore.Designer.cs">
+      <DependentUpon>frmRestore.cs</DependentUpon>
+    </Compile>
     <Compile Include="MiscForms\frmShowRoles.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -248,7 +270,7 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <None Include="DB_Backup\tarlaDB.bak" />
+    <None Include="DB_Backup\TarlaDB.bak" />
     <None Include="dcTarla.dbml.layout">
       <DependentUpon>dcTarla.dbml</DependentUpon>
     </None>
@@ -329,6 +351,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="MiscForms\frmLogs.resx">
       <DependentUpon>frmLogs.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MiscForms\frmRestore.resx">
+      <DependentUpon>frmRestore.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MiscForms\frmShowRoles.resx">
       <DependentUpon>frmShowRoles.cs</DependentUpon>
@@ -514,6 +539,18 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\check-icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\89.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\password.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\login.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Backup_center_icon.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

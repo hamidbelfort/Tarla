@@ -11,6 +11,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using Tarla.Classes;
 using Tarla.MainForms;
+using Tarla.MiscForms;
 using Tarla.OperationForms;
 namespace Tarla
 {
@@ -159,6 +160,27 @@ namespace Tarla
         private void buttonItem1_Click(object sender, EventArgs e)
         {
             new frmShowBank().ShowDialog();
+        }
+
+        private void btnUsers_Click(object sender, EventArgs e)
+        {
+            new frmShowUsers().ShowDialog();
+        }
+
+        private void btnChangePassword_Click(object sender, EventArgs e)
+        {
+            frmChangePass.userId = LoginId;
+            new frmChangePass().ShowDialog();
+        }
+
+        private void btnBackup_Click(object sender, EventArgs e)
+        {
+            new frmBackUp().ShowDialog();
+        }
+
+        private void btnRestore_Click(object sender, EventArgs e)
+        {
+            new frmRestore().ShowDialog();
         }
     }
 }
