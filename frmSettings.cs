@@ -90,6 +90,7 @@ namespace Tarla
                         db.InsertSetting(txtCompanyName.Text, txtFactorAddress.Text, txtFactorTel.Text, themeName, fontSize);
 
                         ExitType = false;
+                        this.Close();
                     }
 
                     MessageBoxFarsi.Show("عملیات با موفقیت انجام شد", "پیغام", MessageBoxFarsiButtons.OK, MessageBoxFarsiIcon.Information, MessageBoxFarsiDefaultButton.Button1);

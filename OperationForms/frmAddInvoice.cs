@@ -22,5 +22,10 @@ namespace Tarla.OperationForms
         {
             Close();
         }
+
+        private void labelX22_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

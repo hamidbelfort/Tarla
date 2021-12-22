@@ -22,6 +22,16 @@ namespace Tarla.MainForms
             InitializeComponent();
         }
 
+        private void btnSave_Click(object sender, EventArgs e)
+        {
+            performTransaction(personType);
+        }
+
+        private void btnExit_Click(object sender, EventArgs e)
+        {
+            Close();
+        }
+
         private void frmAddPerson_Load(object sender, EventArgs e)
         {
             try
@@ -80,10 +90,6 @@ namespace Tarla.MainForms
                     txtDesc.DataBindings.Add(new Binding("Text", bsReceiver, "Description"));
                     break;
             }
-        }
-        private void btnSave_Click(object sender, EventArgs e)
-        {
-            performTransaction(personType);
         }
         private void clearAll()
         {
@@ -148,11 +154,7 @@ namespace Tarla.MainForms
             {
                 MessageBoxFarsi.Show("ارتباط با سرور اطلاعاتی قطع شده است", "اخطار", MessageBoxFarsiButtons.OK, MessageBoxFarsiIcon.Error, MessageBoxFarsiDefaultButton.Button1);
             }
-            
-        }
-        private void btnExit_Click(object sender, EventArgs e)
-        {
-            Close();
+
         }
     }
 }

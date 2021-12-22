@@ -1,4 +1,5 @@
-﻿using System;
+﻿using BehComponents;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -7,7 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using BehComponents;
+
 namespace Tarla.MainForms
 {
     public partial class frmShowPerson : Form
@@ -56,7 +57,7 @@ namespace Tarla.MainForms
             {
                 btnDelete.Enabled = false;
                 btnEdit.Enabled = false;
-                
+
             }
             else
             {
@@ -72,7 +73,7 @@ namespace Tarla.MainForms
                 switch (bsTarget)
                 {
                     case 1://buyer
-                        
+
                         bsBuyer.DataSource = db.FillBuyer();
                         checkData(dgvBuyer);
                         break;
@@ -85,21 +86,7 @@ namespace Tarla.MainForms
                         checkData(dgvReceiver);
                         break;
                 }
-                
-            }
-            catch
-            {
-                MessageBoxFarsi.Show("ارتباط با سرور اطلاعاتی قطع شده است", "اخطار", MessageBoxFarsiButtons.OK, MessageBoxFarsiIcon.Error, MessageBoxFarsiDefaultButton.Button1);
-            }
-        }
-        private void btnAdd_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                frmAddPerson.IsEdit = false;
-                frmAddPerson.personType = personType;
-                new frmAddPerson().ShowDialog();
-                loadAgain(personType);
+
             }
             catch
             {
@@ -165,9 +152,19 @@ namespace Tarla.MainForms
             }
         }
 
-        private void btnExit_Click(object sender, EventArgs e)
+        private void btnAdd_Click(object sender, EventArgs e)
         {
-            Close();
+            try
+            {
+                frmAddPerson.IsEdit = false;
+                frmAddPerson.personType = personType;
+                new frmAddPerson().ShowDialog();
+                loadAgain(personType);
+            }
+            catch
+            {
+                MessageBoxFarsi.Show("ارتباط با سرور اطلاعاتی قطع شده است", "اخطار", MessageBoxFarsiButtons.OK, MessageBoxFarsiIcon.Error, MessageBoxFarsiDefaultButton.Button1);
+            }
         }
     }
 }

@@ -69,6 +69,7 @@ namespace Tarla
 
                             if (ExitType == true)
                             {
+                                ExitType = false;
                                 this.Close();
                             }
 
