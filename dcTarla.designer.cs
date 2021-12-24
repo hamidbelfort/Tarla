@@ -78,6 +78,9 @@ namespace Tarla
     partial void InsertSystemLog(SystemLog instance);
     partial void UpdateSystemLog(SystemLog instance);
     partial void DeleteSystemLog(SystemLog instance);
+    partial void InsertForiegnReceiver(ForiegnReceiver instance);
+    partial void UpdateForiegnReceiver(ForiegnReceiver instance);
+    partial void DeleteForiegnReceiver(ForiegnReceiver instance);
     #endregion
 		
 		public dcTarlaDataContext() : 
@@ -243,6 +246,14 @@ namespace Tarla
 			get
 			{
 				return this.GetTable<SystemLog>();
+			}
+		}
+		
+		public System.Data.Linq.Table<ForiegnReceiver> ForiegnReceivers
+		{
+			get
+			{
+				return this.GetTable<ForiegnReceiver>();
 			}
 		}
 		
@@ -868,6 +879,48 @@ namespace Tarla
 		public int InsertSystemLog([global::System.Data.Linq.Mapping.ParameterAttribute(Name="Date", DbType="NVarChar(30)")] string date, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="Message", DbType="NVarChar(MAX)")] string message, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="FormName", DbType="NVarChar(30)")] string formName)
 		{
 			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), date, message, formName);
+			return ((int)(result.ReturnValue));
+		}
+		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.FillProducts")]
+		public ISingleResult<Product> FillProducts()
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())));
+			return ((ISingleResult<Product>)(result.ReturnValue));
+		}
+		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.DeleteForeignReceiver")]
+		public int DeleteForeignReceiver([global::System.Data.Linq.Mapping.ParameterAttribute(Name="F_ReceiverId", DbType="Int")] System.Nullable<int> f_ReceiverId)
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), f_ReceiverId);
+			return ((int)(result.ReturnValue));
+		}
+		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.FillForeignReceiver")]
+		public ISingleResult<ForiegnReceiver> FillForeignReceiver()
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())));
+			return ((ISingleResult<ForiegnReceiver>)(result.ReturnValue));
+		}
+		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.FillForeignReceiverById")]
+		public ISingleResult<ForiegnReceiver> FillForeignReceiverById([global::System.Data.Linq.Mapping.ParameterAttribute(Name="F_ReceiverId", DbType="Int")] System.Nullable<int> f_ReceiverId)
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), f_ReceiverId);
+			return ((ISingleResult<ForiegnReceiver>)(result.ReturnValue));
+		}
+		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.InsertForeignReceiver")]
+		public int InsertForeignReceiver([global::System.Data.Linq.Mapping.ParameterAttribute(Name="Name", DbType="NVarChar(30)")] string name, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="Phone", DbType="NVarChar(10)")] string phone, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="Address", DbType="NVarChar(MAX)")] string address, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="Country", DbType="NVarChar(30)")] string country, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="Desc", DbType="NVarChar(MAX)")] string desc)
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), name, phone, address, country, desc);
+			return ((int)(result.ReturnValue));
+		}
+		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.UpdateForeignReceiver")]
+		public int UpdateForeignReceiver([global::System.Data.Linq.Mapping.ParameterAttribute(Name="F_ReceiverId", DbType="Int")] System.Nullable<int> f_ReceiverId, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="Name", DbType="NVarChar(30)")] string name, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="Phone", DbType="NVarChar(10)")] string phone, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="Address", DbType="NVarChar(MAX)")] string address, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="Country", DbType="NVarChar(30)")] string country, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="Desc", DbType="NVarChar(MAX)")] string desc)
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), f_ReceiverId, name, phone, address, country, desc);
 			return ((int)(result.ReturnValue));
 		}
 	}
@@ -3747,6 +3800,188 @@ namespace Tarla
 					this._FormName = value;
 					this.SendPropertyChanged("FormName");
 					this.OnFormNameChanged();
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		private void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		private void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.ForiegnReceivers")]
+	public sealed partial class ForiegnReceiver : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _F_ReceiverId;
+		
+		private string _F_ReceiverName;
+		
+		private string _F_Phone;
+		
+		private string _F_Address;
+		
+		private string _F_Country;
+		
+		private string _F_Description;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnF_ReceiverIdChanging(int value);
+    partial void OnF_ReceiverIdChanged();
+    partial void OnF_ReceiverNameChanging(string value);
+    partial void OnF_ReceiverNameChanged();
+    partial void OnF_PhoneChanging(string value);
+    partial void OnF_PhoneChanged();
+    partial void OnF_AddressChanging(string value);
+    partial void OnF_AddressChanged();
+    partial void OnF_CountryChanging(string value);
+    partial void OnF_CountryChanged();
+    partial void OnF_DescriptionChanging(string value);
+    partial void OnF_DescriptionChanged();
+    #endregion
+		
+		public ForiegnReceiver()
+		{
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_F_ReceiverId", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public int F_ReceiverId
+		{
+			get
+			{
+				return this._F_ReceiverId;
+			}
+			set
+			{
+				if ((this._F_ReceiverId != value))
+				{
+					this.OnF_ReceiverIdChanging(value);
+					this.SendPropertyChanging();
+					this._F_ReceiverId = value;
+					this.SendPropertyChanged("F_ReceiverId");
+					this.OnF_ReceiverIdChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_F_ReceiverName", DbType="NVarChar(30)")]
+		public string F_ReceiverName
+		{
+			get
+			{
+				return this._F_ReceiverName;
+			}
+			set
+			{
+				if ((this._F_ReceiverName != value))
+				{
+					this.OnF_ReceiverNameChanging(value);
+					this.SendPropertyChanging();
+					this._F_ReceiverName = value;
+					this.SendPropertyChanged("F_ReceiverName");
+					this.OnF_ReceiverNameChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_F_Phone", DbType="NVarChar(12)")]
+		public string F_Phone
+		{
+			get
+			{
+				return this._F_Phone;
+			}
+			set
+			{
+				if ((this._F_Phone != value))
+				{
+					this.OnF_PhoneChanging(value);
+					this.SendPropertyChanging();
+					this._F_Phone = value;
+					this.SendPropertyChanged("F_Phone");
+					this.OnF_PhoneChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_F_Address", DbType="NVarChar(MAX)")]
+		public string F_Address
+		{
+			get
+			{
+				return this._F_Address;
+			}
+			set
+			{
+				if ((this._F_Address != value))
+				{
+					this.OnF_AddressChanging(value);
+					this.SendPropertyChanging();
+					this._F_Address = value;
+					this.SendPropertyChanged("F_Address");
+					this.OnF_AddressChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_F_Country", DbType="NVarChar(30)")]
+		public string F_Country
+		{
+			get
+			{
+				return this._F_Country;
+			}
+			set
+			{
+				if ((this._F_Country != value))
+				{
+					this.OnF_CountryChanging(value);
+					this.SendPropertyChanging();
+					this._F_Country = value;
+					this.SendPropertyChanged("F_Country");
+					this.OnF_CountryChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_F_Description", DbType="NVarChar(MAX)")]
+		public string F_Description
+		{
+			get
+			{
+				return this._F_Description;
+			}
+			set
+			{
+				if ((this._F_Description != value))
+				{
+					this.OnF_DescriptionChanging(value);
+					this.SendPropertyChanging();
+					this._F_Description = value;
+					this.SendPropertyChanged("F_Description");
+					this.OnF_DescriptionChanged();
 				}
 			}
 		}

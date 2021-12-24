@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -16,6 +17,11 @@ namespace Tarla.Classes
             }
 
             return false;
+        }
+        public static int removeThousandSeprator(string number)
+        {
+            number=number.Replace(",", "");
+            return Convert.ToInt32(number);
         }
         public void SaveLog(string formName,string message)
         {

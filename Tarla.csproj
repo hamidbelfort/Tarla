@@ -112,6 +112,12 @@
     <Compile Include="frmSplash.Designer.cs">
       <DependentUpon>frmSplash.cs</DependentUpon>
     </Compile>
+    <Compile Include="MainForms\frmAddForeignReceiver.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MainForms\frmAddForeignReceiver.Designer.cs">
+      <DependentUpon>frmAddForeignReceiver.cs</DependentUpon>
+    </Compile>
     <Compile Include="MainForms\frmAddPerson.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -171,6 +177,12 @@
     </Compile>
     <Compile Include="MainForms\frmShowCompany.Designer.cs">
       <DependentUpon>frmShowCompany.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MainForms\frmShowForiegnReceiver.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MainForms\frmShowForiegnReceiver.Designer.cs">
+      <DependentUpon>frmShowForiegnReceiver.cs</DependentUpon>
     </Compile>
     <Compile Include="MainForms\frmShowGroups.cs">
       <SubType>Form</SubType>
@@ -268,6 +280,12 @@
     <Compile Include="OperationForms\frmShowBuyItem.Designer.cs">
       <DependentUpon>frmShowBuyItem.cs</DependentUpon>
     </Compile>
+    <Compile Include="OperationForms\frmShowFactor.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="OperationForms\frmShowFactor.Designer.cs">
+      <DependentUpon>frmShowFactor.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <None Include="DB_Backup\TarlaDB.bak" />
@@ -291,6 +309,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmSplash.resx">
       <DependentUpon>frmSplash.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MainForms\frmAddForeignReceiver.resx">
+      <DependentUpon>frmAddForeignReceiver.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MainForms\frmAddPerson.resx">
       <DependentUpon>frmAddPerson.cs</DependentUpon>
@@ -321,6 +342,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="MainForms\frmShowCompany.resx">
       <DependentUpon>frmShowCompany.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MainForms\frmShowForiegnReceiver.resx">
+      <DependentUpon>frmShowForiegnReceiver.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MainForms\frmShowGroups.resx">
       <DependentUpon>frmShowGroups.cs</DependentUpon>
@@ -369,6 +393,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="OperationForms\frmShowBuyItem.resx">
       <DependentUpon>frmShowBuyItem.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="OperationForms\frmShowFactor.resx">
+      <DependentUpon>frmShowFactor.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

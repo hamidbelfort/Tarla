@@ -16,6 +16,13 @@ namespace Tarla.OperationForms
         dcTarlaDataContext db = new dcTarlaDataContext();
         PersianDate pd = new PersianDate();
         int totalPrice, totalWeight;
+        int totalCost;
+        int profit, loss;
+        int netSell,netPrice;
+        int discount;
+        int workersCost,workersCount;
+        int miscCost;
+        int truckRental;
         public frmAddInvoice()
         {
             InitializeComponent();
@@ -35,6 +42,12 @@ namespace Tarla.OperationForms
                     errorProvider1.SetError(cmbBuyer, "خریدار را انتخاب کنید");
                     cmbBuyer.Focus();
                 }
+                else if (txtLicensePlate.Text == string.Empty)
+                {
+                    errorProvider1.Clear();
+                    errorProvider1.SetError(txtLicensePlate, "شماره پلاک کامیون را انتخاب کنید");
+                    txtLicensePlate.Focus();
+                }
                 else if (cmbBandarReceiver.Text == string.Empty)
                 {
                     errorProvider1.Clear();
@@ -47,7 +60,7 @@ namespace Tarla.OperationForms
                     errorProvider1.SetError(cmbDubaiReceiver, "گیرنده دوبی را انتخاب کنید");
                     cmbDubaiReceiver.Focus();
                 }
-                else if (dgvFactor.Rows.Count<0)
+                else if (dgvFactor.Rows.Count==0)
                 {
                     errorProvider1.Clear();
                     errorProvider1.SetError(cmbProduct, "محصول را انتخاب کنید");
@@ -60,46 +73,227 @@ namespace Tarla.OperationForms
                     errorProvider1.Clear();
                     calculateTotalPrice();
                     txtTotalProducts.Text = totalPrice.ToString("N0");
+                    superTabControl1.SelectedTab = superTabItem2;
                     btnNext.Enabled = false;
+                    btnPrev.Enabled = true;
                 }
             }
         }
 
         private void btnPrev_Click(object sender, EventArgs e)
         {
-            if (true)
+            if (superTabControl1.SelectedTab==superTabItem2)
             {
-
+                superTabControl1.SelectedTab = superTabItem1;
+                btnPrev.Enabled = false;
+                btnNext.Enabled = true;
             }
+            
         }
 
         private void frmAddInvoice_Load(object sender, EventArgs e)
         {
             txtDate.Text = pd.getShortDate();
+            bsBuyer.DataSource = db.FillBuyer();
+            bsPacking.DataSource = db.FillPacking();
+            bsProduct.DataSource = db.FillProducts();
+            bsReceiver.DataSource = db.FillReceiver();
+            bsSeller.DataSource = db.FillSeller();
+            superTabControl1.SelectedTab = superTabItem1;
         }
 
         private void btnAdd_Click(object sender, EventArgs e)
         {
-            dgvFactor.Rows.Add(cmbProduct.Text, intPrice.Text, intCount.Text, intWeight.Text, cmbSeller.Text, cmbPacking.Text, cmbProduct.SelectedValue, cmbSeller.SelectedValue, cmbPacking.SelectedValue);
-            calculateTotalPrice();
+            if (intCount.Value == 0)
+            {
+                errorProvider1.SetError(intCount, "تعداد را وارد کنید");
+                intCount.Focus();
+            }
+            else if (intWeight.Value == 0)
+            {
+                errorProvider1.Clear();
+                errorProvider1.SetError(intWeight, "وزن را وارد کنید");
+                intWeight.Focus();
+            }
+            else if (intPrice.Value == 0)
+            {
+                errorProvider1.Clear();
+                errorProvider1.SetError(intPrice, "قیمت را وارد کنید");
+                intPrice.Focus();
+            }
+            else
+            {
+                if (dgvFactor.Rows.Count == 0)
+                {
+                    dgvFactor.Rows.Add(cmbProduct.Text, intPrice.Text, intCount.Text, intWeight.Text, cmbSeller.Text, cmbPacking.Text, cmbProduct.SelectedValue, cmbSeller.SelectedValue, cmbPacking.SelectedValue);
+                }
+                else
+                {
+                    for (int i = 0; i < dgvFactor.Rows.Count; i++)
+                    {
+                        if (Convert.ToInt32(dgvFactor.Rows[i].Cells["clmProduct"].Value.ToString()) == Convert.ToInt32(cmbProduct.SelectedValue.ToString()))
+                        {
+                            dgvFactor.Rows[i].Cells["clmQty"].Value = intCount.Value;
+                            dgvFactor.Rows[i].Cells["clmWeight"].Value = intWeight.Value;
+                            dgvFactor.Rows[i].Cells["clmPrice"].Value = intPrice.Value;
+                            dgvFactor.Rows[i].Cells["clmSeller"].Value = cmbSeller.SelectedValue;
+                            dgvFactor.Rows[i].Cells["clmPacking"].Value = cmbPacking.SelectedValue;
+                            dgvFactor.Rows[i].Cells["clmPackingName"].Value = cmbPacking.Text;
+                            dgvFactor.Rows[i].Cells["clmSellerName"].Value = cmbSeller.Text;
+                        }
+                        else
+                        {
+
+                        }
+                    }
+                }
+                calculateTotalPrice();
+            }
+            
         }
 
         private void btnDelete_Click(object sender, EventArgs e)
         {
             dgvFactor.Rows.RemoveAt(dgvFactor.CurrentRow.Index);
+            calculateTotalPrice();
         }
 
+        private void intWorkerCost_ValueChanged(object sender, EventArgs e)
+        {
+            if (intWorkerCost.Value>0)
+            {
+                workersCost = intWorkerCost.Value;
+            }
+            else
+            {
+                workersCost = 0;
+            }
+            calculateTotalCosts();
+        }
+
+        private void intTruckRental_ValueChanged(object sender, EventArgs e)
+        {
+            if (intTruckRental.Value > 0)
+            {
+                truckRental = intTruckRental.Value;
+            }
+            else
+            {
+                truckRental = 0;
+            }
+            calculateTotalCosts();
+        }
+
+        private void intMiscCost_ValueChanged(object sender, EventArgs e)
+        {
+            if (intMiscCost.Value > 0)
+            {
+                miscCost = intMiscCost.Value;
+            }
+            else
+            {
+                miscCost = 0;
+            }
+            calculateTotalCosts();
+        }
+
+        private void intNetSell_ValueChanged(object sender, EventArgs e)
+        {
+            if (intNetSell.Value>0)
+            {
+                netSell = intNetSell.Value;
+            }
+            else
+            {
+                netSell = 0;
+            }
+            calculateProfitLoss();
+        }
+
+        private void intDiscount_ValueChanged(object sender, EventArgs e)
+        {
+            if (intDiscount.Value>0)
+            {
+                discount = intDiscount.Value;
+            }
+            else
+            {
+                discount = 0;
+            }
+            calculateTotalCosts();
+        }
+
+        private void btnSave_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void intWorkersCount_ValueChanged(object sender, EventArgs e)
+        {
+            if (intWorkersCount.Value>0)
+            {
+                workersCount = intWorkersCount.Value;
+            }
+            else
+            {
+                workersCount = 0;
+            }
+        }
+
+        private void calculateProfitLoss()
+        {
+            int result=0;
+            if (netSell>0)
+            {
+                result = Util.removeThousandSeprator(txtTotalProducts.Text) - netSell;
+                if (result<0)
+                {
+                    profit = Math.Abs(result);
+                    txtLoss.Text = "0";
+                    txtProfit.Text = profit.ToString("N0");
+                }
+                else
+                {
+                    loss = result;
+                    txtProfit.Text = "0";
+                    txtLoss.Text = loss.ToString("N0");
+                    
+                }
+            }
+            else
+            {
+                profit = 0;
+                loss = 0;
+                txtProfit.Text = "0";
+                txtLoss.Text = "0";
+            }
+        }
+        private void calculateTotalCosts()
+        {
+            totalCost = (workersCost + truckRental + miscCost);
+            txtTotalCost.Text = totalCost.ToString("N0");
+            netPrice = Util.removeThousandSeprator(txtTotalProducts.Text) - discount;
+            txtNetPrice.Text = netPrice.ToString("N0");
+        }
         private void calculateTotalPrice()
         {
             totalPrice = 0;
             totalWeight = 0;
-            for (int i = 0; i < dgvFactor.Rows.Count; i++)
+            if (dgvFactor.Rows.Count>0)
             {
-                totalPrice += (Convert.ToInt32(dgvFactor.Rows[i].Cells["clmQty"].Value.ToString())) * (Convert.ToInt32(dgvFactor.Rows[i].Cells["clmPrice"].Value.ToString()));
-                totalWeight += (Convert.ToInt32(dgvFactor.Rows[i].Cells["clmWeight"].Value.ToString()));
+                for (int i = 0; i < dgvFactor.Rows.Count; i++)
+                {
+                    totalPrice += (Convert.ToInt32(dgvFactor.Rows[i].Cells["clmQty"].Value.ToString())) * (Convert.ToInt32(dgvFactor.Rows[i].Cells["clmPrice"].Value.ToString()));
+                    totalWeight += (Convert.ToInt32(dgvFactor.Rows[i].Cells["clmWeight"].Value.ToString()));
+                }
+            }
+            else
+            {
+                totalPrice = 0;
+                totalWeight = 0;
             }
             lblTotalPrice.Text = totalPrice.ToString("N0");
-            intTotalWeight.Value = totalWeight;
+            txtTotalWeight.Text = totalWeight.ToString("N0");
         }
     }
 }

@@ -161,6 +161,16 @@
       <Column Name="FormName" Type="System.String" DbType="NVarChar(30)" CanBeNull="true" />
     </Type>
   </Table>
+  <Table Name="dbo.ForiegnReceivers" Member="ForiegnReceivers">
+    <Type Name="ForiegnReceiver" Id="ID17" Modifier="Sealed">
+      <Column Name="F_ReceiverId" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="F_ReceiverName" Type="System.String" DbType="NVarChar(30)" CanBeNull="true" />
+      <Column Name="F_Phone" Type="System.String" DbType="NVarChar(12)" CanBeNull="true" />
+      <Column Name="F_Address" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="F_Country" Type="System.String" DbType="NVarChar(30)" CanBeNull="true" />
+      <Column Name="F_Description" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+    </Type>
+  </Table>
   <Function Name="dbo.InsertLog" Method="InsertLog">
     <Parameter Name="UserId" Parameter="userId" Type="System.Int32" DbType="Int" />
     <Parameter Name="Login" Parameter="login" Type="System.String" DbType="NVarChar(20)" />
@@ -615,6 +625,37 @@
     <Parameter Name="Date" Parameter="date" Type="System.String" DbType="NVarChar(30)" />
     <Parameter Name="Message" Parameter="message" Type="System.String" DbType="NVarChar(MAX)" />
     <Parameter Name="FormName" Parameter="formName" Type="System.String" DbType="NVarChar(30)" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.FillProducts" Method="FillProducts">
+    <ElementType IdRef="ID4" />
+  </Function>
+  <Function Name="dbo.DeleteForeignReceiver" Method="DeleteForeignReceiver">
+    <Parameter Name="F_ReceiverId" Parameter="f_ReceiverId" Type="System.Int32" DbType="Int" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.FillForeignReceiver" Method="FillForeignReceiver">
+    <ElementType IdRef="ID17" />
+  </Function>
+  <Function Name="dbo.FillForeignReceiverById" Method="FillForeignReceiverById">
+    <Parameter Name="F_ReceiverId" Parameter="f_ReceiverId" Type="System.Int32" DbType="Int" />
+    <ElementType IdRef="ID17" />
+  </Function>
+  <Function Name="dbo.InsertForeignReceiver" Method="InsertForeignReceiver">
+    <Parameter Name="Name" Parameter="name" Type="System.String" DbType="NVarChar(30)" />
+    <Parameter Name="Phone" Parameter="phone" Type="System.String" DbType="NVarChar(10)" />
+    <Parameter Name="Address" Parameter="address" Type="System.String" DbType="NVarChar(MAX)" />
+    <Parameter Name="Country" Parameter="country" Type="System.String" DbType="NVarChar(30)" />
+    <Parameter Name="Desc" Parameter="desc" Type="System.String" DbType="NVarChar(MAX)" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.UpdateForeignReceiver" Method="UpdateForeignReceiver">
+    <Parameter Name="F_ReceiverId" Parameter="f_ReceiverId" Type="System.Int32" DbType="Int" />
+    <Parameter Name="Name" Parameter="name" Type="System.String" DbType="NVarChar(30)" />
+    <Parameter Name="Phone" Parameter="phone" Type="System.String" DbType="NVarChar(10)" />
+    <Parameter Name="Address" Parameter="address" Type="System.String" DbType="NVarChar(MAX)" />
+    <Parameter Name="Country" Parameter="country" Type="System.String" DbType="NVarChar(30)" />
+    <Parameter Name="Desc" Parameter="desc" Type="System.String" DbType="NVarChar(MAX)" />
     <Return Type="System.Int32" />
   </Function>
 </Database>

@@ -208,5 +208,10 @@ namespace Tarla
         {
             new frmBuyItem().ShowDialog();
         }
+
+        private void btnBook_Click(object sender, EventArgs e)
+        {
+           
+        }
     }
 }
