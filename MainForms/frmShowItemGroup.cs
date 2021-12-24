@@ -48,7 +48,7 @@ namespace Tarla.MainForms
             {
                 frmAddItemGroup.IsEdit = false;
 
-                new frmAddGroup().ShowDialog();
+                new frmAddItemGroup().ShowDialog();
 
                 loadAgain();
             }

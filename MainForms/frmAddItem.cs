@@ -26,7 +26,7 @@ namespace Tarla.MainForms
         {
             try
             {
-                bsGroup.DataSource = db.FillGroups();
+                bsGroup.DataSource = db.FillItemGroup();
                 if (IsEdit)
                 {
                     bsItem.DataSource = db.FillItemsById(itemId);

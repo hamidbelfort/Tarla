@@ -76,6 +76,17 @@ namespace Tarla
             {
                 getThemSetting();
             }
+            btnBank.Enabled = BankPermission;
+            btnBook.Enabled = BankPermission;
+            btnSettings.Enabled = SettingPermission;
+            btnUsers.Enabled = UserPermission;
+            btnSell.Enabled = FactorPermission;
+            btnBuy.Enabled = FactorPermission;
+            btnProduct.Enabled = FactorPermission;
+            btnCategory.Enabled = FactorPermission;
+            btnItem.Enabled = FactorPermission;
+            btnItemGroup.Enabled = FactorPermission;
+            btnPacking.Enabled = FactorPermission;
         }
         private void getThemSetting()
         {
@@ -139,7 +150,7 @@ namespace Tarla
             {
                 strToday = pd.getShortDateTime();
                 db.GetLogId(ref logId, LoginId);
-                db.UpdateLog(LoginId, strToday);
+                db.UpdateLog(logId, strToday);
             }
             catch
             {
@@ -181,6 +192,21 @@ namespace Tarla
         private void btnRestore_Click(object sender, EventArgs e)
         {
             new frmRestore().ShowDialog();
+        }
+
+        private void btnRoles_Click(object sender, EventArgs e)
+        {
+            new frmShowRoles().ShowDialog();
+        }
+
+        private void btnSettings_Click(object sender, EventArgs e)
+        {
+            new frmSettings().ShowDialog();
+        }
+
+        private void btnBuy_Click(object sender, EventArgs e)
+        {
+            new frmBuyItem().ShowDialog();
         }
     }
 }

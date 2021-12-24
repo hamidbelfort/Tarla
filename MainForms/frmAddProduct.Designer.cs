@@ -195,6 +195,8 @@
             // 
             // cmbGroup
             // 
+            this.cmbGroup.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.cmbGroup.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.cmbGroup.DataSource = this.bsGroups;
             this.cmbGroup.DisplayMember = "GroupName";
             this.cmbGroup.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
