@@ -106,5 +106,19 @@ namespace Tarla
         {
             this.Close();
         }
+
+        private void cmbTheme_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                if (cmbTheme.SelectedIndex>0)
+                {
+                    styleManager1.ManagerStyle = StyleTheme.getTheme(cmbTheme.Text);
+                }
+            }
+            catch
+            {
+            }
+        }
     }
 }

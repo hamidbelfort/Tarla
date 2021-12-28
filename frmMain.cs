@@ -213,5 +213,15 @@ namespace Tarla
         {
            
         }
+
+        private void btnFReceiver_Click(object sender, EventArgs e)
+        {
+            new frmShowForiegnReceiver().ShowDialog();
+        }
+
+        private void btnMessages_Click(object sender, EventArgs e)
+        {
+            new frmShowMessage().ShowDialog();
+        }
     }
 }

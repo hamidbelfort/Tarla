@@ -48,6 +48,7 @@
             this.labelX1 = new DevComponents.DotNetBar.LabelX();
             this.bsSetting = new System.Windows.Forms.BindingSource(this.components);
             this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
+            this.styleManager1 = new DevComponents.DotNetBar.StyleManager(this.components);
             this.panelEx1.SuspendLayout();
             this.groupPanel2.SuspendLayout();
             this.groupPanel1.SuspendLayout();
@@ -204,10 +205,11 @@
             // cmbTheme
             // 
             this.cmbTheme.FormattingEnabled = true;
-            this.cmbTheme.Location = new System.Drawing.Point(168, 126);
+            this.cmbTheme.Location = new System.Drawing.Point(106, 126);
             this.cmbTheme.Name = "cmbTheme";
-            this.cmbTheme.Size = new System.Drawing.Size(170, 24);
+            this.cmbTheme.Size = new System.Drawing.Size(232, 24);
             this.cmbTheme.TabIndex = 4;
+            this.cmbTheme.SelectedIndexChanged += new System.EventHandler(this.cmbTheme_SelectedIndexChanged);
             // 
             // cmbFontSize
             // 
@@ -245,6 +247,7 @@
             // 
             // labelX4
             // 
+            this.labelX4.BackColor = System.Drawing.Color.Transparent;
             // 
             // 
             // 
@@ -257,6 +260,7 @@
             // 
             // labelX2
             // 
+            this.labelX2.BackColor = System.Drawing.Color.Transparent;
             // 
             // 
             // 
@@ -309,6 +313,7 @@
             // 
             // labelX3
             // 
+            this.labelX3.BackColor = System.Drawing.Color.Transparent;
             // 
             // 
             // 
@@ -321,6 +326,7 @@
             // 
             // labelX11
             // 
+            this.labelX11.BackColor = System.Drawing.Color.Transparent;
             // 
             // 
             // 
@@ -333,6 +339,7 @@
             // 
             // labelX1
             // 
+            this.labelX1.BackColor = System.Drawing.Color.Transparent;
             // 
             // 
             // 
@@ -346,6 +353,11 @@
             // errorProvider1
             // 
             this.errorProvider1.ContainerControl = this;
+            // 
+            // styleManager1
+            // 
+            this.styleManager1.ManagerStyle = DevComponents.DotNetBar.eStyle.Office2007VistaGlass;
+            this.styleManager1.MetroColorParameters = new DevComponents.DotNetBar.Metro.ColorTables.MetroColorGeneratorParameters(System.Drawing.Color.FromArgb(((int)(((byte)(239)))), ((int)(((byte)(239)))), ((int)(((byte)(242))))), System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(122)))), ((int)(((byte)(204))))));
             // 
             // frmSettings
             // 
@@ -391,5 +403,6 @@
         private System.Windows.Forms.BindingSource settingBindingSource;
         private System.Windows.Forms.ComboBox cmbTheme;
         private System.Windows.Forms.ComboBox cmbFontSize;
+        private DevComponents.DotNetBar.StyleManager styleManager1;
     }
 }

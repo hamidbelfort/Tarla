@@ -30,5 +30,10 @@ namespace Tarla.OperationForms
             mskDate2.Enabled = false;
             cmbBuyer.Enabled = true;
         }
+
+        private void btnShow_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

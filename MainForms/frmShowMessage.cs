@@ -1,4 +1,5 @@
-﻿using System;
+﻿using BehComponents;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -7,20 +8,19 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using BehComponents;
 
 namespace Tarla.MainForms
 {
-    public partial class frmShowGroups : Form
+    public partial class frmShowMessage : Form
     {
         dcTarlaDataContext db = new dcTarlaDataContext();
-        public static int groupId = 0;
-        public frmShowGroups()
+        public static int messageId = 0;
+        public frmShowMessage()
         {
             InitializeComponent();
         }
 
-        private void frmShowGroups_Load(object sender, EventArgs e)
+        private void frmShowMessage_Load(object sender, EventArgs e)
         {
             loadAgain();
         }
@@ -29,29 +29,9 @@ namespace Tarla.MainForms
         {
             try
             {
-                frmAddGroup.IsEdit = false;
 
-                new frmAddGroup().ShowDialog();
+                new frmAddMessage().ShowDialog();
 
-                loadAgain();
-            }
-            catch
-            {
-                MessageBoxFarsi.Show("ارتباط با سرور اطلاعاتی قطع شده است", "اخطار", MessageBoxFarsiButtons.OK, MessageBoxFarsiIcon.Error, MessageBoxFarsiDefaultButton.Button1);
-            }
-        }
-
-        private void btnEdit_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                frmAddGroup.IsEdit = true;
-
-                frmAddGroup.groupId = (int)dgvGroup.CurrentRow.Cells[0].Value;
-
-                new frmAddGroup().ShowDialog();
-
-                db = new dcTarlaDataContext();
                 loadAgain();
             }
             catch
@@ -66,7 +46,7 @@ namespace Tarla.MainForms
             {
                 if (MessageBoxFarsi.Show("آیا مطمئن به حذف این مورد هستید؟", "تأیید حذف", MessageBoxFarsiButtons.YesNo, MessageBoxFarsiIcon.Question, MessageBoxFarsiDefaultButton.Button1) == DialogResult.Yes)
                 {
-                    db.DeleteGroups((int)dgvGroup.CurrentRow.Cells[0].Value);
+                    db.DeleteMessage((int)dgvMessage.CurrentRow.Cells[0].Value);
                     loadAgain();
                 }
             }
@@ -84,16 +64,14 @@ namespace Tarla.MainForms
         {
             try
             {
-                bsGroup.DataSource = db.FillGroups();
-                if (dgvGroup.Rows.Count == 0)
+                bsMessage.DataSource = db.FillMessage();
+                if (dgvMessage.Rows.Count == 0)
                 {
                     btnDelete.Enabled = false;
-                    btnEdit.Enabled = false;
                 }
                 else
                 {
                     btnDelete.Enabled = true;
-                    btnEdit.Enabled = true;
                 }
             }
             catch

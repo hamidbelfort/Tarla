@@ -8,7 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Tarla.Classes;
-
+using BehComponents;
 namespace Tarla.OperationForms
 {
     public partial class frmAddInvoice : Form
@@ -23,6 +23,7 @@ namespace Tarla.OperationForms
         int workersCost,workersCount;
         int miscCost;
         int truckRental;
+        int? lastFactorId;
         public frmAddInvoice()
         {
             InitializeComponent();
@@ -225,7 +226,29 @@ namespace Tarla.OperationForms
 
         private void btnSave_Click(object sender, EventArgs e)
         {
-
+            if (MessageBoxFarsi.Show("آیا از ثبت و ذخیره اطلاعات فاکتور اطمینان دارید؟","ذخیره فاکتور",MessageBoxFarsiButtons.YesNo,MessageBoxFarsiIcon.Information)==DialogResult.Yes)
+            {
+                totalWeight = Util.removeThousandSeprator(txtTotalWeight.Text);
+                db.InsertInvoice(txtDate.Text, (int)cmbBuyer.SelectedValue, txtLicensePlate.Text, totalWeight, intWorkersCount.Value,
+                    intWorkerCost.Value, intTruckRental.Value, intMiscCost.Value, txtWeightNote.Text, txtDockWeightNote.Text,
+                    (int)cmbBandarReceiver.SelectedValue, (int)cmbDubaiReceiver.SelectedValue, intDiscount.Value, totalPrice, intNetSell.Value,
+                    intPaid.Value, int.Parse(txtProfit.Text), int.Parse(txtLoss.Text), txtDesc.Text);
+                db.GetMaxFactorId(ref lastFactorId);
+                for (int i = 0; i < dgvFactor.Rows.Count; i++)
+                {
+                    int _productId = Convert.ToInt32(dgvFactor.Rows[i].Cells["clmProduct"].Value.ToString());
+                    int _sellerId = Convert.ToInt32(dgvFactor.Rows[i].Cells["clmSeller"].Value.ToString());
+                    int _packId= Convert.ToInt32(dgvFactor.Rows[i].Cells["clmPacking"].Value.ToString());
+                    int _weight= Convert.ToInt32(dgvFactor.Rows[i].Cells["clmWeight"].Value.ToString());
+                    int _price = Convert.ToInt32(dgvFactor.Rows[i].Cells["clmPrice"].Value.ToString());
+                    int _qty = Convert.ToInt32(dgvFactor.Rows[i].Cells["clmQty"].Value.ToString());
+                    db.InsertInvoiceDetails(lastFactorId, _productId, _sellerId, _packId, _weight, _qty, _price);
+                }
+                MessageBoxFarsi.Show("عملیات با موفقیت انجام شد", "پیغام", MessageBoxFarsiButtons.OK, MessageBoxFarsiIcon.Information, MessageBoxFarsiDefaultButton.Button1);
+                btnFactor.Enabled = true;
+                btnBook.Enabled = true;
+                btnAddNetSell.Enabled = true;
+            }
         }
 
         private void intWorkersCount_ValueChanged(object sender, EventArgs e)
@@ -283,7 +306,7 @@ namespace Tarla.OperationForms
             {
                 for (int i = 0; i < dgvFactor.Rows.Count; i++)
                 {
-                    totalPrice += (Convert.ToInt32(dgvFactor.Rows[i].Cells["clmQty"].Value.ToString())) * (Convert.ToInt32(dgvFactor.Rows[i].Cells["clmPrice"].Value.ToString()));
+                    totalPrice += (Convert.ToInt32(dgvFactor.Rows[i].Cells["clmWeight"].Value.ToString())) * (Convert.ToInt32(dgvFactor.Rows[i].Cells["clmPrice"].Value.ToString()));
                     totalWeight += (Convert.ToInt32(dgvFactor.Rows[i].Cells["clmWeight"].Value.ToString()));
                 }
             }
