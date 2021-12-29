@@ -29,32 +29,42 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmShowBooks));
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle13 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle15 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle16 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle14 = new System.Windows.Forms.DataGridViewCellStyle();
             this.panelEx1 = new DevComponents.DotNetBar.PanelEx();
             this.groupPanel2 = new DevComponents.DotNetBar.Controls.GroupPanel();
+            this.btnEdit = new DevComponents.DotNetBar.ButtonX();
+            this.btnPrint = new DevComponents.DotNetBar.ButtonX();
             this.btnExit = new DevComponents.DotNetBar.ButtonX();
             this.btnDelete = new DevComponents.DotNetBar.ButtonX();
             this.groupPanel1 = new DevComponents.DotNetBar.Controls.GroupPanel();
-            this.dgvCompany = new DevComponents.DotNetBar.Controls.DataGridViewX();
-            this.btnAdd = new DevComponents.DotNetBar.ButtonX();
-            this.bsBook = new System.Windows.Forms.BindingSource(this.components);
             this.rdoBuyer = new System.Windows.Forms.RadioButton();
             this.rdoDate = new System.Windows.Forms.RadioButton();
             this.labelX3 = new DevComponents.DotNetBar.LabelX();
             this.cmbBuyer = new DevComponents.DotNetBar.Controls.ComboBoxEx();
+            this.bsBuyer = new System.Windows.Forms.BindingSource(this.components);
             this.labelX2 = new DevComponents.DotNetBar.LabelX();
             this.labelX1 = new DevComponents.DotNetBar.LabelX();
             this.mskDate2 = new DevComponents.DotNetBar.Controls.MaskedTextBoxAdv();
             this.mskDate1 = new DevComponents.DotNetBar.Controls.MaskedTextBoxAdv();
-            this.btnPrint = new DevComponents.DotNetBar.ButtonX();
-            this.btnEdit = new DevComponents.DotNetBar.ButtonX();
+            this.dgvBook = new DevComponents.DotNetBar.Controls.DataGridViewX();
+            this.bookIdDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dateDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.buyerIdDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.buyerNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.amountDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.paymentTypeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.bankNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.bsBook = new System.Windows.Forms.BindingSource(this.components);
+            this.btnAdd = new DevComponents.DotNetBar.ButtonX();
             this.panelEx1.SuspendLayout();
             this.groupPanel2.SuspendLayout();
             this.groupPanel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvCompany)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bsBuyer)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvBook)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bsBook)).BeginInit();
             this.SuspendLayout();
             // 
@@ -121,6 +131,37 @@
             this.groupPanel2.StyleMouseOver.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.groupPanel2.TabIndex = 3;
             // 
+            // btnEdit
+            // 
+            this.btnEdit.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
+            this.btnEdit.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
+            this.btnEdit.FocusCuesEnabled = false;
+            this.btnEdit.Image = ((System.Drawing.Image)(resources.GetObject("btnEdit.Image")));
+            this.btnEdit.Location = new System.Drawing.Point(811, 3);
+            this.btnEdit.Name = "btnEdit";
+            this.btnEdit.Shape = new DevComponents.DotNetBar.RoundRectangleShapeDescriptor(10, 4, 4, 10);
+            this.btnEdit.Size = new System.Drawing.Size(90, 30);
+            this.btnEdit.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.btnEdit.TabIndex = 4;
+            this.btnEdit.Text = "  ویـرایـش";
+            this.btnEdit.TextAlignment = DevComponents.DotNetBar.eButtonTextAlignment.Right;
+            this.btnEdit.Click += new System.EventHandler(this.btnEdit_Click);
+            // 
+            // btnPrint
+            // 
+            this.btnPrint.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
+            this.btnPrint.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
+            this.btnPrint.FocusCuesEnabled = false;
+            this.btnPrint.Image = ((System.Drawing.Image)(resources.GetObject("btnPrint.Image")));
+            this.btnPrint.Location = new System.Drawing.Point(185, 2);
+            this.btnPrint.Name = "btnPrint";
+            this.btnPrint.Shape = new DevComponents.DotNetBar.RoundRectangleShapeDescriptor(10, 4, 4, 10);
+            this.btnPrint.Size = new System.Drawing.Size(100, 30);
+            this.btnPrint.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.btnPrint.TabIndex = 3;
+            this.btnPrint.Text = " پیش نمایش";
+            this.btnPrint.TextAlignment = DevComponents.DotNetBar.eButtonTextAlignment.Right;
+            // 
             // btnExit
             // 
             this.btnExit.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
@@ -136,6 +177,7 @@
             this.btnExit.TabIndex = 2;
             this.btnExit.Text = "  خـروج";
             this.btnExit.TextAlignment = DevComponents.DotNetBar.eButtonTextAlignment.Right;
+            this.btnExit.Click += new System.EventHandler(this.btnExit_Click);
             // 
             // btnDelete
             // 
@@ -151,6 +193,7 @@
             this.btnDelete.TabIndex = 1;
             this.btnDelete.Text = "  حـذف";
             this.btnDelete.TextAlignment = DevComponents.DotNetBar.eButtonTextAlignment.Right;
+            this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
             // 
             // groupPanel1
             // 
@@ -165,7 +208,7 @@
             this.groupPanel1.Controls.Add(this.labelX1);
             this.groupPanel1.Controls.Add(this.mskDate2);
             this.groupPanel1.Controls.Add(this.mskDate1);
-            this.groupPanel1.Controls.Add(this.dgvCompany);
+            this.groupPanel1.Controls.Add(this.dgvBook);
             this.groupPanel1.Controls.Add(this.btnAdd);
             this.groupPanel1.DisabledBackColor = System.Drawing.Color.Empty;
             this.groupPanel1.Location = new System.Drawing.Point(6, 12);
@@ -202,59 +245,6 @@
             this.groupPanel1.TabIndex = 2;
             this.groupPanel1.Text = "نمایش لیست دفتر حساب";
             // 
-            // dgvCompany
-            // 
-            this.dgvCompany.AllowUserToAddRows = false;
-            this.dgvCompany.AllowUserToDeleteRows = false;
-            this.dgvCompany.BackgroundColor = System.Drawing.Color.White;
-            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle7.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle7.Font = new System.Drawing.Font("Tahoma", 9.75F);
-            dataGridViewCellStyle7.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvCompany.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle7;
-            this.dgvCompany.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle8.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle8.Font = new System.Drawing.Font("Tahoma", 9.75F);
-            dataGridViewCellStyle8.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvCompany.DefaultCellStyle = dataGridViewCellStyle8;
-            this.dgvCompany.EnableHeadersVisualStyles = false;
-            this.dgvCompany.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(215)))), ((int)(((byte)(229)))));
-            this.dgvCompany.Location = new System.Drawing.Point(3, 75);
-            this.dgvCompany.Name = "dgvCompany";
-            this.dgvCompany.ReadOnly = true;
-            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle9.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle9.Font = new System.Drawing.Font("Tahoma", 9.75F);
-            dataGridViewCellStyle9.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle9.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle9.SelectionForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle9.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvCompany.RowHeadersDefaultCellStyle = dataGridViewCellStyle9;
-            this.dgvCompany.Size = new System.Drawing.Size(899, 389);
-            this.dgvCompany.TabIndex = 4;
-            // 
-            // btnAdd
-            // 
-            this.btnAdd.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
-            this.btnAdd.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
-            this.btnAdd.FocusCuesEnabled = false;
-            this.btnAdd.Image = ((System.Drawing.Image)(resources.GetObject("btnAdd.Image")));
-            this.btnAdd.Location = new System.Drawing.Point(3, 0);
-            this.btnAdd.Name = "btnAdd";
-            this.btnAdd.Shape = new DevComponents.DotNetBar.RoundRectangleShapeDescriptor(10, 4, 4, 10);
-            this.btnAdd.Size = new System.Drawing.Size(90, 30);
-            this.btnAdd.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.btnAdd.TabIndex = 3;
-            this.btnAdd.Text = "  جـدیـد";
-            this.btnAdd.TextAlignment = DevComponents.DotNetBar.eButtonTextAlignment.Right;
-            // 
             // rdoBuyer
             // 
             this.rdoBuyer.AutoSize = true;
@@ -264,6 +254,7 @@
             this.rdoBuyer.TabIndex = 20;
             this.rdoBuyer.TabStop = true;
             this.rdoBuyer.UseVisualStyleBackColor = true;
+            this.rdoBuyer.CheckedChanged += new System.EventHandler(this.rdoBuyer_CheckedChanged);
             // 
             // rdoDate
             // 
@@ -274,9 +265,11 @@
             this.rdoDate.TabIndex = 19;
             this.rdoDate.TabStop = true;
             this.rdoDate.UseVisualStyleBackColor = true;
+            this.rdoDate.CheckedChanged += new System.EventHandler(this.rdoDate_CheckedChanged);
             // 
             // labelX3
             // 
+            this.labelX3.BackColor = System.Drawing.Color.Transparent;
             // 
             // 
             // 
@@ -289,18 +282,28 @@
             // 
             // cmbBuyer
             // 
-            this.cmbBuyer.DisplayMember = "Text";
+            this.cmbBuyer.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.cmbBuyer.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
+            this.cmbBuyer.DataSource = this.bsBuyer;
+            this.cmbBuyer.DisplayMember = "BuyerName";
             this.cmbBuyer.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
             this.cmbBuyer.FormattingEnabled = true;
             this.cmbBuyer.ItemHeight = 17;
-            this.cmbBuyer.Location = new System.Drawing.Point(582, 36);
+            this.cmbBuyer.Location = new System.Drawing.Point(507, 36);
             this.cmbBuyer.Name = "cmbBuyer";
-            this.cmbBuyer.Size = new System.Drawing.Size(191, 23);
+            this.cmbBuyer.Size = new System.Drawing.Size(266, 23);
             this.cmbBuyer.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.cmbBuyer.TabIndex = 17;
+            this.cmbBuyer.ValueMember = "BuyerId";
+            this.cmbBuyer.SelectedIndexChanged += new System.EventHandler(this.cmbBuyer_SelectedIndexChanged);
+            // 
+            // bsBuyer
+            // 
+            this.bsBuyer.DataSource = typeof(Tarla.Buyer);
             // 
             // labelX2
             // 
+            this.labelX2.BackColor = System.Drawing.Color.Transparent;
             // 
             // 
             // 
@@ -313,6 +316,7 @@
             // 
             // labelX1
             // 
+            this.labelX1.BackColor = System.Drawing.Color.Transparent;
             // 
             // 
             // 
@@ -340,6 +344,7 @@
             this.mskDate2.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.mskDate2.TabIndex = 14;
             this.mskDate2.Text = "";
+            this.mskDate2.TextChanged += new System.EventHandler(this.mskDate2_TextChanged);
             // 
             // mskDate1
             // 
@@ -358,36 +363,132 @@
             this.mskDate1.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.mskDate1.TabIndex = 13;
             this.mskDate1.Text = "";
+            this.mskDate1.TextChanged += new System.EventHandler(this.mskDate1_TextChanged);
             // 
-            // btnPrint
+            // dgvBook
             // 
-            this.btnPrint.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
-            this.btnPrint.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
-            this.btnPrint.FocusCuesEnabled = false;
-            this.btnPrint.Image = ((System.Drawing.Image)(resources.GetObject("btnPrint.Image")));
-            this.btnPrint.Location = new System.Drawing.Point(185, 2);
-            this.btnPrint.Name = "btnPrint";
-            this.btnPrint.Shape = new DevComponents.DotNetBar.RoundRectangleShapeDescriptor(10, 4, 4, 10);
-            this.btnPrint.Size = new System.Drawing.Size(100, 30);
-            this.btnPrint.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.btnPrint.TabIndex = 3;
-            this.btnPrint.Text = " پیش نمایش";
-            this.btnPrint.TextAlignment = DevComponents.DotNetBar.eButtonTextAlignment.Right;
+            this.dgvBook.AllowUserToAddRows = false;
+            this.dgvBook.AllowUserToDeleteRows = false;
+            this.dgvBook.AutoGenerateColumns = false;
+            this.dgvBook.BackgroundColor = System.Drawing.Color.White;
+            dataGridViewCellStyle13.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle13.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle13.Font = new System.Drawing.Font("Tahoma", 9.75F);
+            dataGridViewCellStyle13.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle13.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle13.SelectionForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle13.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvBook.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle13;
+            this.dgvBook.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvBook.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.bookIdDataGridViewTextBoxColumn,
+            this.dateDataGridViewTextBoxColumn,
+            this.buyerIdDataGridViewTextBoxColumn,
+            this.buyerNameDataGridViewTextBoxColumn,
+            this.amountDataGridViewTextBoxColumn,
+            this.paymentTypeDataGridViewTextBoxColumn,
+            this.bankNameDataGridViewTextBoxColumn});
+            this.dgvBook.DataSource = this.bsBook;
+            dataGridViewCellStyle15.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle15.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle15.Font = new System.Drawing.Font("Tahoma", 9.75F);
+            dataGridViewCellStyle15.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle15.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle15.SelectionForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle15.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvBook.DefaultCellStyle = dataGridViewCellStyle15;
+            this.dgvBook.EnableHeadersVisualStyles = false;
+            this.dgvBook.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(215)))), ((int)(((byte)(229)))));
+            this.dgvBook.Location = new System.Drawing.Point(3, 75);
+            this.dgvBook.Name = "dgvBook";
+            this.dgvBook.ReadOnly = true;
+            dataGridViewCellStyle16.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle16.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle16.Font = new System.Drawing.Font("Tahoma", 9.75F);
+            dataGridViewCellStyle16.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle16.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle16.SelectionForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle16.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvBook.RowHeadersDefaultCellStyle = dataGridViewCellStyle16;
+            this.dgvBook.Size = new System.Drawing.Size(899, 389);
+            this.dgvBook.TabIndex = 4;
             // 
-            // btnEdit
+            // bookIdDataGridViewTextBoxColumn
             // 
-            this.btnEdit.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
-            this.btnEdit.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
-            this.btnEdit.FocusCuesEnabled = false;
-            this.btnEdit.Image = ((System.Drawing.Image)(resources.GetObject("btnEdit.Image")));
-            this.btnEdit.Location = new System.Drawing.Point(811, 3);
-            this.btnEdit.Name = "btnEdit";
-            this.btnEdit.Shape = new DevComponents.DotNetBar.RoundRectangleShapeDescriptor(10, 4, 4, 10);
-            this.btnEdit.Size = new System.Drawing.Size(90, 30);
-            this.btnEdit.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.btnEdit.TabIndex = 4;
-            this.btnEdit.Text = "  ویـرایـش";
-            this.btnEdit.TextAlignment = DevComponents.DotNetBar.eButtonTextAlignment.Right;
+            this.bookIdDataGridViewTextBoxColumn.DataPropertyName = "BookId";
+            this.bookIdDataGridViewTextBoxColumn.HeaderText = "BookId";
+            this.bookIdDataGridViewTextBoxColumn.Name = "bookIdDataGridViewTextBoxColumn";
+            this.bookIdDataGridViewTextBoxColumn.ReadOnly = true;
+            this.bookIdDataGridViewTextBoxColumn.Visible = false;
+            // 
+            // dateDataGridViewTextBoxColumn
+            // 
+            this.dateDataGridViewTextBoxColumn.DataPropertyName = "Date";
+            this.dateDataGridViewTextBoxColumn.HeaderText = "تاریخ";
+            this.dateDataGridViewTextBoxColumn.Name = "dateDataGridViewTextBoxColumn";
+            this.dateDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // buyerIdDataGridViewTextBoxColumn
+            // 
+            this.buyerIdDataGridViewTextBoxColumn.DataPropertyName = "BuyerId";
+            this.buyerIdDataGridViewTextBoxColumn.HeaderText = "BuyerId";
+            this.buyerIdDataGridViewTextBoxColumn.Name = "buyerIdDataGridViewTextBoxColumn";
+            this.buyerIdDataGridViewTextBoxColumn.ReadOnly = true;
+            this.buyerIdDataGridViewTextBoxColumn.Visible = false;
+            // 
+            // buyerNameDataGridViewTextBoxColumn
+            // 
+            this.buyerNameDataGridViewTextBoxColumn.DataPropertyName = "BuyerName";
+            this.buyerNameDataGridViewTextBoxColumn.HeaderText = "مشتری";
+            this.buyerNameDataGridViewTextBoxColumn.Name = "buyerNameDataGridViewTextBoxColumn";
+            this.buyerNameDataGridViewTextBoxColumn.ReadOnly = true;
+            this.buyerNameDataGridViewTextBoxColumn.Width = 200;
+            // 
+            // amountDataGridViewTextBoxColumn
+            // 
+            this.amountDataGridViewTextBoxColumn.DataPropertyName = "Amount";
+            dataGridViewCellStyle14.Format = "N0";
+            this.amountDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle14;
+            this.amountDataGridViewTextBoxColumn.HeaderText = "مبلغ پرداختی";
+            this.amountDataGridViewTextBoxColumn.Name = "amountDataGridViewTextBoxColumn";
+            this.amountDataGridViewTextBoxColumn.ReadOnly = true;
+            this.amountDataGridViewTextBoxColumn.Width = 150;
+            // 
+            // paymentTypeDataGridViewTextBoxColumn
+            // 
+            this.paymentTypeDataGridViewTextBoxColumn.DataPropertyName = "PaymentType";
+            this.paymentTypeDataGridViewTextBoxColumn.HeaderText = "نوع تراکنش";
+            this.paymentTypeDataGridViewTextBoxColumn.Name = "paymentTypeDataGridViewTextBoxColumn";
+            this.paymentTypeDataGridViewTextBoxColumn.ReadOnly = true;
+            this.paymentTypeDataGridViewTextBoxColumn.Width = 150;
+            // 
+            // bankNameDataGridViewTextBoxColumn
+            // 
+            this.bankNameDataGridViewTextBoxColumn.DataPropertyName = "BankName";
+            this.bankNameDataGridViewTextBoxColumn.HeaderText = "واریز به حساب";
+            this.bankNameDataGridViewTextBoxColumn.Name = "bankNameDataGridViewTextBoxColumn";
+            this.bankNameDataGridViewTextBoxColumn.ReadOnly = true;
+            this.bankNameDataGridViewTextBoxColumn.Width = 150;
+            // 
+            // bsBook
+            // 
+            this.bsBook.DataSource = typeof(Tarla.BooksView);
+            // 
+            // btnAdd
+            // 
+            this.btnAdd.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
+            this.btnAdd.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
+            this.btnAdd.FocusCuesEnabled = false;
+            this.btnAdd.Image = ((System.Drawing.Image)(resources.GetObject("btnAdd.Image")));
+            this.btnAdd.Location = new System.Drawing.Point(3, 0);
+            this.btnAdd.Name = "btnAdd";
+            this.btnAdd.Shape = new DevComponents.DotNetBar.RoundRectangleShapeDescriptor(10, 4, 4, 10);
+            this.btnAdd.Size = new System.Drawing.Size(90, 30);
+            this.btnAdd.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.btnAdd.TabIndex = 3;
+            this.btnAdd.Text = "  جـدیـد";
+            this.btnAdd.TextAlignment = DevComponents.DotNetBar.eButtonTextAlignment.Right;
+            this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
             // 
             // frmShowBooks
             // 
@@ -402,11 +503,13 @@
             this.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "frmShowBooks";
+            this.Load += new System.EventHandler(this.frmShowBooks_Load);
             this.panelEx1.ResumeLayout(false);
             this.groupPanel2.ResumeLayout(false);
             this.groupPanel1.ResumeLayout(false);
             this.groupPanel1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvCompany)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bsBuyer)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvBook)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.bsBook)).EndInit();
             this.ResumeLayout(false);
 
@@ -419,7 +522,7 @@
         private DevComponents.DotNetBar.ButtonX btnExit;
         private DevComponents.DotNetBar.ButtonX btnDelete;
         private DevComponents.DotNetBar.Controls.GroupPanel groupPanel1;
-        private DevComponents.DotNetBar.Controls.DataGridViewX dgvCompany;
+        private DevComponents.DotNetBar.Controls.DataGridViewX dgvBook;
         private DevComponents.DotNetBar.ButtonX btnAdd;
         private System.Windows.Forms.BindingSource bsBook;
         private System.Windows.Forms.RadioButton rdoBuyer;
@@ -432,5 +535,13 @@
         private DevComponents.DotNetBar.Controls.MaskedTextBoxAdv mskDate1;
         private DevComponents.DotNetBar.ButtonX btnPrint;
         private DevComponents.DotNetBar.ButtonX btnEdit;
+        private System.Windows.Forms.DataGridViewTextBoxColumn bookIdDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dateDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn buyerIdDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn buyerNameDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn amountDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn paymentTypeDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn bankNameDataGridViewTextBoxColumn;
+        private System.Windows.Forms.BindingSource bsBuyer;
     }
 }

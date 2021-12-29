@@ -105,52 +105,60 @@ namespace Tarla.OperationForms
 
         private void btnAdd_Click(object sender, EventArgs e)
         {
-            if (intCount.Value == 0)
+            try
             {
-                errorProvider1.SetError(intCount, "تعداد را وارد کنید");
-                intCount.Focus();
-            }
-            else if (intWeight.Value == 0)
-            {
-                errorProvider1.Clear();
-                errorProvider1.SetError(intWeight, "وزن را وارد کنید");
-                intWeight.Focus();
-            }
-            else if (intPrice.Value == 0)
-            {
-                errorProvider1.Clear();
-                errorProvider1.SetError(intPrice, "قیمت را وارد کنید");
-                intPrice.Focus();
-            }
-            else
-            {
-                if (dgvFactor.Rows.Count == 0)
+                if (intCount.Value == 0)
                 {
-                    dgvFactor.Rows.Add(cmbProduct.Text, intPrice.Text, intCount.Text, intWeight.Text, cmbSeller.Text, cmbPacking.Text, cmbProduct.SelectedValue, cmbSeller.SelectedValue, cmbPacking.SelectedValue);
+                    errorProvider1.SetError(intCount, "تعداد را وارد کنید");
+                    intCount.Focus();
+                }
+                else if (intWeight.Value == 0)
+                {
+                    errorProvider1.Clear();
+                    errorProvider1.SetError(intWeight, "وزن را وارد کنید");
+                    intWeight.Focus();
+                }
+                else if (intPrice.Value == 0)
+                {
+                    errorProvider1.Clear();
+                    errorProvider1.SetError(intPrice, "قیمت را وارد کنید");
+                    intPrice.Focus();
                 }
                 else
                 {
-                    for (int i = 0; i < dgvFactor.Rows.Count; i++)
+                    if (dgvFactor.Rows.Count == 0)
                     {
-                        if (Convert.ToInt32(dgvFactor.Rows[i].Cells["clmProduct"].Value.ToString()) == Convert.ToInt32(cmbProduct.SelectedValue.ToString()))
+                        dgvFactor.Rows.Add(cmbProduct.Text, intPrice.Text, intCount.Text, intWeight.Text, cmbSeller.Text, cmbPacking.Text, cmbProduct.SelectedValue, cmbSeller.SelectedValue, cmbPacking.SelectedValue);
+                    }
+                    else
+                    {
+                        for (int i = 0; i < dgvFactor.Rows.Count; i++)
                         {
-                            dgvFactor.Rows[i].Cells["clmQty"].Value = intCount.Value;
-                            dgvFactor.Rows[i].Cells["clmWeight"].Value = intWeight.Value;
-                            dgvFactor.Rows[i].Cells["clmPrice"].Value = intPrice.Value;
-                            dgvFactor.Rows[i].Cells["clmSeller"].Value = cmbSeller.SelectedValue;
-                            dgvFactor.Rows[i].Cells["clmPacking"].Value = cmbPacking.SelectedValue;
-                            dgvFactor.Rows[i].Cells["clmPackingName"].Value = cmbPacking.Text;
-                            dgvFactor.Rows[i].Cells["clmSellerName"].Value = cmbSeller.Text;
-                        }
-                        else
-                        {
+                            if (Convert.ToInt32(dgvFactor.Rows[i].Cells["clmProduct"].Value.ToString()) == Convert.ToInt32(cmbProduct.SelectedValue.ToString()))
+                            {
+                                dgvFactor.Rows[i].Cells["clmQty"].Value = intCount.Value;
+                                dgvFactor.Rows[i].Cells["clmWeight"].Value = intWeight.Value;
+                                dgvFactor.Rows[i].Cells["clmPrice"].Value = intPrice.Value;
+                                dgvFactor.Rows[i].Cells["clmSeller"].Value = cmbSeller.SelectedValue;
+                                dgvFactor.Rows[i].Cells["clmPacking"].Value = cmbPacking.SelectedValue;
+                                dgvFactor.Rows[i].Cells["clmPackingName"].Value = cmbPacking.Text;
+                                dgvFactor.Rows[i].Cells["clmSellerName"].Value = cmbSeller.Text;
+                            }
+                            else
+                            {
 
+                            }
                         }
                     }
+                    calculateTotalPrice();
                 }
-                calculateTotalPrice();
             }
-            
+            catch
+            {
+                MessageBoxFarsi.Show("ارتباط با سرور اطلاعاتی قطع شده است", "اخطار", MessageBoxFarsiButtons.OK, MessageBoxFarsiIcon.Error, MessageBoxFarsiDefaultButton.Button1);
+            }
+
+
         }
 
         private void btnDelete_Click(object sender, EventArgs e)
@@ -226,29 +234,57 @@ namespace Tarla.OperationForms
 
         private void btnSave_Click(object sender, EventArgs e)
         {
-            if (MessageBoxFarsi.Show("آیا از ثبت و ذخیره اطلاعات فاکتور اطمینان دارید؟","ذخیره فاکتور",MessageBoxFarsiButtons.YesNo,MessageBoxFarsiIcon.Information)==DialogResult.Yes)
+            try
             {
-                totalWeight = Util.removeThousandSeprator(txtTotalWeight.Text);
-                db.InsertInvoice(txtDate.Text, (int)cmbBuyer.SelectedValue, txtLicensePlate.Text, totalWeight, intWorkersCount.Value,
-                    intWorkerCost.Value, intTruckRental.Value, intMiscCost.Value, txtWeightNote.Text, txtDockWeightNote.Text,
-                    (int)cmbBandarReceiver.SelectedValue, (int)cmbDubaiReceiver.SelectedValue, intDiscount.Value, totalPrice, intNetSell.Value,
-                    intPaid.Value, int.Parse(txtProfit.Text), int.Parse(txtLoss.Text), txtDesc.Text);
-                db.GetMaxFactorId(ref lastFactorId);
-                for (int i = 0; i < dgvFactor.Rows.Count; i++)
+                if (MessageBoxFarsi.Show("آیا از ثبت و ذخیره اطلاعات فاکتور اطمینان دارید؟", "ذخیره فاکتور", MessageBoxFarsiButtons.YesNo, MessageBoxFarsiIcon.Information) == DialogResult.Yes)
                 {
-                    int _productId = Convert.ToInt32(dgvFactor.Rows[i].Cells["clmProduct"].Value.ToString());
-                    int _sellerId = Convert.ToInt32(dgvFactor.Rows[i].Cells["clmSeller"].Value.ToString());
-                    int _packId= Convert.ToInt32(dgvFactor.Rows[i].Cells["clmPacking"].Value.ToString());
-                    int _weight= Convert.ToInt32(dgvFactor.Rows[i].Cells["clmWeight"].Value.ToString());
-                    int _price = Convert.ToInt32(dgvFactor.Rows[i].Cells["clmPrice"].Value.ToString());
-                    int _qty = Convert.ToInt32(dgvFactor.Rows[i].Cells["clmQty"].Value.ToString());
-                    db.InsertInvoiceDetails(lastFactorId, _productId, _sellerId, _packId, _weight, _qty, _price);
+                    totalWeight = Util.removeThousandSeprator(txtTotalWeight.Text);
+                    db.InsertInvoice(txtDate.Text, (int)cmbBuyer.SelectedValue, txtLicensePlate.Text, totalWeight, intWorkersCount.Value,
+                        intWorkerCost.Value, intTruckRental.Value, intMiscCost.Value, txtWeightNote.Text, txtDockWeightNote.Text,
+                        (int)cmbBandarReceiver.SelectedValue, (int)cmbDubaiReceiver.SelectedValue, intDiscount.Value, totalPrice, intNetSell.Value,
+                        intPaid.Value, int.Parse(txtProfit.Text), int.Parse(txtLoss.Text), txtDesc.Text);
+                    db.GetMaxFactorId(ref lastFactorId);
+                    for (int i = 0; i < dgvFactor.Rows.Count; i++)
+                    {
+                        int _productId = Convert.ToInt32(dgvFactor.Rows[i].Cells["clmProduct"].Value.ToString());
+                        int _sellerId = Convert.ToInt32(dgvFactor.Rows[i].Cells["clmSeller"].Value.ToString());
+                        int _packId = Convert.ToInt32(dgvFactor.Rows[i].Cells["clmPacking"].Value.ToString());
+                        int _weight = Convert.ToInt32(dgvFactor.Rows[i].Cells["clmWeight"].Value.ToString());
+                        int _price = Convert.ToInt32(dgvFactor.Rows[i].Cells["clmPrice"].Value.ToString());
+                        int _qty = Convert.ToInt32(dgvFactor.Rows[i].Cells["clmQty"].Value.ToString());
+                        db.InsertInvoiceDetails(lastFactorId, _productId, _sellerId, _packId, _weight, _qty, _price);
+                    }
+                    MessageBoxFarsi.Show("عملیات با موفقیت انجام شد", "پیغام", MessageBoxFarsiButtons.OK, MessageBoxFarsiIcon.Information, MessageBoxFarsiDefaultButton.Button1);
+                    btnFactor.Enabled = true;
+                    btnBook.Enabled = true;
+                    btnAddNetSell.Enabled = true;
                 }
-                MessageBoxFarsi.Show("عملیات با موفقیت انجام شد", "پیغام", MessageBoxFarsiButtons.OK, MessageBoxFarsiIcon.Information, MessageBoxFarsiDefaultButton.Button1);
-                btnFactor.Enabled = true;
-                btnBook.Enabled = true;
-                btnAddNetSell.Enabled = true;
             }
+            catch
+            {
+                MessageBoxFarsi.Show("ارتباط با سرور اطلاعاتی قطع شده است", "اخطار", MessageBoxFarsiButtons.OK, MessageBoxFarsiIcon.Error, MessageBoxFarsiDefaultButton.Button1);
+            }
+            
+        }
+
+        private void btnAddNetSell_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                frmAddNetSell.invoiceId = (int)lastFactorId;
+                new frmAddNetSell().ShowDialog();
+            }
+            catch
+            {
+                MessageBoxFarsi.Show("ارتباط با سرور اطلاعاتی قطع شده است", "اخطار", MessageBoxFarsiButtons.OK, MessageBoxFarsiIcon.Error, MessageBoxFarsiDefaultButton.Button1);
+            }
+            
+        }
+
+        private void btnBook_Click(object sender, EventArgs e)
+        {
+            frmAddBook.IsEdit = false;
+            new frmAddBook().ShowDialog();
         }
 
         private void intWorkersCount_ValueChanged(object sender, EventArgs e)

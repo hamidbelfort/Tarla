@@ -90,6 +90,12 @@ namespace Tarla
     partial void InsertMessage(Message instance);
     partial void UpdateMessage(Message instance);
     partial void DeleteMessage(Message instance);
+    partial void InsertBook(Book instance);
+    partial void UpdateBook(Book instance);
+    partial void DeleteBook(Book instance);
+    partial void InsertPayType(PayType instance);
+    partial void UpdatePayType(PayType instance);
+    partial void DeletePayType(PayType instance);
     #endregion
 		
 		public dcTarlaDataContext() : 
@@ -298,6 +304,30 @@ namespace Tarla
 			}
 		}
 		
+		public System.Data.Linq.Table<Message> Messages
+		{
+			get
+			{
+				return this.GetTable<Message>();
+			}
+		}
+		
+		public System.Data.Linq.Table<Book> Books
+		{
+			get
+			{
+				return this.GetTable<Book>();
+			}
+		}
+		
+		public System.Data.Linq.Table<PayType> PayTypes
+		{
+			get
+			{
+				return this.GetTable<PayType>();
+			}
+		}
+		
 		public System.Data.Linq.Table<BooksView> BooksViews
 		{
 			get
@@ -306,11 +336,11 @@ namespace Tarla
 			}
 		}
 		
-		public System.Data.Linq.Table<Message> Messages
+		public System.Data.Linq.Table<F_DetailsView> F_DetailsViews
 		{
 			get
 			{
-				return this.GetTable<Message>();
+				return this.GetTable<F_DetailsView>();
 			}
 		}
 		
@@ -1042,20 +1072,6 @@ namespace Tarla
 			return ((ISingleResult<FactorView>)(result.ReturnValue));
 		}
 		
-		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.FilterBooksViewByDate")]
-		public ISingleResult<BooksView> FilterBooksViewByDate([global::System.Data.Linq.Mapping.ParameterAttribute(Name="Date1", DbType="NVarChar(10)")] string date1, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="Date2", DbType="NVarChar(10)")] string date2)
-		{
-			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), date1, date2);
-			return ((ISingleResult<BooksView>)(result.ReturnValue));
-		}
-		
-		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.FilterBooksViewById")]
-		public ISingleResult<BooksView> FilterBooksViewById([global::System.Data.Linq.Mapping.ParameterAttribute(Name="BuyerId", DbType="Int")] System.Nullable<int> buyerId)
-		{
-			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), buyerId);
-			return ((ISingleResult<BooksView>)(result.ReturnValue));
-		}
-		
 		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.GetMaxFactorId")]
 		public int GetMaxFactorId([global::System.Data.Linq.Mapping.ParameterAttribute(Name="FactorId", DbType="Int")] ref System.Nullable<int> factorId)
 		{
@@ -1091,6 +1107,97 @@ namespace Tarla
 			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), messageText);
 			messageText = ((string)(result.GetParameterValue(0)));
 			return ((int)(result.ReturnValue));
+		}
+		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.GetBalanceById")]
+		public int GetBalanceById([global::System.Data.Linq.Mapping.ParameterAttribute(Name="BuyerId", DbType="Int")] System.Nullable<int> buyerId, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="Paid", DbType="Int")] ref System.Nullable<int> paid, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="TotalPrice", DbType="Int")] ref System.Nullable<int> totalPrice, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="Amount", DbType="Int")] ref System.Nullable<int> amount)
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), buyerId, paid, totalPrice, amount);
+			paid = ((System.Nullable<int>)(result.GetParameterValue(1)));
+			totalPrice = ((System.Nullable<int>)(result.GetParameterValue(2)));
+			amount = ((System.Nullable<int>)(result.GetParameterValue(3)));
+			return ((int)(result.ReturnValue));
+		}
+		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.FilterBooksViewByDate")]
+		public ISingleResult<BooksView> FilterBooksViewByDate([global::System.Data.Linq.Mapping.ParameterAttribute(Name="Date1", DbType="NVarChar(10)")] string date1, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="Date2", DbType="NVarChar(10)")] string date2)
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), date1, date2);
+			return ((ISingleResult<BooksView>)(result.ReturnValue));
+		}
+		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.FilterBooksViewById")]
+		public ISingleResult<BooksView> FilterBooksViewById([global::System.Data.Linq.Mapping.ParameterAttribute(Name="BuyerId", DbType="Int")] System.Nullable<int> buyerId)
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), buyerId);
+			return ((ISingleResult<BooksView>)(result.ReturnValue));
+		}
+		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.FillBookById")]
+		public ISingleResult<Book> FillBookById([global::System.Data.Linq.Mapping.ParameterAttribute(Name="BookId", DbType="Int")] System.Nullable<int> bookId)
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), bookId);
+			return ((ISingleResult<Book>)(result.ReturnValue));
+		}
+		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.FillPayType")]
+		public ISingleResult<PayType> FillPayType()
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())));
+			return ((ISingleResult<PayType>)(result.ReturnValue));
+		}
+		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.FillPayTypeById")]
+		public ISingleResult<PayType> FillPayTypeById([global::System.Data.Linq.Mapping.ParameterAttribute(Name="PayTypeId", DbType="Int")] System.Nullable<int> payTypeId)
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), payTypeId);
+			return ((ISingleResult<PayType>)(result.ReturnValue));
+		}
+		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.DeleteBook")]
+		public int DeleteBook([global::System.Data.Linq.Mapping.ParameterAttribute(Name="BookId", DbType="Int")] System.Nullable<int> bookId)
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), bookId);
+			return ((int)(result.ReturnValue));
+		}
+		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.InsertBook")]
+		public int InsertBook([global::System.Data.Linq.Mapping.ParameterAttribute(Name="Date", DbType="NVarChar(10)")] string date, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="BuyerId", DbType="Int")] System.Nullable<int> buyerId, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="Amount", DbType="Int")] System.Nullable<int> amount, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="PayType", DbType="Int")] System.Nullable<int> payType, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="BankId", DbType="Int")] System.Nullable<int> bankId, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="BookDesc", DbType="NVarChar(MAX)")] string bookDesc)
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), date, buyerId, amount, payType, bankId, bookDesc);
+			return ((int)(result.ReturnValue));
+		}
+		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.UpdateBook")]
+		public int UpdateBook([global::System.Data.Linq.Mapping.ParameterAttribute(Name="BookId", DbType="Int")] System.Nullable<int> bookId, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="Date", DbType="NVarChar(10)")] string date, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="BuyerId", DbType="Int")] System.Nullable<int> buyerId, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="Amount", DbType="Int")] System.Nullable<int> amount, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="PayType", DbType="Int")] System.Nullable<int> payType, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="BankId", DbType="Int")] System.Nullable<int> bankId, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="BookDesc", DbType="NVarChar(MAX)")] string bookDesc)
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), bookId, date, buyerId, amount, payType, bankId, bookDesc);
+			return ((int)(result.ReturnValue));
+		}
+		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.GetFactorNetSell")]
+		public int GetFactorNetSell([global::System.Data.Linq.Mapping.ParameterAttribute(Name="InvoiceId", DbType="Int")] System.Nullable<int> invoiceId, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="Netsell", DbType="Int")] ref System.Nullable<int> netsell, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="TotalPrice", DbType="Int")] ref System.Nullable<int> totalPrice, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="Profit", DbType="Int")] ref System.Nullable<int> profit, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="Loss", DbType="Int")] ref System.Nullable<int> loss)
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), invoiceId, netsell, totalPrice, profit, loss);
+			netsell = ((System.Nullable<int>)(result.GetParameterValue(1)));
+			totalPrice = ((System.Nullable<int>)(result.GetParameterValue(2)));
+			profit = ((System.Nullable<int>)(result.GetParameterValue(3)));
+			loss = ((System.Nullable<int>)(result.GetParameterValue(4)));
+			return ((int)(result.ReturnValue));
+		}
+		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.UpdateInvoiceNetSell")]
+		public int UpdateInvoiceNetSell([global::System.Data.Linq.Mapping.ParameterAttribute(Name="InvoiceId", DbType="Int")] System.Nullable<int> invoiceId, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="NetSell", DbType="Int")] System.Nullable<int> netSell, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="Profit", DbType="Int")] System.Nullable<int> profit, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="Loss", DbType="Int")] System.Nullable<int> loss)
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), invoiceId, netSell, profit, loss);
+			return ((int)(result.ReturnValue));
+		}
+		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.GetInvoiceDetails")]
+		public ISingleResult<F_DetailsView> GetInvoiceDetails([global::System.Data.Linq.Mapping.ParameterAttribute(Name="InvoiceId", DbType="Int")] System.Nullable<int> invoiceId)
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), invoiceId);
+			return ((ISingleResult<F_DetailsView>)(result.ReturnValue));
 		}
 	}
 	
@@ -2392,6 +2499,8 @@ namespace Tarla
 		
 		private EntitySet<Invoice> _Invoices;
 		
+		private EntitySet<Book> _Books;
+		
     #region Extensibility Method Definitions
     partial void OnLoaded();
     partial void OnValidate(System.Data.Linq.ChangeAction action);
@@ -2411,6 +2520,7 @@ namespace Tarla
 		public Buyer()
 		{
 			this._Invoices = new EntitySet<Invoice>(new Action<Invoice>(this.attach_Invoices), new Action<Invoice>(this.detach_Invoices));
+			this._Books = new EntitySet<Book>(new Action<Book>(this.attach_Books), new Action<Book>(this.detach_Books));
 			OnCreated();
 		}
 		
@@ -2527,6 +2637,19 @@ namespace Tarla
 			}
 		}
 		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Buyer_Book", Storage="_Books", ThisKey="BuyerId", OtherKey="BuyerId")]
+		public EntitySet<Book> Books
+		{
+			get
+			{
+				return this._Books;
+			}
+			set
+			{
+				this._Books.Assign(value);
+			}
+		}
+		
 		public event PropertyChangingEventHandler PropertyChanging;
 		
 		public event PropertyChangedEventHandler PropertyChanged;
@@ -2554,6 +2677,18 @@ namespace Tarla
 		}
 		
 		private void detach_Invoices(Invoice entity)
+		{
+			this.SendPropertyChanging();
+			entity.Buyer = null;
+		}
+		
+		private void attach_Books(Book entity)
+		{
+			this.SendPropertyChanging();
+			entity.Buyer = this;
+		}
+		
+		private void detach_Books(Book entity)
 		{
 			this.SendPropertyChanging();
 			entity.Buyer = null;
@@ -3858,6 +3993,8 @@ namespace Tarla
 		
 		private string _BankDescription;
 		
+		private EntitySet<Book> _Books;
+		
     #region Extensibility Method Definitions
     partial void OnLoaded();
     partial void OnValidate(System.Data.Linq.ChangeAction action);
@@ -3876,6 +4013,7 @@ namespace Tarla
 		
 		public Bank()
 		{
+			this._Books = new EntitySet<Book>(new Action<Book>(this.attach_Books), new Action<Book>(this.detach_Books));
 			OnCreated();
 		}
 		
@@ -3979,6 +4117,19 @@ namespace Tarla
 			}
 		}
 		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Bank_Book", Storage="_Books", ThisKey="BankId", OtherKey="BankId")]
+		public EntitySet<Book> Books
+		{
+			get
+			{
+				return this._Books;
+			}
+			set
+			{
+				this._Books.Assign(value);
+			}
+		}
+		
 		public event PropertyChangingEventHandler PropertyChanging;
 		
 		public event PropertyChangedEventHandler PropertyChanged;
@@ -3997,6 +4148,18 @@ namespace Tarla
 			{
 				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
 			}
+		}
+		
+		private void attach_Books(Book entity)
+		{
+			this.SendPropertyChanging();
+			entity.Bank = this;
+		}
+		
+		private void detach_Books(Book entity)
+		{
+			this.SendPropertyChanging();
+			entity.Bank = null;
 		}
 	}
 	
@@ -6037,6 +6200,535 @@ namespace Tarla
 		}
 	}
 	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Messages")]
+	public sealed partial class Message : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _MessageId;
+		
+		private string _MessageText;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnMessageIdChanging(int value);
+    partial void OnMessageIdChanged();
+    partial void OnMessageTextChanging(string value);
+    partial void OnMessageTextChanged();
+    #endregion
+		
+		public Message()
+		{
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MessageId", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public int MessageId
+		{
+			get
+			{
+				return this._MessageId;
+			}
+			set
+			{
+				if ((this._MessageId != value))
+				{
+					this.OnMessageIdChanging(value);
+					this.SendPropertyChanging();
+					this._MessageId = value;
+					this.SendPropertyChanged("MessageId");
+					this.OnMessageIdChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MessageText", DbType="NVarChar(MAX)")]
+		public string MessageText
+		{
+			get
+			{
+				return this._MessageText;
+			}
+			set
+			{
+				if ((this._MessageText != value))
+				{
+					this.OnMessageTextChanging(value);
+					this.SendPropertyChanging();
+					this._MessageText = value;
+					this.SendPropertyChanged("MessageText");
+					this.OnMessageTextChanged();
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		private void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		private void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Books")]
+	public partial class Book : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _BookId;
+		
+		private string _Date;
+		
+		private System.Nullable<int> _BuyerId;
+		
+		private System.Nullable<int> _Amount;
+		
+		private System.Nullable<int> _PayTypeId;
+		
+		private System.Nullable<int> _BankId;
+		
+		private string _BookDesc;
+		
+		private EntityRef<Bank> _Bank;
+		
+		private EntityRef<Buyer> _Buyer;
+		
+		private EntityRef<PayType> _PayType;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnBookIdChanging(int value);
+    partial void OnBookIdChanged();
+    partial void OnDateChanging(string value);
+    partial void OnDateChanged();
+    partial void OnBuyerIdChanging(System.Nullable<int> value);
+    partial void OnBuyerIdChanged();
+    partial void OnAmountChanging(System.Nullable<int> value);
+    partial void OnAmountChanged();
+    partial void OnPayTypeIdChanging(System.Nullable<int> value);
+    partial void OnPayTypeIdChanged();
+    partial void OnBankIdChanging(System.Nullable<int> value);
+    partial void OnBankIdChanged();
+    partial void OnBookDescChanging(string value);
+    partial void OnBookDescChanged();
+    #endregion
+		
+		public Book()
+		{
+			this._Bank = default(EntityRef<Bank>);
+			this._Buyer = default(EntityRef<Buyer>);
+			this._PayType = default(EntityRef<PayType>);
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_BookId", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public int BookId
+		{
+			get
+			{
+				return this._BookId;
+			}
+			set
+			{
+				if ((this._BookId != value))
+				{
+					this.OnBookIdChanging(value);
+					this.SendPropertyChanging();
+					this._BookId = value;
+					this.SendPropertyChanged("BookId");
+					this.OnBookIdChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Date", DbType="NVarChar(10)")]
+		public string Date
+		{
+			get
+			{
+				return this._Date;
+			}
+			set
+			{
+				if ((this._Date != value))
+				{
+					this.OnDateChanging(value);
+					this.SendPropertyChanging();
+					this._Date = value;
+					this.SendPropertyChanged("Date");
+					this.OnDateChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_BuyerId", DbType="Int")]
+		public System.Nullable<int> BuyerId
+		{
+			get
+			{
+				return this._BuyerId;
+			}
+			set
+			{
+				if ((this._BuyerId != value))
+				{
+					if (this._Buyer.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.OnBuyerIdChanging(value);
+					this.SendPropertyChanging();
+					this._BuyerId = value;
+					this.SendPropertyChanged("BuyerId");
+					this.OnBuyerIdChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Amount", DbType="Int")]
+		public System.Nullable<int> Amount
+		{
+			get
+			{
+				return this._Amount;
+			}
+			set
+			{
+				if ((this._Amount != value))
+				{
+					this.OnAmountChanging(value);
+					this.SendPropertyChanging();
+					this._Amount = value;
+					this.SendPropertyChanged("Amount");
+					this.OnAmountChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PayTypeId", DbType="Int")]
+		public System.Nullable<int> PayTypeId
+		{
+			get
+			{
+				return this._PayTypeId;
+			}
+			set
+			{
+				if ((this._PayTypeId != value))
+				{
+					if (this._PayType.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.OnPayTypeIdChanging(value);
+					this.SendPropertyChanging();
+					this._PayTypeId = value;
+					this.SendPropertyChanged("PayTypeId");
+					this.OnPayTypeIdChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_BankId", DbType="Int")]
+		public System.Nullable<int> BankId
+		{
+			get
+			{
+				return this._BankId;
+			}
+			set
+			{
+				if ((this._BankId != value))
+				{
+					if (this._Bank.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.OnBankIdChanging(value);
+					this.SendPropertyChanging();
+					this._BankId = value;
+					this.SendPropertyChanged("BankId");
+					this.OnBankIdChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_BookDesc", DbType="NVarChar(MAX)")]
+		public string BookDesc
+		{
+			get
+			{
+				return this._BookDesc;
+			}
+			set
+			{
+				if ((this._BookDesc != value))
+				{
+					this.OnBookDescChanging(value);
+					this.SendPropertyChanging();
+					this._BookDesc = value;
+					this.SendPropertyChanged("BookDesc");
+					this.OnBookDescChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Bank_Book", Storage="_Bank", ThisKey="BankId", OtherKey="BankId", IsForeignKey=true)]
+		public Bank Bank
+		{
+			get
+			{
+				return this._Bank.Entity;
+			}
+			set
+			{
+				Bank previousValue = this._Bank.Entity;
+				if (((previousValue != value) 
+							|| (this._Bank.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._Bank.Entity = null;
+						previousValue.Books.Remove(this);
+					}
+					this._Bank.Entity = value;
+					if ((value != null))
+					{
+						value.Books.Add(this);
+						this._BankId = value.BankId;
+					}
+					else
+					{
+						this._BankId = default(Nullable<int>);
+					}
+					this.SendPropertyChanged("Bank");
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Buyer_Book", Storage="_Buyer", ThisKey="BuyerId", OtherKey="BuyerId", IsForeignKey=true)]
+		public Buyer Buyer
+		{
+			get
+			{
+				return this._Buyer.Entity;
+			}
+			set
+			{
+				Buyer previousValue = this._Buyer.Entity;
+				if (((previousValue != value) 
+							|| (this._Buyer.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._Buyer.Entity = null;
+						previousValue.Books.Remove(this);
+					}
+					this._Buyer.Entity = value;
+					if ((value != null))
+					{
+						value.Books.Add(this);
+						this._BuyerId = value.BuyerId;
+					}
+					else
+					{
+						this._BuyerId = default(Nullable<int>);
+					}
+					this.SendPropertyChanged("Buyer");
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="PayType_Book", Storage="_PayType", ThisKey="PayTypeId", OtherKey="PayTypeId", IsForeignKey=true)]
+		public PayType PayType
+		{
+			get
+			{
+				return this._PayType.Entity;
+			}
+			set
+			{
+				PayType previousValue = this._PayType.Entity;
+				if (((previousValue != value) 
+							|| (this._PayType.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._PayType.Entity = null;
+						previousValue.Books.Remove(this);
+					}
+					this._PayType.Entity = value;
+					if ((value != null))
+					{
+						value.Books.Add(this);
+						this._PayTypeId = value.PayTypeId;
+					}
+					else
+					{
+						this._PayTypeId = default(Nullable<int>);
+					}
+					this.SendPropertyChanged("PayType");
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.PayTypes")]
+	public sealed partial class PayType : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _PayTypeId;
+		
+		private string _PaymentType;
+		
+		private EntitySet<Book> _Books;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnPayTypeIdChanging(int value);
+    partial void OnPayTypeIdChanged();
+    partial void OnPaymentTypeChanging(string value);
+    partial void OnPaymentTypeChanged();
+    #endregion
+		
+		public PayType()
+		{
+			this._Books = new EntitySet<Book>(new Action<Book>(this.attach_Books), new Action<Book>(this.detach_Books));
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PayTypeId", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public int PayTypeId
+		{
+			get
+			{
+				return this._PayTypeId;
+			}
+			set
+			{
+				if ((this._PayTypeId != value))
+				{
+					this.OnPayTypeIdChanging(value);
+					this.SendPropertyChanging();
+					this._PayTypeId = value;
+					this.SendPropertyChanged("PayTypeId");
+					this.OnPayTypeIdChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PaymentType", DbType="NVarChar(30)")]
+		public string PaymentType
+		{
+			get
+			{
+				return this._PaymentType;
+			}
+			set
+			{
+				if ((this._PaymentType != value))
+				{
+					this.OnPaymentTypeChanging(value);
+					this.SendPropertyChanging();
+					this._PaymentType = value;
+					this.SendPropertyChanged("PaymentType");
+					this.OnPaymentTypeChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="PayType_Book", Storage="_Books", ThisKey="PayTypeId", OtherKey="PayTypeId")]
+		public EntitySet<Book> Books
+		{
+			get
+			{
+				return this._Books;
+			}
+			set
+			{
+				this._Books.Assign(value);
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		private void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		private void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+		
+		private void attach_Books(Book entity)
+		{
+			this.SendPropertyChanging();
+			entity.PayType = this;
+		}
+		
+		private void detach_Books(Book entity)
+		{
+			this.SendPropertyChanging();
+			entity.PayType = null;
+		}
+	}
+	
 	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.BooksView")]
 	public sealed partial class BooksView
 	{
@@ -6051,7 +6743,7 @@ namespace Tarla
 		
 		private System.Nullable<int> _Amount;
 		
-		private string _PayType;
+		private string _PaymentType;
 		
 		private string _BankName;
 		
@@ -6139,18 +6831,18 @@ namespace Tarla
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PayType", DbType="NVarChar(30)")]
-		public string PayType
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PaymentType", DbType="NVarChar(30)")]
+		public string PaymentType
 		{
 			get
 			{
-				return this._PayType;
+				return this._PaymentType;
 			}
 			set
 			{
-				if ((this._PayType != value))
+				if ((this._PaymentType != value))
 				{
-					this._PayType = value;
+					this._PaymentType = value;
 				}
 			}
 		}
@@ -6172,88 +6864,155 @@ namespace Tarla
 		}
 	}
 	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Messages")]
-	public sealed partial class Message : INotifyPropertyChanging, INotifyPropertyChanged
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.F_DetailsView")]
+	public sealed partial class F_DetailsView
 	{
 		
-		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		private int _DetailId;
 		
-		private int _MessageId;
+		private System.Nullable<int> _InvoiceId;
 		
-		private string _MessageText;
+		private string _ProductName;
 		
-    #region Extensibility Method Definitions
-    partial void OnLoaded();
-    partial void OnValidate(System.Data.Linq.ChangeAction action);
-    partial void OnCreated();
-    partial void OnMessageIdChanging(int value);
-    partial void OnMessageIdChanged();
-    partial void OnMessageTextChanging(string value);
-    partial void OnMessageTextChanged();
-    #endregion
+		private string _SellerName;
 		
-		public Message()
+		private string _PackingType;
+		
+		private System.Nullable<int> _Weight;
+		
+		private System.Nullable<int> _Qty;
+		
+		private System.Nullable<int> _Price;
+		
+		public F_DetailsView()
 		{
-			OnCreated();
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MessageId", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
-		public int MessageId
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DetailId", DbType="Int NOT NULL")]
+		public int DetailId
 		{
 			get
 			{
-				return this._MessageId;
+				return this._DetailId;
 			}
 			set
 			{
-				if ((this._MessageId != value))
+				if ((this._DetailId != value))
 				{
-					this.OnMessageIdChanging(value);
-					this.SendPropertyChanging();
-					this._MessageId = value;
-					this.SendPropertyChanged("MessageId");
-					this.OnMessageIdChanged();
+					this._DetailId = value;
 				}
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MessageText", DbType="NVarChar(MAX)")]
-		public string MessageText
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_InvoiceId", DbType="Int")]
+		public System.Nullable<int> InvoiceId
 		{
 			get
 			{
-				return this._MessageText;
+				return this._InvoiceId;
 			}
 			set
 			{
-				if ((this._MessageText != value))
+				if ((this._InvoiceId != value))
 				{
-					this.OnMessageTextChanging(value);
-					this.SendPropertyChanging();
-					this._MessageText = value;
-					this.SendPropertyChanged("MessageText");
-					this.OnMessageTextChanged();
+					this._InvoiceId = value;
 				}
 			}
 		}
 		
-		public event PropertyChangingEventHandler PropertyChanging;
-		
-		public event PropertyChangedEventHandler PropertyChanged;
-		
-		private void SendPropertyChanging()
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ProductName", DbType="NVarChar(30)")]
+		public string ProductName
 		{
-			if ((this.PropertyChanging != null))
+			get
 			{
-				this.PropertyChanging(this, emptyChangingEventArgs);
+				return this._ProductName;
+			}
+			set
+			{
+				if ((this._ProductName != value))
+				{
+					this._ProductName = value;
+				}
 			}
 		}
 		
-		private void SendPropertyChanged(String propertyName)
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_SellerName", DbType="NVarChar(50)")]
+		public string SellerName
 		{
-			if ((this.PropertyChanged != null))
+			get
 			{
-				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+				return this._SellerName;
+			}
+			set
+			{
+				if ((this._SellerName != value))
+				{
+					this._SellerName = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PackingType", DbType="NVarChar(30)")]
+		public string PackingType
+		{
+			get
+			{
+				return this._PackingType;
+			}
+			set
+			{
+				if ((this._PackingType != value))
+				{
+					this._PackingType = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Weight", DbType="Int")]
+		public System.Nullable<int> Weight
+		{
+			get
+			{
+				return this._Weight;
+			}
+			set
+			{
+				if ((this._Weight != value))
+				{
+					this._Weight = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Qty", DbType="Int")]
+		public System.Nullable<int> Qty
+		{
+			get
+			{
+				return this._Qty;
+			}
+			set
+			{
+				if ((this._Qty != value))
+				{
+					this._Qty = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Price", DbType="Int")]
+		public System.Nullable<int> Price
+		{
+			get
+			{
+				return this._Price;
+			}
+			set
+			{
+				if ((this._Price != value))
+				{
+					this._Price = value;
+				}
 			}
 		}
 	}

@@ -211,7 +211,7 @@ namespace Tarla
 
         private void btnBook_Click(object sender, EventArgs e)
         {
-           
+            new frmShowBooks().ShowDialog();
         }
 
         private void btnFReceiver_Click(object sender, EventArgs e)

@@ -37,5 +37,23 @@ namespace Tarla.Classes
 
             }
         }
+        public int getBalance(int buyerId)
+        {
+            try
+            {
+                dcTarlaDataContext db = new dcTarlaDataContext();
+                int? paid = 0;
+                int? totalPrice = 0;
+                int? amount = 0;
+                db.GetBalanceById(buyerId, ref paid, ref totalPrice, ref amount);
+                int balance = (int)(totalPrice - (amount + paid));
+                return balance;
+            }
+            catch (Exception ex)
+            {
+                SaveLog("Util.cs", "Error : " + ex.Message);
+                return 0;
+            }
+        }
     }
 }

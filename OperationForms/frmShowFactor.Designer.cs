@@ -30,9 +30,11 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmShowFactor));
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
             this.panelEx1 = new DevComponents.DotNetBar.PanelEx();
             this.groupPanel2 = new DevComponents.DotNetBar.Controls.GroupPanel();
             this.btnPrint = new DevComponents.DotNetBar.ButtonX();
@@ -44,19 +46,29 @@
             this.rdoDate = new System.Windows.Forms.RadioButton();
             this.labelX3 = new DevComponents.DotNetBar.LabelX();
             this.cmbBuyer = new DevComponents.DotNetBar.Controls.ComboBoxEx();
+            this.bsBuyer = new System.Windows.Forms.BindingSource(this.components);
             this.dgvFactor = new DevComponents.DotNetBar.Controls.DataGridViewX();
+            this.invoiceIdDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dateDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.buyerIdDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.buyerNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.phoneDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.receiverNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.fReceiverNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.totalPriceDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.netSellDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.bsInvoiceView = new System.Windows.Forms.BindingSource(this.components);
             this.labelX2 = new DevComponents.DotNetBar.LabelX();
             this.labelX1 = new DevComponents.DotNetBar.LabelX();
             this.mskDate2 = new DevComponents.DotNetBar.Controls.MaskedTextBoxAdv();
             this.mskDate1 = new DevComponents.DotNetBar.Controls.MaskedTextBoxAdv();
             this.btnAdd = new DevComponents.DotNetBar.ButtonX();
-            this.bsBuyer = new System.Windows.Forms.BindingSource(this.components);
-            this.bsInvoiceView = new System.Windows.Forms.BindingSource(this.components);
+            this.btnNetSell = new DevComponents.DotNetBar.ButtonX();
             this.panelEx1.SuspendLayout();
             this.groupPanel2.SuspendLayout();
             this.gp1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvFactor)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bsBuyer)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvFactor)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bsInvoiceView)).BeginInit();
             this.SuspendLayout();
             // 
@@ -84,6 +96,7 @@
             this.groupPanel2.BackColor = System.Drawing.Color.White;
             this.groupPanel2.CanvasColor = System.Drawing.SystemColors.Control;
             this.groupPanel2.ColorSchemeStyle = DevComponents.DotNetBar.eDotNetBarStyle.Office2007;
+            this.groupPanel2.Controls.Add(this.btnNetSell);
             this.groupPanel2.Controls.Add(this.btnPrint);
             this.groupPanel2.Controls.Add(this.btnDelete);
             this.groupPanel2.Controls.Add(this.btnShow);
@@ -148,9 +161,10 @@
             this.btnDelete.Shape = new DevComponents.DotNetBar.RoundRectangleShapeDescriptor(10, 4, 4, 10);
             this.btnDelete.Size = new System.Drawing.Size(80, 30);
             this.btnDelete.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.btnDelete.TabIndex = 2;
+            this.btnDelete.TabIndex = 3;
             this.btnDelete.Text = "  حـذف";
             this.btnDelete.TextAlignment = DevComponents.DotNetBar.eButtonTextAlignment.Right;
+            this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
             // 
             // btnShow
             // 
@@ -180,7 +194,7 @@
             this.btnExit.Shape = new DevComponents.DotNetBar.RoundRectangleShapeDescriptor(10, 4, 4, 10);
             this.btnExit.Size = new System.Drawing.Size(90, 30);
             this.btnExit.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.btnExit.TabIndex = 3;
+            this.btnExit.TabIndex = 4;
             this.btnExit.Text = "  خـروج";
             this.btnExit.TextAlignment = DevComponents.DotNetBar.eButtonTextAlignment.Right;
             // 
@@ -240,7 +254,7 @@
             this.rdoBuyer.Location = new System.Drawing.Point(820, 44);
             this.rdoBuyer.Name = "rdoBuyer";
             this.rdoBuyer.Size = new System.Drawing.Size(14, 13);
-            this.rdoBuyer.TabIndex = 12;
+            this.rdoBuyer.TabIndex = 1;
             this.rdoBuyer.TabStop = true;
             this.rdoBuyer.UseVisualStyleBackColor = true;
             this.rdoBuyer.CheckedChanged += new System.EventHandler(this.rdoBuyer_CheckedChanged);
@@ -251,7 +265,7 @@
             this.rdoDate.Location = new System.Drawing.Point(820, 15);
             this.rdoDate.Name = "rdoDate";
             this.rdoDate.Size = new System.Drawing.Size(14, 13);
-            this.rdoDate.TabIndex = 11;
+            this.rdoDate.TabIndex = 0;
             this.rdoDate.TabStop = true;
             this.rdoDate.UseVisualStyleBackColor = true;
             this.rdoDate.CheckedChanged += new System.EventHandler(this.rdoDate_CheckedChanged);
@@ -270,52 +284,149 @@
             // 
             // cmbBuyer
             // 
-            this.cmbBuyer.DisplayMember = "Text";
+            this.cmbBuyer.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.cmbBuyer.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
+            this.cmbBuyer.DataSource = this.bsBuyer;
+            this.cmbBuyer.DisplayMember = "BuyerName";
             this.cmbBuyer.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
             this.cmbBuyer.FormattingEnabled = true;
             this.cmbBuyer.ItemHeight = 17;
-            this.cmbBuyer.Location = new System.Drawing.Point(515, 39);
+            this.cmbBuyer.Location = new System.Drawing.Point(454, 39);
             this.cmbBuyer.Name = "cmbBuyer";
-            this.cmbBuyer.Size = new System.Drawing.Size(191, 23);
+            this.cmbBuyer.Size = new System.Drawing.Size(252, 23);
             this.cmbBuyer.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.cmbBuyer.TabIndex = 9;
+            this.cmbBuyer.TabIndex = 4;
+            this.cmbBuyer.ValueMember = "BuyerId";
+            this.cmbBuyer.SelectedIndexChanged += new System.EventHandler(this.cmbBuyer_SelectedIndexChanged);
+            // 
+            // bsBuyer
+            // 
+            this.bsBuyer.DataSource = typeof(Tarla.Buyer);
             // 
             // dgvFactor
             // 
             this.dgvFactor.AllowUserToAddRows = false;
             this.dgvFactor.AllowUserToDeleteRows = false;
-            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle7.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle7.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
-            dataGridViewCellStyle7.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvFactor.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle7;
+            this.dgvFactor.AutoGenerateColumns = false;
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle6.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
+            dataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvFactor.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle6;
             this.dgvFactor.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle8.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle8.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
-            dataGridViewCellStyle8.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvFactor.DefaultCellStyle = dataGridViewCellStyle8;
+            this.dgvFactor.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.invoiceIdDataGridViewTextBoxColumn,
+            this.dateDataGridViewTextBoxColumn,
+            this.buyerIdDataGridViewTextBoxColumn,
+            this.buyerNameDataGridViewTextBoxColumn,
+            this.phoneDataGridViewTextBoxColumn,
+            this.receiverNameDataGridViewTextBoxColumn,
+            this.fReceiverNameDataGridViewTextBoxColumn,
+            this.totalPriceDataGridViewTextBoxColumn,
+            this.netSellDataGridViewTextBoxColumn});
+            this.dgvFactor.DataSource = this.bsInvoiceView;
+            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle9.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle9.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
+            dataGridViewCellStyle9.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle9.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle9.SelectionForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle9.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvFactor.DefaultCellStyle = dataGridViewCellStyle9;
             this.dgvFactor.EnableHeadersVisualStyles = false;
             this.dgvFactor.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(215)))), ((int)(((byte)(229)))));
             this.dgvFactor.Location = new System.Drawing.Point(5, 80);
             this.dgvFactor.Name = "dgvFactor";
             this.dgvFactor.ReadOnly = true;
-            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle9.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle9.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
-            dataGridViewCellStyle9.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle9.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle9.SelectionForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle9.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvFactor.RowHeadersDefaultCellStyle = dataGridViewCellStyle9;
-            this.dgvFactor.Size = new System.Drawing.Size(830, 352);
-            this.dgvFactor.TabIndex = 3;
+            dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle10.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle10.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
+            dataGridViewCellStyle10.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle10.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle10.SelectionForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle10.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvFactor.RowHeadersDefaultCellStyle = dataGridViewCellStyle10;
+            this.dgvFactor.Size = new System.Drawing.Size(833, 352);
+            this.dgvFactor.TabIndex = 6;
+            // 
+            // invoiceIdDataGridViewTextBoxColumn
+            // 
+            this.invoiceIdDataGridViewTextBoxColumn.DataPropertyName = "InvoiceId";
+            this.invoiceIdDataGridViewTextBoxColumn.HeaderText = "InvoiceId";
+            this.invoiceIdDataGridViewTextBoxColumn.Name = "invoiceIdDataGridViewTextBoxColumn";
+            this.invoiceIdDataGridViewTextBoxColumn.ReadOnly = true;
+            this.invoiceIdDataGridViewTextBoxColumn.Visible = false;
+            // 
+            // dateDataGridViewTextBoxColumn
+            // 
+            this.dateDataGridViewTextBoxColumn.DataPropertyName = "Date";
+            this.dateDataGridViewTextBoxColumn.HeaderText = "تاریخ";
+            this.dateDataGridViewTextBoxColumn.Name = "dateDataGridViewTextBoxColumn";
+            this.dateDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // buyerIdDataGridViewTextBoxColumn
+            // 
+            this.buyerIdDataGridViewTextBoxColumn.DataPropertyName = "BuyerId";
+            this.buyerIdDataGridViewTextBoxColumn.HeaderText = "BuyerId";
+            this.buyerIdDataGridViewTextBoxColumn.Name = "buyerIdDataGridViewTextBoxColumn";
+            this.buyerIdDataGridViewTextBoxColumn.ReadOnly = true;
+            this.buyerIdDataGridViewTextBoxColumn.Visible = false;
+            // 
+            // buyerNameDataGridViewTextBoxColumn
+            // 
+            this.buyerNameDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.buyerNameDataGridViewTextBoxColumn.DataPropertyName = "BuyerName";
+            this.buyerNameDataGridViewTextBoxColumn.HeaderText = "مشتری";
+            this.buyerNameDataGridViewTextBoxColumn.Name = "buyerNameDataGridViewTextBoxColumn";
+            this.buyerNameDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // phoneDataGridViewTextBoxColumn
+            // 
+            this.phoneDataGridViewTextBoxColumn.DataPropertyName = "Phone";
+            this.phoneDataGridViewTextBoxColumn.HeaderText = "شماره تماس";
+            this.phoneDataGridViewTextBoxColumn.Name = "phoneDataGridViewTextBoxColumn";
+            this.phoneDataGridViewTextBoxColumn.ReadOnly = true;
+            this.phoneDataGridViewTextBoxColumn.Width = 150;
+            // 
+            // receiverNameDataGridViewTextBoxColumn
+            // 
+            this.receiverNameDataGridViewTextBoxColumn.DataPropertyName = "ReceiverName";
+            this.receiverNameDataGridViewTextBoxColumn.HeaderText = "گیرنده بندر";
+            this.receiverNameDataGridViewTextBoxColumn.Name = "receiverNameDataGridViewTextBoxColumn";
+            this.receiverNameDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // fReceiverNameDataGridViewTextBoxColumn
+            // 
+            this.fReceiverNameDataGridViewTextBoxColumn.DataPropertyName = "F_ReceiverName";
+            this.fReceiverNameDataGridViewTextBoxColumn.HeaderText = "گیرنده دبی";
+            this.fReceiverNameDataGridViewTextBoxColumn.Name = "fReceiverNameDataGridViewTextBoxColumn";
+            this.fReceiverNameDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // totalPriceDataGridViewTextBoxColumn
+            // 
+            this.totalPriceDataGridViewTextBoxColumn.DataPropertyName = "TotalPrice";
+            dataGridViewCellStyle7.Format = "N0";
+            dataGridViewCellStyle7.NullValue = null;
+            this.totalPriceDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle7;
+            this.totalPriceDataGridViewTextBoxColumn.HeaderText = "مبلغ کل";
+            this.totalPriceDataGridViewTextBoxColumn.Name = "totalPriceDataGridViewTextBoxColumn";
+            this.totalPriceDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // netSellDataGridViewTextBoxColumn
+            // 
+            this.netSellDataGridViewTextBoxColumn.DataPropertyName = "NetSell";
+            dataGridViewCellStyle8.Format = "N0";
+            this.netSellDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle8;
+            this.netSellDataGridViewTextBoxColumn.HeaderText = "صافی فروش";
+            this.netSellDataGridViewTextBoxColumn.Name = "netSellDataGridViewTextBoxColumn";
+            this.netSellDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // bsInvoiceView
+            // 
+            this.bsInvoiceView.DataSource = typeof(Tarla.FactorView);
             // 
             // labelX2
             // 
@@ -356,8 +467,9 @@
             this.mskDate2.Name = "mskDate2";
             this.mskDate2.Size = new System.Drawing.Size(191, 21);
             this.mskDate2.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.mskDate2.TabIndex = 1;
+            this.mskDate2.TabIndex = 3;
             this.mskDate2.Text = "";
+            this.mskDate2.TextChanged += new System.EventHandler(this.mskDate2_TextChanged);
             // 
             // mskDate1
             // 
@@ -374,8 +486,9 @@
             this.mskDate1.Name = "mskDate1";
             this.mskDate1.Size = new System.Drawing.Size(191, 21);
             this.mskDate1.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.mskDate1.TabIndex = 0;
+            this.mskDate1.TabIndex = 2;
             this.mskDate1.Text = "";
+            this.mskDate1.TextChanged += new System.EventHandler(this.mskDate1_TextChanged);
             // 
             // btnAdd
             // 
@@ -388,9 +501,25 @@
             this.btnAdd.Shape = new DevComponents.DotNetBar.RoundRectangleShapeDescriptor(10, 4, 4, 10);
             this.btnAdd.Size = new System.Drawing.Size(90, 30);
             this.btnAdd.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.btnAdd.TabIndex = 2;
+            this.btnAdd.TabIndex = 5;
             this.btnAdd.Text = "  جـدیـد";
             this.btnAdd.TextAlignment = DevComponents.DotNetBar.eButtonTextAlignment.Right;
+            // 
+            // btnNetSell
+            // 
+            this.btnNetSell.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
+            this.btnNetSell.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
+            this.btnNetSell.FocusCuesEnabled = false;
+            this.btnNetSell.Image = global::Tarla.Properties.Resources.dollar_folder_icon;
+            this.btnNetSell.Location = new System.Drawing.Point(185, 2);
+            this.btnNetSell.Name = "btnNetSell";
+            this.btnNetSell.Shape = new DevComponents.DotNetBar.RoundRectangleShapeDescriptor(10, 4, 4, 10);
+            this.btnNetSell.Size = new System.Drawing.Size(133, 30);
+            this.btnNetSell.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.btnNetSell.TabIndex = 2;
+            this.btnNetSell.Text = "  ثبت صافی فروش";
+            this.btnNetSell.TextAlignment = DevComponents.DotNetBar.eButtonTextAlignment.Right;
+            this.btnNetSell.Click += new System.EventHandler(this.btnNetSell_Click);
             // 
             // frmShowFactor
             // 
@@ -405,12 +534,13 @@
             this.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "frmShowFactor";
+            this.Load += new System.EventHandler(this.frmShowFactor_Load);
             this.panelEx1.ResumeLayout(false);
             this.groupPanel2.ResumeLayout(false);
             this.gp1.ResumeLayout(false);
             this.gp1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvFactor)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.bsBuyer)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvFactor)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.bsInvoiceView)).EndInit();
             this.ResumeLayout(false);
 
@@ -437,5 +567,15 @@
         private System.Windows.Forms.RadioButton rdoBuyer;
         private System.Windows.Forms.BindingSource bsBuyer;
         private System.Windows.Forms.BindingSource bsInvoiceView;
+        private System.Windows.Forms.DataGridViewTextBoxColumn invoiceIdDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dateDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn buyerIdDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn buyerNameDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn phoneDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn receiverNameDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn fReceiverNameDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn totalPriceDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn netSellDataGridViewTextBoxColumn;
+        private DevComponents.DotNetBar.ButtonX btnNetSell;
     }
 }

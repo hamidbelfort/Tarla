@@ -76,6 +76,7 @@
       <Column Name="Address" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
       <Column Name="Description" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
       <Association Name="Buyer_Invoice" Member="Invoices" ThisKey="BuyerId" OtherKey="BuyerId" Type="Invoice" />
+      <Association Name="Buyer_Book" Member="Books" ThisKey="BuyerId" OtherKey="BuyerId" Type="Book" />
     </Type>
   </Table>
   <Table Name="dbo.Companies" Member="Companies">
@@ -156,6 +157,7 @@
       <Column Name="BankNumber" Type="System.String" DbType="NVarChar(30)" CanBeNull="true" />
       <Column Name="BankOwner" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
       <Column Name="BankDescription" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Association Name="Bank_Book" Member="Books" ThisKey="BankId" OtherKey="BankId" Type="Book" />
     </Type>
   </Table>
   <Table Name="dbo.SystemLog" Member="SystemLogs">
@@ -263,21 +265,54 @@
       <Column Name="Price" Type="System.Int32" DbType="Int" CanBeNull="true" />
     </Type>
   </Table>
+  <Table Name="dbo.Messages" Member="Messages">
+    <Type Name="Message" Id="ID20" Modifier="Sealed">
+      <Column Name="MessageId" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="MessageText" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Books" Member="Books">
+    <Type Name="Book" Id="ID22">
+      <Column Name="BookId" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Date" Type="System.String" DbType="NVarChar(10)" CanBeNull="true" />
+      <Column Name="BuyerId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Amount" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="PayTypeId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="BankId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="BookDesc" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Association Name="Bank_Book" Member="Bank" ThisKey="BankId" OtherKey="BankId" Type="Bank" IsForeignKey="true" />
+      <Association Name="Buyer_Book" Member="Buyer" ThisKey="BuyerId" OtherKey="BuyerId" Type="Buyer" IsForeignKey="true" />
+      <Association Name="PayType_Book" Member="PayType" ThisKey="PayTypeId" OtherKey="PayTypeId" Type="PayType" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.PayTypes" Member="PayTypes">
+    <Type Name="PayType" Id="ID23" Modifier="Sealed">
+      <Column Name="PayTypeId" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="PaymentType" Type="System.String" DbType="NVarChar(30)" CanBeNull="true" />
+      <Association Name="PayType_Book" Member="Books" ThisKey="PayTypeId" OtherKey="PayTypeId" Type="Book" />
+    </Type>
+  </Table>
   <Table Name="dbo.BooksView" Member="BooksViews">
-    <Type Name="BooksView" Id="ID20" Modifier="Sealed">
+    <Type Name="BooksView" Id="ID21" Modifier="Sealed">
       <Column Name="BookId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
       <Column Name="Date" Type="System.String" DbType="NVarChar(10)" CanBeNull="true" />
       <Column Name="BuyerId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
       <Column Name="BuyerName" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
       <Column Name="Amount" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="PayType" Type="System.String" DbType="NVarChar(30)" CanBeNull="true" />
+      <Column Name="PaymentType" Type="System.String" DbType="NVarChar(30)" CanBeNull="true" />
       <Column Name="BankName" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
     </Type>
   </Table>
-  <Table Name="dbo.Messages" Member="Messages">
-    <Type Name="Message" Id="ID21" Modifier="Sealed">
-      <Column Name="MessageId" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
-      <Column Name="MessageText" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+  <Table Name="dbo.F_DetailsView" Member="F_DetailsViews">
+    <Type Name="F_DetailsView" Id="ID24" Modifier="Sealed">
+      <Column Name="DetailId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="InvoiceId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ProductName" Type="System.String" DbType="NVarChar(30)" CanBeNull="true" />
+      <Column Name="SellerName" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="PackingType" Type="System.String" DbType="NVarChar(30)" CanBeNull="true" />
+      <Column Name="Weight" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Qty" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Price" Type="System.Int32" DbType="Int" CanBeNull="true" />
     </Type>
   </Table>
   <Function Name="dbo.InsertLog" Method="InsertLog">
@@ -816,15 +851,6 @@
     <Parameter Name="BuyerId" Parameter="buyerId" Type="System.Int32" DbType="Int" />
     <ElementType IdRef="ID19" />
   </Function>
-  <Function Name="dbo.FilterBooksViewByDate" Method="FilterBooksViewByDate">
-    <Parameter Name="Date1" Parameter="date1" Type="System.String" DbType="NVarChar(10)" />
-    <Parameter Name="Date2" Parameter="date2" Type="System.String" DbType="NVarChar(10)" />
-    <ElementType IdRef="ID20" />
-  </Function>
-  <Function Name="dbo.FilterBooksViewById" Method="FilterBooksViewById">
-    <Parameter Name="BuyerId" Parameter="buyerId" Type="System.Int32" DbType="Int" />
-    <ElementType IdRef="ID20" />
-  </Function>
   <Function Name="dbo.GetMaxFactorId" Method="GetMaxFactorId">
     <Parameter Name="FactorId" Parameter="factorId" Type="System.Int32" DbType="Int" Direction="InOut" />
     <Return Type="System.Int32" />
@@ -838,10 +864,79 @@
     <Return Type="System.Int32" />
   </Function>
   <Function Name="dbo.FillMessage" Method="FillMessage">
-    <ElementType IdRef="ID21" />
+    <ElementType IdRef="ID20" />
   </Function>
   <Function Name="dbo.GetRandomMessage" Method="GetRandomMessage">
     <Parameter Name="MessageText" Parameter="messageText" Type="System.String" DbType="NVarChar(MAX)" Direction="InOut" />
     <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.GetBalanceById" Method="GetBalanceById">
+    <Parameter Name="BuyerId" Parameter="buyerId" Type="System.Int32" DbType="Int" />
+    <Parameter Name="Paid" Parameter="paid" Type="System.Int32" DbType="Int" Direction="InOut" />
+    <Parameter Name="TotalPrice" Parameter="totalPrice" Type="System.Int32" DbType="Int" Direction="InOut" />
+    <Parameter Name="Amount" Parameter="amount" Type="System.Int32" DbType="Int" Direction="InOut" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.FilterBooksViewByDate" Method="FilterBooksViewByDate">
+    <Parameter Name="Date1" Parameter="date1" Type="System.String" DbType="NVarChar(10)" />
+    <Parameter Name="Date2" Parameter="date2" Type="System.String" DbType="NVarChar(10)" />
+    <ElementType IdRef="ID21" />
+  </Function>
+  <Function Name="dbo.FilterBooksViewById" Method="FilterBooksViewById">
+    <Parameter Name="BuyerId" Parameter="buyerId" Type="System.Int32" DbType="Int" />
+    <ElementType IdRef="ID21" />
+  </Function>
+  <Function Name="dbo.FillBookById" Method="FillBookById">
+    <Parameter Name="BookId" Parameter="bookId" Type="System.Int32" DbType="Int" />
+    <ElementType IdRef="ID22" />
+  </Function>
+  <Function Name="dbo.FillPayType" Method="FillPayType">
+    <ElementType IdRef="ID23" />
+  </Function>
+  <Function Name="dbo.FillPayTypeById" Method="FillPayTypeById">
+    <Parameter Name="PayTypeId" Parameter="payTypeId" Type="System.Int32" DbType="Int" />
+    <ElementType IdRef="ID23" />
+  </Function>
+  <Function Name="dbo.DeleteBook" Method="DeleteBook">
+    <Parameter Name="BookId" Parameter="bookId" Type="System.Int32" DbType="Int" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.InsertBook" Method="InsertBook">
+    <Parameter Name="Date" Parameter="date" Type="System.String" DbType="NVarChar(10)" />
+    <Parameter Name="BuyerId" Parameter="buyerId" Type="System.Int32" DbType="Int" />
+    <Parameter Name="Amount" Parameter="amount" Type="System.Int32" DbType="Int" />
+    <Parameter Name="PayType" Parameter="payType" Type="System.Int32" DbType="Int" />
+    <Parameter Name="BankId" Parameter="bankId" Type="System.Int32" DbType="Int" />
+    <Parameter Name="BookDesc" Parameter="bookDesc" Type="System.String" DbType="NVarChar(MAX)" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.UpdateBook" Method="UpdateBook">
+    <Parameter Name="BookId" Parameter="bookId" Type="System.Int32" DbType="Int" />
+    <Parameter Name="Date" Parameter="date" Type="System.String" DbType="NVarChar(10)" />
+    <Parameter Name="BuyerId" Parameter="buyerId" Type="System.Int32" DbType="Int" />
+    <Parameter Name="Amount" Parameter="amount" Type="System.Int32" DbType="Int" />
+    <Parameter Name="PayType" Parameter="payType" Type="System.Int32" DbType="Int" />
+    <Parameter Name="BankId" Parameter="bankId" Type="System.Int32" DbType="Int" />
+    <Parameter Name="BookDesc" Parameter="bookDesc" Type="System.String" DbType="NVarChar(MAX)" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.GetFactorNetSell" Method="GetFactorNetSell">
+    <Parameter Name="InvoiceId" Parameter="invoiceId" Type="System.Int32" DbType="Int" />
+    <Parameter Name="Netsell" Parameter="netsell" Type="System.Int32" DbType="Int" Direction="InOut" />
+    <Parameter Name="TotalPrice" Parameter="totalPrice" Type="System.Int32" DbType="Int" Direction="InOut" />
+    <Parameter Name="Profit" Parameter="profit" Type="System.Int32" DbType="Int" Direction="InOut" />
+    <Parameter Name="Loss" Parameter="loss" Type="System.Int32" DbType="Int" Direction="InOut" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.UpdateInvoiceNetSell" Method="UpdateInvoiceNetSell">
+    <Parameter Name="InvoiceId" Parameter="invoiceId" Type="System.Int32" DbType="Int" />
+    <Parameter Name="NetSell" Parameter="netSell" Type="System.Int32" DbType="Int" />
+    <Parameter Name="Profit" Parameter="profit" Type="System.Int32" DbType="Int" />
+    <Parameter Name="Loss" Parameter="loss" Type="System.Int32" DbType="Int" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.GetInvoiceDetails" Method="GetInvoiceDetails">
+    <Parameter Name="InvoiceId" Parameter="invoiceId" Type="System.Int32" DbType="Int" />
+    <ElementType IdRef="ID24" />
   </Function>
 </Database>

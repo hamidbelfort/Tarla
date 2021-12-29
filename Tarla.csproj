@@ -286,11 +286,23 @@
     <Compile Include="OperationForms\frmAddInvoice.Designer.cs">
       <DependentUpon>frmAddInvoice.cs</DependentUpon>
     </Compile>
+    <Compile Include="OperationForms\frmAddNetSell.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="OperationForms\frmAddNetSell.Designer.cs">
+      <DependentUpon>frmAddNetSell.cs</DependentUpon>
+    </Compile>
     <Compile Include="OperationForms\frmBuyItem.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="OperationForms\frmBuyItem.Designer.cs">
       <DependentUpon>frmBuyItem.cs</DependentUpon>
+    </Compile>
+    <Compile Include="OperationForms\frmInvoiceDetails.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="OperationForms\frmInvoiceDetails.Designer.cs">
+      <DependentUpon>frmInvoiceDetails.cs</DependentUpon>
     </Compile>
     <Compile Include="OperationForms\frmShowBooks.cs">
       <SubType>Form</SubType>
@@ -421,8 +433,14 @@
     <EmbeddedResource Include="OperationForms\frmAddInvoice.resx">
       <DependentUpon>frmAddInvoice.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="OperationForms\frmAddNetSell.resx">
+      <DependentUpon>frmAddNetSell.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="OperationForms\frmBuyItem.resx">
       <DependentUpon>frmBuyItem.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="OperationForms\frmInvoiceDetails.resx">
+      <DependentUpon>frmInvoiceDetails.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="OperationForms\frmShowBooks.resx">
       <DependentUpon>frmShowBooks.cs</DependentUpon>
@@ -449,15 +467,20 @@
       <SubType>Designer</SubType>
     </None>
     <None Include="Properties\DataSources\Bank.datasource" />
+    <None Include="Properties\DataSources\Book.datasource" />
+    <None Include="Properties\DataSources\BooksView.datasource" />
     <None Include="Properties\DataSources\Buyer.datasource" />
     <None Include="Properties\DataSources\BuyItem.datasource" />
     <None Include="Properties\DataSources\BuyItemView.datasource" />
     <None Include="Properties\DataSources\Company.datasource" />
+    <None Include="Properties\DataSources\FactorView.datasource" />
     <None Include="Properties\DataSources\ForiegnReceiver.datasource" />
+    <None Include="Properties\DataSources\F_DetailsView.datasource" />
     <None Include="Properties\DataSources\Item.datasource" />
     <None Include="Properties\DataSources\ItemGroup.datasource" />
     <None Include="Properties\DataSources\Log.datasource" />
     <None Include="Properties\DataSources\Message.datasource" />
+    <None Include="Properties\DataSources\PayType.datasource" />
     <None Include="Properties\DataSources\Product.datasource" />
     <None Include="Properties\DataSources\ProductGroup.datasource" />
     <None Include="Properties\DataSources\ProductPacking.datasource" />
