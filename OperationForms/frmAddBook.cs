@@ -15,6 +15,7 @@ namespace Tarla.OperationForms
     public partial class frmAddBook : Form
     {
         dcTarlaDataContext db = new dcTarlaDataContext();
+        PersianDate pd = new PersianDate();
         public static int bookId;
         public static int buyerId;
         public static bool IsEdit;
@@ -32,11 +33,13 @@ namespace Tarla.OperationForms
                 bsBank.DataSource = db.FillBank();
                 bsPayType.DataSource=db.FillPayType();
                 bsBuyer.DataSource = db.FillBuyer();
+                txtDate.Text = pd.getShortDate();
                 if (IsEdit)
                 {
                     bsBook.DataSource = db.FillBookById(bookId);
                     cmbBuyer.SelectedValue = buyerId;
                 }
+                cmbBuyer.Focus();
             }
             catch
             {
@@ -90,10 +93,10 @@ namespace Tarla.OperationForms
         private void clearAll()
         {
             txtDesc.Clear();
+            intAmount.Value = 0;
             lblCredit.Text = "0";
             lblDebt.Text = "0";
             cmbBuyer.Focus();
-            
         }
         private void btnExit_Click(object sender, EventArgs e)
         {

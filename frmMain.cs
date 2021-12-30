@@ -202,6 +202,13 @@ namespace Tarla
         private void btnSettings_Click(object sender, EventArgs e)
         {
             new frmSettings().ShowDialog();
+            try
+            {
+                getThemSetting();
+            }
+            catch
+            {
+            }
         }
 
         private void btnBuy_Click(object sender, EventArgs e)

@@ -100,6 +100,7 @@ namespace Tarla.OperationForms
             bsProduct.DataSource = db.FillProducts();
             bsReceiver.DataSource = db.FillReceiver();
             bsSeller.DataSource = db.FillSeller();
+            bsF_Receiver.DataSource = db.FillForeignReceiver();
             superTabControl1.SelectedTab = superTabItem1;
         }
 
@@ -255,6 +256,7 @@ namespace Tarla.OperationForms
                         db.InsertInvoiceDetails(lastFactorId, _productId, _sellerId, _packId, _weight, _qty, _price);
                     }
                     MessageBoxFarsi.Show("عملیات با موفقیت انجام شد", "پیغام", MessageBoxFarsiButtons.OK, MessageBoxFarsiIcon.Information, MessageBoxFarsiDefaultButton.Button1);
+                    btnSave.Enabled = false;
                     btnFactor.Enabled = true;
                     btnBook.Enabled = true;
                     btnAddNetSell.Enabled = true;

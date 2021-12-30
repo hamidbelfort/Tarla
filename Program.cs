@@ -18,7 +18,7 @@ namespace Tarla
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new frmAddInvoice());
+            Application.Run(new frmMain());
         }
     }
 }

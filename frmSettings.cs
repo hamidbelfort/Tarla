@@ -32,10 +32,14 @@ namespace Tarla
             {
                 cmbTheme.DataSource = StyleTheme.getThemeList();
                 db.ExistsSetting(ref ExistSetting);
-
+                string _themeName="";
+                double? _fontSize=0;
                 if (ExistSetting == true)
                 {
                     bsSetting.DataSource = db.FillSetting();
+                    db.GetThemeSetting(ref _themeName, ref _fontSize);
+                    cmbFontSize.Text = _fontSize.ToString();
+                    cmbTheme.Text = _themeName;
                 }
             }
             catch

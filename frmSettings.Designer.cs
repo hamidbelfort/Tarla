@@ -38,7 +38,6 @@
             this.cmbTheme = new System.Windows.Forms.ComboBox();
             this.cmbFontSize = new System.Windows.Forms.ComboBox();
             this.txtFactorTel = new DevComponents.DotNetBar.Controls.MaskedTextBoxAdv();
-            this.settingBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.labelX4 = new DevComponents.DotNetBar.LabelX();
             this.labelX2 = new DevComponents.DotNetBar.LabelX();
             this.txtCompanyName = new DevComponents.DotNetBar.Controls.TextBoxX();
@@ -52,7 +51,6 @@
             this.panelEx1.SuspendLayout();
             this.groupPanel2.SuspendLayout();
             this.groupPanel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.settingBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bsSetting)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             this.SuspendLayout();
@@ -232,7 +230,7 @@
             this.txtFactorTel.BackgroundStyle.Class = "TextBoxBorder";
             this.txtFactorTel.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.txtFactorTel.ButtonClear.Visible = true;
-            this.txtFactorTel.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.settingBindingSource, "FactorTel", true));
+            this.txtFactorTel.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.bsSetting, "FactorTel", true));
             this.txtFactorTel.Location = new System.Drawing.Point(168, 69);
             this.txtFactorTel.Mask = "00000000000";
             this.txtFactorTel.Name = "txtFactorTel";
@@ -240,10 +238,6 @@
             this.txtFactorTel.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.txtFactorTel.TabIndex = 2;
             this.txtFactorTel.Text = "";
-            // 
-            // settingBindingSource
-            // 
-            this.settingBindingSource.DataSource = typeof(Tarla.Setting);
             // 
             // labelX4
             // 
@@ -279,7 +273,7 @@
             // 
             this.txtCompanyName.Border.Class = "TextBoxBorder";
             this.txtCompanyName.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.txtCompanyName.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.settingBindingSource, "CompanyName", true));
+            this.txtCompanyName.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.bsSetting, "CompanyName", true));
             this.txtCompanyName.DisabledBackColor = System.Drawing.Color.White;
             this.txtCompanyName.FocusHighlightColor = System.Drawing.Color.LightGray;
             this.txtCompanyName.FocusHighlightEnabled = true;
@@ -300,7 +294,7 @@
             // 
             this.txtFactorAddress.Border.Class = "TextBoxBorder";
             this.txtFactorAddress.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.txtFactorAddress.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.settingBindingSource, "FactorAddress", true));
+            this.txtFactorAddress.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.bsSetting, "FactorAddress", true));
             this.txtFactorAddress.DisabledBackColor = System.Drawing.Color.White;
             this.txtFactorAddress.FocusHighlightColor = System.Drawing.Color.LightGray;
             this.txtFactorAddress.FocusHighlightEnabled = true;
@@ -350,6 +344,10 @@
             this.labelX1.TabIndex = 2;
             this.labelX1.Text = "آدرس فاکتور ها";
             // 
+            // bsSetting
+            // 
+            this.bsSetting.DataSource = typeof(Tarla.Setting);
+            // 
             // errorProvider1
             // 
             this.errorProvider1.ContainerControl = this;
@@ -376,7 +374,6 @@
             this.panelEx1.ResumeLayout(false);
             this.groupPanel2.ResumeLayout(false);
             this.groupPanel1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.settingBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.bsSetting)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
             this.ResumeLayout(false);
@@ -400,7 +397,6 @@
         private System.Windows.Forms.BindingSource bsSetting;
         private System.Windows.Forms.ErrorProvider errorProvider1;
         private DevComponents.DotNetBar.Controls.MaskedTextBoxAdv txtFactorTel;
-        private System.Windows.Forms.BindingSource settingBindingSource;
         private System.Windows.Forms.ComboBox cmbTheme;
         private System.Windows.Forms.ComboBox cmbFontSize;
         private DevComponents.DotNetBar.StyleManager styleManager1;

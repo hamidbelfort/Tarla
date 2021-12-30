@@ -264,7 +264,7 @@
             dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.Black;
             dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.dgvPacking.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
-            this.dgvPacking.Size = new System.Drawing.Size(563, 389);
+            this.dgvPacking.Size = new System.Drawing.Size(566, 389);
             this.dgvPacking.TabIndex = 1;
             // 
             // packingIdDataGridViewTextBoxColumn

@@ -483,17 +483,6 @@ namespace Tarla
 			return ((int)(result.ReturnValue));
 		}
 		
-		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.GetUserPermissions")]
-		public int GetUserPermissions([global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> userId, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="Setting", DbType="Bit")] ref System.Nullable<bool> setting, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="Bank", DbType="Bit")] ref System.Nullable<bool> bank, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="User", DbType="Bit")] ref System.Nullable<bool> user, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="Factor", DbType="Bit")] ref System.Nullable<bool> factor)
-		{
-			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), userId, setting, bank, user, factor);
-			setting = ((System.Nullable<bool>)(result.GetParameterValue(1)));
-			bank = ((System.Nullable<bool>)(result.GetParameterValue(2)));
-			user = ((System.Nullable<bool>)(result.GetParameterValue(3)));
-			factor = ((System.Nullable<bool>)(result.GetParameterValue(4)));
-			return ((int)(result.ReturnValue));
-		}
-		
 		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.DeleteGroups")]
 		public int DeleteGroups([global::System.Data.Linq.Mapping.ParameterAttribute(Name="GroupId", DbType="Int")] System.Nullable<int> groupId)
 		{
@@ -1198,6 +1187,17 @@ namespace Tarla
 		{
 			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), invoiceId);
 			return ((ISingleResult<F_DetailsView>)(result.ReturnValue));
+		}
+		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.GetUserPermissions")]
+		public int GetUserPermissions([global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> userId, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="Setting", DbType="Bit")] ref System.Nullable<bool> setting, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="Bank", DbType="Bit")] ref System.Nullable<bool> bank, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="User", DbType="Bit")] ref System.Nullable<bool> user, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="Factor", DbType="Bit")] ref System.Nullable<bool> factor)
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), userId, setting, bank, user, factor);
+			setting = ((System.Nullable<bool>)(result.GetParameterValue(1)));
+			bank = ((System.Nullable<bool>)(result.GetParameterValue(2)));
+			user = ((System.Nullable<bool>)(result.GetParameterValue(3)));
+			factor = ((System.Nullable<bool>)(result.GetParameterValue(4)));
+			return ((int)(result.ReturnValue));
 		}
 	}
 	

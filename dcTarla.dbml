@@ -432,14 +432,6 @@
     <Parameter Name="FontSize" Parameter="fontSize" Type="System.Double" DbType="Float" />
     <Return Type="System.Int32" />
   </Function>
-  <Function Name="dbo.GetUserPermissions" Method="GetUserPermissions">
-    <Parameter Name="userId" Type="System.Int32" DbType="Int" />
-    <Parameter Name="Setting" Parameter="setting" Type="System.Boolean" DbType="Bit" Direction="InOut" />
-    <Parameter Name="Bank" Parameter="bank" Type="System.Boolean" DbType="Bit" Direction="InOut" />
-    <Parameter Name="User" Parameter="user" Type="System.Boolean" DbType="Bit" Direction="InOut" />
-    <Parameter Name="Factor" Parameter="factor" Type="System.Boolean" DbType="Bit" Direction="InOut" />
-    <Return Type="System.Int32" />
-  </Function>
   <Function Name="dbo.DeleteGroups" Method="DeleteGroups">
     <Parameter Name="GroupId" Parameter="groupId" Type="System.Int32" DbType="Int" />
     <Return Type="System.Int32" />
@@ -938,5 +930,13 @@
   <Function Name="dbo.GetInvoiceDetails" Method="GetInvoiceDetails">
     <Parameter Name="InvoiceId" Parameter="invoiceId" Type="System.Int32" DbType="Int" />
     <ElementType IdRef="ID24" />
+  </Function>
+  <Function Name="dbo.GetUserPermissions" Method="GetUserPermissions">
+    <Parameter Name="userId" Type="System.Int32" DbType="Int" />
+    <Parameter Name="Setting" Parameter="setting" Type="System.Boolean" DbType="Bit" Direction="InOut" />
+    <Parameter Name="Bank" Parameter="bank" Type="System.Boolean" DbType="Bit" Direction="InOut" />
+    <Parameter Name="User" Parameter="user" Type="System.Boolean" DbType="Bit" Direction="InOut" />
+    <Parameter Name="Factor" Parameter="factor" Type="System.Boolean" DbType="Bit" Direction="InOut" />
+    <Return Type="System.Int32" />
   </Function>
 </Database>

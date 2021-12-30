@@ -41,7 +41,14 @@ namespace Tarla.MainForms
         }
         private void frmShowForiegnReceiver_Load(object sender, EventArgs e)
         {
-
+            try
+            {
+                loadAgain();
+            }
+            catch
+            {
+                MessageBoxFarsi.Show("ارتباط با سرور اطلاعاتی قطع شده است", "اخطار", MessageBoxFarsiButtons.OK, MessageBoxFarsiIcon.Error, MessageBoxFarsiDefaultButton.Button1);
+            }
         }
 
         private void btnAdd_Click(object sender, EventArgs e)
