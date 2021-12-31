@@ -9,12 +9,16 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Tarla.Classes;
+using Stimulsoft.Report;
 namespace Tarla.OperationForms
 {
     public partial class frmShowFactor : Form
     {
         dcTarlaDataContext db = new dcTarlaDataContext();
         PersianDate pd = new PersianDate();
+        int sumTotalPrice, sumNetSell;
+        string settingCompany,settingsAddress, settingsPhone;
+        string buyerName, buyerPhone;
         public frmShowFactor()
         {
             InitializeComponent();
@@ -100,13 +104,20 @@ namespace Tarla.OperationForms
                 {
                     btnDelete.Enabled = false;
                     btnPrint.Enabled = false;
+                    btnPrintFactor.Enabled = false;
+                    btnNetSell.Enabled = false;
                     btnShow.Enabled = false;
+                    lblSumTotalPrice.Text = "0";
+                    lblSumNetSell.Text = "0";
                 }
                 else
                 {
                     btnDelete.Enabled = true;
                     btnPrint.Enabled = true;
+                    btnPrintFactor.Enabled = true;
+                    btnNetSell.Enabled = true;
                     btnShow.Enabled = true;
+                    calculateSum();
                 }
             }
             catch
@@ -115,7 +126,18 @@ namespace Tarla.OperationForms
             }
 
         }
-
+        private void calculateSum()
+        {
+            sumNetSell = 0;
+            sumTotalPrice = 0;
+            for (int i = 0; i < dgvFactor.Rows.Count; i++)
+            {
+                sumTotalPrice += (int)dgvFactor.Rows[i].Cells[7].Value;
+                sumNetSell += (int)dgvFactor.Rows[i].Cells[8].Value;
+            }
+            lblSumTotalPrice.Text = sumTotalPrice.ToString("N0");
+            lblSumNetSell.Text = sumNetSell.ToString("N0");
+        }
         private void btnDelete_Click(object sender, EventArgs e)
         {
             try
@@ -145,6 +167,48 @@ namespace Tarla.OperationForms
             {
                 frmAddNetSell.invoiceId = (int)dgvFactor.CurrentRow.Cells[0].Value;
                 new frmAddNetSell().ShowDialog();
+            }
+            catch
+            {
+                MessageBoxFarsi.Show("ارتباط با سرور اطلاعاتی قطع شده است", "اخطار", MessageBoxFarsiButtons.OK, MessageBoxFarsiIcon.Error, MessageBoxFarsiDefaultButton.Button1);
+            }
+        }
+
+        private void btnPrintFactor_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                StiReport report = new StiReport();
+                db.GetAddressSetting(ref settingCompany, ref settingsAddress, ref settingsPhone);
+                
+                if (rdoDate.Checked)
+                {
+                    report.Load("Reports/rptFactorListByDate.mrt");
+                    report.Compile();
+
+                    report["strDate1"] = mskDate1.Text;
+                    report["strDate2"] = mskDate2.Text;
+                    report["sumTotalPrice"] = sumTotalPrice;
+                    report["sumNetSell"] = sumNetSell;
+                    report["strAddress"] = settingsAddress;
+                    report["strPhone"] = settingsPhone;
+                }
+                else if (rdoBuyer.Checked)
+                {
+                    int buyerId = (int)cmbBuyer.SelectedValue;
+                    db.GetBuyerNameAndPhone(buyerId, ref buyerName, ref buyerPhone);
+                    report.Load("Reports/rptFactorListById.mrt");
+                    report.Compile();
+
+                    report["buyerId"] = buyerId;
+                    report["buyerName"] = buyerName;
+                    report["buyerPhone"] = buyerPhone;
+                    report["sumTotalPrice"] = sumTotalPrice;
+                    report["sumNetSell"] = sumNetSell;
+                    report["strAddress"] = settingsAddress;
+                    report["strPhone"] = settingsPhone;
+                }
+                report.ShowWithRibbonGUI();
             }
             catch
             {

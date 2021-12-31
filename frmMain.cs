@@ -230,5 +230,10 @@ namespace Tarla
         {
             new frmShowMessage().ShowDialog();
         }
+
+        private void btnFactorList_Click(object sender, EventArgs e)
+        {
+            new frmShowFactor().ShowDialog();
+        }
     }
 }

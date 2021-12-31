@@ -30,13 +30,15 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmShowFactor));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.panelEx1 = new DevComponents.DotNetBar.PanelEx();
             this.groupPanel2 = new DevComponents.DotNetBar.Controls.GroupPanel();
+            this.btnPrintFactor = new DevComponents.DotNetBar.ButtonX();
+            this.btnNetSell = new DevComponents.DotNetBar.ButtonX();
             this.btnPrint = new DevComponents.DotNetBar.ButtonX();
             this.btnDelete = new DevComponents.DotNetBar.ButtonX();
             this.btnShow = new DevComponents.DotNetBar.ButtonX();
@@ -63,7 +65,10 @@
             this.mskDate2 = new DevComponents.DotNetBar.Controls.MaskedTextBoxAdv();
             this.mskDate1 = new DevComponents.DotNetBar.Controls.MaskedTextBoxAdv();
             this.btnAdd = new DevComponents.DotNetBar.ButtonX();
-            this.btnNetSell = new DevComponents.DotNetBar.ButtonX();
+            this.lblSumTotalPrice = new DevComponents.DotNetBar.LabelX();
+            this.labelX4 = new DevComponents.DotNetBar.LabelX();
+            this.lblSumNetSell = new DevComponents.DotNetBar.LabelX();
+            this.labelX6 = new DevComponents.DotNetBar.LabelX();
             this.panelEx1.SuspendLayout();
             this.groupPanel2.SuspendLayout();
             this.gp1.SuspendLayout();
@@ -82,7 +87,7 @@
             this.panelEx1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelEx1.Location = new System.Drawing.Point(0, 0);
             this.panelEx1.Name = "panelEx1";
-            this.panelEx1.Size = new System.Drawing.Size(870, 532);
+            this.panelEx1.Size = new System.Drawing.Size(870, 563);
             this.panelEx1.Style.Alignment = System.Drawing.StringAlignment.Center;
             this.panelEx1.Style.BackColor1.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground;
             this.panelEx1.Style.Border = DevComponents.DotNetBar.eBorderType.SingleLine;
@@ -96,13 +101,14 @@
             this.groupPanel2.BackColor = System.Drawing.Color.White;
             this.groupPanel2.CanvasColor = System.Drawing.SystemColors.Control;
             this.groupPanel2.ColorSchemeStyle = DevComponents.DotNetBar.eDotNetBarStyle.Office2007;
+            this.groupPanel2.Controls.Add(this.btnPrintFactor);
             this.groupPanel2.Controls.Add(this.btnNetSell);
             this.groupPanel2.Controls.Add(this.btnPrint);
             this.groupPanel2.Controls.Add(this.btnDelete);
             this.groupPanel2.Controls.Add(this.btnShow);
             this.groupPanel2.Controls.Add(this.btnExit);
             this.groupPanel2.DisabledBackColor = System.Drawing.Color.Empty;
-            this.groupPanel2.Location = new System.Drawing.Point(12, 480);
+            this.groupPanel2.Location = new System.Drawing.Point(12, 511);
             this.groupPanel2.Name = "groupPanel2";
             this.groupPanel2.Size = new System.Drawing.Size(847, 40);
             // 
@@ -135,19 +141,51 @@
             this.groupPanel2.StyleMouseOver.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.groupPanel2.TabIndex = 1;
             // 
+            // btnPrintFactor
+            // 
+            this.btnPrintFactor.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
+            this.btnPrintFactor.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
+            this.btnPrintFactor.FocusCuesEnabled = false;
+            this.btnPrintFactor.Image = global::Tarla.Properties.Resources.print_icon;
+            this.btnPrintFactor.Location = new System.Drawing.Point(532, 3);
+            this.btnPrintFactor.Name = "btnPrintFactor";
+            this.btnPrintFactor.Shape = new DevComponents.DotNetBar.RoundRectangleShapeDescriptor(10, 4, 4, 10);
+            this.btnPrintFactor.Size = new System.Drawing.Size(114, 30);
+            this.btnPrintFactor.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.btnPrintFactor.TabIndex = 5;
+            this.btnPrintFactor.Text = " چاپ فاکتور";
+            this.btnPrintFactor.TextAlignment = DevComponents.DotNetBar.eButtonTextAlignment.Right;
+            this.btnPrintFactor.Click += new System.EventHandler(this.btnPrintFactor_Click);
+            // 
+            // btnNetSell
+            // 
+            this.btnNetSell.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
+            this.btnNetSell.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
+            this.btnNetSell.FocusCuesEnabled = false;
+            this.btnNetSell.Image = global::Tarla.Properties.Resources.dollar_folder_icon;
+            this.btnNetSell.Location = new System.Drawing.Point(185, 2);
+            this.btnNetSell.Name = "btnNetSell";
+            this.btnNetSell.Shape = new DevComponents.DotNetBar.RoundRectangleShapeDescriptor(10, 4, 4, 10);
+            this.btnNetSell.Size = new System.Drawing.Size(133, 30);
+            this.btnNetSell.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.btnNetSell.TabIndex = 2;
+            this.btnNetSell.Text = "  ثبت صافی فروش";
+            this.btnNetSell.TextAlignment = DevComponents.DotNetBar.eButtonTextAlignment.Right;
+            this.btnNetSell.Click += new System.EventHandler(this.btnNetSell_Click);
+            // 
             // btnPrint
             // 
             this.btnPrint.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
             this.btnPrint.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
             this.btnPrint.FocusCuesEnabled = false;
-            this.btnPrint.Image = ((System.Drawing.Image)(resources.GetObject("btnPrint.Image")));
+            this.btnPrint.Image = global::Tarla.Properties.Resources._2_Hot_Printer_icon;
             this.btnPrint.Location = new System.Drawing.Point(652, 2);
             this.btnPrint.Name = "btnPrint";
             this.btnPrint.Shape = new DevComponents.DotNetBar.RoundRectangleShapeDescriptor(10, 4, 4, 10);
             this.btnPrint.Size = new System.Drawing.Size(100, 30);
             this.btnPrint.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.btnPrint.TabIndex = 1;
-            this.btnPrint.Text = " پیش نمایش";
+            this.btnPrint.Text = " چاپ لیست";
             this.btnPrint.TextAlignment = DevComponents.DotNetBar.eButtonTextAlignment.Right;
             // 
             // btnDelete
@@ -203,6 +241,10 @@
             this.gp1.BackColor = System.Drawing.Color.Transparent;
             this.gp1.CanvasColor = System.Drawing.SystemColors.Control;
             this.gp1.ColorSchemeStyle = DevComponents.DotNetBar.eDotNetBarStyle.Office2007;
+            this.gp1.Controls.Add(this.lblSumNetSell);
+            this.gp1.Controls.Add(this.labelX6);
+            this.gp1.Controls.Add(this.lblSumTotalPrice);
+            this.gp1.Controls.Add(this.labelX4);
             this.gp1.Controls.Add(this.rdoBuyer);
             this.gp1.Controls.Add(this.rdoDate);
             this.gp1.Controls.Add(this.labelX3);
@@ -216,7 +258,7 @@
             this.gp1.DisabledBackColor = System.Drawing.Color.Empty;
             this.gp1.Location = new System.Drawing.Point(12, 12);
             this.gp1.Name = "gp1";
-            this.gp1.Size = new System.Drawing.Size(847, 462);
+            this.gp1.Size = new System.Drawing.Size(847, 493);
             // 
             // 
             // 
@@ -308,14 +350,14 @@
             this.dgvFactor.AllowUserToAddRows = false;
             this.dgvFactor.AllowUserToDeleteRows = false;
             this.dgvFactor.AutoGenerateColumns = false;
-            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle6.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
-            dataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvFactor.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvFactor.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dgvFactor.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvFactor.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.invoiceIdDataGridViewTextBoxColumn,
@@ -328,27 +370,27 @@
             this.totalPriceDataGridViewTextBoxColumn,
             this.netSellDataGridViewTextBoxColumn});
             this.dgvFactor.DataSource = this.bsInvoiceView;
-            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle9.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle9.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
-            dataGridViewCellStyle9.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle9.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle9.SelectionForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle9.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvFactor.DefaultCellStyle = dataGridViewCellStyle9;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
+            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvFactor.DefaultCellStyle = dataGridViewCellStyle4;
             this.dgvFactor.EnableHeadersVisualStyles = false;
             this.dgvFactor.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(215)))), ((int)(((byte)(229)))));
             this.dgvFactor.Location = new System.Drawing.Point(5, 80);
             this.dgvFactor.Name = "dgvFactor";
             this.dgvFactor.ReadOnly = true;
-            dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle10.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle10.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
-            dataGridViewCellStyle10.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle10.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle10.SelectionForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle10.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvFactor.RowHeadersDefaultCellStyle = dataGridViewCellStyle10;
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle5.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
+            dataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvFactor.RowHeadersDefaultCellStyle = dataGridViewCellStyle5;
             this.dgvFactor.Size = new System.Drawing.Size(833, 352);
             this.dgvFactor.TabIndex = 6;
             // 
@@ -408,9 +450,9 @@
             // totalPriceDataGridViewTextBoxColumn
             // 
             this.totalPriceDataGridViewTextBoxColumn.DataPropertyName = "TotalPrice";
-            dataGridViewCellStyle7.Format = "N0";
-            dataGridViewCellStyle7.NullValue = null;
-            this.totalPriceDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle7;
+            dataGridViewCellStyle2.Format = "N0";
+            dataGridViewCellStyle2.NullValue = null;
+            this.totalPriceDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle2;
             this.totalPriceDataGridViewTextBoxColumn.HeaderText = "مبلغ کل";
             this.totalPriceDataGridViewTextBoxColumn.Name = "totalPriceDataGridViewTextBoxColumn";
             this.totalPriceDataGridViewTextBoxColumn.ReadOnly = true;
@@ -418,8 +460,8 @@
             // netSellDataGridViewTextBoxColumn
             // 
             this.netSellDataGridViewTextBoxColumn.DataPropertyName = "NetSell";
-            dataGridViewCellStyle8.Format = "N0";
-            this.netSellDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle8;
+            dataGridViewCellStyle3.Format = "N0";
+            this.netSellDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle3;
             this.netSellDataGridViewTextBoxColumn.HeaderText = "صافی فروش";
             this.netSellDataGridViewTextBoxColumn.Name = "netSellDataGridViewTextBoxColumn";
             this.netSellDataGridViewTextBoxColumn.ReadOnly = true;
@@ -505,27 +547,69 @@
             this.btnAdd.Text = "  جـدیـد";
             this.btnAdd.TextAlignment = DevComponents.DotNetBar.eButtonTextAlignment.Right;
             // 
-            // btnNetSell
+            // lblSumTotalPrice
             // 
-            this.btnNetSell.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
-            this.btnNetSell.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
-            this.btnNetSell.FocusCuesEnabled = false;
-            this.btnNetSell.Image = global::Tarla.Properties.Resources.dollar_folder_icon;
-            this.btnNetSell.Location = new System.Drawing.Point(185, 2);
-            this.btnNetSell.Name = "btnNetSell";
-            this.btnNetSell.Shape = new DevComponents.DotNetBar.RoundRectangleShapeDescriptor(10, 4, 4, 10);
-            this.btnNetSell.Size = new System.Drawing.Size(133, 30);
-            this.btnNetSell.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.btnNetSell.TabIndex = 2;
-            this.btnNetSell.Text = "  ثبت صافی فروش";
-            this.btnNetSell.TextAlignment = DevComponents.DotNetBar.eButtonTextAlignment.Right;
-            this.btnNetSell.Click += new System.EventHandler(this.btnNetSell_Click);
+            this.lblSumTotalPrice.BackColor = System.Drawing.Color.Transparent;
+            // 
+            // 
+            // 
+            this.lblSumTotalPrice.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.lblSumTotalPrice.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Bold);
+            this.lblSumTotalPrice.ForeColor = System.Drawing.Color.Red;
+            this.lblSumTotalPrice.Location = new System.Drawing.Point(550, 438);
+            this.lblSumTotalPrice.Name = "lblSumTotalPrice";
+            this.lblSumTotalPrice.Size = new System.Drawing.Size(156, 23);
+            this.lblSumTotalPrice.TabIndex = 24;
+            this.lblSumTotalPrice.Text = "0";
+            // 
+            // labelX4
+            // 
+            this.labelX4.BackColor = System.Drawing.Color.Transparent;
+            // 
+            // 
+            // 
+            this.labelX4.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.labelX4.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Bold);
+            this.labelX4.Location = new System.Drawing.Point(712, 438);
+            this.labelX4.Name = "labelX4";
+            this.labelX4.Size = new System.Drawing.Size(121, 23);
+            this.labelX4.TabIndex = 23;
+            this.labelX4.Text = "مجموع مبلغ کل : ";
+            // 
+            // lblSumNetSell
+            // 
+            this.lblSumNetSell.BackColor = System.Drawing.Color.Transparent;
+            // 
+            // 
+            // 
+            this.lblSumNetSell.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.lblSumNetSell.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Bold);
+            this.lblSumNetSell.ForeColor = System.Drawing.Color.Red;
+            this.lblSumNetSell.Location = new System.Drawing.Point(5, 438);
+            this.lblSumNetSell.Name = "lblSumNetSell";
+            this.lblSumNetSell.Size = new System.Drawing.Size(156, 23);
+            this.lblSumNetSell.TabIndex = 26;
+            this.lblSumNetSell.Text = "0";
+            // 
+            // labelX6
+            // 
+            this.labelX6.BackColor = System.Drawing.Color.Transparent;
+            // 
+            // 
+            // 
+            this.labelX6.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.labelX6.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Bold);
+            this.labelX6.Location = new System.Drawing.Point(167, 438);
+            this.labelX6.Name = "labelX6";
+            this.labelX6.Size = new System.Drawing.Size(151, 23);
+            this.labelX6.TabIndex = 25;
+            this.labelX6.Text = "مجموع صافی فروش : ";
             // 
             // frmShowFactor
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(870, 532);
+            this.ClientSize = new System.Drawing.Size(870, 563);
             this.Controls.Add(this.panelEx1);
             this.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
@@ -577,5 +661,10 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn totalPriceDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn netSellDataGridViewTextBoxColumn;
         private DevComponents.DotNetBar.ButtonX btnNetSell;
+        private DevComponents.DotNetBar.ButtonX btnPrintFactor;
+        private DevComponents.DotNetBar.LabelX lblSumNetSell;
+        private DevComponents.DotNetBar.LabelX labelX6;
+        private DevComponents.DotNetBar.LabelX lblSumTotalPrice;
+        private DevComponents.DotNetBar.LabelX labelX4;
     }
 }

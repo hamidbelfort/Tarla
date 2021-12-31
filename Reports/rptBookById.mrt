@@ -11,32 +11,30 @@
       </Tarla>
     </Databases>
     <DataSources isList="true" count="1">
-      <FilterBooksViewByDate Ref="3" type="Stimulsoft.Report.Dictionary.StiSqlSource" isKey="true">
-        <Alias>FilterBooksViewByDate</Alias>
+      <FilterBooksViewById Ref="3" type="Stimulsoft.Report.Dictionary.StiSqlSource" isKey="true">
+        <Alias>FilterBooksViewById</Alias>
         <Columns isList="true" count="5">
           <value>Date,System.String</value>
           <value>BuyerName,System.String</value>
-          <value>Amount,System.Int32</value>
+          <value>Amount,System.String</value>
           <value>PaymentType,System.String</value>
           <value>BankName,System.String</value>
         </Columns>
         <CommandTimeout>30</CommandTimeout>
         <Dictionary isRef="1" />
-        <Name>FilterBooksViewByDate</Name>
+        <Name>FilterBooksViewById</Name>
         <NameInSource>Tarla</NameInSource>
-        <Parameters isList="true" count="2">
-          <value>Date1,strDate1,12,10</value>
-          <value>Date2,strDate2,12,10</value>
+        <Parameters isList="true" count="1">
+          <value>BuyerId,buyerId,8,0</value>
         </Parameters>
-        <SqlCommand>execute FilterBooksViewByDate @Date1,@Date2</SqlCommand>
-      </FilterBooksViewByDate>
+        <SqlCommand>execute FilterBooksViewById @BuyerId</SqlCommand>
+      </FilterBooksViewById>
     </DataSources>
     <Relations isList="true" count="0" />
     <Report isRef="0" />
-    <Variables isList="true" count="3">
-      <value>,strDate1,strDate1,System.String,,False,False</value>
-      <value>,strDate2,strDate2,System.String,,False,False</value>
+    <Variables isList="true" count="2">
       <value>,sumAmount,sumAmount,System.Int32,,False,False</value>
+      <value>,buyerId,buyerId,System.Int32,,False,False</value>
     </Variables>
   </Dictionary>
   <EngineVersion>EngineV2</EngineVersion>
@@ -50,7 +48,7 @@
         <PageHeaderBand1 Ref="5" type="PageHeaderBand" isKey="true">
           <Brush>Transparent</Brush>
           <ClientRectangle>0,0.2,7.49,1.6</ClientRectangle>
-          <Components isList="true" count="14">
+          <Components isList="true" count="11">
             <Text1 Ref="6" type="Text" isKey="true">
               <Brush>Gainsboro</Brush>
               <ClientRectangle>0,0,7.5,1.2</ClientRectangle>
@@ -64,7 +62,7 @@
             </Text1>
             <Text11 Ref="7" type="Text" isKey="true">
               <Brush>Transparent</Brush>
-              <ClientRectangle>6.8,0,0.6,0.3</ClientRectangle>
+              <ClientRectangle>6.5,0,0.9,0.3</ClientRectangle>
               <Conditions isList="true" count="0" />
               <Font>B Koodak,14,Bold</Font>
               <Guid>27eb07da7b25405e8f1c5742e501e43f</Guid>
@@ -73,14 +71,14 @@
               <Name>Text11</Name>
               <Page isRef="4" />
               <Parent isRef="5" />
-              <Text>: از تاریخ</Text>
+              <Text>: نام مشتری</Text>
               <TextBrush>Black</TextBrush>
               <TextQuality>Wysiwyg</TextQuality>
               <VertAlignment>Center</VertAlignment>
             </Text11>
             <Text13 Ref="8" type="Text" isKey="true">
               <Brush>Transparent</Brush>
-              <ClientRectangle>5.5,0,1.3,0.3</ClientRectangle>
+              <ClientRectangle>4.3,0,2.2,0.3</ClientRectangle>
               <Conditions isList="true" count="0" />
               <Font>B Koodak,11.25,Bold,Point,False,178</Font>
               <Guid>817ea9767d3149cdbbcf0c290e4e29d7</Guid>
@@ -89,44 +87,12 @@
               <Name>Text13</Name>
               <Page isRef="4" />
               <Parent isRef="5" />
-              <Text>{strDate1}</Text>
+              <Text>{FilterBooksViewById.BuyerName}</Text>
               <TextBrush>Black</TextBrush>
               <TextQuality>Wysiwyg</TextQuality>
               <VertAlignment>Center</VertAlignment>
             </Text13>
-            <Text14 Ref="9" type="Text" isKey="true">
-              <Brush>Transparent</Brush>
-              <ClientRectangle>1.3,0,0.6,0.3</ClientRectangle>
-              <Conditions isList="true" count="0" />
-              <Font>B Koodak,14,Bold</Font>
-              <Guid>918509adf47347aeb22552764310319b</Guid>
-              <HorAlignment>Right</HorAlignment>
-              <Margins>0,0,0,0</Margins>
-              <Name>Text14</Name>
-              <Page isRef="4" />
-              <Parent isRef="5" />
-              <Text>: تا تاریخ</Text>
-              <TextBrush>Black</TextBrush>
-              <TextQuality>Wysiwyg</TextQuality>
-              <VertAlignment>Center</VertAlignment>
-            </Text14>
-            <Text16 Ref="10" type="Text" isKey="true">
-              <Brush>Transparent</Brush>
-              <ClientRectangle>0.1,0,1.1,0.3</ClientRectangle>
-              <Conditions isList="true" count="0" />
-              <Font>B Koodak,11.25,Bold,Point,False,178</Font>
-              <Guid>6f7a7403e4734882ae5b68695dc3c95a</Guid>
-              <HorAlignment>Right</HorAlignment>
-              <Margins>0,0,0,0</Margins>
-              <Name>Text16</Name>
-              <Page isRef="4" />
-              <Parent isRef="5" />
-              <Text>{strDate2}</Text>
-              <TextBrush>Black</TextBrush>
-              <TextQuality>Wysiwyg</TextQuality>
-              <VertAlignment>Center</VertAlignment>
-            </Text16>
-            <Text3 Ref="11" type="Text" isKey="true">
+            <Text3 Ref="9" type="Text" isKey="true">
               <Brush>Transparent</Brush>
               <ClientRectangle>7.1,1.2,0.4,0.3</ClientRectangle>
               <Conditions isList="true" count="0" />
@@ -141,7 +107,7 @@
               <TextQuality>Wysiwyg</TextQuality>
               <VertAlignment>Center</VertAlignment>
             </Text3>
-            <Text4 Ref="12" type="Text" isKey="true">
+            <Text4 Ref="10" type="Text" isKey="true">
               <Brush>Transparent</Brush>
               <ClientRectangle>5.9,1.2,1.1,0.3</ClientRectangle>
               <Conditions isList="true" count="0" />
@@ -157,25 +123,9 @@
               <TextQuality>Wysiwyg</TextQuality>
               <VertAlignment>Center</VertAlignment>
             </Text4>
-            <Text5 Ref="13" type="Text" isKey="true">
+            <Text6 Ref="11" type="Text" isKey="true">
               <Brush>Transparent</Brush>
-              <ClientRectangle>4.6,1.2,1.2,0.3</ClientRectangle>
-              <Conditions isList="true" count="0" />
-              <Font>B Koodak,11.25,Bold,Point,False,178</Font>
-              <Guid>a0f3648156144e19b9d0e4b38c31453f</Guid>
-              <HorAlignment>Center</HorAlignment>
-              <Margins>0,0,0,0</Margins>
-              <Name>Text5</Name>
-              <Page isRef="4" />
-              <Parent isRef="5" />
-              <Text>مشتری</Text>
-              <TextBrush>Black</TextBrush>
-              <TextQuality>Wysiwyg</TextQuality>
-              <VertAlignment>Center</VertAlignment>
-            </Text5>
-            <Text6 Ref="14" type="Text" isKey="true">
-              <Brush>Transparent</Brush>
-              <ClientRectangle>3.3,1.2,1.2,0.3</ClientRectangle>
+              <ClientRectangle>4.5,1.2,1.3,0.3</ClientRectangle>
               <Conditions isList="true" count="0" />
               <Font>B Koodak,11.25,Bold,Point,False,178</Font>
               <Guid>62218e5510404c54a6209f4ff0ae7433</Guid>
@@ -189,9 +139,9 @@
               <TextQuality>Wysiwyg</TextQuality>
               <VertAlignment>Center</VertAlignment>
             </Text6>
-            <Text7 Ref="15" type="Text" isKey="true">
+            <Text7 Ref="12" type="Text" isKey="true">
               <Brush>Transparent</Brush>
-              <ClientRectangle>1.8,1.2,1.4,0.3</ClientRectangle>
+              <ClientRectangle>3,1.2,1.4,0.3</ClientRectangle>
               <Conditions isList="true" count="0" />
               <Font>B Koodak,11.25,Bold,Point,False,178</Font>
               <Guid>6f18b3c6e74d44de917c26a54cff01e2</Guid>
@@ -205,9 +155,9 @@
               <TextQuality>Wysiwyg</TextQuality>
               <VertAlignment>Center</VertAlignment>
             </Text7>
-            <Text8 Ref="16" type="Text" isKey="true">
+            <Text8 Ref="13" type="Text" isKey="true">
               <Brush>Transparent</Brush>
-              <ClientRectangle>0.1,1.2,1.6,0.3</ClientRectangle>
+              <ClientRectangle>1.2,1.2,1.6,0.3</ClientRectangle>
               <Conditions isList="true" count="0" />
               <Font>B Koodak,11.25,Bold,Point,False,178</Font>
               <Guid>5422a5216b4b4a408ba2d204be026873</Guid>
@@ -221,7 +171,7 @@
               <TextQuality>Wysiwyg</TextQuality>
               <VertAlignment>Center</VertAlignment>
             </Text8>
-            <Text10 Ref="17" type="Text" isKey="true">
+            <Text10 Ref="14" type="Text" isKey="true">
               <Brush>Transparent</Brush>
               <ClientRectangle>0,0.7,7.5,0.5</ClientRectangle>
               <Conditions isList="true" count="0" />
@@ -237,24 +187,24 @@
               <TextQuality>Wysiwyg</TextQuality>
               <VertAlignment>Center</VertAlignment>
             </Text10>
-            <HorizontalLinePrimitive1 Ref="18" type="HorizontalLinePrimitive" isKey="true">
+            <HorizontalLinePrimitive1 Ref="15" type="HorizontalLinePrimitive" isKey="true">
               <ClientRectangle>0,1.2,7.5,0.01</ClientRectangle>
               <Color>Black</Color>
-              <EndCap Ref="19" type="Cap" isKey="true">
+              <EndCap Ref="16" type="Cap" isKey="true">
                 <Color>Black</Color>
               </EndCap>
               <Name>HorizontalLinePrimitive1</Name>
               <Page isRef="4" />
               <Parent isRef="5" />
               <Size>2</Size>
-              <StartCap Ref="20" type="Cap" isKey="true">
+              <StartCap Ref="17" type="Cap" isKey="true">
                 <Color>Black</Color>
               </StartCap>
             </HorizontalLinePrimitive1>
-            <HorizontalLinePrimitive3 Ref="21" type="HorizontalLinePrimitive" isKey="true">
+            <HorizontalLinePrimitive3 Ref="18" type="HorizontalLinePrimitive" isKey="true">
               <ClientRectangle>0,1.5,7.5,0.01</ClientRectangle>
               <Color>Black</Color>
-              <EndCap Ref="22" type="Cap" isKey="true">
+              <EndCap Ref="19" type="Cap" isKey="true">
                 <Color>Black</Color>
               </EndCap>
               <Guid>90f9e46da0584e28a672de47913b074e</Guid>
@@ -262,7 +212,7 @@
               <Page isRef="4" />
               <Parent isRef="5" />
               <Size>2</Size>
-              <StartCap Ref="23" type="Cap" isKey="true">
+              <StartCap Ref="20" type="Cap" isKey="true">
                 <Color>Black</Color>
               </StartCap>
             </HorizontalLinePrimitive3>
@@ -272,11 +222,11 @@
           <Page isRef="4" />
           <Parent isRef="4" />
         </PageHeaderBand1>
-        <PageFooterBand1 Ref="24" type="PageFooterBand" isKey="true">
+        <PageFooterBand1 Ref="21" type="PageFooterBand" isKey="true">
           <Brush>Transparent</Brush>
           <ClientRectangle>0,10.21,7.49,0.7</ClientRectangle>
-          <Components isList="true" count="3">
-            <Text2 Ref="25" type="Text" isKey="true">
+          <Components isList="true" count="4">
+            <Text2 Ref="22" type="Text" isKey="true">
               <Brush>Gainsboro</Brush>
               <ClientRectangle>0,-0.01,7.5,0.7</ClientRectangle>
               <Conditions isList="true" count="0" />
@@ -285,12 +235,12 @@
               <Margins>0,0,0,0</Margins>
               <Name>Text2</Name>
               <Page isRef="4" />
-              <Parent isRef="24" />
+              <Parent isRef="21" />
               <TextBrush>Black</TextBrush>
             </Text2>
-            <Text17 Ref="26" type="Text" isKey="true">
+            <Text17 Ref="23" type="Text" isKey="true">
               <Brush>Transparent</Brush>
-              <ClientRectangle>0.8,0.09,0.7,0.3</ClientRectangle>
+              <ClientRectangle>1,0.09,0.7,0.3</ClientRectangle>
               <Conditions isList="true" count="0" />
               <Font>B Koodak,11.25,Bold,Point,False,178</Font>
               <Guid>0923eaeafb8245d8aeefe87d3cdbde25</Guid>
@@ -298,15 +248,31 @@
               <Margins>0,0,0,0</Margins>
               <Name>Text17</Name>
               <Page isRef="4" />
-              <Parent isRef="24" />
-              <Text>: شماره صفحه</Text>
+              <Parent isRef="21" />
+              <Text>شماره صفحه</Text>
               <TextBrush>Black</TextBrush>
               <TextQuality>Wysiwyg</TextQuality>
               <VertAlignment>Center</VertAlignment>
             </Text17>
-            <Text19 Ref="27" type="Text" isKey="true">
+            <Text18 Ref="24" type="Text" isKey="true">
               <Brush>Transparent</Brush>
-              <ClientRectangle>0.1,0.09,0.7,0.3</ClientRectangle>
+              <ClientRectangle>0.9,0.09,0.1,0.3</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>B Koodak,11.25,Bold,Point,False,178</Font>
+              <Guid>450131bf86f14c71a0efcd052188664a</Guid>
+              <HorAlignment>Right</HorAlignment>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text18</Name>
+              <Page isRef="4" />
+              <Parent isRef="21" />
+              <Text>:</Text>
+              <TextBrush>Black</TextBrush>
+              <TextQuality>Wysiwyg</TextQuality>
+              <VertAlignment>Center</VertAlignment>
+            </Text18>
+            <Text19 Ref="25" type="Text" isKey="true">
+              <Brush>Transparent</Brush>
+              <ClientRectangle>0.2,0.09,0.7,0.3</ClientRectangle>
               <Conditions isList="true" count="0" />
               <Font>B Koodak,11.25,Bold,Point,False,178</Font>
               <Guid>604f37b4bae44e9bbe818a53b303f0d4</Guid>
@@ -314,7 +280,7 @@
               <Margins>0,0,0,0</Margins>
               <Name>Text19</Name>
               <Page isRef="4" />
-              <Parent isRef="24" />
+              <Parent isRef="21" />
               <Text>{PageNumber}</Text>
               <TextBrush>Black</TextBrush>
               <VertAlignment>Center</VertAlignment>
@@ -325,12 +291,12 @@
           <Page isRef="4" />
           <Parent isRef="4" />
         </PageFooterBand1>
-        <DataBand1 Ref="28" type="DataBand" isKey="true">
+        <DataBand1 Ref="26" type="DataBand" isKey="true">
           <Brush>Transparent</Brush>
           <BusinessObjectGuid isNull="true" />
           <ClientRectangle>0,2.2,7.49,0.5</ClientRectangle>
-          <Components isList="true" count="6">
-            <Text20 Ref="29" type="Text" isKey="true">
+          <Components isList="true" count="5">
+            <Text20 Ref="27" type="Text" isKey="true">
               <Brush>Transparent</Brush>
               <ClientRectangle>7.1,0,0.4,0.4</ClientRectangle>
               <Conditions isList="true" count="0" />
@@ -340,12 +306,12 @@
               <Margins>0,0,0,0</Margins>
               <Name>Text20</Name>
               <Page isRef="4" />
-              <Parent isRef="28" />
+              <Parent isRef="26" />
               <Text>{Line}</Text>
               <TextBrush>Black</TextBrush>
               <VertAlignment>Center</VertAlignment>
             </Text20>
-            <Text21 Ref="30" type="Text" isKey="true">
+            <Text21 Ref="28" type="Text" isKey="true">
               <Brush>Transparent</Brush>
               <ClientRectangle>5.9,0,1.1,0.4</ClientRectangle>
               <Conditions isList="true" count="0" />
@@ -355,31 +321,15 @@
               <Margins>0,0,0,0</Margins>
               <Name>Text21</Name>
               <Page isRef="4" />
-              <Parent isRef="28" />
-              <Text>{FilterBooksViewByDate.Date}</Text>
+              <Parent isRef="26" />
+              <Text>{FilterBooksViewById.Date}</Text>
               <TextBrush>Black</TextBrush>
               <TextQuality>Wysiwyg</TextQuality>
               <VertAlignment>Center</VertAlignment>
             </Text21>
-            <Text22 Ref="31" type="Text" isKey="true">
+            <Text23 Ref="29" type="Text" isKey="true">
               <Brush>Transparent</Brush>
-              <ClientRectangle>4.6,0,1.2,0.4</ClientRectangle>
-              <Conditions isList="true" count="0" />
-              <Font>B Koodak,11.25,Bold,Point,False,178</Font>
-              <Guid>87bd6deab8e2446990b3b7448982514a</Guid>
-              <HorAlignment>Center</HorAlignment>
-              <Margins>0,0,0,0</Margins>
-              <Name>Text22</Name>
-              <Page isRef="4" />
-              <Parent isRef="28" />
-              <Text>{FilterBooksViewByDate.BuyerName}</Text>
-              <TextBrush>Black</TextBrush>
-              <TextQuality>Wysiwyg</TextQuality>
-              <VertAlignment>Center</VertAlignment>
-            </Text22>
-            <Text23 Ref="32" type="Text" isKey="true">
-              <Brush>Transparent</Brush>
-              <ClientRectangle>3.3,0,1.2,0.4</ClientRectangle>
+              <ClientRectangle>4.5,0,1.3,0.4</ClientRectangle>
               <Conditions isList="true" count="0" />
               <Font>B Koodak,11.25,Bold,Point,False,178</Font>
               <Guid>110e056dbcef485289dd7c1b2f25a011</Guid>
@@ -387,10 +337,10 @@
               <Margins>0,0,0,0</Margins>
               <Name>Text23</Name>
               <Page isRef="4" />
-              <Parent isRef="28" />
-              <Text>{FilterBooksViewByDate.Amount}</Text>
+              <Parent isRef="26" />
+              <Text>{FilterBooksViewById.Amount}</Text>
               <TextBrush>Black</TextBrush>
-              <TextFormat Ref="33" type="NumberFormat" isKey="true">
+              <TextFormat Ref="30" type="NumberFormat" isKey="true">
                 <DecimalDigits>0</DecimalDigits>
                 <GroupSeparator>,</GroupSeparator>
                 <NegativePattern>1</NegativePattern>
@@ -398,9 +348,9 @@
               </TextFormat>
               <VertAlignment>Center</VertAlignment>
             </Text23>
-            <Text24 Ref="34" type="Text" isKey="true">
+            <Text24 Ref="31" type="Text" isKey="true">
               <Brush>Transparent</Brush>
-              <ClientRectangle>1.8,0,1.4,0.4</ClientRectangle>
+              <ClientRectangle>3,0,1.4,0.4</ClientRectangle>
               <Conditions isList="true" count="0" />
               <Font>B Koodak,11.25,Bold,Point,False,178</Font>
               <Guid>ecf3a64ddfb2426ba500b5b2f311bbae</Guid>
@@ -408,15 +358,15 @@
               <Margins>0,0,0,0</Margins>
               <Name>Text24</Name>
               <Page isRef="4" />
-              <Parent isRef="28" />
-              <Text>{FilterBooksViewByDate.PaymentType}</Text>
+              <Parent isRef="26" />
+              <Text>{FilterBooksViewById.PaymentType}</Text>
               <TextBrush>Black</TextBrush>
               <TextQuality>Wysiwyg</TextQuality>
               <VertAlignment>Center</VertAlignment>
             </Text24>
-            <Text25 Ref="35" type="Text" isKey="true">
+            <Text25 Ref="32" type="Text" isKey="true">
               <Brush>Transparent</Brush>
-              <ClientRectangle>0.1,0,1.6,0.4</ClientRectangle>
+              <ClientRectangle>1.2,0,1.6,0.4</ClientRectangle>
               <Conditions isList="true" count="0" />
               <Font>B Koodak,11.25,Bold,Point,False,178</Font>
               <Guid>f8213e6f53ec40fcbcf1b901d67e3928</Guid>
@@ -424,8 +374,8 @@
               <Margins>0,0,0,0</Margins>
               <Name>Text25</Name>
               <Page isRef="4" />
-              <Parent isRef="28" />
-              <Text>{FilterBooksViewByDate.BankName}</Text>
+              <Parent isRef="26" />
+              <Text>{FilterBooksViewById.BankName}</Text>
               <TextBrush>Black</TextBrush>
               <TextQuality>Wysiwyg</TextQuality>
               <VertAlignment>Center</VertAlignment>
@@ -440,11 +390,11 @@
           <Parent isRef="4" />
           <Sort isList="true" count="0" />
         </DataBand1>
-        <ReportSummaryBand1 Ref="36" type="ReportSummaryBand" isKey="true">
+        <ReportSummaryBand1 Ref="33" type="ReportSummaryBand" isKey="true">
           <Brush>Transparent</Brush>
           <ClientRectangle>0,3.1,7.49,0.4</ClientRectangle>
           <Components isList="true" count="3">
-            <Text27 Ref="37" type="Text" isKey="true">
+            <Text27 Ref="34" type="Text" isKey="true">
               <Brush>Transparent</Brush>
               <ClientRectangle>1.7,0,1.1,0.4</ClientRectangle>
               <Conditions isList="true" count="0" />
@@ -454,13 +404,13 @@
               <Margins>0,0,0,0</Margins>
               <Name>Text27</Name>
               <Page isRef="4" />
-              <Parent isRef="36" />
+              <Parent isRef="33" />
               <Text>مجموع تراکنش ها</Text>
               <TextBrush>Black</TextBrush>
               <TextQuality>Wysiwyg</TextQuality>
               <VertAlignment>Center</VertAlignment>
             </Text27>
-            <Text28 Ref="38" type="Text" isKey="true">
+            <Text28 Ref="35" type="Text" isKey="true">
               <Brush>Transparent</Brush>
               <ClientRectangle>0.2,0,1.4,0.4</ClientRectangle>
               <Conditions isList="true" count="0" />
@@ -469,10 +419,10 @@
               <Margins>0,0,0,0</Margins>
               <Name>Text28</Name>
               <Page isRef="4" />
-              <Parent isRef="36" />
+              <Parent isRef="33" />
               <Text>{sumAmount}</Text>
               <TextBrush>Black</TextBrush>
-              <TextFormat Ref="39" type="NumberFormat" isKey="true">
+              <TextFormat Ref="36" type="NumberFormat" isKey="true">
                 <DecimalDigits>0</DecimalDigits>
                 <GroupSeparator>,</GroupSeparator>
                 <NegativePattern>1</NegativePattern>
@@ -480,7 +430,7 @@
               </TextFormat>
               <VertAlignment>Center</VertAlignment>
             </Text28>
-            <Text29 Ref="40" type="Text" isKey="true">
+            <Text29 Ref="37" type="Text" isKey="true">
               <Brush>Transparent</Brush>
               <ClientRectangle>1.6,0,0.1,0.4</ClientRectangle>
               <Conditions isList="true" count="0" />
@@ -490,7 +440,7 @@
               <Margins>0,0,0,0</Margins>
               <Name>Text29</Name>
               <Page isRef="4" />
-              <Parent isRef="36" />
+              <Parent isRef="33" />
               <Text>:</Text>
               <TextBrush>Black</TextBrush>
               <TextQuality>Wysiwyg</TextQuality>
@@ -503,10 +453,10 @@
           <Page isRef="4" />
           <Parent isRef="4" />
         </ReportSummaryBand1>
-        <HorizontalLinePrimitive2 Ref="41" type="HorizontalLinePrimitive" isKey="true">
+        <HorizontalLinePrimitive2 Ref="38" type="HorizontalLinePrimitive" isKey="true">
           <ClientRectangle>0,10.2,7.5,0.01</ClientRectangle>
           <Color>Black</Color>
-          <EndCap Ref="42" type="Cap" isKey="true">
+          <EndCap Ref="39" type="Cap" isKey="true">
             <Color>Black</Color>
           </EndCap>
           <Guid>fc4c239abab14a50bffbb062e4fb1b95</Guid>
@@ -514,7 +464,7 @@
           <Page isRef="4" />
           <Parent isRef="4" />
           <Size>2</Size>
-          <StartCap Ref="43" type="Cap" isKey="true">
+          <StartCap Ref="40" type="Cap" isKey="true">
             <Color>Black</Color>
           </StartCap>
         </HorizontalLinePrimitive2>
@@ -527,13 +477,13 @@
       <PageWidth>8.27</PageWidth>
       <PaperSize>A4</PaperSize>
       <Report isRef="0" />
-      <Watermark Ref="44" type="Stimulsoft.Report.Components.StiWatermark" isKey="true">
+      <Watermark Ref="41" type="Stimulsoft.Report.Components.StiWatermark" isKey="true">
         <Font>Arial,100</Font>
         <TextBrush>[50:0:0:0]</TextBrush>
       </Watermark>
     </Page1>
   </Pages>
-  <PrinterSettings Ref="45" type="Stimulsoft.Report.Print.StiPrinterSettings" isKey="true" />
+  <PrinterSettings Ref="42" type="Stimulsoft.Report.Print.StiPrinterSettings" isKey="true" />
   <ReferencedAssemblies isList="true" count="8">
     <value>System.Dll</value>
     <value>System.Drawing.Dll</value>
@@ -545,10 +495,10 @@
     <value>Stimulsoft.Report.Dll</value>
   </ReferencedAssemblies>
   <ReportAlias>Report</ReportAlias>
-  <ReportChanged>12/31/2021 7:03:01 PM</ReportChanged>
+  <ReportChanged>12/31/2021 7:00:56 PM</ReportChanged>
   <ReportCreated>12/30/2021 6:07:33 PM</ReportCreated>
-  <ReportFile>C:\Users\Hamid\Desktop\Tarla2\Tarla\bin\Debug\Reports\rptBookByDate.mrt</ReportFile>
-  <ReportGuid>912dbb2b7ef24f819c2efebe5c7779c0</ReportGuid>
+  <ReportFile>C:\Users\Hamid\Desktop\rptBookById.mrt</ReportFile>
+  <ReportGuid>2b57cb520f43483ba4579dad2bada38c</ReportGuid>
   <ReportName>Report</ReportName>
   <ReportUnit>Inches</ReportUnit>
   <ReportVersion>2010.1.700</ReportVersion>

@@ -118,24 +118,6 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="btnPrint.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAABIAAAASCAYAAABWzo5XAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAL
-        EwAACxMBAJqcGAAAAuBJREFUOE/Vj11Ik2EUx993an5/z+/QmMrQ1HTD6bbUqXPTTZ1zfmzTTad7c6ab
-        07YpqdD8mGJlkkYIghBRBN0GXUZ1EXhVYKgJBllQEWWEF2Xn9O5tEH2Bl/W7eB44/+f8nnOI/5cyjemm
-        fnDiuVzX84hfIluOio2v8kWHJzAkLN3sWQXj+BK0DE5DHTWMdXrzO198eFKzCijD2CI226ex1jyMUq0F
-        y5WaDV/8V1iRMWxxRDRbTLJYcd5CtrDyQrN9CmrNLpC2WkBcq0ehRPaQef0nwiJj6kTS+qdSlQ7YSalA
-        svyA9PN/KVa2vjKNzoO83UpLdMArUyJfWHrH1/Yz3in6Xe4DLTWIqnYL5IsqIYWTBRHsJMwRlILaZIMO
-        +zjwJErg8kswh1e0Fhwanu1r/0HS0WOnahq0QE+ErdQQ2N0L4PBcgY6BcSyv00GeqAo4uQJIzsiFQokC
-        u2ip9awHCopKbvgU32EnplClsnqUqfXY3utEucaIYpka5U2dSDkn0TlzFa3jF1GlM6NE0YQtnadRptIi
-        t0CIAYFBeT4NQUSxEyi+uNL7A7b1DEGXfQwsrknotI1ig8ECUpUe5I0GoKzDMDQ2g/ruPuAWiCAzTwBH
-        gkKEPg1BxCUmq6fnLsH6xhY+WHsMUwvLYOxzQpPJhtQZN4x4lqDfNQFqrQlMPQNYJKlmJJxsHgQEBhcT
-        6RmZgoXLi7c+7O19Bhqk8d5fDr7C9u5ruH33Hjrcc6BsNkBjmxl6PCvQNTKLWTwRI0nj5oF/QGAOwcnl
-        O+ZXrr95+/6j1/Eb65vbaOgfwfyT1VjdoENVSwdabC7knhAgLUF2ctozeqFYZi2SJIPj0zJ7He7Zrc2d
-        F8xEn/b34dzM+Z2iCsWqcci9V1LT+KRQXLFb32yE7t5BzMovhsjYhGt0ezQj+QW/8Jh4TYvJcj+HXzxN
-        kqwQpkqyQukzwJtHxcYpjucXrsTEJTYx2T8KQXwDhU1LmHJf/QkAAAAASUVORK5CYII=
-</value>
-  </data>
   <data name="btnDelete.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABIAAAASCAYAAABWzo5XAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAL
@@ -224,9 +206,6 @@
         D8/yeDzkLwWKmQjjtDOGAAAAAElFTkSuQmCC
 </value>
   </data>
-  <metadata name="bsBuyer.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>17, 17</value>
-  </metadata>
   <metadata name="$this.TrayHeight" type="System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>44</value>
   </metadata>

@@ -526,9 +526,16 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <None Include="Resources\2-Hot-Printer-icon.png" />
+  </ItemGroup>
   <ItemGroup>
     <None Include="Reports\rptBookByDate.mrt" />
+    <None Include="Reports\rptBookById.mrt" />
+    <None Include="Reports\rptBuyItemByDate.mrt" />
+    <None Include="Reports\rptBuyItemById.mrt" />
+    <None Include="Reports\rptFactorListByDate.mrt" />
+    <None Include="Reports\rptFactorListById.mrt" />
     <None Include="Resources\1299150769_Login Manager.png" />
   </ItemGroup>
   <ItemGroup>
@@ -677,6 +684,18 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\messages.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\print.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\print_icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\invoice_icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\invoice_icon2.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

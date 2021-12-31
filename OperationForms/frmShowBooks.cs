@@ -40,6 +40,9 @@ namespace Tarla.OperationForms
         {
             mskDate1.Text = pd.getShortDate();
             mskDate2.Text = pd.getShortDate();
+            rdoDate.Checked = true;
+            rdoBuyer.Checked = false;
+            cmbBuyer.Enabled = false;
             loadAgain(0, mskDate1.Text, mskDate2.Text);
         }
 
@@ -94,6 +97,7 @@ namespace Tarla.OperationForms
                 {
                     btnDelete.Enabled = false;
                     btnPrint.Enabled = false;
+                    lblSumAmount.Text = "0";
                 }
                 else
                 {
@@ -179,13 +183,24 @@ namespace Tarla.OperationForms
             {
                 
                 StiReport report = new StiReport();
-                report.Load("Reports/rptBookByDate.mrt");
-                report.Compile();
+                if (rdoDate.Checked)
+                {
+                    report.Load("Reports/rptBookByDate.mrt");
+                    report.Compile();
 
-                report["strDate1"] = mskDate1.Text;
-                report["strDate2"] = mskDate2.Text;
-                report["sumAmount"] = sumAmount;
+                    report["strDate1"] = mskDate1.Text;
+                    report["strDate2"] = mskDate2.Text;
+                    report["sumAmount"] = sumAmount;
 
+                }
+                else if (rdoBuyer.Checked)
+                {
+                    report.Load("Reports/rptBookById.mrt");
+                    report.Compile();
+
+                    report["buyerId"] = mskDate1.Text;
+                    report["sumAmount"] = sumAmount;
+                }
                 report.ShowWithRibbonGUI();
             }
             catch

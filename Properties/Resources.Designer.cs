@@ -73,6 +73,16 @@ namespace Tarla.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap _2_Hot_Printer_icon {
+            get {
+                object obj = ResourceManager.GetObject("2-Hot-Printer-icon", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap _89 {
             get {
                 object obj = ResourceManager.GetObject("89", resourceCulture);
@@ -303,6 +313,26 @@ namespace Tarla.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap invoice_icon {
+            get {
+                object obj = ResourceManager.GetObject("invoice_icon", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap invoice_icon2 {
+            get {
+                object obj = ResourceManager.GetObject("invoice_icon2", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap login {
             get {
                 object obj = ResourceManager.GetObject("login", resourceCulture);
@@ -366,6 +396,16 @@ namespace Tarla.Properties {
         internal static System.Drawing.Bitmap Places_trash_empty_icon {
             get {
                 object obj = ResourceManager.GetObject("Places-trash-empty-icon", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap print_icon {
+            get {
+                object obj = ResourceManager.GetObject("print_icon", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

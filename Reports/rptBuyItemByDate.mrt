@@ -1,0 +1,622 @@
+﻿<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<StiSerializer version="1.0" application="StiReport">
+  <Dictionary Ref="1" type="Dictionary" isKey="true">
+    <BusinessObjects isList="true" count="0" />
+    <Databases isList="true" count="1">
+      <Tarla Ref="2" type="Stimulsoft.Report.Dictionary.StiSqlDatabase" isKey="true">
+        <Alias>Tarla</Alias>
+        <ConnectionString>Data Source=.;Initial Catalog=TarlaDB;Integrated Security=True</ConnectionString>
+        <Name>Tarla</Name>
+        <PromptUserNameAndPassword>False</PromptUserNameAndPassword>
+      </Tarla>
+    </Databases>
+    <DataSources isList="true" count="1">
+      <FillBuyItembyDate Ref="3" type="Stimulsoft.Report.Dictionary.StiSqlSource" isKey="true">
+        <Alias>FillBuyItembyDate</Alias>
+        <Columns isList="true" count="7">
+          <value>BuyDate,System.String</value>
+          <value>CompanyName,System.String</value>
+          <value>ItemName,System.String</value>
+          <value>GroupName,System.String</value>
+          <value>Quantity,System.Int32</value>
+          <value>Price,System.Int32</value>
+          <value>TotalPrice,System.Int32</value>
+        </Columns>
+        <CommandTimeout>30</CommandTimeout>
+        <Dictionary isRef="1" />
+        <Name>FillBuyItembyDate</Name>
+        <NameInSource>Tarla</NameInSource>
+        <Parameters isList="true" count="2">
+          <value>StartDate,strDate1,12,10</value>
+          <value>EndDate,strDate2,12,10</value>
+        </Parameters>
+        <SqlCommand>execute FillBuyItembyDate @StartDate,@EndDate</SqlCommand>
+      </FillBuyItembyDate>
+    </DataSources>
+    <Relations isList="true" count="0" />
+    <Report isRef="0" />
+    <Variables isList="true" count="3">
+      <value>,strDate1,strDate1,System.String,,False,False</value>
+      <value>,strDate2,strDate2,System.String,,False,False</value>
+      <value>,sumTotalPrice,sumTotalPrice,System.Int32,,False,False</value>
+    </Variables>
+  </Dictionary>
+  <EngineVersion>EngineV2</EngineVersion>
+  <GlobalizationStrings isList="true" count="0" />
+  <MetaTags isList="true" count="0" />
+  <Pages isList="true" count="1">
+    <Page1 Ref="4" type="Page" isKey="true">
+      <Border>None;Black;2;Solid;False;4;Black</Border>
+      <Brush>Transparent</Brush>
+      <Components isList="true" count="4">
+        <PageHeaderBand1 Ref="5" type="PageHeaderBand" isKey="true">
+          <Brush>Transparent</Brush>
+          <ClientRectangle>0,0.4,19,3.56</ClientRectangle>
+          <Components isList="true" count="15">
+            <Text1 Ref="6" type="Text" isKey="true">
+              <Brush>Gainsboro</Brush>
+              <ClientRectangle>0,1.27,19.05,1.27</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>B Koodak,15.75,Bold,Point,False,178</Font>
+              <HorAlignment>Center</HorAlignment>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text1</Name>
+              <Page isRef="4" />
+              <Parent isRef="5" />
+              <Text>لیست خرید کالا</Text>
+              <TextBrush>Black</TextBrush>
+              <TextQuality>Wysiwyg</TextQuality>
+              <VertAlignment>Center</VertAlignment>
+            </Text1>
+            <Text6 Ref="7" type="Text" isKey="true">
+              <Brush>Transparent</Brush>
+              <ClientRectangle>18.03,2.54,1.02,1.02</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>B Koodak,12,Bold,Point,False,178</Font>
+              <Guid>da13075c30b84a3daf70f61af6c6c620</Guid>
+              <HorAlignment>Center</HorAlignment>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text6</Name>
+              <Page isRef="4" />
+              <Parent isRef="5" />
+              <Text>ردیف</Text>
+              <TextBrush>Black</TextBrush>
+              <TextQuality>Wysiwyg</TextQuality>
+              <VertAlignment>Center</VertAlignment>
+            </Text6>
+            <Text7 Ref="8" type="Text" isKey="true">
+              <Brush>Transparent</Brush>
+              <ClientRectangle>15.49,2.54,2.29,1.02</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>B Koodak,12,Bold,Point,False,178</Font>
+              <Guid>c9a7e37887e54746a1c635686b92da15</Guid>
+              <HorAlignment>Center</HorAlignment>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text7</Name>
+              <Page isRef="4" />
+              <Parent isRef="5" />
+              <Text>تاریخ</Text>
+              <TextBrush>Black</TextBrush>
+              <TextQuality>Wysiwyg</TextQuality>
+              <VertAlignment>Center</VertAlignment>
+            </Text7>
+            <Text8 Ref="9" type="Text" isKey="true">
+              <Brush>Transparent</Brush>
+              <ClientRectangle>9.4,2.54,2.54,1.02</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>B Koodak,12,Bold,Point,False,178</Font>
+              <Guid>b30daa4670974212918d1a1f2d048480</Guid>
+              <HorAlignment>Center</HorAlignment>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text8</Name>
+              <Page isRef="4" />
+              <Parent isRef="5" />
+              <Text>نام کالا</Text>
+              <TextBrush>Black</TextBrush>
+              <TextQuality>Wysiwyg</TextQuality>
+              <VertAlignment>Center</VertAlignment>
+            </Text8>
+            <Text9 Ref="10" type="Text" isKey="true">
+              <Brush>Transparent</Brush>
+              <ClientRectangle>12.19,2.54,3.05,1.02</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>B Koodak,12,Bold,Point,False,178</Font>
+              <Guid>d667b8df213e406f88e74a706db7defb</Guid>
+              <HorAlignment>Center</HorAlignment>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text9</Name>
+              <Page isRef="4" />
+              <Parent isRef="5" />
+              <Text>شرکت فروشنده</Text>
+              <TextBrush>Black</TextBrush>
+              <TextQuality>Wysiwyg</TextQuality>
+              <VertAlignment>Center</VertAlignment>
+            </Text9>
+            <Text10 Ref="11" type="Text" isKey="true">
+              <Brush>Transparent</Brush>
+              <ClientRectangle>5.59,2.54,1.27,1.02</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>B Koodak,12,Bold,Point,False,178</Font>
+              <Guid>81d3bba70aec43e4a6de4bbb5c35fd0b</Guid>
+              <HorAlignment>Center</HorAlignment>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text10</Name>
+              <Page isRef="4" />
+              <Parent isRef="5" />
+              <Text>تعداد</Text>
+              <TextBrush>Black</TextBrush>
+              <TextQuality>Wysiwyg</TextQuality>
+              <VertAlignment>Center</VertAlignment>
+            </Text10>
+            <Text11 Ref="12" type="Text" isKey="true">
+              <Brush>Transparent</Brush>
+              <ClientRectangle>3.3,2.54,2.03,1.02</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>B Koodak,12,Bold,Point,False,178</Font>
+              <Guid>f7c4941252d742859fbda6932c967bf1</Guid>
+              <HorAlignment>Center</HorAlignment>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text11</Name>
+              <Page isRef="4" />
+              <Parent isRef="5" />
+              <Text>قیمت</Text>
+              <TextBrush>Black</TextBrush>
+              <TextQuality>Wysiwyg</TextQuality>
+              <VertAlignment>Center</VertAlignment>
+            </Text11>
+            <Text12 Ref="13" type="Text" isKey="true">
+              <Brush>Transparent</Brush>
+              <ClientRectangle>0.2,2.54,2.85,1.02</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>B Koodak,12,Bold,Point,False,178</Font>
+              <Guid>8bc5fb395d8b4cfbbc20e539b9961117</Guid>
+              <HorAlignment>Center</HorAlignment>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text12</Name>
+              <Page isRef="4" />
+              <Parent isRef="5" />
+              <Text>مبلغ کل</Text>
+              <TextBrush>Black</TextBrush>
+              <TextQuality>Wysiwyg</TextQuality>
+              <VertAlignment>Center</VertAlignment>
+            </Text12>
+            <Text13 Ref="14" type="Text" isKey="true">
+              <Brush>Transparent</Brush>
+              <ClientRectangle>7.11,2.54,2.03,1.02</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>B Koodak,12,Bold,Point,False,178</Font>
+              <Guid>37e930a6ea034a78adbb3cb745ad0e84</Guid>
+              <HorAlignment>Center</HorAlignment>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text13</Name>
+              <Page isRef="4" />
+              <Parent isRef="5" />
+              <Text>دسته بندی</Text>
+              <TextBrush>Black</TextBrush>
+              <TextQuality>Wysiwyg</TextQuality>
+              <VertAlignment>Center</VertAlignment>
+            </Text13>
+            <Text14 Ref="15" type="Text" isKey="true">
+              <Brush>Transparent</Brush>
+              <ClientRectangle>17.27,0,1.78,1.02</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>B Koodak,14.25,Bold,Point,False,178</Font>
+              <Guid>ca8b4c5b2c684f3e807dcd060266f0c3</Guid>
+              <HorAlignment>Right</HorAlignment>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text14</Name>
+              <Page isRef="4" />
+              <Parent isRef="5" />
+              <Text>: از تاریخ</Text>
+              <TextBrush>Black</TextBrush>
+              <TextQuality>Wysiwyg</TextQuality>
+              <VertAlignment>Center</VertAlignment>
+            </Text14>
+            <Text15 Ref="16" type="Text" isKey="true">
+              <Brush>Transparent</Brush>
+              <ClientRectangle>2.79,0,2.03,1.02</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>B Koodak,14.25,Bold,Point,False,178</Font>
+              <Guid>cf774d1bbc4b497baef4f907e5411d54</Guid>
+              <HorAlignment>Right</HorAlignment>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text15</Name>
+              <Page isRef="4" />
+              <Parent isRef="5" />
+              <Text>: تا تاریخ</Text>
+              <TextBrush>Black</TextBrush>
+              <TextQuality>Wysiwyg</TextQuality>
+              <VertAlignment>Center</VertAlignment>
+            </Text15>
+            <Text16 Ref="17" type="Text" isKey="true">
+              <Brush>Transparent</Brush>
+              <ClientRectangle>14.48,0,2.79,1.02</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>B Koodak,12,Bold,Point,False,178</Font>
+              <Guid>2623080e09fe4e0188043c8db2882fd4</Guid>
+              <HorAlignment>Right</HorAlignment>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text16</Name>
+              <Page isRef="4" />
+              <Parent isRef="5" />
+              <Text>{strDate1}</Text>
+              <TextBrush>Black</TextBrush>
+              <VertAlignment>Center</VertAlignment>
+            </Text16>
+            <Text17 Ref="18" type="Text" isKey="true">
+              <Brush>Transparent</Brush>
+              <ClientRectangle>0,0,2.79,1.02</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>B Koodak,12,Bold,Point,False,178</Font>
+              <Guid>ab2ebb61c9a844bd9636ee6850db9763</Guid>
+              <HorAlignment>Right</HorAlignment>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text17</Name>
+              <Page isRef="4" />
+              <Parent isRef="5" />
+              <Text>{strDate2}</Text>
+              <TextBrush>Black</TextBrush>
+              <VertAlignment>Center</VertAlignment>
+            </Text17>
+            <HorizontalLinePrimitive1 Ref="19" type="HorizontalLinePrimitive" isKey="true">
+              <ClientRectangle>0,2.54,19.05,0.0254</ClientRectangle>
+              <Color>Black</Color>
+              <EndCap Ref="20" type="Cap" isKey="true">
+                <Color>Black</Color>
+              </EndCap>
+              <Name>HorizontalLinePrimitive1</Name>
+              <Page isRef="4" />
+              <Parent isRef="5" />
+              <Size>2</Size>
+              <StartCap Ref="21" type="Cap" isKey="true">
+                <Color>Black</Color>
+              </StartCap>
+            </HorizontalLinePrimitive1>
+            <HorizontalLinePrimitive3 Ref="22" type="HorizontalLinePrimitive" isKey="true">
+              <ClientRectangle>0,3.56,19.05,0.0254</ClientRectangle>
+              <Color>Black</Color>
+              <EndCap Ref="23" type="Cap" isKey="true">
+                <Color>Black</Color>
+              </EndCap>
+              <Guid>21b95f50f3194dae899a813629d7cc36</Guid>
+              <Name>HorizontalLinePrimitive3</Name>
+              <Page isRef="4" />
+              <Parent isRef="5" />
+              <Size>2</Size>
+              <StartCap Ref="24" type="Cap" isKey="true">
+                <Color>Black</Color>
+              </StartCap>
+            </HorizontalLinePrimitive3>
+          </Components>
+          <Conditions isList="true" count="0" />
+          <Name>PageHeaderBand1</Name>
+          <Page isRef="4" />
+          <Parent isRef="4" />
+        </PageHeaderBand1>
+        <PageFooterBand1 Ref="25" type="PageFooterBand" isKey="true">
+          <Brush>Transparent</Brush>
+          <ClientRectangle>0,26.68,19,1.02</ClientRectangle>
+          <Components isList="true" count="4">
+            <Text18 Ref="26" type="Text" isKey="true">
+              <Brush>Gainsboro</Brush>
+              <ClientRectangle>0,-0.03,19.05,1.02</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,8</Font>
+              <Guid>1f540415a1dd48209312317a1bc5b427</Guid>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text18</Name>
+              <Page isRef="4" />
+              <Parent isRef="25" />
+              <TextBrush>Black</TextBrush>
+            </Text18>
+            <Text4 Ref="27" type="Text" isKey="true">
+              <Brush>Transparent</Brush>
+              <ClientRectangle>2.03,-0.03,2.03,0.76</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>B Koodak,12,Bold,Point,False,178</Font>
+              <Guid>bc22d48557e04ed9adbcddd4777a468b</Guid>
+              <HorAlignment>Center</HorAlignment>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text4</Name>
+              <Page isRef="4" />
+              <Parent isRef="25" />
+              <Text>: شماره صفحه</Text>
+              <TextBrush>Black</TextBrush>
+              <TextQuality>Wysiwyg</TextQuality>
+              <VertAlignment>Center</VertAlignment>
+            </Text4>
+            <Text5 Ref="28" type="Text" isKey="true">
+              <Brush>Transparent</Brush>
+              <ClientRectangle>0.25,-0.03,1.52,0.76</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>B Koodak,12,Bold,Point,False,178</Font>
+              <Guid>33b94786b86d4ebb92883c4eb2625b6a</Guid>
+              <HorAlignment>Right</HorAlignment>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text5</Name>
+              <Page isRef="4" />
+              <Parent isRef="25" />
+              <Text>{PageNumber}</Text>
+              <TextBrush>Black</TextBrush>
+              <VertAlignment>Center</VertAlignment>
+            </Text5>
+            <HorizontalLinePrimitive2 Ref="29" type="HorizontalLinePrimitive" isKey="true">
+              <ClientRectangle>0,-0.01,19.05,0.0254</ClientRectangle>
+              <Color>Black</Color>
+              <EndCap Ref="30" type="Cap" isKey="true">
+                <Color>Black</Color>
+              </EndCap>
+              <Guid>05b67d923a3c4a66afe6725a4ae99ce9</Guid>
+              <Name>HorizontalLinePrimitive2</Name>
+              <Page isRef="4" />
+              <Parent isRef="25" />
+              <Size>2</Size>
+              <StartCap Ref="31" type="Cap" isKey="true">
+                <Color>Black</Color>
+              </StartCap>
+            </HorizontalLinePrimitive2>
+          </Components>
+          <Conditions isList="true" count="0" />
+          <Name>PageFooterBand1</Name>
+          <Page isRef="4" />
+          <Parent isRef="4" />
+        </PageFooterBand1>
+        <DataBand1 Ref="32" type="DataBand" isKey="true">
+          <Brush>Transparent</Brush>
+          <ClientRectangle>0,4.76,19,1.02</ClientRectangle>
+          <Components isList="true" count="8">
+            <Text19 Ref="33" type="Text" isKey="true">
+              <Brush>Transparent</Brush>
+              <ClientRectangle>18.03,0,1.02,1.02</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>B Koodak,12,Bold,Point,False,178</Font>
+              <Guid>5cf3f108520e48208997be9d4a6bb87e</Guid>
+              <HorAlignment>Center</HorAlignment>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text19</Name>
+              <Page isRef="4" />
+              <Parent isRef="32" />
+              <Text>{Line}</Text>
+              <TextBrush>Black</TextBrush>
+              <VertAlignment>Center</VertAlignment>
+            </Text19>
+            <Text20 Ref="34" type="Text" isKey="true">
+              <Brush>Transparent</Brush>
+              <ClientRectangle>15.49,0,2.29,1.02</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>B Koodak,12,Bold,Point,False,178</Font>
+              <Guid>e5a7c85bab1e4c139fdc241ce2e97980</Guid>
+              <HorAlignment>Center</HorAlignment>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text20</Name>
+              <Page isRef="4" />
+              <Parent isRef="32" />
+              <Text>{FillBuyItembyDate.BuyDate}</Text>
+              <TextBrush>Black</TextBrush>
+              <TextQuality>Wysiwyg</TextQuality>
+              <VertAlignment>Center</VertAlignment>
+            </Text20>
+            <Text21 Ref="35" type="Text" isKey="true">
+              <Brush>Transparent</Brush>
+              <ClientRectangle>12.19,0,3.05,1.02</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>B Koodak,12,Bold,Point,False,178</Font>
+              <Guid>73a2cfdafdff44a3b000c5c09477fe1e</Guid>
+              <HorAlignment>Center</HorAlignment>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text21</Name>
+              <Page isRef="4" />
+              <Parent isRef="32" />
+              <Text>{FillBuyItembyDate.CompanyName}</Text>
+              <TextBrush>Black</TextBrush>
+              <TextQuality>Wysiwyg</TextQuality>
+              <VertAlignment>Center</VertAlignment>
+            </Text21>
+            <Text22 Ref="36" type="Text" isKey="true">
+              <Brush>Transparent</Brush>
+              <ClientRectangle>9.4,0,2.54,1.02</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>B Koodak,12,Bold,Point,False,178</Font>
+              <Guid>5f98e352b38f4dce925b15fcb0613dbc</Guid>
+              <HorAlignment>Center</HorAlignment>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text22</Name>
+              <Page isRef="4" />
+              <Parent isRef="32" />
+              <Text>{FillBuyItembyDate.ItemName}</Text>
+              <TextBrush>Black</TextBrush>
+              <TextQuality>Wysiwyg</TextQuality>
+              <VertAlignment>Center</VertAlignment>
+            </Text22>
+            <Text23 Ref="37" type="Text" isKey="true">
+              <Brush>Transparent</Brush>
+              <ClientRectangle>7.11,0,2.03,1.02</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>B Koodak,12,Bold,Point,False,178</Font>
+              <Guid>61a75d2a3c2141f18df5859a4734adf7</Guid>
+              <HorAlignment>Center</HorAlignment>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text23</Name>
+              <Page isRef="4" />
+              <Parent isRef="32" />
+              <Text>{FillBuyItembyDate.GroupName}</Text>
+              <TextBrush>Black</TextBrush>
+              <TextQuality>Wysiwyg</TextQuality>
+              <VertAlignment>Center</VertAlignment>
+            </Text23>
+            <Text24 Ref="38" type="Text" isKey="true">
+              <Brush>Transparent</Brush>
+              <ClientRectangle>5.59,0,1.27,1.02</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>B Koodak,12,Bold,Point,False,178</Font>
+              <Guid>4e24a5edd7a342d1819259fa361a7e9b</Guid>
+              <HorAlignment>Center</HorAlignment>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text24</Name>
+              <Page isRef="4" />
+              <Parent isRef="32" />
+              <Text>{FillBuyItembyDate.Quantity}</Text>
+              <TextBrush>Black</TextBrush>
+              <VertAlignment>Center</VertAlignment>
+            </Text24>
+            <Text25 Ref="39" type="Text" isKey="true">
+              <Brush>Transparent</Brush>
+              <ClientRectangle>3.3,0,2.03,1.02</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>B Koodak,12,Bold,Point,False,178</Font>
+              <Guid>989748e07b5c4d8597d88273ee9475a0</Guid>
+              <HorAlignment>Center</HorAlignment>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text25</Name>
+              <Page isRef="4" />
+              <Parent isRef="32" />
+              <Text>{FillBuyItembyDate.Price}</Text>
+              <TextBrush>Black</TextBrush>
+              <TextFormat Ref="40" type="NumberFormat" isKey="true">
+                <DecimalDigits>0</DecimalDigits>
+                <GroupSeparator>,</GroupSeparator>
+                <NegativePattern>1</NegativePattern>
+                <UseLocalSetting>False</UseLocalSetting>
+              </TextFormat>
+              <VertAlignment>Center</VertAlignment>
+            </Text25>
+            <Text26 Ref="41" type="Text" isKey="true">
+              <Brush>Transparent</Brush>
+              <ClientRectangle>0.2,0,2.85,1.02</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>B Koodak,12,Bold,Point,False,178</Font>
+              <Guid>8e616c01b81a4551982982ee0fb80087</Guid>
+              <HorAlignment>Center</HorAlignment>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text26</Name>
+              <Page isRef="4" />
+              <Parent isRef="32" />
+              <Text>{FillBuyItembyDate.TotalPrice}</Text>
+              <TextBrush>Black</TextBrush>
+              <TextFormat Ref="42" type="NumberFormat" isKey="true">
+                <DecimalDigits>0</DecimalDigits>
+                <GroupSeparator>,</GroupSeparator>
+                <NegativePattern>1</NegativePattern>
+                <UseLocalSetting>False</UseLocalSetting>
+              </TextFormat>
+              <VertAlignment>Center</VertAlignment>
+            </Text26>
+          </Components>
+          <Conditions isList="true" count="0" />
+          <DataRelationName isNull="true" />
+          <Filters isList="true" count="0" />
+          <Name>DataBand1</Name>
+          <Page isRef="4" />
+          <Parent isRef="4" />
+          <Sort isList="true" count="0" />
+        </DataBand1>
+        <ReportSummaryBand1 Ref="43" type="ReportSummaryBand" isKey="true">
+          <Brush>Transparent</Brush>
+          <ClientRectangle>0,6.58,19,1.52</ClientRectangle>
+          <Components isList="true" count="2">
+            <Text2 Ref="44" type="Text" isKey="true">
+              <Brush>Transparent</Brush>
+              <ClientRectangle>3.65,0.25,1.58,1.02</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>B Koodak,14,Bold</Font>
+              <Guid>77c3f10cfa0f49cebeb1941aa8f0ba41</Guid>
+              <HorAlignment>Right</HorAlignment>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text2</Name>
+              <Page isRef="4" />
+              <Parent isRef="43" />
+              <Text>: مجموع </Text>
+              <TextBrush>Black</TextBrush>
+              <TextQuality>Wysiwyg</TextQuality>
+              <VertAlignment>Center</VertAlignment>
+            </Text2>
+            <Text3 Ref="45" type="Text" isKey="true">
+              <Brush>Transparent</Brush>
+              <ClientRectangle>0.2,0.25,3.25,1.02</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>B Koodak,12,Bold,Point,False,178</Font>
+              <Guid>2eaf15c30a714fa29cf80ba3822154a5</Guid>
+              <HorAlignment>Right</HorAlignment>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text3</Name>
+              <Page isRef="4" />
+              <Parent isRef="43" />
+              <Text>{sumTotalPrice}</Text>
+              <TextBrush>Black</TextBrush>
+              <TextFormat Ref="46" type="NumberFormat" isKey="true">
+                <DecimalDigits>0</DecimalDigits>
+                <GroupSeparator>,</GroupSeparator>
+                <NegativePattern>1</NegativePattern>
+                <UseLocalSetting>False</UseLocalSetting>
+              </TextFormat>
+              <TextQuality>Wysiwyg</TextQuality>
+              <VertAlignment>Center</VertAlignment>
+            </Text3>
+          </Components>
+          <Conditions isList="true" count="0" />
+          <Name>ReportSummaryBand1</Name>
+          <Page isRef="4" />
+          <Parent isRef="4" />
+        </ReportSummaryBand1>
+      </Components>
+      <Conditions isList="true" count="0" />
+      <Guid>9700219a03d647d9882adb7f0cce2027</Guid>
+      <Margins>1,1,1,1</Margins>
+      <Name>Page1</Name>
+      <PageHeight>29.7</PageHeight>
+      <PageWidth>21</PageWidth>
+      <PaperSize>A4</PaperSize>
+      <Report isRef="0" />
+      <Watermark Ref="47" type="Stimulsoft.Report.Components.StiWatermark" isKey="true">
+        <Font>B Koodak,99.75,Bold,Point,False,178</Font>
+        <ImageAlignment>BottomRight</ImageAlignment>
+        <TextBrush>[50:0:0:0]</TextBrush>
+      </Watermark>
+    </Page1>
+  </Pages>
+  <PrinterSettings Ref="48" type="Stimulsoft.Report.Print.StiPrinterSettings" isKey="true" />
+  <ReferencedAssemblies isList="true" count="8">
+    <value>System.Dll</value>
+    <value>System.Drawing.Dll</value>
+    <value>System.Windows.Forms.Dll</value>
+    <value>System.Data.Dll</value>
+    <value>System.Xml.Dll</value>
+    <value>Stimulsoft.Controls.Dll</value>
+    <value>Stimulsoft.Base.Dll</value>
+    <value>Stimulsoft.Report.Dll</value>
+  </ReferencedAssemblies>
+  <ReportAlias>Report</ReportAlias>
+  <ReportChanged>12/31/2021 5:53:32 PM</ReportChanged>
+  <ReportCreated>12/31/2021 4:03:24 PM</ReportCreated>
+  <ReportFile>C:\Users\Hamid\Desktop\rptBuyItemByDate.mrt</ReportFile>
+  <ReportGuid>1e23e94b4c1448878e1d4162b916a3cc</ReportGuid>
+  <ReportName>Report</ReportName>
+  <ReportUnit>Centimeters</ReportUnit>
+  <ReportVersion>2010.1.700</ReportVersion>
+  <Script>using System;
+using System.Drawing;
+using System.Windows.Forms;
+using System.Data;
+using Stimulsoft.Controls;
+using Stimulsoft.Base.Drawing;
+using Stimulsoft.Report;
+using Stimulsoft.Report.Dialogs;
+using Stimulsoft.Report.Components;
+
+namespace Reports
+{
+    
+    public class Report : Stimulsoft.Report.StiReport
+    {
+        
+        public Report()
+        {
+            this.InitializeComponent();
+        }
+        #region StiReport Designer generated code - do not modify#endregion StiReport Designer generated code - do not modify
+    }
+}
+</Script>
+  <ScriptLanguage>CSharp</ScriptLanguage>
+  <Styles isList="true" count="0" />
+</StiSerializer>
