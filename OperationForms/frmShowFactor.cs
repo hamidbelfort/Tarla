@@ -19,6 +19,9 @@ namespace Tarla.OperationForms
         int sumTotalPrice, sumNetSell;
         string settingCompany,settingsAddress, settingsPhone;
         string buyerName, buyerPhone;
+        bool? existsMessage;
+        int invoiceId;
+        string message;
         public frmShowFactor()
         {
             InitializeComponent();
@@ -138,6 +141,49 @@ namespace Tarla.OperationForms
             lblSumTotalPrice.Text = sumTotalPrice.ToString("N0");
             lblSumNetSell.Text = sumNetSell.ToString("N0");
         }
+
+        private void btnPrint_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                StiReport report = new StiReport();
+                db.GetAddressSetting(ref settingCompany, ref settingsAddress, ref settingsPhone);
+
+                if (rdoDate.Checked)
+                {
+                    report.Load("Reports/rptFactorListByDate.mrt");
+                    report.Compile();
+
+                    report["strDate1"] = mskDate1.Text;
+                    report["strDate2"] = mskDate2.Text;
+                    report["sumTotalPrice"] = sumTotalPrice;
+                    report["sumNetSell"] = sumNetSell;
+                    report["strAddress"] = settingsAddress;
+                    report["strPhone"] = settingsPhone;
+                }
+                else if (rdoBuyer.Checked)
+                {
+                    int buyerId = (int)cmbBuyer.SelectedValue;
+                    db.GetBuyerNameAndPhone(buyerId, ref buyerName, ref buyerPhone);
+                    report.Load("Reports/rptFactorListById.mrt");
+                    report.Compile();
+
+                    report["buyerId"] = buyerId;
+                    report["buyerName"] = buyerName;
+                    report["buyerPhone"] = buyerPhone;
+                    report["sumTotalPrice"] = sumTotalPrice;
+                    report["sumNetSell"] = sumNetSell;
+                    report["strAddress"] = settingsAddress;
+                    report["strPhone"] = settingsPhone;
+                }
+                report.ShowWithRibbonGUI();
+            }
+            catch
+            {
+                MessageBoxFarsi.Show("ارتباط با سرور اطلاعاتی قطع شده است", "اخطار", MessageBoxFarsiButtons.OK, MessageBoxFarsiIcon.Error, MessageBoxFarsiDefaultButton.Button1);
+            }
+        }
+
         private void btnDelete_Click(object sender, EventArgs e)
         {
             try
@@ -180,33 +226,25 @@ namespace Tarla.OperationForms
             {
                 StiReport report = new StiReport();
                 db.GetAddressSetting(ref settingCompany, ref settingsAddress, ref settingsPhone);
-                
-                if (rdoDate.Checked)
-                {
-                    report.Load("Reports/rptFactorListByDate.mrt");
-                    report.Compile();
+                db.ExistsMessage(ref existsMessage);
+                invoiceId = (int)dgvFactor.CurrentRow.Cells[0].Value;
 
-                    report["strDate1"] = mskDate1.Text;
-                    report["strDate2"] = mskDate2.Text;
-                    report["sumTotalPrice"] = sumTotalPrice;
-                    report["sumNetSell"] = sumNetSell;
-                    report["strAddress"] = settingsAddress;
-                    report["strPhone"] = settingsPhone;
+
+                report.Load("Reports/rptFactor.mrt");
+                report.Compile();
+
+                report["invoiceId"] = invoiceId;
+                report["companyName"] = settingCompany;
+                report["strAddress"] = settingsAddress;
+                report["strPhone"] = settingsPhone;
+                if (existsMessage==true)
+                {
+                    db.GetRandomMessage(ref message);
+                    report["strMessage"] = message;
                 }
-                else if (rdoBuyer.Checked)
+                else
                 {
-                    int buyerId = (int)cmbBuyer.SelectedValue;
-                    db.GetBuyerNameAndPhone(buyerId, ref buyerName, ref buyerPhone);
-                    report.Load("Reports/rptFactorListById.mrt");
-                    report.Compile();
-
-                    report["buyerId"] = buyerId;
-                    report["buyerName"] = buyerName;
-                    report["buyerPhone"] = buyerPhone;
-                    report["sumTotalPrice"] = sumTotalPrice;
-                    report["sumNetSell"] = sumNetSell;
-                    report["strAddress"] = settingsAddress;
-                    report["strPhone"] = settingsPhone;
+                    report["strMessage"] = string.Empty;
                 }
                 report.ShowWithRibbonGUI();
             }

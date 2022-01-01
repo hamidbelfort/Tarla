@@ -274,6 +274,12 @@
     <Compile Include="MiscForms\frmChangePass.Designer.cs">
       <DependentUpon>frmChangePass.cs</DependentUpon>
     </Compile>
+    <Compile Include="MiscForms\frmChangeWallpaper.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MiscForms\frmChangeWallpaper.Designer.cs">
+      <DependentUpon>frmChangeWallpaper.cs</DependentUpon>
+    </Compile>
     <Compile Include="MiscForms\frmLogs.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -439,6 +445,9 @@
     <EmbeddedResource Include="MiscForms\frmChangePass.resx">
       <DependentUpon>frmChangePass.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="MiscForms\frmChangeWallpaper.resx">
+      <DependentUpon>frmChangeWallpaper.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="MiscForms\frmLogs.resx">
       <DependentUpon>frmLogs.cs</DependentUpon>
     </EmbeddedResource>
@@ -527,6 +536,7 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Reports\rptFactor.mrt" />
     <None Include="Resources\2-Hot-Printer-icon.png" />
   </ItemGroup>
   <ItemGroup>
@@ -696,6 +706,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\invoice_icon2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\wallpaper_icon.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

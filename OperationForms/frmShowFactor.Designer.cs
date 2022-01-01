@@ -44,6 +44,10 @@
             this.btnShow = new DevComponents.DotNetBar.ButtonX();
             this.btnExit = new DevComponents.DotNetBar.ButtonX();
             this.gp1 = new DevComponents.DotNetBar.Controls.GroupPanel();
+            this.lblSumNetSell = new DevComponents.DotNetBar.LabelX();
+            this.labelX6 = new DevComponents.DotNetBar.LabelX();
+            this.lblSumTotalPrice = new DevComponents.DotNetBar.LabelX();
+            this.labelX4 = new DevComponents.DotNetBar.LabelX();
             this.rdoBuyer = new System.Windows.Forms.RadioButton();
             this.rdoDate = new System.Windows.Forms.RadioButton();
             this.labelX3 = new DevComponents.DotNetBar.LabelX();
@@ -65,10 +69,6 @@
             this.mskDate2 = new DevComponents.DotNetBar.Controls.MaskedTextBoxAdv();
             this.mskDate1 = new DevComponents.DotNetBar.Controls.MaskedTextBoxAdv();
             this.btnAdd = new DevComponents.DotNetBar.ButtonX();
-            this.lblSumTotalPrice = new DevComponents.DotNetBar.LabelX();
-            this.labelX4 = new DevComponents.DotNetBar.LabelX();
-            this.lblSumNetSell = new DevComponents.DotNetBar.LabelX();
-            this.labelX6 = new DevComponents.DotNetBar.LabelX();
             this.panelEx1.SuspendLayout();
             this.groupPanel2.SuspendLayout();
             this.gp1.SuspendLayout();
@@ -187,6 +187,7 @@
             this.btnPrint.TabIndex = 1;
             this.btnPrint.Text = " چاپ لیست";
             this.btnPrint.TextAlignment = DevComponents.DotNetBar.eButtonTextAlignment.Right;
+            this.btnPrint.Click += new System.EventHandler(this.btnPrint_Click);
             // 
             // btnDelete
             // 
@@ -289,6 +290,64 @@
             this.gp1.StyleMouseOver.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.gp1.TabIndex = 0;
             this.gp1.Text = "نمایش لیست فاکتور ها";
+            // 
+            // lblSumNetSell
+            // 
+            this.lblSumNetSell.BackColor = System.Drawing.Color.Transparent;
+            // 
+            // 
+            // 
+            this.lblSumNetSell.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.lblSumNetSell.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Bold);
+            this.lblSumNetSell.ForeColor = System.Drawing.Color.Red;
+            this.lblSumNetSell.Location = new System.Drawing.Point(5, 438);
+            this.lblSumNetSell.Name = "lblSumNetSell";
+            this.lblSumNetSell.Size = new System.Drawing.Size(156, 23);
+            this.lblSumNetSell.TabIndex = 26;
+            this.lblSumNetSell.Text = "0";
+            // 
+            // labelX6
+            // 
+            this.labelX6.BackColor = System.Drawing.Color.Transparent;
+            // 
+            // 
+            // 
+            this.labelX6.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.labelX6.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Bold);
+            this.labelX6.Location = new System.Drawing.Point(167, 438);
+            this.labelX6.Name = "labelX6";
+            this.labelX6.Size = new System.Drawing.Size(151, 23);
+            this.labelX6.TabIndex = 25;
+            this.labelX6.Text = "مجموع صافی فروش : ";
+            // 
+            // lblSumTotalPrice
+            // 
+            this.lblSumTotalPrice.BackColor = System.Drawing.Color.Transparent;
+            // 
+            // 
+            // 
+            this.lblSumTotalPrice.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.lblSumTotalPrice.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Bold);
+            this.lblSumTotalPrice.ForeColor = System.Drawing.Color.Red;
+            this.lblSumTotalPrice.Location = new System.Drawing.Point(550, 438);
+            this.lblSumTotalPrice.Name = "lblSumTotalPrice";
+            this.lblSumTotalPrice.Size = new System.Drawing.Size(156, 23);
+            this.lblSumTotalPrice.TabIndex = 24;
+            this.lblSumTotalPrice.Text = "0";
+            // 
+            // labelX4
+            // 
+            this.labelX4.BackColor = System.Drawing.Color.Transparent;
+            // 
+            // 
+            // 
+            this.labelX4.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.labelX4.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Bold);
+            this.labelX4.Location = new System.Drawing.Point(712, 438);
+            this.labelX4.Name = "labelX4";
+            this.labelX4.Size = new System.Drawing.Size(121, 23);
+            this.labelX4.TabIndex = 23;
+            this.labelX4.Text = "مجموع مبلغ کل : ";
             // 
             // rdoBuyer
             // 
@@ -546,64 +605,6 @@
             this.btnAdd.TabIndex = 5;
             this.btnAdd.Text = "  جـدیـد";
             this.btnAdd.TextAlignment = DevComponents.DotNetBar.eButtonTextAlignment.Right;
-            // 
-            // lblSumTotalPrice
-            // 
-            this.lblSumTotalPrice.BackColor = System.Drawing.Color.Transparent;
-            // 
-            // 
-            // 
-            this.lblSumTotalPrice.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.lblSumTotalPrice.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Bold);
-            this.lblSumTotalPrice.ForeColor = System.Drawing.Color.Red;
-            this.lblSumTotalPrice.Location = new System.Drawing.Point(550, 438);
-            this.lblSumTotalPrice.Name = "lblSumTotalPrice";
-            this.lblSumTotalPrice.Size = new System.Drawing.Size(156, 23);
-            this.lblSumTotalPrice.TabIndex = 24;
-            this.lblSumTotalPrice.Text = "0";
-            // 
-            // labelX4
-            // 
-            this.labelX4.BackColor = System.Drawing.Color.Transparent;
-            // 
-            // 
-            // 
-            this.labelX4.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelX4.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Bold);
-            this.labelX4.Location = new System.Drawing.Point(712, 438);
-            this.labelX4.Name = "labelX4";
-            this.labelX4.Size = new System.Drawing.Size(121, 23);
-            this.labelX4.TabIndex = 23;
-            this.labelX4.Text = "مجموع مبلغ کل : ";
-            // 
-            // lblSumNetSell
-            // 
-            this.lblSumNetSell.BackColor = System.Drawing.Color.Transparent;
-            // 
-            // 
-            // 
-            this.lblSumNetSell.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.lblSumNetSell.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Bold);
-            this.lblSumNetSell.ForeColor = System.Drawing.Color.Red;
-            this.lblSumNetSell.Location = new System.Drawing.Point(5, 438);
-            this.lblSumNetSell.Name = "lblSumNetSell";
-            this.lblSumNetSell.Size = new System.Drawing.Size(156, 23);
-            this.lblSumNetSell.TabIndex = 26;
-            this.lblSumNetSell.Text = "0";
-            // 
-            // labelX6
-            // 
-            this.labelX6.BackColor = System.Drawing.Color.Transparent;
-            // 
-            // 
-            // 
-            this.labelX6.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelX6.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Bold);
-            this.labelX6.Location = new System.Drawing.Point(167, 438);
-            this.labelX6.Name = "labelX6";
-            this.labelX6.Size = new System.Drawing.Size(151, 23);
-            this.labelX6.TabIndex = 25;
-            this.labelX6.Text = "مجموع صافی فروش : ";
             // 
             // frmShowFactor
             // 

@@ -9,6 +9,8 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using Tarla.Classes;
 using BehComponents;
+using Stimulsoft.Report;
+
 namespace Tarla.OperationForms
 {
     public partial class frmAddInvoice : Form
@@ -24,6 +26,9 @@ namespace Tarla.OperationForms
         int miscCost;
         int truckRental;
         int? lastFactorId;
+        string settingCompany, settingsAddress, settingsPhone;
+        bool? existsMessage;
+        string message;
         public frmAddInvoice()
         {
             InitializeComponent();
@@ -127,29 +132,36 @@ namespace Tarla.OperationForms
                 }
                 else
                 {
-                    if (dgvFactor.Rows.Count == 0)
+                    if (dgvFactor.Rows.Count > 0)
                     {
-                        dgvFactor.Rows.Add(cmbProduct.Text, intPrice.Text, intCount.Text, intWeight.Text, cmbSeller.Text, cmbPacking.Text, cmbProduct.SelectedValue, cmbSeller.SelectedValue, cmbPacking.SelectedValue);
-                    }
-                    else
-                    {
+                        int index = -1;
                         for (int i = 0; i < dgvFactor.Rows.Count; i++)
                         {
                             if (Convert.ToInt32(dgvFactor.Rows[i].Cells["clmProduct"].Value.ToString()) == Convert.ToInt32(cmbProduct.SelectedValue.ToString()))
                             {
-                                dgvFactor.Rows[i].Cells["clmQty"].Value = intCount.Value;
-                                dgvFactor.Rows[i].Cells["clmWeight"].Value = intWeight.Value;
-                                dgvFactor.Rows[i].Cells["clmPrice"].Value = intPrice.Value;
-                                dgvFactor.Rows[i].Cells["clmSeller"].Value = cmbSeller.SelectedValue;
-                                dgvFactor.Rows[i].Cells["clmPacking"].Value = cmbPacking.SelectedValue;
-                                dgvFactor.Rows[i].Cells["clmPackingName"].Value = cmbPacking.Text;
-                                dgvFactor.Rows[i].Cells["clmSellerName"].Value = cmbSeller.Text;
-                            }
-                            else
-                            {
-
+                                index = i;
                             }
                         }
+                        if (index!=-1)
+                        {
+                            dgvFactor.Rows[index].Cells["clmQty"].Value = intCount.Value;
+                            dgvFactor.Rows[index].Cells["clmWeight"].Value = intWeight.Value;
+                            dgvFactor.Rows[index].Cells["clmPrice"].Value = intPrice.Value;
+                            dgvFactor.Rows[index].Cells["clmSeller"].Value = cmbSeller.SelectedValue;
+                            dgvFactor.Rows[index].Cells["clmPacking"].Value = cmbPacking.SelectedValue;
+                            dgvFactor.Rows[index].Cells["clmPackingName"].Value = cmbPacking.Text;
+                            dgvFactor.Rows[index].Cells["clmSellerName"].Value = cmbSeller.Text;
+                        }
+                        else
+                        {
+                            dgvFactor.Rows.Add(cmbProduct.Text, intPrice.Text, intCount.Text, intWeight.Text, cmbSeller.Text, cmbPacking.Text, cmbProduct.SelectedValue, cmbSeller.SelectedValue, cmbPacking.SelectedValue);
+
+                        }
+                    }
+                    else
+                    {
+                        dgvFactor.Rows.Add(cmbProduct.Text, intPrice.Text, intCount.Text, intWeight.Text, cmbSeller.Text, cmbPacking.Text, cmbProduct.SelectedValue, cmbSeller.SelectedValue, cmbPacking.SelectedValue);
+
                     }
                     calculateTotalPrice();
                 }
@@ -289,6 +301,38 @@ namespace Tarla.OperationForms
             new frmAddBook().ShowDialog();
         }
 
+        private void btnFactor_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                StiReport report = new StiReport();
+                db.GetAddressSetting(ref settingCompany, ref settingsAddress, ref settingsPhone);
+                db.ExistsMessage(ref existsMessage);
+
+                report.Load("Reports/rptFactor.mrt");
+                report.Compile();
+
+                report["invoiceId"] = lastFactorId;
+                report["companyName"] = settingCompany;
+                report["strAddress"] = settingsAddress;
+                report["strPhone"] = settingsPhone;
+                if (existsMessage == true)
+                {
+                    db.GetRandomMessage(ref message);
+                    report["strMessage"] = message;
+                }
+                else
+                {
+                    report["strMessage"] = string.Empty;
+                }
+                report.ShowWithRibbonGUI();
+            }
+            catch
+            {
+                MessageBoxFarsi.Show("ارتباط با سرور اطلاعاتی قطع شده است", "اخطار", MessageBoxFarsiButtons.OK, MessageBoxFarsiIcon.Error, MessageBoxFarsiDefaultButton.Button1);
+            }
+        }
+
         private void intWorkersCount_ValueChanged(object sender, EventArgs e)
         {
             if (intWorkersCount.Value>0)
@@ -355,6 +399,10 @@ namespace Tarla.OperationForms
             }
             lblTotalPrice.Text = totalPrice.ToString("N0");
             txtTotalWeight.Text = totalWeight.ToString("N0");
+            intCount.Value = 0;
+            intWeight.Value = 0;
+            intPrice.Value = 0;
+            cmbProduct.Focus();
         }
     }
 }

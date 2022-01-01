@@ -30,9 +30,6 @@ namespace Tarla
 		
     #region Extensibility Method Definitions
     partial void OnCreated();
-    partial void InsertSetting(Setting instance);
-    partial void UpdateSetting(Setting instance);
-    partial void DeleteSetting(Setting instance);
     partial void InsertRole(Role instance);
     partial void UpdateRole(Role instance);
     partial void DeleteRole(Role instance);
@@ -96,6 +93,9 @@ namespace Tarla
     partial void InsertPayType(PayType instance);
     partial void UpdatePayType(PayType instance);
     partial void DeletePayType(PayType instance);
+    partial void InsertSetting(Setting instance);
+    partial void UpdateSetting(Setting instance);
+    partial void DeleteSetting(Setting instance);
     #endregion
 		
 		public dcTarlaDataContext() : 
@@ -126,14 +126,6 @@ namespace Tarla
 				base(connection, mappingSource)
 		{
 			OnCreated();
-		}
-		
-		public System.Data.Linq.Table<Setting> Settings
-		{
-			get
-			{
-				return this.GetTable<Setting>();
-			}
 		}
 		
 		public System.Data.Linq.Table<Role> Roles
@@ -288,14 +280,6 @@ namespace Tarla
 			}
 		}
 		
-		public System.Data.Linq.Table<FactorDetailsView> FactorDetailsViews
-		{
-			get
-			{
-				return this.GetTable<FactorDetailsView>();
-			}
-		}
-		
 		public System.Data.Linq.Table<Message> Messages
 		{
 			get
@@ -344,6 +328,22 @@ namespace Tarla
 			}
 		}
 		
+		public System.Data.Linq.Table<FactorDetailsView> FactorDetailsViews
+		{
+			get
+			{
+				return this.GetTable<FactorDetailsView>();
+			}
+		}
+		
+		public System.Data.Linq.Table<Setting> Settings
+		{
+			get
+			{
+				return this.GetTable<Setting>();
+			}
+		}
+		
 		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.InsertLog")]
 		public int InsertLog([global::System.Data.Linq.Mapping.ParameterAttribute(Name="UserId", DbType="Int")] System.Nullable<int> userId, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="Login", DbType="NVarChar(20)")] string login)
 		{
@@ -386,13 +386,6 @@ namespace Tarla
 		{
 			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), id, user, pass);
 			id = ((System.Nullable<int>)(result.GetParameterValue(0)));
-			return ((int)(result.ReturnValue));
-		}
-		
-		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.InsertSetting")]
-		public int InsertSetting([global::System.Data.Linq.Mapping.ParameterAttribute(Name="Company", DbType="NVarChar(100)")] string company, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="FactorAddress", DbType="NVarChar(MAX)")] string factorAddress, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="FactortTell", DbType="NVarChar(20)")] string factortTell, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="Theme", DbType="NVarChar(50)")] string theme, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="FontSize", DbType="Float")] System.Nullable<double> fontSize)
-		{
-			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), company, factorAddress, factortTell, theme, fontSize);
 			return ((int)(result.ReturnValue));
 		}
 		
@@ -467,20 +460,6 @@ namespace Tarla
 		{
 			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())));
 			return ((ISingleResult<Role>)(result.ReturnValue));
-		}
-		
-		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.FillSetting")]
-		public ISingleResult<Setting> FillSetting()
-		{
-			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())));
-			return ((ISingleResult<Setting>)(result.ReturnValue));
-		}
-		
-		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.UpdateSetting")]
-		public int UpdateSetting([global::System.Data.Linq.Mapping.ParameterAttribute(Name="Company", DbType="NVarChar(100)")] string company, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="FactorAddress", DbType="NVarChar(MAX)")] string factorAddress, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="FactortTell", DbType="NVarChar(20)")] string factortTell, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="Theme", DbType="NVarChar(50)")] string theme, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="FontSize", DbType="Float")] System.Nullable<double> fontSize)
-		{
-			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), company, factorAddress, factortTell, theme, fontSize);
-			return ((int)(result.ReturnValue));
 		}
 		
 		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.DeleteGroups")]
@@ -1033,13 +1012,6 @@ namespace Tarla
 			return ((int)(result.ReturnValue));
 		}
 		
-		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.FillFactorDetailsView")]
-		public ISingleResult<FactorDetailsView> FillFactorDetailsView([global::System.Data.Linq.Mapping.ParameterAttribute(Name="InvoiceId", DbType="Int")] System.Nullable<int> invoiceId)
-		{
-			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), invoiceId);
-			return ((ISingleResult<FactorDetailsView>)(result.ReturnValue));
-		}
-		
 		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.FilterFactorByDate")]
 		public ISingleResult<FactorView> FilterFactorByDate([global::System.Data.Linq.Mapping.ParameterAttribute(Name="Date", DbType="NVarChar(10)")] string date, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="Date2", DbType="NVarChar(10)")] string date2)
 		{
@@ -1215,187 +1187,70 @@ namespace Tarla
 			buyerPhone = ((string)(result.GetParameterValue(2)));
 			return ((int)(result.ReturnValue));
 		}
-	}
-	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Setting")]
-	public sealed partial class Setting : INotifyPropertyChanging, INotifyPropertyChanged
-	{
 		
-		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
-		
-		private int _SettingId;
-		
-		private string _CompanyName;
-		
-		private string _FactorAddress;
-		
-		private string _FactorTel;
-		
-		private string _Theme;
-		
-		private System.Nullable<double> _FontSize;
-		
-    #region Extensibility Method Definitions
-    partial void OnLoaded();
-    partial void OnValidate(System.Data.Linq.ChangeAction action);
-    partial void OnCreated();
-    partial void OnSettingIdChanging(int value);
-    partial void OnSettingIdChanged();
-    partial void OnCompanyNameChanging(string value);
-    partial void OnCompanyNameChanged();
-    partial void OnFactorAddressChanging(string value);
-    partial void OnFactorAddressChanged();
-    partial void OnFactorTelChanging(string value);
-    partial void OnFactorTelChanged();
-    partial void OnThemeChanging(string value);
-    partial void OnThemeChanged();
-    partial void OnFontSizeChanging(System.Nullable<double> value);
-    partial void OnFontSizeChanged();
-    #endregion
-		
-		public Setting()
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.FillFactorDetailsView")]
+		public ISingleResult<FactorDetailsView> FillFactorDetailsView([global::System.Data.Linq.Mapping.ParameterAttribute(Name="InvoiceId", DbType="Int")] System.Nullable<int> invoiceId)
 		{
-			OnCreated();
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), invoiceId);
+			return ((ISingleResult<FactorDetailsView>)(result.ReturnValue));
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_SettingId", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
-		public int SettingId
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.ExistsMessage")]
+		public int ExistsMessage([global::System.Data.Linq.Mapping.ParameterAttribute(Name="Exists", DbType="Bit")] ref System.Nullable<bool> exists)
 		{
-			get
-			{
-				return this._SettingId;
-			}
-			set
-			{
-				if ((this._SettingId != value))
-				{
-					this.OnSettingIdChanging(value);
-					this.SendPropertyChanging();
-					this._SettingId = value;
-					this.SendPropertyChanged("SettingId");
-					this.OnSettingIdChanged();
-				}
-			}
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), exists);
+			exists = ((System.Nullable<bool>)(result.GetParameterValue(0)));
+			return ((int)(result.ReturnValue));
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CompanyName", DbType="NVarChar(100)")]
-		public string CompanyName
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.FillSetting")]
+		public ISingleResult<Setting> FillSetting()
 		{
-			get
-			{
-				return this._CompanyName;
-			}
-			set
-			{
-				if ((this._CompanyName != value))
-				{
-					this.OnCompanyNameChanging(value);
-					this.SendPropertyChanging();
-					this._CompanyName = value;
-					this.SendPropertyChanged("CompanyName");
-					this.OnCompanyNameChanged();
-				}
-			}
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())));
+			return ((ISingleResult<Setting>)(result.ReturnValue));
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_FactorAddress", DbType="NVarChar(MAX)")]
-		public string FactorAddress
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.InsertSetting", IsComposable=true)]
+		public object InsertSetting([global::System.Data.Linq.Mapping.ParameterAttribute(Name="Company", DbType="NVarChar(100)")] string company, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="FactorAddress", DbType="NVarChar(MAX)")] string factorAddress, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="FactortTell", DbType="NVarChar(20)")] string factortTell, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="Theme", DbType="NVarChar(50)")] string theme, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="FontSize", DbType="Float")] System.Nullable<double> fontSize)
 		{
-			get
-			{
-				return this._FactorAddress;
-			}
-			set
-			{
-				if ((this._FactorAddress != value))
-				{
-					this.OnFactorAddressChanging(value);
-					this.SendPropertyChanging();
-					this._FactorAddress = value;
-					this.SendPropertyChanged("FactorAddress");
-					this.OnFactorAddressChanged();
-				}
-			}
+			return ((object)(this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), company, factorAddress, factortTell, theme, fontSize).ReturnValue));
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_FactorTel", DbType="NVarChar(20)")]
-		public string FactorTel
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.UpdateSetting")]
+		public int UpdateSetting([global::System.Data.Linq.Mapping.ParameterAttribute(Name="Company", DbType="NVarChar(100)")] string company, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="FactorAddress", DbType="NVarChar(MAX)")] string factorAddress, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="FactortTell", DbType="NVarChar(20)")] string factortTell, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="Theme", DbType="NVarChar(50)")] string theme, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="FontSize", DbType="Float")] System.Nullable<double> fontSize)
 		{
-			get
-			{
-				return this._FactorTel;
-			}
-			set
-			{
-				if ((this._FactorTel != value))
-				{
-					this.OnFactorTelChanging(value);
-					this.SendPropertyChanging();
-					this._FactorTel = value;
-					this.SendPropertyChanged("FactorTel");
-					this.OnFactorTelChanged();
-				}
-			}
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), company, factorAddress, factortTell, theme, fontSize);
+			return ((int)(result.ReturnValue));
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Theme", DbType="NVarChar(50)")]
-		public string Theme
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.SaveWallpaper")]
+		public int SaveWallpaper([global::System.Data.Linq.Mapping.ParameterAttribute(Name="Wallpaper", DbType="NVarChar(MAX)")] string wallpaper)
 		{
-			get
-			{
-				return this._Theme;
-			}
-			set
-			{
-				if ((this._Theme != value))
-				{
-					this.OnThemeChanging(value);
-					this.SendPropertyChanging();
-					this._Theme = value;
-					this.SendPropertyChanged("Theme");
-					this.OnThemeChanged();
-				}
-			}
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), wallpaper);
+			return ((int)(result.ReturnValue));
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_FontSize", DbType="Float")]
-		public System.Nullable<double> FontSize
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.GetWallpaper")]
+		public int GetWallpaper([global::System.Data.Linq.Mapping.ParameterAttribute(Name="Wallpaper", DbType="NVarChar(MAX)")] ref string wallpaper)
 		{
-			get
-			{
-				return this._FontSize;
-			}
-			set
-			{
-				if ((this._FontSize != value))
-				{
-					this.OnFontSizeChanging(value);
-					this.SendPropertyChanging();
-					this._FontSize = value;
-					this.SendPropertyChanged("FontSize");
-					this.OnFontSizeChanged();
-				}
-			}
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), wallpaper);
+			wallpaper = ((string)(result.GetParameterValue(0)));
+			return ((int)(result.ReturnValue));
 		}
 		
-		public event PropertyChangingEventHandler PropertyChanging;
-		
-		public event PropertyChangedEventHandler PropertyChanged;
-		
-		private void SendPropertyChanging()
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.ClearWallpaper")]
+		public int ClearWallpaper()
 		{
-			if ((this.PropertyChanging != null))
-			{
-				this.PropertyChanging(this, emptyChangingEventArgs);
-			}
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())));
+			return ((int)(result.ReturnValue));
 		}
 		
-		private void SendPropertyChanged(String propertyName)
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.GetLoginName")]
+		public int GetLoginName([global::System.Data.Linq.Mapping.ParameterAttribute(Name="Id", DbType="Int")] System.Nullable<int> id, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="Fullname", DbType="NVarChar(30)")] ref string fullname)
 		{
-			if ((this.PropertyChanged != null))
-			{
-				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-			}
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), id, fullname);
+			fullname = ((string)(result.GetParameterValue(1)));
+			return ((int)(result.ReturnValue));
 		}
 	}
 	
@@ -5586,465 +5441,6 @@ namespace Tarla
 		}
 	}
 	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.FactorDetailsView")]
-	public sealed partial class FactorDetailsView
-	{
-		
-		private int _InvoiceId;
-		
-		private string _Date;
-		
-		private string _BuyerName;
-		
-		private string _LicensePlate;
-		
-		private System.Nullable<int> _TotalWeight;
-		
-		private System.Nullable<int> _WorkerCount;
-		
-		private System.Nullable<int> _WorkerCost;
-		
-		private System.Nullable<int> _TruckRental;
-		
-		private System.Nullable<int> _MiscCost;
-		
-		private string _WeightNote;
-		
-		private string _DockWeightNote;
-		
-		private string _ReceiverName;
-		
-		private string _F_ReceiverName;
-		
-		private System.Nullable<int> _Discount;
-		
-		private System.Nullable<int> _TotalPrice;
-		
-		private System.Nullable<int> _NetSell;
-		
-		private System.Nullable<int> _Paid;
-		
-		private string _Description;
-		
-		private int _DetailId;
-		
-		private string _ProductName;
-		
-		private string _SellerName;
-		
-		private string _PackingType;
-		
-		private System.Nullable<int> _Weight;
-		
-		private System.Nullable<int> _Qty;
-		
-		private System.Nullable<int> _Price;
-		
-		public FactorDetailsView()
-		{
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_InvoiceId", DbType="Int NOT NULL")]
-		public int InvoiceId
-		{
-			get
-			{
-				return this._InvoiceId;
-			}
-			set
-			{
-				if ((this._InvoiceId != value))
-				{
-					this._InvoiceId = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Date", DbType="NVarChar(10)")]
-		public string Date
-		{
-			get
-			{
-				return this._Date;
-			}
-			set
-			{
-				if ((this._Date != value))
-				{
-					this._Date = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_BuyerName", DbType="NVarChar(50)")]
-		public string BuyerName
-		{
-			get
-			{
-				return this._BuyerName;
-			}
-			set
-			{
-				if ((this._BuyerName != value))
-				{
-					this._BuyerName = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_LicensePlate", DbType="NVarChar(20)")]
-		public string LicensePlate
-		{
-			get
-			{
-				return this._LicensePlate;
-			}
-			set
-			{
-				if ((this._LicensePlate != value))
-				{
-					this._LicensePlate = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TotalWeight", DbType="Int")]
-		public System.Nullable<int> TotalWeight
-		{
-			get
-			{
-				return this._TotalWeight;
-			}
-			set
-			{
-				if ((this._TotalWeight != value))
-				{
-					this._TotalWeight = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_WorkerCount", DbType="Int")]
-		public System.Nullable<int> WorkerCount
-		{
-			get
-			{
-				return this._WorkerCount;
-			}
-			set
-			{
-				if ((this._WorkerCount != value))
-				{
-					this._WorkerCount = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_WorkerCost", DbType="Int")]
-		public System.Nullable<int> WorkerCost
-		{
-			get
-			{
-				return this._WorkerCost;
-			}
-			set
-			{
-				if ((this._WorkerCost != value))
-				{
-					this._WorkerCost = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TruckRental", DbType="Int")]
-		public System.Nullable<int> TruckRental
-		{
-			get
-			{
-				return this._TruckRental;
-			}
-			set
-			{
-				if ((this._TruckRental != value))
-				{
-					this._TruckRental = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MiscCost", DbType="Int")]
-		public System.Nullable<int> MiscCost
-		{
-			get
-			{
-				return this._MiscCost;
-			}
-			set
-			{
-				if ((this._MiscCost != value))
-				{
-					this._MiscCost = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_WeightNote", DbType="NVarChar(20)")]
-		public string WeightNote
-		{
-			get
-			{
-				return this._WeightNote;
-			}
-			set
-			{
-				if ((this._WeightNote != value))
-				{
-					this._WeightNote = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DockWeightNote", DbType="NVarChar(20)")]
-		public string DockWeightNote
-		{
-			get
-			{
-				return this._DockWeightNote;
-			}
-			set
-			{
-				if ((this._DockWeightNote != value))
-				{
-					this._DockWeightNote = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ReceiverName", DbType="NVarChar(30)")]
-		public string ReceiverName
-		{
-			get
-			{
-				return this._ReceiverName;
-			}
-			set
-			{
-				if ((this._ReceiverName != value))
-				{
-					this._ReceiverName = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_F_ReceiverName", DbType="NVarChar(30)")]
-		public string F_ReceiverName
-		{
-			get
-			{
-				return this._F_ReceiverName;
-			}
-			set
-			{
-				if ((this._F_ReceiverName != value))
-				{
-					this._F_ReceiverName = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Discount", DbType="Int")]
-		public System.Nullable<int> Discount
-		{
-			get
-			{
-				return this._Discount;
-			}
-			set
-			{
-				if ((this._Discount != value))
-				{
-					this._Discount = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TotalPrice", DbType="Int")]
-		public System.Nullable<int> TotalPrice
-		{
-			get
-			{
-				return this._TotalPrice;
-			}
-			set
-			{
-				if ((this._TotalPrice != value))
-				{
-					this._TotalPrice = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_NetSell", DbType="Int")]
-		public System.Nullable<int> NetSell
-		{
-			get
-			{
-				return this._NetSell;
-			}
-			set
-			{
-				if ((this._NetSell != value))
-				{
-					this._NetSell = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Paid", DbType="Int")]
-		public System.Nullable<int> Paid
-		{
-			get
-			{
-				return this._Paid;
-			}
-			set
-			{
-				if ((this._Paid != value))
-				{
-					this._Paid = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Description", DbType="NVarChar(MAX)")]
-		public string Description
-		{
-			get
-			{
-				return this._Description;
-			}
-			set
-			{
-				if ((this._Description != value))
-				{
-					this._Description = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DetailId", DbType="Int NOT NULL")]
-		public int DetailId
-		{
-			get
-			{
-				return this._DetailId;
-			}
-			set
-			{
-				if ((this._DetailId != value))
-				{
-					this._DetailId = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ProductName", DbType="NVarChar(30)")]
-		public string ProductName
-		{
-			get
-			{
-				return this._ProductName;
-			}
-			set
-			{
-				if ((this._ProductName != value))
-				{
-					this._ProductName = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_SellerName", DbType="NVarChar(50)")]
-		public string SellerName
-		{
-			get
-			{
-				return this._SellerName;
-			}
-			set
-			{
-				if ((this._SellerName != value))
-				{
-					this._SellerName = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PackingType", DbType="NVarChar(30)")]
-		public string PackingType
-		{
-			get
-			{
-				return this._PackingType;
-			}
-			set
-			{
-				if ((this._PackingType != value))
-				{
-					this._PackingType = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Weight", DbType="Int")]
-		public System.Nullable<int> Weight
-		{
-			get
-			{
-				return this._Weight;
-			}
-			set
-			{
-				if ((this._Weight != value))
-				{
-					this._Weight = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Qty", DbType="Int")]
-		public System.Nullable<int> Qty
-		{
-			get
-			{
-				return this._Qty;
-			}
-			set
-			{
-				if ((this._Qty != value))
-				{
-					this._Qty = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Price", DbType="Int")]
-		public System.Nullable<int> Price
-		{
-			get
-			{
-				return this._Price;
-			}
-			set
-			{
-				if ((this._Price != value))
-				{
-					this._Price = value;
-				}
-			}
-		}
-	}
-	
 	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Messages")]
 	public sealed partial class Message : INotifyPropertyChanging, INotifyPropertyChanged
 	{
@@ -7047,6 +6443,689 @@ namespace Tarla
 				{
 					this._TotalPrice = value;
 				}
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.FactorDetailsView")]
+	public sealed partial class FactorDetailsView
+	{
+		
+		private int _InvoiceId;
+		
+		private string _Date;
+		
+		private string _BuyerName;
+		
+		private string _Phone;
+		
+		private string _LicensePlate;
+		
+		private System.Nullable<int> _TotalWeight;
+		
+		private System.Nullable<int> _WorkerCount;
+		
+		private System.Nullable<int> _WorkerCost;
+		
+		private System.Nullable<int> _TruckRental;
+		
+		private System.Nullable<int> _MiscCost;
+		
+		private string _WeightNote;
+		
+		private string _DockWeightNote;
+		
+		private string _ReceiverName;
+		
+		private string _F_ReceiverName;
+		
+		private System.Nullable<int> _Discount;
+		
+		private System.Nullable<int> _TotalPrice;
+		
+		private System.Nullable<int> _NetSell;
+		
+		private System.Nullable<int> _Paid;
+		
+		private string _Description;
+		
+		private int _DetailId;
+		
+		private string _ProductName;
+		
+		private string _SellerName;
+		
+		private string _PackingType;
+		
+		private System.Nullable<int> _Weight;
+		
+		private System.Nullable<int> _Qty;
+		
+		private System.Nullable<int> _Price;
+		
+		public FactorDetailsView()
+		{
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_InvoiceId", DbType="Int NOT NULL")]
+		public int InvoiceId
+		{
+			get
+			{
+				return this._InvoiceId;
+			}
+			set
+			{
+				if ((this._InvoiceId != value))
+				{
+					this._InvoiceId = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Date", DbType="NVarChar(10)")]
+		public string Date
+		{
+			get
+			{
+				return this._Date;
+			}
+			set
+			{
+				if ((this._Date != value))
+				{
+					this._Date = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_BuyerName", DbType="NVarChar(50)")]
+		public string BuyerName
+		{
+			get
+			{
+				return this._BuyerName;
+			}
+			set
+			{
+				if ((this._BuyerName != value))
+				{
+					this._BuyerName = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Phone", DbType="NVarChar(12)")]
+		public string Phone
+		{
+			get
+			{
+				return this._Phone;
+			}
+			set
+			{
+				if ((this._Phone != value))
+				{
+					this._Phone = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_LicensePlate", DbType="NVarChar(20)")]
+		public string LicensePlate
+		{
+			get
+			{
+				return this._LicensePlate;
+			}
+			set
+			{
+				if ((this._LicensePlate != value))
+				{
+					this._LicensePlate = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TotalWeight", DbType="Int")]
+		public System.Nullable<int> TotalWeight
+		{
+			get
+			{
+				return this._TotalWeight;
+			}
+			set
+			{
+				if ((this._TotalWeight != value))
+				{
+					this._TotalWeight = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_WorkerCount", DbType="Int")]
+		public System.Nullable<int> WorkerCount
+		{
+			get
+			{
+				return this._WorkerCount;
+			}
+			set
+			{
+				if ((this._WorkerCount != value))
+				{
+					this._WorkerCount = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_WorkerCost", DbType="Int")]
+		public System.Nullable<int> WorkerCost
+		{
+			get
+			{
+				return this._WorkerCost;
+			}
+			set
+			{
+				if ((this._WorkerCost != value))
+				{
+					this._WorkerCost = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TruckRental", DbType="Int")]
+		public System.Nullable<int> TruckRental
+		{
+			get
+			{
+				return this._TruckRental;
+			}
+			set
+			{
+				if ((this._TruckRental != value))
+				{
+					this._TruckRental = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MiscCost", DbType="Int")]
+		public System.Nullable<int> MiscCost
+		{
+			get
+			{
+				return this._MiscCost;
+			}
+			set
+			{
+				if ((this._MiscCost != value))
+				{
+					this._MiscCost = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_WeightNote", DbType="NVarChar(20)")]
+		public string WeightNote
+		{
+			get
+			{
+				return this._WeightNote;
+			}
+			set
+			{
+				if ((this._WeightNote != value))
+				{
+					this._WeightNote = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DockWeightNote", DbType="NVarChar(20)")]
+		public string DockWeightNote
+		{
+			get
+			{
+				return this._DockWeightNote;
+			}
+			set
+			{
+				if ((this._DockWeightNote != value))
+				{
+					this._DockWeightNote = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ReceiverName", DbType="NVarChar(30)")]
+		public string ReceiverName
+		{
+			get
+			{
+				return this._ReceiverName;
+			}
+			set
+			{
+				if ((this._ReceiverName != value))
+				{
+					this._ReceiverName = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_F_ReceiverName", DbType="NVarChar(30)")]
+		public string F_ReceiverName
+		{
+			get
+			{
+				return this._F_ReceiverName;
+			}
+			set
+			{
+				if ((this._F_ReceiverName != value))
+				{
+					this._F_ReceiverName = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Discount", DbType="Int")]
+		public System.Nullable<int> Discount
+		{
+			get
+			{
+				return this._Discount;
+			}
+			set
+			{
+				if ((this._Discount != value))
+				{
+					this._Discount = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TotalPrice", DbType="Int")]
+		public System.Nullable<int> TotalPrice
+		{
+			get
+			{
+				return this._TotalPrice;
+			}
+			set
+			{
+				if ((this._TotalPrice != value))
+				{
+					this._TotalPrice = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_NetSell", DbType="Int")]
+		public System.Nullable<int> NetSell
+		{
+			get
+			{
+				return this._NetSell;
+			}
+			set
+			{
+				if ((this._NetSell != value))
+				{
+					this._NetSell = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Paid", DbType="Int")]
+		public System.Nullable<int> Paid
+		{
+			get
+			{
+				return this._Paid;
+			}
+			set
+			{
+				if ((this._Paid != value))
+				{
+					this._Paid = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Description", DbType="NVarChar(MAX)")]
+		public string Description
+		{
+			get
+			{
+				return this._Description;
+			}
+			set
+			{
+				if ((this._Description != value))
+				{
+					this._Description = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DetailId", DbType="Int NOT NULL")]
+		public int DetailId
+		{
+			get
+			{
+				return this._DetailId;
+			}
+			set
+			{
+				if ((this._DetailId != value))
+				{
+					this._DetailId = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ProductName", DbType="NVarChar(30)")]
+		public string ProductName
+		{
+			get
+			{
+				return this._ProductName;
+			}
+			set
+			{
+				if ((this._ProductName != value))
+				{
+					this._ProductName = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_SellerName", DbType="NVarChar(50)")]
+		public string SellerName
+		{
+			get
+			{
+				return this._SellerName;
+			}
+			set
+			{
+				if ((this._SellerName != value))
+				{
+					this._SellerName = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PackingType", DbType="NVarChar(30)")]
+		public string PackingType
+		{
+			get
+			{
+				return this._PackingType;
+			}
+			set
+			{
+				if ((this._PackingType != value))
+				{
+					this._PackingType = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Weight", DbType="Int")]
+		public System.Nullable<int> Weight
+		{
+			get
+			{
+				return this._Weight;
+			}
+			set
+			{
+				if ((this._Weight != value))
+				{
+					this._Weight = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Qty", DbType="Int")]
+		public System.Nullable<int> Qty
+		{
+			get
+			{
+				return this._Qty;
+			}
+			set
+			{
+				if ((this._Qty != value))
+				{
+					this._Qty = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Price", DbType="Int")]
+		public System.Nullable<int> Price
+		{
+			get
+			{
+				return this._Price;
+			}
+			set
+			{
+				if ((this._Price != value))
+				{
+					this._Price = value;
+				}
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Setting")]
+	public sealed partial class Setting : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _SettingId;
+		
+		private string _CompanyName;
+		
+		private string _FactorAddress;
+		
+		private string _FactorTel;
+		
+		private string _Theme;
+		
+		private System.Nullable<double> _FontSize;
+		
+		private string _Wallpaper;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnSettingIdChanging(int value);
+    partial void OnSettingIdChanged();
+    partial void OnCompanyNameChanging(string value);
+    partial void OnCompanyNameChanged();
+    partial void OnFactorAddressChanging(string value);
+    partial void OnFactorAddressChanged();
+    partial void OnFactorTelChanging(string value);
+    partial void OnFactorTelChanged();
+    partial void OnThemeChanging(string value);
+    partial void OnThemeChanged();
+    partial void OnFontSizeChanging(System.Nullable<double> value);
+    partial void OnFontSizeChanged();
+    partial void OnWallpaperChanging(string value);
+    partial void OnWallpaperChanged();
+    #endregion
+		
+		public Setting()
+		{
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_SettingId", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public int SettingId
+		{
+			get
+			{
+				return this._SettingId;
+			}
+			set
+			{
+				if ((this._SettingId != value))
+				{
+					this.OnSettingIdChanging(value);
+					this.SendPropertyChanging();
+					this._SettingId = value;
+					this.SendPropertyChanged("SettingId");
+					this.OnSettingIdChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CompanyName", DbType="NVarChar(100)")]
+		public string CompanyName
+		{
+			get
+			{
+				return this._CompanyName;
+			}
+			set
+			{
+				if ((this._CompanyName != value))
+				{
+					this.OnCompanyNameChanging(value);
+					this.SendPropertyChanging();
+					this._CompanyName = value;
+					this.SendPropertyChanged("CompanyName");
+					this.OnCompanyNameChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_FactorAddress", DbType="NVarChar(MAX)")]
+		public string FactorAddress
+		{
+			get
+			{
+				return this._FactorAddress;
+			}
+			set
+			{
+				if ((this._FactorAddress != value))
+				{
+					this.OnFactorAddressChanging(value);
+					this.SendPropertyChanging();
+					this._FactorAddress = value;
+					this.SendPropertyChanged("FactorAddress");
+					this.OnFactorAddressChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_FactorTel", DbType="NVarChar(20)")]
+		public string FactorTel
+		{
+			get
+			{
+				return this._FactorTel;
+			}
+			set
+			{
+				if ((this._FactorTel != value))
+				{
+					this.OnFactorTelChanging(value);
+					this.SendPropertyChanging();
+					this._FactorTel = value;
+					this.SendPropertyChanged("FactorTel");
+					this.OnFactorTelChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Theme", DbType="NVarChar(50)")]
+		public string Theme
+		{
+			get
+			{
+				return this._Theme;
+			}
+			set
+			{
+				if ((this._Theme != value))
+				{
+					this.OnThemeChanging(value);
+					this.SendPropertyChanging();
+					this._Theme = value;
+					this.SendPropertyChanged("Theme");
+					this.OnThemeChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_FontSize", DbType="Float")]
+		public System.Nullable<double> FontSize
+		{
+			get
+			{
+				return this._FontSize;
+			}
+			set
+			{
+				if ((this._FontSize != value))
+				{
+					this.OnFontSizeChanging(value);
+					this.SendPropertyChanging();
+					this._FontSize = value;
+					this.SendPropertyChanged("FontSize");
+					this.OnFontSizeChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Wallpaper", DbType="NVarChar(MAX)")]
+		public string Wallpaper
+		{
+			get
+			{
+				return this._Wallpaper;
+			}
+			set
+			{
+				if ((this._Wallpaper != value))
+				{
+					this.OnWallpaperChanging(value);
+					this.SendPropertyChanging();
+					this._Wallpaper = value;
+					this.SendPropertyChanged("Wallpaper");
+					this.OnWallpaperChanged();
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		private void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		private void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
 			}
 		}
 	}

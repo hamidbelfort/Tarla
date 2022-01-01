@@ -24,6 +24,7 @@ namespace Tarla
         bool? factor = false;
         PersianDate pd = new PersianDate();
         string strToday;
+        string userFullname;
         public static float fontSize;
         public static string themeName;
         public frmLogin()
@@ -40,6 +41,7 @@ namespace Tarla
                 if (checkUsername == true && checkPass == true)
                 {
                     db.GetLoginId(ref userId, txtUsername.Text.Trim(), txtPassword.Text.Trim());
+                    db.GetLoginName(userId,ref userFullname);
                     db.GetUserPermissions(userId, ref Setting, ref Bank, ref User, ref factor);
                     frmMain.LoginId = (int)userId;
 
@@ -47,6 +49,7 @@ namespace Tarla
                     frmMain.SettingPermission = (bool)Setting;
                     frmMain.UserPermission = (bool)User;
                     frmMain.FactorPermission = (bool)factor;
+                    frmMain.Fullname = userFullname;
                     strToday = pd.getShortDateTime();
 
                     db.InsertLog(userId, strToday);

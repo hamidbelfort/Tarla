@@ -24,6 +24,7 @@ namespace Tarla
         public static bool SettingPermission = false;
         public static bool UserPermission = false;
         public static bool FactorPermission = false;
+        public static string Fullname = "";
         bool? roleExists;
         bool? userExists;
         bool? settingExists;
@@ -31,6 +32,7 @@ namespace Tarla
         double? fontSize;
         string themeName;
         string strToday;
+        string wallpaper;
         public frmMain()
         {
             Thread t = new Thread(new ThreadStart(runSplash));
@@ -87,14 +89,26 @@ namespace Tarla
             btnItem.Enabled = FactorPermission;
             btnItemGroup.Enabled = FactorPermission;
             btnPacking.Enabled = FactorPermission;
+            lblFullname.Text = string.Format("کاربر جاری : {0}", Fullname);
+            lblDate.Text = string.Format("تاریخ : {0}",pd.getShortDate());
         }
         private void getThemSetting()
         {
             try
             {
                 db.GetThemeSetting(ref themeName, ref fontSize);
+                db.GetWallpaper(ref wallpaper);
                 styleManager1.ManagerStyle = StyleTheme.getTheme(themeName);
                 this.Font = new Font("Tahoma", (float)fontSize, FontStyle.Regular);
+                if (wallpaper!=string.Empty)
+                {
+                    this.BackgroundImageLayout = ImageLayout.Stretch;
+                    this.BackgroundImage = Image.FromFile(wallpaper);
+                }
+                else
+                {
+                    this.BackgroundImage = null;
+                }
             }
             catch
             {
@@ -234,6 +248,12 @@ namespace Tarla
         private void btnFactorList_Click(object sender, EventArgs e)
         {
             new frmShowFactor().ShowDialog();
+        }
+
+        private void btnChangeBackground_Click(object sender, EventArgs e)
+        {
+            new frmChangeWallpaper().ShowDialog();
+            getThemSetting();
         }
     }
 }
