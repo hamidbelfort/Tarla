@@ -55,5 +55,17 @@ namespace Tarla.Classes
                 return 0;
             }
         }
+        public int calculateProfitLoss(int totalPrice,int netSell)
+        {
+            try
+            {
+                return totalPrice - netSell;
+            }
+            catch (Exception ex)
+            {
+                SaveLog("Util.cs", "Error : " + ex.Message);
+                return 0;
+            }
+        }
     }
 }

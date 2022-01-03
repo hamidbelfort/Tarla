@@ -36,20 +36,20 @@
             this.btnExit = new DevComponents.DotNetBar.ButtonX();
             this.btnSave = new DevComponents.DotNetBar.ButtonX();
             this.groupPanel1 = new DevComponents.DotNetBar.Controls.GroupPanel();
+            this.labelX3 = new DevComponents.DotNetBar.LabelX();
+            this.txtDesc = new DevComponents.DotNetBar.Controls.TextBoxX();
+            this.bsItem = new System.Windows.Forms.BindingSource(this.components);
+            this.cmbGroup = new DevComponents.DotNetBar.Controls.ComboBoxEx();
+            this.bsGroup = new System.Windows.Forms.BindingSource(this.components);
             this.labelX2 = new DevComponents.DotNetBar.LabelX();
             this.txtName = new DevComponents.DotNetBar.Controls.TextBoxX();
             this.labelX1 = new DevComponents.DotNetBar.LabelX();
-            this.cmbGroup = new DevComponents.DotNetBar.Controls.ComboBoxEx();
-            this.bsGroup = new System.Windows.Forms.BindingSource(this.components);
-            this.bsItem = new System.Windows.Forms.BindingSource(this.components);
-            this.labelX3 = new DevComponents.DotNetBar.LabelX();
-            this.txtDesc = new DevComponents.DotNetBar.Controls.TextBoxX();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             this.panelEx1.SuspendLayout();
             this.groupPanel2.SuspendLayout();
             this.groupPanel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.bsGroup)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bsItem)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bsGroup)).BeginInit();
             this.SuspendLayout();
             // 
             // errorProvider1
@@ -198,6 +198,59 @@
             this.groupPanel1.TabIndex = 0;
             this.groupPanel1.Text = "ثبت مشخصات کالا";
             // 
+            // labelX3
+            // 
+            // 
+            // 
+            // 
+            this.labelX3.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.labelX3.Location = new System.Drawing.Point(322, 68);
+            this.labelX3.Name = "labelX3";
+            this.labelX3.Size = new System.Drawing.Size(115, 23);
+            this.labelX3.TabIndex = 5;
+            this.labelX3.Text = "توضیحات کالا";
+            // 
+            // txtDesc
+            // 
+            // 
+            // 
+            // 
+            this.txtDesc.Border.Class = "TextBoxBorder";
+            this.txtDesc.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.txtDesc.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.bsItem, "ItemDesc", true));
+            this.txtDesc.Location = new System.Drawing.Point(18, 69);
+            this.txtDesc.MaxLength = 30;
+            this.txtDesc.Multiline = true;
+            this.txtDesc.Name = "txtDesc";
+            this.txtDesc.PreventEnterBeep = true;
+            this.txtDesc.ScrollBars = System.Windows.Forms.ScrollBars.Both;
+            this.txtDesc.Size = new System.Drawing.Size(298, 120);
+            this.txtDesc.TabIndex = 2;
+            this.txtDesc.WatermarkText = "توضیحات کالا را در اینجا بنویسید";
+            // 
+            // bsItem
+            // 
+            this.bsItem.DataSource = typeof(Tarla.Item);
+            // 
+            // cmbGroup
+            // 
+            this.cmbGroup.DataSource = this.bsGroup;
+            this.cmbGroup.DisplayMember = "GroupName";
+            this.cmbGroup.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+            this.cmbGroup.FormattingEnabled = true;
+            this.cmbGroup.ItemHeight = 17;
+            this.cmbGroup.Location = new System.Drawing.Point(18, 41);
+            this.cmbGroup.Name = "cmbGroup";
+            this.cmbGroup.Size = new System.Drawing.Size(298, 23);
+            this.cmbGroup.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.cmbGroup.TabIndex = 1;
+            this.cmbGroup.ValueMember = "ItemGroupId";
+            this.cmbGroup.WatermarkText = "یک گروه را انتخاب کنید";
+            // 
+            // bsGroup
+            // 
+            this.bsGroup.DataSource = typeof(Tarla.ItemGroup);
+            // 
             // labelX2
             // 
             // 
@@ -238,63 +291,12 @@
             this.labelX1.TabIndex = 0;
             this.labelX1.Text = "نام کالا";
             // 
-            // cmbGroup
-            // 
-            this.cmbGroup.DataSource = this.bsGroup;
-            this.cmbGroup.DisplayMember = "GroupName";
-            this.cmbGroup.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
-            this.cmbGroup.FormattingEnabled = true;
-            this.cmbGroup.ItemHeight = 17;
-            this.cmbGroup.Location = new System.Drawing.Point(18, 41);
-            this.cmbGroup.Name = "cmbGroup";
-            this.cmbGroup.Size = new System.Drawing.Size(298, 23);
-            this.cmbGroup.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.cmbGroup.TabIndex = 1;
-            this.cmbGroup.ValueMember = "ItemGroupId";
-            this.cmbGroup.WatermarkText = "یک گروه را انتخاب کنید";
-            // 
-            // bsGroup
-            // 
-            this.bsGroup.DataSource = typeof(Tarla.ItemGroup);
-            // 
-            // bsItem
-            // 
-            this.bsItem.DataSource = typeof(Tarla.Item);
-            // 
-            // labelX3
-            // 
-            // 
-            // 
-            // 
-            this.labelX3.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelX3.Location = new System.Drawing.Point(322, 68);
-            this.labelX3.Name = "labelX3";
-            this.labelX3.Size = new System.Drawing.Size(115, 23);
-            this.labelX3.TabIndex = 5;
-            this.labelX3.Text = "توضیحات کالا";
-            // 
-            // txtDesc
-            // 
-            // 
-            // 
-            // 
-            this.txtDesc.Border.Class = "TextBoxBorder";
-            this.txtDesc.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.txtDesc.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.bsItem, "ItemDesc", true));
-            this.txtDesc.Location = new System.Drawing.Point(18, 69);
-            this.txtDesc.MaxLength = 30;
-            this.txtDesc.Multiline = true;
-            this.txtDesc.Name = "txtDesc";
-            this.txtDesc.PreventEnterBeep = true;
-            this.txtDesc.ScrollBars = System.Windows.Forms.ScrollBars.Both;
-            this.txtDesc.Size = new System.Drawing.Size(298, 120);
-            this.txtDesc.TabIndex = 2;
-            this.txtDesc.WatermarkText = "توضیحات کالا را در اینجا بنویسید";
-            // 
             // frmAddItem
             // 
+            this.AcceptButton = this.btnSave;
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.CancelButton = this.btnExit;
             this.ClientSize = new System.Drawing.Size(468, 299);
             this.Controls.Add(this.panelEx1);
             this.Font = new System.Drawing.Font("Tahoma", 9.75F);
@@ -309,8 +311,8 @@
             this.panelEx1.ResumeLayout(false);
             this.groupPanel2.ResumeLayout(false);
             this.groupPanel1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.bsGroup)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.bsItem)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bsGroup)).EndInit();
             this.ResumeLayout(false);
 
         }

@@ -1210,12 +1210,6 @@ namespace Tarla
 			return ((ISingleResult<Setting>)(result.ReturnValue));
 		}
 		
-		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.InsertSetting", IsComposable=true)]
-		public object InsertSetting([global::System.Data.Linq.Mapping.ParameterAttribute(Name="Company", DbType="NVarChar(100)")] string company, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="FactorAddress", DbType="NVarChar(MAX)")] string factorAddress, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="FactortTell", DbType="NVarChar(20)")] string factortTell, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="Theme", DbType="NVarChar(50)")] string theme, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="FontSize", DbType="Float")] System.Nullable<double> fontSize)
-		{
-			return ((object)(this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), company, factorAddress, factortTell, theme, fontSize).ReturnValue));
-		}
-		
 		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.UpdateSetting")]
 		public int UpdateSetting([global::System.Data.Linq.Mapping.ParameterAttribute(Name="Company", DbType="NVarChar(100)")] string company, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="FactorAddress", DbType="NVarChar(MAX)")] string factorAddress, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="FactortTell", DbType="NVarChar(20)")] string factortTell, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="Theme", DbType="NVarChar(50)")] string theme, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="FontSize", DbType="Float")] System.Nullable<double> fontSize)
 		{
@@ -1250,6 +1244,13 @@ namespace Tarla
 		{
 			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), id, fullname);
 			fullname = ((string)(result.GetParameterValue(1)));
+			return ((int)(result.ReturnValue));
+		}
+		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.InsertSetting")]
+		public int InsertSetting([global::System.Data.Linq.Mapping.ParameterAttribute(Name="Company", DbType="NVarChar(100)")] string company, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="FactorAddress", DbType="NVarChar(MAX)")] string factorAddress, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="FactortTell", DbType="NVarChar(20)")] string factortTell, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="Theme", DbType="NVarChar(50)")] string theme, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="FontSize", DbType="Float")] System.Nullable<double> fontSize)
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), company, factorAddress, factortTell, theme, fontSize);
 			return ((int)(result.ReturnValue));
 		}
 	}

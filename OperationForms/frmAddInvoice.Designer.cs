@@ -121,13 +121,13 @@
             this.clmSeller = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.clmPacking = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.txtLicensePlate = new DevComponents.DotNetBar.Controls.MaskedTextBoxAdv();
             this.labelX2 = new DevComponents.DotNetBar.LabelX();
             this.txtDate = new DevComponents.DotNetBar.Controls.MaskedTextBoxAdv();
             this.labelX3 = new DevComponents.DotNetBar.LabelX();
             this.labelX1 = new DevComponents.DotNetBar.LabelX();
             this.superTabItem1 = new DevComponents.DotNetBar.SuperTabItem();
             this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
+            this.txtLicensePlate = new DevComponents.DotNetBar.Controls.TextBoxX();
             this.panelEx1.SuspendLayout();
             this.groupPanel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.superTabControl1)).BeginInit();
@@ -287,8 +287,8 @@
             this.superTabControl1.ControlBox.SubItems.AddRange(new DevComponents.DotNetBar.BaseItem[] {
             this.superTabControl1.ControlBox.CloseBox,
             this.superTabControl1.ControlBox.MenuBox});
-            this.superTabControl1.Controls.Add(this.superTabControlPanel2);
             this.superTabControl1.Controls.Add(this.superTabControlPanel1);
+            this.superTabControl1.Controls.Add(this.superTabControlPanel2);
             this.superTabControl1.Location = new System.Drawing.Point(12, 12);
             this.superTabControl1.Name = "superTabControl1";
             this.superTabControl1.ReorderTabsEnabled = true;
@@ -945,6 +945,7 @@
             this.groupPanel3.BackColor = System.Drawing.Color.Transparent;
             this.groupPanel3.CanvasColor = System.Drawing.SystemColors.Control;
             this.groupPanel3.ColorSchemeStyle = DevComponents.DotNetBar.eDotNetBarStyle.Office2007;
+            this.groupPanel3.Controls.Add(this.txtLicensePlate);
             this.groupPanel3.Controls.Add(this.cmbDubaiReceiver);
             this.groupPanel3.Controls.Add(this.labelX23);
             this.groupPanel3.Controls.Add(this.cmbBandarReceiver);
@@ -952,7 +953,6 @@
             this.groupPanel3.Controls.Add(this.cmbBuyer);
             this.groupPanel3.Controls.Add(this.groupPanel4);
             this.groupPanel3.Controls.Add(this.pictureBox1);
-            this.groupPanel3.Controls.Add(this.txtLicensePlate);
             this.groupPanel3.Controls.Add(this.labelX2);
             this.groupPanel3.Controls.Add(this.txtDate);
             this.groupPanel3.Controls.Add(this.labelX3);
@@ -1511,24 +1511,6 @@
             this.pictureBox1.TabIndex = 35;
             this.pictureBox1.TabStop = false;
             // 
-            // txtLicensePlate
-            // 
-            // 
-            // 
-            // 
-            this.txtLicensePlate.BackgroundStyle.Class = "TextBoxBorder";
-            this.txtLicensePlate.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.txtLicensePlate.ButtonClear.Visible = true;
-            this.txtLicensePlate.FocusHighlightColor = System.Drawing.Color.LightGray;
-            this.txtLicensePlate.FocusHighlightEnabled = true;
-            this.txtLicensePlate.Location = new System.Drawing.Point(285, 41);
-            this.txtLicensePlate.Mask = "0000000";
-            this.txtLicensePlate.Name = "txtLicensePlate";
-            this.txtLicensePlate.Size = new System.Drawing.Size(191, 21);
-            this.txtLicensePlate.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.txtLicensePlate.TabIndex = 1;
-            this.txtLicensePlate.Text = "";
-            // 
             // labelX2
             // 
             this.labelX2.BackColor = System.Drawing.Color.Transparent;
@@ -1598,6 +1580,19 @@
             this.errorProvider1.ContainerControl = this;
             this.errorProvider1.RightToLeft = true;
             // 
+            // txtLicensePlate
+            // 
+            // 
+            // 
+            // 
+            this.txtLicensePlate.Border.Class = "TextBoxBorder";
+            this.txtLicensePlate.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.txtLicensePlate.Location = new System.Drawing.Point(285, 40);
+            this.txtLicensePlate.Name = "txtLicensePlate";
+            this.txtLicensePlate.PreventEnterBeep = true;
+            this.txtLicensePlate.Size = new System.Drawing.Size(191, 23);
+            this.txtLicensePlate.TabIndex = 1;
+            // 
             // frmAddInvoice
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
@@ -1665,7 +1660,6 @@
         private DevComponents.DotNetBar.ButtonX btnDelete;
         private DevComponents.DotNetBar.Controls.DataGridViewX dgvFactor;
         private System.Windows.Forms.PictureBox pictureBox1;
-        private DevComponents.DotNetBar.Controls.MaskedTextBoxAdv txtLicensePlate;
         private DevComponents.DotNetBar.LabelX labelX2;
         private DevComponents.DotNetBar.Controls.MaskedTextBoxAdv txtDate;
         private DevComponents.DotNetBar.LabelX labelX3;
@@ -1742,5 +1736,6 @@
         private DevComponents.DotNetBar.LabelX labelX28;
         private DevComponents.DotNetBar.LabelX labelX29;
         private System.Windows.Forms.BindingSource bsF_Receiver;
+        private DevComponents.DotNetBar.Controls.TextBoxX txtLicensePlate;
     }
 }

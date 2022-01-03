@@ -940,14 +940,6 @@
   <Function Name="dbo.FillSetting" Method="FillSetting">
     <ElementType IdRef="ID24" />
   </Function>
-  <Function Name="dbo.InsertSetting" Method="InsertSetting" IsComposable="true">
-    <Parameter Name="Company" Parameter="company" Type="System.String" DbType="NVarChar(100)" />
-    <Parameter Name="FactorAddress" Parameter="factorAddress" Type="System.String" DbType="NVarChar(MAX)" />
-    <Parameter Name="FactortTell" Parameter="factortTell" Type="System.String" DbType="NVarChar(20)" />
-    <Parameter Name="Theme" Parameter="theme" Type="System.String" DbType="NVarChar(50)" />
-    <Parameter Name="FontSize" Parameter="fontSize" Type="System.Double" DbType="Float" />
-    <Return Type="object" />
-  </Function>
   <Function Name="dbo.UpdateSetting" Method="UpdateSetting">
     <Parameter Name="Company" Parameter="company" Type="System.String" DbType="NVarChar(100)" />
     <Parameter Name="FactorAddress" Parameter="factorAddress" Type="System.String" DbType="NVarChar(MAX)" />
@@ -970,6 +962,14 @@
   <Function Name="dbo.GetLoginName" Method="GetLoginName">
     <Parameter Name="Id" Parameter="id" Type="System.Int32" DbType="Int" />
     <Parameter Name="Fullname" Parameter="fullname" Type="System.String" DbType="NVarChar(30)" Direction="InOut" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.InsertSetting" Method="InsertSetting">
+    <Parameter Name="Company" Parameter="company" Type="System.String" DbType="NVarChar(100)" />
+    <Parameter Name="FactorAddress" Parameter="factorAddress" Type="System.String" DbType="NVarChar(MAX)" />
+    <Parameter Name="FactortTell" Parameter="factortTell" Type="System.String" DbType="NVarChar(20)" />
+    <Parameter Name="Theme" Parameter="theme" Type="System.String" DbType="NVarChar(50)" />
+    <Parameter Name="FontSize" Parameter="fontSize" Type="System.Double" DbType="Float" />
     <Return Type="System.Int32" />
   </Function>
 </Database>

@@ -159,7 +159,7 @@
         <classShapeMoniker Id="d052934e-e769-4fd9-86db-de03a0b68290" />
       </nodes>
     </associationConnector>
-    <associationConnector edgePoints="[(5.71875 : 10.75); (5.71875 : 10.0905582684899); (12.9479166666667 : 10.0905582684899 : JumpStart); (13.1145833333333 : 10.0905582684899 : JumpEnd); (15.5 : 10.0905582684899)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+    <associationConnector edgePoints="[(5.71875 : 10.75); (5.71875 : 10.0905582684899); (15.5 : 10.0905582684899)]" fixedFrom="NotFixed" fixedTo="NotFixed">
       <AssociationMoniker Name="/dcTarlaDataContext/Receiver/Receiver_Invoice" />
       <nodes>
         <classShapeMoniker Id="2b6ecc5a-6b96-46b3-ac41-1d151923493f" />
@@ -180,7 +180,7 @@
         <classShapeMoniker Id="35338c28-1872-4f53-9142-d54b0fd839cb" />
       </nodes>
     </associationConnector>
-    <associationConnector edgePoints="[(11.5 : 5.28449625651042); (16.4166666666667 : 5.28449625651042 : JumpStart); (16.5833333333333 : 5.28449625651042 : JumpEnd); (18.7187475 : 5.28449625651042); (18.7187475 : 6)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+    <associationConnector edgePoints="[(11.5 : 5.28449625651042); (18.7187475 : 5.28449625651042); (18.7187475 : 6)]" fixedFrom="NotFixed" fixedTo="NotFixed">
       <AssociationMoniker Name="/dcTarlaDataContext/Product/Product_InvoiceDetail" />
       <nodes>
         <classShapeMoniker Id="8f178c34-8530-4c61-99bd-a0fa537ecd48" />
