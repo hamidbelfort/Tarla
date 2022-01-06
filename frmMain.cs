@@ -91,6 +91,7 @@ namespace Tarla
             btnPacking.Enabled = FactorPermission;
             lblFullname.Text = string.Format("کاربر جاری : {0}", Fullname);
             lblDate.Text = string.Format("تاریخ : {0}",pd.getShortDate());
+            this.WindowState = FormWindowState.Maximized;
         }
         private void getThemSetting()
         {
