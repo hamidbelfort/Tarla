@@ -180,7 +180,7 @@ namespace Tarla
 
         private void btnSell_Click(object sender, EventArgs e)
         {
-            new frmAddInvoice().ShowDialog();
+            new frmAddFactor().ShowDialog();
         }
 
         private void buttonItem1_Click(object sender, EventArgs e)
@@ -255,6 +255,21 @@ namespace Tarla
         {
             new frmChangeWallpaper().ShowDialog();
             getThemSetting();
+        }
+
+        private void switchRibbon_ValueChanged(object sender, EventArgs e)
+        {
+            ribbonControl1.Expanded = switchRibbon.Value;
+        }
+
+        private void ماشینحسابToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            System.Diagnostics.Process.Start("calc.exe");
+        }
+
+        private void نقاشیویندوزToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            System.Diagnostics.Process.Start("mspaint.exe");
         }
     }
 }

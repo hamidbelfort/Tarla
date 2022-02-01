@@ -95,6 +95,7 @@ namespace Tarla.OperationForms
         {
             try
             {
+                bsBuyer.DataSource = db.FillBuyer();
                 if (date1!=string.Empty && date2!=string.Empty)
                 {
                     bsInvoiceView.DataSource = db.FilterFactorByDate(mskDate1.Text, mskDate2.Text);

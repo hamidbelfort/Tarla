@@ -29,30 +29,31 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmShowBuyItem));
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.panelEx1 = new DevComponents.DotNetBar.PanelEx();
             this.groupPanel2 = new DevComponents.DotNetBar.Controls.GroupPanel();
+            this.btnPrint = new DevComponents.DotNetBar.ButtonX();
             this.btnEdit = new DevComponents.DotNetBar.ButtonX();
             this.btnExit = new DevComponents.DotNetBar.ButtonX();
             this.btnDelete = new DevComponents.DotNetBar.ButtonX();
             this.groupPanel1 = new DevComponents.DotNetBar.Controls.GroupPanel();
+            this.lblSumAmount = new DevComponents.DotNetBar.LabelX();
+            this.labelX4 = new DevComponents.DotNetBar.LabelX();
+            this.rdoCompany = new System.Windows.Forms.RadioButton();
+            this.rdoDate = new System.Windows.Forms.RadioButton();
+            this.labelX3 = new DevComponents.DotNetBar.LabelX();
+            this.cmbCompany = new DevComponents.DotNetBar.Controls.ComboBoxEx();
+            this.bsCompany = new System.Windows.Forms.BindingSource(this.components);
             this.labelX2 = new DevComponents.DotNetBar.LabelX();
             this.labelX1 = new DevComponents.DotNetBar.LabelX();
             this.mskDate2 = new DevComponents.DotNetBar.Controls.MaskedTextBoxAdv();
             this.mskDate1 = new DevComponents.DotNetBar.Controls.MaskedTextBoxAdv();
             this.btnAdd = new DevComponents.DotNetBar.ButtonX();
             this.dgvBuy = new DevComponents.DotNetBar.Controls.DataGridViewX();
-            this.rdoCompany = new System.Windows.Forms.RadioButton();
-            this.rdoDate = new System.Windows.Forms.RadioButton();
-            this.labelX3 = new DevComponents.DotNetBar.LabelX();
-            this.cmbCompany = new DevComponents.DotNetBar.Controls.ComboBoxEx();
-            this.bsCompany = new System.Windows.Forms.BindingSource(this.components);
-            this.bsBuy = new System.Windows.Forms.BindingSource(this.components);
-            this.btnPrint = new DevComponents.DotNetBar.ButtonX();
             this.buyIdDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.itemIdDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.companyIdDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -63,13 +64,12 @@
             this.quantityDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.priceDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.totalPriceDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.lblSumAmount = new DevComponents.DotNetBar.LabelX();
-            this.labelX4 = new DevComponents.DotNetBar.LabelX();
+            this.bsBuy = new System.Windows.Forms.BindingSource(this.components);
             this.panelEx1.SuspendLayout();
             this.groupPanel2.SuspendLayout();
             this.groupPanel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvBuy)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bsCompany)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvBuy)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bsBuy)).BeginInit();
             this.SuspendLayout();
             // 
@@ -85,7 +85,6 @@
             this.panelEx1.Size = new System.Drawing.Size(783, 589);
             this.panelEx1.Style.Alignment = System.Drawing.StringAlignment.Center;
             this.panelEx1.Style.BackColor1.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground;
-            this.panelEx1.Style.BackColor2.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground2;
             this.panelEx1.Style.Border = DevComponents.DotNetBar.eBorderType.SingleLine;
             this.panelEx1.Style.BorderColor.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBorder;
             this.panelEx1.Style.ForeColor.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelText;
@@ -134,6 +133,22 @@
             // 
             this.groupPanel2.StyleMouseOver.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.groupPanel2.TabIndex = 1;
+            // 
+            // btnPrint
+            // 
+            this.btnPrint.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
+            this.btnPrint.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
+            this.btnPrint.FocusCuesEnabled = false;
+            this.btnPrint.Image = ((System.Drawing.Image)(resources.GetObject("btnPrint.Image")));
+            this.btnPrint.Location = new System.Drawing.Point(185, 1);
+            this.btnPrint.Name = "btnPrint";
+            this.btnPrint.Shape = new DevComponents.DotNetBar.RoundRectangleShapeDescriptor(10, 4, 4, 10);
+            this.btnPrint.Size = new System.Drawing.Size(100, 30);
+            this.btnPrint.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.btnPrint.TabIndex = 1;
+            this.btnPrint.Text = " پیش نمایش";
+            this.btnPrint.TextAlignment = DevComponents.DotNetBar.eButtonTextAlignment.Right;
+            this.btnPrint.Click += new System.EventHandler(this.btnPrint_Click);
             // 
             // btnEdit
             // 
@@ -186,6 +201,7 @@
             // 
             // groupPanel1
             // 
+            this.groupPanel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(239)))), ((int)(((byte)(239)))), ((int)(((byte)(242)))));
             this.groupPanel1.CanvasColor = System.Drawing.SystemColors.Control;
             this.groupPanel1.ColorSchemeStyle = DevComponents.DotNetBar.eDotNetBarStyle.Office2007;
             this.groupPanel1.Controls.Add(this.lblSumAmount);
@@ -235,8 +251,95 @@
             this.groupPanel1.TabIndex = 0;
             this.groupPanel1.Text = "لیست خرید کالا از شرکت";
             // 
+            // lblSumAmount
+            // 
+            this.lblSumAmount.BackColor = System.Drawing.Color.Transparent;
+            // 
+            // 
+            // 
+            this.lblSumAmount.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.lblSumAmount.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Bold);
+            this.lblSumAmount.ForeColor = System.Drawing.Color.Red;
+            this.lblSumAmount.Location = new System.Drawing.Point(3, 466);
+            this.lblSumAmount.Name = "lblSumAmount";
+            this.lblSumAmount.Size = new System.Drawing.Size(156, 23);
+            this.lblSumAmount.TabIndex = 24;
+            this.lblSumAmount.Text = "0";
+            // 
+            // labelX4
+            // 
+            this.labelX4.BackColor = System.Drawing.Color.Transparent;
+            // 
+            // 
+            // 
+            this.labelX4.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.labelX4.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Bold);
+            this.labelX4.Location = new System.Drawing.Point(165, 466);
+            this.labelX4.Name = "labelX4";
+            this.labelX4.Size = new System.Drawing.Size(75, 23);
+            this.labelX4.TabIndex = 23;
+            this.labelX4.Text = "مجموع : ";
+            // 
+            // rdoCompany
+            // 
+            this.rdoCompany.AutoSize = true;
+            this.rdoCompany.Location = new System.Drawing.Point(712, 68);
+            this.rdoCompany.Name = "rdoCompany";
+            this.rdoCompany.Size = new System.Drawing.Size(14, 13);
+            this.rdoCompany.TabIndex = 3;
+            this.rdoCompany.TabStop = true;
+            this.rdoCompany.UseVisualStyleBackColor = true;
+            this.rdoCompany.CheckedChanged += new System.EventHandler(this.rdoCompany_CheckedChanged);
+            // 
+            // rdoDate
+            // 
+            this.rdoDate.AutoSize = true;
+            this.rdoDate.Location = new System.Drawing.Point(712, 30);
+            this.rdoDate.Name = "rdoDate";
+            this.rdoDate.Size = new System.Drawing.Size(14, 13);
+            this.rdoDate.TabIndex = 0;
+            this.rdoDate.TabStop = true;
+            this.rdoDate.UseVisualStyleBackColor = true;
+            this.rdoDate.CheckedChanged += new System.EventHandler(this.rdoDate_CheckedChanged);
+            // 
+            // labelX3
+            // 
+            this.labelX3.BackColor = System.Drawing.Color.Transparent;
+            // 
+            // 
+            // 
+            this.labelX3.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.labelX3.Location = new System.Drawing.Point(636, 63);
+            this.labelX3.Name = "labelX3";
+            this.labelX3.Size = new System.Drawing.Size(65, 23);
+            this.labelX3.TabIndex = 22;
+            this.labelX3.Text = "شرکت";
+            // 
+            // cmbCompany
+            // 
+            this.cmbCompany.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.cmbCompany.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
+            this.cmbCompany.DataSource = this.bsCompany;
+            this.cmbCompany.DisplayMember = "CompanyName";
+            this.cmbCompany.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+            this.cmbCompany.ForeColor = System.Drawing.Color.Black;
+            this.cmbCompany.FormattingEnabled = true;
+            this.cmbCompany.ItemHeight = 17;
+            this.cmbCompany.Location = new System.Drawing.Point(364, 63);
+            this.cmbCompany.Name = "cmbCompany";
+            this.cmbCompany.Size = new System.Drawing.Size(266, 23);
+            this.cmbCompany.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.cmbCompany.TabIndex = 4;
+            this.cmbCompany.ValueMember = "CompanyId";
+            this.cmbCompany.SelectedIndexChanged += new System.EventHandler(this.cmbCompany_SelectedIndexChanged);
+            // 
+            // bsCompany
+            // 
+            this.bsCompany.DataSource = typeof(Tarla.Company);
+            // 
             // labelX2
             // 
+            this.labelX2.BackColor = System.Drawing.Color.Transparent;
             // 
             // 
             // 
@@ -249,6 +352,7 @@
             // 
             // labelX1
             // 
+            this.labelX1.BackColor = System.Drawing.Color.Transparent;
             // 
             // 
             // 
@@ -339,88 +443,12 @@
             dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.ControlText;
             dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.dgvBuy.DefaultCellStyle = dataGridViewCellStyle4;
-            this.dgvBuy.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(215)))), ((int)(((byte)(229)))));
+            this.dgvBuy.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(155)))), ((int)(((byte)(155)))), ((int)(((byte)(157)))));
             this.dgvBuy.Location = new System.Drawing.Point(3, 101);
             this.dgvBuy.Name = "dgvBuy";
             this.dgvBuy.ReadOnly = true;
             this.dgvBuy.Size = new System.Drawing.Size(747, 359);
             this.dgvBuy.TabIndex = 6;
-            // 
-            // rdoCompany
-            // 
-            this.rdoCompany.AutoSize = true;
-            this.rdoCompany.Location = new System.Drawing.Point(712, 68);
-            this.rdoCompany.Name = "rdoCompany";
-            this.rdoCompany.Size = new System.Drawing.Size(14, 13);
-            this.rdoCompany.TabIndex = 3;
-            this.rdoCompany.TabStop = true;
-            this.rdoCompany.UseVisualStyleBackColor = true;
-            this.rdoCompany.CheckedChanged += new System.EventHandler(this.rdoCompany_CheckedChanged);
-            // 
-            // rdoDate
-            // 
-            this.rdoDate.AutoSize = true;
-            this.rdoDate.Location = new System.Drawing.Point(712, 30);
-            this.rdoDate.Name = "rdoDate";
-            this.rdoDate.Size = new System.Drawing.Size(14, 13);
-            this.rdoDate.TabIndex = 0;
-            this.rdoDate.TabStop = true;
-            this.rdoDate.UseVisualStyleBackColor = true;
-            this.rdoDate.CheckedChanged += new System.EventHandler(this.rdoDate_CheckedChanged);
-            // 
-            // labelX3
-            // 
-            this.labelX3.BackColor = System.Drawing.Color.Transparent;
-            // 
-            // 
-            // 
-            this.labelX3.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelX3.Location = new System.Drawing.Point(636, 63);
-            this.labelX3.Name = "labelX3";
-            this.labelX3.Size = new System.Drawing.Size(65, 23);
-            this.labelX3.TabIndex = 22;
-            this.labelX3.Text = "شرکت";
-            // 
-            // cmbCompany
-            // 
-            this.cmbCompany.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
-            this.cmbCompany.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
-            this.cmbCompany.DataSource = this.bsCompany;
-            this.cmbCompany.DisplayMember = "CompanyName";
-            this.cmbCompany.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
-            this.cmbCompany.FormattingEnabled = true;
-            this.cmbCompany.ItemHeight = 17;
-            this.cmbCompany.Location = new System.Drawing.Point(364, 63);
-            this.cmbCompany.Name = "cmbCompany";
-            this.cmbCompany.Size = new System.Drawing.Size(266, 23);
-            this.cmbCompany.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.cmbCompany.TabIndex = 4;
-            this.cmbCompany.ValueMember = "CompanyId";
-            this.cmbCompany.SelectedIndexChanged += new System.EventHandler(this.cmbCompany_SelectedIndexChanged);
-            // 
-            // bsCompany
-            // 
-            this.bsCompany.DataSource = typeof(Tarla.Company);
-            // 
-            // bsBuy
-            // 
-            this.bsBuy.DataSource = typeof(Tarla.BuyItemView);
-            // 
-            // btnPrint
-            // 
-            this.btnPrint.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
-            this.btnPrint.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
-            this.btnPrint.FocusCuesEnabled = false;
-            this.btnPrint.Image = ((System.Drawing.Image)(resources.GetObject("btnPrint.Image")));
-            this.btnPrint.Location = new System.Drawing.Point(185, 1);
-            this.btnPrint.Name = "btnPrint";
-            this.btnPrint.Shape = new DevComponents.DotNetBar.RoundRectangleShapeDescriptor(10, 4, 4, 10);
-            this.btnPrint.Size = new System.Drawing.Size(100, 30);
-            this.btnPrint.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.btnPrint.TabIndex = 1;
-            this.btnPrint.Text = " پیش نمایش";
-            this.btnPrint.TextAlignment = DevComponents.DotNetBar.eButtonTextAlignment.Right;
-            this.btnPrint.Click += new System.EventHandler(this.btnPrint_Click);
             // 
             // buyIdDataGridViewTextBoxColumn
             // 
@@ -505,34 +533,9 @@
             this.totalPriceDataGridViewTextBoxColumn.Name = "totalPriceDataGridViewTextBoxColumn";
             this.totalPriceDataGridViewTextBoxColumn.ReadOnly = true;
             // 
-            // lblSumAmount
+            // bsBuy
             // 
-            this.lblSumAmount.BackColor = System.Drawing.Color.Transparent;
-            // 
-            // 
-            // 
-            this.lblSumAmount.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.lblSumAmount.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Bold);
-            this.lblSumAmount.ForeColor = System.Drawing.Color.Red;
-            this.lblSumAmount.Location = new System.Drawing.Point(3, 466);
-            this.lblSumAmount.Name = "lblSumAmount";
-            this.lblSumAmount.Size = new System.Drawing.Size(156, 23);
-            this.lblSumAmount.TabIndex = 24;
-            this.lblSumAmount.Text = "0";
-            // 
-            // labelX4
-            // 
-            this.labelX4.BackColor = System.Drawing.Color.Transparent;
-            // 
-            // 
-            // 
-            this.labelX4.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelX4.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Bold);
-            this.labelX4.Location = new System.Drawing.Point(165, 466);
-            this.labelX4.Name = "labelX4";
-            this.labelX4.Size = new System.Drawing.Size(75, 23);
-            this.labelX4.TabIndex = 23;
-            this.labelX4.Text = "مجموع : ";
+            this.bsBuy.DataSource = typeof(Tarla.BuyItemView);
             // 
             // frmShowBuyItem
             // 
@@ -552,8 +555,8 @@
             this.groupPanel2.ResumeLayout(false);
             this.groupPanel1.ResumeLayout(false);
             this.groupPanel1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvBuy)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.bsCompany)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvBuy)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.bsBuy)).EndInit();
             this.ResumeLayout(false);
 

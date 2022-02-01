@@ -67,7 +67,6 @@
             this.panelEx1.Size = new System.Drawing.Size(420, 255);
             this.panelEx1.Style.Alignment = System.Drawing.StringAlignment.Center;
             this.panelEx1.Style.BackColor1.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground;
-            this.panelEx1.Style.BackColor2.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground2;
             this.panelEx1.Style.Border = DevComponents.DotNetBar.eBorderType.SingleLine;
             this.panelEx1.Style.BorderColor.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBorder;
             this.panelEx1.Style.ForeColor.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelText;
@@ -152,6 +151,7 @@
             // 
             // groupPanel1
             // 
+            this.groupPanel1.BackColor = System.Drawing.Color.Transparent;
             this.groupPanel1.CanvasColor = System.Drawing.SystemColors.Control;
             this.groupPanel1.ColorSchemeStyle = DevComponents.DotNetBar.eDotNetBarStyle.Office2007;
             this.groupPanel1.Controls.Add(this.labelX5);
@@ -201,6 +201,7 @@
             // 
             // labelX5
             // 
+            this.labelX5.BackColor = System.Drawing.Color.Transparent;
             // 
             // 
             // 
@@ -214,6 +215,7 @@
             // 
             // chkFactors
             // 
+            this.chkFactors.BackColor = System.Drawing.Color.Transparent;
             // 
             // 
             // 
@@ -231,6 +233,7 @@
             // 
             // labelX4
             // 
+            this.labelX4.BackColor = System.Drawing.Color.Transparent;
             // 
             // 
             // 
@@ -244,6 +247,7 @@
             // 
             // chkBank
             // 
+            this.chkBank.BackColor = System.Drawing.Color.Transparent;
             // 
             // 
             // 
@@ -257,6 +261,7 @@
             // 
             // labelX3
             // 
+            this.labelX3.BackColor = System.Drawing.Color.Transparent;
             // 
             // 
             // 
@@ -270,6 +275,7 @@
             // 
             // chkUsers
             // 
+            this.chkUsers.BackColor = System.Drawing.Color.Transparent;
             // 
             // 
             // 
@@ -283,6 +289,7 @@
             // 
             // labelX2
             // 
+            this.labelX2.BackColor = System.Drawing.Color.Transparent;
             // 
             // 
             // 
@@ -296,6 +303,7 @@
             // 
             // chkSetting
             // 
+            this.chkSetting.BackColor = System.Drawing.Color.Transparent;
             // 
             // 
             // 
@@ -309,6 +317,7 @@
             // 
             // labelX1
             // 
+            this.labelX1.BackColor = System.Drawing.Color.Transparent;
             // 
             // 
             // 
@@ -322,12 +331,15 @@
             // 
             // txtRoleName
             // 
+            this.txtRoleName.BackColor = System.Drawing.Color.White;
             // 
             // 
             // 
             this.txtRoleName.Border.Class = "TextBoxBorder";
             this.txtRoleName.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.txtRoleName.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.bsRoles, "RoleName", true));
+            this.txtRoleName.DisabledBackColor = System.Drawing.Color.White;
+            this.txtRoleName.ForeColor = System.Drawing.Color.Black;
             this.txtRoleName.Location = new System.Drawing.Point(3, 18);
             this.txtRoleName.MaxLength = 50;
             this.txtRoleName.Name = "txtRoleName";

@@ -153,6 +153,16 @@ namespace Tarla.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap buttonItem1_Image {
+            get {
+                object obj = ResourceManager.GetObject("buttonItem1.Image", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap buyitem {
             get {
                 object obj = ResourceManager.GetObject("buyitem", resourceCulture);
@@ -456,6 +466,16 @@ namespace Tarla.Properties {
         internal static System.Drawing.Bitmap register_icon {
             get {
                 object obj = ResourceManager.GetObject("register_icon", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap ribbonControl1_BackgroundImage {
+            get {
+                object obj = ResourceManager.GetObject("ribbonControl1.BackgroundImage", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

@@ -97,6 +97,7 @@
   <ItemGroup>
     <Compile Include="Classes\PersianDate.cs" />
     <Compile Include="Classes\StyleTheme.cs" />
+    <Compile Include="Classes\Toast.cs" />
     <Compile Include="Classes\Util.cs" />
     <Compile Include="dcTarla.designer.cs">
       <AutoGen>True</AutoGen>
@@ -313,11 +314,11 @@
     <Compile Include="OperationForms\frmAddBook.Designer.cs">
       <DependentUpon>frmAddBook.cs</DependentUpon>
     </Compile>
-    <Compile Include="OperationForms\frmAddInvoice.cs">
+    <Compile Include="OperationForms\frmAddFactor.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="OperationForms\frmAddInvoice.Designer.cs">
-      <DependentUpon>frmAddInvoice.cs</DependentUpon>
+    <Compile Include="OperationForms\frmAddFactor.Designer.cs">
+      <DependentUpon>frmAddFactor.cs</DependentUpon>
     </Compile>
     <Compile Include="OperationForms\frmAddNetSell.cs">
       <SubType>Form</SubType>
@@ -466,8 +467,8 @@
     <EmbeddedResource Include="OperationForms\frmAddBook.resx">
       <DependentUpon>frmAddBook.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="OperationForms\frmAddInvoice.resx">
-      <DependentUpon>frmAddInvoice.cs</DependentUpon>
+    <EmbeddedResource Include="OperationForms\frmAddFactor.resx">
+      <DependentUpon>frmAddFactor.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="OperationForms\frmAddNetSell.resx">
       <DependentUpon>frmAddNetSell.cs</DependentUpon>
@@ -509,6 +510,7 @@
     <None Include="Properties\DataSources\BuyItem.datasource" />
     <None Include="Properties\DataSources\BuyItemView.datasource" />
     <None Include="Properties\DataSources\Company.datasource" />
+    <None Include="Properties\DataSources\Driver.datasource" />
     <None Include="Properties\DataSources\FactorView.datasource" />
     <None Include="Properties\DataSources\ForiegnReceiver.datasource" />
     <None Include="Properties\DataSources\F_DetailsView.datasource" />
@@ -717,6 +719,8 @@
     <None Include="Resources\tarla_splash.png" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Resources\buttonItem1.Image.png" />
+    <None Include="Resources\ribbonControl1.BackgroundImage.png" />
     <Content Include="Tarla.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

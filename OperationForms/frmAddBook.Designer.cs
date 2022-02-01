@@ -85,7 +85,6 @@
             this.panelEx1.Size = new System.Drawing.Size(578, 486);
             this.panelEx1.Style.Alignment = System.Drawing.StringAlignment.Center;
             this.panelEx1.Style.BackColor1.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground;
-            this.panelEx1.Style.BackColor2.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground2;
             this.panelEx1.Style.Border = DevComponents.DotNetBar.eBorderType.SingleLine;
             this.panelEx1.Style.BorderColor.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBorder;
             this.panelEx1.Style.ForeColor.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelText;
@@ -170,6 +169,7 @@
             // 
             // groupPanel1
             // 
+            this.groupPanel1.BackColor = System.Drawing.Color.Transparent;
             this.groupPanel1.CanvasColor = System.Drawing.SystemColors.Control;
             this.groupPanel1.ColorSchemeStyle = DevComponents.DotNetBar.eDotNetBarStyle.Office2007;
             this.groupPanel1.Controls.Add(this.panel1);
@@ -329,6 +329,7 @@
             this.cmbBuyer.DataSource = this.bsBuyer;
             this.cmbBuyer.DisplayMember = "BuyerName";
             this.cmbBuyer.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+            this.cmbBuyer.ForeColor = System.Drawing.Color.Black;
             this.cmbBuyer.FormattingEnabled = true;
             this.cmbBuyer.ItemHeight = 17;
             this.cmbBuyer.Location = new System.Drawing.Point(114, 17);
@@ -345,6 +346,7 @@
             // 
             // labelX2
             // 
+            this.labelX2.BackColor = System.Drawing.Color.Transparent;
             // 
             // 
             // 
@@ -357,6 +359,7 @@
             // 
             // labelX5
             // 
+            this.labelX5.BackColor = System.Drawing.Color.Transparent;
             // 
             // 
             // 
@@ -374,6 +377,7 @@
             this.cmbBank.DataSource = this.bsBank;
             this.cmbBank.DisplayMember = "BankName";
             this.cmbBank.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+            this.cmbBank.ForeColor = System.Drawing.Color.Black;
             this.cmbBank.FormattingEnabled = true;
             this.cmbBank.ItemHeight = 17;
             this.cmbBank.Location = new System.Drawing.Point(114, 198);
@@ -389,6 +393,7 @@
             // 
             // labelX6
             // 
+            this.labelX6.BackColor = System.Drawing.Color.Transparent;
             // 
             // 
             // 
@@ -401,12 +406,15 @@
             // 
             // txtDesc
             // 
+            this.txtDesc.BackColor = System.Drawing.Color.White;
             // 
             // 
             // 
             this.txtDesc.Border.Class = "TextBoxBorder";
             this.txtDesc.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.txtDesc.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.bsBook, "BookDesc", true));
+            this.txtDesc.DisabledBackColor = System.Drawing.Color.White;
+            this.txtDesc.ForeColor = System.Drawing.Color.Black;
             this.txtDesc.Location = new System.Drawing.Point(67, 256);
             this.txtDesc.Multiline = true;
             this.txtDesc.Name = "txtDesc";
@@ -437,6 +445,7 @@
             // 
             // labelX4
             // 
+            this.labelX4.BackColor = System.Drawing.Color.Transparent;
             // 
             // 
             // 
@@ -449,6 +458,7 @@
             // 
             // labelX3
             // 
+            this.labelX3.BackColor = System.Drawing.Color.Transparent;
             // 
             // 
             // 
@@ -466,6 +476,7 @@
             this.cmbPayType.DataSource = this.bsPayType;
             this.cmbPayType.DisplayMember = "PaymentType";
             this.cmbPayType.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+            this.cmbPayType.ForeColor = System.Drawing.Color.Black;
             this.cmbPayType.FormattingEnabled = true;
             this.cmbPayType.ItemHeight = 17;
             this.cmbPayType.Location = new System.Drawing.Point(114, 227);
@@ -498,6 +509,7 @@
             // 
             // labelX1
             // 
+            this.labelX1.BackColor = System.Drawing.Color.Transparent;
             // 
             // 
             // 
