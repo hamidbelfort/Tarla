@@ -30,9 +30,9 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmAddFactor));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.groupPanel2 = new DevComponents.DotNetBar.Controls.GroupPanel();
             this.btnNext = new DevComponents.DotNetBar.ButtonX();
             this.btnPrev = new DevComponents.DotNetBar.ButtonX();
@@ -42,7 +42,7 @@
             this.groupPanel3 = new DevComponents.DotNetBar.Controls.GroupPanel();
             this.lblLicensePlate = new DevComponents.DotNetBar.LabelX();
             this.cmbDriver = new DevComponents.DotNetBar.Controls.ComboBoxEx();
-            this.bsBuyer = new System.Windows.Forms.BindingSource(this.components);
+            this.bsDriver = new System.Windows.Forms.BindingSource(this.components);
             this.cmbDubaiReceiver = new DevComponents.DotNetBar.Controls.ComboBoxEx();
             this.bsF_Receiver = new System.Windows.Forms.BindingSource(this.components);
             this.labelX23 = new DevComponents.DotNetBar.LabelX();
@@ -50,7 +50,11 @@
             this.bsReceiver = new System.Windows.Forms.BindingSource(this.components);
             this.labelX19 = new DevComponents.DotNetBar.LabelX();
             this.cmbBuyer = new DevComponents.DotNetBar.Controls.ComboBoxEx();
+            this.bsBuyer = new System.Windows.Forms.BindingSource(this.components);
             this.groupPanel4 = new DevComponents.DotNetBar.Controls.GroupPanel();
+            this.labelX31 = new DevComponents.DotNetBar.LabelX();
+            this.intLoss = new DevComponents.Editors.IntegerInput();
+            this.labelX32 = new DevComponents.DotNetBar.LabelX();
             this.labelX30 = new DevComponents.DotNetBar.LabelX();
             this.labelX29 = new DevComponents.DotNetBar.LabelX();
             this.labelX28 = new DevComponents.DotNetBar.LabelX();
@@ -73,6 +77,16 @@
             this.labelX4 = new DevComponents.DotNetBar.LabelX();
             this.btnDelete = new DevComponents.DotNetBar.ButtonX();
             this.dgvFactor = new DevComponents.DotNetBar.Controls.DataGridViewX();
+            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.clmPrice = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.clmQty = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.clmWeight = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.clmLoss = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.clmSellerName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.clmPackingName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.clmProduct = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.clmSeller = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.clmPacking = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.labelX2 = new DevComponents.DotNetBar.LabelX();
             this.txtDate = new DevComponents.DotNetBar.Controls.MaskedTextBoxAdv();
@@ -120,29 +134,17 @@
             this.btnSave = new DevComponents.DotNetBar.ButtonX();
             this.superTabItem2 = new DevComponents.DotNetBar.SuperTabItem();
             this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
-            this.bsDriver = new System.Windows.Forms.BindingSource(this.components);
-            this.labelX31 = new DevComponents.DotNetBar.LabelX();
-            this.intLoss = new DevComponents.Editors.IntegerInput();
-            this.labelX32 = new DevComponents.DotNetBar.LabelX();
-            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.clmPrice = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.clmQty = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.clmWeight = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.clmLoss = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.clmSellerName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.clmPackingName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.clmProduct = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.clmSeller = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.clmPacking = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupPanel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.superTabControl1)).BeginInit();
             this.superTabControl1.SuspendLayout();
             this.superTabControlPanel1.SuspendLayout();
             this.groupPanel3.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.bsBuyer)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bsDriver)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bsF_Receiver)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bsReceiver)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bsBuyer)).BeginInit();
             this.groupPanel4.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.intLoss)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.intPrice)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bsPacking)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bsSeller)).BeginInit();
@@ -162,8 +164,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.intWorkerCost)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.bsDriver)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.intLoss)).BeginInit();
             this.SuspendLayout();
             // 
             // groupPanel2
@@ -370,7 +370,7 @@
             this.lblLicensePlate.Name = "lblLicensePlate";
             this.lblLicensePlate.Size = new System.Drawing.Size(144, 23);
             this.lblLicensePlate.TabIndex = 55;
-            this.lblLicensePlate.Text = "0";
+            this.lblLicensePlate.Text = "--";
             this.lblLicensePlate.WordWrap = true;
             // 
             // cmbDriver
@@ -380,7 +380,6 @@
             this.cmbDriver.DataSource = this.bsDriver;
             this.cmbDriver.DisplayMember = "DriverName";
             this.cmbDriver.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
-            this.cmbDriver.ForeColor = System.Drawing.Color.Black;
             this.cmbDriver.FormattingEnabled = true;
             this.cmbDriver.ItemHeight = 17;
             this.cmbDriver.Location = new System.Drawing.Point(217, 39);
@@ -391,9 +390,9 @@
             this.cmbDriver.ValueMember = "DriverId";
             this.cmbDriver.SelectedIndexChanged += new System.EventHandler(this.cmbDriver_SelectedIndexChanged);
             // 
-            // bsBuyer
+            // bsDriver
             // 
-            this.bsBuyer.DataSource = typeof(Tarla.Buyer);
+            this.bsDriver.DataSource = typeof(Tarla.Driver);
             // 
             // cmbDubaiReceiver
             // 
@@ -402,7 +401,6 @@
             this.cmbDubaiReceiver.DataSource = this.bsF_Receiver;
             this.cmbDubaiReceiver.DisplayMember = "F_ReceiverName";
             this.cmbDubaiReceiver.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
-            this.cmbDubaiReceiver.ForeColor = System.Drawing.Color.Black;
             this.cmbDubaiReceiver.FormattingEnabled = true;
             this.cmbDubaiReceiver.ItemHeight = 17;
             this.cmbDubaiReceiver.Location = new System.Drawing.Point(217, 126);
@@ -437,7 +435,6 @@
             this.cmbBandarReceiver.DataSource = this.bsReceiver;
             this.cmbBandarReceiver.DisplayMember = "ReceiverName";
             this.cmbBandarReceiver.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
-            this.cmbBandarReceiver.ForeColor = System.Drawing.Color.Black;
             this.cmbBandarReceiver.FormattingEnabled = true;
             this.cmbBandarReceiver.ItemHeight = 17;
             this.cmbBandarReceiver.Location = new System.Drawing.Point(217, 97);
@@ -472,7 +469,6 @@
             this.cmbBuyer.DataSource = this.bsBuyer;
             this.cmbBuyer.DisplayMember = "BuyerName";
             this.cmbBuyer.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
-            this.cmbBuyer.ForeColor = System.Drawing.Color.Black;
             this.cmbBuyer.FormattingEnabled = true;
             this.cmbBuyer.ItemHeight = 17;
             this.cmbBuyer.Location = new System.Drawing.Point(217, 68);
@@ -481,6 +477,10 @@
             this.cmbBuyer.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.cmbBuyer.TabIndex = 2;
             this.cmbBuyer.ValueMember = "BuyerId";
+            // 
+            // bsBuyer
+            // 
+            this.bsBuyer.DataSource = typeof(Tarla.Buyer);
             // 
             // groupPanel4
             // 
@@ -544,6 +544,54 @@
             this.groupPanel4.StyleMouseOver.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.groupPanel4.TabIndex = 5;
             this.groupPanel4.Text = "انتخاب محصولات";
+            // 
+            // labelX31
+            // 
+            this.labelX31.BackColor = System.Drawing.Color.Transparent;
+            // 
+            // 
+            // 
+            this.labelX31.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.labelX31.ForeColor = System.Drawing.Color.Black;
+            this.labelX31.Location = new System.Drawing.Point(119, 127);
+            this.labelX31.Name = "labelX31";
+            this.labelX31.Size = new System.Drawing.Size(56, 23);
+            this.labelX31.TabIndex = 57;
+            this.labelX31.Text = "(کیلوگرم)";
+            // 
+            // intLoss
+            // 
+            this.intLoss.AllowEmptyState = false;
+            this.intLoss.BackColor = System.Drawing.Color.White;
+            // 
+            // 
+            // 
+            this.intLoss.BackgroundStyle.Class = "DateTimeInputBackground";
+            this.intLoss.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.intLoss.ButtonFreeText.Shortcut = DevComponents.DotNetBar.eShortcut.F2;
+            this.intLoss.FocusHighlightColor = System.Drawing.Color.LightGray;
+            this.intLoss.FocusHighlightEnabled = true;
+            this.intLoss.ForeColor = System.Drawing.Color.Black;
+            this.intLoss.Location = new System.Drawing.Point(181, 127);
+            this.intLoss.MaxValue = 1000000000;
+            this.intLoss.MinValue = 0;
+            this.intLoss.Name = "intLoss";
+            this.intLoss.Size = new System.Drawing.Size(102, 23);
+            this.intLoss.TabIndex = 55;
+            // 
+            // labelX32
+            // 
+            this.labelX32.BackColor = System.Drawing.Color.Transparent;
+            // 
+            // 
+            // 
+            this.labelX32.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.labelX32.ForeColor = System.Drawing.Color.Black;
+            this.labelX32.Location = new System.Drawing.Point(289, 127);
+            this.labelX32.Name = "labelX32";
+            this.labelX32.Size = new System.Drawing.Size(42, 23);
+            this.labelX32.TabIndex = 56;
+            this.labelX32.Text = "افت";
             // 
             // labelX30
             // 
@@ -631,7 +679,6 @@
             this.cmbPacking.DataSource = this.bsPacking;
             this.cmbPacking.DisplayMember = "PackingType";
             this.cmbPacking.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
-            this.cmbPacking.ForeColor = System.Drawing.Color.Black;
             this.cmbPacking.FormattingEnabled = true;
             this.cmbPacking.ItemHeight = 17;
             this.cmbPacking.Location = new System.Drawing.Point(228, 68);
@@ -652,7 +699,6 @@
             this.cmbSeller.DataSource = this.bsSeller;
             this.cmbSeller.DisplayMember = "SellerName";
             this.cmbSeller.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
-            this.cmbSeller.ForeColor = System.Drawing.Color.Black;
             this.cmbSeller.FormattingEnabled = true;
             this.cmbSeller.ItemHeight = 17;
             this.cmbSeller.Location = new System.Drawing.Point(228, 36);
@@ -673,7 +719,6 @@
             this.cmbProduct.DataSource = this.bsProduct;
             this.cmbProduct.DisplayMember = "ProductName";
             this.cmbProduct.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
-            this.cmbProduct.ForeColor = System.Drawing.Color.Black;
             this.cmbProduct.FormattingEnabled = true;
             this.cmbProduct.ItemHeight = 17;
             this.cmbProduct.Location = new System.Drawing.Point(228, 6);
@@ -805,6 +850,7 @@
             // 
             this.btnAdd.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
             this.btnAdd.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
+            this.btnAdd.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.btnAdd.FocusCuesEnabled = false;
             this.btnAdd.Image = ((System.Drawing.Image)(resources.GetObject("btnAdd.Image")));
             this.btnAdd.Location = new System.Drawing.Point(3, 103);
@@ -833,6 +879,7 @@
             // 
             this.btnDelete.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
             this.btnDelete.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
+            this.btnDelete.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.btnDelete.FocusCuesEnabled = false;
             this.btnDelete.Image = ((System.Drawing.Image)(resources.GetObject("btnDelete.Image")));
             this.btnDelete.Location = new System.Drawing.Point(5, 308);
@@ -847,14 +894,14 @@
             // 
             this.dgvFactor.AllowUserToAddRows = false;
             this.dgvFactor.AllowUserToDeleteRows = false;
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvFactor.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvFactor.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dgvFactor.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvFactor.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Column1,
@@ -867,28 +914,88 @@
             this.clmProduct,
             this.clmSeller,
             this.clmPacking});
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle5.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvFactor.DefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvFactor.DefaultCellStyle = dataGridViewCellStyle2;
             this.dgvFactor.EnableHeadersVisualStyles = false;
-            this.dgvFactor.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(155)))), ((int)(((byte)(155)))), ((int)(((byte)(157)))));
+            this.dgvFactor.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(215)))), ((int)(((byte)(229)))));
             this.dgvFactor.Location = new System.Drawing.Point(3, 163);
             this.dgvFactor.Name = "dgvFactor";
-            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle6.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvFactor.RowHeadersDefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvFactor.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
             this.dgvFactor.Size = new System.Drawing.Size(592, 195);
             this.dgvFactor.TabIndex = 7;
+            // 
+            // Column1
+            // 
+            this.Column1.HeaderText = "نام محصول";
+            this.Column1.Name = "Column1";
+            this.Column1.ReadOnly = true;
+            this.Column1.Width = 130;
+            // 
+            // clmPrice
+            // 
+            this.clmPrice.HeaderText = "فی";
+            this.clmPrice.Name = "clmPrice";
+            this.clmPrice.Width = 80;
+            // 
+            // clmQty
+            // 
+            this.clmQty.HeaderText = "تعداد";
+            this.clmQty.Name = "clmQty";
+            this.clmQty.Width = 60;
+            // 
+            // clmWeight
+            // 
+            this.clmWeight.HeaderText = "وزن";
+            this.clmWeight.Name = "clmWeight";
+            this.clmWeight.ReadOnly = true;
+            this.clmWeight.Width = 60;
+            // 
+            // clmLoss
+            // 
+            this.clmLoss.HeaderText = "افت";
+            this.clmLoss.Name = "clmLoss";
+            this.clmLoss.Width = 50;
+            // 
+            // clmSellerName
+            // 
+            this.clmSellerName.HeaderText = "فروشنده";
+            this.clmSellerName.Name = "clmSellerName";
+            // 
+            // clmPackingName
+            // 
+            this.clmPackingName.HeaderText = "بسته بندی";
+            this.clmPackingName.Name = "clmPackingName";
+            // 
+            // clmProduct
+            // 
+            this.clmProduct.HeaderText = "کد محصول";
+            this.clmProduct.Name = "clmProduct";
+            this.clmProduct.Visible = false;
+            // 
+            // clmSeller
+            // 
+            this.clmSeller.HeaderText = "کد فروشنده";
+            this.clmSeller.Name = "clmSeller";
+            this.clmSeller.Visible = false;
+            // 
+            // clmPacking
+            // 
+            this.clmPacking.HeaderText = "کد بسته بندی";
+            this.clmPacking.Name = "clmPacking";
+            this.clmPacking.Visible = false;
             // 
             // pictureBox1
             // 
@@ -1060,7 +1167,6 @@
             // 
             // txtNetPrice
             // 
-            this.txtNetPrice.BackColor = System.Drawing.Color.White;
             // 
             // 
             // 
@@ -1068,7 +1174,6 @@
             this.txtNetPrice.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.txtNetPrice.DisabledBackColor = System.Drawing.Color.White;
             this.txtNetPrice.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
-            this.txtNetPrice.ForeColor = System.Drawing.Color.Black;
             this.txtNetPrice.Location = new System.Drawing.Point(280, 426);
             this.txtNetPrice.Name = "txtNetPrice";
             this.txtNetPrice.PreventEnterBeep = true;
@@ -1093,14 +1198,12 @@
             // 
             // txtTotalWeight
             // 
-            this.txtTotalWeight.BackColor = System.Drawing.Color.White;
             // 
             // 
             // 
             this.txtTotalWeight.Border.Class = "TextBoxBorder";
             this.txtTotalWeight.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.txtTotalWeight.DisabledBackColor = System.Drawing.Color.White;
-            this.txtTotalWeight.ForeColor = System.Drawing.Color.Black;
             this.txtTotalWeight.Location = new System.Drawing.Point(280, 47);
             this.txtTotalWeight.Name = "txtTotalWeight";
             this.txtTotalWeight.PreventEnterBeep = true;
@@ -1110,14 +1213,12 @@
             // 
             // txtDesc
             // 
-            this.txtDesc.BackColor = System.Drawing.Color.White;
             // 
             // 
             // 
             this.txtDesc.Border.Class = "TextBoxBorder";
             this.txtDesc.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.txtDesc.DisabledBackColor = System.Drawing.Color.White;
-            this.txtDesc.ForeColor = System.Drawing.Color.Black;
             this.txtDesc.Location = new System.Drawing.Point(3, 282);
             this.txtDesc.Multiline = true;
             this.txtDesc.Name = "txtDesc";
@@ -1128,7 +1229,6 @@
             // 
             // txtTotalCost
             // 
-            this.txtTotalCost.BackColor = System.Drawing.Color.White;
             // 
             // 
             // 
@@ -1136,7 +1236,6 @@
             this.txtTotalCost.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.txtTotalCost.DisabledBackColor = System.Drawing.Color.White;
             this.txtTotalCost.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
-            this.txtTotalCost.ForeColor = System.Drawing.Color.Black;
             this.txtTotalCost.Location = new System.Drawing.Point(280, 397);
             this.txtTotalCost.Name = "txtTotalCost";
             this.txtTotalCost.PreventEnterBeep = true;
@@ -1161,14 +1260,12 @@
             // 
             // txtDockWeightNote
             // 
-            this.txtDockWeightNote.BackColor = System.Drawing.Color.White;
             // 
             // 
             // 
             this.txtDockWeightNote.Border.Class = "TextBoxBorder";
             this.txtDockWeightNote.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.txtDockWeightNote.DisabledBackColor = System.Drawing.Color.White;
-            this.txtDockWeightNote.ForeColor = System.Drawing.Color.Black;
             this.txtDockWeightNote.Location = new System.Drawing.Point(280, 222);
             this.txtDockWeightNote.MaxLength = 30;
             this.txtDockWeightNote.Name = "txtDockWeightNote";
@@ -1178,14 +1275,12 @@
             // 
             // txtWeightNote
             // 
-            this.txtWeightNote.BackColor = System.Drawing.Color.White;
             // 
             // 
             // 
             this.txtWeightNote.Border.Class = "TextBoxBorder";
             this.txtWeightNote.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.txtWeightNote.DisabledBackColor = System.Drawing.Color.White;
-            this.txtWeightNote.ForeColor = System.Drawing.Color.Black;
             this.txtWeightNote.Location = new System.Drawing.Point(280, 193);
             this.txtWeightNote.MaxLength = 30;
             this.txtWeightNote.Name = "txtWeightNote";
@@ -1254,7 +1349,6 @@
             // 
             // txtProfit
             // 
-            this.txtProfit.BackColor = System.Drawing.Color.White;
             // 
             // 
             // 
@@ -1262,7 +1356,6 @@
             this.txtProfit.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.txtProfit.DisabledBackColor = System.Drawing.Color.White;
             this.txtProfit.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
-            this.txtProfit.ForeColor = System.Drawing.Color.Black;
             this.txtProfit.Location = new System.Drawing.Point(280, 339);
             this.txtProfit.Name = "txtProfit";
             this.txtProfit.PreventEnterBeep = true;
@@ -1273,7 +1366,6 @@
             // 
             // txtLoss
             // 
-            this.txtLoss.BackColor = System.Drawing.Color.White;
             // 
             // 
             // 
@@ -1281,7 +1373,6 @@
             this.txtLoss.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.txtLoss.DisabledBackColor = System.Drawing.Color.White;
             this.txtLoss.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
-            this.txtLoss.ForeColor = System.Drawing.Color.Black;
             this.txtLoss.Location = new System.Drawing.Point(280, 368);
             this.txtLoss.Name = "txtLoss";
             this.txtLoss.PreventEnterBeep = true;
@@ -1443,14 +1534,12 @@
             // 
             // txtTotalProducts
             // 
-            this.txtTotalProducts.BackColor = System.Drawing.Color.White;
             // 
             // 
             // 
             this.txtTotalProducts.Border.Class = "TextBoxBorder";
             this.txtTotalProducts.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.txtTotalProducts.DisabledBackColor = System.Drawing.Color.White;
-            this.txtTotalProducts.ForeColor = System.Drawing.Color.Black;
             this.txtTotalProducts.Location = new System.Drawing.Point(280, 19);
             this.txtTotalProducts.Name = "txtTotalProducts";
             this.txtTotalProducts.PreventEnterBeep = true;
@@ -1587,6 +1676,7 @@
             // 
             this.btnBook.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
             this.btnBook.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
+            this.btnBook.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.btnBook.Enabled = false;
             this.btnBook.FocusCuesEnabled = false;
             this.btnBook.Image = global::Tarla.Properties.Resources.wallet2;
@@ -1604,6 +1694,7 @@
             // 
             this.btnAddNetSell.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
             this.btnAddNetSell.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
+            this.btnAddNetSell.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.btnAddNetSell.Enabled = false;
             this.btnAddNetSell.FocusCuesEnabled = false;
             this.btnAddNetSell.Image = global::Tarla.Properties.Resources.Pencil_icon;
@@ -1660,122 +1751,11 @@
             this.errorProvider1.ContainerControl = this;
             this.errorProvider1.RightToLeft = true;
             // 
-            // bsDriver
-            // 
-            this.bsDriver.DataSource = typeof(Tarla.Driver);
-            // 
-            // labelX31
-            // 
-            this.labelX31.BackColor = System.Drawing.Color.Transparent;
-            // 
-            // 
-            // 
-            this.labelX31.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelX31.ForeColor = System.Drawing.Color.Black;
-            this.labelX31.Location = new System.Drawing.Point(119, 127);
-            this.labelX31.Name = "labelX31";
-            this.labelX31.Size = new System.Drawing.Size(56, 23);
-            this.labelX31.TabIndex = 57;
-            this.labelX31.Text = "(کیلوگرم)";
-            // 
-            // intLoss
-            // 
-            this.intLoss.AllowEmptyState = false;
-            this.intLoss.BackColor = System.Drawing.Color.White;
-            // 
-            // 
-            // 
-            this.intLoss.BackgroundStyle.Class = "DateTimeInputBackground";
-            this.intLoss.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.intLoss.ButtonFreeText.Shortcut = DevComponents.DotNetBar.eShortcut.F2;
-            this.intLoss.FocusHighlightColor = System.Drawing.Color.LightGray;
-            this.intLoss.FocusHighlightEnabled = true;
-            this.intLoss.ForeColor = System.Drawing.Color.Black;
-            this.intLoss.Location = new System.Drawing.Point(181, 127);
-            this.intLoss.MaxValue = 1000000000;
-            this.intLoss.MinValue = 0;
-            this.intLoss.Name = "intLoss";
-            this.intLoss.Size = new System.Drawing.Size(102, 23);
-            this.intLoss.TabIndex = 55;
-            // 
-            // labelX32
-            // 
-            this.labelX32.BackColor = System.Drawing.Color.Transparent;
-            // 
-            // 
-            // 
-            this.labelX32.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelX32.ForeColor = System.Drawing.Color.Black;
-            this.labelX32.Location = new System.Drawing.Point(289, 127);
-            this.labelX32.Name = "labelX32";
-            this.labelX32.Size = new System.Drawing.Size(42, 23);
-            this.labelX32.TabIndex = 56;
-            this.labelX32.Text = "افت";
-            // 
-            // Column1
-            // 
-            this.Column1.HeaderText = "نام محصول";
-            this.Column1.Name = "Column1";
-            this.Column1.ReadOnly = true;
-            this.Column1.Width = 130;
-            // 
-            // clmPrice
-            // 
-            this.clmPrice.HeaderText = "فی";
-            this.clmPrice.Name = "clmPrice";
-            this.clmPrice.Width = 80;
-            // 
-            // clmQty
-            // 
-            this.clmQty.HeaderText = "تعداد";
-            this.clmQty.Name = "clmQty";
-            this.clmQty.Width = 60;
-            // 
-            // clmWeight
-            // 
-            this.clmWeight.HeaderText = "وزن";
-            this.clmWeight.Name = "clmWeight";
-            this.clmWeight.ReadOnly = true;
-            this.clmWeight.Width = 60;
-            // 
-            // clmLoss
-            // 
-            this.clmLoss.HeaderText = "افت";
-            this.clmLoss.Name = "clmLoss";
-            this.clmLoss.Width = 50;
-            // 
-            // clmSellerName
-            // 
-            this.clmSellerName.HeaderText = "فروشنده";
-            this.clmSellerName.Name = "clmSellerName";
-            // 
-            // clmPackingName
-            // 
-            this.clmPackingName.HeaderText = "بسته بندی";
-            this.clmPackingName.Name = "clmPackingName";
-            // 
-            // clmProduct
-            // 
-            this.clmProduct.HeaderText = "کد محصول";
-            this.clmProduct.Name = "clmProduct";
-            this.clmProduct.Visible = false;
-            // 
-            // clmSeller
-            // 
-            this.clmSeller.HeaderText = "کد فروشنده";
-            this.clmSeller.Name = "clmSeller";
-            this.clmSeller.Visible = false;
-            // 
-            // clmPacking
-            // 
-            this.clmPacking.HeaderText = "کد بسته بندی";
-            this.clmPacking.Name = "clmPacking";
-            this.clmPacking.Visible = false;
-            // 
             // frmAddFactor
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.CancelButton = this.btnExit;
             this.ClientSize = new System.Drawing.Size(639, 677);
             this.Controls.Add(this.groupPanel2);
             this.Controls.Add(this.superTabControl1);
@@ -1796,10 +1776,12 @@
             this.superTabControlPanel1.ResumeLayout(false);
             this.groupPanel3.ResumeLayout(false);
             this.groupPanel3.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.bsBuyer)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bsDriver)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.bsF_Receiver)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.bsReceiver)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bsBuyer)).EndInit();
             this.groupPanel4.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.intLoss)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.intPrice)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.bsPacking)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.bsSeller)).EndInit();
@@ -1819,8 +1801,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.intWorkerCost)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.bsDriver)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.intLoss)).EndInit();
             this.ResumeLayout(false);
 
         }

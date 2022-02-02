@@ -3,35 +3,30 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
-using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
+using DevComponents.DotNetBar;
 using BehComponents;
+
 namespace Tarla.MainForms
 {
-    public partial class frmAddBank : Form
+    public partial class frmAddDriver : DevComponents.DotNetBar.OfficeForm
     {
         dcTarlaDataContext db = new dcTarlaDataContext();
-        public static int bankId = 0;
+        public static int driverId = 0;
         public static bool IsEdit;
-        public frmAddBank()
+        public frmAddDriver()
         {
             InitializeComponent();
         }
 
-        private void btnExit_Click(object sender, EventArgs e)
-        {
-            Close();
-        }
-
-        private void frmAddBank_Load(object sender, EventArgs e)
+        private void frmAddDriver_Load(object sender, EventArgs e)
         {
             try
             {
                 if (IsEdit)
                 {
-                    bsBank.DataSource = db.FillBankById(bankId);
+                    bsDriver.DataSource = db.FillDriverById(driverId);
                 }
             }
             catch (Exception ex)
@@ -46,13 +41,13 @@ namespace Tarla.MainForms
             {
                 if (string.IsNullOrEmpty(txtName.Text))
                 {
-                    errorProvider1.SetError(txtName, "نام حساب الزامی است");
+                    errorProvider1.SetError(txtName, "نام راننده الزامی است");
                     txtName.Focus();
                 }
-                else if (string.IsNullOrEmpty(txtOwner.Text))
+                else if (string.IsNullOrEmpty(txtLicensePlate.Text))
                 {
                     errorProvider1.Clear();
-                    errorProvider1.SetError(txtName, "نام حساب الزامی است");
+                    errorProvider1.SetError(txtLicensePlate, "شماره پلاک کامیون الزامی است");
                     txtName.Focus();
                 }
                 else
@@ -60,12 +55,12 @@ namespace Tarla.MainForms
                     errorProvider1.Clear();
                     if (IsEdit)
                     {
-                        bsBank.EndEdit();
-                        db.UpdateBank(bankId, txtName.Text, txtBankNumber.Text, txtOwner.Text, txtDesc.Text);
+                        bsDriver.EndEdit();
+                        db.UpdateDriver(driverId, txtName.Text, txtLicenseId.Text, txtLicensePlate.Text, txtPhone.Text, txtAddress.Text);
                     }
                     else
                     {
-                        db.InsertBank(txtName.Text, txtBankNumber.Text, txtOwner.Text, txtDesc.Text);
+                        db.InsertDriver(txtName.Text, txtLicenseId.Text, txtLicensePlate.Text, txtPhone.Text, txtAddress.Text);
                         clearAll();
                     }
 
@@ -76,15 +71,20 @@ namespace Tarla.MainForms
             {
                 MessageBoxFarsi.Show("ارتباط با سرور اطلاعاتی قطع شده است \n" + ex.Message, "اخطار", MessageBoxFarsiButtons.OK, MessageBoxFarsiIcon.Error, MessageBoxFarsiDefaultButton.Button1);
             }
-        }
 
+        }
         private void clearAll()
         {
-            txtBankNumber.Text = string.Empty;
-            txtDesc.Clear();
+            txtLicenseId.Text = string.Empty;
+            txtPhone.Text = string.Empty;
             txtName.Clear();
-            txtOwner.Clear();
+            txtAddress.Clear();
+            txtLicensePlate.Clear();
             txtName.Focus();
+        }
+        private void btnExit_Click(object sender, EventArgs e)
+        {
+            Close();
         }
     }
 }

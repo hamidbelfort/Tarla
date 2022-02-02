@@ -3,33 +3,25 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
-using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
+using DevComponents.DotNetBar;
 using BehComponents;
-
 namespace Tarla.MainForms
 {
-    public partial class frmShowBank : Form
+    public partial class frmShowDriver : DevComponents.DotNetBar.OfficeForm
     {
         dcTarlaDataContext db = new dcTarlaDataContext();
-        public frmShowBank()
+        public frmShowDriver()
         {
             InitializeComponent();
         }
-
-        private void frmAddBank_Load(object sender, EventArgs e)
-        {
-            loadAgain();
-        }
-
         private void loadAgain()
         {
             try
             {
-                bsBank.DataSource = db.FillBank();
-                if (dgvBank.Rows.Count == 0)
+                bsDriver.DataSource = db.FillDrivers();
+                if (dgvDriver.Rows.Count == 0)
                 {
                     btnDelete.Enabled = false;
                     btnEdit.Enabled = false;
@@ -45,14 +37,37 @@ namespace Tarla.MainForms
                 MessageBoxFarsi.Show("ارتباط با سرور اطلاعاتی قطع شده است \n" + ex.Message, "اخطار", MessageBoxFarsiButtons.OK, MessageBoxFarsiIcon.Error, MessageBoxFarsiDefaultButton.Button1);
             }
         }
+        private void radialMenu_ItemClick(object sender, EventArgs e)
+        {
+            RadialMenuItem item = sender as RadialMenuItem;
+            if (item!=null && !string.IsNullOrEmpty(item.Text))
+            {
+                switch (item.Name)
+                {
+                    case "mnuRefresh":
+                        loadAgain();
+                        break;
+                }
+            }
+        }
+
+        private void dgvDriver_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
+        {
+            dgvDriver.Rows[e.RowIndex].Cells[0].Value = e.RowIndex + 1;
+        }
+
+        private void frmShowDriver_Load(object sender, EventArgs e)
+        {
+            loadAgain();
+        }
 
         private void btnAdd_Click(object sender, EventArgs e)
         {
             try
             {
-                frmAddBank.IsEdit = false;
+                frmAddDriver.IsEdit = false;
 
-                new frmAddBank().ShowDialog();
+                new frmAddDriver().ShowDialog();
 
                 loadAgain();
             }
@@ -66,11 +81,11 @@ namespace Tarla.MainForms
         {
             try
             {
-                frmAddBank.IsEdit = true;
+                frmAddDriver.IsEdit = true;
 
-                frmAddBank.bankId = (int)dgvBank.CurrentRow.Cells[0].Value;
+                frmAddDriver.driverId = (int)dgvDriver.CurrentRow.Cells[1].Value;
 
-                new frmAddBank().ShowDialog();
+                new frmAddDriver().ShowDialog();
 
                 db = new dcTarlaDataContext();
                 loadAgain();
@@ -87,7 +102,7 @@ namespace Tarla.MainForms
             {
                 if (MessageBoxFarsi.Show("آیا مطمئن به حذف این مورد هستید؟", "تأیید حذف", MessageBoxFarsiButtons.YesNo, MessageBoxFarsiIcon.Question, MessageBoxFarsiDefaultButton.Button1) == DialogResult.Yes)
                 {
-                    db.DeleteBank((int)dgvBank.CurrentRow.Cells[0].Value);
+                    db.DeleteDriver((int)dgvDriver.CurrentRow.Cells[1].Value);
                     loadAgain();
                 }
             }

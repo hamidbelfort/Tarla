@@ -33,6 +33,7 @@ namespace Tarla
         string themeName;
         string strToday;
         string wallpaper;
+        public int childCount;
         public frmMain()
         {
             Thread t = new Thread(new ThreadStart(runSplash));
@@ -92,6 +93,7 @@ namespace Tarla
             lblFullname.Text = string.Format("کاربر جاری : {0}", Fullname);
             lblDate.Text = string.Format("تاریخ : {0}",pd.getShortDate());
             this.WindowState = FormWindowState.Maximized;
+            IsMdiContainer = true;
         }
         private void getThemSetting()
         {
@@ -180,7 +182,11 @@ namespace Tarla
 
         private void btnSell_Click(object sender, EventArgs e)
         {
-            new frmAddFactor().ShowDialog();
+            minimizeRibbon(true);
+            frmAddFactor _frmChild = new frmAddFactor();
+            _frmChild.MdiParent = this;
+            _frmChild.Text = "ثبت حواله فروش";
+            _frmChild.Show();
         }
 
         private void buttonItem1_Click(object sender, EventArgs e)
@@ -270,6 +276,20 @@ namespace Tarla
         private void نقاشیویندوزToolStripMenuItem_Click(object sender, EventArgs e)
         {
             System.Diagnostics.Process.Start("mspaint.exe");
+        }
+        private void minimizeRibbon(bool shouldMinimize)
+        {
+            switchRibbon.Value = !shouldMinimize;
+            ribbonControl1.Expanded = !shouldMinimize;
+        }
+
+        private void btnDriver_Click(object sender, EventArgs e)
+        {
+            minimizeRibbon(true);
+            frmShowDriver _frmChild = new frmShowDriver();
+            _frmChild.MdiParent = this;
+            _frmChild.Text = "نمایش لیست رانندگان";
+            _frmChild.Show();
         }
     }
 }

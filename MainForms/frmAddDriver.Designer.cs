@@ -1,6 +1,6 @@
-﻿namespace Tarla
+﻿namespace Tarla.MainForms
 {
-    partial class frmAddUsers
+    partial class frmAddDriver
     {
         /// <summary>
         /// Required designer variable.
@@ -29,62 +29,40 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmAddUsers));
-            this.panelEx1 = new DevComponents.DotNetBar.PanelEx();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmAddDriver));
             this.groupPanel2 = new DevComponents.DotNetBar.Controls.GroupPanel();
             this.btnExit = new DevComponents.DotNetBar.ButtonX();
             this.btnSave = new DevComponents.DotNetBar.ButtonX();
             this.groupPanel1 = new DevComponents.DotNetBar.Controls.GroupPanel();
-            this.txtFullname = new DevComponents.DotNetBar.Controls.TextBoxX();
+            this.txtPhone = new DevComponents.DotNetBar.Controls.MaskedTextBoxAdv();
+            this.bsDriver = new System.Windows.Forms.BindingSource(this.components);
+            this.labelX5 = new DevComponents.DotNetBar.LabelX();
             this.labelX4 = new DevComponents.DotNetBar.LabelX();
-            this.cmbRoles = new System.Windows.Forms.ComboBox();
-            this.bsRoles = new System.Windows.Forms.BindingSource(this.components);
-            this.txtPass = new DevComponents.DotNetBar.Controls.TextBoxX();
+            this.txtLicenseId = new DevComponents.DotNetBar.Controls.MaskedTextBoxAdv();
+            this.txtLicensePlate = new DevComponents.DotNetBar.Controls.TextBoxX();
             this.labelX3 = new DevComponents.DotNetBar.LabelX();
-            this.txtUser = new DevComponents.DotNetBar.Controls.TextBoxX();
             this.labelX2 = new DevComponents.DotNetBar.LabelX();
+            this.txtName = new DevComponents.DotNetBar.Controls.TextBoxX();
+            this.txtAddress = new DevComponents.DotNetBar.Controls.TextBoxX();
             this.labelX1 = new DevComponents.DotNetBar.LabelX();
             this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
-            this.bsUser = new System.Windows.Forms.BindingSource(this.components);
-            this.panelEx1.SuspendLayout();
             this.groupPanel2.SuspendLayout();
             this.groupPanel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.bsRoles)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bsDriver)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.bsUser)).BeginInit();
             this.SuspendLayout();
-            // 
-            // panelEx1
-            // 
-            this.panelEx1.CanvasColor = System.Drawing.SystemColors.Control;
-            this.panelEx1.ColorSchemeStyle = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.panelEx1.Controls.Add(this.groupPanel2);
-            this.panelEx1.Controls.Add(this.groupPanel1);
-            this.panelEx1.DisabledBackColor = System.Drawing.Color.Empty;
-            this.panelEx1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panelEx1.Location = new System.Drawing.Point(0, 0);
-            this.panelEx1.Name = "panelEx1";
-            this.panelEx1.Size = new System.Drawing.Size(420, 230);
-            this.panelEx1.Style.Alignment = System.Drawing.StringAlignment.Center;
-            this.panelEx1.Style.BackColor1.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground;
-            this.panelEx1.Style.BackColor2.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground2;
-            this.panelEx1.Style.Border = DevComponents.DotNetBar.eBorderType.SingleLine;
-            this.panelEx1.Style.BorderColor.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBorder;
-            this.panelEx1.Style.ForeColor.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelText;
-            this.panelEx1.Style.GradientAngle = 90;
-            this.panelEx1.TabIndex = 0;
             // 
             // groupPanel2
             // 
-            this.groupPanel2.BackColor = System.Drawing.Color.White;
-            this.groupPanel2.CanvasColor = System.Drawing.SystemColors.Control;
+            this.groupPanel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(239)))), ((int)(((byte)(239)))), ((int)(((byte)(242)))));
+            this.groupPanel2.CanvasColor = System.Drawing.Color.FromArgb(((int)(((byte)(239)))), ((int)(((byte)(239)))), ((int)(((byte)(242)))));
             this.groupPanel2.ColorSchemeStyle = DevComponents.DotNetBar.eDotNetBarStyle.Office2007;
             this.groupPanel2.Controls.Add(this.btnExit);
             this.groupPanel2.Controls.Add(this.btnSave);
             this.groupPanel2.DisabledBackColor = System.Drawing.Color.Empty;
-            this.groupPanel2.Location = new System.Drawing.Point(12, 178);
+            this.groupPanel2.Location = new System.Drawing.Point(12, 286);
             this.groupPanel2.Name = "groupPanel2";
-            this.groupPanel2.Size = new System.Drawing.Size(396, 40);
+            this.groupPanel2.Size = new System.Drawing.Size(447, 40);
             // 
             // 
             // 
@@ -140,7 +118,7 @@
             this.btnSave.Dock = System.Windows.Forms.DockStyle.Right;
             this.btnSave.FocusCuesEnabled = false;
             this.btnSave.Image = ((System.Drawing.Image)(resources.GetObject("btnSave.Image")));
-            this.btnSave.Location = new System.Drawing.Point(310, 0);
+            this.btnSave.Location = new System.Drawing.Point(361, 0);
             this.btnSave.Name = "btnSave";
             this.btnSave.Shape = new DevComponents.DotNetBar.RoundRectangleShapeDescriptor(10, 4, 4, 10);
             this.btnSave.Size = new System.Drawing.Size(80, 34);
@@ -152,21 +130,23 @@
             // 
             // groupPanel1
             // 
-            this.groupPanel1.BackColor = System.Drawing.Color.White;
-            this.groupPanel1.CanvasColor = System.Drawing.SystemColors.Control;
+            this.groupPanel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(239)))), ((int)(((byte)(239)))), ((int)(((byte)(242)))));
+            this.groupPanel1.CanvasColor = System.Drawing.Color.FromArgb(((int)(((byte)(239)))), ((int)(((byte)(239)))), ((int)(((byte)(242)))));
             this.groupPanel1.ColorSchemeStyle = DevComponents.DotNetBar.eDotNetBarStyle.Office2007;
-            this.groupPanel1.Controls.Add(this.txtFullname);
+            this.groupPanel1.Controls.Add(this.txtPhone);
+            this.groupPanel1.Controls.Add(this.labelX5);
             this.groupPanel1.Controls.Add(this.labelX4);
-            this.groupPanel1.Controls.Add(this.cmbRoles);
-            this.groupPanel1.Controls.Add(this.txtPass);
+            this.groupPanel1.Controls.Add(this.txtLicenseId);
+            this.groupPanel1.Controls.Add(this.txtLicensePlate);
             this.groupPanel1.Controls.Add(this.labelX3);
-            this.groupPanel1.Controls.Add(this.txtUser);
             this.groupPanel1.Controls.Add(this.labelX2);
+            this.groupPanel1.Controls.Add(this.txtName);
+            this.groupPanel1.Controls.Add(this.txtAddress);
             this.groupPanel1.Controls.Add(this.labelX1);
             this.groupPanel1.DisabledBackColor = System.Drawing.Color.Empty;
             this.groupPanel1.Location = new System.Drawing.Point(12, 12);
             this.groupPanel1.Name = "groupPanel1";
-            this.groupPanel1.Size = new System.Drawing.Size(396, 160);
+            this.groupPanel1.Size = new System.Drawing.Size(447, 268);
             // 
             // 
             // 
@@ -196,26 +176,44 @@
             // 
             this.groupPanel1.StyleMouseOver.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.groupPanel1.TabIndex = 0;
-            this.groupPanel1.Text = "ثبت مشخصات کاربر";
+            this.groupPanel1.Text = "اطلاعات راننده";
             // 
-            // txtFullname
+            // txtPhone
             // 
-            this.txtFullname.BackColor = System.Drawing.Color.White;
+            this.txtPhone.BackColor = System.Drawing.Color.White;
             // 
             // 
             // 
-            this.txtFullname.Border.Class = "TextBoxBorder";
-            this.txtFullname.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.txtFullname.DisabledBackColor = System.Drawing.Color.White;
-            this.txtFullname.FocusHighlightColor = System.Drawing.Color.LightGray;
-            this.txtFullname.FocusHighlightEnabled = true;
-            this.txtFullname.ForeColor = System.Drawing.Color.Black;
-            this.txtFullname.Location = new System.Drawing.Point(49, 48);
-            this.txtFullname.Name = "txtFullname";
-            this.txtFullname.PreventEnterBeep = true;
-            this.txtFullname.Size = new System.Drawing.Size(207, 23);
-            this.txtFullname.TabIndex = 1;
-            this.txtFullname.WatermarkText = "الزامی";
+            this.txtPhone.BackgroundStyle.Class = "TextBoxBorder";
+            this.txtPhone.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.txtPhone.ButtonClear.Visible = true;
+            this.txtPhone.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.bsDriver, "Phone", true));
+            this.txtPhone.ForeColor = System.Drawing.Color.Black;
+            this.txtPhone.Location = new System.Drawing.Point(126, 101);
+            this.txtPhone.Mask = "00000000000";
+            this.txtPhone.Name = "txtPhone";
+            this.txtPhone.Size = new System.Drawing.Size(190, 22);
+            this.txtPhone.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.txtPhone.TabIndex = 3;
+            this.txtPhone.Text = "";
+            // 
+            // bsDriver
+            // 
+            this.bsDriver.DataSource = typeof(Tarla.Driver);
+            // 
+            // labelX5
+            // 
+            this.labelX5.BackColor = System.Drawing.Color.Transparent;
+            // 
+            // 
+            // 
+            this.labelX5.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.labelX5.ForeColor = System.Drawing.Color.Black;
+            this.labelX5.Location = new System.Drawing.Point(322, 101);
+            this.labelX5.Name = "labelX5";
+            this.labelX5.Size = new System.Drawing.Size(115, 23);
+            this.labelX5.TabIndex = 19;
+            this.labelX5.Text = "شماره تماس";
             // 
             // labelX4
             // 
@@ -224,48 +222,49 @@
             // 
             // 
             this.labelX4.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelX4.Location = new System.Drawing.Point(262, 48);
+            this.labelX4.ForeColor = System.Drawing.Color.Black;
+            this.labelX4.Location = new System.Drawing.Point(322, 128);
             this.labelX4.Name = "labelX4";
-            this.labelX4.Size = new System.Drawing.Size(113, 23);
-            this.labelX4.TabIndex = 4;
-            this.labelX4.Text = "نام و نام خانوادگی";
+            this.labelX4.Size = new System.Drawing.Size(115, 23);
+            this.labelX4.TabIndex = 17;
+            this.labelX4.Text = "آدرس";
             // 
-            // cmbRoles
+            // txtLicenseId
             // 
-            this.cmbRoles.BackColor = System.Drawing.Color.LightGray;
-            this.cmbRoles.DataSource = this.bsRoles;
-            this.cmbRoles.DisplayMember = "RoleName";
-            this.cmbRoles.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cmbRoles.FormattingEnabled = true;
-            this.cmbRoles.Location = new System.Drawing.Point(49, 16);
-            this.cmbRoles.Name = "cmbRoles";
-            this.cmbRoles.Size = new System.Drawing.Size(207, 24);
-            this.cmbRoles.TabIndex = 0;
-            this.cmbRoles.ValueMember = "RoleId";
-            // 
-            // bsRoles
-            // 
-            this.bsRoles.DataSource = typeof(Tarla.Role);
-            // 
-            // txtPass
-            // 
-            this.txtPass.BackColor = System.Drawing.Color.White;
+            this.txtLicenseId.BackColor = System.Drawing.Color.White;
             // 
             // 
             // 
-            this.txtPass.Border.Class = "TextBoxBorder";
-            this.txtPass.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.txtPass.DisabledBackColor = System.Drawing.Color.White;
-            this.txtPass.FocusHighlightColor = System.Drawing.Color.LightGray;
-            this.txtPass.FocusHighlightEnabled = true;
-            this.txtPass.ForeColor = System.Drawing.Color.Black;
-            this.txtPass.Location = new System.Drawing.Point(49, 106);
-            this.txtPass.Name = "txtPass";
-            this.txtPass.PreventEnterBeep = true;
-            this.txtPass.Size = new System.Drawing.Size(207, 23);
-            this.txtPass.TabIndex = 3;
-            this.txtPass.UseSystemPasswordChar = true;
-            this.txtPass.WatermarkText = "الزامی";
+            this.txtLicenseId.BackgroundStyle.Class = "TextBoxBorder";
+            this.txtLicenseId.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.txtLicenseId.ButtonClear.Visible = true;
+            this.txtLicenseId.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.bsDriver, "LicenseId", true));
+            this.txtLicenseId.ForeColor = System.Drawing.Color.Black;
+            this.txtLicenseId.Location = new System.Drawing.Point(126, 45);
+            this.txtLicenseId.Mask = "00000000000";
+            this.txtLicenseId.Name = "txtLicenseId";
+            this.txtLicenseId.Size = new System.Drawing.Size(190, 22);
+            this.txtLicenseId.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.txtLicenseId.TabIndex = 1;
+            this.txtLicenseId.Text = "";
+            // 
+            // txtLicensePlate
+            // 
+            // 
+            // 
+            // 
+            this.txtLicensePlate.Border.Class = "TextBoxBorder";
+            this.txtLicensePlate.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.txtLicensePlate.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.bsDriver, "LicensePlate", true));
+            this.txtLicensePlate.DisabledBackColor = System.Drawing.Color.White;
+            this.txtLicensePlate.Location = new System.Drawing.Point(30, 72);
+            this.txtLicensePlate.MaxLength = 20;
+            this.txtLicensePlate.Name = "txtLicensePlate";
+            this.txtLicensePlate.PreventEnterBeep = true;
+            this.txtLicensePlate.ScrollBars = System.Windows.Forms.ScrollBars.Both;
+            this.txtLicensePlate.Size = new System.Drawing.Size(286, 23);
+            this.txtLicensePlate.TabIndex = 2;
+            this.txtLicensePlate.WatermarkText = "الزامی";
             // 
             // labelX3
             // 
@@ -274,30 +273,12 @@
             // 
             // 
             this.labelX3.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelX3.Location = new System.Drawing.Point(262, 106);
+            this.labelX3.ForeColor = System.Drawing.Color.Black;
+            this.labelX3.Location = new System.Drawing.Point(322, 15);
             this.labelX3.Name = "labelX3";
-            this.labelX3.Size = new System.Drawing.Size(113, 23);
-            this.labelX3.TabIndex = 1;
-            this.labelX3.Text = "کلمه عبور";
-            // 
-            // txtUser
-            // 
-            this.txtUser.BackColor = System.Drawing.Color.White;
-            // 
-            // 
-            // 
-            this.txtUser.Border.Class = "TextBoxBorder";
-            this.txtUser.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.txtUser.DisabledBackColor = System.Drawing.Color.White;
-            this.txtUser.FocusHighlightColor = System.Drawing.Color.LightGray;
-            this.txtUser.FocusHighlightEnabled = true;
-            this.txtUser.ForeColor = System.Drawing.Color.Black;
-            this.txtUser.Location = new System.Drawing.Point(49, 77);
-            this.txtUser.Name = "txtUser";
-            this.txtUser.PreventEnterBeep = true;
-            this.txtUser.Size = new System.Drawing.Size(207, 23);
-            this.txtUser.TabIndex = 2;
-            this.txtUser.WatermarkText = "الزامی";
+            this.labelX3.Size = new System.Drawing.Size(115, 23);
+            this.labelX3.TabIndex = 14;
+            this.labelX3.Text = "نام و نام خانوادگی";
             // 
             // labelX2
             // 
@@ -306,11 +287,47 @@
             // 
             // 
             this.labelX2.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelX2.Location = new System.Drawing.Point(262, 77);
+            this.labelX2.ForeColor = System.Drawing.Color.Black;
+            this.labelX2.Location = new System.Drawing.Point(322, 45);
             this.labelX2.Name = "labelX2";
-            this.labelX2.Size = new System.Drawing.Size(113, 23);
-            this.labelX2.TabIndex = 1;
-            this.labelX2.Text = "نام کاربری";
+            this.labelX2.Size = new System.Drawing.Size(115, 23);
+            this.labelX2.TabIndex = 13;
+            this.labelX2.Text = "شماره گواهینامه";
+            // 
+            // txtName
+            // 
+            // 
+            // 
+            // 
+            this.txtName.Border.Class = "TextBoxBorder";
+            this.txtName.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.txtName.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.bsDriver, "DriverName", true));
+            this.txtName.DisabledBackColor = System.Drawing.Color.White;
+            this.txtName.Location = new System.Drawing.Point(30, 16);
+            this.txtName.MaxLength = 30;
+            this.txtName.Name = "txtName";
+            this.txtName.PreventEnterBeep = true;
+            this.txtName.Size = new System.Drawing.Size(286, 23);
+            this.txtName.TabIndex = 0;
+            this.txtName.WatermarkText = "الزامی";
+            // 
+            // txtAddress
+            // 
+            // 
+            // 
+            // 
+            this.txtAddress.Border.Class = "TextBoxBorder";
+            this.txtAddress.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.txtAddress.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.bsDriver, "Address", true));
+            this.txtAddress.DisabledBackColor = System.Drawing.Color.White;
+            this.txtAddress.Location = new System.Drawing.Point(30, 129);
+            this.txtAddress.MaxLength = 200;
+            this.txtAddress.Multiline = true;
+            this.txtAddress.Name = "txtAddress";
+            this.txtAddress.PreventEnterBeep = true;
+            this.txtAddress.ScrollBars = System.Windows.Forms.ScrollBars.Both;
+            this.txtAddress.Size = new System.Drawing.Size(286, 105);
+            this.txtAddress.TabIndex = 4;
             // 
             // labelX1
             // 
@@ -319,63 +336,62 @@
             // 
             // 
             this.labelX1.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelX1.Location = new System.Drawing.Point(262, 16);
+            this.labelX1.ForeColor = System.Drawing.Color.Black;
+            this.labelX1.Location = new System.Drawing.Point(322, 71);
             this.labelX1.Name = "labelX1";
-            this.labelX1.Size = new System.Drawing.Size(113, 23);
-            this.labelX1.TabIndex = 1;
-            this.labelX1.Text = "انتخاب نقش";
+            this.labelX1.Size = new System.Drawing.Size(115, 23);
+            this.labelX1.TabIndex = 0;
+            this.labelX1.Text = "شماره پلاک کامیون";
             // 
             // errorProvider1
             // 
             this.errorProvider1.ContainerControl = this;
             // 
-            // bsUser
-            // 
-            this.bsUser.DataSource = typeof(Tarla.User);
-            // 
-            // frmAddUsers
+            // frmAddDriver
             // 
             this.AcceptButton = this.btnSave;
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.btnExit;
-            this.ClientSize = new System.Drawing.Size(420, 230);
-            this.Controls.Add(this.panelEx1);
-            this.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.ClientSize = new System.Drawing.Size(470, 332);
+            this.Controls.Add(this.groupPanel2);
+            this.Controls.Add(this.groupPanel1);
+            this.DoubleBuffered = true;
+            this.Font = new System.Drawing.Font("Tahoma", 9.75F);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.Name = "frmAddUsers";
+            this.MaximizeBox = false;
+            this.Name = "frmAddDriver";
             this.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.frmAddUsers_FormClosing);
-            this.Load += new System.EventHandler(this.frmAddUsers_Load);
-            this.panelEx1.ResumeLayout(false);
+            this.Text = "ثبت مشخصات راننده";
+            this.Load += new System.EventHandler(this.frmAddDriver_Load);
             this.groupPanel2.ResumeLayout(false);
             this.groupPanel1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.bsRoles)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bsDriver)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.bsUser)).EndInit();
             this.ResumeLayout(false);
 
         }
 
         #endregion
 
-        private DevComponents.DotNetBar.PanelEx panelEx1;
-        private DevComponents.DotNetBar.Controls.GroupPanel groupPanel1;
-        private System.Windows.Forms.ComboBox cmbRoles;
-        private DevComponents.DotNetBar.Controls.TextBoxX txtPass;
-        private DevComponents.DotNetBar.LabelX labelX3;
-        private DevComponents.DotNetBar.Controls.TextBoxX txtUser;
-        private DevComponents.DotNetBar.LabelX labelX2;
-        private DevComponents.DotNetBar.LabelX labelX1;
         private DevComponents.DotNetBar.Controls.GroupPanel groupPanel2;
         private DevComponents.DotNetBar.ButtonX btnExit;
         private DevComponents.DotNetBar.ButtonX btnSave;
-        private DevComponents.DotNetBar.Controls.TextBoxX txtFullname;
+        public DevComponents.DotNetBar.Controls.GroupPanel groupPanel1;
         private DevComponents.DotNetBar.LabelX labelX4;
+        private DevComponents.DotNetBar.Controls.MaskedTextBoxAdv txtLicenseId;
+        private DevComponents.DotNetBar.Controls.TextBoxX txtLicensePlate;
+        private DevComponents.DotNetBar.LabelX labelX3;
+        private DevComponents.DotNetBar.LabelX labelX2;
+        private DevComponents.DotNetBar.Controls.TextBoxX txtName;
+        private DevComponents.DotNetBar.Controls.TextBoxX txtAddress;
+        private DevComponents.DotNetBar.LabelX labelX1;
+        private DevComponents.DotNetBar.Controls.MaskedTextBoxAdv txtPhone;
+        private DevComponents.DotNetBar.LabelX labelX5;
         private System.Windows.Forms.ErrorProvider errorProvider1;
-        private System.Windows.Forms.BindingSource bsUser;
-        private System.Windows.Forms.BindingSource bsRoles;
+        private System.Windows.Forms.BindingSource bsDriver;
     }
 }

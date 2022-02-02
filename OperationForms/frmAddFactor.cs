@@ -12,7 +12,7 @@ using Stimulsoft.Report;
 
 namespace Tarla.OperationForms
 {
-    public partial class frmAddFactor : DevComponents.DotNetBar.Metro.MetroForm
+    public partial class frmAddFactor : DevComponents.DotNetBar.OfficeForm
     {
         dcTarlaDataContext db = new dcTarlaDataContext();
         PersianDate pd = new PersianDate();
@@ -56,7 +56,10 @@ namespace Tarla.OperationForms
                         int index = -1;
                         for (int i = 0; i < dgvFactor.Rows.Count; i++)
                         {
-                            if (Convert.ToInt32(dgvFactor.Rows[i].Cells["clmProduct"].Value.ToString()) == Convert.ToInt32(cmbProduct.SelectedValue.ToString()))
+                            int currentProduct = Convert.ToInt32(dgvFactor.Rows[i].Cells["clmProduct"].Value.ToString());
+                            int currentSellerId = Convert.ToInt32(dgvFactor.Rows[i].Cells["clmSeller"].Value.ToString());
+                            if (currentProduct == Convert.ToInt32(cmbProduct.SelectedValue.ToString()) &&
+                                 currentSellerId == Convert.ToInt32(cmbProduct.SelectedValue.ToString()))
                             {
                                 index = i;
                             }
@@ -140,7 +143,7 @@ namespace Tarla.OperationForms
                 for (int i = 0; i < dgvFactor.Rows.Count; i++)
                 {
                     totalPrice += (Convert.ToInt32(dgvFactor.Rows[i].Cells["clmWeight"].Value.ToString())) * (Convert.ToInt32(dgvFactor.Rows[i].Cells["clmPrice"].Value.ToString()));
-                    totalWeight += (Convert.ToInt32(dgvFactor.Rows[i].Cells["clmWeight"].Value.ToString()));
+                    totalWeight += (Convert.ToInt32(dgvFactor.Rows[i].Cells["clmWeight"].Value.ToString()) - Convert.ToInt32(dgvFactor.Rows[i].Cells["clmLoss"].Value.ToString()));
                 }
             }
             else
@@ -241,8 +244,8 @@ namespace Tarla.OperationForms
                         int _weight = Convert.ToInt32(dgvFactor.Rows[i].Cells["clmWeight"].Value.ToString());
                         int _price = Convert.ToInt32(dgvFactor.Rows[i].Cells["clmPrice"].Value.ToString());
                         int _qty = Convert.ToInt32(dgvFactor.Rows[i].Cells["clmQty"].Value.ToString());
-                        int _loss=Convert.ToInt32(dgvFactor.Rows[i].Cells["clmQty"].Value.ToString());
-                        db.InsertInvoiceDetails(lastFactorId, _productId, _sellerId, _packId, _weight, _qty, _price);
+                        int _loss=Convert.ToInt32(dgvFactor.Rows[i].Cells["clmLoss"].Value.ToString());
+                        db.InsertInvoiceDetails(lastFactorId, _productId, _sellerId, _packId, _weight, _loss, _qty, _price, (_weight - _loss));
                     }
                     MessageBoxFarsi.Show("عملیات با موفقیت انجام شد", "پیغام", MessageBoxFarsiButtons.OK, MessageBoxFarsiIcon.Information, MessageBoxFarsiDefaultButton.Button1);
                     btnSave.Enabled = false;
@@ -329,9 +332,10 @@ namespace Tarla.OperationForms
                 db.GetDriverLicensePlate(driverId,ref licensePlate);
                 lblLicensePlate.Text = licensePlate;
             }
-             catch (Exception ex)
+             catch
             {
-                MessageBoxFarsi.Show("ارتباط با سرور اطلاعاتی قطع شده است \n" + ex.Message, "اخطار", MessageBoxFarsiButtons.OK, MessageBoxFarsiIcon.Error, MessageBoxFarsiDefaultButton.Button1);
+                lblLicensePlate.Text = "-خطا-";
+                //MessageBoxFarsi.Show("ارتباط با سرور اطلاعاتی قطع شده است \n" + ex.Message, "اخطار", MessageBoxFarsiButtons.OK, MessageBoxFarsiIcon.Error, MessageBoxFarsiDefaultButton.Button1);
             }
         }
 

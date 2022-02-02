@@ -37,13 +37,13 @@
             this.groupPanel1 = new DevComponents.DotNetBar.Controls.GroupPanel();
             this.labelX4 = new DevComponents.DotNetBar.LabelX();
             this.txtBankNumber = new DevComponents.DotNetBar.Controls.MaskedTextBoxAdv();
+            this.bsBank = new System.Windows.Forms.BindingSource(this.components);
             this.txtOwner = new DevComponents.DotNetBar.Controls.TextBoxX();
             this.labelX3 = new DevComponents.DotNetBar.LabelX();
             this.labelX2 = new DevComponents.DotNetBar.LabelX();
             this.txtName = new DevComponents.DotNetBar.Controls.TextBoxX();
             this.txtDesc = new DevComponents.DotNetBar.Controls.TextBoxX();
             this.labelX1 = new DevComponents.DotNetBar.LabelX();
-            this.bsBank = new System.Windows.Forms.BindingSource(this.components);
             this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
             this.panelEx1.SuspendLayout();
             this.groupPanel2.SuspendLayout();
@@ -65,7 +65,6 @@
             this.panelEx1.Size = new System.Drawing.Size(470, 312);
             this.panelEx1.Style.Alignment = System.Drawing.StringAlignment.Center;
             this.panelEx1.Style.BackColor1.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground;
-            this.panelEx1.Style.BackColor2.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground2;
             this.panelEx1.Style.Border = DevComponents.DotNetBar.eBorderType.SingleLine;
             this.panelEx1.Style.BorderColor.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBorder;
             this.panelEx1.Style.ForeColor.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelText;
@@ -150,6 +149,7 @@
             // 
             // groupPanel1
             // 
+            this.groupPanel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(239)))), ((int)(((byte)(239)))), ((int)(((byte)(242)))));
             this.groupPanel1.CanvasColor = System.Drawing.SystemColors.Control;
             this.groupPanel1.ColorSchemeStyle = DevComponents.DotNetBar.eDotNetBarStyle.Office2007;
             this.groupPanel1.Controls.Add(this.labelX4);
@@ -197,6 +197,7 @@
             // 
             // labelX4
             // 
+            this.labelX4.BackColor = System.Drawing.Color.Transparent;
             // 
             // 
             // 
@@ -224,14 +225,21 @@
             this.txtBankNumber.TabIndex = 1;
             this.txtBankNumber.Text = "";
             // 
+            // bsBank
+            // 
+            this.bsBank.DataSource = typeof(Tarla.Bank);
+            // 
             // txtOwner
             // 
+            this.txtOwner.BackColor = System.Drawing.Color.White;
             // 
             // 
             // 
             this.txtOwner.Border.Class = "TextBoxBorder";
             this.txtOwner.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.txtOwner.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.bsBank, "BankOwner", true));
+            this.txtOwner.DisabledBackColor = System.Drawing.Color.White;
+            this.txtOwner.ForeColor = System.Drawing.Color.Black;
             this.txtOwner.Location = new System.Drawing.Point(30, 72);
             this.txtOwner.MaxLength = 30;
             this.txtOwner.Name = "txtOwner";
@@ -243,6 +251,7 @@
             // 
             // labelX3
             // 
+            this.labelX3.BackColor = System.Drawing.Color.Transparent;
             // 
             // 
             // 
@@ -255,6 +264,7 @@
             // 
             // labelX2
             // 
+            this.labelX2.BackColor = System.Drawing.Color.Transparent;
             // 
             // 
             // 
@@ -267,12 +277,15 @@
             // 
             // txtName
             // 
+            this.txtName.BackColor = System.Drawing.Color.White;
             // 
             // 
             // 
             this.txtName.Border.Class = "TextBoxBorder";
             this.txtName.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.txtName.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.bsBank, "BankName", true));
+            this.txtName.DisabledBackColor = System.Drawing.Color.White;
+            this.txtName.ForeColor = System.Drawing.Color.Black;
             this.txtName.Location = new System.Drawing.Point(30, 16);
             this.txtName.MaxLength = 30;
             this.txtName.Name = "txtName";
@@ -283,12 +296,15 @@
             // 
             // txtDesc
             // 
+            this.txtDesc.BackColor = System.Drawing.Color.White;
             // 
             // 
             // 
             this.txtDesc.Border.Class = "TextBoxBorder";
             this.txtDesc.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.txtDesc.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.bsBank, "BankDescription", true));
+            this.txtDesc.DisabledBackColor = System.Drawing.Color.White;
+            this.txtDesc.ForeColor = System.Drawing.Color.Black;
             this.txtDesc.Location = new System.Drawing.Point(30, 101);
             this.txtDesc.MaxLength = 200;
             this.txtDesc.Multiline = true;
@@ -300,6 +316,7 @@
             // 
             // labelX1
             // 
+            this.labelX1.BackColor = System.Drawing.Color.Transparent;
             // 
             // 
             // 
@@ -309,10 +326,6 @@
             this.labelX1.Size = new System.Drawing.Size(115, 23);
             this.labelX1.TabIndex = 0;
             this.labelX1.Text = "صاحب حساب";
-            // 
-            // bsBank
-            // 
-            this.bsBank.DataSource = typeof(Tarla.Bank);
             // 
             // errorProvider1
             // 
