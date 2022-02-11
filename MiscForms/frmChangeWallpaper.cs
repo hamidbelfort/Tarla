@@ -12,7 +12,7 @@ using BehComponents;
 
 namespace Tarla.MiscForms
 {
-    public partial class frmChangeWallpaper : Form
+    public partial class frmChangeWallpaper : DevComponents.DotNetBar.OfficeForm
     {
         dcTarlaDataContext db = new dcTarlaDataContext();
         string filename;
@@ -60,11 +60,11 @@ namespace Tarla.MiscForms
                     btnApply.Enabled = false;
                 }
             }
-            catch
+            catch (Exception ex)
             {
-                MessageBoxFarsi.Show("ارتباط با سرور اطلاعاتی قطع شده است", "اخطار", MessageBoxFarsiButtons.OK, MessageBoxFarsiIcon.Error, MessageBoxFarsiDefaultButton.Button1);
+                MessageBoxFarsi.Show("ارتباط با سرور اطلاعاتی قطع شده است \n" + ex.Message, "خطا", MessageBoxFarsiButtons.OK, MessageBoxFarsiIcon.Error, MessageBoxFarsiDefaultButton.Button1);
             }
-            
+
         }
         private void btnReset_Click(object sender, EventArgs e)
         {
@@ -77,9 +77,9 @@ namespace Tarla.MiscForms
                 }
 
             }
-            catch
+            catch (Exception ex)
             {
-                MessageBoxFarsi.Show("ارتباط با سرور اطلاعاتی قطع شده است", "اخطار", MessageBoxFarsiButtons.OK, MessageBoxFarsiIcon.Error, MessageBoxFarsiDefaultButton.Button1);
+                MessageBoxFarsi.Show("ارتباط با سرور اطلاعاتی قطع شده است \n" + ex.Message, "خطا", MessageBoxFarsiButtons.OK, MessageBoxFarsiIcon.Error, MessageBoxFarsiDefaultButton.Button1);
             }
 
         }

@@ -32,7 +32,6 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmRestore));
             this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
-            this.panelEx1 = new DevComponents.DotNetBar.PanelEx();
             this.groupPanel4 = new DevComponents.DotNetBar.Controls.GroupPanel();
             this.rdAdvance = new System.Windows.Forms.RadioButton();
             this.rdSimple = new System.Windows.Forms.RadioButton();
@@ -60,7 +59,6 @@
             this.btnExit = new DevComponents.DotNetBar.ButtonX();
             this.btnRun = new DevComponents.DotNetBar.ButtonX();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
-            this.panelEx1.SuspendLayout();
             this.groupPanel4.SuspendLayout();
             this.gpAdvance.SuspendLayout();
             this.gpSimple.SuspendLayout();
@@ -77,28 +75,6 @@
             this.openFileDialog1.FileName = "openFileDialog1";
             this.openFileDialog1.Filter = "\"Backup File (*.bak)|*.bak\"";
             // 
-            // panelEx1
-            // 
-            this.panelEx1.CanvasColor = System.Drawing.SystemColors.Control;
-            this.panelEx1.ColorSchemeStyle = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.panelEx1.Controls.Add(this.groupPanel4);
-            this.panelEx1.Controls.Add(this.gpAdvance);
-            this.panelEx1.Controls.Add(this.gpSimple);
-            this.panelEx1.Controls.Add(this.groupPanel2);
-            this.panelEx1.DisabledBackColor = System.Drawing.Color.Empty;
-            this.panelEx1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panelEx1.Location = new System.Drawing.Point(0, 0);
-            this.panelEx1.Name = "panelEx1";
-            this.panelEx1.Size = new System.Drawing.Size(470, 589);
-            this.panelEx1.Style.Alignment = System.Drawing.StringAlignment.Center;
-            this.panelEx1.Style.BackColor1.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground;
-            this.panelEx1.Style.BackColor2.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground2;
-            this.panelEx1.Style.Border = DevComponents.DotNetBar.eBorderType.SingleLine;
-            this.panelEx1.Style.BorderColor.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBorder;
-            this.panelEx1.Style.ForeColor.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelText;
-            this.panelEx1.Style.GradientAngle = 90;
-            this.panelEx1.TabIndex = 4;
-            // 
             // groupPanel4
             // 
             this.groupPanel4.CanvasColor = System.Drawing.SystemColors.Control;
@@ -106,7 +82,7 @@
             this.groupPanel4.Controls.Add(this.rdAdvance);
             this.groupPanel4.Controls.Add(this.rdSimple);
             this.groupPanel4.DisabledBackColor = System.Drawing.Color.Empty;
-            this.groupPanel4.Location = new System.Drawing.Point(12, 12);
+            this.groupPanel4.Location = new System.Drawing.Point(13, 10);
             this.groupPanel4.Name = "groupPanel4";
             this.groupPanel4.Size = new System.Drawing.Size(444, 52);
             // 
@@ -137,31 +113,33 @@
             // 
             // 
             this.groupPanel4.StyleMouseOver.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.groupPanel4.TabIndex = 4;
+            this.groupPanel4.TabIndex = 8;
             this.groupPanel4.Text = "روش بازگردانی اطلاعات";
             // 
             // rdAdvance
             // 
             this.rdAdvance.AutoSize = true;
+            this.rdAdvance.BackColor = System.Drawing.Color.Transparent;
             this.rdAdvance.Location = new System.Drawing.Point(273, 3);
             this.rdAdvance.Name = "rdAdvance";
             this.rdAdvance.Size = new System.Drawing.Size(71, 20);
             this.rdAdvance.TabIndex = 1;
             this.rdAdvance.TabStop = true;
             this.rdAdvance.Text = "پیشرفته";
-            this.rdAdvance.UseVisualStyleBackColor = true;
+            this.rdAdvance.UseVisualStyleBackColor = false;
             this.rdAdvance.CheckedChanged += new System.EventHandler(this.rdAdvance_CheckedChanged);
             // 
             // rdSimple
             // 
             this.rdSimple.AutoSize = true;
+            this.rdSimple.BackColor = System.Drawing.Color.Transparent;
             this.rdSimple.Location = new System.Drawing.Point(380, 3);
             this.rdSimple.Name = "rdSimple";
             this.rdSimple.Size = new System.Drawing.Size(55, 20);
             this.rdSimple.TabIndex = 0;
             this.rdSimple.TabStop = true;
             this.rdSimple.Text = "ساده";
-            this.rdSimple.UseVisualStyleBackColor = true;
+            this.rdSimple.UseVisualStyleBackColor = false;
             this.rdSimple.CheckedChanged += new System.EventHandler(this.rdSimple_CheckedChanged);
             // 
             // gpAdvance
@@ -183,7 +161,7 @@
             this.gpAdvance.Controls.Add(this.labelX4);
             this.gpAdvance.DisabledBackColor = System.Drawing.Color.Empty;
             this.gpAdvance.Enabled = false;
-            this.gpAdvance.Location = new System.Drawing.Point(12, 250);
+            this.gpAdvance.Location = new System.Drawing.Point(13, 248);
             this.gpAdvance.Name = "gpAdvance";
             this.gpAdvance.Size = new System.Drawing.Size(444, 284);
             // 
@@ -214,11 +192,12 @@
             // 
             // 
             this.gpAdvance.StyleMouseOver.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.gpAdvance.TabIndex = 6;
+            this.gpAdvance.TabIndex = 10;
             this.gpAdvance.Text = "بازگردانی پیشرفته";
             // 
             // labelX8
             // 
+            this.labelX8.BackColor = System.Drawing.Color.Transparent;
             // 
             // 
             // 
@@ -231,6 +210,7 @@
             // 
             // labelX7
             // 
+            this.labelX7.BackColor = System.Drawing.Color.Transparent;
             // 
             // 
             // 
@@ -243,6 +223,7 @@
             // 
             // labelX6
             // 
+            this.labelX6.BackColor = System.Drawing.Color.Transparent;
             // 
             // 
             // 
@@ -255,6 +236,7 @@
             // 
             // labelX5
             // 
+            this.labelX5.BackColor = System.Drawing.Color.Transparent;
             // 
             // 
             // 
@@ -372,6 +354,7 @@
             // 
             // labelX4
             // 
+            this.labelX4.BackColor = System.Drawing.Color.Transparent;
             // 
             // 
             // 
@@ -393,7 +376,7 @@
             this.gpSimple.Controls.Add(this.labelX1);
             this.gpSimple.DisabledBackColor = System.Drawing.Color.Empty;
             this.gpSimple.Enabled = false;
-            this.gpSimple.Location = new System.Drawing.Point(12, 70);
+            this.gpSimple.Location = new System.Drawing.Point(13, 68);
             this.gpSimple.Name = "gpSimple";
             this.gpSimple.Size = new System.Drawing.Size(444, 174);
             // 
@@ -424,7 +407,7 @@
             // 
             // 
             this.gpSimple.StyleMouseOver.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.gpSimple.TabIndex = 5;
+            this.gpSimple.TabIndex = 9;
             this.gpSimple.Text = "بازگردانی ساده";
             // 
             // txtAddress1
@@ -480,6 +463,7 @@
             // 
             // labelX1
             // 
+            this.labelX1.BackColor = System.Drawing.Color.Transparent;
             // 
             // 
             // 
@@ -498,7 +482,7 @@
             this.groupPanel2.Controls.Add(this.btnExit);
             this.groupPanel2.Controls.Add(this.btnRun);
             this.groupPanel2.DisabledBackColor = System.Drawing.Color.Empty;
-            this.groupPanel2.Location = new System.Drawing.Point(12, 540);
+            this.groupPanel2.Location = new System.Drawing.Point(13, 538);
             this.groupPanel2.Name = "groupPanel2";
             this.groupPanel2.Size = new System.Drawing.Size(444, 40);
             // 
@@ -529,7 +513,7 @@
             // 
             // 
             this.groupPanel2.StyleMouseOver.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.groupPanel2.TabIndex = 7;
+            this.groupPanel2.TabIndex = 11;
             // 
             // btnExit
             // 
@@ -570,8 +554,13 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.CancelButton = this.btnExit;
             this.ClientSize = new System.Drawing.Size(470, 589);
-            this.Controls.Add(this.panelEx1);
+            this.Controls.Add(this.groupPanel4);
+            this.Controls.Add(this.gpAdvance);
+            this.Controls.Add(this.gpSimple);
+            this.Controls.Add(this.groupPanel2);
+            this.DoubleBuffered = true;
             this.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
@@ -581,7 +570,6 @@
             this.Text = "frmRestore";
             this.Load += new System.EventHandler(this.frmRestore_Load);
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
-            this.panelEx1.ResumeLayout(false);
             this.groupPanel4.ResumeLayout(false);
             this.groupPanel4.PerformLayout();
             this.gpAdvance.ResumeLayout(false);
@@ -594,7 +582,7 @@
         #endregion
 
         private System.Windows.Forms.ErrorProvider errorProvider1;
-        private DevComponents.DotNetBar.PanelEx panelEx1;
+        private System.Windows.Forms.OpenFileDialog openFileDialog1;
         private DevComponents.DotNetBar.Controls.GroupPanel groupPanel4;
         private System.Windows.Forms.RadioButton rdAdvance;
         private System.Windows.Forms.RadioButton rdSimple;
@@ -621,6 +609,5 @@
         private DevComponents.DotNetBar.Controls.GroupPanel groupPanel2;
         private DevComponents.DotNetBar.ButtonX btnExit;
         private DevComponents.DotNetBar.ButtonX btnRun;
-        private System.Windows.Forms.OpenFileDialog openFileDialog1;
     }
 }

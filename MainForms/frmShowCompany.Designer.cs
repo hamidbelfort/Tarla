@@ -33,46 +33,28 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            this.panelEx1 = new DevComponents.DotNetBar.PanelEx();
+            this.bsCompany = new System.Windows.Forms.BindingSource(this.components);
             this.groupPanel2 = new DevComponents.DotNetBar.Controls.GroupPanel();
             this.btnEdit = new DevComponents.DotNetBar.ButtonX();
             this.btnExit = new DevComponents.DotNetBar.ButtonX();
             this.btnDelete = new DevComponents.DotNetBar.ButtonX();
             this.groupPanel1 = new DevComponents.DotNetBar.Controls.GroupPanel();
             this.dgvCompany = new DevComponents.DotNetBar.Controls.DataGridViewX();
-            this.btnAdd = new DevComponents.DotNetBar.ButtonX();
-            this.bsCompany = new System.Windows.Forms.BindingSource(this.components);
             this.companyIdDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.companyNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.chiefDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.phoneDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.addressDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.panelEx1.SuspendLayout();
+            this.btnAdd = new DevComponents.DotNetBar.ButtonX();
+            ((System.ComponentModel.ISupportInitialize)(this.bsCompany)).BeginInit();
             this.groupPanel2.SuspendLayout();
             this.groupPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvCompany)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.bsCompany)).BeginInit();
             this.SuspendLayout();
             // 
-            // panelEx1
+            // bsCompany
             // 
-            this.panelEx1.CanvasColor = System.Drawing.SystemColors.Control;
-            this.panelEx1.ColorSchemeStyle = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.panelEx1.Controls.Add(this.groupPanel2);
-            this.panelEx1.Controls.Add(this.groupPanel1);
-            this.panelEx1.DisabledBackColor = System.Drawing.Color.Empty;
-            this.panelEx1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panelEx1.Location = new System.Drawing.Point(0, 0);
-            this.panelEx1.Name = "panelEx1";
-            this.panelEx1.Size = new System.Drawing.Size(927, 517);
-            this.panelEx1.Style.Alignment = System.Drawing.StringAlignment.Center;
-            this.panelEx1.Style.BackColor1.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground;
-            this.panelEx1.Style.BackColor2.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground2;
-            this.panelEx1.Style.Border = DevComponents.DotNetBar.eBorderType.SingleLine;
-            this.panelEx1.Style.BorderColor.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBorder;
-            this.panelEx1.Style.ForeColor.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelText;
-            this.panelEx1.Style.GradientAngle = 90;
-            this.panelEx1.TabIndex = 8;
+            this.bsCompany.DataSource = typeof(Tarla.Company);
             // 
             // groupPanel2
             // 
@@ -83,7 +65,7 @@
             this.groupPanel2.Controls.Add(this.btnExit);
             this.groupPanel2.Controls.Add(this.btnDelete);
             this.groupPanel2.DisabledBackColor = System.Drawing.Color.Empty;
-            this.groupPanel2.Location = new System.Drawing.Point(6, 469);
+            this.groupPanel2.Location = new System.Drawing.Point(8, 467);
             this.groupPanel2.Name = "groupPanel2";
             this.groupPanel2.Size = new System.Drawing.Size(911, 40);
             // 
@@ -114,7 +96,7 @@
             // 
             // 
             this.groupPanel2.StyleMouseOver.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.groupPanel2.TabIndex = 3;
+            this.groupPanel2.TabIndex = 13;
             // 
             // btnEdit
             // 
@@ -167,13 +149,13 @@
             // 
             // groupPanel1
             // 
-            this.groupPanel1.BackColor = System.Drawing.Color.White;
+            this.groupPanel1.BackColor = System.Drawing.Color.Transparent;
             this.groupPanel1.CanvasColor = System.Drawing.SystemColors.Control;
             this.groupPanel1.ColorSchemeStyle = DevComponents.DotNetBar.eDotNetBarStyle.Office2007;
             this.groupPanel1.Controls.Add(this.dgvCompany);
             this.groupPanel1.Controls.Add(this.btnAdd);
             this.groupPanel1.DisabledBackColor = System.Drawing.Color.Empty;
-            this.groupPanel1.Location = new System.Drawing.Point(6, 12);
+            this.groupPanel1.Location = new System.Drawing.Point(8, 10);
             this.groupPanel1.Name = "groupPanel1";
             this.groupPanel1.Size = new System.Drawing.Size(911, 451);
             // 
@@ -204,8 +186,7 @@
             // 
             // 
             this.groupPanel1.StyleMouseOver.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.groupPanel1.TabIndex = 2;
-            this.groupPanel1.Text = "نمایش لیست شرکت ها";
+            this.groupPanel1.TabIndex = 12;
             // 
             // dgvCompany
             // 
@@ -250,28 +231,8 @@
             dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.Black;
             dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.dgvCompany.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
-            this.dgvCompany.Size = new System.Drawing.Size(899, 389);
+            this.dgvCompany.Size = new System.Drawing.Size(899, 406);
             this.dgvCompany.TabIndex = 4;
-            // 
-            // btnAdd
-            // 
-            this.btnAdd.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
-            this.btnAdd.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
-            this.btnAdd.FocusCuesEnabled = false;
-            this.btnAdd.Image = ((System.Drawing.Image)(resources.GetObject("btnAdd.Image")));
-            this.btnAdd.Location = new System.Drawing.Point(3, 0);
-            this.btnAdd.Name = "btnAdd";
-            this.btnAdd.Shape = new DevComponents.DotNetBar.RoundRectangleShapeDescriptor(10, 4, 4, 10);
-            this.btnAdd.Size = new System.Drawing.Size(90, 30);
-            this.btnAdd.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.btnAdd.TabIndex = 3;
-            this.btnAdd.Text = "  جـدیـد";
-            this.btnAdd.TextAlignment = DevComponents.DotNetBar.eButtonTextAlignment.Right;
-            this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
-            // 
-            // bsCompany
-            // 
-            this.bsCompany.DataSource = typeof(Tarla.Company);
             // 
             // companyIdDataGridViewTextBoxColumn
             // 
@@ -313,44 +274,62 @@
             this.addressDataGridViewTextBoxColumn.Name = "addressDataGridViewTextBoxColumn";
             this.addressDataGridViewTextBoxColumn.ReadOnly = true;
             // 
+            // btnAdd
+            // 
+            this.btnAdd.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
+            this.btnAdd.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
+            this.btnAdd.FocusCuesEnabled = false;
+            this.btnAdd.Image = ((System.Drawing.Image)(resources.GetObject("btnAdd.Image")));
+            this.btnAdd.Location = new System.Drawing.Point(3, 0);
+            this.btnAdd.Name = "btnAdd";
+            this.btnAdd.Shape = new DevComponents.DotNetBar.RoundRectangleShapeDescriptor(10, 4, 4, 10);
+            this.btnAdd.Size = new System.Drawing.Size(90, 30);
+            this.btnAdd.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.btnAdd.TabIndex = 3;
+            this.btnAdd.Text = "  جـدیـد";
+            this.btnAdd.TextAlignment = DevComponents.DotNetBar.eButtonTextAlignment.Right;
+            this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
+            // 
             // frmShowCompany
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.CancelButton = this.btnExit;
             this.ClientSize = new System.Drawing.Size(927, 517);
-            this.Controls.Add(this.panelEx1);
+            this.Controls.Add(this.groupPanel2);
+            this.Controls.Add(this.groupPanel1);
+            this.DoubleBuffered = true;
             this.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.MaximizeBox = false;
             this.Name = "frmShowCompany";
             this.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "frmShowCompany";
+            this.Text = "نمایش لیست شرکت ها";
             this.Load += new System.EventHandler(this.frmShowCompany_Load);
-            this.panelEx1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.bsCompany)).EndInit();
             this.groupPanel2.ResumeLayout(false);
             this.groupPanel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgvCompany)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.bsCompany)).EndInit();
             this.ResumeLayout(false);
 
         }
 
         #endregion
-
-        private DevComponents.DotNetBar.PanelEx panelEx1;
+        private System.Windows.Forms.BindingSource bsCompany;
         private DevComponents.DotNetBar.Controls.GroupPanel groupPanel2;
         private DevComponents.DotNetBar.ButtonX btnEdit;
         private DevComponents.DotNetBar.ButtonX btnExit;
         private DevComponents.DotNetBar.ButtonX btnDelete;
         private DevComponents.DotNetBar.Controls.GroupPanel groupPanel1;
         private DevComponents.DotNetBar.Controls.DataGridViewX dgvCompany;
-        private DevComponents.DotNetBar.ButtonX btnAdd;
-        private System.Windows.Forms.BindingSource bsCompany;
         private System.Windows.Forms.DataGridViewTextBoxColumn companyIdDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn companyNameDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn chiefDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn phoneDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn addressDataGridViewTextBoxColumn;
+        private DevComponents.DotNetBar.ButtonX btnAdd;
     }
 }

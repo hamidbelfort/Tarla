@@ -12,7 +12,7 @@ using Tarla.Classes;
 
 namespace Tarla.MiscForms
 {
-    public partial class frmAddUser : Form
+    public partial class frmAddUser : DevComponents.DotNetBar.OfficeForm
     {
         dcTarlaDataContext db = new dcTarlaDataContext();
         public static bool IsEdit;
@@ -36,9 +36,9 @@ namespace Tarla.MiscForms
                     cmbRoles.SelectedValue = RoleId;
                 }
             }
-            catch
+            catch (Exception ex)
             {
-                MessageBoxFarsi.Show("ارتباط با سرور اطلاعاتی قطع شده است", "اخطار", MessageBoxFarsiButtons.OK, MessageBoxFarsiIcon.Error, MessageBoxFarsiDefaultButton.Button1);
+                MessageBoxFarsi.Show("ارتباط با سرور اطلاعاتی قطع شده است \n" + ex.Message, "خطا", MessageBoxFarsiButtons.OK, MessageBoxFarsiIcon.Error, MessageBoxFarsiDefaultButton.Button1);
             }
         }
 
@@ -109,9 +109,9 @@ namespace Tarla.MiscForms
                     MessageBoxFarsi.Show("عملیات با موفقیت انجام شد", "پیغام", MessageBoxFarsiButtons.OK, MessageBoxFarsiIcon.Information, MessageBoxFarsiDefaultButton.Button1);
                 }
             }
-            catch
+            catch (Exception ex)
             {
-                MessageBoxFarsi.Show("ارتباط با سرور اطلاعاتی قطع شده است", "اخطار", MessageBoxFarsiButtons.OK, MessageBoxFarsiIcon.Error, MessageBoxFarsiDefaultButton.Button1);
+                MessageBoxFarsi.Show("ارتباط با سرور اطلاعاتی قطع شده است \n" + ex.Message, "خطا", MessageBoxFarsiButtons.OK, MessageBoxFarsiIcon.Error, MessageBoxFarsiDefaultButton.Button1);
             }
         }
 
@@ -122,7 +122,7 @@ namespace Tarla.MiscForms
 
         private void txtUser_KeyPress(object sender, KeyPressEventArgs e)
         {
-
+            errorProvider1.Clear();
             Keys key = (Keys)e.KeyChar;
 
             if (key == Keys.Back)
@@ -133,6 +133,7 @@ namespace Tarla.MiscForms
             if (!Util.IsEnglishCharacter(e.KeyChar))
             {
                 e.Handled = true;
+                errorProvider1.SetError(txtUser,"نام کاربری باید با حروف انگلیسی باشد");
             }
         }
     }

@@ -8,10 +8,11 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using BehComponents;
+using DevComponents.DotNetBar;
 
 namespace Tarla.MainForms
 {
-    public partial class frmShowBank : Form
+    public partial class frmShowBank : DevComponents.DotNetBar.OfficeForm
     {
         dcTarlaDataContext db = new dcTarlaDataContext();
         public frmShowBank()
@@ -42,7 +43,7 @@ namespace Tarla.MainForms
             }
             catch (Exception ex)
             {
-                MessageBoxFarsi.Show("ارتباط با سرور اطلاعاتی قطع شده است \n" + ex.Message, "اخطار", MessageBoxFarsiButtons.OK, MessageBoxFarsiIcon.Error, MessageBoxFarsiDefaultButton.Button1);
+                MessageBoxFarsi.Show("ارتباط با سرور اطلاعاتی قطع شده است \n" + ex.Message, "خطا", MessageBoxFarsiButtons.OK, MessageBoxFarsiIcon.Error, MessageBoxFarsiDefaultButton.Button1);
             }
         }
 
@@ -58,7 +59,7 @@ namespace Tarla.MainForms
             }
             catch (Exception ex)
             {
-                MessageBoxFarsi.Show("ارتباط با سرور اطلاعاتی قطع شده است \n" + ex.Message, "اخطار", MessageBoxFarsiButtons.OK, MessageBoxFarsiIcon.Error, MessageBoxFarsiDefaultButton.Button1);
+                MessageBoxFarsi.Show("ارتباط با سرور اطلاعاتی قطع شده است \n" + ex.Message, "خطا", MessageBoxFarsiButtons.OK, MessageBoxFarsiIcon.Error, MessageBoxFarsiDefaultButton.Button1);
             }
         }
 
@@ -77,7 +78,7 @@ namespace Tarla.MainForms
             }
             catch (Exception ex)
             {
-                MessageBoxFarsi.Show("ارتباط با سرور اطلاعاتی قطع شده است \n" + ex.Message, "اخطار", MessageBoxFarsiButtons.OK, MessageBoxFarsiIcon.Error, MessageBoxFarsiDefaultButton.Button1);
+                MessageBoxFarsi.Show("ارتباط با سرور اطلاعاتی قطع شده است \n" + ex.Message, "خطا", MessageBoxFarsiButtons.OK, MessageBoxFarsiIcon.Error, MessageBoxFarsiDefaultButton.Button1);
             }
         }
 
@@ -93,13 +94,27 @@ namespace Tarla.MainForms
             }
             catch (Exception ex)
             {
-                MessageBoxFarsi.Show("ارتباط با سرور اطلاعاتی قطع شده است \n" + ex.Message, "اخطار", MessageBoxFarsiButtons.OK, MessageBoxFarsiIcon.Error, MessageBoxFarsiDefaultButton.Button1);
+                MessageBoxFarsi.Show("ارتباط با سرور اطلاعاتی قطع شده است \n" + ex.Message, "خطا", MessageBoxFarsiButtons.OK, MessageBoxFarsiIcon.Error, MessageBoxFarsiDefaultButton.Button1);
             }
         }
 
         private void btnExit_Click(object sender, EventArgs e)
         {
             Close();
+        }
+
+        private void radialMenu_ItemClick(object sender, EventArgs e)
+        {
+            RadialMenuItem item = sender as RadialMenuItem;
+            if (item != null && !string.IsNullOrEmpty(item.Text))
+            {
+                switch (item.Name)
+                {
+                    case "mnuRefresh":
+                        loadAgain();
+                        break;
+                }
+            }
         }
     }
 }

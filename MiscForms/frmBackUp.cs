@@ -14,7 +14,7 @@ using Microsoft.SqlServer.Management.Common;
 
 namespace Tarla.MiscForms
 {
-    public partial class frmBackUp : Form
+    public partial class frmBackUp : DevComponents.DotNetBar.OfficeForm
     {
         public frmBackUp()
         {
@@ -121,9 +121,9 @@ namespace Tarla.MiscForms
                 dbbackup.SqlBackupAsync(dbserver);
                 
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
-                MessageBoxFarsi.Show("در اجرای دستور خطا بیش آمده است \n" + ex.Message, "خطا", MessageBoxFarsiButtons.OK, MessageBoxFarsiIcon.Error, MessageBoxFarsiDefaultButton.Button1);
+                MessageBoxFarsi.Show("ارتباط با سرور اطلاعاتی قطع شده است \n" + ex.Message, "خطا", MessageBoxFarsiButtons.OK, MessageBoxFarsiIcon.Error, MessageBoxFarsiDefaultButton.Button1);
             }
         }
 
@@ -163,7 +163,7 @@ namespace Tarla.MiscForms
             }
             catch (Exception ex)
             {
-                MessageBoxFarsi.Show("در اجرای دستور خطا بیش آمده است \n" + ex.Message, "خطا", MessageBoxFarsiButtons.OK, MessageBoxFarsiIcon.Error, MessageBoxFarsiDefaultButton.Button1);
+                MessageBoxFarsi.Show("ارتباط با سرور اطلاعاتی قطع شده است \n" + ex.Message, "خطا", MessageBoxFarsiButtons.OK, MessageBoxFarsiIcon.Error, MessageBoxFarsiDefaultButton.Button1);
             }
         }
 

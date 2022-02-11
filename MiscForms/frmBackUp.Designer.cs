@@ -30,7 +30,8 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmBackUp));
-            this.panelEx1 = new DevComponents.DotNetBar.PanelEx();
+            this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
+            this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
             this.groupPanel4 = new DevComponents.DotNetBar.Controls.GroupPanel();
             this.rdAdvance = new System.Windows.Forms.RadioButton();
             this.rdSimple = new System.Windows.Forms.RadioButton();
@@ -52,42 +53,27 @@
             this.btnExit = new DevComponents.DotNetBar.ButtonX();
             this.btnRun = new DevComponents.DotNetBar.ButtonX();
             this.gpSimple = new DevComponents.DotNetBar.Controls.GroupPanel();
+            this.txtAddress1 = new DevComponents.DotNetBar.Controls.TextBoxX();
             this.lblStatus1 = new DevComponents.DotNetBar.LabelX();
             this.prg1 = new DevComponents.DotNetBar.Controls.ProgressBarX();
             this.btnDialog = new DevComponents.DotNetBar.ButtonX();
             this.labelX1 = new DevComponents.DotNetBar.LabelX();
-            this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
-            this.txtAddress1 = new DevComponents.DotNetBar.Controls.TextBoxX();
-            this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
-            this.panelEx1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             this.groupPanel4.SuspendLayout();
             this.gpAdvance.SuspendLayout();
             this.groupPanel2.SuspendLayout();
             this.gpSimple.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             this.SuspendLayout();
             // 
-            // panelEx1
+            // saveFileDialog1
             // 
-            this.panelEx1.CanvasColor = System.Drawing.SystemColors.Control;
-            this.panelEx1.ColorSchemeStyle = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.panelEx1.Controls.Add(this.groupPanel4);
-            this.panelEx1.Controls.Add(this.gpAdvance);
-            this.panelEx1.Controls.Add(this.groupPanel2);
-            this.panelEx1.Controls.Add(this.gpSimple);
-            this.panelEx1.DisabledBackColor = System.Drawing.Color.Empty;
-            this.panelEx1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panelEx1.Location = new System.Drawing.Point(0, 0);
-            this.panelEx1.Name = "panelEx1";
-            this.panelEx1.Size = new System.Drawing.Size(463, 589);
-            this.panelEx1.Style.Alignment = System.Drawing.StringAlignment.Center;
-            this.panelEx1.Style.BackColor1.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground;
-            this.panelEx1.Style.BackColor2.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground2;
-            this.panelEx1.Style.Border = DevComponents.DotNetBar.eBorderType.SingleLine;
-            this.panelEx1.Style.BorderColor.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBorder;
-            this.panelEx1.Style.ForeColor.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelText;
-            this.panelEx1.Style.GradientAngle = 90;
-            this.panelEx1.TabIndex = 0;
+            this.saveFileDialog1.CreatePrompt = true;
+            this.saveFileDialog1.Filter = "Backup File (*.bak)|*.bak";
+            // 
+            // errorProvider1
+            // 
+            this.errorProvider1.ContainerControl = this;
+            this.errorProvider1.RightToLeft = true;
             // 
             // groupPanel4
             // 
@@ -96,7 +82,7 @@
             this.groupPanel4.Controls.Add(this.rdAdvance);
             this.groupPanel4.Controls.Add(this.rdSimple);
             this.groupPanel4.DisabledBackColor = System.Drawing.Color.Empty;
-            this.groupPanel4.Location = new System.Drawing.Point(9, 12);
+            this.groupPanel4.Location = new System.Drawing.Point(9, 10);
             this.groupPanel4.Name = "groupPanel4";
             this.groupPanel4.Size = new System.Drawing.Size(444, 52);
             // 
@@ -133,29 +119,32 @@
             // rdAdvance
             // 
             this.rdAdvance.AutoSize = true;
+            this.rdAdvance.BackColor = System.Drawing.Color.Transparent;
             this.rdAdvance.Location = new System.Drawing.Point(269, 3);
             this.rdAdvance.Name = "rdAdvance";
             this.rdAdvance.Size = new System.Drawing.Size(71, 20);
             this.rdAdvance.TabIndex = 1;
             this.rdAdvance.TabStop = true;
             this.rdAdvance.Text = "پیشرفته";
-            this.rdAdvance.UseVisualStyleBackColor = true;
+            this.rdAdvance.UseVisualStyleBackColor = false;
             this.rdAdvance.CheckedChanged += new System.EventHandler(this.rdAdvance_CheckedChanged);
             // 
             // rdSimple
             // 
             this.rdSimple.AutoSize = true;
+            this.rdSimple.BackColor = System.Drawing.Color.Transparent;
             this.rdSimple.Location = new System.Drawing.Point(376, 3);
             this.rdSimple.Name = "rdSimple";
             this.rdSimple.Size = new System.Drawing.Size(55, 20);
             this.rdSimple.TabIndex = 0;
             this.rdSimple.TabStop = true;
             this.rdSimple.Text = "ساده";
-            this.rdSimple.UseVisualStyleBackColor = true;
+            this.rdSimple.UseVisualStyleBackColor = false;
             this.rdSimple.CheckedChanged += new System.EventHandler(this.rdSimple_CheckedChanged);
             // 
             // gpAdvance
             // 
+            this.gpAdvance.BackColor = System.Drawing.Color.Transparent;
             this.gpAdvance.CanvasColor = System.Drawing.SystemColors.Control;
             this.gpAdvance.ColorSchemeStyle = DevComponents.DotNetBar.eDotNetBarStyle.Office2007;
             this.gpAdvance.Controls.Add(this.labelX8);
@@ -173,7 +162,7 @@
             this.gpAdvance.Controls.Add(this.labelX4);
             this.gpAdvance.DisabledBackColor = System.Drawing.Color.Empty;
             this.gpAdvance.Enabled = false;
-            this.gpAdvance.Location = new System.Drawing.Point(9, 250);
+            this.gpAdvance.Location = new System.Drawing.Point(9, 248);
             this.gpAdvance.Name = "gpAdvance";
             this.gpAdvance.Size = new System.Drawing.Size(444, 284);
             // 
@@ -209,6 +198,7 @@
             // 
             // labelX8
             // 
+            this.labelX8.BackColor = System.Drawing.Color.Transparent;
             // 
             // 
             // 
@@ -221,6 +211,7 @@
             // 
             // labelX7
             // 
+            this.labelX7.BackColor = System.Drawing.Color.Transparent;
             // 
             // 
             // 
@@ -233,6 +224,7 @@
             // 
             // labelX6
             // 
+            this.labelX6.BackColor = System.Drawing.Color.Transparent;
             // 
             // 
             // 
@@ -245,6 +237,7 @@
             // 
             // labelX5
             // 
+            this.labelX5.BackColor = System.Drawing.Color.Transparent;
             // 
             // 
             // 
@@ -344,7 +337,7 @@
             this.btnDialog2.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.btnDialog2.TabIndex = 1;
             this.btnDialog2.Text = "...";
-            this.btnDialog2.Click += new System.EventHandler(this.btnDialog2_Click);
+            this.btnDialog2.CheckedChanged += new System.EventHandler(this.btnDialog2_Click);
             // 
             // txtAddress2
             // 
@@ -362,6 +355,7 @@
             // 
             // labelX4
             // 
+            this.labelX4.BackColor = System.Drawing.Color.Transparent;
             // 
             // 
             // 
@@ -380,7 +374,7 @@
             this.groupPanel2.Controls.Add(this.btnExit);
             this.groupPanel2.Controls.Add(this.btnRun);
             this.groupPanel2.DisabledBackColor = System.Drawing.Color.Empty;
-            this.groupPanel2.Location = new System.Drawing.Point(9, 540);
+            this.groupPanel2.Location = new System.Drawing.Point(9, 538);
             this.groupPanel2.Name = "groupPanel2";
             this.groupPanel2.Size = new System.Drawing.Size(444, 40);
             // 
@@ -459,7 +453,7 @@
             this.gpSimple.Controls.Add(this.labelX1);
             this.gpSimple.DisabledBackColor = System.Drawing.Color.Empty;
             this.gpSimple.Enabled = false;
-            this.gpSimple.Location = new System.Drawing.Point(9, 70);
+            this.gpSimple.Location = new System.Drawing.Point(9, 68);
             this.gpSimple.Name = "gpSimple";
             this.gpSimple.Size = new System.Drawing.Size(444, 174);
             // 
@@ -492,6 +486,20 @@
             this.gpSimple.StyleMouseOver.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.gpSimple.TabIndex = 1;
             this.gpSimple.Text = "پشتیبان گیری ساده";
+            // 
+            // txtAddress1
+            // 
+            // 
+            // 
+            // 
+            this.txtAddress1.Border.Class = "TextBoxBorder";
+            this.txtAddress1.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.txtAddress1.Location = new System.Drawing.Point(87, 26);
+            this.txtAddress1.Name = "txtAddress1";
+            this.txtAddress1.PreventEnterBeep = true;
+            this.txtAddress1.ReadOnly = true;
+            this.txtAddress1.Size = new System.Drawing.Size(225, 23);
+            this.txtAddress1.TabIndex = 0;
             // 
             // lblStatus1
             // 
@@ -528,10 +536,11 @@
             this.btnDialog.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.btnDialog.TabIndex = 1;
             this.btnDialog.Text = "...";
-            this.btnDialog.Click += new System.EventHandler(this.btnDialog_Click);
+            this.btnDialog.CheckedChanged += new System.EventHandler(this.btnDialog_Click);
             // 
             // labelX1
             // 
+            this.labelX1.BackColor = System.Drawing.Color.Transparent;
             // 
             // 
             // 
@@ -542,86 +551,66 @@
             this.labelX1.TabIndex = 0;
             this.labelX1.Text = "مسیر ذخیره پشتیبان";
             // 
-            // saveFileDialog1
-            // 
-            this.saveFileDialog1.CreatePrompt = true;
-            this.saveFileDialog1.Filter = "Backup File (*.bak)|*.bak";
-            // 
-            // txtAddress1
-            // 
-            // 
-            // 
-            // 
-            this.txtAddress1.Border.Class = "TextBoxBorder";
-            this.txtAddress1.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.txtAddress1.Location = new System.Drawing.Point(87, 26);
-            this.txtAddress1.Name = "txtAddress1";
-            this.txtAddress1.PreventEnterBeep = true;
-            this.txtAddress1.ReadOnly = true;
-            this.txtAddress1.Size = new System.Drawing.Size(225, 23);
-            this.txtAddress1.TabIndex = 0;
-            // 
-            // errorProvider1
-            // 
-            this.errorProvider1.ContainerControl = this;
-            this.errorProvider1.RightToLeft = true;
-            // 
             // frmBackUp
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.btnExit;
             this.ClientSize = new System.Drawing.Size(463, 589);
-            this.Controls.Add(this.panelEx1);
+            this.Controls.Add(this.groupPanel4);
+            this.Controls.Add(this.gpAdvance);
+            this.Controls.Add(this.groupPanel2);
+            this.Controls.Add(this.gpSimple);
+            this.DoubleBuffered = true;
             this.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "frmBackUp";
             this.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "ر";
+            this.Text = "پشتیبان گیری";
             this.Load += new System.EventHandler(this.frmBackUp_Load);
-            this.panelEx1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
             this.groupPanel4.ResumeLayout(false);
             this.groupPanel4.PerformLayout();
             this.gpAdvance.ResumeLayout(false);
             this.groupPanel2.ResumeLayout(false);
             this.gpSimple.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
             this.ResumeLayout(false);
 
         }
 
         #endregion
-
-        private DevComponents.DotNetBar.PanelEx panelEx1;
-        private DevComponents.DotNetBar.LabelX labelX1;
         private System.Windows.Forms.SaveFileDialog saveFileDialog1;
-        private DevComponents.DotNetBar.Controls.GroupPanel gpSimple;
-        private DevComponents.DotNetBar.ButtonX btnDialog;
-        private DevComponents.DotNetBar.Controls.ProgressBarX prg1;
-        private DevComponents.DotNetBar.Controls.GroupPanel groupPanel2;
-        private DevComponents.DotNetBar.ButtonX btnExit;
-        private DevComponents.DotNetBar.ButtonX btnRun;
-        private DevComponents.DotNetBar.LabelX lblStatus1;
+        private System.Windows.Forms.ErrorProvider errorProvider1;
+        private DevComponents.DotNetBar.Controls.GroupPanel groupPanel4;
+        private System.Windows.Forms.RadioButton rdAdvance;
+        private System.Windows.Forms.RadioButton rdSimple;
         private DevComponents.DotNetBar.Controls.GroupPanel gpAdvance;
+        private DevComponents.DotNetBar.LabelX labelX8;
+        private DevComponents.DotNetBar.LabelX labelX7;
+        private DevComponents.DotNetBar.LabelX labelX6;
+        private DevComponents.DotNetBar.LabelX labelX5;
+        private DevComponents.DotNetBar.Controls.TextBoxX txtPassword;
+        private DevComponents.DotNetBar.Controls.TextBoxX txtUsername;
+        private DevComponents.DotNetBar.Controls.TextBoxX txtDatabase;
+        private DevComponents.DotNetBar.Controls.TextBoxX txtServer;
         private DevComponents.DotNetBar.LabelX lblStatus2;
         private DevComponents.DotNetBar.Controls.ProgressBarX prg2;
         private DevComponents.DotNetBar.ButtonX btnDialog2;
         private DevComponents.DotNetBar.Controls.TextBoxX txtAddress2;
         private DevComponents.DotNetBar.LabelX labelX4;
-        private DevComponents.DotNetBar.Controls.TextBoxX txtPassword;
-        private DevComponents.DotNetBar.Controls.TextBoxX txtUsername;
-        private DevComponents.DotNetBar.Controls.TextBoxX txtDatabase;
-        private DevComponents.DotNetBar.Controls.TextBoxX txtServer;
-        private DevComponents.DotNetBar.LabelX labelX8;
-        private DevComponents.DotNetBar.LabelX labelX7;
-        private DevComponents.DotNetBar.LabelX labelX6;
-        private DevComponents.DotNetBar.LabelX labelX5;
-        private DevComponents.DotNetBar.Controls.GroupPanel groupPanel4;
-        private System.Windows.Forms.RadioButton rdAdvance;
-        private System.Windows.Forms.RadioButton rdSimple;
+        private DevComponents.DotNetBar.Controls.GroupPanel groupPanel2;
+        private DevComponents.DotNetBar.ButtonX btnExit;
+        private DevComponents.DotNetBar.ButtonX btnRun;
+        private DevComponents.DotNetBar.Controls.GroupPanel gpSimple;
         private DevComponents.DotNetBar.Controls.TextBoxX txtAddress1;
-        private System.Windows.Forms.ErrorProvider errorProvider1;
+        private DevComponents.DotNetBar.LabelX lblStatus1;
+        private DevComponents.DotNetBar.Controls.ProgressBarX prg1;
+        private DevComponents.DotNetBar.ButtonX btnDialog;
+        private DevComponents.DotNetBar.LabelX labelX1;
     }
 }

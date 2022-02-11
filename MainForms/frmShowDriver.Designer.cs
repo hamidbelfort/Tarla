@@ -42,6 +42,7 @@
             this.mnuRefresh = new DevComponents.DotNetBar.RadialMenuItem();
             this.btnAdd = new DevComponents.DotNetBar.ButtonX();
             this.dgvDriver = new DevComponents.DotNetBar.Controls.DataGridViewX();
+            this.bsDriver = new System.Windows.Forms.BindingSource(this.components);
             this.clmRow = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.driverIdDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.driverNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -49,7 +50,6 @@
             this.licensePlateDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.phoneDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.addressDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.bsDriver = new System.Windows.Forms.BindingSource(this.components);
             this.groupPanel2.SuspendLayout();
             this.groupPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDriver)).BeginInit();
@@ -96,7 +96,7 @@
             // 
             // 
             this.groupPanel2.StyleMouseOver.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.groupPanel2.TabIndex = 5;
+            this.groupPanel2.TabIndex = 1;
             // 
             // btnEdit
             // 
@@ -187,7 +187,7 @@
             // 
             // 
             this.groupPanel1.StyleMouseOver.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.groupPanel1.TabIndex = 4;
+            this.groupPanel1.TabIndex = 0;
             // 
             // radialMenu
             // 
@@ -202,7 +202,7 @@
             this.radialMenu.Size = new System.Drawing.Size(28, 28);
             this.radialMenu.Symbol = "";
             this.radialMenu.SymbolSize = 13F;
-            this.radialMenu.TabIndex = 0;
+            this.radialMenu.TabIndex = 1;
             this.radialMenu.Text = "radialMenu1";
             this.radialMenu.ItemClick += new System.EventHandler(this.radialMenu_ItemClick);
             // 
@@ -223,7 +223,7 @@
             this.btnAdd.Shape = new DevComponents.DotNetBar.RoundRectangleShapeDescriptor(10, 4, 4, 10);
             this.btnAdd.Size = new System.Drawing.Size(90, 30);
             this.btnAdd.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.btnAdd.TabIndex = 3;
+            this.btnAdd.TabIndex = 0;
             this.btnAdd.Text = "  جـدیـد";
             this.btnAdd.TextAlignment = DevComponents.DotNetBar.eButtonTextAlignment.Right;
             this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
@@ -273,15 +273,19 @@
             dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.dgvDriver.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
             this.dgvDriver.Size = new System.Drawing.Size(811, 406);
-            this.dgvDriver.TabIndex = 5;
+            this.dgvDriver.TabIndex = 2;
             this.dgvDriver.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dgvDriver_CellFormatting);
+            // 
+            // bsDriver
+            // 
+            this.bsDriver.DataSource = typeof(Tarla.Driver);
             // 
             // clmRow
             // 
-            this.clmRow.HeaderText = "ردیف";
+            this.clmRow.HeaderText = "#";
             this.clmRow.Name = "clmRow";
             this.clmRow.ReadOnly = true;
-            this.clmRow.Width = 50;
+            this.clmRow.Width = 40;
             // 
             // driverIdDataGridViewTextBoxColumn
             // 
@@ -330,10 +334,6 @@
             this.addressDataGridViewTextBoxColumn.Name = "addressDataGridViewTextBoxColumn";
             this.addressDataGridViewTextBoxColumn.ReadOnly = true;
             this.addressDataGridViewTextBoxColumn.Width = 150;
-            // 
-            // bsDriver
-            // 
-            this.bsDriver.DataSource = typeof(Tarla.Driver);
             // 
             // frmShowDriver
             // 

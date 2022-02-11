@@ -11,7 +11,7 @@ using System.Windows.Forms;
 
 namespace Tarla.MainForms
 {
-    public partial class frmAddPerson : Form
+    public partial class frmAddPerson : DevComponents.DotNetBar.OfficeForm
     {
         dcTarlaDataContext db = new dcTarlaDataContext();
         public static int personType;
@@ -42,25 +42,28 @@ namespace Tarla.MainForms
                     {
                         case 1: //buyer
                             groupPanel1.Text = "ثبت مشخصات مشتری";
+                            Text= "ثبت مشخصات مشتری";
                             bsBuyer.DataSource = db.FillBuyerById(personId);
                             prepareForm(personType);
                             break;
                         case 2://seller
                             groupPanel1.Text = "ثبت مشخصات فروشنده محصول";
+                            Text= "ثبت مشخصات فروشنده محصول";
                             bsSeller.DataSource = db.FillSellerById(personId);
                             prepareForm(personType);
                             break;
                         case 3://receiver
                             groupPanel1.Text = "ثبت مشخصات تحویل گیرنده بار";
+                            Text = "ثبت مشخصات تحویل گیرنده بار";
                             bsReceiver.DataSource = db.FillReceiverById(personId);
                             prepareForm(personType);
                             break;
                     }
                 }
             }
-            catch
+            catch (Exception ex)
             {
-                MessageBoxFarsi.Show("ارتباط با سرور اطلاعاتی قطع شده است", "اخطار", MessageBoxFarsiButtons.OK, MessageBoxFarsiIcon.Error, MessageBoxFarsiDefaultButton.Button1);
+                MessageBoxFarsi.Show("ارتباط با سرور اطلاعاتی قطع شده است \n" + ex.Message, "خطا", MessageBoxFarsiButtons.OK, MessageBoxFarsiIcon.Error, MessageBoxFarsiDefaultButton.Button1);
             }
         }
         private void prepareForm(int target)
@@ -150,9 +153,9 @@ namespace Tarla.MainForms
                     MessageBoxFarsi.Show("عملیات با موفقیت انجام شد", "پیغام", MessageBoxFarsiButtons.OK, MessageBoxFarsiIcon.Information, MessageBoxFarsiDefaultButton.Button1);
                 }
             }
-            catch
+            catch (Exception ex)
             {
-                MessageBoxFarsi.Show("ارتباط با سرور اطلاعاتی قطع شده است", "اخطار", MessageBoxFarsiButtons.OK, MessageBoxFarsiIcon.Error, MessageBoxFarsiDefaultButton.Button1);
+                MessageBoxFarsi.Show("ارتباط با سرور اطلاعاتی قطع شده است \n" + ex.Message, "خطا", MessageBoxFarsiButtons.OK, MessageBoxFarsiIcon.Error, MessageBoxFarsiDefaultButton.Button1);
             }
 
         }

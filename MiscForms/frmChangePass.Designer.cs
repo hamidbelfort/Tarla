@@ -31,7 +31,7 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmChangePass));
             this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
-            this.panelEx1 = new DevComponents.DotNetBar.PanelEx();
+            this.bsUser = new System.Windows.Forms.BindingSource(this.components);
             this.groupPanel3 = new DevComponents.DotNetBar.Controls.GroupPanel();
             this.btnExit = new DevComponents.DotNetBar.ButtonX();
             this.btnSave = new DevComponents.DotNetBar.ButtonX();
@@ -44,39 +44,17 @@
             this.txtOldPass = new DevComponents.DotNetBar.Controls.TextBoxX();
             this.labelX4 = new DevComponents.DotNetBar.LabelX();
             this.labelX1 = new DevComponents.DotNetBar.LabelX();
-            this.bsUser = new System.Windows.Forms.BindingSource(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
-            this.panelEx1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.bsUser)).BeginInit();
             this.groupPanel3.SuspendLayout();
             this.gp2.SuspendLayout();
             this.gp1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.bsUser)).BeginInit();
             this.SuspendLayout();
             // 
             // errorProvider1
             // 
             this.errorProvider1.ContainerControl = this;
             this.errorProvider1.RightToLeft = true;
-            // 
-            // panelEx1
-            // 
-            this.panelEx1.CanvasColor = System.Drawing.SystemColors.Control;
-            this.panelEx1.ColorSchemeStyle = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.panelEx1.Controls.Add(this.groupPanel3);
-            this.panelEx1.Controls.Add(this.gp2);
-            this.panelEx1.Controls.Add(this.gp1);
-            this.panelEx1.DisabledBackColor = System.Drawing.Color.Empty;
-            this.panelEx1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panelEx1.Location = new System.Drawing.Point(0, 0);
-            this.panelEx1.Name = "panelEx1";
-            this.panelEx1.Size = new System.Drawing.Size(435, 273);
-            this.panelEx1.Style.Alignment = System.Drawing.StringAlignment.Center;
-            this.panelEx1.Style.BackColor1.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground;
-            this.panelEx1.Style.Border = DevComponents.DotNetBar.eBorderType.SingleLine;
-            this.panelEx1.Style.BorderColor.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBorder;
-            this.panelEx1.Style.ForeColor.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelText;
-            this.panelEx1.Style.GradientAngle = 90;
-            this.panelEx1.TabIndex = 7;
             // 
             // groupPanel3
             // 
@@ -86,7 +64,7 @@
             this.groupPanel3.Controls.Add(this.btnExit);
             this.groupPanel3.Controls.Add(this.btnSave);
             this.groupPanel3.DisabledBackColor = System.Drawing.Color.Empty;
-            this.groupPanel3.Location = new System.Drawing.Point(12, 224);
+            this.groupPanel3.Location = new System.Drawing.Point(12, 222);
             this.groupPanel3.Name = "groupPanel3";
             this.groupPanel3.Size = new System.Drawing.Size(411, 40);
             // 
@@ -162,7 +140,7 @@
             this.gp2.Controls.Add(this.labelX3);
             this.gp2.Controls.Add(this.labelX2);
             this.gp2.DisabledBackColor = System.Drawing.Color.Empty;
-            this.gp2.Location = new System.Drawing.Point(12, 111);
+            this.gp2.Location = new System.Drawing.Point(12, 109);
             this.gp2.Name = "gp2";
             this.gp2.Size = new System.Drawing.Size(411, 107);
             // 
@@ -275,7 +253,7 @@
             this.gp1.Controls.Add(this.labelX4);
             this.gp1.Controls.Add(this.labelX1);
             this.gp1.DisabledBackColor = System.Drawing.Color.Empty;
-            this.gp1.Location = new System.Drawing.Point(12, 12);
+            this.gp1.Location = new System.Drawing.Point(12, 10);
             this.gp1.Name = "gp1";
             this.gp1.Size = new System.Drawing.Size(411, 93);
             // 
@@ -342,7 +320,7 @@
             this.labelX4.ForeColor = System.Drawing.Color.Gray;
             this.labelX4.Location = new System.Drawing.Point(29, 41);
             this.labelX4.Name = "labelX4";
-            this.labelX4.Size = new System.Drawing.Size(331, 23);
+            this.labelX4.Size = new System.Drawing.Size(361, 23);
             this.labelX4.TabIndex = 1;
             this.labelX4.Text = "در صورت تأیید هویت شما، باکس تغییر مشخصات فعال خواهد شد";
             // 
@@ -361,32 +339,38 @@
             // 
             // frmChangePass
             // 
+            this.AcceptButton = this.btnSave;
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.btnExit;
             this.ClientSize = new System.Drawing.Size(435, 273);
-            this.Controls.Add(this.panelEx1);
+            this.Controls.Add(this.groupPanel3);
+            this.Controls.Add(this.gp2);
+            this.Controls.Add(this.gp1);
+            this.DoubleBuffered = true;
             this.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "frmChangePass";
             this.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "frmChangePass";
+            this.Text = "تغییر رمز عبور کاربر";
             this.Load += new System.EventHandler(this.frmChangePass_Load);
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
-            this.panelEx1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.bsUser)).EndInit();
             this.groupPanel3.ResumeLayout(false);
             this.gp2.ResumeLayout(false);
             this.gp1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.bsUser)).EndInit();
             this.ResumeLayout(false);
 
         }
 
         #endregion
         private System.Windows.Forms.ErrorProvider errorProvider1;
-        private DevComponents.DotNetBar.PanelEx panelEx1;
+        private System.Windows.Forms.BindingSource bsUser;
         private DevComponents.DotNetBar.Controls.GroupPanel groupPanel3;
         private DevComponents.DotNetBar.ButtonX btnExit;
         private DevComponents.DotNetBar.ButtonX btnSave;
@@ -399,6 +383,5 @@
         private DevComponents.DotNetBar.Controls.TextBoxX txtOldPass;
         private DevComponents.DotNetBar.LabelX labelX4;
         private DevComponents.DotNetBar.LabelX labelX1;
-        private System.Windows.Forms.BindingSource bsUser;
     }
 }

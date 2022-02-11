@@ -11,7 +11,7 @@ using System.Windows.Forms;
 
 namespace Tarla.MiscForms
 {
-    public partial class frmChangePass : Form
+    public partial class frmChangePass : DevComponents.DotNetBar.OfficeForm
     {
         dcTarlaDataContext db = new dcTarlaDataContext();
         public static int userId;
@@ -49,9 +49,9 @@ namespace Tarla.MiscForms
                     btnSave.Enabled = true;
                 }
             }
-            catch
+            catch (Exception ex)
             {
-                MessageBoxFarsi.Show("ارتباط با سرور اطلاعاتی قطع شده است", "اخطار", MessageBoxFarsiButtons.OK, MessageBoxFarsiIcon.Error, MessageBoxFarsiDefaultButton.Button1);
+                MessageBoxFarsi.Show("ارتباط با سرور اطلاعاتی قطع شده است \n" + ex.Message, "خطا", MessageBoxFarsiButtons.OK, MessageBoxFarsiIcon.Error, MessageBoxFarsiDefaultButton.Button1);
             }
         }
 
@@ -59,32 +59,37 @@ namespace Tarla.MiscForms
         {
             try
             {
-                if (txtNewPass.Text == string.Empty)
+                if (btnSave.Enabled)
                 {
-                    errorProvider1.SetError(txtNewPass, "مقداری را مشخص نکرده اید");
 
-                    txtNewPass.Focus();
-                }
-                else if (txtNewPass.Text != txtRePass.Text)
-                {
-                    errorProvider1.Clear();
 
-                    errorProvider1.SetError(txtRePass, "کلمه های عبور با یکدیگر همخوانی ندارند");
+                    if (txtNewPass.Text == string.Empty)
+                    {
+                        errorProvider1.SetError(txtNewPass, "مقداری را مشخص نکرده اید");
 
-                    txtRePass.Focus();
-                }
-                else
-                {
-                    errorProvider1.Clear();
+                        txtNewPass.Focus();
+                    }
+                    else if (txtNewPass.Text != txtRePass.Text)
+                    {
+                        errorProvider1.Clear();
 
-                    db.UpdateLoginPass(userId, txtNewPass.Text);
+                        errorProvider1.SetError(txtRePass, "کلمه های عبور با یکدیگر همخوانی ندارند");
 
-                    MessageBoxFarsi.Show("عملیات با موفقیت انجام شد", "پیغام", MessageBoxFarsiButtons.OK, MessageBoxFarsiIcon.Information, MessageBoxFarsiDefaultButton.Button1);
+                        txtRePass.Focus();
+                    }
+                    else
+                    {
+                        errorProvider1.Clear();
+
+                        db.UpdateLoginPass(userId, txtNewPass.Text);
+
+                        MessageBoxFarsi.Show("عملیات با موفقیت انجام شد", "پیغام", MessageBoxFarsiButtons.OK, MessageBoxFarsiIcon.Information, MessageBoxFarsiDefaultButton.Button1);
+                    }
                 }
             }
-            catch
+            catch (Exception ex)
             {
-                MessageBoxFarsi.Show("ارتباط با سرور اطلاعاتی قطع شده است", "اخطار", MessageBoxFarsiButtons.OK, MessageBoxFarsiIcon.Error, MessageBoxFarsiDefaultButton.Button1);
+                MessageBoxFarsi.Show("ارتباط با سرور اطلاعاتی قطع شده است \n" + ex.Message, "خطا", MessageBoxFarsiButtons.OK, MessageBoxFarsiIcon.Error, MessageBoxFarsiDefaultButton.Button1);
             }
         }
 

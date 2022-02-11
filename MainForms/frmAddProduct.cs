@@ -8,10 +8,11 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using BehComponents;
+using DevComponents.DotNetBar;
 
 namespace Tarla.MainForms
 {
-    public partial class frmAddProduct : Form
+    public partial class frmAddProduct : DevComponents.DotNetBar.OfficeForm
     {
         dcTarlaDataContext db = new dcTarlaDataContext();
         public static bool IsEdit;
@@ -54,9 +55,9 @@ namespace Tarla.MainForms
                     MessageBoxFarsi.Show("عملیات با موفقیت انجام شد", "پیغام", MessageBoxFarsiButtons.OK, MessageBoxFarsiIcon.Information, MessageBoxFarsiDefaultButton.Button1);
                 }
             }
-            catch
+            catch (Exception ex)
             {
-                MessageBoxFarsi.Show("ارتباط با سرور اطلاعاتی قطع شده است", "اخطار", MessageBoxFarsiButtons.OK, MessageBoxFarsiIcon.Error, MessageBoxFarsiDefaultButton.Button1);
+                MessageBoxFarsi.Show("ارتباط با سرور اطلاعاتی قطع شده است \n" + ex.Message, "خطا", MessageBoxFarsiButtons.OK, MessageBoxFarsiIcon.Error, MessageBoxFarsiDefaultButton.Button1);
             }
         }
 
@@ -73,6 +74,10 @@ namespace Tarla.MainForms
 
         private void frmAddProduct_Load(object sender, EventArgs e)
         {
+            loadAgain();
+        }
+        private void loadAgain()
+        {
             try
             {
                 bsGroups.DataSource = db.FillGroups();
@@ -84,9 +89,22 @@ namespace Tarla.MainForms
                     cmbGroup.SelectedValue = groupId;
                 }
             }
-            catch
+            catch (Exception ex)
             {
-                MessageBoxFarsi.Show("ارتباط با سرور اطلاعاتی قطع شده است", "اخطار", MessageBoxFarsiButtons.OK, MessageBoxFarsiIcon.Error, MessageBoxFarsiDefaultButton.Button1);
+                MessageBoxFarsi.Show("ارتباط با سرور اطلاعاتی قطع شده است \n" + ex.Message, "خطا", MessageBoxFarsiButtons.OK, MessageBoxFarsiIcon.Error, MessageBoxFarsiDefaultButton.Button1);
+            }
+        }
+        private void radialMenu_ItemClick(object sender, EventArgs e)
+        {
+            RadialMenuItem item = sender as RadialMenuItem;
+            if (item != null && !string.IsNullOrEmpty(item.Text))
+            {
+                switch (item.Name)
+                {
+                    case "mnuRefresh":
+                        loadAgain();
+                        break;
+                }
             }
         }
     }

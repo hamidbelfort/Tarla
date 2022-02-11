@@ -11,7 +11,7 @@ using System.Windows.Forms;
 
 namespace Tarla.MiscForms
 {
-    public partial class frmLogs : Form
+    public partial class frmLogs : DevComponents.DotNetBar.OfficeForm
     {
         dcTarlaDataContext db = new dcTarlaDataContext();
         public static int userId;
@@ -29,15 +29,20 @@ namespace Tarla.MiscForms
 
                 bsLogs.DataSource = db.FillLogs(userId);
             }
-            catch
+            catch (Exception ex)
             {
-                MessageBoxFarsi.Show("ارتباط با سرور اطلاعاتی قطع شده است", "اخطار", MessageBoxFarsiButtons.OK, MessageBoxFarsiIcon.Error, MessageBoxFarsiDefaultButton.Button1);
+                MessageBoxFarsi.Show("ارتباط با سرور اطلاعاتی قطع شده است \n" + ex.Message, "خطا", MessageBoxFarsiButtons.OK, MessageBoxFarsiIcon.Error, MessageBoxFarsiDefaultButton.Button1);
             }
         }
 
         private void btnExit_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void dgvLogs_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
+        {
+            dgvLogs.Rows[e.RowIndex].Cells["clmRow"].Value = e.RowIndex + 1;
         }
     }
 }

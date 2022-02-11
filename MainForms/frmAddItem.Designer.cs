@@ -31,25 +31,25 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmAddItem));
             this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
-            this.panelEx1 = new DevComponents.DotNetBar.PanelEx();
+            this.bsItem = new System.Windows.Forms.BindingSource(this.components);
+            this.bsGroup = new System.Windows.Forms.BindingSource(this.components);
             this.groupPanel2 = new DevComponents.DotNetBar.Controls.GroupPanel();
             this.btnExit = new DevComponents.DotNetBar.ButtonX();
             this.btnSave = new DevComponents.DotNetBar.ButtonX();
             this.groupPanel1 = new DevComponents.DotNetBar.Controls.GroupPanel();
+            this.radialMenu = new DevComponents.DotNetBar.RadialMenu();
             this.labelX3 = new DevComponents.DotNetBar.LabelX();
             this.txtDesc = new DevComponents.DotNetBar.Controls.TextBoxX();
-            this.bsItem = new System.Windows.Forms.BindingSource(this.components);
             this.cmbGroup = new DevComponents.DotNetBar.Controls.ComboBoxEx();
-            this.bsGroup = new System.Windows.Forms.BindingSource(this.components);
             this.labelX2 = new DevComponents.DotNetBar.LabelX();
             this.txtName = new DevComponents.DotNetBar.Controls.TextBoxX();
             this.labelX1 = new DevComponents.DotNetBar.LabelX();
+            this.mnuRefresh = new DevComponents.DotNetBar.RadialMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
-            this.panelEx1.SuspendLayout();
-            this.groupPanel2.SuspendLayout();
-            this.groupPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.bsItem)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bsGroup)).BeginInit();
+            this.groupPanel2.SuspendLayout();
+            this.groupPanel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // errorProvider1
@@ -57,25 +57,13 @@
             this.errorProvider1.ContainerControl = this;
             this.errorProvider1.RightToLeft = true;
             // 
-            // panelEx1
+            // bsItem
             // 
-            this.panelEx1.CanvasColor = System.Drawing.SystemColors.Control;
-            this.panelEx1.ColorSchemeStyle = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.panelEx1.Controls.Add(this.groupPanel2);
-            this.panelEx1.Controls.Add(this.groupPanel1);
-            this.panelEx1.DisabledBackColor = System.Drawing.Color.Empty;
-            this.panelEx1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panelEx1.Location = new System.Drawing.Point(0, 0);
-            this.panelEx1.Name = "panelEx1";
-            this.panelEx1.Size = new System.Drawing.Size(468, 299);
-            this.panelEx1.Style.Alignment = System.Drawing.StringAlignment.Center;
-            this.panelEx1.Style.BackColor1.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground;
-            this.panelEx1.Style.BackColor2.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground2;
-            this.panelEx1.Style.Border = DevComponents.DotNetBar.eBorderType.SingleLine;
-            this.panelEx1.Style.BorderColor.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBorder;
-            this.panelEx1.Style.ForeColor.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelText;
-            this.panelEx1.Style.GradientAngle = 90;
-            this.panelEx1.TabIndex = 0;
+            this.bsItem.DataSource = typeof(Tarla.Item);
+            // 
+            // bsGroup
+            // 
+            this.bsGroup.DataSource = typeof(Tarla.ItemGroup);
             // 
             // groupPanel2
             // 
@@ -85,7 +73,7 @@
             this.groupPanel2.Controls.Add(this.btnExit);
             this.groupPanel2.Controls.Add(this.btnSave);
             this.groupPanel2.DisabledBackColor = System.Drawing.Color.Empty;
-            this.groupPanel2.Location = new System.Drawing.Point(12, 247);
+            this.groupPanel2.Location = new System.Drawing.Point(11, 245);
             this.groupPanel2.Name = "groupPanel2";
             this.groupPanel2.Size = new System.Drawing.Size(447, 40);
             // 
@@ -157,6 +145,7 @@
             // 
             this.groupPanel1.CanvasColor = System.Drawing.SystemColors.Control;
             this.groupPanel1.ColorSchemeStyle = DevComponents.DotNetBar.eDotNetBarStyle.Office2007;
+            this.groupPanel1.Controls.Add(this.radialMenu);
             this.groupPanel1.Controls.Add(this.labelX3);
             this.groupPanel1.Controls.Add(this.txtDesc);
             this.groupPanel1.Controls.Add(this.cmbGroup);
@@ -164,7 +153,7 @@
             this.groupPanel1.Controls.Add(this.txtName);
             this.groupPanel1.Controls.Add(this.labelX1);
             this.groupPanel1.DisabledBackColor = System.Drawing.Color.Empty;
-            this.groupPanel1.Location = new System.Drawing.Point(12, 15);
+            this.groupPanel1.Location = new System.Drawing.Point(11, 13);
             this.groupPanel1.Name = "groupPanel1";
             this.groupPanel1.Size = new System.Drawing.Size(447, 226);
             // 
@@ -196,10 +185,28 @@
             // 
             this.groupPanel1.StyleMouseOver.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.groupPanel1.TabIndex = 0;
-            this.groupPanel1.Text = "ثبت مشخصات کالا";
+            this.groupPanel1.Text = "اطلاعات کالا";
+            // 
+            // radialMenu
+            // 
+            this.radialMenu.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.radialMenu.BackColor = System.Drawing.Color.Transparent;
+            this.radialMenu.ForeColor = System.Drawing.Color.Black;
+            this.radialMenu.Image = global::Tarla.Properties.Resources.buttonItem1_Image;
+            this.radialMenu.Items.AddRange(new DevComponents.DotNetBar.BaseItem[] {
+            this.mnuRefresh});
+            this.radialMenu.Location = new System.Drawing.Point(409, 171);
+            this.radialMenu.Name = "radialMenu";
+            this.radialMenu.Size = new System.Drawing.Size(28, 28);
+            this.radialMenu.Symbol = "";
+            this.radialMenu.SymbolSize = 13F;
+            this.radialMenu.TabIndex = 3;
+            this.radialMenu.Text = "radialMenu1";
+            this.radialMenu.ItemClick += new System.EventHandler(this.radialMenu_ItemClick);
             // 
             // labelX3
             // 
+            this.labelX3.BackColor = System.Drawing.Color.Transparent;
             // 
             // 
             // 
@@ -224,13 +231,8 @@
             this.txtDesc.Name = "txtDesc";
             this.txtDesc.PreventEnterBeep = true;
             this.txtDesc.ScrollBars = System.Windows.Forms.ScrollBars.Both;
-            this.txtDesc.Size = new System.Drawing.Size(298, 120);
+            this.txtDesc.Size = new System.Drawing.Size(298, 130);
             this.txtDesc.TabIndex = 2;
-            this.txtDesc.WatermarkText = "توضیحات کالا را در اینجا بنویسید";
-            // 
-            // bsItem
-            // 
-            this.bsItem.DataSource = typeof(Tarla.Item);
             // 
             // cmbGroup
             // 
@@ -247,12 +249,9 @@
             this.cmbGroup.ValueMember = "ItemGroupId";
             this.cmbGroup.WatermarkText = "یک گروه را انتخاب کنید";
             // 
-            // bsGroup
-            // 
-            this.bsGroup.DataSource = typeof(Tarla.ItemGroup);
-            // 
             // labelX2
             // 
+            this.labelX2.BackColor = System.Drawing.Color.Transparent;
             // 
             // 
             // 
@@ -281,6 +280,7 @@
             // 
             // labelX1
             // 
+            this.labelX1.BackColor = System.Drawing.Color.Transparent;
             // 
             // 
             // 
@@ -291,6 +291,12 @@
             this.labelX1.TabIndex = 0;
             this.labelX1.Text = "نام کالا";
             // 
+            // mnuRefresh
+            // 
+            this.mnuRefresh.Name = "mnuRefresh";
+            this.mnuRefresh.Symbol = "";
+            this.mnuRefresh.Text = "تازه سازی";
+            // 
             // frmAddItem
             // 
             this.AcceptButton = this.btnSave;
@@ -298,21 +304,24 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.btnExit;
             this.ClientSize = new System.Drawing.Size(468, 299);
-            this.Controls.Add(this.panelEx1);
+            this.Controls.Add(this.groupPanel2);
+            this.Controls.Add(this.groupPanel1);
+            this.DoubleBuffered = true;
             this.Font = new System.Drawing.Font("Tahoma", 9.75F);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.MaximizeBox = false;
             this.Name = "frmAddItem";
             this.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "frmAddItem";
+            this.Text = "ثبت مشخصات کالا";
             this.Load += new System.EventHandler(this.frmAddItem_Load);
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
-            this.panelEx1.ResumeLayout(false);
-            this.groupPanel2.ResumeLayout(false);
-            this.groupPanel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.bsItem)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.bsGroup)).EndInit();
+            this.groupPanel2.ResumeLayout(false);
+            this.groupPanel1.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -320,18 +329,19 @@
         #endregion
 
         private System.Windows.Forms.ErrorProvider errorProvider1;
-        private DevComponents.DotNetBar.PanelEx panelEx1;
+        private System.Windows.Forms.BindingSource bsGroup;
+        private System.Windows.Forms.BindingSource bsItem;
         private DevComponents.DotNetBar.Controls.GroupPanel groupPanel2;
         private DevComponents.DotNetBar.ButtonX btnExit;
         private DevComponents.DotNetBar.ButtonX btnSave;
         private DevComponents.DotNetBar.Controls.GroupPanel groupPanel1;
+        private DevComponents.DotNetBar.LabelX labelX3;
+        private DevComponents.DotNetBar.Controls.TextBoxX txtDesc;
+        private DevComponents.DotNetBar.Controls.ComboBoxEx cmbGroup;
         private DevComponents.DotNetBar.LabelX labelX2;
         private DevComponents.DotNetBar.Controls.TextBoxX txtName;
         private DevComponents.DotNetBar.LabelX labelX1;
-        private DevComponents.DotNetBar.Controls.ComboBoxEx cmbGroup;
-        private System.Windows.Forms.BindingSource bsGroup;
-        private System.Windows.Forms.BindingSource bsItem;
-        private DevComponents.DotNetBar.LabelX labelX3;
-        private DevComponents.DotNetBar.Controls.TextBoxX txtDesc;
+        private DevComponents.DotNetBar.RadialMenu radialMenu;
+        private DevComponents.DotNetBar.RadialMenuItem mnuRefresh;
     }
 }

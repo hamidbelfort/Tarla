@@ -1,4 +1,5 @@
 ﻿using BehComponents;
+using DevComponents.DotNetBar;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -11,7 +12,7 @@ using System.Windows.Forms;
 
 namespace Tarla.MainForms
 {
-    public partial class frmAddItem : Form
+    public partial class frmAddItem : DevComponents.DotNetBar.OfficeForm
     {
         dcTarlaDataContext db = new dcTarlaDataContext();
         public static bool IsEdit;
@@ -24,6 +25,10 @@ namespace Tarla.MainForms
 
         private void frmAddItem_Load(object sender, EventArgs e)
         {
+            loadAgain();
+        }
+        private void loadAgain()
+        {
             try
             {
                 bsGroup.DataSource = db.FillItemGroup();
@@ -33,12 +38,11 @@ namespace Tarla.MainForms
                     cmbGroup.SelectedValue = groupId;
                 }
             }
-            catch
+            catch (Exception ex)
             {
-                MessageBoxFarsi.Show("ارتباط با سرور اطلاعاتی قطع شده است", "اخطار", MessageBoxFarsiButtons.OK, MessageBoxFarsiIcon.Error, MessageBoxFarsiDefaultButton.Button1);
+                MessageBoxFarsi.Show("ارتباط با سرور اطلاعاتی قطع شده است \n" + ex.Message, "خطا", MessageBoxFarsiButtons.OK, MessageBoxFarsiIcon.Error, MessageBoxFarsiDefaultButton.Button1);
             }
         }
-
         private void btnSave_Click(object sender, EventArgs e)
         {
             try
@@ -71,9 +75,9 @@ namespace Tarla.MainForms
                     MessageBoxFarsi.Show("عملیات با موفقیت انجام شد", "پیغام", MessageBoxFarsiButtons.OK, MessageBoxFarsiIcon.Information, MessageBoxFarsiDefaultButton.Button1);
                 }
             }
-            catch
+            catch (Exception ex)
             {
-                MessageBoxFarsi.Show("ارتباط با سرور اطلاعاتی قطع شده است", "اخطار", MessageBoxFarsiButtons.OK, MessageBoxFarsiIcon.Error, MessageBoxFarsiDefaultButton.Button1);
+                MessageBoxFarsi.Show("ارتباط با سرور اطلاعاتی قطع شده است \n" + ex.Message, "خطا", MessageBoxFarsiButtons.OK, MessageBoxFarsiIcon.Error, MessageBoxFarsiDefaultButton.Button1);
             }
         }
         private void clearAll()
@@ -85,6 +89,20 @@ namespace Tarla.MainForms
         private void btnExit_Click(object sender, EventArgs e)
         {
             Close();
+        }
+
+        private void radialMenu_ItemClick(object sender, EventArgs e)
+        {
+            RadialMenuItem item = sender as RadialMenuItem;
+            if (item != null && !string.IsNullOrEmpty(item.Text))
+            {
+                switch (item.Name)
+                {
+                    case "mnuRefresh":
+                        loadAgain();
+                        break;
+                }
+            }
         }
     }
 }

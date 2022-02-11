@@ -12,7 +12,7 @@ using System.Windows.Forms;
 using BehComponents;
 namespace Tarla.MiscForms
 {
-    public partial class frmRestore : Form
+    public partial class frmRestore : DevComponents.DotNetBar.OfficeForm
     {
         public frmRestore()
         {
@@ -139,7 +139,7 @@ namespace Tarla.MiscForms
             }
             catch (Exception ex)
             {
-                MessageBoxFarsi.Show("در اجرای دستور خطا بیش آمده است \n" + ex.Message, "خطا", MessageBoxFarsiButtons.OK, MessageBoxFarsiIcon.Error, MessageBoxFarsiDefaultButton.Button1);
+                MessageBoxFarsi.Show("ارتباط با سرور اطلاعاتی قطع شده است \n" + ex.Message, "خطا", MessageBoxFarsiButtons.OK, MessageBoxFarsiIcon.Error, MessageBoxFarsiDefaultButton.Button1);
             }
         }
 
@@ -177,7 +177,7 @@ namespace Tarla.MiscForms
             }
             catch (Exception ex)
             {
-                MessageBoxFarsi.Show("در اجرای دستور خطا بیش آمده است \n" + ex.Message, "خطا", MessageBoxFarsiButtons.OK, MessageBoxFarsiIcon.Error, MessageBoxFarsiDefaultButton.Button1);
+                MessageBoxFarsi.Show("ارتباط با سرور اطلاعاتی قطع شده است \n" + ex.Message, "خطا", MessageBoxFarsiButtons.OK, MessageBoxFarsiIcon.Error, MessageBoxFarsiDefaultButton.Button1);
             }
         }
 
