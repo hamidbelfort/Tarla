@@ -9,7 +9,7 @@ using DevComponents.DotNetBar;
 using Tarla.Classes;
 using BehComponents;
 using Stimulsoft.Report;
-
+using Tarla.MainForms;
 namespace Tarla.OperationForms
 {
     public partial class frmAddFactor : DevComponents.DotNetBar.OfficeForm
@@ -339,6 +339,174 @@ namespace Tarla.OperationForms
             }
         }
 
+        private void radialMenu_ItemClick(object sender, EventArgs e)
+        {
+            RadialMenuItem item = sender as RadialMenuItem;
+            if (item != null && !string.IsNullOrEmpty(item.Text))
+            {
+                switch (item.Name)
+                {
+                    case "mnuRefresh":
+                        refresh();
+                        break;
+                    case "mnuReset":
+                        reset();
+                        break;
+                    case "mnuDriver":
+                        frmAddDriver.IsEdit = false;
+                        new frmAddDriver().ShowDialog();
+                        refresh(5);
+                        break;
+                    case "mnuReceiver":
+                        frmAddPerson.IsEdit = false;
+                        frmAddPerson.personType = 3;//receiver
+                        new frmAddPerson().ShowDialog();
+                        refresh(3);
+                        break;
+                    case "mnuSeller":
+                        frmAddPerson.IsEdit = false;
+                        frmAddPerson.personType = 2;//seller
+                        new frmAddPerson().ShowDialog();
+                        refresh(2);
+                        break;
+                    case "mnuBuyer":
+                        frmAddPerson.IsEdit = false;
+                        frmAddPerson.personType = 1;//buyer
+                        new frmAddPerson().ShowDialog();
+                        refresh(1);
+                        break;
+                    case "mnuFReceiver":
+                        frmAddForeignReceiver.IsEdit = false;
+                        new frmAddForeignReceiver().ShowDialog();
+                        refresh(4);
+                        break;
+                    case "mnuProduct":
+                        frmAddPacking.IsEdit = false;
+                        new frmAddPacking().ShowDialog();
+                        refresh(7);
+                        break;
+                    case "mnuPacking":
+                        frmAddProduct.IsEdit = false;
+                        new frmAddProduct().ShowDialog();
+                        refresh(6);
+                        break;
+                }
+            }
+        }
+        private void refresh()
+        {
+            try
+            {
+                bsBuyer.DataSource = db.FillBuyer();
+                bsPacking.DataSource = db.FillPacking();
+                bsProduct.DataSource = db.FillProducts();
+                bsReceiver.DataSource = db.FillReceiver();
+                bsSeller.DataSource = db.FillSeller();
+                bsDriver.DataSource = db.FillDrivers();
+                bsF_Receiver.DataSource = db.FillForeignReceiver();
+            }
+            catch (Exception ex)
+            {
+                MessageBoxFarsi.Show("ارتباط با سرور اطلاعاتی قطع شده است \n" + ex.Message, "اخطار", MessageBoxFarsiButtons.OK, MessageBoxFarsiIcon.Error, MessageBoxFarsiDefaultButton.Button1);
+            }
+        }
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="whichOne"> 
+        /// 1:buyer
+        /// 2:seller
+        /// 3:receiver
+        /// 4:foriegnReceiver
+        /// 5:driver
+        /// 6:product
+        /// 7:packing
+        /// </param>
+        private void refresh(int whichOne)
+        {
+            try
+            {
+                switch (whichOne)
+                {
+                    case 1:
+                        bsBuyer.DataSource = db.FillBuyer();
+                        break;
+                    case 2:
+                        bsSeller.DataSource = db.FillSeller();
+                        break;
+                    case 3:
+                        bsReceiver.DataSource = db.FillReceiver();
+                        break;
+                    case 4:
+                        bsF_Receiver.DataSource = db.FillForeignReceiver();
+                        break;
+                    case 5:
+                        bsDriver.DataSource = db.FillDrivers();
+                        break;
+                    case 6:
+                        bsProduct.DataSource = db.FillProducts();
+                        break;
+                    case 7:
+                        bsPacking.DataSource = db.FillPacking();
+                        break;
+                }
+
+            }
+            catch (Exception ex)
+            {
+                MessageBoxFarsi.Show("ارتباط با سرور اطلاعاتی قطع شده است \n" + ex.Message, "اخطار", MessageBoxFarsiButtons.OK, MessageBoxFarsiIcon.Error, MessageBoxFarsiDefaultButton.Button1);
+            }
+        }
+        private void reset()
+        {
+            foreach(Control ctr in groupPanel2.Controls)
+            {
+                if(ctr is TextBox)
+                {
+                    ctr.Text = string.Empty;
+                }
+            }
+            totalCost = 0;
+            totalPrice = 0;
+            totalWeight = 0;
+            profit = 0;
+            loss = 0;
+            lastFactorId = 0;
+            btnSave.Enabled = true;
+            btnFactor.Enabled = false;
+            btnBook.Enabled = false;
+            btnAddNetSell.Enabled = false;
+            intCount.Value = 0;
+            intDiscount.Value = 0;
+            intPaid.Value = 0;
+            intPrice.Value = 0;
+            intWeight.Value = 0;
+            intWorkerCost.Value = 0;
+            intWorkersCount.Value = 0;
+            intMiscCost.Value = 0;
+            intNetSell.Value = 0;
+            intTruckRental.Value = 0;
+            dgvFactor.Rows.Clear();
+            txtDate.Text = pd.getShortDate();
+            txtDate.Focus();
+        }
+
+        private void cmbDubaiReceiver_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                int f_receiverId = (int)cmbDriver.SelectedValue;
+                string f_country = string.Empty;
+                db.GetForiegnReceiverCountry(f_receiverId, ref f_country);
+                lblCountry.Text = string.Format("کشور : {0}",f_country);
+            }
+            catch
+            {
+                lblLicensePlate.Text = "-خطا-";
+                //MessageBoxFarsi.Show("ارتباط با سرور اطلاعاتی قطع شده است \n" + ex.Message, "اخطار", MessageBoxFarsiButtons.OK, MessageBoxFarsiIcon.Error, MessageBoxFarsiDefaultButton.Button1);
+            }
+        }
+
         string message;
         public frmAddFactor()
         {
@@ -409,14 +577,8 @@ namespace Tarla.OperationForms
         private void frmAddInvoice_Load(object sender, EventArgs e)
         {
             txtDate.Text = pd.getShortDate();
-            bsBuyer.DataSource = db.FillBuyer();
-            bsPacking.DataSource = db.FillPacking();
-            bsProduct.DataSource = db.FillProducts();
-            bsReceiver.DataSource = db.FillReceiver();
-            bsSeller.DataSource = db.FillSeller();
-            bsDriver.DataSource = db.FillDrivers();
-            bsF_Receiver.DataSource = db.FillForeignReceiver();
             superTabControl1.SelectedTab = superTabItem1;
+            refresh();
         }
 
         

@@ -40,6 +40,15 @@
             this.superTabControl1 = new DevComponents.DotNetBar.SuperTabControl();
             this.superTabControlPanel1 = new DevComponents.DotNetBar.SuperTabControlPanel();
             this.groupPanel3 = new DevComponents.DotNetBar.Controls.GroupPanel();
+            this.radialMenu = new DevComponents.DotNetBar.RadialMenu();
+            this.mnuReset = new DevComponents.DotNetBar.RadialMenuItem();
+            this.mnuPersons = new DevComponents.DotNetBar.RadialMenuItem();
+            this.mnuReceiver = new DevComponents.DotNetBar.RadialMenuItem();
+            this.mnuDriver = new DevComponents.DotNetBar.RadialMenuItem();
+            this.mnuFReceiver = new DevComponents.DotNetBar.RadialMenuItem();
+            this.mnuBuyer = new DevComponents.DotNetBar.RadialMenuItem();
+            this.mnuSeller = new DevComponents.DotNetBar.RadialMenuItem();
+            this.lblCountry = new DevComponents.DotNetBar.LabelX();
             this.lblLicensePlate = new DevComponents.DotNetBar.LabelX();
             this.cmbDriver = new DevComponents.DotNetBar.Controls.ComboBoxEx();
             this.bsDriver = new System.Windows.Forms.BindingSource(this.components);
@@ -134,15 +143,9 @@
             this.btnSave = new DevComponents.DotNetBar.ButtonX();
             this.superTabItem2 = new DevComponents.DotNetBar.SuperTabItem();
             this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
-            this.lblCountry = new DevComponents.DotNetBar.LabelX();
-            this.radialMenu = new DevComponents.DotNetBar.RadialMenu();
-            this.mnuReset = new DevComponents.DotNetBar.RadialMenuItem();
-            this.mnuDriver = new DevComponents.DotNetBar.RadialMenuItem();
-            this.mnuBuyer = new DevComponents.DotNetBar.RadialMenuItem();
-            this.mnuReceiver = new DevComponents.DotNetBar.RadialMenuItem();
-            this.mnuPersons = new DevComponents.DotNetBar.RadialMenuItem();
-            this.mnuFReceiver = new DevComponents.DotNetBar.RadialMenuItem();
-            this.mnuSeller = new DevComponents.DotNetBar.RadialMenuItem();
+            this.mnuRefresh = new DevComponents.DotNetBar.RadialMenuItem();
+            this.mnuProduct = new DevComponents.DotNetBar.RadialMenuItem();
+            this.mnuPacking = new DevComponents.DotNetBar.RadialMenuItem();
             this.groupPanel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.superTabControl1)).BeginInit();
             this.superTabControl1.SuspendLayout();
@@ -269,7 +272,7 @@
             // 
             // superTabControl1
             // 
-            this.superTabControl1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(239)))), ((int)(((byte)(239)))), ((int)(((byte)(242)))));
+            this.superTabControl1.BackColor = System.Drawing.Color.Transparent;
             // 
             // 
             // 
@@ -315,7 +318,7 @@
             // 
             // groupPanel3
             // 
-            this.groupPanel3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(239)))), ((int)(((byte)(239)))), ((int)(((byte)(242)))));
+            this.groupPanel3.BackColor = System.Drawing.Color.Transparent;
             this.groupPanel3.CanvasColor = System.Drawing.Color.FromArgb(((int)(((byte)(239)))), ((int)(((byte)(239)))), ((int)(((byte)(242)))));
             this.groupPanel3.ColorSchemeStyle = DevComponents.DotNetBar.eDotNetBarStyle.Office2007;
             this.groupPanel3.Controls.Add(this.radialMenu);
@@ -367,6 +370,97 @@
             this.groupPanel3.StyleMouseOver.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.groupPanel3.TabIndex = 0;
             this.groupPanel3.Text = " مشخصات فاکتور";
+            // 
+            // radialMenu
+            // 
+            this.radialMenu.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.radialMenu.BackColor = System.Drawing.Color.Transparent;
+            this.radialMenu.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.radialMenu.ForeColor = System.Drawing.Color.Black;
+            this.radialMenu.Image = global::Tarla.Properties.Resources.buttonItem1_Image;
+            this.radialMenu.Items.AddRange(new DevComponents.DotNetBar.BaseItem[] {
+            this.mnuReset,
+            this.mnuRefresh,
+            this.mnuProduct,
+            this.mnuPacking,
+            this.mnuPersons});
+            this.radialMenu.Location = new System.Drawing.Point(67, 3);
+            this.radialMenu.Name = "radialMenu";
+            this.radialMenu.Size = new System.Drawing.Size(32, 32);
+            this.radialMenu.Symbol = "";
+            this.radialMenu.SymbolSize = 13F;
+            this.radialMenu.TabIndex = 57;
+            this.radialMenu.Text = "radialMenu1";
+            this.radialMenu.ItemClick += new System.EventHandler(this.radialMenu_ItemClick);
+            // 
+            // mnuReset
+            // 
+            this.mnuReset.Name = "mnuReset";
+            this.mnuReset.Symbol = "";
+            this.mnuReset.Text = "بازنشانی";
+            // 
+            // mnuPersons
+            // 
+            this.mnuPersons.Name = "mnuPersons";
+            this.mnuPersons.SubItems.AddRange(new DevComponents.DotNetBar.BaseItem[] {
+            this.mnuReceiver,
+            this.mnuDriver,
+            this.mnuFReceiver,
+            this.mnuBuyer,
+            this.mnuSeller});
+            this.mnuPersons.Symbol = "";
+            this.mnuPersons.Text = "اشخاص";
+            // 
+            // mnuReceiver
+            // 
+            this.mnuReceiver.Name = "mnuReceiver";
+            this.mnuReceiver.Symbol = "";
+            this.mnuReceiver.Text = "گیرنده بندر";
+            this.mnuReceiver.TextOffset = new System.Drawing.Point(5, 5);
+            // 
+            // mnuDriver
+            // 
+            this.mnuDriver.Name = "mnuDriver";
+            this.mnuDriver.Symbol = "";
+            this.mnuDriver.Text = "راننده";
+            this.mnuDriver.TextOffset = new System.Drawing.Point(5, 5);
+            // 
+            // mnuFReceiver
+            // 
+            this.mnuFReceiver.Name = "mnuFReceiver";
+            this.mnuFReceiver.Symbol = "";
+            this.mnuFReceiver.Text = "گیرنده خارج";
+            this.mnuFReceiver.TextOffset = new System.Drawing.Point(5, 5);
+            // 
+            // mnuBuyer
+            // 
+            this.mnuBuyer.Name = "mnuBuyer";
+            this.mnuBuyer.Symbol = "";
+            this.mnuBuyer.Text = "خریدار";
+            this.mnuBuyer.TextOffset = new System.Drawing.Point(5, 5);
+            // 
+            // mnuSeller
+            // 
+            this.mnuSeller.Name = "mnuSeller";
+            this.mnuSeller.Symbol = "";
+            this.mnuSeller.Text = "فروشنده";
+            this.mnuSeller.TextOffset = new System.Drawing.Point(5, 5);
+            // 
+            // lblCountry
+            // 
+            this.lblCountry.BackColor = System.Drawing.Color.Transparent;
+            // 
+            // 
+            // 
+            this.lblCountry.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.lblCountry.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
+            this.lblCountry.ForeColor = System.Drawing.Color.Black;
+            this.lblCountry.Location = new System.Drawing.Point(67, 126);
+            this.lblCountry.Name = "lblCountry";
+            this.lblCountry.Size = new System.Drawing.Size(135, 23);
+            this.lblCountry.TabIndex = 56;
+            this.lblCountry.Text = "--";
+            this.lblCountry.WordWrap = true;
             // 
             // lblLicensePlate
             // 
@@ -420,6 +514,7 @@
             this.cmbDubaiReceiver.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.cmbDubaiReceiver.TabIndex = 4;
             this.cmbDubaiReceiver.ValueMember = "F_ReceiverId";
+            this.cmbDubaiReceiver.SelectedIndexChanged += new System.EventHandler(this.cmbDubaiReceiver_SelectedIndexChanged);
             // 
             // bsF_Receiver
             // 
@@ -1762,92 +1857,23 @@
             this.errorProvider1.ContainerControl = this;
             this.errorProvider1.RightToLeft = true;
             // 
-            // lblCountry
+            // mnuRefresh
             // 
-            this.lblCountry.BackColor = System.Drawing.Color.Transparent;
+            this.mnuRefresh.Name = "mnuRefresh";
+            this.mnuRefresh.Symbol = "";
+            this.mnuRefresh.Text = "نوسازی";
             // 
+            // mnuProduct
             // 
+            this.mnuProduct.Name = "mnuProduct";
+            this.mnuProduct.Symbol = "";
+            this.mnuProduct.Text = "محصول";
             // 
-            this.lblCountry.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.lblCountry.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
-            this.lblCountry.ForeColor = System.Drawing.Color.Black;
-            this.lblCountry.Location = new System.Drawing.Point(67, 126);
-            this.lblCountry.Name = "lblCountry";
-            this.lblCountry.Size = new System.Drawing.Size(135, 23);
-            this.lblCountry.TabIndex = 56;
-            this.lblCountry.Text = "--";
-            this.lblCountry.WordWrap = true;
+            // mnuPacking
             // 
-            // radialMenu
-            // 
-            this.radialMenu.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.radialMenu.BackColor = System.Drawing.Color.Transparent;
-            this.radialMenu.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.radialMenu.ForeColor = System.Drawing.Color.Black;
-            this.radialMenu.Image = global::Tarla.Properties.Resources.buttonItem1_Image;
-            this.radialMenu.Items.AddRange(new DevComponents.DotNetBar.BaseItem[] {
-            this.mnuReset,
-            this.mnuPersons});
-            this.radialMenu.Location = new System.Drawing.Point(67, 3);
-            this.radialMenu.Name = "radialMenu";
-            this.radialMenu.Size = new System.Drawing.Size(32, 32);
-            this.radialMenu.Symbol = "";
-            this.radialMenu.SymbolSize = 13F;
-            this.radialMenu.TabIndex = 57;
-            this.radialMenu.Text = "radialMenu1";
-            // 
-            // mnuReset
-            // 
-            this.mnuReset.Name = "mnuReset";
-            this.mnuReset.Symbol = "";
-            this.mnuReset.Text = "بازنشانی";
-            // 
-            // mnuDriver
-            // 
-            this.mnuDriver.Name = "mnuDriver";
-            this.mnuDriver.Symbol = "";
-            this.mnuDriver.Text = "راننده";
-            this.mnuDriver.TextOffset = new System.Drawing.Point(5, 5);
-            // 
-            // mnuBuyer
-            // 
-            this.mnuBuyer.Name = "mnuBuyer";
-            this.mnuBuyer.Symbol = "";
-            this.mnuBuyer.Text = "خریدار";
-            this.mnuBuyer.TextOffset = new System.Drawing.Point(5, 5);
-            // 
-            // mnuReceiver
-            // 
-            this.mnuReceiver.Name = "mnuReceiver";
-            this.mnuReceiver.Symbol = "";
-            this.mnuReceiver.Text = "گیرنده بندر";
-            this.mnuReceiver.TextOffset = new System.Drawing.Point(5, 5);
-            // 
-            // mnuPersons
-            // 
-            this.mnuPersons.Name = "mnuPersons";
-            this.mnuPersons.SubItems.AddRange(new DevComponents.DotNetBar.BaseItem[] {
-            this.mnuReceiver,
-            this.mnuDriver,
-            this.mnuFReceiver,
-            this.mnuBuyer,
-            this.mnuSeller});
-            this.mnuPersons.Symbol = "";
-            this.mnuPersons.Text = "اشخاص";
-            // 
-            // mnuFReceiver
-            // 
-            this.mnuFReceiver.Name = "mnuFReceiver";
-            this.mnuFReceiver.Symbol = "";
-            this.mnuFReceiver.Text = "گیرنده خارج";
-            this.mnuFReceiver.TextOffset = new System.Drawing.Point(5, 5);
-            // 
-            // mnuSeller
-            // 
-            this.mnuSeller.Name = "mnuSeller";
-            this.mnuSeller.Symbol = "";
-            this.mnuSeller.Text = "فروشنده";
-            this.mnuSeller.TextOffset = new System.Drawing.Point(5, 5);
+            this.mnuPacking.Name = "mnuPacking";
+            this.mnuPacking.Symbol = "";
+            this.mnuPacking.Text = "بسته";
             // 
             // frmAddFactor
             // 
@@ -2015,5 +2041,8 @@
         private DevComponents.DotNetBar.RadialMenuItem mnuReceiver;
         private DevComponents.DotNetBar.RadialMenuItem mnuBuyer;
         private DevComponents.DotNetBar.RadialMenuItem mnuSeller;
+        private DevComponents.DotNetBar.RadialMenuItem mnuRefresh;
+        private DevComponents.DotNetBar.RadialMenuItem mnuProduct;
+        private DevComponents.DotNetBar.RadialMenuItem mnuPacking;
     }
 }
