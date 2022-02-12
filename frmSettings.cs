@@ -13,7 +13,7 @@ using Tarla.Classes;
 
 namespace Tarla
 {
-    public partial class frmSettings : Form
+    public partial class frmSettings : DevComponents.DotNetBar.OfficeForm
     {
         dcTarlaDataContext db = new dcTarlaDataContext();
 

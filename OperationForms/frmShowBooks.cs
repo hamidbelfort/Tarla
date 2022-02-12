@@ -12,7 +12,7 @@ using Tarla.Classes;
 using Stimulsoft.Report;
 namespace Tarla.OperationForms
 {
-    public partial class frmShowBooks : Form
+    public partial class frmShowBooks : DevComponents.DotNetBar.OfficeForm
     {
         dcTarlaDataContext db = new dcTarlaDataContext();
         PersianDate pd = new PersianDate();
@@ -85,6 +85,7 @@ namespace Tarla.OperationForms
         {
             try
             {
+                cmbBuyer.DataSource = db.FillBuyer();
                 if (date1 != string.Empty && date2 != string.Empty)
                 {
                     bsBook.DataSource = db.FilterBooksViewByDate(mskDate1.Text, mskDate2.Text);
@@ -106,9 +107,9 @@ namespace Tarla.OperationForms
                     calculateSum();
                 }
             }
-            catch
+            catch (Exception ex)
             {
-                MessageBoxFarsi.Show("ارتباط با سرور اطلاعاتی قطع شده است", "اخطار", MessageBoxFarsiButtons.OK, MessageBoxFarsiIcon.Error, MessageBoxFarsiDefaultButton.Button1);
+                MessageBoxFarsi.Show("ارتباط با سرور اطلاعاتی قطع شده است \n" + ex.Message, "خطا", MessageBoxFarsiButtons.OK, MessageBoxFarsiIcon.Error, MessageBoxFarsiDefaultButton.Button1);
             }
 
         }
@@ -133,11 +134,11 @@ namespace Tarla.OperationForms
                 db = new dcTarlaDataContext();
                 loadAgain(0, mskDate1.Text, mskDate2.Text);
             }
-            catch
+            catch (Exception ex)
             {
-                MessageBoxFarsi.Show("ارتباط با سرور اطلاعاتی قطع شده است", "اخطار", MessageBoxFarsiButtons.OK, MessageBoxFarsiIcon.Error, MessageBoxFarsiDefaultButton.Button1);
+                MessageBoxFarsi.Show("ارتباط با سرور اطلاعاتی قطع شده است \n" + ex.Message, "خطا", MessageBoxFarsiButtons.OK, MessageBoxFarsiIcon.Error, MessageBoxFarsiDefaultButton.Button1);
             }
-            
+
         }
 
         private void btnDelete_Click(object sender, EventArgs e)
@@ -150,9 +151,9 @@ namespace Tarla.OperationForms
                     loadAgain(0, mskDate1.Text, mskDate2.Text);
                 }
             }
-            catch
+            catch (Exception ex)
             {
-                MessageBoxFarsi.Show("ارتباط با سرور اطلاعاتی قطع شده است", "اخطار", MessageBoxFarsiButtons.OK, MessageBoxFarsiIcon.Error, MessageBoxFarsiDefaultButton.Button1);
+                MessageBoxFarsi.Show("ارتباط با سرور اطلاعاتی قطع شده است \n" + ex.Message, "خطا", MessageBoxFarsiButtons.OK, MessageBoxFarsiIcon.Error, MessageBoxFarsiDefaultButton.Button1);
             }
         }
 
@@ -171,9 +172,9 @@ namespace Tarla.OperationForms
 
                 loadAgain(0,mskDate1.Text,mskDate2.Text);
             }
-            catch
+            catch (Exception ex)
             {
-                MessageBoxFarsi.Show("ارتباط با سرور اطلاعاتی قطع شده است", "اخطار", MessageBoxFarsiButtons.OK, MessageBoxFarsiIcon.Error, MessageBoxFarsiDefaultButton.Button1);
+                MessageBoxFarsi.Show("ارتباط با سرور اطلاعاتی قطع شده است \n" + ex.Message, "خطا", MessageBoxFarsiButtons.OK, MessageBoxFarsiIcon.Error, MessageBoxFarsiDefaultButton.Button1);
             }
         }
 
@@ -203,9 +204,9 @@ namespace Tarla.OperationForms
                 }
                 report.ShowWithRibbonGUI();
             }
-            catch
+            catch (Exception ex)
             {
-                MessageBoxFarsi.Show("ارتباط با سرور اطلاعاتی قطع شده است", "اخطار", MessageBoxFarsiButtons.OK, MessageBoxFarsiIcon.Error, MessageBoxFarsiDefaultButton.Button1);
+                MessageBoxFarsi.Show("در تولید گزارش خطا رخ داده است \n" + ex.Message, "خطا", MessageBoxFarsiButtons.OK, MessageBoxFarsiIcon.Error, MessageBoxFarsiDefaultButton.Button1);
             }
         }
     }

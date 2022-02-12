@@ -11,7 +11,7 @@ using System.Windows.Forms;
 
 namespace Tarla
 {
-    public partial class frmAddRole : Form
+    public partial class frmAddRole : DevComponents.DotNetBar.OfficeForm
     {
         dcTarlaDataContext db = new dcTarlaDataContext();
         public static bool ExitType = false;

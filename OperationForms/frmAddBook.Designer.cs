@@ -30,7 +30,11 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmAddBook));
-            this.panelEx1 = new DevComponents.DotNetBar.PanelEx();
+            this.bsBuyer = new System.Windows.Forms.BindingSource(this.components);
+            this.bsBank = new System.Windows.Forms.BindingSource(this.components);
+            this.bsBook = new System.Windows.Forms.BindingSource(this.components);
+            this.bsPayType = new System.Windows.Forms.BindingSource(this.components);
+            this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
             this.groupPanel2 = new DevComponents.DotNetBar.Controls.GroupPanel();
             this.btnExit = new DevComponents.DotNetBar.ButtonX();
             this.btnSave = new DevComponents.DotNetBar.ButtonX();
@@ -44,52 +48,48 @@
             this.labelX8 = new DevComponents.DotNetBar.LabelX();
             this.labelX7 = new DevComponents.DotNetBar.LabelX();
             this.cmbBuyer = new DevComponents.DotNetBar.Controls.ComboBoxEx();
-            this.bsBuyer = new System.Windows.Forms.BindingSource(this.components);
             this.labelX2 = new DevComponents.DotNetBar.LabelX();
             this.labelX5 = new DevComponents.DotNetBar.LabelX();
             this.cmbBank = new DevComponents.DotNetBar.Controls.ComboBoxEx();
-            this.bsBank = new System.Windows.Forms.BindingSource(this.components);
             this.labelX6 = new DevComponents.DotNetBar.LabelX();
             this.txtDesc = new DevComponents.DotNetBar.Controls.TextBoxX();
-            this.bsBook = new System.Windows.Forms.BindingSource(this.components);
             this.intAmount = new DevComponents.Editors.IntegerInput();
             this.labelX4 = new DevComponents.DotNetBar.LabelX();
             this.labelX3 = new DevComponents.DotNetBar.LabelX();
             this.cmbPayType = new DevComponents.DotNetBar.Controls.ComboBoxEx();
-            this.bsPayType = new System.Windows.Forms.BindingSource(this.components);
             this.txtDate = new DevComponents.DotNetBar.Controls.MaskedTextBoxAdv();
             this.labelX1 = new DevComponents.DotNetBar.LabelX();
-            this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
-            this.panelEx1.SuspendLayout();
-            this.groupPanel2.SuspendLayout();
-            this.groupPanel1.SuspendLayout();
-            this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.bsBuyer)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bsBank)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bsBook)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.intAmount)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bsPayType)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
+            this.groupPanel2.SuspendLayout();
+            this.groupPanel1.SuspendLayout();
+            this.panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.intAmount)).BeginInit();
             this.SuspendLayout();
             // 
-            // panelEx1
+            // bsBuyer
             // 
-            this.panelEx1.CanvasColor = System.Drawing.SystemColors.Control;
-            this.panelEx1.ColorSchemeStyle = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.panelEx1.Controls.Add(this.groupPanel2);
-            this.panelEx1.Controls.Add(this.groupPanel1);
-            this.panelEx1.DisabledBackColor = System.Drawing.Color.Empty;
-            this.panelEx1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panelEx1.Location = new System.Drawing.Point(0, 0);
-            this.panelEx1.Name = "panelEx1";
-            this.panelEx1.Size = new System.Drawing.Size(578, 486);
-            this.panelEx1.Style.Alignment = System.Drawing.StringAlignment.Center;
-            this.panelEx1.Style.BackColor1.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground;
-            this.panelEx1.Style.Border = DevComponents.DotNetBar.eBorderType.SingleLine;
-            this.panelEx1.Style.BorderColor.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBorder;
-            this.panelEx1.Style.ForeColor.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelText;
-            this.panelEx1.Style.GradientAngle = 90;
-            this.panelEx1.TabIndex = 4;
+            this.bsBuyer.DataSource = typeof(Tarla.Buyer);
+            // 
+            // bsBank
+            // 
+            this.bsBank.DataSource = typeof(Tarla.Bank);
+            // 
+            // bsBook
+            // 
+            this.bsBook.DataSource = typeof(Tarla.Book);
+            // 
+            // bsPayType
+            // 
+            this.bsPayType.DataSource = typeof(Tarla.PayType);
+            // 
+            // errorProvider1
+            // 
+            this.errorProvider1.ContainerControl = this;
+            this.errorProvider1.RightToLeft = true;
             // 
             // groupPanel2
             // 
@@ -99,7 +99,7 @@
             this.groupPanel2.Controls.Add(this.btnExit);
             this.groupPanel2.Controls.Add(this.btnSave);
             this.groupPanel2.DisabledBackColor = System.Drawing.Color.Empty;
-            this.groupPanel2.Location = new System.Drawing.Point(12, 440);
+            this.groupPanel2.Location = new System.Drawing.Point(12, 437);
             this.groupPanel2.Name = "groupPanel2";
             this.groupPanel2.Size = new System.Drawing.Size(554, 40);
             // 
@@ -130,7 +130,7 @@
             // 
             // 
             this.groupPanel2.StyleMouseOver.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.groupPanel2.TabIndex = 1;
+            this.groupPanel2.TabIndex = 9;
             // 
             // btnExit
             // 
@@ -186,7 +186,7 @@
             this.groupPanel1.Controls.Add(this.txtDate);
             this.groupPanel1.Controls.Add(this.labelX1);
             this.groupPanel1.DisabledBackColor = System.Drawing.Color.Empty;
-            this.groupPanel1.Location = new System.Drawing.Point(12, 12);
+            this.groupPanel1.Location = new System.Drawing.Point(12, 9);
             this.groupPanel1.Name = "groupPanel1";
             this.groupPanel1.Size = new System.Drawing.Size(554, 422);
             // 
@@ -217,8 +217,8 @@
             // 
             // 
             this.groupPanel1.StyleMouseOver.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.groupPanel1.TabIndex = 0;
-            this.groupPanel1.Text = "دفتر پرداختی های مشتری";
+            this.groupPanel1.TabIndex = 8;
+            this.groupPanel1.Text = "میز حساب";
             // 
             // panel1
             // 
@@ -340,10 +340,6 @@
             this.cmbBuyer.ValueMember = "BuyerId";
             this.cmbBuyer.SelectedIndexChanged += new System.EventHandler(this.cmbBuyer_SelectedIndexChanged);
             // 
-            // bsBuyer
-            // 
-            this.bsBuyer.DataSource = typeof(Tarla.Buyer);
-            // 
             // labelX2
             // 
             this.labelX2.BackColor = System.Drawing.Color.Transparent;
@@ -387,10 +383,6 @@
             this.cmbBank.TabIndex = 3;
             this.cmbBank.ValueMember = "BankId";
             // 
-            // bsBank
-            // 
-            this.bsBank.DataSource = typeof(Tarla.Bank);
-            // 
             // labelX6
             // 
             this.labelX6.BackColor = System.Drawing.Color.Transparent;
@@ -422,10 +414,6 @@
             this.txtDesc.ScrollBars = System.Windows.Forms.ScrollBars.Both;
             this.txtDesc.Size = new System.Drawing.Size(334, 135);
             this.txtDesc.TabIndex = 5;
-            // 
-            // bsBook
-            // 
-            this.bsBook.DataSource = typeof(Tarla.Book);
             // 
             // intAmount
             // 
@@ -486,10 +474,6 @@
             this.cmbPayType.TabIndex = 4;
             this.cmbPayType.ValueMember = "PayTypeId";
             // 
-            // bsPayType
-            // 
-            this.bsPayType.DataSource = typeof(Tarla.PayType);
-            // 
             // txtDate
             // 
             // 
@@ -520,11 +504,6 @@
             this.labelX1.TabIndex = 4;
             this.labelX1.Text = "تاریخ";
             // 
-            // errorProvider1
-            // 
-            this.errorProvider1.ContainerControl = this;
-            this.errorProvider1.RightToLeft = true;
-            // 
             // frmAddBook
             // 
             this.AcceptButton = this.btnSave;
@@ -532,48 +511,42 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.btnExit;
             this.ClientSize = new System.Drawing.Size(578, 486);
-            this.Controls.Add(this.panelEx1);
+            this.Controls.Add(this.groupPanel2);
+            this.Controls.Add(this.groupPanel1);
+            this.DoubleBuffered = true;
             this.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.MaximizeBox = false;
             this.Name = "frmAddBook";
             this.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "frmAddBook";
+            this.Text = "دفتر حساب مشتری";
             this.Load += new System.EventHandler(this.frmAddBook_Load);
-            this.panelEx1.ResumeLayout(false);
-            this.groupPanel2.ResumeLayout(false);
-            this.groupPanel1.ResumeLayout(false);
-            this.panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.bsBuyer)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.bsBank)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.bsBook)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.intAmount)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.bsPayType)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
+            this.groupPanel2.ResumeLayout(false);
+            this.groupPanel1.ResumeLayout(false);
+            this.panel1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.intAmount)).EndInit();
             this.ResumeLayout(false);
 
         }
 
         #endregion
-
-        private DevComponents.DotNetBar.PanelEx panelEx1;
+        private System.Windows.Forms.BindingSource bsBuyer;
+        private System.Windows.Forms.BindingSource bsBank;
+        private System.Windows.Forms.BindingSource bsPayType;
+        private System.Windows.Forms.BindingSource bsBook;
+        private System.Windows.Forms.ErrorProvider errorProvider1;
         private DevComponents.DotNetBar.Controls.GroupPanel groupPanel2;
         private DevComponents.DotNetBar.ButtonX btnExit;
         private DevComponents.DotNetBar.ButtonX btnSave;
         private DevComponents.DotNetBar.Controls.GroupPanel groupPanel1;
-        private DevComponents.DotNetBar.LabelX labelX6;
-        private DevComponents.DotNetBar.Controls.TextBoxX txtDesc;
-        private DevComponents.Editors.IntegerInput intAmount;
-        private DevComponents.DotNetBar.LabelX labelX4;
-        private DevComponents.DotNetBar.LabelX labelX3;
-        private DevComponents.DotNetBar.Controls.ComboBoxEx cmbPayType;
-        private DevComponents.DotNetBar.Controls.MaskedTextBoxAdv txtDate;
-        private DevComponents.DotNetBar.LabelX labelX1;
-        private DevComponents.DotNetBar.LabelX labelX5;
-        private DevComponents.DotNetBar.Controls.ComboBoxEx cmbBank;
-        private DevComponents.DotNetBar.Controls.ComboBoxEx cmbBuyer;
-        private DevComponents.DotNetBar.LabelX labelX2;
         private System.Windows.Forms.Panel panel1;
         private DevComponents.DotNetBar.Controls.Line line1;
         private DevComponents.DotNetBar.Controls.Line line2;
@@ -582,10 +555,17 @@
         private DevComponents.DotNetBar.LabelX labelX9;
         private DevComponents.DotNetBar.LabelX labelX8;
         private DevComponents.DotNetBar.LabelX labelX7;
-        private System.Windows.Forms.BindingSource bsBuyer;
-        private System.Windows.Forms.BindingSource bsBank;
-        private System.Windows.Forms.BindingSource bsPayType;
-        private System.Windows.Forms.BindingSource bsBook;
-        private System.Windows.Forms.ErrorProvider errorProvider1;
+        private DevComponents.DotNetBar.Controls.ComboBoxEx cmbBuyer;
+        private DevComponents.DotNetBar.LabelX labelX2;
+        private DevComponents.DotNetBar.LabelX labelX5;
+        private DevComponents.DotNetBar.Controls.ComboBoxEx cmbBank;
+        private DevComponents.DotNetBar.LabelX labelX6;
+        private DevComponents.DotNetBar.Controls.TextBoxX txtDesc;
+        private DevComponents.Editors.IntegerInput intAmount;
+        private DevComponents.DotNetBar.LabelX labelX4;
+        private DevComponents.DotNetBar.LabelX labelX3;
+        private DevComponents.DotNetBar.Controls.ComboBoxEx cmbPayType;
+        private DevComponents.DotNetBar.Controls.MaskedTextBoxAdv txtDate;
+        private DevComponents.DotNetBar.LabelX labelX1;
     }
 }

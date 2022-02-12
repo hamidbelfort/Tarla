@@ -41,6 +41,8 @@
             this.btnExit = new DevComponents.DotNetBar.ButtonX();
             this.btnDelete = new DevComponents.DotNetBar.ButtonX();
             this.groupPanel1 = new DevComponents.DotNetBar.Controls.GroupPanel();
+            this.lblSumAmount = new DevComponents.DotNetBar.LabelX();
+            this.labelX4 = new DevComponents.DotNetBar.LabelX();
             this.rdoBuyer = new System.Windows.Forms.RadioButton();
             this.rdoDate = new System.Windows.Forms.RadioButton();
             this.labelX3 = new DevComponents.DotNetBar.LabelX();
@@ -60,8 +62,6 @@
             this.bankNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.bsBook = new System.Windows.Forms.BindingSource(this.components);
             this.btnAdd = new DevComponents.DotNetBar.ButtonX();
-            this.labelX4 = new DevComponents.DotNetBar.LabelX();
-            this.lblSumAmount = new DevComponents.DotNetBar.LabelX();
             this.panelEx1.SuspendLayout();
             this.groupPanel2.SuspendLayout();
             this.groupPanel1.SuspendLayout();
@@ -248,7 +248,36 @@
             // 
             this.groupPanel1.StyleMouseOver.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.groupPanel1.TabIndex = 2;
-            this.groupPanel1.Text = "نمایش لیست دفتر حساب";
+            this.groupPanel1.Text = "فیلترهای جستجو";
+            // 
+            // lblSumAmount
+            // 
+            this.lblSumAmount.BackColor = System.Drawing.Color.Transparent;
+            // 
+            // 
+            // 
+            this.lblSumAmount.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.lblSumAmount.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Bold);
+            this.lblSumAmount.ForeColor = System.Drawing.Color.Red;
+            this.lblSumAmount.Location = new System.Drawing.Point(3, 454);
+            this.lblSumAmount.Name = "lblSumAmount";
+            this.lblSumAmount.Size = new System.Drawing.Size(156, 23);
+            this.lblSumAmount.TabIndex = 22;
+            this.lblSumAmount.Text = "0";
+            // 
+            // labelX4
+            // 
+            this.labelX4.BackColor = System.Drawing.Color.Transparent;
+            // 
+            // 
+            // 
+            this.labelX4.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.labelX4.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Bold);
+            this.labelX4.Location = new System.Drawing.Point(165, 454);
+            this.labelX4.Name = "labelX4";
+            this.labelX4.Size = new System.Drawing.Size(75, 23);
+            this.labelX4.TabIndex = 21;
+            this.labelX4.Text = "مجموع : ";
             // 
             // rdoBuyer
             // 
@@ -495,48 +524,23 @@
             this.btnAdd.TextAlignment = DevComponents.DotNetBar.eButtonTextAlignment.Right;
             this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
             // 
-            // labelX4
-            // 
-            this.labelX4.BackColor = System.Drawing.Color.Transparent;
-            // 
-            // 
-            // 
-            this.labelX4.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelX4.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Bold);
-            this.labelX4.Location = new System.Drawing.Point(165, 454);
-            this.labelX4.Name = "labelX4";
-            this.labelX4.Size = new System.Drawing.Size(75, 23);
-            this.labelX4.TabIndex = 21;
-            this.labelX4.Text = "مجموع : ";
-            // 
-            // lblSumAmount
-            // 
-            this.lblSumAmount.BackColor = System.Drawing.Color.Transparent;
-            // 
-            // 
-            // 
-            this.lblSumAmount.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.lblSumAmount.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Bold);
-            this.lblSumAmount.ForeColor = System.Drawing.Color.Red;
-            this.lblSumAmount.Location = new System.Drawing.Point(3, 454);
-            this.lblSumAmount.Name = "lblSumAmount";
-            this.lblSumAmount.Size = new System.Drawing.Size(156, 23);
-            this.lblSumAmount.TabIndex = 22;
-            this.lblSumAmount.Text = "0";
-            // 
             // frmShowBooks
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.CancelButton = this.btnExit;
             this.ClientSize = new System.Drawing.Size(927, 577);
             this.Controls.Add(this.panelEx1);
+            this.DoubleBuffered = true;
             this.Font = new System.Drawing.Font("Tahoma", 9.75F);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.MaximizeBox = false;
             this.Name = "frmShowBooks";
             this.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "frmShowBooks";
+            this.Text = "لیست دفتر حساب";
             this.Load += new System.EventHandler(this.frmShowBooks_Load);
             this.panelEx1.ResumeLayout(false);
             this.groupPanel2.ResumeLayout(false);

@@ -31,6 +31,8 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmInvoiceDetails));
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.panelEx1 = new DevComponents.DotNetBar.PanelEx();
             this.groupPanel2 = new DevComponents.DotNetBar.Controls.GroupPanel();
@@ -41,15 +43,16 @@
             this.lblTotalWeight = new DevComponents.DotNetBar.LabelX();
             this.labelX1 = new DevComponents.DotNetBar.LabelX();
             this.dgvDetails = new DevComponents.DotNetBar.Controls.DataGridViewX();
+            this.bsDetails = new System.Windows.Forms.BindingSource(this.components);
             this.detailIdDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.invoiceIdDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.productNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.sellerNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.packingTypeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.weightDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.lossDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.qtyDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.priceDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.bsDetails = new System.Windows.Forms.BindingSource(this.components);
             this.panelEx1.SuspendLayout();
             this.groupPanel2.SuspendLayout();
             this.groupPanel1.SuspendLayout();
@@ -63,11 +66,12 @@
             this.panelEx1.ColorSchemeStyle = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.panelEx1.Controls.Add(this.groupPanel2);
             this.panelEx1.Controls.Add(this.groupPanel1);
+            this.panelEx1.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.panelEx1.DisabledBackColor = System.Drawing.Color.Empty;
             this.panelEx1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelEx1.Location = new System.Drawing.Point(0, 0);
             this.panelEx1.Name = "panelEx1";
-            this.panelEx1.Size = new System.Drawing.Size(770, 472);
+            this.panelEx1.Size = new System.Drawing.Size(830, 472);
             this.panelEx1.Style.Alignment = System.Drawing.StringAlignment.Center;
             this.panelEx1.Style.BackColor1.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground;
             this.panelEx1.Style.BackColor2.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground2;
@@ -83,10 +87,11 @@
             this.groupPanel2.CanvasColor = System.Drawing.SystemColors.Control;
             this.groupPanel2.ColorSchemeStyle = DevComponents.DotNetBar.eDotNetBarStyle.Office2007;
             this.groupPanel2.Controls.Add(this.btnExit);
+            this.groupPanel2.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.groupPanel2.DisabledBackColor = System.Drawing.Color.Empty;
             this.groupPanel2.Location = new System.Drawing.Point(12, 423);
             this.groupPanel2.Name = "groupPanel2";
-            this.groupPanel2.Size = new System.Drawing.Size(746, 40);
+            this.groupPanel2.Size = new System.Drawing.Size(806, 40);
             // 
             // 
             // 
@@ -144,10 +149,11 @@
             this.groupPanel1.Controls.Add(this.lblTotalWeight);
             this.groupPanel1.Controls.Add(this.labelX1);
             this.groupPanel1.Controls.Add(this.dgvDetails);
+            this.groupPanel1.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.groupPanel1.DisabledBackColor = System.Drawing.Color.Empty;
             this.groupPanel1.Location = new System.Drawing.Point(12, 12);
             this.groupPanel1.Name = "groupPanel1";
-            this.groupPanel1.Size = new System.Drawing.Size(746, 405);
+            this.groupPanel1.Size = new System.Drawing.Size(806, 405);
             // 
             // 
             // 
@@ -177,7 +183,6 @@
             // 
             this.groupPanel1.StyleMouseOver.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.groupPanel1.TabIndex = 0;
-            this.groupPanel1.Text = "جزئیات فاکتور";
             // 
             // lblTotalPrice
             // 
@@ -187,7 +192,7 @@
             this.lblTotalPrice.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.lblTotalPrice.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
             this.lblTotalPrice.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.lblTotalPrice.Location = new System.Drawing.Point(3, 349);
+            this.lblTotalPrice.Location = new System.Drawing.Point(3, 373);
             this.lblTotalPrice.Name = "lblTotalPrice";
             this.lblTotalPrice.Size = new System.Drawing.Size(156, 23);
             this.lblTotalPrice.TabIndex = 6;
@@ -199,7 +204,7 @@
             // 
             // 
             this.labelX3.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelX3.Location = new System.Drawing.Point(165, 349);
+            this.labelX3.Location = new System.Drawing.Point(165, 373);
             this.labelX3.Name = "labelX3";
             this.labelX3.Size = new System.Drawing.Size(86, 23);
             this.labelX3.TabIndex = 5;
@@ -213,7 +218,7 @@
             this.lblTotalWeight.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.lblTotalWeight.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
             this.lblTotalWeight.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.lblTotalWeight.Location = new System.Drawing.Point(489, 349);
+            this.lblTotalWeight.Location = new System.Drawing.Point(550, 373);
             this.lblTotalWeight.Name = "lblTotalWeight";
             this.lblTotalWeight.Size = new System.Drawing.Size(156, 23);
             this.lblTotalWeight.TabIndex = 4;
@@ -225,7 +230,7 @@
             // 
             // 
             this.labelX1.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelX1.Location = new System.Drawing.Point(651, 349);
+            this.labelX1.Location = new System.Drawing.Point(712, 373);
             this.labelX1.Name = "labelX1";
             this.labelX1.Size = new System.Drawing.Size(86, 23);
             this.labelX1.TabIndex = 3;
@@ -244,6 +249,7 @@
             this.sellerNameDataGridViewTextBoxColumn,
             this.packingTypeDataGridViewTextBoxColumn,
             this.weightDataGridViewTextBoxColumn,
+            this.lossDataGridViewTextBoxColumn,
             this.qtyDataGridViewTextBoxColumn,
             this.priceDataGridViewTextBoxColumn});
             this.dgvDetails.DataSource = this.bsDetails;
@@ -259,8 +265,12 @@
             this.dgvDetails.Location = new System.Drawing.Point(3, 23);
             this.dgvDetails.Name = "dgvDetails";
             this.dgvDetails.ReadOnly = true;
-            this.dgvDetails.Size = new System.Drawing.Size(734, 320);
+            this.dgvDetails.Size = new System.Drawing.Size(794, 344);
             this.dgvDetails.TabIndex = 0;
+            // 
+            // bsDetails
+            // 
+            this.bsDetails.DataSource = typeof(Tarla.F_DetailsView);
             // 
             // detailIdDataGridViewTextBoxColumn
             // 
@@ -280,69 +290,84 @@
             // 
             // productNameDataGridViewTextBoxColumn
             // 
-            this.productNameDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             this.productNameDataGridViewTextBoxColumn.DataPropertyName = "ProductName";
-            this.productNameDataGridViewTextBoxColumn.HeaderText = "نام محصول";
+            this.productNameDataGridViewTextBoxColumn.HeaderText = "محصول";
             this.productNameDataGridViewTextBoxColumn.Name = "productNameDataGridViewTextBoxColumn";
             this.productNameDataGridViewTextBoxColumn.ReadOnly = true;
+            this.productNameDataGridViewTextBoxColumn.Width = 130;
             // 
             // sellerNameDataGridViewTextBoxColumn
             // 
-            this.sellerNameDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             this.sellerNameDataGridViewTextBoxColumn.DataPropertyName = "SellerName";
             this.sellerNameDataGridViewTextBoxColumn.HeaderText = "فروشنده";
             this.sellerNameDataGridViewTextBoxColumn.Name = "sellerNameDataGridViewTextBoxColumn";
             this.sellerNameDataGridViewTextBoxColumn.ReadOnly = true;
+            this.sellerNameDataGridViewTextBoxColumn.Width = 150;
             // 
             // packingTypeDataGridViewTextBoxColumn
             // 
             this.packingTypeDataGridViewTextBoxColumn.DataPropertyName = "PackingType";
-            this.packingTypeDataGridViewTextBoxColumn.HeaderText = "نوع بسته بندی";
+            this.packingTypeDataGridViewTextBoxColumn.HeaderText = "بسته بندی";
             this.packingTypeDataGridViewTextBoxColumn.Name = "packingTypeDataGridViewTextBoxColumn";
             this.packingTypeDataGridViewTextBoxColumn.ReadOnly = true;
-            this.packingTypeDataGridViewTextBoxColumn.Width = 130;
             // 
             // weightDataGridViewTextBoxColumn
             // 
             this.weightDataGridViewTextBoxColumn.DataPropertyName = "Weight";
+            dataGridViewCellStyle1.Format = "N0";
+            this.weightDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle1;
             this.weightDataGridViewTextBoxColumn.HeaderText = "وزن";
             this.weightDataGridViewTextBoxColumn.Name = "weightDataGridViewTextBoxColumn";
             this.weightDataGridViewTextBoxColumn.ReadOnly = true;
+            this.weightDataGridViewTextBoxColumn.Width = 80;
+            // 
+            // lossDataGridViewTextBoxColumn
+            // 
+            this.lossDataGridViewTextBoxColumn.DataPropertyName = "Loss";
+            this.lossDataGridViewTextBoxColumn.HeaderText = "افت";
+            this.lossDataGridViewTextBoxColumn.Name = "lossDataGridViewTextBoxColumn";
+            this.lossDataGridViewTextBoxColumn.ReadOnly = true;
+            this.lossDataGridViewTextBoxColumn.Width = 80;
             // 
             // qtyDataGridViewTextBoxColumn
             // 
             this.qtyDataGridViewTextBoxColumn.DataPropertyName = "Qty";
+            dataGridViewCellStyle2.Format = "N0";
+            this.qtyDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle2;
             this.qtyDataGridViewTextBoxColumn.HeaderText = "تعداد";
             this.qtyDataGridViewTextBoxColumn.Name = "qtyDataGridViewTextBoxColumn";
             this.qtyDataGridViewTextBoxColumn.ReadOnly = true;
+            this.qtyDataGridViewTextBoxColumn.Width = 80;
             // 
             // priceDataGridViewTextBoxColumn
             // 
             this.priceDataGridViewTextBoxColumn.DataPropertyName = "Price";
             dataGridViewCellStyle3.Format = "N0";
+            dataGridViewCellStyle3.NullValue = null;
             this.priceDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle3;
             this.priceDataGridViewTextBoxColumn.HeaderText = "قیمت";
             this.priceDataGridViewTextBoxColumn.Name = "priceDataGridViewTextBoxColumn";
             this.priceDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // bsDetails
-            // 
-            this.bsDetails.DataSource = typeof(Tarla.F_DetailsView);
+            this.priceDataGridViewTextBoxColumn.Width = 120;
             // 
             // frmInvoiceDetails
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.btnExit;
-            this.ClientSize = new System.Drawing.Size(770, 472);
+            this.ClientSize = new System.Drawing.Size(830, 472);
             this.Controls.Add(this.panelEx1);
+            this.DoubleBuffered = true;
             this.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "frmInvoiceDetails";
             this.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "frmInvoiceDetails";
+            this.Text = "جزئیات فاکتور";
             this.Load += new System.EventHandler(this.frmInvoiceDetails_Load);
             this.panelEx1.ResumeLayout(false);
             this.groupPanel2.ResumeLayout(false);
@@ -359,19 +384,20 @@
         private DevComponents.DotNetBar.Controls.GroupPanel groupPanel1;
         private DevComponents.DotNetBar.Controls.DataGridViewX dgvDetails;
         private System.Windows.Forms.BindingSource bsDetails;
-        private System.Windows.Forms.DataGridViewTextBoxColumn detailIdDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn invoiceIdDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn productNameDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn sellerNameDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn packingTypeDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn weightDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn qtyDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn priceDataGridViewTextBoxColumn;
         private DevComponents.DotNetBar.Controls.GroupPanel groupPanel2;
         private DevComponents.DotNetBar.ButtonX btnExit;
         private DevComponents.DotNetBar.LabelX labelX1;
         private DevComponents.DotNetBar.LabelX lblTotalWeight;
         private DevComponents.DotNetBar.LabelX lblTotalPrice;
         private DevComponents.DotNetBar.LabelX labelX3;
+        private System.Windows.Forms.DataGridViewTextBoxColumn detailIdDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn invoiceIdDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn productNameDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn sellerNameDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn packingTypeDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn weightDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn lossDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn qtyDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn priceDataGridViewTextBoxColumn;
     }
 }

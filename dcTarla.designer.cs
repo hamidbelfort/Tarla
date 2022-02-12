@@ -299,14 +299,6 @@ namespace Tarla
 			}
 		}
 		
-		public System.Data.Linq.Table<F_DetailsView> F_DetailsViews
-		{
-			get
-			{
-				return this.GetTable<F_DetailsView>();
-			}
-		}
-		
 		public System.Data.Linq.Table<BuyItemView> BuyItemViews
 		{
 			get
@@ -352,6 +344,14 @@ namespace Tarla
 			get
 			{
 				return this.GetTable<Invoice>();
+			}
+		}
+		
+		public System.Data.Linq.Table<F_DetailsView> F_DetailsViews
+		{
+			get
+			{
+				return this.GetTable<F_DetailsView>();
 			}
 		}
 		
@@ -1125,13 +1125,6 @@ namespace Tarla
 			return ((int)(result.ReturnValue));
 		}
 		
-		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.GetInvoiceDetails")]
-		public ISingleResult<F_DetailsView> GetInvoiceDetails([global::System.Data.Linq.Mapping.ParameterAttribute(Name="InvoiceId", DbType="Int")] System.Nullable<int> invoiceId)
-		{
-			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), invoiceId);
-			return ((ISingleResult<F_DetailsView>)(result.ReturnValue));
-		}
-		
 		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.GetUserPermissions")]
 		public int GetUserPermissions([global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> userId, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="Setting", DbType="Bit")] ref System.Nullable<bool> setting, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="Bank", DbType="Bit")] ref System.Nullable<bool> bank, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="User", DbType="Bit")] ref System.Nullable<bool> user, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="Factor", DbType="Bit")] ref System.Nullable<bool> factor)
 		{
@@ -1306,6 +1299,21 @@ namespace Tarla
 			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), driverId, licensePlate);
 			licensePlate = ((string)(result.GetParameterValue(1)));
 			return ((int)(result.ReturnValue));
+		}
+		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.GetForiegnReceiverCountry")]
+		public int GetForiegnReceiverCountry([global::System.Data.Linq.Mapping.ParameterAttribute(Name="ReceiverId", DbType="Int")] System.Nullable<int> receiverId, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="Country", DbType="NVarChar(30)")] ref string country)
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), receiverId, country);
+			country = ((string)(result.GetParameterValue(1)));
+			return ((int)(result.ReturnValue));
+		}
+		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.GetInvoiceDetails")]
+		public ISingleResult<F_DetailsView> GetInvoiceDetails([global::System.Data.Linq.Mapping.ParameterAttribute(Name="InvoiceId", DbType="Int")] System.Nullable<int> invoiceId)
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), invoiceId);
+			return ((ISingleResult<F_DetailsView>)(result.ReturnValue));
 		}
 	}
 	
@@ -5097,159 +5105,6 @@ namespace Tarla
 		}
 	}
 	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.F_DetailsView")]
-	public sealed partial class F_DetailsView
-	{
-		
-		private int _DetailId;
-		
-		private System.Nullable<int> _InvoiceId;
-		
-		private string _ProductName;
-		
-		private string _SellerName;
-		
-		private string _PackingType;
-		
-		private System.Nullable<int> _Weight;
-		
-		private System.Nullable<int> _Qty;
-		
-		private System.Nullable<int> _Price;
-		
-		public F_DetailsView()
-		{
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DetailId", DbType="Int NOT NULL")]
-		public int DetailId
-		{
-			get
-			{
-				return this._DetailId;
-			}
-			set
-			{
-				if ((this._DetailId != value))
-				{
-					this._DetailId = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_InvoiceId", DbType="Int")]
-		public System.Nullable<int> InvoiceId
-		{
-			get
-			{
-				return this._InvoiceId;
-			}
-			set
-			{
-				if ((this._InvoiceId != value))
-				{
-					this._InvoiceId = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ProductName", DbType="NVarChar(30)")]
-		public string ProductName
-		{
-			get
-			{
-				return this._ProductName;
-			}
-			set
-			{
-				if ((this._ProductName != value))
-				{
-					this._ProductName = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_SellerName", DbType="NVarChar(50)")]
-		public string SellerName
-		{
-			get
-			{
-				return this._SellerName;
-			}
-			set
-			{
-				if ((this._SellerName != value))
-				{
-					this._SellerName = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PackingType", DbType="NVarChar(30)")]
-		public string PackingType
-		{
-			get
-			{
-				return this._PackingType;
-			}
-			set
-			{
-				if ((this._PackingType != value))
-				{
-					this._PackingType = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Weight", DbType="Int")]
-		public System.Nullable<int> Weight
-		{
-			get
-			{
-				return this._Weight;
-			}
-			set
-			{
-				if ((this._Weight != value))
-				{
-					this._Weight = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Qty", DbType="Int")]
-		public System.Nullable<int> Qty
-		{
-			get
-			{
-				return this._Qty;
-			}
-			set
-			{
-				if ((this._Qty != value))
-				{
-					this._Qty = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Price", DbType="Int")]
-		public System.Nullable<int> Price
-		{
-			get
-			{
-				return this._Price;
-			}
-			set
-			{
-				if ((this._Price != value))
-				{
-					this._Price = value;
-				}
-			}
-		}
-	}
-	
 	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.BuyItemView")]
 	public sealed partial class BuyItemView
 	{
@@ -7481,6 +7336,177 @@ namespace Tarla
 		{
 			this.SendPropertyChanging();
 			entity.Invoice = null;
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.F_DetailsView")]
+	public sealed partial class F_DetailsView
+	{
+		
+		private int _DetailId;
+		
+		private System.Nullable<int> _InvoiceId;
+		
+		private string _ProductName;
+		
+		private string _SellerName;
+		
+		private string _PackingType;
+		
+		private System.Nullable<int> _Weight;
+		
+		private System.Nullable<int> _Loss;
+		
+		private System.Nullable<int> _Qty;
+		
+		private System.Nullable<int> _Price;
+		
+		public F_DetailsView()
+		{
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DetailId", DbType="Int NOT NULL")]
+		public int DetailId
+		{
+			get
+			{
+				return this._DetailId;
+			}
+			set
+			{
+				if ((this._DetailId != value))
+				{
+					this._DetailId = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_InvoiceId", DbType="Int")]
+		public System.Nullable<int> InvoiceId
+		{
+			get
+			{
+				return this._InvoiceId;
+			}
+			set
+			{
+				if ((this._InvoiceId != value))
+				{
+					this._InvoiceId = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ProductName", DbType="NVarChar(30)")]
+		public string ProductName
+		{
+			get
+			{
+				return this._ProductName;
+			}
+			set
+			{
+				if ((this._ProductName != value))
+				{
+					this._ProductName = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_SellerName", DbType="NVarChar(50)")]
+		public string SellerName
+		{
+			get
+			{
+				return this._SellerName;
+			}
+			set
+			{
+				if ((this._SellerName != value))
+				{
+					this._SellerName = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PackingType", DbType="NVarChar(30)")]
+		public string PackingType
+		{
+			get
+			{
+				return this._PackingType;
+			}
+			set
+			{
+				if ((this._PackingType != value))
+				{
+					this._PackingType = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Weight", DbType="Int")]
+		public System.Nullable<int> Weight
+		{
+			get
+			{
+				return this._Weight;
+			}
+			set
+			{
+				if ((this._Weight != value))
+				{
+					this._Weight = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Loss", DbType="Int")]
+		public System.Nullable<int> Loss
+		{
+			get
+			{
+				return this._Loss;
+			}
+			set
+			{
+				if ((this._Loss != value))
+				{
+					this._Loss = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Qty", DbType="Int")]
+		public System.Nullable<int> Qty
+		{
+			get
+			{
+				return this._Qty;
+			}
+			set
+			{
+				if ((this._Qty != value))
+				{
+					this._Qty = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Price", DbType="Int")]
+		public System.Nullable<int> Price
+		{
+			get
+			{
+				return this._Price;
+			}
+			set
+			{
+				if ((this._Price != value))
+				{
+					this._Price = value;
+				}
+			}
 		}
 	}
 	

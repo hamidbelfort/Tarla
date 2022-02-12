@@ -12,7 +12,7 @@ using Tarla.Classes;
 
 namespace Tarla.OperationForms
 {
-    public partial class frmAddNetSell : Form
+    public partial class frmAddNetSell : DevComponents.DotNetBar.OfficeForm
     {
         dcTarlaDataContext db = new dcTarlaDataContext();
         public static int invoiceId;

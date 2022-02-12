@@ -15,7 +15,7 @@ using Tarla.MiscForms;
 using Tarla.OperationForms;
 namespace Tarla
 {
-    public partial class frmMain : Form
+    public partial class frmMain : DevComponents.DotNetBar.OfficeForm
     {
         dcTarlaDataContext db = new dcTarlaDataContext();
         PersianDate pd = new PersianDate();
@@ -120,45 +120,69 @@ namespace Tarla
         }
         private void btnProduct_Click(object sender, EventArgs e)
         {
-            new frmShowProducts().ShowDialog();
+            minimizeRibbon(true);
+            frmShowProducts _frmChild = new frmShowProducts();
+            _frmChild.MdiParent = this;
+            _frmChild.Show();
         }
 
         private void btnCategory_Click(object sender, EventArgs e)
         {
-            new frmShowGroups().ShowDialog();
+            minimizeRibbon(true);
+            frmShowGroups _frmChild = new frmShowGroups();
+            _frmChild.MdiParent = this;
+            _frmChild.Show();
         }
 
         private void btnCompany_Click(object sender, EventArgs e)
         {
-            new frmShowCompany().ShowDialog();
+            minimizeRibbon(true);
+            frmShowCompany _frmChild = new frmShowCompany();
+            _frmChild.MdiParent = this;
+            _frmChild.Show();
         }
 
         private void btnBuyers_Click(object sender, EventArgs e)
         {
+            minimizeRibbon(true);
             frmShowPerson.personType = 1;
-            new frmShowPerson().ShowDialog();
+            frmShowPerson _frmChild = new frmShowPerson();
+            _frmChild.MdiParent = this;
+            _frmChild.Show();
         }
 
         private void btnSellers_Click(object sender, EventArgs e)
         {
+            minimizeRibbon(true);
             frmShowPerson.personType = 2;
-            new frmShowPerson().ShowDialog();
+            frmShowPerson _frmChild = new frmShowPerson();
+            _frmChild.MdiParent = this;
+            _frmChild.Show();
         }
 
         private void btnReceivers_Click(object sender, EventArgs e)
         {
+            minimizeRibbon(true);
             frmShowPerson.personType = 3;
-            new frmShowPerson().ShowDialog();
+            frmShowPerson _frmChild = new frmShowPerson();
+            _frmChild.MdiParent = this;
+            _frmChild.Show();
         }
 
         private void btnItem_Click(object sender, EventArgs e)
         {
-            new frmShowItem().ShowDialog();
+            minimizeRibbon(true);
+            frmShowItem _frmChild = new frmShowItem();
+            _frmChild.MdiParent = this;
+            _frmChild.Show();
         }
 
         private void btnItemGroup_Click(object sender, EventArgs e)
         {
-            new frmShowItemGroup().ShowDialog();
+            minimizeRibbon(true);
+            frmShowItemGroup _frmChild = new frmShowItemGroup();
+            _frmChild.MdiParent = this;
+            _frmChild.Show();
         }
 
         private void frmMain_FormClosing(object sender, FormClosingEventArgs e)
@@ -177,7 +201,10 @@ namespace Tarla
 
         private void btnPacking_Click(object sender, EventArgs e)
         {
-            new frmShowPacking().ShowDialog();
+            minimizeRibbon(true);
+            frmShowPacking _frmChild = new frmShowPacking();
+            _frmChild.MdiParent = this;
+            _frmChild.Show();
         }
 
         private void btnSell_Click(object sender, EventArgs e)
@@ -191,18 +218,27 @@ namespace Tarla
 
         private void buttonItem1_Click(object sender, EventArgs e)
         {
-            new frmShowBank().ShowDialog();
+            minimizeRibbon(true);
+            frmShowBank _frmChild = new frmShowBank();
+            _frmChild.MdiParent = this;
+            _frmChild.Show();
         }
 
         private void btnUsers_Click(object sender, EventArgs e)
         {
-            new frmShowUsers().ShowDialog();
+            minimizeRibbon(true);
+            frmShowUsers _frmChild = new frmShowUsers();
+            _frmChild.MdiParent = this;
+            _frmChild.Show();
         }
 
         private void btnChangePassword_Click(object sender, EventArgs e)
         {
+            minimizeRibbon(true);
             frmChangePass.userId = LoginId;
-            new frmChangePass().ShowDialog();
+            frmChangePass _frmChild = new frmChangePass();
+            _frmChild.MdiParent = this;
+            _frmChild.Show();
         }
 
         private void btnBackup_Click(object sender, EventArgs e)
@@ -218,6 +254,7 @@ namespace Tarla
         private void btnRoles_Click(object sender, EventArgs e)
         {
             new frmShowRoles().ShowDialog();
+
         }
 
         private void btnSettings_Click(object sender, EventArgs e)
@@ -234,27 +271,42 @@ namespace Tarla
 
         private void btnBuy_Click(object sender, EventArgs e)
         {
-            new frmBuyItem().ShowDialog();
+            minimizeRibbon(true);
+            frmBuyItem _frmChild = new frmBuyItem();
+            _frmChild.MdiParent = this;
+            _frmChild.Show();
         }
 
         private void btnBook_Click(object sender, EventArgs e)
         {
-            new frmShowBooks().ShowDialog();
+            minimizeRibbon(true);
+            frmShowBooks _frmChild = new frmShowBooks();
+            _frmChild.MdiParent = this;
+            _frmChild.Show();
         }
 
         private void btnFReceiver_Click(object sender, EventArgs e)
         {
-            new frmShowForiegnReceiver().ShowDialog();
+            minimizeRibbon(true);
+            frmShowForiegnReceiver _frmChild = new frmShowForiegnReceiver();
+            _frmChild.MdiParent = this;
+            _frmChild.Show();
         }
 
         private void btnMessages_Click(object sender, EventArgs e)
         {
-            new frmShowMessage().ShowDialog();
+            minimizeRibbon(true);
+            frmShowMessage _frmChild = new frmShowMessage();
+            _frmChild.MdiParent = this;
+            _frmChild.Show();
         }
 
         private void btnFactorList_Click(object sender, EventArgs e)
         {
-            new frmShowFactor().ShowDialog();
+            minimizeRibbon(true);
+            frmShowFactor _frmChild = new frmShowFactor();
+            _frmChild.MdiParent = this;
+            _frmChild.Show();
         }
 
         private void btnChangeBackground_Click(object sender, EventArgs e)
@@ -288,7 +340,6 @@ namespace Tarla
             minimizeRibbon(true);
             frmShowDriver _frmChild = new frmShowDriver();
             _frmChild.MdiParent = this;
-            _frmChild.Text = "نمایش لیست رانندگان";
             _frmChild.Show();
         }
     }

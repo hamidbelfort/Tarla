@@ -12,7 +12,7 @@ using Tarla.Classes;
 
 namespace Tarla.OperationForms
 {
-    public partial class frmAddBook : Form
+    public partial class frmAddBook : DevComponents.DotNetBar.OfficeForm
     {
         dcTarlaDataContext db = new dcTarlaDataContext();
         PersianDate pd = new PersianDate();
@@ -41,9 +41,9 @@ namespace Tarla.OperationForms
                 }
                 cmbBuyer.Focus();
             }
-            catch
+            catch (Exception ex)
             {
-                MessageBoxFarsi.Show("ارتباط با سرور اطلاعاتی قطع شده است", "اخطار", MessageBoxFarsiButtons.OK, MessageBoxFarsiIcon.Error, MessageBoxFarsiDefaultButton.Button1);
+                MessageBoxFarsi.Show("ارتباط با سرور اطلاعاتی قطع شده است \n" + ex.Message, "خطا", MessageBoxFarsiButtons.OK, MessageBoxFarsiIcon.Error, MessageBoxFarsiDefaultButton.Button1);
             }
         }
 
@@ -51,43 +51,47 @@ namespace Tarla.OperationForms
         {
             try
             {
-                if (string.IsNullOrEmpty(cmbBuyer.Text))
+                if (btnSave.Enabled)
                 {
-                    errorProvider1.SetError(cmbBuyer, "یک مشتری را انتخاب کنید");
-                    cmbBuyer.Focus();
-                }
-                else if (string.IsNullOrEmpty(cmbBank.Text))
-                {
-                    errorProvider1.Clear();
-                    errorProvider1.SetError(cmbBank, "یک حساب بانکی را انتخاب کنید");
-                    cmbBank.Focus();
-                }
-                else if (string.IsNullOrEmpty(cmbPayType.Text))
-                {
-                    errorProvider1.Clear();
-                    errorProvider1.SetError(cmbPayType, "نوع تراکنش را انتخاب کنید");
-                    cmbPayType.Focus();
-                }
-                else
-                {
-                    errorProvider1.Clear();
-                    if (IsEdit)
+                    if (string.IsNullOrEmpty(cmbBuyer.Text))
                     {
-                        bsBook.EndEdit();
-                        db.UpdateBook(bookId, txtDate.Text, (int)cmbBuyer.SelectedValue, intAmount.Value, (int)cmbPayType.SelectedValue, (int)cmbBank.SelectedValue, txtDesc.Text);
+                        errorProvider1.SetError(cmbBuyer, "یک مشتری را انتخاب کنید");
+                        cmbBuyer.Focus();
+                    }
+                    else if (string.IsNullOrEmpty(cmbBank.Text))
+                    {
+                        errorProvider1.Clear();
+                        errorProvider1.SetError(cmbBank, "یک حساب بانکی را انتخاب کنید");
+                        cmbBank.Focus();
+                    }
+                    else if (string.IsNullOrEmpty(cmbPayType.Text))
+                    {
+                        errorProvider1.Clear();
+                        errorProvider1.SetError(cmbPayType, "نوع تراکنش را انتخاب کنید");
+                        cmbPayType.Focus();
                     }
                     else
                     {
-                        db.InsertBook(txtDate.Text, (int)cmbBuyer.SelectedValue, intAmount.Value, (int)cmbPayType.SelectedValue, (int)cmbBank.SelectedValue, txtDesc.Text);
-                        clearAll();
-                    }
+                        errorProvider1.Clear();
+                        if (IsEdit)
+                        {
+                            bsBook.EndEdit();
+                            db.UpdateBook(bookId, txtDate.Text, (int)cmbBuyer.SelectedValue, intAmount.Value, (int)cmbPayType.SelectedValue, (int)cmbBank.SelectedValue, txtDesc.Text);
+                        }
+                        else
+                        {
+                            db.InsertBook(txtDate.Text, (int)cmbBuyer.SelectedValue, intAmount.Value, (int)cmbPayType.SelectedValue, (int)cmbBank.SelectedValue, txtDesc.Text);
+                            clearAll();
+                        }
 
-                    MessageBoxFarsi.Show("عملیات با موفقیت انجام شد", "پیغام", MessageBoxFarsiButtons.OK, MessageBoxFarsiIcon.Information, MessageBoxFarsiDefaultButton.Button1);
+                        MessageBoxFarsi.Show("عملیات با موفقیت انجام شد", "پیغام", MessageBoxFarsiButtons.OK, MessageBoxFarsiIcon.Information, MessageBoxFarsiDefaultButton.Button1);
+                    }
                 }
+                
             }
-            catch
+            catch (Exception ex)
             {
-                MessageBoxFarsi.Show("ارتباط با سرور اطلاعاتی قطع شده است", "اخطار", MessageBoxFarsiButtons.OK, MessageBoxFarsiIcon.Error, MessageBoxFarsiDefaultButton.Button1);
+                MessageBoxFarsi.Show("ارتباط با سرور اطلاعاتی قطع شده است \n" + ex.Message, "خطا", MessageBoxFarsiButtons.OK, MessageBoxFarsiIcon.Error, MessageBoxFarsiDefaultButton.Button1);
             }
         }
         private void clearAll()
@@ -125,9 +129,9 @@ namespace Tarla.OperationForms
                 }
 
             }
-            catch
+            catch (Exception ex)
             {
-                MessageBoxFarsi.Show("ارتباط با سرور اطلاعاتی قطع شده است", "اخطار", MessageBoxFarsiButtons.OK, MessageBoxFarsiIcon.Error, MessageBoxFarsiDefaultButton.Button1);
+                MessageBoxFarsi.Show("ارتباط با سرور اطلاعاتی قطع شده است \n" + ex.Message, "خطا", MessageBoxFarsiButtons.OK, MessageBoxFarsiIcon.Error, MessageBoxFarsiDefaultButton.Button1);
             }
         }
     }

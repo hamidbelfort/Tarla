@@ -11,7 +11,7 @@ using System.Windows.Forms;
 
 namespace Tarla.OperationForms
 {
-    public partial class frmInvoiceDetails : Form
+    public partial class frmInvoiceDetails : DevComponents.DotNetBar.OfficeForm
     {
         dcTarlaDataContext db = new dcTarlaDataContext();
         public static int invoiceId = 0;
@@ -36,9 +36,9 @@ namespace Tarla.OperationForms
                 lblTotalWeight.Text = totalWeight.ToString("N0");
                 lblTotalPrice.Text = totalPrice.ToString("N0");
             }
-            catch
+            catch (Exception ex)
             {
-                MessageBoxFarsi.Show("ارتباط با سرور اطلاعاتی قطع شده است", "اخطار", MessageBoxFarsiButtons.OK, MessageBoxFarsiIcon.Error, MessageBoxFarsiDefaultButton.Button1);
+                MessageBoxFarsi.Show("ارتباط با سرور اطلاعاتی قطع شده است \n" + ex.Message, "خطا", MessageBoxFarsiButtons.OK, MessageBoxFarsiIcon.Error, MessageBoxFarsiDefaultButton.Button1);
             }
         }
 

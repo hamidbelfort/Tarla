@@ -207,20 +207,8 @@
       <Column Name="BankName" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
     </Type>
   </Table>
-  <Table Name="dbo.F_DetailsView" Member="F_DetailsViews">
-    <Type Name="F_DetailsView" Id="ID21" Modifier="Sealed">
-      <Column Name="DetailId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="InvoiceId" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="ProductName" Type="System.String" DbType="NVarChar(30)" CanBeNull="true" />
-      <Column Name="SellerName" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
-      <Column Name="PackingType" Type="System.String" DbType="NVarChar(30)" CanBeNull="true" />
-      <Column Name="Weight" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="Qty" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="Price" Type="System.Int32" DbType="Int" CanBeNull="true" />
-    </Type>
-  </Table>
   <Table Name="dbo.BuyItemView" Member="BuyItemViews">
-    <Type Name="BuyItemView" Id="ID22" Modifier="Sealed">
+    <Type Name="BuyItemView" Id="ID21" Modifier="Sealed">
       <Column Name="BuyId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
       <Column Name="ItemId" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="CompanyId" Type="System.Int32" DbType="Int" CanBeNull="true" />
@@ -234,7 +222,7 @@
     </Type>
   </Table>
   <Table Name="dbo.FactorDetailsView" Member="FactorDetailsViews">
-    <Type Name="FactorDetailsView" Id="ID23" Modifier="Sealed">
+    <Type Name="FactorDetailsView" Id="ID22" Modifier="Sealed">
       <Column Name="InvoiceId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
       <Column Name="Date" Type="System.String" DbType="NVarChar(10)" CanBeNull="true" />
       <Column Name="BuyerName" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
@@ -264,7 +252,7 @@
     </Type>
   </Table>
   <Table Name="dbo.Setting" Member="Settings">
-    <Type Name="Setting" Id="ID24" Modifier="Sealed">
+    <Type Name="Setting" Id="ID23" Modifier="Sealed">
       <Column Name="SettingId" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
       <Column Name="CompanyName" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
       <Column Name="FactorAddress" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
@@ -293,7 +281,7 @@
     </Type>
   </Table>
   <Table Name="dbo.Drivers" Member="Drivers">
-    <Type Name="Driver" Id="ID25" Modifier="Sealed">
+    <Type Name="Driver" Id="ID24" Modifier="Sealed">
       <Column Name="DriverId" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
       <Column Name="DriverName" Type="System.String" DbType="NVarChar(30)" CanBeNull="true" />
       <Column Name="LicenseId" Type="System.String" DbType="NVarChar(11)" CanBeNull="true" />
@@ -330,6 +318,19 @@
       <Association Name="Driver_Invoice" Member="Driver" ThisKey="DriverId" OtherKey="DriverId" Type="Driver" IsForeignKey="true" />
       <Association Name="ForiegnReceiver_Invoice" Member="ForiegnReceiver" ThisKey="F_ReceiverId" OtherKey="F_ReceiverId" Type="ForiegnReceiver" IsForeignKey="true" />
       <Association Name="Receiver_Invoice" Member="Receiver" ThisKey="ReceiverId" OtherKey="ReceiverId" Type="Receiver" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.F_DetailsView" Member="F_DetailsViews">
+    <Type Name="F_DetailsView" Id="ID25" Modifier="Sealed">
+      <Column Name="DetailId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="InvoiceId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ProductName" Type="System.String" DbType="NVarChar(30)" CanBeNull="true" />
+      <Column Name="SellerName" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="PackingType" Type="System.String" DbType="NVarChar(30)" CanBeNull="true" />
+      <Column Name="Weight" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Loss" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Qty" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Price" Type="System.Int32" DbType="Int" CanBeNull="true" />
     </Type>
   </Table>
   <Function Name="dbo.InsertLog" Method="InsertLog">
@@ -884,10 +885,6 @@
     <Parameter Name="Loss" Parameter="loss" Type="System.Int32" DbType="Int" />
     <Return Type="System.Int32" />
   </Function>
-  <Function Name="dbo.GetInvoiceDetails" Method="GetInvoiceDetails">
-    <Parameter Name="InvoiceId" Parameter="invoiceId" Type="System.Int32" DbType="Int" />
-    <ElementType IdRef="ID21" />
-  </Function>
   <Function Name="dbo.GetUserPermissions" Method="GetUserPermissions">
     <Parameter Name="userId" Type="System.Int32" DbType="Int" />
     <Parameter Name="Setting" Parameter="setting" Type="System.Boolean" DbType="Bit" Direction="InOut" />
@@ -898,12 +895,12 @@
   </Function>
   <Function Name="dbo.FillBuyItemByCompany" Method="FillBuyItemByCompany">
     <Parameter Name="CompanyId" Parameter="companyId" Type="System.Int32" DbType="Int" />
-    <ElementType IdRef="ID22" />
+    <ElementType IdRef="ID21" />
   </Function>
   <Function Name="dbo.FillBuyItembyDate" Method="FillBuyItembyDate">
     <Parameter Name="StartDate" Parameter="startDate" Type="System.String" DbType="NVarChar(10)" />
     <Parameter Name="EndDate" Parameter="endDate" Type="System.String" DbType="NVarChar(10)" />
-    <ElementType IdRef="ID22" />
+    <ElementType IdRef="ID21" />
   </Function>
   <Function Name="dbo.GetBuyerNameAndPhone" Method="GetBuyerNameAndPhone">
     <Parameter Name="BuyerId" Parameter="buyerId" Type="System.Int32" DbType="Int" />
@@ -913,14 +910,14 @@
   </Function>
   <Function Name="dbo.FillFactorDetailsView" Method="FillFactorDetailsView">
     <Parameter Name="InvoiceId" Parameter="invoiceId" Type="System.Int32" DbType="Int" />
-    <ElementType IdRef="ID23" />
+    <ElementType IdRef="ID22" />
   </Function>
   <Function Name="dbo.ExistsMessage" Method="ExistsMessage">
     <Parameter Name="Exists" Parameter="exists" Type="System.Boolean" DbType="Bit" Direction="InOut" />
     <Return Type="System.Int32" />
   </Function>
   <Function Name="dbo.FillSetting" Method="FillSetting">
-    <ElementType IdRef="ID24" />
+    <ElementType IdRef="ID23" />
   </Function>
   <Function Name="dbo.UpdateSetting" Method="UpdateSetting">
     <Parameter Name="Company" Parameter="company" Type="System.String" DbType="NVarChar(100)" />
@@ -1007,18 +1004,27 @@
   </Function>
   <Function Name="dbo.FillDriverById" Method="FillDriverById">
     <Parameter Name="DriverId" Parameter="driverId" Type="System.Int32" DbType="Int" />
-    <ElementType IdRef="ID25" />
+    <ElementType IdRef="ID24" />
   </Function>
   <Function Name="dbo.DeleteDriver" Method="DeleteDriver">
     <Parameter Name="DriverId" Parameter="driverId" Type="System.Int32" DbType="Int" />
     <Return Type="System.Int32" />
   </Function>
   <Function Name="dbo.FillDrivers" Method="FillDrivers">
-    <ElementType IdRef="ID25" />
+    <ElementType IdRef="ID24" />
   </Function>
   <Function Name="dbo.GetDriverLicensePlate" Method="GetDriverLicensePlate">
     <Parameter Name="DriverId" Parameter="driverId" Type="System.Int32" DbType="Int" />
     <Parameter Name="LicensePlate" Parameter="licensePlate" Type="System.String" DbType="NVarChar(20)" Direction="InOut" />
     <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.GetForiegnReceiverCountry" Method="GetForiegnReceiverCountry">
+    <Parameter Name="ReceiverId" Parameter="receiverId" Type="System.Int32" DbType="Int" />
+    <Parameter Name="Country" Parameter="country" Type="System.String" DbType="NVarChar(30)" Direction="InOut" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.GetInvoiceDetails" Method="GetInvoiceDetails">
+    <Parameter Name="InvoiceId" Parameter="invoiceId" Type="System.Int32" DbType="Int" />
+    <ElementType IdRef="ID25" />
   </Function>
 </Database>

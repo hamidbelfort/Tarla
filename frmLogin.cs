@@ -12,7 +12,7 @@ using Tarla.Classes;
 
 namespace Tarla
 {
-    public partial class frmLogin : Form
+    public partial class frmLogin : DevComponents.DotNetBar.OfficeForm
     {
         dcTarlaDataContext db = new dcTarlaDataContext();
         int? userId = 0;

@@ -10,7 +10,7 @@ using System.Windows.Forms;
 
 namespace Tarla
 {
-    public partial class frmSplash : Form
+    public partial class frmSplash : DevComponents.DotNetBar.OfficeForm
     {
         public frmSplash()
         {

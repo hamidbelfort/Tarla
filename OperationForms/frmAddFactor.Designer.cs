@@ -30,9 +30,9 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmAddFactor));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
             this.groupPanel2 = new DevComponents.DotNetBar.Controls.GroupPanel();
             this.btnNext = new DevComponents.DotNetBar.ButtonX();
             this.btnPrev = new DevComponents.DotNetBar.ButtonX();
@@ -134,6 +134,15 @@
             this.btnSave = new DevComponents.DotNetBar.ButtonX();
             this.superTabItem2 = new DevComponents.DotNetBar.SuperTabItem();
             this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
+            this.lblCountry = new DevComponents.DotNetBar.LabelX();
+            this.radialMenu = new DevComponents.DotNetBar.RadialMenu();
+            this.mnuReset = new DevComponents.DotNetBar.RadialMenuItem();
+            this.mnuDriver = new DevComponents.DotNetBar.RadialMenuItem();
+            this.mnuBuyer = new DevComponents.DotNetBar.RadialMenuItem();
+            this.mnuReceiver = new DevComponents.DotNetBar.RadialMenuItem();
+            this.mnuPersons = new DevComponents.DotNetBar.RadialMenuItem();
+            this.mnuFReceiver = new DevComponents.DotNetBar.RadialMenuItem();
+            this.mnuSeller = new DevComponents.DotNetBar.RadialMenuItem();
             this.groupPanel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.superTabControl1)).BeginInit();
             this.superTabControl1.SuspendLayout();
@@ -309,6 +318,8 @@
             this.groupPanel3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(239)))), ((int)(((byte)(239)))), ((int)(((byte)(242)))));
             this.groupPanel3.CanvasColor = System.Drawing.Color.FromArgb(((int)(((byte)(239)))), ((int)(((byte)(239)))), ((int)(((byte)(242)))));
             this.groupPanel3.ColorSchemeStyle = DevComponents.DotNetBar.eDotNetBarStyle.Office2007;
+            this.groupPanel3.Controls.Add(this.radialMenu);
+            this.groupPanel3.Controls.Add(this.lblCountry);
             this.groupPanel3.Controls.Add(this.lblLicensePlate);
             this.groupPanel3.Controls.Add(this.cmbDriver);
             this.groupPanel3.Controls.Add(this.cmbDubaiReceiver);
@@ -368,7 +379,7 @@
             this.lblLicensePlate.ForeColor = System.Drawing.Color.Black;
             this.lblLicensePlate.Location = new System.Drawing.Point(67, 39);
             this.lblLicensePlate.Name = "lblLicensePlate";
-            this.lblLicensePlate.Size = new System.Drawing.Size(144, 23);
+            this.lblLicensePlate.Size = new System.Drawing.Size(135, 23);
             this.lblLicensePlate.TabIndex = 55;
             this.lblLicensePlate.Text = "--";
             this.lblLicensePlate.WordWrap = true;
@@ -382,7 +393,7 @@
             this.cmbDriver.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
             this.cmbDriver.FormattingEnabled = true;
             this.cmbDriver.ItemHeight = 17;
-            this.cmbDriver.Location = new System.Drawing.Point(217, 39);
+            this.cmbDriver.Location = new System.Drawing.Point(208, 39);
             this.cmbDriver.Name = "cmbDriver";
             this.cmbDriver.Size = new System.Drawing.Size(259, 23);
             this.cmbDriver.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
@@ -403,7 +414,7 @@
             this.cmbDubaiReceiver.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
             this.cmbDubaiReceiver.FormattingEnabled = true;
             this.cmbDubaiReceiver.ItemHeight = 17;
-            this.cmbDubaiReceiver.Location = new System.Drawing.Point(217, 126);
+            this.cmbDubaiReceiver.Location = new System.Drawing.Point(208, 126);
             this.cmbDubaiReceiver.Name = "cmbDubaiReceiver";
             this.cmbDubaiReceiver.Size = new System.Drawing.Size(259, 23);
             this.cmbDubaiReceiver.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
@@ -422,11 +433,11 @@
             // 
             this.labelX23.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.labelX23.ForeColor = System.Drawing.Color.Black;
-            this.labelX23.Location = new System.Drawing.Point(482, 126);
+            this.labelX23.Location = new System.Drawing.Point(468, 126);
             this.labelX23.Name = "labelX23";
-            this.labelX23.Size = new System.Drawing.Size(117, 23);
+            this.labelX23.Size = new System.Drawing.Size(138, 23);
             this.labelX23.TabIndex = 38;
-            this.labelX23.Text = "گیرنده بار دبی";
+            this.labelX23.Text = "گیرنده بار خارج از کشور";
             // 
             // cmbBandarReceiver
             // 
@@ -437,7 +448,7 @@
             this.cmbBandarReceiver.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
             this.cmbBandarReceiver.FormattingEnabled = true;
             this.cmbBandarReceiver.ItemHeight = 17;
-            this.cmbBandarReceiver.Location = new System.Drawing.Point(217, 97);
+            this.cmbBandarReceiver.Location = new System.Drawing.Point(208, 97);
             this.cmbBandarReceiver.Name = "cmbBandarReceiver";
             this.cmbBandarReceiver.Size = new System.Drawing.Size(259, 23);
             this.cmbBandarReceiver.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
@@ -456,7 +467,7 @@
             // 
             this.labelX19.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.labelX19.ForeColor = System.Drawing.Color.Black;
-            this.labelX19.Location = new System.Drawing.Point(482, 97);
+            this.labelX19.Location = new System.Drawing.Point(489, 97);
             this.labelX19.Name = "labelX19";
             this.labelX19.Size = new System.Drawing.Size(117, 23);
             this.labelX19.TabIndex = 36;
@@ -471,7 +482,7 @@
             this.cmbBuyer.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
             this.cmbBuyer.FormattingEnabled = true;
             this.cmbBuyer.ItemHeight = 17;
-            this.cmbBuyer.Location = new System.Drawing.Point(217, 68);
+            this.cmbBuyer.Location = new System.Drawing.Point(208, 68);
             this.cmbBuyer.Name = "cmbBuyer";
             this.cmbBuyer.Size = new System.Drawing.Size(259, 23);
             this.cmbBuyer.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
@@ -894,14 +905,14 @@
             // 
             this.dgvFactor.AllowUserToAddRows = false;
             this.dgvFactor.AllowUserToDeleteRows = false;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvFactor.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle7.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle7.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle7.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvFactor.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle7;
             this.dgvFactor.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvFactor.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Column1,
@@ -914,26 +925,26 @@
             this.clmProduct,
             this.clmSeller,
             this.clmPacking});
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvFactor.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle8.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle8.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle8.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvFactor.DefaultCellStyle = dataGridViewCellStyle8;
             this.dgvFactor.EnableHeadersVisualStyles = false;
             this.dgvFactor.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(215)))), ((int)(((byte)(229)))));
             this.dgvFactor.Location = new System.Drawing.Point(3, 163);
             this.dgvFactor.Name = "dgvFactor";
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvFactor.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle9.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle9.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle9.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle9.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle9.SelectionForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle9.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvFactor.RowHeadersDefaultCellStyle = dataGridViewCellStyle9;
             this.dgvFactor.Size = new System.Drawing.Size(592, 195);
             this.dgvFactor.TabIndex = 7;
             // 
@@ -1017,7 +1028,7 @@
             // 
             this.labelX2.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.labelX2.ForeColor = System.Drawing.Color.Black;
-            this.labelX2.Location = new System.Drawing.Point(482, 39);
+            this.labelX2.Location = new System.Drawing.Point(489, 39);
             this.labelX2.Name = "labelX2";
             this.labelX2.Size = new System.Drawing.Size(117, 23);
             this.labelX2.TabIndex = 11;
@@ -1035,7 +1046,7 @@
             this.txtDate.FocusHighlightColor = System.Drawing.Color.LightGray;
             this.txtDate.FocusHighlightEnabled = true;
             this.txtDate.ForeColor = System.Drawing.Color.Black;
-            this.txtDate.Location = new System.Drawing.Point(285, 14);
+            this.txtDate.Location = new System.Drawing.Point(276, 14);
             this.txtDate.Mask = "####/##/##";
             this.txtDate.Name = "txtDate";
             this.txtDate.Size = new System.Drawing.Size(191, 21);
@@ -1051,7 +1062,7 @@
             // 
             this.labelX3.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.labelX3.ForeColor = System.Drawing.Color.Black;
-            this.labelX3.Location = new System.Drawing.Point(482, 68);
+            this.labelX3.Location = new System.Drawing.Point(489, 68);
             this.labelX3.Name = "labelX3";
             this.labelX3.Size = new System.Drawing.Size(117, 23);
             this.labelX3.TabIndex = 1;
@@ -1065,7 +1076,7 @@
             // 
             this.labelX1.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.labelX1.ForeColor = System.Drawing.Color.Black;
-            this.labelX1.Location = new System.Drawing.Point(482, 12);
+            this.labelX1.Location = new System.Drawing.Point(489, 12);
             this.labelX1.Name = "labelX1";
             this.labelX1.Size = new System.Drawing.Size(117, 23);
             this.labelX1.TabIndex = 1;
@@ -1751,6 +1762,93 @@
             this.errorProvider1.ContainerControl = this;
             this.errorProvider1.RightToLeft = true;
             // 
+            // lblCountry
+            // 
+            this.lblCountry.BackColor = System.Drawing.Color.Transparent;
+            // 
+            // 
+            // 
+            this.lblCountry.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.lblCountry.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
+            this.lblCountry.ForeColor = System.Drawing.Color.Black;
+            this.lblCountry.Location = new System.Drawing.Point(67, 126);
+            this.lblCountry.Name = "lblCountry";
+            this.lblCountry.Size = new System.Drawing.Size(135, 23);
+            this.lblCountry.TabIndex = 56;
+            this.lblCountry.Text = "--";
+            this.lblCountry.WordWrap = true;
+            // 
+            // radialMenu
+            // 
+            this.radialMenu.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.radialMenu.BackColor = System.Drawing.Color.Transparent;
+            this.radialMenu.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.radialMenu.ForeColor = System.Drawing.Color.Black;
+            this.radialMenu.Image = global::Tarla.Properties.Resources.buttonItem1_Image;
+            this.radialMenu.Items.AddRange(new DevComponents.DotNetBar.BaseItem[] {
+            this.mnuReset,
+            this.mnuPersons});
+            this.radialMenu.Location = new System.Drawing.Point(67, 3);
+            this.radialMenu.Name = "radialMenu";
+            this.radialMenu.Size = new System.Drawing.Size(32, 32);
+            this.radialMenu.Symbol = "";
+            this.radialMenu.SymbolSize = 13F;
+            this.radialMenu.TabIndex = 57;
+            this.radialMenu.Text = "radialMenu1";
+            // 
+            // mnuReset
+            // 
+            this.mnuReset.Name = "mnuReset";
+            this.mnuReset.Symbol = "";
+            this.mnuReset.Text = "بازنشانی";
+            // 
+            // mnuDriver
+            // 
+            this.mnuDriver.Name = "mnuDriver";
+            this.mnuDriver.Symbol = "";
+            this.mnuDriver.Text = "راننده";
+            this.mnuDriver.TextOffset = new System.Drawing.Point(5, 5);
+            // 
+            // mnuBuyer
+            // 
+            this.mnuBuyer.Name = "mnuBuyer";
+            this.mnuBuyer.Symbol = "";
+            this.mnuBuyer.Text = "خریدار";
+            this.mnuBuyer.TextOffset = new System.Drawing.Point(5, 5);
+            // 
+            // mnuReceiver
+            // 
+            this.mnuReceiver.Name = "mnuReceiver";
+            this.mnuReceiver.Symbol = "";
+            this.mnuReceiver.Text = "گیرنده بندر";
+            this.mnuReceiver.TextOffset = new System.Drawing.Point(5, 5);
+            // 
+            // mnuPersons
+            // 
+            this.mnuPersons.Name = "mnuPersons";
+            this.mnuPersons.SubItems.AddRange(new DevComponents.DotNetBar.BaseItem[] {
+            this.mnuReceiver,
+            this.mnuDriver,
+            this.mnuFReceiver,
+            this.mnuBuyer,
+            this.mnuSeller});
+            this.mnuPersons.Symbol = "";
+            this.mnuPersons.Text = "اشخاص";
+            // 
+            // mnuFReceiver
+            // 
+            this.mnuFReceiver.Name = "mnuFReceiver";
+            this.mnuFReceiver.Symbol = "";
+            this.mnuFReceiver.Text = "گیرنده خارج";
+            this.mnuFReceiver.TextOffset = new System.Drawing.Point(5, 5);
+            // 
+            // mnuSeller
+            // 
+            this.mnuSeller.Name = "mnuSeller";
+            this.mnuSeller.Symbol = "";
+            this.mnuSeller.Text = "فروشنده";
+            this.mnuSeller.TextOffset = new System.Drawing.Point(5, 5);
+            // 
             // frmAddFactor
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
@@ -1908,5 +2006,14 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn clmProduct;
         private System.Windows.Forms.DataGridViewTextBoxColumn clmSeller;
         private System.Windows.Forms.DataGridViewTextBoxColumn clmPacking;
+        private DevComponents.DotNetBar.LabelX lblCountry;
+        private DevComponents.DotNetBar.RadialMenu radialMenu;
+        private DevComponents.DotNetBar.RadialMenuItem mnuReset;
+        private DevComponents.DotNetBar.RadialMenuItem mnuPersons;
+        private DevComponents.DotNetBar.RadialMenuItem mnuFReceiver;
+        private DevComponents.DotNetBar.RadialMenuItem mnuDriver;
+        private DevComponents.DotNetBar.RadialMenuItem mnuReceiver;
+        private DevComponents.DotNetBar.RadialMenuItem mnuBuyer;
+        private DevComponents.DotNetBar.RadialMenuItem mnuSeller;
     }
 }
