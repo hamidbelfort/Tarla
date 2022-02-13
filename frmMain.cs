@@ -342,5 +342,13 @@ namespace Tarla
             _frmChild.MdiParent = this;
             _frmChild.Show();
         }
+
+        private void btnDepot_Click(object sender, EventArgs e)
+        {
+            minimizeRibbon(true);
+            frmShowDepots _frmChild = new frmShowDepots();
+            _frmChild.MdiParent = this;
+            _frmChild.Show();
+        }
     }
 }

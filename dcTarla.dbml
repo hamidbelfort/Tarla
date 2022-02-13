@@ -333,6 +333,12 @@
       <Column Name="Price" Type="System.Int32" DbType="Int" CanBeNull="true" />
     </Type>
   </Table>
+  <Table Name="dbo.Depot" Member="Depots">
+    <Type Name="Depot" Id="ID26" Modifier="Sealed">
+      <Column Name="DepotId" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="DepotName" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+    </Type>
+  </Table>
   <Function Name="dbo.InsertLog" Method="InsertLog">
     <Parameter Name="UserId" Parameter="userId" Type="System.Int32" DbType="Int" />
     <Parameter Name="Login" Parameter="login" Type="System.String" DbType="NVarChar(20)" />
@@ -1026,5 +1032,25 @@
   <Function Name="dbo.GetInvoiceDetails" Method="GetInvoiceDetails">
     <Parameter Name="InvoiceId" Parameter="invoiceId" Type="System.Int32" DbType="Int" />
     <ElementType IdRef="ID25" />
+  </Function>
+  <Function Name="dbo.DeleteDepot" Method="DeleteDepot">
+    <Parameter Name="DepotId" Parameter="depotId" Type="System.Int32" DbType="Int" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.FillDepotById" Method="FillDepotById">
+    <Parameter Name="DepotId" Parameter="depotId" Type="System.Int32" DbType="Int" />
+    <ElementType IdRef="ID26" />
+  </Function>
+  <Function Name="dbo.FillDepot" Method="FillDepot">
+    <ElementType IdRef="ID26" />
+  </Function>
+  <Function Name="dbo.InsertDepot" Method="InsertDepot">
+    <Parameter Name="DepotName" Parameter="depotName" Type="System.String" DbType="NVarChar(50)" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.UpdateDepot" Method="UpdateDepot">
+    <Parameter Name="DepotId" Parameter="depotId" Type="System.Int32" DbType="Int" />
+    <Parameter Name="DepotName" Parameter="depotName" Type="System.String" DbType="NVarChar(50)" />
+    <Return Type="System.Int32" />
   </Function>
 </Database>

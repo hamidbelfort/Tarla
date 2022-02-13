@@ -140,6 +140,12 @@
     <Compile Include="frmSplash.Designer.cs">
       <DependentUpon>frmSplash.cs</DependentUpon>
     </Compile>
+    <Compile Include="MainForms\frmAddDepot.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MainForms\frmAddDepot.Designer.cs">
+      <DependentUpon>frmAddDepot.cs</DependentUpon>
+    </Compile>
     <Compile Include="MainForms\frmAddDriver.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -217,6 +223,12 @@
     </Compile>
     <Compile Include="MainForms\frmShowCompany.Designer.cs">
       <DependentUpon>frmShowCompany.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MainForms\frmShowDepots.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MainForms\frmShowDepots.Designer.cs">
+      <DependentUpon>frmShowDepots.cs</DependentUpon>
     </Compile>
     <Compile Include="MainForms\frmShowDriver.cs">
       <SubType>Form</SubType>
@@ -392,6 +404,9 @@
     <EmbeddedResource Include="frmSplash.resx">
       <DependentUpon>frmSplash.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="MainForms\frmAddDepot.resx">
+      <DependentUpon>frmAddDepot.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="MainForms\frmAddDriver.resx">
       <DependentUpon>frmAddDriver.cs</DependentUpon>
     </EmbeddedResource>
@@ -430,6 +445,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="MainForms\frmShowCompany.resx">
       <DependentUpon>frmShowCompany.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MainForms\frmShowDepots.resx">
+      <DependentUpon>frmShowDepots.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MainForms\frmShowDriver.resx">
       <DependentUpon>frmShowDriver.cs</DependentUpon>
@@ -528,6 +546,7 @@
     <None Include="Properties\DataSources\BuyItem.datasource" />
     <None Include="Properties\DataSources\BuyItemView.datasource" />
     <None Include="Properties\DataSources\Company.datasource" />
+    <None Include="Properties\DataSources\Depot.datasource" />
     <None Include="Properties\DataSources\Driver.datasource" />
     <None Include="Properties\DataSources\FactorView.datasource" />
     <None Include="Properties\DataSources\ForiegnReceiver.datasource" />
@@ -741,6 +760,7 @@
     <None Include="Resources\ribbonControl1.BackgroundImage.png" />
     <None Include="Resources\refresh.png" />
     <None Include="Resources\driver.png" />
+    <None Include="Resources\btnDepot.Image.png" />
     <Content Include="Tarla.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

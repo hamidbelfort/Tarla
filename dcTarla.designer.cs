@@ -99,6 +99,9 @@ namespace Tarla
     partial void InsertInvoice(Invoice instance);
     partial void UpdateInvoice(Invoice instance);
     partial void DeleteInvoice(Invoice instance);
+    partial void InsertDepot(Depot instance);
+    partial void UpdateDepot(Depot instance);
+    partial void DeleteDepot(Depot instance);
     #endregion
 		
 		public dcTarlaDataContext() : 
@@ -352,6 +355,14 @@ namespace Tarla
 			get
 			{
 				return this.GetTable<F_DetailsView>();
+			}
+		}
+		
+		public System.Data.Linq.Table<Depot> Depots
+		{
+			get
+			{
+				return this.GetTable<Depot>();
 			}
 		}
 		
@@ -1314,6 +1325,41 @@ namespace Tarla
 		{
 			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), invoiceId);
 			return ((ISingleResult<F_DetailsView>)(result.ReturnValue));
+		}
+		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.DeleteDepot")]
+		public int DeleteDepot([global::System.Data.Linq.Mapping.ParameterAttribute(Name="DepotId", DbType="Int")] System.Nullable<int> depotId)
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), depotId);
+			return ((int)(result.ReturnValue));
+		}
+		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.FillDepotById")]
+		public ISingleResult<Depot> FillDepotById([global::System.Data.Linq.Mapping.ParameterAttribute(Name="DepotId", DbType="Int")] System.Nullable<int> depotId)
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), depotId);
+			return ((ISingleResult<Depot>)(result.ReturnValue));
+		}
+		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.FillDepot")]
+		public ISingleResult<Depot> FillDepot()
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())));
+			return ((ISingleResult<Depot>)(result.ReturnValue));
+		}
+		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.InsertDepot")]
+		public int InsertDepot([global::System.Data.Linq.Mapping.ParameterAttribute(Name="DepotName", DbType="NVarChar(50)")] string depotName)
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), depotName);
+			return ((int)(result.ReturnValue));
+		}
+		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.UpdateDepot")]
+		public int UpdateDepot([global::System.Data.Linq.Mapping.ParameterAttribute(Name="DepotId", DbType="Int")] System.Nullable<int> depotId, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="DepotName", DbType="NVarChar(50)")] string depotName)
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), depotId, depotName);
+			return ((int)(result.ReturnValue));
 		}
 	}
 	
@@ -7506,6 +7552,92 @@ namespace Tarla
 				{
 					this._Price = value;
 				}
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Depot")]
+	public sealed partial class Depot : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _DepotId;
+		
+		private string _DepotName;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnDepotIdChanging(int value);
+    partial void OnDepotIdChanged();
+    partial void OnDepotNameChanging(string value);
+    partial void OnDepotNameChanged();
+    #endregion
+		
+		public Depot()
+		{
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DepotId", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public int DepotId
+		{
+			get
+			{
+				return this._DepotId;
+			}
+			set
+			{
+				if ((this._DepotId != value))
+				{
+					this.OnDepotIdChanging(value);
+					this.SendPropertyChanging();
+					this._DepotId = value;
+					this.SendPropertyChanged("DepotId");
+					this.OnDepotIdChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DepotName", DbType="NVarChar(50)")]
+		public string DepotName
+		{
+			get
+			{
+				return this._DepotName;
+			}
+			set
+			{
+				if ((this._DepotName != value))
+				{
+					this.OnDepotNameChanging(value);
+					this.SendPropertyChanging();
+					this._DepotName = value;
+					this.SendPropertyChanged("DepotName");
+					this.OnDepotNameChanged();
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		private void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		private void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
 			}
 		}
 	}
