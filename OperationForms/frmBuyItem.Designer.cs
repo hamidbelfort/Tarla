@@ -63,7 +63,7 @@
             // 
             // bsBuy
             // 
-            this.bsBuy.DataSource = typeof(Tarla.BuyItem);
+            //this.bsBuy.DataSource = typeof(Tarla.BuyItem);
             // 
             // bsItem
             // 
@@ -396,7 +396,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.btnExit;
-            this.ClientSize = new System.Drawing.Size(503, 409);
+            this.ClientSize = new System.Drawing.Size(809, 409);
             this.Controls.Add(this.groupPanel2);
             this.Controls.Add(this.groupPanel1);
             this.DoubleBuffered = true;

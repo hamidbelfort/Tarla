@@ -535,7 +535,7 @@
             // 
             // bsBuy
             // 
-            this.bsBuy.DataSource = typeof(Tarla.BuyItemView);
+            //this.bsBuy.DataSource = typeof(Tarla.BuyItemView);
             // 
             // frmShowBuyItem
             // 

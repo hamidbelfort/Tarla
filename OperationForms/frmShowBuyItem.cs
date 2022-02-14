@@ -84,7 +84,7 @@ namespace Tarla.OperationForms
             {
                 if (MessageBoxFarsi.Show("آیا مطمئن به حذف این مورد هستید؟", "تأیید حذف", MessageBoxFarsiButtons.YesNo, MessageBoxFarsiIcon.Question, MessageBoxFarsiDefaultButton.Button1) == DialogResult.Yes)
                 {
-                    db.DeleteBuyItem((int)dgvBuy.CurrentRow.Cells[0].Value);
+                    //db.DeleteBuyItem((int)dgvBuy.CurrentRow.Cells[0].Value);
                     loadAgain(0, mskDate1.Text, mskDate2.Text);
                 }
             }
@@ -130,11 +130,11 @@ namespace Tarla.OperationForms
                 
                 if (date1 != string.Empty && date2 != string.Empty)
                 {
-                    bsBuy.DataSource = db.FillBuyItembyDate(mskDate1.Text, mskDate2.Text);
+                    //bsBuy.DataSource = db.FillBuyItembyDate(mskDate1.Text, mskDate2.Text);
                 }
                 else if (companyId != 0)
                 {
-                    bsBuy.DataSource = db.FillBuyItemByCompany(companyId);
+                    //bsBuy.DataSource = db.FillBuyItemByCompany(companyId);
                 }
                 if (dgvBuy.Rows.Count == 0)
                 {

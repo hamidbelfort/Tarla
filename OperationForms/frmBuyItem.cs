@@ -33,7 +33,7 @@ namespace Tarla.OperationForms
                 bsCompany.DataSource = db.FillCompany();
                 if (IsEdit)
                 {
-                    bsBuy.DataSource = db.FillBuyItemById(buyId);
+                    //bsBuy.DataSource = db.FillBuyItemById(buyId);
                     cmbCompany.SelectedValue = companyId;
                     cmbItem.SelectedValue = itemId;
                 }
@@ -74,11 +74,11 @@ namespace Tarla.OperationForms
                     if (IsEdit)
                     {
                         bsBuy.EndEdit();
-                        db.UpdateBuyItem(buyId, txtDate.Text, (int)cmbCompany.SelectedValue, (int)cmbItem.SelectedValue, intQty.Value, intPrice.Value, totalPrice, txtDesc.Text);
+                        //db.UpdateBuyItem(buyId, txtDate.Text, (int)cmbCompany.SelectedValue, (int)cmbItem.SelectedValue, intQty.Value, intPrice.Value, totalPrice, txtDesc.Text);
                     }
                     else
                     {
-                        db.InsertBuyItem(txtDate.Text, (int)cmbCompany.SelectedValue, (int)cmbItem.SelectedValue, intQty.Value, intPrice.Value, totalPrice, txtDesc.Text);
+                       // db.InsertBuyItem(txtDate.Text, (int)cmbCompany.SelectedValue, (int)cmbItem.SelectedValue, intQty.Value, intPrice.Value, totalPrice, txtDesc.Text);
                         clearAll();
                     }
 

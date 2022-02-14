@@ -60,9 +60,6 @@ namespace Tarla
     partial void InsertItem(Item instance);
     partial void UpdateItem(Item instance);
     partial void DeleteItem(Item instance);
-    partial void InsertBuyItem(BuyItem instance);
-    partial void UpdateBuyItem(BuyItem instance);
-    partial void DeleteBuyItem(BuyItem instance);
     partial void InsertLog(Log instance);
     partial void UpdateLog(Log instance);
     partial void DeleteLog(Log instance);
@@ -99,6 +96,15 @@ namespace Tarla
     partial void InsertInvoice(Invoice instance);
     partial void UpdateInvoice(Invoice instance);
     partial void DeleteInvoice(Invoice instance);
+    partial void InsertBuyDetail(BuyDetail instance);
+    partial void UpdateBuyDetail(BuyDetail instance);
+    partial void DeleteBuyDetail(BuyDetail instance);
+    partial void InsertStock(Stock instance);
+    partial void UpdateStock(Stock instance);
+    partial void DeleteStock(Stock instance);
+    partial void InsertBuyFactor(BuyFactor instance);
+    partial void UpdateBuyFactor(BuyFactor instance);
+    partial void DeleteBuyFactor(BuyFactor instance);
     partial void InsertDepot(Depot instance);
     partial void UpdateDepot(Depot instance);
     partial void DeleteDepot(Depot instance);
@@ -214,14 +220,6 @@ namespace Tarla
 			}
 		}
 		
-		public System.Data.Linq.Table<BuyItem> BuyItems
-		{
-			get
-			{
-				return this.GetTable<BuyItem>();
-			}
-		}
-		
 		public System.Data.Linq.Table<Log> Logs
 		{
 			get
@@ -302,14 +300,6 @@ namespace Tarla
 			}
 		}
 		
-		public System.Data.Linq.Table<BuyItemView> BuyItemViews
-		{
-			get
-			{
-				return this.GetTable<BuyItemView>();
-			}
-		}
-		
 		public System.Data.Linq.Table<FactorDetailsView> FactorDetailsViews
 		{
 			get
@@ -355,6 +345,30 @@ namespace Tarla
 			get
 			{
 				return this.GetTable<F_DetailsView>();
+			}
+		}
+		
+		public System.Data.Linq.Table<BuyDetail> BuyDetails
+		{
+			get
+			{
+				return this.GetTable<BuyDetail>();
+			}
+		}
+		
+		public System.Data.Linq.Table<Stock> Stocks
+		{
+			get
+			{
+				return this.GetTable<Stock>();
+			}
+		}
+		
+		public System.Data.Linq.Table<BuyFactor> BuyFactors
+		{
+			get
+			{
+				return this.GetTable<BuyFactor>();
 			}
 		}
 		
@@ -796,41 +810,6 @@ namespace Tarla
 			return ((int)(result.ReturnValue));
 		}
 		
-		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.DeleteBuyItem")]
-		public int DeleteBuyItem([global::System.Data.Linq.Mapping.ParameterAttribute(Name="BuyId", DbType="Int")] System.Nullable<int> buyId)
-		{
-			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), buyId);
-			return ((int)(result.ReturnValue));
-		}
-		
-		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.FillBuyItem")]
-		public ISingleResult<BuyItem> FillBuyItem()
-		{
-			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())));
-			return ((ISingleResult<BuyItem>)(result.ReturnValue));
-		}
-		
-		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.FillBuyItemById")]
-		public ISingleResult<BuyItem> FillBuyItemById([global::System.Data.Linq.Mapping.ParameterAttribute(Name="BuyId", DbType="Int")] System.Nullable<int> buyId)
-		{
-			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), buyId);
-			return ((ISingleResult<BuyItem>)(result.ReturnValue));
-		}
-		
-		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.InsertBuyItem")]
-		public int InsertBuyItem([global::System.Data.Linq.Mapping.ParameterAttribute(Name="Date", DbType="NVarChar(10)")] string date, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="CompanyId", DbType="Int")] System.Nullable<int> companyId, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="ItemId", DbType="Int")] System.Nullable<int> itemId, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="Quantity", DbType="Int")] System.Nullable<int> quantity, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="Price", DbType="Int")] System.Nullable<int> price, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="TotalPrice", DbType="Int")] System.Nullable<int> totalPrice, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="Desc", DbType="NVarChar(MAX)")] string desc)
-		{
-			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), date, companyId, itemId, quantity, price, totalPrice, desc);
-			return ((int)(result.ReturnValue));
-		}
-		
-		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.UpdateBuyItem")]
-		public int UpdateBuyItem([global::System.Data.Linq.Mapping.ParameterAttribute(Name="BuyId", DbType="Int")] System.Nullable<int> buyId, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="Date", DbType="NVarChar(10)")] string date, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="CompanyId", DbType="Int")] System.Nullable<int> companyId, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="ItemId", DbType="Int")] System.Nullable<int> itemId, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="Quantity", DbType="Int")] System.Nullable<int> quantity, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="Price", DbType="Int")] System.Nullable<int> price, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="TotalPrice", DbType="Int")] System.Nullable<int> totalPrice, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="Desc", DbType="NVarChar(MAX)")] string desc)
-		{
-			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), buyId, date, companyId, itemId, quantity, price, totalPrice, desc);
-			return ((int)(result.ReturnValue));
-		}
-		
 		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.FillLogs")]
 		public ISingleResult<Log> FillLogs([global::System.Data.Linq.Mapping.ParameterAttribute(Name="UserId", DbType="Int")] System.Nullable<int> userId)
 		{
@@ -1147,20 +1126,6 @@ namespace Tarla
 			return ((int)(result.ReturnValue));
 		}
 		
-		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.FillBuyItemByCompany")]
-		public ISingleResult<BuyItemView> FillBuyItemByCompany([global::System.Data.Linq.Mapping.ParameterAttribute(Name="CompanyId", DbType="Int")] System.Nullable<int> companyId)
-		{
-			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), companyId);
-			return ((ISingleResult<BuyItemView>)(result.ReturnValue));
-		}
-		
-		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.FillBuyItembyDate")]
-		public ISingleResult<BuyItemView> FillBuyItembyDate([global::System.Data.Linq.Mapping.ParameterAttribute(Name="StartDate", DbType="NVarChar(10)")] string startDate, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="EndDate", DbType="NVarChar(10)")] string endDate)
-		{
-			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), startDate, endDate);
-			return ((ISingleResult<BuyItemView>)(result.ReturnValue));
-		}
-		
 		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.GetBuyerNameAndPhone")]
 		public int GetBuyerNameAndPhone([global::System.Data.Linq.Mapping.ParameterAttribute(Name="BuyerId", DbType="Int")] System.Nullable<int> buyerId, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="BuyerName", DbType="NVarChar(50)")] ref string buyerName, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="BuyerPhone", DbType="NVarChar(12)")] ref string buyerPhone)
 		{
@@ -1327,18 +1292,40 @@ namespace Tarla
 			return ((ISingleResult<F_DetailsView>)(result.ReturnValue));
 		}
 		
-		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.DeleteDepot")]
-		public int DeleteDepot([global::System.Data.Linq.Mapping.ParameterAttribute(Name="DepotId", DbType="Int")] System.Nullable<int> depotId)
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.SetDefaultDepot")]
+		public int SetDefaultDepot([global::System.Data.Linq.Mapping.ParameterAttribute(Name="DepotId", DbType="Int")] System.Nullable<int> depotId)
 		{
 			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), depotId);
 			return ((int)(result.ReturnValue));
 		}
 		
-		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.FillDepotById")]
-		public ISingleResult<Depot> FillDepotById([global::System.Data.Linq.Mapping.ParameterAttribute(Name="DepotId", DbType="Int")] System.Nullable<int> depotId)
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.UpdateDepot")]
+		public int UpdateDepot([global::System.Data.Linq.Mapping.ParameterAttribute(Name="DepotId", DbType="Int")] System.Nullable<int> depotId, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="DepotName", DbType="NVarChar(50)")] string depotName)
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), depotId, depotName);
+			return ((int)(result.ReturnValue));
+		}
+		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.InsertDepot")]
+		public void InsertDepot([global::System.Data.Linq.Mapping.ParameterAttribute(Name="DepotName", DbType="NVarChar(50)")] string depotName)
+		{
+			this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), depotName);
+		}
+		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.GetMaxBuyFactorId")]
+		public int GetMaxBuyFactorId([global::System.Data.Linq.Mapping.ParameterAttribute(Name="FactorId", DbType="Int")] ref System.Nullable<int> factorId)
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), factorId);
+			factorId = ((System.Nullable<int>)(result.GetParameterValue(0)));
+			return ((int)(result.ReturnValue));
+		}
+		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.GetDefaultDepot")]
+		public int GetDefaultDepot([global::System.Data.Linq.Mapping.ParameterAttribute(Name="DepotId", DbType="Int")] ref System.Nullable<int> depotId)
 		{
 			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), depotId);
-			return ((ISingleResult<Depot>)(result.ReturnValue));
+			depotId = ((System.Nullable<int>)(result.GetParameterValue(0)));
+			return ((int)(result.ReturnValue));
 		}
 		
 		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.FillDepot")]
@@ -1348,17 +1335,17 @@ namespace Tarla
 			return ((ISingleResult<Depot>)(result.ReturnValue));
 		}
 		
-		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.InsertDepot")]
-		public int InsertDepot([global::System.Data.Linq.Mapping.ParameterAttribute(Name="DepotName", DbType="NVarChar(50)")] string depotName)
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.FillDepotById")]
+		public ISingleResult<Depot> FillDepotById([global::System.Data.Linq.Mapping.ParameterAttribute(Name="DepotId", DbType="Int")] System.Nullable<int> depotId)
 		{
-			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), depotName);
-			return ((int)(result.ReturnValue));
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), depotId);
+			return ((ISingleResult<Depot>)(result.ReturnValue));
 		}
 		
-		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.UpdateDepot")]
-		public int UpdateDepot([global::System.Data.Linq.Mapping.ParameterAttribute(Name="DepotId", DbType="Int")] System.Nullable<int> depotId, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="DepotName", DbType="NVarChar(50)")] string depotName)
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.DeleteDepot")]
+		public int DeleteDepot([global::System.Data.Linq.Mapping.ParameterAttribute(Name="DepotId", DbType="Int")] System.Nullable<int> depotId)
 		{
-			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), depotId, depotName);
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), depotId);
 			return ((int)(result.ReturnValue));
 		}
 	}
@@ -2691,7 +2678,7 @@ namespace Tarla
 		
 		private string _Address;
 		
-		private EntitySet<BuyItem> _BuyItems;
+		private EntitySet<BuyFactor> _BuyFactors;
 		
     #region Extensibility Method Definitions
     partial void OnLoaded();
@@ -2711,7 +2698,7 @@ namespace Tarla
 		
 		public Company()
 		{
-			this._BuyItems = new EntitySet<BuyItem>(new Action<BuyItem>(this.attach_BuyItems), new Action<BuyItem>(this.detach_BuyItems));
+			this._BuyFactors = new EntitySet<BuyFactor>(new Action<BuyFactor>(this.attach_BuyFactors), new Action<BuyFactor>(this.detach_BuyFactors));
 			OnCreated();
 		}
 		
@@ -2815,16 +2802,16 @@ namespace Tarla
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Company_BuyItem", Storage="_BuyItems", ThisKey="CompanyId", OtherKey="CompanyId")]
-		public EntitySet<BuyItem> BuyItems
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Company_BuyFactor", Storage="_BuyFactors", ThisKey="CompanyId", OtherKey="CompanyId")]
+		public EntitySet<BuyFactor> BuyFactors
 		{
 			get
 			{
-				return this._BuyItems;
+				return this._BuyFactors;
 			}
 			set
 			{
-				this._BuyItems.Assign(value);
+				this._BuyFactors.Assign(value);
 			}
 		}
 		
@@ -2848,13 +2835,13 @@ namespace Tarla
 			}
 		}
 		
-		private void attach_BuyItems(BuyItem entity)
+		private void attach_BuyFactors(BuyFactor entity)
 		{
 			this.SendPropertyChanging();
 			entity.Company = this;
 		}
 		
-		private void detach_BuyItems(BuyItem entity)
+		private void detach_BuyFactors(BuyFactor entity)
 		{
 			this.SendPropertyChanging();
 			entity.Company = null;
@@ -3037,7 +3024,9 @@ namespace Tarla
 		
 		private string _ItemDesc;
 		
-		private EntitySet<BuyItem> _BuyItems;
+		private EntitySet<BuyDetail> _BuyDetails;
+		
+		private EntitySet<Stock> _Stocks;
 		
 		private EntityRef<ItemGroup> _ItemGroup;
 		
@@ -3057,7 +3046,8 @@ namespace Tarla
 		
 		public Item()
 		{
-			this._BuyItems = new EntitySet<BuyItem>(new Action<BuyItem>(this.attach_BuyItems), new Action<BuyItem>(this.detach_BuyItems));
+			this._BuyDetails = new EntitySet<BuyDetail>(new Action<BuyDetail>(this.attach_BuyDetails), new Action<BuyDetail>(this.detach_BuyDetails));
+			this._Stocks = new EntitySet<Stock>(new Action<Stock>(this.attach_Stocks), new Action<Stock>(this.detach_Stocks));
 			this._ItemGroup = default(EntityRef<ItemGroup>);
 			OnCreated();
 		}
@@ -3146,16 +3136,29 @@ namespace Tarla
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Item_BuyItem", Storage="_BuyItems", ThisKey="ItemId", OtherKey="ItemId")]
-		public EntitySet<BuyItem> BuyItems
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Item_BuyDetail", Storage="_BuyDetails", ThisKey="ItemId", OtherKey="ItemId")]
+		public EntitySet<BuyDetail> BuyDetails
 		{
 			get
 			{
-				return this._BuyItems;
+				return this._BuyDetails;
 			}
 			set
 			{
-				this._BuyItems.Assign(value);
+				this._BuyDetails.Assign(value);
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Item_Stock", Storage="_Stocks", ThisKey="ItemId", OtherKey="ItemId")]
+		public EntitySet<Stock> Stocks
+		{
+			get
+			{
+				return this._Stocks;
+			}
+			set
+			{
+				this._Stocks.Assign(value);
 			}
 		}
 		
@@ -3213,328 +3216,28 @@ namespace Tarla
 			}
 		}
 		
-		private void attach_BuyItems(BuyItem entity)
+		private void attach_BuyDetails(BuyDetail entity)
 		{
 			this.SendPropertyChanging();
 			entity.Item = this;
 		}
 		
-		private void detach_BuyItems(BuyItem entity)
+		private void detach_BuyDetails(BuyDetail entity)
 		{
 			this.SendPropertyChanging();
 			entity.Item = null;
 		}
-	}
-	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.BuyItems")]
-	public sealed partial class BuyItem : INotifyPropertyChanging, INotifyPropertyChanged
-	{
 		
-		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
-		
-		private int _BuyId;
-		
-		private string _BuyDate;
-		
-		private System.Nullable<int> _ItemId;
-		
-		private System.Nullable<int> _CompanyId;
-		
-		private System.Nullable<int> _Quantity;
-		
-		private System.Nullable<int> _Price;
-		
-		private System.Nullable<int> _TotalPrice;
-		
-		private string _BuyDesc;
-		
-		private EntityRef<Company> _Company;
-		
-		private EntityRef<Item> _Item;
-		
-    #region Extensibility Method Definitions
-    partial void OnLoaded();
-    partial void OnValidate(System.Data.Linq.ChangeAction action);
-    partial void OnCreated();
-    partial void OnBuyIdChanging(int value);
-    partial void OnBuyIdChanged();
-    partial void OnBuyDateChanging(string value);
-    partial void OnBuyDateChanged();
-    partial void OnItemIdChanging(System.Nullable<int> value);
-    partial void OnItemIdChanged();
-    partial void OnCompanyIdChanging(System.Nullable<int> value);
-    partial void OnCompanyIdChanged();
-    partial void OnQuantityChanging(System.Nullable<int> value);
-    partial void OnQuantityChanged();
-    partial void OnPriceChanging(System.Nullable<int> value);
-    partial void OnPriceChanged();
-    partial void OnTotalPriceChanging(System.Nullable<int> value);
-    partial void OnTotalPriceChanged();
-    partial void OnBuyDescChanging(string value);
-    partial void OnBuyDescChanged();
-    #endregion
-		
-		public BuyItem()
+		private void attach_Stocks(Stock entity)
 		{
-			this._Company = default(EntityRef<Company>);
-			this._Item = default(EntityRef<Item>);
-			OnCreated();
+			this.SendPropertyChanging();
+			entity.Item = this;
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_BuyId", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
-		public int BuyId
+		private void detach_Stocks(Stock entity)
 		{
-			get
-			{
-				return this._BuyId;
-			}
-			set
-			{
-				if ((this._BuyId != value))
-				{
-					this.OnBuyIdChanging(value);
-					this.SendPropertyChanging();
-					this._BuyId = value;
-					this.SendPropertyChanged("BuyId");
-					this.OnBuyIdChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_BuyDate", DbType="NVarChar(10)")]
-		public string BuyDate
-		{
-			get
-			{
-				return this._BuyDate;
-			}
-			set
-			{
-				if ((this._BuyDate != value))
-				{
-					this.OnBuyDateChanging(value);
-					this.SendPropertyChanging();
-					this._BuyDate = value;
-					this.SendPropertyChanged("BuyDate");
-					this.OnBuyDateChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ItemId", DbType="Int")]
-		public System.Nullable<int> ItemId
-		{
-			get
-			{
-				return this._ItemId;
-			}
-			set
-			{
-				if ((this._ItemId != value))
-				{
-					if (this._Item.HasLoadedOrAssignedValue)
-					{
-						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
-					}
-					this.OnItemIdChanging(value);
-					this.SendPropertyChanging();
-					this._ItemId = value;
-					this.SendPropertyChanged("ItemId");
-					this.OnItemIdChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CompanyId", DbType="Int")]
-		public System.Nullable<int> CompanyId
-		{
-			get
-			{
-				return this._CompanyId;
-			}
-			set
-			{
-				if ((this._CompanyId != value))
-				{
-					if (this._Company.HasLoadedOrAssignedValue)
-					{
-						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
-					}
-					this.OnCompanyIdChanging(value);
-					this.SendPropertyChanging();
-					this._CompanyId = value;
-					this.SendPropertyChanged("CompanyId");
-					this.OnCompanyIdChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Quantity", DbType="Int")]
-		public System.Nullable<int> Quantity
-		{
-			get
-			{
-				return this._Quantity;
-			}
-			set
-			{
-				if ((this._Quantity != value))
-				{
-					this.OnQuantityChanging(value);
-					this.SendPropertyChanging();
-					this._Quantity = value;
-					this.SendPropertyChanged("Quantity");
-					this.OnQuantityChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Price", DbType="Int")]
-		public System.Nullable<int> Price
-		{
-			get
-			{
-				return this._Price;
-			}
-			set
-			{
-				if ((this._Price != value))
-				{
-					this.OnPriceChanging(value);
-					this.SendPropertyChanging();
-					this._Price = value;
-					this.SendPropertyChanged("Price");
-					this.OnPriceChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TotalPrice", DbType="Int")]
-		public System.Nullable<int> TotalPrice
-		{
-			get
-			{
-				return this._TotalPrice;
-			}
-			set
-			{
-				if ((this._TotalPrice != value))
-				{
-					this.OnTotalPriceChanging(value);
-					this.SendPropertyChanging();
-					this._TotalPrice = value;
-					this.SendPropertyChanged("TotalPrice");
-					this.OnTotalPriceChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_BuyDesc", DbType="NVarChar(MAX)")]
-		public string BuyDesc
-		{
-			get
-			{
-				return this._BuyDesc;
-			}
-			set
-			{
-				if ((this._BuyDesc != value))
-				{
-					this.OnBuyDescChanging(value);
-					this.SendPropertyChanging();
-					this._BuyDesc = value;
-					this.SendPropertyChanged("BuyDesc");
-					this.OnBuyDescChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Company_BuyItem", Storage="_Company", ThisKey="CompanyId", OtherKey="CompanyId", IsForeignKey=true)]
-		public Company Company
-		{
-			get
-			{
-				return this._Company.Entity;
-			}
-			set
-			{
-				Company previousValue = this._Company.Entity;
-				if (((previousValue != value) 
-							|| (this._Company.HasLoadedOrAssignedValue == false)))
-				{
-					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._Company.Entity = null;
-						previousValue.BuyItems.Remove(this);
-					}
-					this._Company.Entity = value;
-					if ((value != null))
-					{
-						value.BuyItems.Add(this);
-						this._CompanyId = value.CompanyId;
-					}
-					else
-					{
-						this._CompanyId = default(Nullable<int>);
-					}
-					this.SendPropertyChanged("Company");
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Item_BuyItem", Storage="_Item", ThisKey="ItemId", OtherKey="ItemId", IsForeignKey=true)]
-		public Item Item
-		{
-			get
-			{
-				return this._Item.Entity;
-			}
-			set
-			{
-				Item previousValue = this._Item.Entity;
-				if (((previousValue != value) 
-							|| (this._Item.HasLoadedOrAssignedValue == false)))
-				{
-					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._Item.Entity = null;
-						previousValue.BuyItems.Remove(this);
-					}
-					this._Item.Entity = value;
-					if ((value != null))
-					{
-						value.BuyItems.Add(this);
-						this._ItemId = value.ItemId;
-					}
-					else
-					{
-						this._ItemId = default(Nullable<int>);
-					}
-					this.SendPropertyChanged("Item");
-				}
-			}
-		}
-		
-		public event PropertyChangingEventHandler PropertyChanging;
-		
-		public event PropertyChangedEventHandler PropertyChanged;
-		
-		private void SendPropertyChanging()
-		{
-			if ((this.PropertyChanging != null))
-			{
-				this.PropertyChanging(this, emptyChangingEventArgs);
-			}
-		}
-		
-		private void SendPropertyChanged(String propertyName)
-		{
-			if ((this.PropertyChanged != null))
-			{
-				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-			}
+			this.SendPropertyChanging();
+			entity.Item = null;
 		}
 	}
 	
@@ -5146,195 +4849,6 @@ namespace Tarla
 				if ((this._BankName != value))
 				{
 					this._BankName = value;
-				}
-			}
-		}
-	}
-	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.BuyItemView")]
-	public sealed partial class BuyItemView
-	{
-		
-		private int _BuyId;
-		
-		private System.Nullable<int> _ItemId;
-		
-		private System.Nullable<int> _CompanyId;
-		
-		private string _BuyDate;
-		
-		private string _ItemName;
-		
-		private string _CompanyName;
-		
-		private string _GroupName;
-		
-		private System.Nullable<int> _Quantity;
-		
-		private System.Nullable<int> _Price;
-		
-		private System.Nullable<int> _TotalPrice;
-		
-		public BuyItemView()
-		{
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_BuyId", DbType="Int NOT NULL")]
-		public int BuyId
-		{
-			get
-			{
-				return this._BuyId;
-			}
-			set
-			{
-				if ((this._BuyId != value))
-				{
-					this._BuyId = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ItemId", DbType="Int")]
-		public System.Nullable<int> ItemId
-		{
-			get
-			{
-				return this._ItemId;
-			}
-			set
-			{
-				if ((this._ItemId != value))
-				{
-					this._ItemId = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CompanyId", DbType="Int")]
-		public System.Nullable<int> CompanyId
-		{
-			get
-			{
-				return this._CompanyId;
-			}
-			set
-			{
-				if ((this._CompanyId != value))
-				{
-					this._CompanyId = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_BuyDate", DbType="NVarChar(10)")]
-		public string BuyDate
-		{
-			get
-			{
-				return this._BuyDate;
-			}
-			set
-			{
-				if ((this._BuyDate != value))
-				{
-					this._BuyDate = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ItemName", DbType="NVarChar(50)")]
-		public string ItemName
-		{
-			get
-			{
-				return this._ItemName;
-			}
-			set
-			{
-				if ((this._ItemName != value))
-				{
-					this._ItemName = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CompanyName", DbType="NVarChar(100)")]
-		public string CompanyName
-		{
-			get
-			{
-				return this._CompanyName;
-			}
-			set
-			{
-				if ((this._CompanyName != value))
-				{
-					this._CompanyName = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_GroupName", DbType="NVarChar(30)")]
-		public string GroupName
-		{
-			get
-			{
-				return this._GroupName;
-			}
-			set
-			{
-				if ((this._GroupName != value))
-				{
-					this._GroupName = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Quantity", DbType="Int")]
-		public System.Nullable<int> Quantity
-		{
-			get
-			{
-				return this._Quantity;
-			}
-			set
-			{
-				if ((this._Quantity != value))
-				{
-					this._Quantity = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Price", DbType="Int")]
-		public System.Nullable<int> Price
-		{
-			get
-			{
-				return this._Price;
-			}
-			set
-			{
-				if ((this._Price != value))
-				{
-					this._Price = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TotalPrice", DbType="Int")]
-		public System.Nullable<int> TotalPrice
-		{
-			get
-			{
-				return this._TotalPrice;
-			}
-			set
-			{
-				if ((this._TotalPrice != value))
-				{
-					this._TotalPrice = value;
 				}
 			}
 		}
@@ -7556,6 +7070,974 @@ namespace Tarla
 		}
 	}
 	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.BuyDetail")]
+	public partial class BuyDetail : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _DetailId;
+		
+		private System.Nullable<int> _FactorId;
+		
+		private System.Nullable<int> _ItemId;
+		
+		private System.Nullable<int> _Price;
+		
+		private System.Nullable<int> _Qty;
+		
+		private EntityRef<Item> _Item;
+		
+		private EntityRef<BuyFactor> _BuyFactor;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnDetailIdChanging(int value);
+    partial void OnDetailIdChanged();
+    partial void OnFactorIdChanging(System.Nullable<int> value);
+    partial void OnFactorIdChanged();
+    partial void OnItemIdChanging(System.Nullable<int> value);
+    partial void OnItemIdChanged();
+    partial void OnPriceChanging(System.Nullable<int> value);
+    partial void OnPriceChanged();
+    partial void OnQtyChanging(System.Nullable<int> value);
+    partial void OnQtyChanged();
+    #endregion
+		
+		public BuyDetail()
+		{
+			this._Item = default(EntityRef<Item>);
+			this._BuyFactor = default(EntityRef<BuyFactor>);
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DetailId", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public int DetailId
+		{
+			get
+			{
+				return this._DetailId;
+			}
+			set
+			{
+				if ((this._DetailId != value))
+				{
+					this.OnDetailIdChanging(value);
+					this.SendPropertyChanging();
+					this._DetailId = value;
+					this.SendPropertyChanged("DetailId");
+					this.OnDetailIdChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_FactorId", DbType="Int")]
+		public System.Nullable<int> FactorId
+		{
+			get
+			{
+				return this._FactorId;
+			}
+			set
+			{
+				if ((this._FactorId != value))
+				{
+					if (this._BuyFactor.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.OnFactorIdChanging(value);
+					this.SendPropertyChanging();
+					this._FactorId = value;
+					this.SendPropertyChanged("FactorId");
+					this.OnFactorIdChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ItemId", DbType="Int")]
+		public System.Nullable<int> ItemId
+		{
+			get
+			{
+				return this._ItemId;
+			}
+			set
+			{
+				if ((this._ItemId != value))
+				{
+					if (this._Item.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.OnItemIdChanging(value);
+					this.SendPropertyChanging();
+					this._ItemId = value;
+					this.SendPropertyChanged("ItemId");
+					this.OnItemIdChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Price", DbType="Int")]
+		public System.Nullable<int> Price
+		{
+			get
+			{
+				return this._Price;
+			}
+			set
+			{
+				if ((this._Price != value))
+				{
+					this.OnPriceChanging(value);
+					this.SendPropertyChanging();
+					this._Price = value;
+					this.SendPropertyChanged("Price");
+					this.OnPriceChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Qty", DbType="Int")]
+		public System.Nullable<int> Qty
+		{
+			get
+			{
+				return this._Qty;
+			}
+			set
+			{
+				if ((this._Qty != value))
+				{
+					this.OnQtyChanging(value);
+					this.SendPropertyChanging();
+					this._Qty = value;
+					this.SendPropertyChanged("Qty");
+					this.OnQtyChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Item_BuyDetail", Storage="_Item", ThisKey="ItemId", OtherKey="ItemId", IsForeignKey=true)]
+		public Item Item
+		{
+			get
+			{
+				return this._Item.Entity;
+			}
+			set
+			{
+				Item previousValue = this._Item.Entity;
+				if (((previousValue != value) 
+							|| (this._Item.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._Item.Entity = null;
+						previousValue.BuyDetails.Remove(this);
+					}
+					this._Item.Entity = value;
+					if ((value != null))
+					{
+						value.BuyDetails.Add(this);
+						this._ItemId = value.ItemId;
+					}
+					else
+					{
+						this._ItemId = default(Nullable<int>);
+					}
+					this.SendPropertyChanged("Item");
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="BuyFactor_BuyDetail", Storage="_BuyFactor", ThisKey="FactorId", OtherKey="FactorId", IsForeignKey=true)]
+		public BuyFactor BuyFactor
+		{
+			get
+			{
+				return this._BuyFactor.Entity;
+			}
+			set
+			{
+				BuyFactor previousValue = this._BuyFactor.Entity;
+				if (((previousValue != value) 
+							|| (this._BuyFactor.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._BuyFactor.Entity = null;
+						previousValue.BuyDetails.Remove(this);
+					}
+					this._BuyFactor.Entity = value;
+					if ((value != null))
+					{
+						value.BuyDetails.Add(this);
+						this._FactorId = value.FactorId;
+					}
+					else
+					{
+						this._FactorId = default(Nullable<int>);
+					}
+					this.SendPropertyChanged("BuyFactor");
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Stocks")]
+	public partial class Stock : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _StockId;
+		
+		private string _StockDate;
+		
+		private System.Nullable<int> _FactorId;
+		
+		private System.Nullable<int> _DepotId;
+		
+		private System.Nullable<int> _ItemId;
+		
+		private System.Nullable<int> _StockIn;
+		
+		private System.Nullable<int> _StockOut;
+		
+		private string _StockDes;
+		
+		private EntityRef<Item> _Item;
+		
+		private EntityRef<BuyFactor> _BuyFactor;
+		
+		private EntityRef<Depot> _Depot;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnStockIdChanging(int value);
+    partial void OnStockIdChanged();
+    partial void OnStockDateChanging(string value);
+    partial void OnStockDateChanged();
+    partial void OnFactorIdChanging(System.Nullable<int> value);
+    partial void OnFactorIdChanged();
+    partial void OnDepotIdChanging(System.Nullable<int> value);
+    partial void OnDepotIdChanged();
+    partial void OnItemIdChanging(System.Nullable<int> value);
+    partial void OnItemIdChanged();
+    partial void OnStockInChanging(System.Nullable<int> value);
+    partial void OnStockInChanged();
+    partial void OnStockOutChanging(System.Nullable<int> value);
+    partial void OnStockOutChanged();
+    partial void OnStockDesChanging(string value);
+    partial void OnStockDesChanged();
+    #endregion
+		
+		public Stock()
+		{
+			this._Item = default(EntityRef<Item>);
+			this._BuyFactor = default(EntityRef<BuyFactor>);
+			this._Depot = default(EntityRef<Depot>);
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_StockId", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public int StockId
+		{
+			get
+			{
+				return this._StockId;
+			}
+			set
+			{
+				if ((this._StockId != value))
+				{
+					this.OnStockIdChanging(value);
+					this.SendPropertyChanging();
+					this._StockId = value;
+					this.SendPropertyChanged("StockId");
+					this.OnStockIdChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_StockDate", DbType="NVarChar(10)")]
+		public string StockDate
+		{
+			get
+			{
+				return this._StockDate;
+			}
+			set
+			{
+				if ((this._StockDate != value))
+				{
+					this.OnStockDateChanging(value);
+					this.SendPropertyChanging();
+					this._StockDate = value;
+					this.SendPropertyChanged("StockDate");
+					this.OnStockDateChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_FactorId", DbType="Int")]
+		public System.Nullable<int> FactorId
+		{
+			get
+			{
+				return this._FactorId;
+			}
+			set
+			{
+				if ((this._FactorId != value))
+				{
+					if (this._BuyFactor.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.OnFactorIdChanging(value);
+					this.SendPropertyChanging();
+					this._FactorId = value;
+					this.SendPropertyChanged("FactorId");
+					this.OnFactorIdChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DepotId", DbType="Int")]
+		public System.Nullable<int> DepotId
+		{
+			get
+			{
+				return this._DepotId;
+			}
+			set
+			{
+				if ((this._DepotId != value))
+				{
+					if (this._Depot.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.OnDepotIdChanging(value);
+					this.SendPropertyChanging();
+					this._DepotId = value;
+					this.SendPropertyChanged("DepotId");
+					this.OnDepotIdChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ItemId", DbType="Int")]
+		public System.Nullable<int> ItemId
+		{
+			get
+			{
+				return this._ItemId;
+			}
+			set
+			{
+				if ((this._ItemId != value))
+				{
+					if (this._Item.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.OnItemIdChanging(value);
+					this.SendPropertyChanging();
+					this._ItemId = value;
+					this.SendPropertyChanged("ItemId");
+					this.OnItemIdChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_StockIn", DbType="Int")]
+		public System.Nullable<int> StockIn
+		{
+			get
+			{
+				return this._StockIn;
+			}
+			set
+			{
+				if ((this._StockIn != value))
+				{
+					this.OnStockInChanging(value);
+					this.SendPropertyChanging();
+					this._StockIn = value;
+					this.SendPropertyChanged("StockIn");
+					this.OnStockInChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_StockOut", DbType="Int")]
+		public System.Nullable<int> StockOut
+		{
+			get
+			{
+				return this._StockOut;
+			}
+			set
+			{
+				if ((this._StockOut != value))
+				{
+					this.OnStockOutChanging(value);
+					this.SendPropertyChanging();
+					this._StockOut = value;
+					this.SendPropertyChanged("StockOut");
+					this.OnStockOutChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_StockDes", DbType="NVarChar(100)")]
+		public string StockDes
+		{
+			get
+			{
+				return this._StockDes;
+			}
+			set
+			{
+				if ((this._StockDes != value))
+				{
+					this.OnStockDesChanging(value);
+					this.SendPropertyChanging();
+					this._StockDes = value;
+					this.SendPropertyChanged("StockDes");
+					this.OnStockDesChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Item_Stock", Storage="_Item", ThisKey="ItemId", OtherKey="ItemId", IsForeignKey=true)]
+		public Item Item
+		{
+			get
+			{
+				return this._Item.Entity;
+			}
+			set
+			{
+				Item previousValue = this._Item.Entity;
+				if (((previousValue != value) 
+							|| (this._Item.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._Item.Entity = null;
+						previousValue.Stocks.Remove(this);
+					}
+					this._Item.Entity = value;
+					if ((value != null))
+					{
+						value.Stocks.Add(this);
+						this._ItemId = value.ItemId;
+					}
+					else
+					{
+						this._ItemId = default(Nullable<int>);
+					}
+					this.SendPropertyChanged("Item");
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="BuyFactor_Stock", Storage="_BuyFactor", ThisKey="FactorId", OtherKey="FactorId", IsForeignKey=true)]
+		public BuyFactor BuyFactor
+		{
+			get
+			{
+				return this._BuyFactor.Entity;
+			}
+			set
+			{
+				BuyFactor previousValue = this._BuyFactor.Entity;
+				if (((previousValue != value) 
+							|| (this._BuyFactor.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._BuyFactor.Entity = null;
+						previousValue.Stocks.Remove(this);
+					}
+					this._BuyFactor.Entity = value;
+					if ((value != null))
+					{
+						value.Stocks.Add(this);
+						this._FactorId = value.FactorId;
+					}
+					else
+					{
+						this._FactorId = default(Nullable<int>);
+					}
+					this.SendPropertyChanged("BuyFactor");
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Depot_Stock", Storage="_Depot", ThisKey="DepotId", OtherKey="DepotId", IsForeignKey=true)]
+		public Depot Depot
+		{
+			get
+			{
+				return this._Depot.Entity;
+			}
+			set
+			{
+				Depot previousValue = this._Depot.Entity;
+				if (((previousValue != value) 
+							|| (this._Depot.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._Depot.Entity = null;
+						previousValue.Stocks.Remove(this);
+					}
+					this._Depot.Entity = value;
+					if ((value != null))
+					{
+						value.Stocks.Add(this);
+						this._DepotId = value.DepotId;
+					}
+					else
+					{
+						this._DepotId = default(Nullable<int>);
+					}
+					this.SendPropertyChanged("Depot");
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.BuyFactor")]
+	public partial class BuyFactor : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _FactorId;
+		
+		private string _FactorDate;
+		
+		private string _FactorNumber;
+		
+		private System.Nullable<int> _CompanyId;
+		
+		private System.Nullable<int> _TotalPrice;
+		
+		private System.Nullable<int> _Discount;
+		
+		private System.Nullable<double> _TaxCost;
+		
+		private System.Nullable<int> _ServiceCost;
+		
+		private System.Nullable<int> _FinalPrice;
+		
+		private string _FactorDesc;
+		
+		private EntitySet<BuyDetail> _BuyDetails;
+		
+		private EntitySet<Stock> _Stocks;
+		
+		private EntityRef<Company> _Company;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnFactorIdChanging(int value);
+    partial void OnFactorIdChanged();
+    partial void OnFactorDateChanging(string value);
+    partial void OnFactorDateChanged();
+    partial void OnFactorNumberChanging(string value);
+    partial void OnFactorNumberChanged();
+    partial void OnCompanyIdChanging(System.Nullable<int> value);
+    partial void OnCompanyIdChanged();
+    partial void OnTotalPriceChanging(System.Nullable<int> value);
+    partial void OnTotalPriceChanged();
+    partial void OnDiscountChanging(System.Nullable<int> value);
+    partial void OnDiscountChanged();
+    partial void OnTaxCostChanging(System.Nullable<double> value);
+    partial void OnTaxCostChanged();
+    partial void OnServiceCostChanging(System.Nullable<int> value);
+    partial void OnServiceCostChanged();
+    partial void OnFinalPriceChanging(System.Nullable<int> value);
+    partial void OnFinalPriceChanged();
+    partial void OnFactorDescChanging(string value);
+    partial void OnFactorDescChanged();
+    #endregion
+		
+		public BuyFactor()
+		{
+			this._BuyDetails = new EntitySet<BuyDetail>(new Action<BuyDetail>(this.attach_BuyDetails), new Action<BuyDetail>(this.detach_BuyDetails));
+			this._Stocks = new EntitySet<Stock>(new Action<Stock>(this.attach_Stocks), new Action<Stock>(this.detach_Stocks));
+			this._Company = default(EntityRef<Company>);
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_FactorId", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public int FactorId
+		{
+			get
+			{
+				return this._FactorId;
+			}
+			set
+			{
+				if ((this._FactorId != value))
+				{
+					this.OnFactorIdChanging(value);
+					this.SendPropertyChanging();
+					this._FactorId = value;
+					this.SendPropertyChanged("FactorId");
+					this.OnFactorIdChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_FactorDate", DbType="NVarChar(10)")]
+		public string FactorDate
+		{
+			get
+			{
+				return this._FactorDate;
+			}
+			set
+			{
+				if ((this._FactorDate != value))
+				{
+					this.OnFactorDateChanging(value);
+					this.SendPropertyChanging();
+					this._FactorDate = value;
+					this.SendPropertyChanged("FactorDate");
+					this.OnFactorDateChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_FactorNumber", DbType="NVarChar(30)")]
+		public string FactorNumber
+		{
+			get
+			{
+				return this._FactorNumber;
+			}
+			set
+			{
+				if ((this._FactorNumber != value))
+				{
+					this.OnFactorNumberChanging(value);
+					this.SendPropertyChanging();
+					this._FactorNumber = value;
+					this.SendPropertyChanged("FactorNumber");
+					this.OnFactorNumberChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CompanyId", DbType="Int")]
+		public System.Nullable<int> CompanyId
+		{
+			get
+			{
+				return this._CompanyId;
+			}
+			set
+			{
+				if ((this._CompanyId != value))
+				{
+					if (this._Company.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.OnCompanyIdChanging(value);
+					this.SendPropertyChanging();
+					this._CompanyId = value;
+					this.SendPropertyChanged("CompanyId");
+					this.OnCompanyIdChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TotalPrice", DbType="Int")]
+		public System.Nullable<int> TotalPrice
+		{
+			get
+			{
+				return this._TotalPrice;
+			}
+			set
+			{
+				if ((this._TotalPrice != value))
+				{
+					this.OnTotalPriceChanging(value);
+					this.SendPropertyChanging();
+					this._TotalPrice = value;
+					this.SendPropertyChanged("TotalPrice");
+					this.OnTotalPriceChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Discount", DbType="Int")]
+		public System.Nullable<int> Discount
+		{
+			get
+			{
+				return this._Discount;
+			}
+			set
+			{
+				if ((this._Discount != value))
+				{
+					this.OnDiscountChanging(value);
+					this.SendPropertyChanging();
+					this._Discount = value;
+					this.SendPropertyChanged("Discount");
+					this.OnDiscountChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TaxCost", DbType="Float")]
+		public System.Nullable<double> TaxCost
+		{
+			get
+			{
+				return this._TaxCost;
+			}
+			set
+			{
+				if ((this._TaxCost != value))
+				{
+					this.OnTaxCostChanging(value);
+					this.SendPropertyChanging();
+					this._TaxCost = value;
+					this.SendPropertyChanged("TaxCost");
+					this.OnTaxCostChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ServiceCost", DbType="Int")]
+		public System.Nullable<int> ServiceCost
+		{
+			get
+			{
+				return this._ServiceCost;
+			}
+			set
+			{
+				if ((this._ServiceCost != value))
+				{
+					this.OnServiceCostChanging(value);
+					this.SendPropertyChanging();
+					this._ServiceCost = value;
+					this.SendPropertyChanged("ServiceCost");
+					this.OnServiceCostChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_FinalPrice", DbType="Int")]
+		public System.Nullable<int> FinalPrice
+		{
+			get
+			{
+				return this._FinalPrice;
+			}
+			set
+			{
+				if ((this._FinalPrice != value))
+				{
+					this.OnFinalPriceChanging(value);
+					this.SendPropertyChanging();
+					this._FinalPrice = value;
+					this.SendPropertyChanged("FinalPrice");
+					this.OnFinalPriceChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_FactorDesc", DbType="NVarChar(MAX)")]
+		public string FactorDesc
+		{
+			get
+			{
+				return this._FactorDesc;
+			}
+			set
+			{
+				if ((this._FactorDesc != value))
+				{
+					this.OnFactorDescChanging(value);
+					this.SendPropertyChanging();
+					this._FactorDesc = value;
+					this.SendPropertyChanged("FactorDesc");
+					this.OnFactorDescChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="BuyFactor_BuyDetail", Storage="_BuyDetails", ThisKey="FactorId", OtherKey="FactorId")]
+		public EntitySet<BuyDetail> BuyDetails
+		{
+			get
+			{
+				return this._BuyDetails;
+			}
+			set
+			{
+				this._BuyDetails.Assign(value);
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="BuyFactor_Stock", Storage="_Stocks", ThisKey="FactorId", OtherKey="FactorId")]
+		public EntitySet<Stock> Stocks
+		{
+			get
+			{
+				return this._Stocks;
+			}
+			set
+			{
+				this._Stocks.Assign(value);
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Company_BuyFactor", Storage="_Company", ThisKey="CompanyId", OtherKey="CompanyId", IsForeignKey=true)]
+		public Company Company
+		{
+			get
+			{
+				return this._Company.Entity;
+			}
+			set
+			{
+				Company previousValue = this._Company.Entity;
+				if (((previousValue != value) 
+							|| (this._Company.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._Company.Entity = null;
+						previousValue.BuyFactors.Remove(this);
+					}
+					this._Company.Entity = value;
+					if ((value != null))
+					{
+						value.BuyFactors.Add(this);
+						this._CompanyId = value.CompanyId;
+					}
+					else
+					{
+						this._CompanyId = default(Nullable<int>);
+					}
+					this.SendPropertyChanged("Company");
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+		
+		private void attach_BuyDetails(BuyDetail entity)
+		{
+			this.SendPropertyChanging();
+			entity.BuyFactor = this;
+		}
+		
+		private void detach_BuyDetails(BuyDetail entity)
+		{
+			this.SendPropertyChanging();
+			entity.BuyFactor = null;
+		}
+		
+		private void attach_Stocks(Stock entity)
+		{
+			this.SendPropertyChanging();
+			entity.BuyFactor = this;
+		}
+		
+		private void detach_Stocks(Stock entity)
+		{
+			this.SendPropertyChanging();
+			entity.BuyFactor = null;
+		}
+	}
+	
 	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Depot")]
 	public sealed partial class Depot : INotifyPropertyChanging, INotifyPropertyChanged
 	{
@@ -7566,6 +8048,10 @@ namespace Tarla
 		
 		private string _DepotName;
 		
+		private System.Nullable<bool> _IsDefault;
+		
+		private EntitySet<Stock> _Stocks;
+		
     #region Extensibility Method Definitions
     partial void OnLoaded();
     partial void OnValidate(System.Data.Linq.ChangeAction action);
@@ -7574,10 +8060,13 @@ namespace Tarla
     partial void OnDepotIdChanged();
     partial void OnDepotNameChanging(string value);
     partial void OnDepotNameChanged();
+    partial void OnIsDefaultChanging(System.Nullable<bool> value);
+    partial void OnIsDefaultChanged();
     #endregion
 		
 		public Depot()
 		{
+			this._Stocks = new EntitySet<Stock>(new Action<Stock>(this.attach_Stocks), new Action<Stock>(this.detach_Stocks));
 			OnCreated();
 		}
 		
@@ -7621,6 +8110,39 @@ namespace Tarla
 			}
 		}
 		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_IsDefault", DbType="Bit")]
+		public System.Nullable<bool> IsDefault
+		{
+			get
+			{
+				return this._IsDefault;
+			}
+			set
+			{
+				if ((this._IsDefault != value))
+				{
+					this.OnIsDefaultChanging(value);
+					this.SendPropertyChanging();
+					this._IsDefault = value;
+					this.SendPropertyChanged("IsDefault");
+					this.OnIsDefaultChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Depot_Stock", Storage="_Stocks", ThisKey="DepotId", OtherKey="DepotId")]
+		public EntitySet<Stock> Stocks
+		{
+			get
+			{
+				return this._Stocks;
+			}
+			set
+			{
+				this._Stocks.Assign(value);
+			}
+		}
+		
 		public event PropertyChangingEventHandler PropertyChanging;
 		
 		public event PropertyChangedEventHandler PropertyChanged;
@@ -7639,6 +8161,18 @@ namespace Tarla
 			{
 				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
 			}
+		}
+		
+		private void attach_Stocks(Stock entity)
+		{
+			this.SendPropertyChanging();
+			entity.Depot = this;
+		}
+		
+		private void detach_Stocks(Stock entity)
+		{
+			this.SendPropertyChanging();
+			entity.Depot = null;
 		}
 	}
 	
