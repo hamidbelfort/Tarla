@@ -380,6 +380,14 @@ namespace Tarla
 			}
 		}
 		
+		public System.Data.Linq.Table<ViewStock> ViewStocks
+		{
+			get
+			{
+				return this.GetTable<ViewStock>();
+			}
+		}
+		
 		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.InsertLog")]
 		public int InsertLog([global::System.Data.Linq.Mapping.ParameterAttribute(Name="UserId", DbType="Int")] System.Nullable<int> userId, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="Login", DbType="NVarChar(20)")] string login)
 		{
@@ -1306,10 +1314,10 @@ namespace Tarla
 			return ((int)(result.ReturnValue));
 		}
 		
-		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.InsertDepot")]
-		public void InsertDepot([global::System.Data.Linq.Mapping.ParameterAttribute(Name="DepotName", DbType="NVarChar(50)")] string depotName)
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.InsertDepot", IsComposable=true)]
+		public object InsertDepot([global::System.Data.Linq.Mapping.ParameterAttribute(Name="DepotName", DbType="NVarChar(50)")] string depotName)
 		{
-			this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), depotName);
+			return ((object)(this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), depotName).ReturnValue));
 		}
 		
 		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.GetMaxBuyFactorId")]
@@ -1347,6 +1355,27 @@ namespace Tarla
 		{
 			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), depotId);
 			return ((int)(result.ReturnValue));
+		}
+		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.FillViewStock")]
+		public ISingleResult<ViewStock> FillViewStock()
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())));
+			return ((ISingleResult<ViewStock>)(result.ReturnValue));
+		}
+		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.FillViewStockByGroup")]
+		public ISingleResult<ViewStock> FillViewStockByGroup([global::System.Data.Linq.Mapping.ParameterAttribute(Name="GroupId", DbType="Int")] System.Nullable<int> groupId)
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), groupId);
+			return ((ISingleResult<ViewStock>)(result.ReturnValue));
+		}
+		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.FillViewStockByItem")]
+		public ISingleResult<ViewStock> FillViewStockByItem([global::System.Data.Linq.Mapping.ParameterAttribute(Name="ItemId", DbType="Int")] System.Nullable<int> itemId)
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), itemId);
+			return ((ISingleResult<ViewStock>)(result.ReturnValue));
 		}
 	}
 	
@@ -8173,6 +8202,177 @@ namespace Tarla
 		{
 			this.SendPropertyChanging();
 			entity.Depot = null;
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.ViewStock")]
+	public sealed partial class ViewStock
+	{
+		
+		private int _ItemId;
+		
+		private System.Nullable<int> _ItemGroupId;
+		
+		private string _GroupName;
+		
+		private string _Unit1;
+		
+		private string _Unit2;
+		
+		private string _ItemName;
+		
+		private System.Nullable<int> _SumStockIn;
+		
+		private System.Nullable<int> _SumStockOut;
+		
+		private System.Nullable<int> _StockBalance;
+		
+		public ViewStock()
+		{
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ItemId", DbType="Int NOT NULL")]
+		public int ItemId
+		{
+			get
+			{
+				return this._ItemId;
+			}
+			set
+			{
+				if ((this._ItemId != value))
+				{
+					this._ItemId = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ItemGroupId", DbType="Int")]
+		public System.Nullable<int> ItemGroupId
+		{
+			get
+			{
+				return this._ItemGroupId;
+			}
+			set
+			{
+				if ((this._ItemGroupId != value))
+				{
+					this._ItemGroupId = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_GroupName", DbType="NVarChar(30)")]
+		public string GroupName
+		{
+			get
+			{
+				return this._GroupName;
+			}
+			set
+			{
+				if ((this._GroupName != value))
+				{
+					this._GroupName = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Unit1", DbType="NVarChar(20)")]
+		public string Unit1
+		{
+			get
+			{
+				return this._Unit1;
+			}
+			set
+			{
+				if ((this._Unit1 != value))
+				{
+					this._Unit1 = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Unit2", DbType="NVarChar(20)")]
+		public string Unit2
+		{
+			get
+			{
+				return this._Unit2;
+			}
+			set
+			{
+				if ((this._Unit2 != value))
+				{
+					this._Unit2 = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ItemName", DbType="NVarChar(50)")]
+		public string ItemName
+		{
+			get
+			{
+				return this._ItemName;
+			}
+			set
+			{
+				if ((this._ItemName != value))
+				{
+					this._ItemName = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_SumStockIn", DbType="Int")]
+		public System.Nullable<int> SumStockIn
+		{
+			get
+			{
+				return this._SumStockIn;
+			}
+			set
+			{
+				if ((this._SumStockIn != value))
+				{
+					this._SumStockIn = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_SumStockOut", DbType="Int")]
+		public System.Nullable<int> SumStockOut
+		{
+			get
+			{
+				return this._SumStockOut;
+			}
+			set
+			{
+				if ((this._SumStockOut != value))
+				{
+					this._SumStockOut = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_StockBalance", DbType="Int")]
+		public System.Nullable<int> StockBalance
+		{
+			get
+			{
+				return this._StockBalance;
+			}
+			set
+			{
+				if ((this._StockBalance != value))
+				{
+					this._StockBalance = value;
+				}
+			}
 		}
 	}
 	

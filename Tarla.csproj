@@ -564,6 +564,7 @@
     <None Include="Properties\DataSources\Seller.datasource" />
     <None Include="Properties\DataSources\Setting.datasource" />
     <None Include="Properties\DataSources\User.datasource" />
+    <None Include="Properties\DataSources\ViewStock.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

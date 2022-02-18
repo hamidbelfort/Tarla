@@ -357,6 +357,19 @@
       <Association Name="Depot_Stock" Member="Stocks" ThisKey="DepotId" OtherKey="DepotId" Type="Stock" />
     </Type>
   </Table>
+  <Table Name="dbo.ViewStock" Member="ViewStocks">
+    <Type Name="ViewStock" Id="ID25" Modifier="Sealed">
+      <Column Name="ItemId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="ItemGroupId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="GroupName" Type="System.String" DbType="NVarChar(30)" CanBeNull="true" />
+      <Column Name="Unit1" Type="System.String" DbType="NVarChar(20)" CanBeNull="true" />
+      <Column Name="Unit2" Type="System.String" DbType="NVarChar(20)" CanBeNull="true" />
+      <Column Name="ItemName" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="SumStockIn" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="SumStockOut" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="StockBalance" Type="System.Int32" DbType="Int" CanBeNull="true" />
+    </Type>
+  </Table>
   <Function Name="dbo.InsertLog" Method="InsertLog">
     <Parameter Name="UserId" Parameter="userId" Type="System.Int32" DbType="Int" />
     <Parameter Name="Login" Parameter="login" Type="System.String" DbType="NVarChar(20)" />
@@ -1019,8 +1032,9 @@
     <Parameter Name="DepotName" Parameter="depotName" Type="System.String" DbType="NVarChar(50)" />
     <Return Type="System.Int32" />
   </Function>
-  <Function Name="dbo.InsertDepot" Method="InsertDepot">
+  <Function Name="dbo.InsertDepot" Method="InsertDepot" IsComposable="true">
     <Parameter Name="DepotName" Parameter="depotName" Type="System.String" DbType="NVarChar(50)" />
+    <Return Type="object" />
   </Function>
   <Function Name="dbo.GetMaxBuyFactorId" Method="GetMaxBuyFactorId">
     <Parameter Name="FactorId" Parameter="factorId" Type="System.Int32" DbType="Int" Direction="InOut" />
@@ -1040,5 +1054,16 @@
   <Function Name="dbo.DeleteDepot" Method="DeleteDepot">
     <Parameter Name="DepotId" Parameter="depotId" Type="System.Int32" DbType="Int" />
     <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.FillViewStock" Method="FillViewStock">
+    <ElementType IdRef="ID25" />
+  </Function>
+  <Function Name="dbo.FillViewStockByGroup" Method="FillViewStockByGroup">
+    <Parameter Name="GroupId" Parameter="groupId" Type="System.Int32" DbType="Int" />
+    <ElementType IdRef="ID25" />
+  </Function>
+  <Function Name="dbo.FillViewStockByItem" Method="FillViewStockByItem">
+    <Parameter Name="ItemId" Parameter="itemId" Type="System.Int32" DbType="Int" />
+    <ElementType IdRef="ID25" />
   </Function>
 </Database>
