@@ -45,8 +45,6 @@ namespace Tarla.OperationForms
         {
             try
             {
-                frmBuyItem.IsEdit = false;
-
                 new frmBuyItem().ShowDialog();
 
                 loadAgain(0, mskDate1.Text, mskDate2.Text);
@@ -59,7 +57,7 @@ namespace Tarla.OperationForms
 
         private void btnEdit_Click(object sender, EventArgs e)
         {
-            try
+            /*try
             {
                 frmBuyItem.IsEdit = true;
 
@@ -75,7 +73,7 @@ namespace Tarla.OperationForms
             catch (Exception ex)
             {
                 MessageBoxFarsi.Show("ارتباط با سرور اطلاعاتی قطع شده است \n" + ex.Message, "خطا", MessageBoxFarsiButtons.OK, MessageBoxFarsiIcon.Error, MessageBoxFarsiDefaultButton.Button1);
-            }
+            }*/
         }
 
         private void btnDelete_Click(object sender, EventArgs e)

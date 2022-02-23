@@ -1377,6 +1377,20 @@ namespace Tarla
 			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), itemId);
 			return ((ISingleResult<ViewStock>)(result.ReturnValue));
 		}
+		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.InsertBuyFactor")]
+		public int InsertBuyFactor([global::System.Data.Linq.Mapping.ParameterAttribute(Name="FactorDate", DbType="NVarChar(10)")] string factorDate, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="FactorNumber", DbType="NVarChar(30)")] string factorNumber, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="CompanyId", DbType="Int")] System.Nullable<int> companyId, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="TotalPrice", DbType="Int")] System.Nullable<int> totalPrice, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="Discount", DbType="Int")] System.Nullable<int> discount, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="TaxCost", DbType="Int")] System.Nullable<int> taxCost, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="ServiceCost", DbType="Int")] System.Nullable<int> serviceCost, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="FinalPrice", DbType="Int")] System.Nullable<int> finalPrice, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="FactorDes", DbType="NVarChar(MAX)")] string factorDes)
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), factorDate, factorNumber, companyId, totalPrice, discount, taxCost, serviceCost, finalPrice, factorDes);
+			return ((int)(result.ReturnValue));
+		}
+		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.InsertBuyDetail")]
+		public int InsertBuyDetail([global::System.Data.Linq.Mapping.ParameterAttribute(Name="FactorId", DbType="Int")] System.Nullable<int> factorId, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="ItemId", DbType="Int")] System.Nullable<int> itemId, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="Price", DbType="Int")] System.Nullable<int> price, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="Qty", DbType="Int")] System.Nullable<int> qty)
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), factorId, itemId, price, qty);
+			return ((int)(result.ReturnValue));
+		}
 	}
 	
 	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Roles")]

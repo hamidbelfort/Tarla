@@ -1066,4 +1066,23 @@
     <Parameter Name="ItemId" Parameter="itemId" Type="System.Int32" DbType="Int" />
     <ElementType IdRef="ID25" />
   </Function>
+  <Function Name="dbo.InsertBuyFactor" Method="InsertBuyFactor">
+    <Parameter Name="FactorDate" Parameter="factorDate" Type="System.String" DbType="NVarChar(10)" />
+    <Parameter Name="FactorNumber" Parameter="factorNumber" Type="System.String" DbType="NVarChar(30)" />
+    <Parameter Name="CompanyId" Parameter="companyId" Type="System.Int32" DbType="Int" />
+    <Parameter Name="TotalPrice" Parameter="totalPrice" Type="System.Int32" DbType="Int" />
+    <Parameter Name="Discount" Parameter="discount" Type="System.Int32" DbType="Int" />
+    <Parameter Name="TaxCost" Parameter="taxCost" Type="System.Int32" DbType="Int" />
+    <Parameter Name="ServiceCost" Parameter="serviceCost" Type="System.Int32" DbType="Int" />
+    <Parameter Name="FinalPrice" Parameter="finalPrice" Type="System.Int32" DbType="Int" />
+    <Parameter Name="FactorDes" Parameter="factorDes" Type="System.String" DbType="NVarChar(MAX)" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.InsertBuyDetail" Method="InsertBuyDetail">
+    <Parameter Name="FactorId" Parameter="factorId" Type="System.Int32" DbType="Int" />
+    <Parameter Name="ItemId" Parameter="itemId" Type="System.Int32" DbType="Int" />
+    <Parameter Name="Price" Parameter="price" Type="System.Int32" DbType="Int" />
+    <Parameter Name="Qty" Parameter="qty" Type="System.Int32" DbType="Int" />
+    <Return Type="System.Int32" />
+  </Function>
 </Database>

@@ -88,16 +88,19 @@ namespace Tarla.OperationForms
                     calculateTotalPrice();
                 }
             }
-            catch
+            catch (Exception ex)
             {
-                MessageBoxFarsi.Show("ارتباط با سرور اطلاعاتی قطع شده است", "اخطار", MessageBoxFarsiButtons.OK, MessageBoxFarsiIcon.Error, MessageBoxFarsiDefaultButton.Button1);
+                MessageBoxFarsi.Show("ارتباط با سرور اطلاعاتی قطع شده است \n" + ex.Message, "اخطار", MessageBoxFarsiButtons.OK, MessageBoxFarsiIcon.Error, MessageBoxFarsiDefaultButton.Button1);
             }
         }
 
         private void btnDelete_Click(object sender, EventArgs e)
         {
-            dgvFactor.Rows.RemoveAt(dgvFactor.CurrentRow.Index);
-            calculateTotalPrice();
+            if (dgvFactor.Rows.Count>0)
+            {
+                dgvFactor.Rows.RemoveAt(dgvFactor.CurrentRow.Index);
+                calculateTotalPrice();
+            }
         }
         private void calculateProfitLoss()
         {
@@ -252,12 +255,32 @@ namespace Tarla.OperationForms
                     btnFactor.Enabled = true;
                     btnBook.Enabled = true;
                     btnAddNetSell.Enabled = true;
+                    clearAll();
                 }
             }
             catch(Exception ex)
             {
                 MessageBoxFarsi.Show("ارتباط با سرور اطلاعاتی قطع شده است \n"+ex.Message, "اخطار", MessageBoxFarsiButtons.OK, MessageBoxFarsiIcon.Error, MessageBoxFarsiDefaultButton.Button1);
             }
+        }
+
+        private void clearAll()
+        {
+            dgvFactor.Rows.Clear();
+            totalCost = 0;
+            totalPrice = 0;
+            totalWeight = 0;
+            txtTotalProducts.Clear();
+            txtDate.Text = pd.getShortDate();
+            txtDesc.Clear();
+            txtDockWeightNote.Clear();
+            txtLoss.Clear();
+            txtNetPrice.Clear();
+            txtProfit.Clear();
+            txtTotalCost.Clear();
+            txtTotalProducts.Clear();
+            txtTotalWeight.Clear();
+            txtWeightNote.Clear();
         }
 
         private void btnAddNetSell_Click(object sender, EventArgs e)
