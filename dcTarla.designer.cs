@@ -1391,6 +1391,13 @@ namespace Tarla
 			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), factorId, itemId, price, qty);
 			return ((int)(result.ReturnValue));
 		}
+		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.InsertStock")]
+		public int InsertStock([global::System.Data.Linq.Mapping.ParameterAttribute(Name="StockDate", DbType="NVarChar(10)")] string stockDate, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="FactorId", DbType="Int")] System.Nullable<int> factorId, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="DepotId", DbType="Int")] System.Nullable<int> depotId, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="ItemId", DbType="Int")] System.Nullable<int> itemId, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="StockIn", DbType="Int")] System.Nullable<int> stockIn, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="StockOut", DbType="Int")] System.Nullable<int> stockOut, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="StockDes", DbType="NVarChar(100)")] string stockDes)
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), stockDate, factorId, depotId, itemId, stockIn, stockOut, stockDes);
+			return ((int)(result.ReturnValue));
+		}
 	}
 	
 	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Roles")]

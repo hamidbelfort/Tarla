@@ -20,8 +20,15 @@ namespace Tarla.Classes
         }
         public static int removeThousandSeprator(string number)
         {
-            number=number.Replace(",", "");
-            return Convert.ToInt32(number);
+            if (!string.IsNullOrEmpty(number))
+            {
+                number = number.Replace(",", "");
+                return Convert.ToInt32(number);
+            }
+            else
+            {
+                return 0;
+            }
         }
         public void SaveLog(string formName,string message)
         {

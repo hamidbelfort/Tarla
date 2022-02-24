@@ -1085,4 +1085,14 @@
     <Parameter Name="Qty" Parameter="qty" Type="System.Int32" DbType="Int" />
     <Return Type="System.Int32" />
   </Function>
+  <Function Name="dbo.InsertStock" Method="InsertStock">
+    <Parameter Name="StockDate" Parameter="stockDate" Type="System.String" DbType="NVarChar(10)" />
+    <Parameter Name="FactorId" Parameter="factorId" Type="System.Int32" DbType="Int" />
+    <Parameter Name="DepotId" Parameter="depotId" Type="System.Int32" DbType="Int" />
+    <Parameter Name="ItemId" Parameter="itemId" Type="System.Int32" DbType="Int" />
+    <Parameter Name="StockIn" Parameter="stockIn" Type="System.Int32" DbType="Int" />
+    <Parameter Name="StockOut" Parameter="stockOut" Type="System.Int32" DbType="Int" />
+    <Parameter Name="StockDes" Parameter="stockDes" Type="System.String" DbType="NVarChar(100)" />
+    <Return Type="System.Int32" />
+  </Function>
 </Database>

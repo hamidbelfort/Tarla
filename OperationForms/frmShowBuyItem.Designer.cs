@@ -30,10 +30,7 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmShowBuyItem));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle20 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle17 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle18 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle19 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.panelEx1 = new DevComponents.DotNetBar.PanelEx();
             this.groupPanel2 = new DevComponents.DotNetBar.Controls.GroupPanel();
             this.btnPrint = new DevComponents.DotNetBar.ButtonX();
@@ -54,16 +51,6 @@
             this.mskDate1 = new DevComponents.DotNetBar.Controls.MaskedTextBoxAdv();
             this.btnAdd = new DevComponents.DotNetBar.ButtonX();
             this.dgvBuy = new DevComponents.DotNetBar.Controls.DataGridViewX();
-            this.buyIdDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.itemIdDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.companyIdDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.buyDateDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.itemNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.companyNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.groupNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.quantityDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.priceDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.totalPriceDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.bsBuy = new System.Windows.Forms.BindingSource(this.components);
             this.panelEx1.SuspendLayout();
             this.groupPanel2.SuspendLayout();
@@ -164,6 +151,7 @@
             this.btnEdit.TabIndex = 0;
             this.btnEdit.Text = "  ویـرایـش";
             this.btnEdit.TextAlignment = DevComponents.DotNetBar.eButtonTextAlignment.Right;
+            this.btnEdit.Visible = false;
             this.btnEdit.Click += new System.EventHandler(this.btnEdit_Click);
             // 
             // btnExit
@@ -423,119 +411,21 @@
             this.dgvBuy.AllowUserToDeleteRows = false;
             this.dgvBuy.AutoGenerateColumns = false;
             this.dgvBuy.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvBuy.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.buyIdDataGridViewTextBoxColumn,
-            this.itemIdDataGridViewTextBoxColumn,
-            this.companyIdDataGridViewTextBoxColumn,
-            this.buyDateDataGridViewTextBoxColumn,
-            this.itemNameDataGridViewTextBoxColumn,
-            this.companyNameDataGridViewTextBoxColumn,
-            this.groupNameDataGridViewTextBoxColumn,
-            this.quantityDataGridViewTextBoxColumn,
-            this.priceDataGridViewTextBoxColumn,
-            this.totalPriceDataGridViewTextBoxColumn});
             this.dgvBuy.DataSource = this.bsBuy;
-            dataGridViewCellStyle20.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle20.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle20.Font = new System.Drawing.Font("Tahoma", 9.75F);
-            dataGridViewCellStyle20.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle20.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle20.SelectionForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle20.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvBuy.DefaultCellStyle = dataGridViewCellStyle20;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Tahoma", 9.75F);
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvBuy.DefaultCellStyle = dataGridViewCellStyle1;
             this.dgvBuy.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(215)))), ((int)(((byte)(229)))));
             this.dgvBuy.Location = new System.Drawing.Point(3, 101);
             this.dgvBuy.Name = "dgvBuy";
             this.dgvBuy.ReadOnly = true;
             this.dgvBuy.Size = new System.Drawing.Size(747, 359);
             this.dgvBuy.TabIndex = 6;
-            // 
-            // buyIdDataGridViewTextBoxColumn
-            // 
-            this.buyIdDataGridViewTextBoxColumn.DataPropertyName = "BuyId";
-            this.buyIdDataGridViewTextBoxColumn.HeaderText = "BuyId";
-            this.buyIdDataGridViewTextBoxColumn.Name = "buyIdDataGridViewTextBoxColumn";
-            this.buyIdDataGridViewTextBoxColumn.ReadOnly = true;
-            this.buyIdDataGridViewTextBoxColumn.Visible = false;
-            // 
-            // itemIdDataGridViewTextBoxColumn
-            // 
-            this.itemIdDataGridViewTextBoxColumn.DataPropertyName = "ItemId";
-            this.itemIdDataGridViewTextBoxColumn.HeaderText = "ItemId";
-            this.itemIdDataGridViewTextBoxColumn.Name = "itemIdDataGridViewTextBoxColumn";
-            this.itemIdDataGridViewTextBoxColumn.ReadOnly = true;
-            this.itemIdDataGridViewTextBoxColumn.Visible = false;
-            // 
-            // companyIdDataGridViewTextBoxColumn
-            // 
-            this.companyIdDataGridViewTextBoxColumn.DataPropertyName = "CompanyId";
-            this.companyIdDataGridViewTextBoxColumn.HeaderText = "CompanyId";
-            this.companyIdDataGridViewTextBoxColumn.Name = "companyIdDataGridViewTextBoxColumn";
-            this.companyIdDataGridViewTextBoxColumn.ReadOnly = true;
-            this.companyIdDataGridViewTextBoxColumn.Visible = false;
-            // 
-            // buyDateDataGridViewTextBoxColumn
-            // 
-            this.buyDateDataGridViewTextBoxColumn.DataPropertyName = "BuyDate";
-            this.buyDateDataGridViewTextBoxColumn.HeaderText = "تاریخ خرید";
-            this.buyDateDataGridViewTextBoxColumn.Name = "buyDateDataGridViewTextBoxColumn";
-            this.buyDateDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // itemNameDataGridViewTextBoxColumn
-            // 
-            this.itemNameDataGridViewTextBoxColumn.DataPropertyName = "ItemName";
-            this.itemNameDataGridViewTextBoxColumn.HeaderText = "نام کالا";
-            this.itemNameDataGridViewTextBoxColumn.Name = "itemNameDataGridViewTextBoxColumn";
-            this.itemNameDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // companyNameDataGridViewTextBoxColumn
-            // 
-            this.companyNameDataGridViewTextBoxColumn.DataPropertyName = "CompanyName";
-            this.companyNameDataGridViewTextBoxColumn.HeaderText = "شرکت فروشنده";
-            this.companyNameDataGridViewTextBoxColumn.Name = "companyNameDataGridViewTextBoxColumn";
-            this.companyNameDataGridViewTextBoxColumn.ReadOnly = true;
-            this.companyNameDataGridViewTextBoxColumn.Width = 150;
-            // 
-            // groupNameDataGridViewTextBoxColumn
-            // 
-            this.groupNameDataGridViewTextBoxColumn.DataPropertyName = "GroupName";
-            this.groupNameDataGridViewTextBoxColumn.HeaderText = "دسته بندی";
-            this.groupNameDataGridViewTextBoxColumn.Name = "groupNameDataGridViewTextBoxColumn";
-            this.groupNameDataGridViewTextBoxColumn.ReadOnly = true;
-            this.groupNameDataGridViewTextBoxColumn.Visible = false;
-            // 
-            // quantityDataGridViewTextBoxColumn
-            // 
-            this.quantityDataGridViewTextBoxColumn.DataPropertyName = "Quantity";
-            dataGridViewCellStyle17.Format = "N0";
-            this.quantityDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle17;
-            this.quantityDataGridViewTextBoxColumn.HeaderText = "تعداد";
-            this.quantityDataGridViewTextBoxColumn.Name = "quantityDataGridViewTextBoxColumn";
-            this.quantityDataGridViewTextBoxColumn.ReadOnly = true;
-            this.quantityDataGridViewTextBoxColumn.Width = 80;
-            // 
-            // priceDataGridViewTextBoxColumn
-            // 
-            this.priceDataGridViewTextBoxColumn.DataPropertyName = "Price";
-            dataGridViewCellStyle18.Format = "N0";
-            this.priceDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle18;
-            this.priceDataGridViewTextBoxColumn.HeaderText = "قیمت";
-            this.priceDataGridViewTextBoxColumn.Name = "priceDataGridViewTextBoxColumn";
-            this.priceDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // totalPriceDataGridViewTextBoxColumn
-            // 
-            this.totalPriceDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.totalPriceDataGridViewTextBoxColumn.DataPropertyName = "TotalPrice";
-            dataGridViewCellStyle19.Format = "N0";
-            this.totalPriceDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle19;
-            this.totalPriceDataGridViewTextBoxColumn.HeaderText = "قیمت کل";
-            this.totalPriceDataGridViewTextBoxColumn.Name = "totalPriceDataGridViewTextBoxColumn";
-            this.totalPriceDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // bsBuy
-            // 
-            //this.bsBuy.DataSource = typeof(Tarla.BuyItemView);
             // 
             // frmShowBuyItem
             // 

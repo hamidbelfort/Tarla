@@ -39,7 +39,7 @@ namespace Tarla.OperationForms
 
         private void clearAll()
         {
-            txtDate.Text = string.Empty;
+            txtDate.Text = pd.getShortDate();
             txtDesc.Clear();
             totalPrice = 0;
             discount = 0;
@@ -266,13 +266,16 @@ namespace Tarla.OperationForms
                 {
                     db.InsertBuyFactor(txtDate.Text, txtFactorNumber.Text, (int)cmbCompany.SelectedValue, totalPrice, discount, tax, serviceCost, finalPrice, txtDesc.Text);
                     db.GetMaxBuyFactorId(ref lastFactorId);
+                    string stockDesc = string.Format("{0} : خرید با شماره فاکتور", txtFactorNumber.Text);
                     for (int i = 0; i < dgvItems.Rows.Count; i++)
                     {
                         int _itemId = Convert.ToInt32(dgvItems.Rows[i].Cells["clmItemId"].Value.ToString());
                         int _qty = Convert.ToInt32(dgvItems.Rows[i].Cells["clmQty"].Value.ToString());
                         int _price = Convert.ToInt32(dgvItems.Rows[i].Cells["clmPrice"].Value.ToString());
                         db.InsertBuyDetail(lastFactorId, _itemId, _price, _qty);
+                        db.InsertStock(txtDate.Text, lastFactorId, depotId, _itemId, _qty, 0, stockDesc);
                     }
+                    
                     MessageBoxFarsi.Show("عملیات با موفقیت انجام شد", "پیغام", MessageBoxFarsiButtons.OK, MessageBoxFarsiIcon.Information, MessageBoxFarsiDefaultButton.Button1);
                     btnSave.Enabled = false;
                     btnFactor.Enabled = true;

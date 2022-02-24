@@ -30,9 +30,9 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmAddFactor));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.groupPanel2 = new DevComponents.DotNetBar.Controls.GroupPanel();
             this.btnNext = new DevComponents.DotNetBar.ButtonX();
             this.btnPrev = new DevComponents.DotNetBar.ButtonX();
@@ -42,6 +42,9 @@
             this.groupPanel3 = new DevComponents.DotNetBar.Controls.GroupPanel();
             this.radialMenu = new DevComponents.DotNetBar.RadialMenu();
             this.mnuReset = new DevComponents.DotNetBar.RadialMenuItem();
+            this.mnuRefresh = new DevComponents.DotNetBar.RadialMenuItem();
+            this.mnuProduct = new DevComponents.DotNetBar.RadialMenuItem();
+            this.mnuPacking = new DevComponents.DotNetBar.RadialMenuItem();
             this.mnuPersons = new DevComponents.DotNetBar.RadialMenuItem();
             this.mnuReceiver = new DevComponents.DotNetBar.RadialMenuItem();
             this.mnuDriver = new DevComponents.DotNetBar.RadialMenuItem();
@@ -86,16 +89,16 @@
             this.labelX4 = new DevComponents.DotNetBar.LabelX();
             this.btnDelete = new DevComponents.DotNetBar.ButtonX();
             this.dgvFactor = new DevComponents.DotNetBar.Controls.DataGridViewX();
-            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.clmProductName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.clmPrice = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.clmQty = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.clmWeight = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.clmLoss = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.clmSellerName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.clmPackingName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.clmProduct = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.clmSeller = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.clmPacking = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.clmProductId = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.clmSellerId = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.clmPackingId = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.labelX2 = new DevComponents.DotNetBar.LabelX();
             this.txtDate = new DevComponents.DotNetBar.Controls.MaskedTextBoxAdv();
@@ -143,9 +146,6 @@
             this.btnSave = new DevComponents.DotNetBar.ButtonX();
             this.superTabItem2 = new DevComponents.DotNetBar.SuperTabItem();
             this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
-            this.mnuRefresh = new DevComponents.DotNetBar.RadialMenuItem();
-            this.mnuProduct = new DevComponents.DotNetBar.RadialMenuItem();
-            this.mnuPacking = new DevComponents.DotNetBar.RadialMenuItem();
             this.groupPanel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.superTabControl1)).BeginInit();
             this.superTabControl1.SuspendLayout();
@@ -189,7 +189,7 @@
             this.groupPanel2.DisabledBackColor = System.Drawing.Color.Empty;
             this.groupPanel2.Location = new System.Drawing.Point(6, 630);
             this.groupPanel2.Name = "groupPanel2";
-            this.groupPanel2.Size = new System.Drawing.Size(629, 40);
+            this.groupPanel2.Size = new System.Drawing.Size(671, 40);
             // 
             // 
             // 
@@ -218,7 +218,7 @@
             // 
             // 
             this.groupPanel2.StyleMouseOver.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.groupPanel2.TabIndex = 5;
+            this.groupPanel2.TabIndex = 0;
             // 
             // btnNext
             // 
@@ -226,7 +226,7 @@
             this.btnNext.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
             this.btnNext.FocusCuesEnabled = false;
             this.btnNext.Image = ((System.Drawing.Image)(resources.GetObject("btnNext.Image")));
-            this.btnNext.Location = new System.Drawing.Point(446, 2);
+            this.btnNext.Location = new System.Drawing.Point(492, 2);
             this.btnNext.Name = "btnNext";
             this.btnNext.Shape = new DevComponents.DotNetBar.RoundRectangleShapeDescriptor(10, 4, 4, 10);
             this.btnNext.Size = new System.Drawing.Size(80, 30);
@@ -243,7 +243,7 @@
             this.btnPrev.Enabled = false;
             this.btnPrev.FocusCuesEnabled = false;
             this.btnPrev.Image = ((System.Drawing.Image)(resources.GetObject("btnPrev.Image")));
-            this.btnPrev.Location = new System.Drawing.Point(532, 2);
+            this.btnPrev.Location = new System.Drawing.Point(578, 2);
             this.btnPrev.Name = "btnPrev";
             this.btnPrev.Shape = new DevComponents.DotNetBar.RoundRectangleShapeDescriptor(10, 4, 4, 10);
             this.btnPrev.Size = new System.Drawing.Size(80, 30);
@@ -288,8 +288,8 @@
             this.superTabControl1.ControlBox.SubItems.AddRange(new DevComponents.DotNetBar.BaseItem[] {
             this.superTabControl1.ControlBox.CloseBox,
             this.superTabControl1.ControlBox.MenuBox});
-            this.superTabControl1.Controls.Add(this.superTabControlPanel1);
             this.superTabControl1.Controls.Add(this.superTabControlPanel2);
+            this.superTabControl1.Controls.Add(this.superTabControlPanel1);
             this.superTabControl1.ForeColor = System.Drawing.Color.Black;
             this.superTabControl1.Location = new System.Drawing.Point(6, 12);
             this.superTabControl1.Name = "superTabControl1";
@@ -297,7 +297,7 @@
             this.superTabControl1.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.superTabControl1.SelectedTabFont = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Bold);
             this.superTabControl1.SelectedTabIndex = 1;
-            this.superTabControl1.Size = new System.Drawing.Size(629, 612);
+            this.superTabControl1.Size = new System.Drawing.Size(671, 612);
             this.superTabControl1.TabFont = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
             this.superTabControl1.TabIndex = 0;
             this.superTabControl1.Tabs.AddRange(new DevComponents.DotNetBar.BaseItem[] {
@@ -312,7 +312,7 @@
             this.superTabControlPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.superTabControlPanel1.Location = new System.Drawing.Point(0, 28);
             this.superTabControlPanel1.Name = "superTabControlPanel1";
-            this.superTabControlPanel1.Size = new System.Drawing.Size(629, 584);
+            this.superTabControlPanel1.Size = new System.Drawing.Size(671, 584);
             this.superTabControlPanel1.TabIndex = 1;
             this.superTabControlPanel1.TabItem = this.superTabItem1;
             // 
@@ -339,7 +339,7 @@
             this.groupPanel3.DisabledBackColor = System.Drawing.Color.Empty;
             this.groupPanel3.Location = new System.Drawing.Point(3, 3);
             this.groupPanel3.Name = "groupPanel3";
-            this.groupPanel3.Size = new System.Drawing.Size(616, 578);
+            this.groupPanel3.Size = new System.Drawing.Size(661, 578);
             // 
             // 
             // 
@@ -384,7 +384,7 @@
             this.mnuProduct,
             this.mnuPacking,
             this.mnuPersons});
-            this.radialMenu.Location = new System.Drawing.Point(67, 3);
+            this.radialMenu.Location = new System.Drawing.Point(82, 3);
             this.radialMenu.Name = "radialMenu";
             this.radialMenu.Size = new System.Drawing.Size(32, 32);
             this.radialMenu.Symbol = "";
@@ -398,6 +398,24 @@
             this.mnuReset.Name = "mnuReset";
             this.mnuReset.Symbol = "";
             this.mnuReset.Text = "بازنشانی";
+            // 
+            // mnuRefresh
+            // 
+            this.mnuRefresh.Name = "mnuRefresh";
+            this.mnuRefresh.Symbol = "";
+            this.mnuRefresh.Text = "نوسازی";
+            // 
+            // mnuProduct
+            // 
+            this.mnuProduct.Name = "mnuProduct";
+            this.mnuProduct.Symbol = "";
+            this.mnuProduct.Text = "محصول";
+            // 
+            // mnuPacking
+            // 
+            this.mnuPacking.Name = "mnuPacking";
+            this.mnuPacking.Symbol = "";
+            this.mnuPacking.Text = "بسته";
             // 
             // mnuPersons
             // 
@@ -453,11 +471,11 @@
             // 
             // 
             this.lblCountry.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.lblCountry.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
+            this.lblCountry.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
             this.lblCountry.ForeColor = System.Drawing.Color.Black;
-            this.lblCountry.Location = new System.Drawing.Point(67, 126);
+            this.lblCountry.Location = new System.Drawing.Point(12, 126);
             this.lblCountry.Name = "lblCountry";
-            this.lblCountry.Size = new System.Drawing.Size(135, 23);
+            this.lblCountry.Size = new System.Drawing.Size(233, 23);
             this.lblCountry.TabIndex = 56;
             this.lblCountry.Text = "--";
             this.lblCountry.WordWrap = true;
@@ -469,11 +487,11 @@
             // 
             // 
             this.lblLicensePlate.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.lblLicensePlate.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
+            this.lblLicensePlate.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
             this.lblLicensePlate.ForeColor = System.Drawing.Color.Black;
-            this.lblLicensePlate.Location = new System.Drawing.Point(67, 39);
+            this.lblLicensePlate.Location = new System.Drawing.Point(82, 39);
             this.lblLicensePlate.Name = "lblLicensePlate";
-            this.lblLicensePlate.Size = new System.Drawing.Size(135, 23);
+            this.lblLicensePlate.Size = new System.Drawing.Size(163, 23);
             this.lblLicensePlate.TabIndex = 55;
             this.lblLicensePlate.Text = "--";
             this.lblLicensePlate.WordWrap = true;
@@ -487,7 +505,7 @@
             this.cmbDriver.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
             this.cmbDriver.FormattingEnabled = true;
             this.cmbDriver.ItemHeight = 17;
-            this.cmbDriver.Location = new System.Drawing.Point(208, 39);
+            this.cmbDriver.Location = new System.Drawing.Point(251, 39);
             this.cmbDriver.Name = "cmbDriver";
             this.cmbDriver.Size = new System.Drawing.Size(259, 23);
             this.cmbDriver.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
@@ -508,7 +526,7 @@
             this.cmbDubaiReceiver.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
             this.cmbDubaiReceiver.FormattingEnabled = true;
             this.cmbDubaiReceiver.ItemHeight = 17;
-            this.cmbDubaiReceiver.Location = new System.Drawing.Point(208, 126);
+            this.cmbDubaiReceiver.Location = new System.Drawing.Point(251, 126);
             this.cmbDubaiReceiver.Name = "cmbDubaiReceiver";
             this.cmbDubaiReceiver.Size = new System.Drawing.Size(259, 23);
             this.cmbDubaiReceiver.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
@@ -528,7 +546,7 @@
             // 
             this.labelX23.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.labelX23.ForeColor = System.Drawing.Color.Black;
-            this.labelX23.Location = new System.Drawing.Point(468, 126);
+            this.labelX23.Location = new System.Drawing.Point(511, 126);
             this.labelX23.Name = "labelX23";
             this.labelX23.Size = new System.Drawing.Size(138, 23);
             this.labelX23.TabIndex = 38;
@@ -543,7 +561,7 @@
             this.cmbBandarReceiver.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
             this.cmbBandarReceiver.FormattingEnabled = true;
             this.cmbBandarReceiver.ItemHeight = 17;
-            this.cmbBandarReceiver.Location = new System.Drawing.Point(208, 97);
+            this.cmbBandarReceiver.Location = new System.Drawing.Point(251, 97);
             this.cmbBandarReceiver.Name = "cmbBandarReceiver";
             this.cmbBandarReceiver.Size = new System.Drawing.Size(259, 23);
             this.cmbBandarReceiver.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
@@ -562,7 +580,7 @@
             // 
             this.labelX19.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.labelX19.ForeColor = System.Drawing.Color.Black;
-            this.labelX19.Location = new System.Drawing.Point(489, 97);
+            this.labelX19.Location = new System.Drawing.Point(532, 97);
             this.labelX19.Name = "labelX19";
             this.labelX19.Size = new System.Drawing.Size(117, 23);
             this.labelX19.TabIndex = 36;
@@ -577,7 +595,7 @@
             this.cmbBuyer.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
             this.cmbBuyer.FormattingEnabled = true;
             this.cmbBuyer.ItemHeight = 17;
-            this.cmbBuyer.Location = new System.Drawing.Point(208, 68);
+            this.cmbBuyer.Location = new System.Drawing.Point(251, 68);
             this.cmbBuyer.Name = "cmbBuyer";
             this.cmbBuyer.Size = new System.Drawing.Size(259, 23);
             this.cmbBuyer.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
@@ -619,7 +637,7 @@
             this.groupPanel4.DisabledBackColor = System.Drawing.Color.Empty;
             this.groupPanel4.Location = new System.Drawing.Point(3, 170);
             this.groupPanel4.Name = "groupPanel4";
-            this.groupPanel4.Size = new System.Drawing.Size(604, 381);
+            this.groupPanel4.Size = new System.Drawing.Size(649, 381);
             // 
             // 
             // 
@@ -659,7 +677,7 @@
             // 
             this.labelX31.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.labelX31.ForeColor = System.Drawing.Color.Black;
-            this.labelX31.Location = new System.Drawing.Point(119, 127);
+            this.labelX31.Location = new System.Drawing.Point(132, 124);
             this.labelX31.Name = "labelX31";
             this.labelX31.Size = new System.Drawing.Size(56, 23);
             this.labelX31.TabIndex = 57;
@@ -678,12 +696,12 @@
             this.intLoss.FocusHighlightColor = System.Drawing.Color.LightGray;
             this.intLoss.FocusHighlightEnabled = true;
             this.intLoss.ForeColor = System.Drawing.Color.Black;
-            this.intLoss.Location = new System.Drawing.Point(181, 127);
+            this.intLoss.Location = new System.Drawing.Point(194, 124);
             this.intLoss.MaxValue = 1000000000;
             this.intLoss.MinValue = 0;
             this.intLoss.Name = "intLoss";
             this.intLoss.Size = new System.Drawing.Size(102, 23);
-            this.intLoss.TabIndex = 55;
+            this.intLoss.TabIndex = 6;
             // 
             // labelX32
             // 
@@ -693,7 +711,7 @@
             // 
             this.labelX32.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.labelX32.ForeColor = System.Drawing.Color.Black;
-            this.labelX32.Location = new System.Drawing.Point(289, 127);
+            this.labelX32.Location = new System.Drawing.Point(302, 124);
             this.labelX32.Name = "labelX32";
             this.labelX32.Size = new System.Drawing.Size(42, 23);
             this.labelX32.TabIndex = 56;
@@ -708,7 +726,7 @@
             this.labelX30.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.labelX30.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
             this.labelX30.ForeColor = System.Drawing.Color.Black;
-            this.labelX30.Location = new System.Drawing.Point(5, 0);
+            this.labelX30.Location = new System.Drawing.Point(10, -3);
             this.labelX30.Name = "labelX30";
             this.labelX30.Size = new System.Drawing.Size(172, 35);
             this.labelX30.TabIndex = 54;
@@ -724,7 +742,7 @@
             // 
             this.labelX29.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.labelX29.ForeColor = System.Drawing.Color.Black;
-            this.labelX29.Location = new System.Drawing.Point(336, 127);
+            this.labelX29.Location = new System.Drawing.Point(378, 124);
             this.labelX29.Name = "labelX29";
             this.labelX29.Size = new System.Drawing.Size(46, 23);
             this.labelX29.TabIndex = 53;
@@ -738,7 +756,7 @@
             // 
             this.labelX28.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.labelX28.ForeColor = System.Drawing.Color.Black;
-            this.labelX28.Location = new System.Drawing.Point(119, 98);
+            this.labelX28.Location = new System.Drawing.Point(132, 95);
             this.labelX28.Name = "labelX28";
             this.labelX28.Size = new System.Drawing.Size(56, 23);
             this.labelX28.TabIndex = 52;
@@ -757,7 +775,7 @@
             this.intPrice.FocusHighlightColor = System.Drawing.Color.LightGray;
             this.intPrice.FocusHighlightEnabled = true;
             this.intPrice.ForeColor = System.Drawing.Color.Black;
-            this.intPrice.Location = new System.Drawing.Point(388, 127);
+            this.intPrice.Location = new System.Drawing.Point(430, 124);
             this.intPrice.MaxValue = 1000000000;
             this.intPrice.MinValue = 0;
             this.intPrice.Name = "intPrice";
@@ -772,7 +790,7 @@
             // 
             this.labelX6.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.labelX6.ForeColor = System.Drawing.Color.Black;
-            this.labelX6.Location = new System.Drawing.Point(491, 127);
+            this.labelX6.Location = new System.Drawing.Point(533, 124);
             this.labelX6.Name = "labelX6";
             this.labelX6.Size = new System.Drawing.Size(98, 23);
             this.labelX6.TabIndex = 51;
@@ -787,7 +805,7 @@
             this.cmbPacking.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
             this.cmbPacking.FormattingEnabled = true;
             this.cmbPacking.ItemHeight = 17;
-            this.cmbPacking.Location = new System.Drawing.Point(228, 68);
+            this.cmbPacking.Location = new System.Drawing.Point(270, 65);
             this.cmbPacking.Name = "cmbPacking";
             this.cmbPacking.Size = new System.Drawing.Size(259, 23);
             this.cmbPacking.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
@@ -807,7 +825,7 @@
             this.cmbSeller.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
             this.cmbSeller.FormattingEnabled = true;
             this.cmbSeller.ItemHeight = 17;
-            this.cmbSeller.Location = new System.Drawing.Point(228, 36);
+            this.cmbSeller.Location = new System.Drawing.Point(270, 33);
             this.cmbSeller.Name = "cmbSeller";
             this.cmbSeller.Size = new System.Drawing.Size(259, 23);
             this.cmbSeller.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
@@ -827,7 +845,7 @@
             this.cmbProduct.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
             this.cmbProduct.FormattingEnabled = true;
             this.cmbProduct.ItemHeight = 17;
-            this.cmbProduct.Location = new System.Drawing.Point(228, 6);
+            this.cmbProduct.Location = new System.Drawing.Point(270, 3);
             this.cmbProduct.Name = "cmbProduct";
             this.cmbProduct.Size = new System.Drawing.Size(259, 23);
             this.cmbProduct.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
@@ -851,7 +869,7 @@
             this.intWeight.FocusHighlightColor = System.Drawing.Color.LightGray;
             this.intWeight.FocusHighlightEnabled = true;
             this.intWeight.ForeColor = System.Drawing.Color.Black;
-            this.intWeight.Location = new System.Drawing.Point(181, 98);
+            this.intWeight.Location = new System.Drawing.Point(194, 95);
             this.intWeight.MaxValue = 1000000000;
             this.intWeight.MinValue = 0;
             this.intWeight.Name = "intWeight";
@@ -867,7 +885,7 @@
             this.lblTotalPrice.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.lblTotalPrice.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
             this.lblTotalPrice.ForeColor = System.Drawing.Color.Black;
-            this.lblTotalPrice.Location = new System.Drawing.Point(5, 41);
+            this.lblTotalPrice.Location = new System.Drawing.Point(10, 38);
             this.lblTotalPrice.Name = "lblTotalPrice";
             this.lblTotalPrice.Size = new System.Drawing.Size(172, 35);
             this.lblTotalPrice.TabIndex = 49;
@@ -888,7 +906,7 @@
             this.intCount.FocusHighlightColor = System.Drawing.Color.LightGray;
             this.intCount.FocusHighlightEnabled = true;
             this.intCount.ForeColor = System.Drawing.Color.Black;
-            this.intCount.Location = new System.Drawing.Point(388, 98);
+            this.intCount.Location = new System.Drawing.Point(430, 95);
             this.intCount.MaxValue = 1000000;
             this.intCount.MinValue = 0;
             this.intCount.Name = "intCount";
@@ -904,7 +922,7 @@
             // 
             this.labelX7.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.labelX7.ForeColor = System.Drawing.Color.Black;
-            this.labelX7.Location = new System.Drawing.Point(491, 98);
+            this.labelX7.Location = new System.Drawing.Point(533, 95);
             this.labelX7.Name = "labelX7";
             this.labelX7.Size = new System.Drawing.Size(98, 23);
             this.labelX7.TabIndex = 45;
@@ -918,7 +936,7 @@
             // 
             this.labelX8.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.labelX8.ForeColor = System.Drawing.Color.Black;
-            this.labelX8.Location = new System.Drawing.Point(491, 68);
+            this.labelX8.Location = new System.Drawing.Point(533, 65);
             this.labelX8.Name = "labelX8";
             this.labelX8.Size = new System.Drawing.Size(98, 23);
             this.labelX8.TabIndex = 43;
@@ -932,7 +950,7 @@
             // 
             this.labelX5.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.labelX5.ForeColor = System.Drawing.Color.Black;
-            this.labelX5.Location = new System.Drawing.Point(289, 98);
+            this.labelX5.Location = new System.Drawing.Point(302, 95);
             this.labelX5.Name = "labelX5";
             this.labelX5.Size = new System.Drawing.Size(42, 23);
             this.labelX5.TabIndex = 41;
@@ -946,7 +964,7 @@
             // 
             this.labelX9.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.labelX9.ForeColor = System.Drawing.Color.Black;
-            this.labelX9.Location = new System.Drawing.Point(491, 36);
+            this.labelX9.Location = new System.Drawing.Point(533, 33);
             this.labelX9.Name = "labelX9";
             this.labelX9.Size = new System.Drawing.Size(98, 23);
             this.labelX9.TabIndex = 39;
@@ -959,12 +977,12 @@
             this.btnAdd.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.btnAdd.FocusCuesEnabled = false;
             this.btnAdd.Image = ((System.Drawing.Image)(resources.GetObject("btnAdd.Image")));
-            this.btnAdd.Location = new System.Drawing.Point(3, 103);
+            this.btnAdd.Location = new System.Drawing.Point(8, 100);
             this.btnAdd.Name = "btnAdd";
             this.btnAdd.Shape = new DevComponents.DotNetBar.RoundRectangleShapeDescriptor(5);
             this.btnAdd.Size = new System.Drawing.Size(100, 50);
             this.btnAdd.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.btnAdd.TabIndex = 6;
+            this.btnAdd.TabIndex = 7;
             this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
             // 
             // labelX4
@@ -975,7 +993,7 @@
             // 
             this.labelX4.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.labelX4.ForeColor = System.Drawing.Color.Black;
-            this.labelX4.Location = new System.Drawing.Point(491, 6);
+            this.labelX4.Location = new System.Drawing.Point(533, 3);
             this.labelX4.Name = "labelX4";
             this.labelX4.Size = new System.Drawing.Size(98, 23);
             this.labelX4.TabIndex = 37;
@@ -988,67 +1006,66 @@
             this.btnDelete.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.btnDelete.FocusCuesEnabled = false;
             this.btnDelete.Image = ((System.Drawing.Image)(resources.GetObject("btnDelete.Image")));
-            this.btnDelete.Location = new System.Drawing.Point(5, 308);
+            this.btnDelete.Location = new System.Drawing.Point(10, 320);
             this.btnDelete.Name = "btnDelete";
             this.btnDelete.Shape = new DevComponents.DotNetBar.RoundRectangleShapeDescriptor();
             this.btnDelete.Size = new System.Drawing.Size(30, 30);
             this.btnDelete.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.btnDelete.TabIndex = 8;
+            this.btnDelete.TabIndex = 9;
             this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
             // 
             // dgvFactor
             // 
             this.dgvFactor.AllowUserToAddRows = false;
             this.dgvFactor.AllowUserToDeleteRows = false;
-            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle7.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle7.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle7.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvFactor.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle7;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvFactor.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dgvFactor.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvFactor.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.Column1,
+            this.clmProductName,
             this.clmPrice,
             this.clmQty,
             this.clmWeight,
             this.clmLoss,
             this.clmSellerName,
             this.clmPackingName,
-            this.clmProduct,
-            this.clmSeller,
-            this.clmPacking});
-            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle8.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle8.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle8.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvFactor.DefaultCellStyle = dataGridViewCellStyle8;
+            this.clmProductId,
+            this.clmSellerId,
+            this.clmPackingId});
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvFactor.DefaultCellStyle = dataGridViewCellStyle2;
             this.dgvFactor.EnableHeadersVisualStyles = false;
             this.dgvFactor.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(215)))), ((int)(((byte)(229)))));
-            this.dgvFactor.Location = new System.Drawing.Point(3, 163);
+            this.dgvFactor.Location = new System.Drawing.Point(6, 159);
             this.dgvFactor.Name = "dgvFactor";
-            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle9.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle9.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle9.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle9.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle9.SelectionForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle9.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvFactor.RowHeadersDefaultCellStyle = dataGridViewCellStyle9;
-            this.dgvFactor.Size = new System.Drawing.Size(592, 195);
-            this.dgvFactor.TabIndex = 7;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvFactor.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            this.dgvFactor.Size = new System.Drawing.Size(634, 195);
+            this.dgvFactor.TabIndex = 8;
             // 
-            // Column1
+            // clmProductName
             // 
-            this.Column1.HeaderText = "نام محصول";
-            this.Column1.Name = "Column1";
-            this.Column1.ReadOnly = true;
-            this.Column1.Width = 130;
+            this.clmProductName.HeaderText = "نام محصول";
+            this.clmProductName.Name = "clmProductName";
+            this.clmProductName.Width = 130;
             // 
             // clmPrice
             // 
@@ -1085,30 +1102,30 @@
             this.clmPackingName.HeaderText = "بسته بندی";
             this.clmPackingName.Name = "clmPackingName";
             // 
-            // clmProduct
+            // clmProductId
             // 
-            this.clmProduct.HeaderText = "کد محصول";
-            this.clmProduct.Name = "clmProduct";
-            this.clmProduct.Visible = false;
+            this.clmProductId.HeaderText = "کد محصول";
+            this.clmProductId.Name = "clmProductId";
+            this.clmProductId.Visible = false;
             // 
-            // clmSeller
+            // clmSellerId
             // 
-            this.clmSeller.HeaderText = "کد فروشنده";
-            this.clmSeller.Name = "clmSeller";
-            this.clmSeller.Visible = false;
+            this.clmSellerId.HeaderText = "کد فروشنده";
+            this.clmSellerId.Name = "clmSellerId";
+            this.clmSellerId.Visible = false;
             // 
-            // clmPacking
+            // clmPackingId
             // 
-            this.clmPacking.HeaderText = "کد بسته بندی";
-            this.clmPacking.Name = "clmPacking";
-            this.clmPacking.Visible = false;
+            this.clmPackingId.HeaderText = "کد بسته بندی";
+            this.clmPackingId.Name = "clmPackingId";
+            this.clmPackingId.Visible = false;
             // 
             // pictureBox1
             // 
             this.pictureBox1.BackColor = System.Drawing.Color.Transparent;
             this.pictureBox1.ForeColor = System.Drawing.Color.Black;
             this.pictureBox1.Image = global::Tarla.Properties.Resources.shopping_bag_icon;
-            this.pictureBox1.Location = new System.Drawing.Point(3, 3);
+            this.pictureBox1.Location = new System.Drawing.Point(12, 3);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(58, 59);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -1123,7 +1140,7 @@
             // 
             this.labelX2.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.labelX2.ForeColor = System.Drawing.Color.Black;
-            this.labelX2.Location = new System.Drawing.Point(489, 39);
+            this.labelX2.Location = new System.Drawing.Point(532, 39);
             this.labelX2.Name = "labelX2";
             this.labelX2.Size = new System.Drawing.Size(117, 23);
             this.labelX2.TabIndex = 11;
@@ -1141,7 +1158,7 @@
             this.txtDate.FocusHighlightColor = System.Drawing.Color.LightGray;
             this.txtDate.FocusHighlightEnabled = true;
             this.txtDate.ForeColor = System.Drawing.Color.Black;
-            this.txtDate.Location = new System.Drawing.Point(276, 14);
+            this.txtDate.Location = new System.Drawing.Point(319, 14);
             this.txtDate.Mask = "####/##/##";
             this.txtDate.Name = "txtDate";
             this.txtDate.Size = new System.Drawing.Size(191, 21);
@@ -1157,7 +1174,7 @@
             // 
             this.labelX3.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.labelX3.ForeColor = System.Drawing.Color.Black;
-            this.labelX3.Location = new System.Drawing.Point(489, 68);
+            this.labelX3.Location = new System.Drawing.Point(532, 68);
             this.labelX3.Name = "labelX3";
             this.labelX3.Size = new System.Drawing.Size(117, 23);
             this.labelX3.TabIndex = 1;
@@ -1171,7 +1188,7 @@
             // 
             this.labelX1.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.labelX1.ForeColor = System.Drawing.Color.Black;
-            this.labelX1.Location = new System.Drawing.Point(489, 12);
+            this.labelX1.Location = new System.Drawing.Point(532, 12);
             this.labelX1.Name = "labelX1";
             this.labelX1.Size = new System.Drawing.Size(117, 23);
             this.labelX1.TabIndex = 1;
@@ -1190,7 +1207,7 @@
             this.superTabControlPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.superTabControlPanel2.Location = new System.Drawing.Point(0, 28);
             this.superTabControlPanel2.Name = "superTabControlPanel2";
-            this.superTabControlPanel2.Size = new System.Drawing.Size(629, 584);
+            this.superTabControlPanel2.Size = new System.Drawing.Size(671, 584);
             this.superTabControlPanel2.TabIndex = 0;
             this.superTabControlPanel2.TabItem = this.superTabItem2;
             // 
@@ -1239,7 +1256,7 @@
             this.groupPanel5.DisabledBackColor = System.Drawing.Color.Empty;
             this.groupPanel5.Location = new System.Drawing.Point(6, 13);
             this.groupPanel5.Name = "groupPanel5";
-            this.groupPanel5.Size = new System.Drawing.Size(618, 568);
+            this.groupPanel5.Size = new System.Drawing.Size(658, 568);
             // 
             // 
             // 
@@ -1280,7 +1297,7 @@
             this.txtNetPrice.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.txtNetPrice.DisabledBackColor = System.Drawing.Color.White;
             this.txtNetPrice.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
-            this.txtNetPrice.Location = new System.Drawing.Point(280, 426);
+            this.txtNetPrice.Location = new System.Drawing.Point(320, 425);
             this.txtNetPrice.Name = "txtNetPrice";
             this.txtNetPrice.PreventEnterBeep = true;
             this.txtNetPrice.ReadOnly = true;
@@ -1296,7 +1313,7 @@
             // 
             this.labelX27.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.labelX27.ForeColor = System.Drawing.Color.Black;
-            this.labelX27.Location = new System.Drawing.Point(462, 426);
+            this.labelX27.Location = new System.Drawing.Point(502, 425);
             this.labelX27.Name = "labelX27";
             this.labelX27.Size = new System.Drawing.Size(144, 23);
             this.labelX27.TabIndex = 45;
@@ -1310,7 +1327,7 @@
             this.txtTotalWeight.Border.Class = "TextBoxBorder";
             this.txtTotalWeight.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.txtTotalWeight.DisabledBackColor = System.Drawing.Color.White;
-            this.txtTotalWeight.Location = new System.Drawing.Point(280, 47);
+            this.txtTotalWeight.Location = new System.Drawing.Point(320, 46);
             this.txtTotalWeight.Name = "txtTotalWeight";
             this.txtTotalWeight.PreventEnterBeep = true;
             this.txtTotalWeight.ReadOnly = true;
@@ -1325,7 +1342,7 @@
             this.txtDesc.Border.Class = "TextBoxBorder";
             this.txtDesc.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.txtDesc.DisabledBackColor = System.Drawing.Color.White;
-            this.txtDesc.Location = new System.Drawing.Point(3, 282);
+            this.txtDesc.Location = new System.Drawing.Point(14, 276);
             this.txtDesc.Multiline = true;
             this.txtDesc.Name = "txtDesc";
             this.txtDesc.PreventEnterBeep = true;
@@ -1342,7 +1359,7 @@
             this.txtTotalCost.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.txtTotalCost.DisabledBackColor = System.Drawing.Color.White;
             this.txtTotalCost.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
-            this.txtTotalCost.Location = new System.Drawing.Point(280, 397);
+            this.txtTotalCost.Location = new System.Drawing.Point(320, 396);
             this.txtTotalCost.Name = "txtTotalCost";
             this.txtTotalCost.PreventEnterBeep = true;
             this.txtTotalCost.ReadOnly = true;
@@ -1358,7 +1375,7 @@
             // 
             this.labelX26.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.labelX26.ForeColor = System.Drawing.Color.Black;
-            this.labelX26.Location = new System.Drawing.Point(462, 397);
+            this.labelX26.Location = new System.Drawing.Point(502, 396);
             this.labelX26.Name = "labelX26";
             this.labelX26.Size = new System.Drawing.Size(144, 23);
             this.labelX26.TabIndex = 43;
@@ -1372,7 +1389,7 @@
             this.txtDockWeightNote.Border.Class = "TextBoxBorder";
             this.txtDockWeightNote.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.txtDockWeightNote.DisabledBackColor = System.Drawing.Color.White;
-            this.txtDockWeightNote.Location = new System.Drawing.Point(280, 222);
+            this.txtDockWeightNote.Location = new System.Drawing.Point(320, 221);
             this.txtDockWeightNote.MaxLength = 30;
             this.txtDockWeightNote.Name = "txtDockWeightNote";
             this.txtDockWeightNote.PreventEnterBeep = true;
@@ -1387,7 +1404,7 @@
             this.txtWeightNote.Border.Class = "TextBoxBorder";
             this.txtWeightNote.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.txtWeightNote.DisabledBackColor = System.Drawing.Color.White;
-            this.txtWeightNote.Location = new System.Drawing.Point(280, 193);
+            this.txtWeightNote.Location = new System.Drawing.Point(320, 192);
             this.txtWeightNote.MaxLength = 30;
             this.txtWeightNote.Name = "txtWeightNote";
             this.txtWeightNote.PreventEnterBeep = true;
@@ -1404,7 +1421,7 @@
             this.intWorkersCount.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.intWorkersCount.ButtonFreeText.Shortcut = DevComponents.DotNetBar.eShortcut.F2;
             this.intWorkersCount.ForeColor = System.Drawing.Color.Black;
-            this.intWorkersCount.Location = new System.Drawing.Point(280, 77);
+            this.intWorkersCount.Location = new System.Drawing.Point(320, 76);
             this.intWorkersCount.MinValue = 0;
             this.intWorkersCount.Name = "intWorkersCount";
             this.intWorkersCount.Size = new System.Drawing.Size(176, 23);
@@ -1419,7 +1436,7 @@
             // 
             this.labelX25.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.labelX25.ForeColor = System.Drawing.Color.Black;
-            this.labelX25.Location = new System.Drawing.Point(462, 77);
+            this.labelX25.Location = new System.Drawing.Point(502, 76);
             this.labelX25.Name = "labelX25";
             this.labelX25.Size = new System.Drawing.Size(144, 23);
             this.labelX25.TabIndex = 39;
@@ -1433,7 +1450,7 @@
             // 
             this.labelX24.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.labelX24.ForeColor = System.Drawing.Color.Black;
-            this.labelX24.Location = new System.Drawing.Point(462, 222);
+            this.labelX24.Location = new System.Drawing.Point(502, 221);
             this.labelX24.Name = "labelX24";
             this.labelX24.Size = new System.Drawing.Size(144, 23);
             this.labelX24.TabIndex = 37;
@@ -1447,7 +1464,7 @@
             // 
             this.labelX18.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.labelX18.ForeColor = System.Drawing.Color.Black;
-            this.labelX18.Location = new System.Drawing.Point(462, 193);
+            this.labelX18.Location = new System.Drawing.Point(502, 192);
             this.labelX18.Name = "labelX18";
             this.labelX18.Size = new System.Drawing.Size(144, 23);
             this.labelX18.TabIndex = 35;
@@ -1462,7 +1479,7 @@
             this.txtProfit.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.txtProfit.DisabledBackColor = System.Drawing.Color.White;
             this.txtProfit.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
-            this.txtProfit.Location = new System.Drawing.Point(280, 339);
+            this.txtProfit.Location = new System.Drawing.Point(320, 338);
             this.txtProfit.Name = "txtProfit";
             this.txtProfit.PreventEnterBeep = true;
             this.txtProfit.ReadOnly = true;
@@ -1479,7 +1496,7 @@
             this.txtLoss.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.txtLoss.DisabledBackColor = System.Drawing.Color.White;
             this.txtLoss.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
-            this.txtLoss.Location = new System.Drawing.Point(280, 368);
+            this.txtLoss.Location = new System.Drawing.Point(320, 367);
             this.txtLoss.Name = "txtLoss";
             this.txtLoss.PreventEnterBeep = true;
             this.txtLoss.ReadOnly = true;
@@ -1496,7 +1513,7 @@
             this.labelX22.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.labelX22.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
             this.labelX22.ForeColor = System.Drawing.Color.Black;
-            this.labelX22.Location = new System.Drawing.Point(147, 253);
+            this.labelX22.Location = new System.Drawing.Point(158, 247);
             this.labelX22.Name = "labelX22";
             this.labelX22.Size = new System.Drawing.Size(113, 23);
             this.labelX22.TabIndex = 33;
@@ -1511,7 +1528,7 @@
             // 
             this.labelX21.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.labelX21.ForeColor = System.Drawing.Color.Black;
-            this.labelX21.Location = new System.Drawing.Point(462, 368);
+            this.labelX21.Location = new System.Drawing.Point(502, 367);
             this.labelX21.Name = "labelX21";
             this.labelX21.Size = new System.Drawing.Size(144, 23);
             this.labelX21.TabIndex = 32;
@@ -1528,7 +1545,7 @@
             this.intDiscount.ButtonFreeText.Shortcut = DevComponents.DotNetBar.eShortcut.F2;
             this.intDiscount.DisplayFormat = "N0";
             this.intDiscount.ForeColor = System.Drawing.Color.Black;
-            this.intDiscount.Location = new System.Drawing.Point(280, 310);
+            this.intDiscount.Location = new System.Drawing.Point(320, 309);
             this.intDiscount.MinValue = 0;
             this.intDiscount.Name = "intDiscount";
             this.intDiscount.Size = new System.Drawing.Size(176, 23);
@@ -1543,7 +1560,7 @@
             // 
             this.labelX20.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.labelX20.ForeColor = System.Drawing.Color.Black;
-            this.labelX20.Location = new System.Drawing.Point(462, 339);
+            this.labelX20.Location = new System.Drawing.Point(502, 338);
             this.labelX20.Name = "labelX20";
             this.labelX20.Size = new System.Drawing.Size(144, 23);
             this.labelX20.TabIndex = 30;
@@ -1560,7 +1577,7 @@
             this.intNetSell.ButtonFreeText.Shortcut = DevComponents.DotNetBar.eShortcut.F2;
             this.intNetSell.DisplayFormat = "N0";
             this.intNetSell.ForeColor = System.Drawing.Color.Black;
-            this.intNetSell.Location = new System.Drawing.Point(280, 281);
+            this.intNetSell.Location = new System.Drawing.Point(320, 280);
             this.intNetSell.MinValue = 0;
             this.intNetSell.Name = "intNetSell";
             this.intNetSell.Size = new System.Drawing.Size(176, 23);
@@ -1578,7 +1595,7 @@
             this.intPaid.ButtonFreeText.Shortcut = DevComponents.DotNetBar.eShortcut.F2;
             this.intPaid.DisplayFormat = "N0";
             this.intPaid.ForeColor = System.Drawing.Color.Black;
-            this.intPaid.Location = new System.Drawing.Point(280, 252);
+            this.intPaid.Location = new System.Drawing.Point(320, 251);
             this.intPaid.MinValue = 0;
             this.intPaid.Name = "intPaid";
             this.intPaid.Size = new System.Drawing.Size(176, 23);
@@ -1595,7 +1612,7 @@
             this.intMiscCost.ButtonFreeText.Shortcut = DevComponents.DotNetBar.eShortcut.F2;
             this.intMiscCost.DisplayFormat = "N0";
             this.intMiscCost.ForeColor = System.Drawing.Color.Black;
-            this.intMiscCost.Location = new System.Drawing.Point(280, 164);
+            this.intMiscCost.Location = new System.Drawing.Point(320, 163);
             this.intMiscCost.MinValue = 0;
             this.intMiscCost.Name = "intMiscCost";
             this.intMiscCost.Size = new System.Drawing.Size(176, 23);
@@ -1613,7 +1630,7 @@
             this.intTruckRental.ButtonFreeText.Shortcut = DevComponents.DotNetBar.eShortcut.F2;
             this.intTruckRental.DisplayFormat = "N0";
             this.intTruckRental.ForeColor = System.Drawing.Color.Black;
-            this.intTruckRental.Location = new System.Drawing.Point(280, 135);
+            this.intTruckRental.Location = new System.Drawing.Point(320, 134);
             this.intTruckRental.MinValue = 0;
             this.intTruckRental.Name = "intTruckRental";
             this.intTruckRental.Size = new System.Drawing.Size(176, 23);
@@ -1631,7 +1648,7 @@
             this.intWorkerCost.ButtonFreeText.Shortcut = DevComponents.DotNetBar.eShortcut.F2;
             this.intWorkerCost.DisplayFormat = "N0";
             this.intWorkerCost.ForeColor = System.Drawing.Color.Black;
-            this.intWorkerCost.Location = new System.Drawing.Point(280, 106);
+            this.intWorkerCost.Location = new System.Drawing.Point(320, 105);
             this.intWorkerCost.MinValue = 0;
             this.intWorkerCost.Name = "intWorkerCost";
             this.intWorkerCost.Size = new System.Drawing.Size(176, 23);
@@ -1646,7 +1663,7 @@
             this.txtTotalProducts.Border.Class = "TextBoxBorder";
             this.txtTotalProducts.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.txtTotalProducts.DisabledBackColor = System.Drawing.Color.White;
-            this.txtTotalProducts.Location = new System.Drawing.Point(280, 19);
+            this.txtTotalProducts.Location = new System.Drawing.Point(320, 18);
             this.txtTotalProducts.Name = "txtTotalProducts";
             this.txtTotalProducts.PreventEnterBeep = true;
             this.txtTotalProducts.ReadOnly = true;
@@ -1655,7 +1672,7 @@
             // 
             // pictureBox3
             // 
-            this.pictureBox3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(239)))), ((int)(((byte)(239)))), ((int)(((byte)(242)))));
+            this.pictureBox3.BackColor = System.Drawing.Color.Transparent;
             this.pictureBox3.ForeColor = System.Drawing.Color.Black;
             this.pictureBox3.Image = global::Tarla.Properties.Resources.Money_Increase_icon;
             this.pictureBox3.Location = new System.Drawing.Point(14, 3);
@@ -1673,7 +1690,7 @@
             // 
             this.labelX17.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.labelX17.ForeColor = System.Drawing.Color.Black;
-            this.labelX17.Location = new System.Drawing.Point(462, 281);
+            this.labelX17.Location = new System.Drawing.Point(502, 280);
             this.labelX17.Name = "labelX17";
             this.labelX17.Size = new System.Drawing.Size(144, 23);
             this.labelX17.TabIndex = 15;
@@ -1687,7 +1704,7 @@
             // 
             this.labelX16.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.labelX16.ForeColor = System.Drawing.Color.Black;
-            this.labelX16.Location = new System.Drawing.Point(462, 252);
+            this.labelX16.Location = new System.Drawing.Point(502, 251);
             this.labelX16.Name = "labelX16";
             this.labelX16.Size = new System.Drawing.Size(144, 23);
             this.labelX16.TabIndex = 13;
@@ -1701,7 +1718,7 @@
             // 
             this.labelX15.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.labelX15.ForeColor = System.Drawing.Color.Black;
-            this.labelX15.Location = new System.Drawing.Point(462, 164);
+            this.labelX15.Location = new System.Drawing.Point(502, 163);
             this.labelX15.Name = "labelX15";
             this.labelX15.Size = new System.Drawing.Size(144, 23);
             this.labelX15.TabIndex = 11;
@@ -1715,7 +1732,7 @@
             // 
             this.labelX13.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.labelX13.ForeColor = System.Drawing.Color.Black;
-            this.labelX13.Location = new System.Drawing.Point(462, 310);
+            this.labelX13.Location = new System.Drawing.Point(502, 309);
             this.labelX13.Name = "labelX13";
             this.labelX13.Size = new System.Drawing.Size(144, 23);
             this.labelX13.TabIndex = 5;
@@ -1729,7 +1746,7 @@
             // 
             this.labelX12.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.labelX12.ForeColor = System.Drawing.Color.Black;
-            this.labelX12.Location = new System.Drawing.Point(462, 135);
+            this.labelX12.Location = new System.Drawing.Point(502, 134);
             this.labelX12.Name = "labelX12";
             this.labelX12.Size = new System.Drawing.Size(144, 23);
             this.labelX12.TabIndex = 5;
@@ -1743,7 +1760,7 @@
             // 
             this.labelX11.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.labelX11.ForeColor = System.Drawing.Color.Black;
-            this.labelX11.Location = new System.Drawing.Point(462, 106);
+            this.labelX11.Location = new System.Drawing.Point(502, 105);
             this.labelX11.Name = "labelX11";
             this.labelX11.Size = new System.Drawing.Size(144, 23);
             this.labelX11.TabIndex = 5;
@@ -1757,7 +1774,7 @@
             // 
             this.labelX10.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.labelX10.ForeColor = System.Drawing.Color.Black;
-            this.labelX10.Location = new System.Drawing.Point(462, 47);
+            this.labelX10.Location = new System.Drawing.Point(502, 46);
             this.labelX10.Name = "labelX10";
             this.labelX10.Size = new System.Drawing.Size(144, 23);
             this.labelX10.TabIndex = 5;
@@ -1772,7 +1789,7 @@
             this.labelX14.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.labelX14.Font = new System.Drawing.Font("Tahoma", 9.75F);
             this.labelX14.ForeColor = System.Drawing.Color.Black;
-            this.labelX14.Location = new System.Drawing.Point(462, 18);
+            this.labelX14.Location = new System.Drawing.Point(502, 17);
             this.labelX14.Name = "labelX14";
             this.labelX14.Size = new System.Drawing.Size(144, 23);
             this.labelX14.TabIndex = 5;
@@ -1786,7 +1803,7 @@
             this.btnBook.Enabled = false;
             this.btnBook.FocusCuesEnabled = false;
             this.btnBook.Image = global::Tarla.Properties.Resources.wallet2;
-            this.btnBook.Location = new System.Drawing.Point(129, 503);
+            this.btnBook.Location = new System.Drawing.Point(140, 507);
             this.btnBook.Name = "btnBook";
             this.btnBook.Shape = new DevComponents.DotNetBar.RoundRectangleShapeDescriptor(10, 4, 4, 10);
             this.btnBook.Size = new System.Drawing.Size(120, 30);
@@ -1804,7 +1821,7 @@
             this.btnAddNetSell.Enabled = false;
             this.btnAddNetSell.FocusCuesEnabled = false;
             this.btnAddNetSell.Image = global::Tarla.Properties.Resources.Pencil_icon;
-            this.btnAddNetSell.Location = new System.Drawing.Point(3, 503);
+            this.btnAddNetSell.Location = new System.Drawing.Point(14, 507);
             this.btnAddNetSell.Name = "btnAddNetSell";
             this.btnAddNetSell.Shape = new DevComponents.DotNetBar.RoundRectangleShapeDescriptor(10, 4, 4, 10);
             this.btnAddNetSell.Size = new System.Drawing.Size(120, 30);
@@ -1821,7 +1838,7 @@
             this.btnFactor.Enabled = false;
             this.btnFactor.FocusCuesEnabled = false;
             this.btnFactor.Image = ((System.Drawing.Image)(resources.GetObject("btnFactor.Image")));
-            this.btnFactor.Location = new System.Drawing.Point(3, 447);
+            this.btnFactor.Location = new System.Drawing.Point(14, 451);
             this.btnFactor.Name = "btnFactor";
             this.btnFactor.Shape = new DevComponents.DotNetBar.RoundRectangleShapeDescriptor(10, 4, 4, 10);
             this.btnFactor.Size = new System.Drawing.Size(120, 50);
@@ -1836,7 +1853,7 @@
             this.btnSave.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
             this.btnSave.FocusCuesEnabled = false;
             this.btnSave.Image = ((System.Drawing.Image)(resources.GetObject("btnSave.Image")));
-            this.btnSave.Location = new System.Drawing.Point(129, 448);
+            this.btnSave.Location = new System.Drawing.Point(140, 452);
             this.btnSave.Name = "btnSave";
             this.btnSave.Shape = new DevComponents.DotNetBar.RoundRectangleShapeDescriptor(10, 4, 4, 10);
             this.btnSave.Size = new System.Drawing.Size(120, 50);
@@ -1857,30 +1874,12 @@
             this.errorProvider1.ContainerControl = this;
             this.errorProvider1.RightToLeft = true;
             // 
-            // mnuRefresh
-            // 
-            this.mnuRefresh.Name = "mnuRefresh";
-            this.mnuRefresh.Symbol = "";
-            this.mnuRefresh.Text = "نوسازی";
-            // 
-            // mnuProduct
-            // 
-            this.mnuProduct.Name = "mnuProduct";
-            this.mnuProduct.Symbol = "";
-            this.mnuProduct.Text = "محصول";
-            // 
-            // mnuPacking
-            // 
-            this.mnuPacking.Name = "mnuPacking";
-            this.mnuPacking.Symbol = "";
-            this.mnuPacking.Text = "بسته";
-            // 
             // frmAddFactor
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.btnExit;
-            this.ClientSize = new System.Drawing.Size(639, 677);
+            this.ClientSize = new System.Drawing.Size(682, 677);
             this.Controls.Add(this.groupPanel2);
             this.Controls.Add(this.superTabControl1);
             this.DoubleBuffered = true;
@@ -2022,16 +2021,6 @@
         private DevComponents.DotNetBar.LabelX labelX31;
         private DevComponents.Editors.IntegerInput intLoss;
         private DevComponents.DotNetBar.LabelX labelX32;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn clmPrice;
-        private System.Windows.Forms.DataGridViewTextBoxColumn clmQty;
-        private System.Windows.Forms.DataGridViewTextBoxColumn clmWeight;
-        private System.Windows.Forms.DataGridViewTextBoxColumn clmLoss;
-        private System.Windows.Forms.DataGridViewTextBoxColumn clmSellerName;
-        private System.Windows.Forms.DataGridViewTextBoxColumn clmPackingName;
-        private System.Windows.Forms.DataGridViewTextBoxColumn clmProduct;
-        private System.Windows.Forms.DataGridViewTextBoxColumn clmSeller;
-        private System.Windows.Forms.DataGridViewTextBoxColumn clmPacking;
         private DevComponents.DotNetBar.LabelX lblCountry;
         private DevComponents.DotNetBar.RadialMenu radialMenu;
         private DevComponents.DotNetBar.RadialMenuItem mnuReset;
@@ -2044,5 +2033,15 @@
         private DevComponents.DotNetBar.RadialMenuItem mnuRefresh;
         private DevComponents.DotNetBar.RadialMenuItem mnuProduct;
         private DevComponents.DotNetBar.RadialMenuItem mnuPacking;
+        private System.Windows.Forms.DataGridViewTextBoxColumn clmProductName;
+        private System.Windows.Forms.DataGridViewTextBoxColumn clmPrice;
+        private System.Windows.Forms.DataGridViewTextBoxColumn clmQty;
+        private System.Windows.Forms.DataGridViewTextBoxColumn clmWeight;
+        private System.Windows.Forms.DataGridViewTextBoxColumn clmLoss;
+        private System.Windows.Forms.DataGridViewTextBoxColumn clmSellerName;
+        private System.Windows.Forms.DataGridViewTextBoxColumn clmPackingName;
+        private System.Windows.Forms.DataGridViewTextBoxColumn clmProductId;
+        private System.Windows.Forms.DataGridViewTextBoxColumn clmSellerId;
+        private System.Windows.Forms.DataGridViewTextBoxColumn clmPackingId;
     }
 }

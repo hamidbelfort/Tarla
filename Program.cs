@@ -30,7 +30,7 @@ namespace Tarla
                 {
                     Application.EnableVisualStyles();
                     Application.SetCompatibleTextRenderingDefault(false);
-                    Application.Run(new frmAddFactor());
+                    Application.Run(new frmMain());
                 }
                 else
                 {

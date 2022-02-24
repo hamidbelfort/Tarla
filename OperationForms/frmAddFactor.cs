@@ -49,6 +49,10 @@ namespace Tarla.OperationForms
                     errorProvider1.SetError(intPrice, "قیمت را وارد کنید");
                     intPrice.Focus();
                 }
+                else if(intLoss.Value==0)
+                {
+                    loss = 0;
+                }
                 else
                 {
                     if (dgvFactor.Rows.Count > 0)
@@ -56,10 +60,10 @@ namespace Tarla.OperationForms
                         int index = -1;
                         for (int i = 0; i < dgvFactor.Rows.Count; i++)
                         {
-                            int currentProduct = Convert.ToInt32(dgvFactor.Rows[i].Cells["clmProduct"].Value.ToString());
-                            int currentSellerId = Convert.ToInt32(dgvFactor.Rows[i].Cells["clmSeller"].Value.ToString());
+                            int currentProduct = Convert.ToInt32(dgvFactor.Rows[i].Cells["clmProductId"].Value.ToString());
+                            int currentSellerId = Convert.ToInt32(dgvFactor.Rows[i].Cells["clmSellerId"].Value.ToString());
                             if (currentProduct == Convert.ToInt32(cmbProduct.SelectedValue.ToString()) &&
-                                 currentSellerId == Convert.ToInt32(cmbProduct.SelectedValue.ToString()))
+                                 currentSellerId == Convert.ToInt32(cmbSeller.SelectedValue.ToString()))
                             {
                                 index = i;
                             }
@@ -69,20 +73,21 @@ namespace Tarla.OperationForms
                             dgvFactor.Rows[index].Cells["clmQty"].Value = intCount.Value;
                             dgvFactor.Rows[index].Cells["clmWeight"].Value = intWeight.Value;
                             dgvFactor.Rows[index].Cells["clmPrice"].Value = intPrice.Value;
-                            dgvFactor.Rows[index].Cells["clmSeller"].Value = cmbSeller.SelectedValue;
-                            dgvFactor.Rows[index].Cells["clmPacking"].Value = cmbPacking.SelectedValue;
+                            dgvFactor.Rows[index].Cells["clmSellerId"].Value = cmbSeller.SelectedValue;
+                            dgvFactor.Rows[index].Cells["clmPackingId"].Value = cmbPacking.SelectedValue;
+                            dgvFactor.Rows[index].Cells["clmLoss"].Value = intLoss.Value;
                             dgvFactor.Rows[index].Cells["clmPackingName"].Value = cmbPacking.Text;
                             dgvFactor.Rows[index].Cells["clmSellerName"].Value = cmbSeller.Text;
                         }
                         else
                         {
-                            dgvFactor.Rows.Add(cmbProduct.Text, intPrice.Text, intCount.Text, intWeight.Text, cmbSeller.Text, cmbPacking.Text, cmbProduct.SelectedValue, cmbSeller.SelectedValue, cmbPacking.SelectedValue);
+                            dgvFactor.Rows.Add(cmbProduct.Text, intPrice.Text, intCount.Text, intWeight.Text, intLoss.Text, cmbSeller.Text, cmbPacking.Text, cmbProduct.SelectedValue, cmbSeller.SelectedValue, cmbPacking.SelectedValue);
 
                         }
                     }
                     else
                     {
-                        dgvFactor.Rows.Add(cmbProduct.Text, intPrice.Text, intCount.Text, intWeight.Text, cmbSeller.Text, cmbPacking.Text, cmbProduct.SelectedValue, cmbSeller.SelectedValue, cmbPacking.SelectedValue);
+                        dgvFactor.Rows.Add(cmbProduct.Text, intPrice.Text, intCount.Text, intWeight.Text, intLoss.Text, cmbSeller.Text, cmbPacking.Text, cmbProduct.SelectedValue, cmbSeller.SelectedValue, cmbPacking.SelectedValue);
 
                     }
                     calculateTotalPrice();
@@ -159,6 +164,7 @@ namespace Tarla.OperationForms
             intCount.Value = 0;
             intWeight.Value = 0;
             intPrice.Value = 0;
+            intLoss.Value = 0;
             cmbProduct.Focus();
         }
 
@@ -241,9 +247,9 @@ namespace Tarla.OperationForms
                     db.GetMaxFactorId(ref lastFactorId);
                     for (int i = 0; i < dgvFactor.Rows.Count; i++)
                     {
-                        int _productId = Convert.ToInt32(dgvFactor.Rows[i].Cells["clmProduct"].Value.ToString());
-                        int _sellerId = Convert.ToInt32(dgvFactor.Rows[i].Cells["clmSeller"].Value.ToString());
-                        int _packId = Convert.ToInt32(dgvFactor.Rows[i].Cells["clmPacking"].Value.ToString());
+                        int _productId = Convert.ToInt32(dgvFactor.Rows[i].Cells["clmProductId"].Value.ToString());
+                        int _sellerId = Convert.ToInt32(dgvFactor.Rows[i].Cells["clmSellerId"].Value.ToString());
+                        int _packId = Convert.ToInt32(dgvFactor.Rows[i].Cells["clmPackingId"].Value.ToString());
                         int _weight = Convert.ToInt32(dgvFactor.Rows[i].Cells["clmWeight"].Value.ToString());
                         int _price = Convert.ToInt32(dgvFactor.Rows[i].Cells["clmPrice"].Value.ToString());
                         int _qty = Convert.ToInt32(dgvFactor.Rows[i].Cells["clmQty"].Value.ToString());
@@ -509,6 +515,9 @@ namespace Tarla.OperationForms
             intMiscCost.Value = 0;
             intNetSell.Value = 0;
             intTruckRental.Value = 0;
+            lblCountry.Text = "---";
+            lblLicensePlate.Text = "---";
+            lblTotalPrice.Text = "0";
             dgvFactor.Rows.Clear();
             txtDate.Text = pd.getShortDate();
             txtDate.Focus();
@@ -518,7 +527,7 @@ namespace Tarla.OperationForms
         {
             try
             {
-                int f_receiverId = (int)cmbDriver.SelectedValue;
+                int f_receiverId = (int)cmbDubaiReceiver.SelectedValue;
                 string f_country = string.Empty;
                 db.GetForiegnReceiverCountry(f_receiverId, ref f_country);
                 lblCountry.Text = string.Format("کشور : {0}",f_country);
