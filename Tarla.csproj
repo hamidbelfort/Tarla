@@ -380,6 +380,12 @@
     <Compile Include="OperationForms\frmShowFactor.Designer.cs">
       <DependentUpon>frmShowFactor.cs</DependentUpon>
     </Compile>
+    <Compile Include="OperationForms\frmStockInOut.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="OperationForms\frmStockInOut.Designer.cs">
+      <DependentUpon>frmStockInOut.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <None Include="DB_Backup\TarlaDB" />
@@ -524,6 +530,9 @@
     <EmbeddedResource Include="OperationForms\frmShowFactor.resx">
       <DependentUpon>frmShowFactor.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="OperationForms\frmStockInOut.resx">
+      <DependentUpon>frmStockInOut.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -563,6 +572,7 @@
     <None Include="Properties\DataSources\Role.datasource" />
     <None Include="Properties\DataSources\Seller.datasource" />
     <None Include="Properties\DataSources\Setting.datasource" />
+    <None Include="Properties\DataSources\Stock.datasource" />
     <None Include="Properties\DataSources\User.datasource" />
     <None Include="Properties\DataSources\ViewStock.datasource" />
     <None Include="Properties\Settings.settings">

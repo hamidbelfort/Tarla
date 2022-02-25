@@ -1398,6 +1398,14 @@ namespace Tarla
 			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), stockDate, factorId, depotId, itemId, stockIn, stockOut, stockDes);
 			return ((int)(result.ReturnValue));
 		}
+		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.GetItemInStock")]
+		public int GetItemInStock([global::System.Data.Linq.Mapping.ParameterAttribute(Name="DepotId", DbType="Int")] System.Nullable<int> depotId, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="ItemId", DbType="Int")] System.Nullable<int> itemId, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="Sum", DbType="Int")] ref System.Nullable<int> sum)
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), depotId, itemId, sum);
+			sum = ((System.Nullable<int>)(result.GetParameterValue(2)));
+			return ((int)(result.ReturnValue));
+		}
 	}
 	
 	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Roles")]
@@ -7384,8 +7392,6 @@ namespace Tarla
 		
 		private EntityRef<Item> _Item;
 		
-		private EntityRef<BuyFactor> _BuyFactor;
-		
 		private EntityRef<Depot> _Depot;
 		
     #region Extensibility Method Definitions
@@ -7413,7 +7419,6 @@ namespace Tarla
 		public Stock()
 		{
 			this._Item = default(EntityRef<Item>);
-			this._BuyFactor = default(EntityRef<BuyFactor>);
 			this._Depot = default(EntityRef<Depot>);
 			OnCreated();
 		}
@@ -7469,10 +7474,6 @@ namespace Tarla
 			{
 				if ((this._FactorId != value))
 				{
-					if (this._BuyFactor.HasLoadedOrAssignedValue)
-					{
-						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
-					}
 					this.OnFactorIdChanging(value);
 					this.SendPropertyChanging();
 					this._FactorId = value;
@@ -7624,40 +7625,6 @@ namespace Tarla
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="BuyFactor_Stock", Storage="_BuyFactor", ThisKey="FactorId", OtherKey="FactorId", IsForeignKey=true)]
-		public BuyFactor BuyFactor
-		{
-			get
-			{
-				return this._BuyFactor.Entity;
-			}
-			set
-			{
-				BuyFactor previousValue = this._BuyFactor.Entity;
-				if (((previousValue != value) 
-							|| (this._BuyFactor.HasLoadedOrAssignedValue == false)))
-				{
-					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._BuyFactor.Entity = null;
-						previousValue.Stocks.Remove(this);
-					}
-					this._BuyFactor.Entity = value;
-					if ((value != null))
-					{
-						value.Stocks.Add(this);
-						this._FactorId = value.FactorId;
-					}
-					else
-					{
-						this._FactorId = default(Nullable<int>);
-					}
-					this.SendPropertyChanged("BuyFactor");
-				}
-			}
-		}
-		
 		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Depot_Stock", Storage="_Depot", ThisKey="DepotId", OtherKey="DepotId", IsForeignKey=true)]
 		public Depot Depot
 		{
@@ -7741,8 +7708,6 @@ namespace Tarla
 		
 		private EntitySet<BuyDetail> _BuyDetails;
 		
-		private EntitySet<Stock> _Stocks;
-		
 		private EntityRef<Company> _Company;
 		
     #region Extensibility Method Definitions
@@ -7774,7 +7739,6 @@ namespace Tarla
 		public BuyFactor()
 		{
 			this._BuyDetails = new EntitySet<BuyDetail>(new Action<BuyDetail>(this.attach_BuyDetails), new Action<BuyDetail>(this.detach_BuyDetails));
-			this._Stocks = new EntitySet<Stock>(new Action<Stock>(this.attach_Stocks), new Action<Stock>(this.detach_Stocks));
 			this._Company = default(EntityRef<Company>);
 			OnCreated();
 		}
@@ -7996,19 +7960,6 @@ namespace Tarla
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="BuyFactor_Stock", Storage="_Stocks", ThisKey="FactorId", OtherKey="FactorId")]
-		public EntitySet<Stock> Stocks
-		{
-			get
-			{
-				return this._Stocks;
-			}
-			set
-			{
-				this._Stocks.Assign(value);
-			}
-		}
-		
 		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Company_BuyFactor", Storage="_Company", ThisKey="CompanyId", OtherKey="CompanyId", IsForeignKey=true)]
 		public Company Company
 		{
@@ -8070,18 +8021,6 @@ namespace Tarla
 		}
 		
 		private void detach_BuyDetails(BuyDetail entity)
-		{
-			this.SendPropertyChanging();
-			entity.BuyFactor = null;
-		}
-		
-		private void attach_Stocks(Stock entity)
-		{
-			this.SendPropertyChanging();
-			entity.BuyFactor = this;
-		}
-		
-		private void detach_Stocks(Stock entity)
 		{
 			this.SendPropertyChanging();
 			entity.BuyFactor = null;

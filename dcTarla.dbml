@@ -328,7 +328,6 @@
       <Column Name="StockOut" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="StockDes" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
       <Association Name="Item_Stock" Member="Item" ThisKey="ItemId" OtherKey="ItemId" Type="Item" IsForeignKey="true" />
-      <Association Name="BuyFactor_Stock" Member="BuyFactor" ThisKey="FactorId" OtherKey="FactorId" Type="BuyFactor" IsForeignKey="true" />
       <Association Name="Depot_Stock" Member="Depot" ThisKey="DepotId" OtherKey="DepotId" Type="Depot" IsForeignKey="true" />
     </Type>
   </Table>
@@ -345,7 +344,6 @@
       <Column Name="FinalPrice" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="FactorDesc" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
       <Association Name="BuyFactor_BuyDetail" Member="BuyDetails" ThisKey="FactorId" OtherKey="FactorId" Type="BuyDetail" />
-      <Association Name="BuyFactor_Stock" Member="Stocks" ThisKey="FactorId" OtherKey="FactorId" Type="Stock" />
       <Association Name="Company_BuyFactor" Member="Company" ThisKey="CompanyId" OtherKey="CompanyId" Type="Company" IsForeignKey="true" />
     </Type>
   </Table>
@@ -1093,6 +1091,12 @@
     <Parameter Name="StockIn" Parameter="stockIn" Type="System.Int32" DbType="Int" />
     <Parameter Name="StockOut" Parameter="stockOut" Type="System.Int32" DbType="Int" />
     <Parameter Name="StockDes" Parameter="stockDes" Type="System.String" DbType="NVarChar(100)" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.GetItemInStock" Method="GetItemInStock">
+    <Parameter Name="DepotId" Parameter="depotId" Type="System.Int32" DbType="Int" />
+    <Parameter Name="ItemId" Parameter="itemId" Type="System.Int32" DbType="Int" />
+    <Parameter Name="Sum" Parameter="sum" Type="System.Int32" DbType="Int" Direction="InOut" />
     <Return Type="System.Int32" />
   </Function>
 </Database>

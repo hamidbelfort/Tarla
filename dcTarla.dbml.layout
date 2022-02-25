@@ -138,7 +138,7 @@
         <classShapeMoniker Id="c69a7050-5cad-487d-a390-076bf53117ea" />
       </nodes>
     </associationConnector>
-    <associationConnector edgePoints="[(2.75 : 5.63544840494792); (3.04166666666667 : 5.63544840494792 : JumpStart); (3.20833333333333 : 5.63544840494792 : JumpEnd); (3.25 : 5.63544840494792); (3.25 : 3); (6.25 : 3); (6.25 : 4.06899251302083); (7.5 : 4.06899251302083); (7.5 : 4.5)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+    <associationConnector edgePoints="[(2.75 : 5.63544840494792); (3.04166666666667 : 5.63544840494792 : JumpStart); (3.20833333333333 : 5.63544840494792 : JumpEnd); (3.25 : 5.63544840494792); (3.25 : 3); (5.79166666666667 : 3 : JumpStart); (5.95833333333333 : 3 : JumpEnd); (6.25 : 3); (6.25 : 4.06899251302083); (7.5 : 4.06899251302083); (7.5 : 4.5)]" fixedFrom="NotFixed" fixedTo="NotFixed">
       <AssociationMoniker Name="/dcTarlaDataContext/Buyer/Buyer_Book" />
       <nodes>
         <classShapeMoniker Id="bfc8ced5-4d16-445b-a0a4-a4253bda83e7" />
@@ -215,14 +215,14 @@
         <elementListCompartment Id="b0d86a84-966f-42dc-a112-8dfae5a4411e" absoluteBounds="3.5150000000000006, 3.71, 1.9700000000000002, 4.095418294270833" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
-    <associationConnector edgePoints="[(5.5 : 4.34375); (7.41666666666667 : 4.34375 : JumpStart); (7.58333333333333 : 4.34375 : JumpEnd); (9.25 : 4.34375)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+    <associationConnector edgePoints="[(5.5 : 4.34375); (9.25 : 4.34375)]" fixedFrom="NotFixed" fixedTo="NotFixed">
       <AssociationMoniker Name="/dcTarlaDataContext/Invoice/Invoice_InvoiceDetail" />
       <nodes>
         <classShapeMoniker Id="64cd933c-c394-4971-9713-d21697310039" />
         <classShapeMoniker Id="8cb27aea-37b0-48a7-ae75-1370891a86fb" />
       </nodes>
     </associationConnector>
-    <associationConnector edgePoints="[(2.75 : 5.13022420247396); (3.04166666666667 : 5.13022420247396 : JumpStart); (3.33333333333333 : 5.13022420247396 : JumpEnd); (3.5 : 5.13022420247396)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+    <associationConnector edgePoints="[(2.75 : 5.13022420247396); (3.5 : 5.13022420247396)]" fixedFrom="NotFixed" fixedTo="NotFixed">
       <AssociationMoniker Name="/dcTarlaDataContext/Buyer/Buyer_Invoice" />
       <nodes>
         <classShapeMoniker Id="bfc8ced5-4d16-445b-a0a4-a4253bda83e7" />
@@ -275,7 +275,7 @@
         <elementListCompartment Id="8fdd1620-b92f-472c-a79b-b2cef267c20f" absoluteBounds="15.265, 7.4600000000000009, 1.9700000000000002, 1.7878011067708335" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
-    <associationConnector edgePoints="[(13.375 : 10.375); (13.375 : 8.79210333007813); (14.5729166666667 : 8.79210333007813 : JumpStart); (14.7395833333333 : 8.79210333007813 : JumpEnd); (15.25 : 8.79210333007813)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+    <associationConnector edgePoints="[(13.375 : 10.375); (13.375 : 8.79210333007813); (13.9166666666667 : 8.79210333007813 : JumpStart); (14.0833333333333 : 8.79210333007813 : JumpEnd); (14.5729166666667 : 8.79210333007813 : JumpStart); (14.7395833333333 : 8.79210333007813 : JumpEnd); (15.25 : 8.79210333007813)]" fixedFrom="NotFixed" fixedTo="NotFixed">
       <AssociationMoniker Name="/dcTarlaDataContext/Item/Item_Stock" />
       <nodes>
         <classShapeMoniker Id="ae3d3f9f-6d15-4ca4-867e-f0ec440b0c3c" />
@@ -293,13 +293,6 @@
       <nodes>
         <classShapeMoniker Id="627380d8-6fb1-4d20-acda-1f0b15cc9335" />
         <classShapeMoniker Id="9a894712-12f8-4b80-aac5-7eb375e271bc" />
-      </nodes>
-    </associationConnector>
-    <associationConnector edgePoints="[(12.968748 : 3.48240397135417); (12.968748 : 3.875); (13.5572931666667 : 3.875 : JumpStart); (13.7239598333333 : 3.875 : JumpEnd); (14.25 : 3.875); (14.25 : 8.17390055338542); (14.5729166666667 : 8.17390055338542 : JumpStart); (14.7395833333333 : 8.17390055338542 : JumpEnd); (15.25 : 8.17390055338542)]" fixedFrom="NotFixed" fixedTo="NotFixed">
-      <AssociationMoniker Name="/dcTarlaDataContext/BuyFactor/BuyFactor_Stock" />
-      <nodes>
-        <classShapeMoniker Id="627380d8-6fb1-4d20-acda-1f0b15cc9335" />
-        <classShapeMoniker Id="134104f0-512a-48e8-a9f0-394b353f6e11" />
       </nodes>
     </associationConnector>
     <associationConnector edgePoints="[(11.75 : 2.51044840494792); (12.5 : 2.51044840494792)]" fixedFrom="NotFixed" fixedTo="NotFixed">
