@@ -368,6 +368,30 @@
       <Column Name="StockBalance" Type="System.Int32" DbType="Int" CanBeNull="true" />
     </Type>
   </Table>
+  <Table Name="dbo.BuyItemView" Member="BuyItemViews">
+    <Type Name="BuyItemView" Id="ID26" Modifier="Sealed">
+      <Column Name="FactorId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="FactorDate" Type="System.String" DbType="NVarChar(10)" CanBeNull="true" />
+      <Column Name="FactorNumber" Type="System.String" DbType="NVarChar(30)" CanBeNull="true" />
+      <Column Name="CompanyId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="CompanyName" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="Chief" Type="System.String" DbType="NVarChar(30)" CanBeNull="true" />
+      <Column Name="Phone" Type="System.String" DbType="NVarChar(12)" CanBeNull="true" />
+      <Column Name="TotalPrice" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="FinalPrice" Type="System.Int32" DbType="Int" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.BuyDetailView" Member="BuyDetailViews">
+    <Type Name="BuyDetailView" Id="ID27" Modifier="Sealed">
+      <Column Name="FactorId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="FactorDate" Type="System.String" DbType="NVarChar(10)" CanBeNull="true" />
+      <Column Name="ItemName" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Unit1" Type="System.String" DbType="NVarChar(20)" CanBeNull="true" />
+      <Column Name="Unit2" Type="System.String" DbType="NVarChar(20)" CanBeNull="true" />
+      <Column Name="Qty" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Price" Type="System.Int32" DbType="Int" CanBeNull="true" />
+    </Type>
+  </Table>
   <Function Name="dbo.InsertLog" Method="InsertLog">
     <Parameter Name="UserId" Parameter="userId" Type="System.Int32" DbType="Int" />
     <Parameter Name="Login" Parameter="login" Type="System.String" DbType="NVarChar(20)" />
@@ -1098,5 +1122,18 @@
     <Parameter Name="ItemId" Parameter="itemId" Type="System.Int32" DbType="Int" />
     <Parameter Name="Sum" Parameter="sum" Type="System.Int32" DbType="Int" Direction="InOut" />
     <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.FillBuyItemByCompany" Method="FillBuyItemByCompany">
+    <Parameter Name="CompanyId" Parameter="companyId" Type="System.Int32" DbType="Int" />
+    <ElementType IdRef="ID26" />
+  </Function>
+  <Function Name="dbo.FillBuyItembyDate" Method="FillBuyItembyDate">
+    <Parameter Name="StartDate" Parameter="startDate" Type="System.String" DbType="NVarChar(10)" />
+    <Parameter Name="EndDate" Parameter="endDate" Type="System.String" DbType="NVarChar(10)" />
+    <ElementType IdRef="ID26" />
+  </Function>
+  <Function Name="dbo.FillBuyDetail" Method="FillBuyDetail">
+    <Parameter Name="FactorId" Parameter="factorId" Type="System.Int32" DbType="Int" />
+    <ElementType IdRef="ID27" />
   </Function>
 </Database>

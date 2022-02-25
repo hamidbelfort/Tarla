@@ -128,23 +128,23 @@ namespace Tarla.OperationForms
                 
                 if (date1 != string.Empty && date2 != string.Empty)
                 {
-                    //bsBuy.DataSource = db.FillBuyItembyDate(mskDate1.Text, mskDate2.Text);
+                    bsBuy.DataSource = db.FillBuyItembyDate(date1, date2);
                 }
                 else if (companyId != 0)
                 {
-                    //bsBuy.DataSource = db.FillBuyItemByCompany(companyId);
+                    bsBuy.DataSource = db.FillBuyItemByCompany(companyId);
                 }
                 if (dgvBuy.Rows.Count == 0)
                 {
                     btnDelete.Enabled = false;
-                    btnEdit.Enabled = false;
+                    //btnEdit.Enabled = false;
                     btnPrint.Enabled = false;
                     lblSumAmount.Text = "0";
                 }
                 else
                 {
                     btnDelete.Enabled = true;
-                    btnEdit.Enabled = true;
+                    //btnEdit.Enabled = true;
                     btnPrint.Enabled = true;
                     calculateSum();
                 }
@@ -219,6 +219,11 @@ namespace Tarla.OperationForms
             {
                 MessageBoxFarsi.Show("در تولید گزارش خطا رخ داده است \n" + ex.Message, "اخطار", MessageBoxFarsiButtons.OK, MessageBoxFarsiIcon.Error, MessageBoxFarsiDefaultButton.Button1);
             }
+        }
+
+        private void dgvBuy_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
+        {
+            dgvBuy.Rows[e.RowIndex].Cells["clmRow"].Value = e.RowIndex + 1;
         }
     }
 }

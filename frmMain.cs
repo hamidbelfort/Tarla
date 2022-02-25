@@ -350,5 +350,31 @@ namespace Tarla
             _frmChild.MdiParent = this;
             _frmChild.Show();
         }
+
+        private void btnStockIn_Click(object sender, EventArgs e)
+        {
+            minimizeRibbon(true);
+            frmStockInOut.stockMode = true;
+            frmStockInOut _frmChild = new frmStockInOut();
+            _frmChild.MdiParent = this;
+            _frmChild.Show();
+        }
+
+        private void btnStockOut_Click(object sender, EventArgs e)
+        {
+            minimizeRibbon(true);
+            frmStockInOut.stockMode = false;
+            frmStockInOut _frmChild = new frmStockInOut();
+            _frmChild.MdiParent = this;
+            _frmChild.Show();
+        }
+
+        private void btnMovement_Click(object sender, EventArgs e)
+        {
+            minimizeRibbon(true);
+            frmMoveItem _frmChild = new frmMoveItem();
+            _frmChild.MdiParent = this;
+            _frmChild.Show();
+        }
     }
 }

@@ -47,14 +47,12 @@
             this.btnExit = new DevComponents.DotNetBar.ButtonX();
             this.btnSave = new DevComponents.DotNetBar.ButtonX();
             this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
-            this.bsStock = new System.Windows.Forms.BindingSource(this.components);
             this.gpMain.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.intQty)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bsDepot)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bsItem)).BeginInit();
             this.groupPanel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.bsStock)).BeginInit();
             this.SuspendLayout();
             // 
             // gpMain
@@ -117,7 +115,7 @@
             this.labelX5.Name = "labelX5";
             this.labelX5.Size = new System.Drawing.Size(75, 23);
             this.labelX5.TabIndex = 17;
-            this.labelX5.Text = "تعداد";
+            this.labelX5.Text = "توضیحات";
             // 
             // intQty
             // 
@@ -217,7 +215,6 @@
             this.txtDate.BackgroundStyle.Class = "TextBoxBorder";
             this.txtDate.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.txtDate.ButtonClear.Visible = true;
-            this.txtDate.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.bsStock, "StockDate", true));
             this.txtDate.Location = new System.Drawing.Point(181, 18);
             this.txtDate.Mask = "0000/00/00";
             this.txtDate.Name = "txtDate";
@@ -335,10 +332,6 @@
             this.errorProvider1.ContainerControl = this;
             this.errorProvider1.RightToLeft = true;
             // 
-            // bsStock
-            // 
-            this.bsStock.DataSource = typeof(Tarla.Stock);
-            // 
             // frmStockInOut
             // 
             this.AcceptButton = this.btnSave;
@@ -365,7 +358,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.bsItem)).EndInit();
             this.groupPanel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.bsStock)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -389,6 +381,5 @@
         private System.Windows.Forms.BindingSource bsItem;
         private System.Windows.Forms.BindingSource bsDepot;
         private System.Windows.Forms.ErrorProvider errorProvider1;
-        private System.Windows.Forms.BindingSource bsStock;
     }
 }

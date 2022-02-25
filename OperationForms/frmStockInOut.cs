@@ -32,6 +32,7 @@ namespace Tarla.OperationForms
             try
             {
                 gpMain.Text = stockMode ? "ورود به انبار" : "خروج از انبار";
+                txtDesc.Text = string.Format("{0} {1}", stockMode ? "ورودی دستی به انبار " : "خروجی دستی از انبار ", "تاریخ : " + pd.getShortDate());
                 bsDepot.DataSource = db.FillDepot();
                 bsItem.DataSource = db.FillItems();
                 txtDate.Text = pd.getShortDate();

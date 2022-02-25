@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmLogin));
             this.panelEx1 = new DevComponents.DotNetBar.PanelEx();
             this.reflectionImage1 = new DevComponents.DotNetBar.Controls.ReflectionImage();
             this.groupPanel1 = new DevComponents.DotNetBar.Controls.GroupPanel();
@@ -236,8 +237,10 @@
             this.ClientSize = new System.Drawing.Size(494, 190);
             this.ControlBox = false;
             this.Controls.Add(this.panelEx1);
+            this.DoubleBuffered = true;
             this.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Name = "frmLogin";
             this.RightToLeft = System.Windows.Forms.RightToLeft.Yes;

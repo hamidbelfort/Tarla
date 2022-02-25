@@ -388,6 +388,22 @@ namespace Tarla
 			}
 		}
 		
+		public System.Data.Linq.Table<BuyItemView> BuyItemViews
+		{
+			get
+			{
+				return this.GetTable<BuyItemView>();
+			}
+		}
+		
+		public System.Data.Linq.Table<BuyDetailView> BuyDetailViews
+		{
+			get
+			{
+				return this.GetTable<BuyDetailView>();
+			}
+		}
+		
 		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.InsertLog")]
 		public int InsertLog([global::System.Data.Linq.Mapping.ParameterAttribute(Name="UserId", DbType="Int")] System.Nullable<int> userId, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="Login", DbType="NVarChar(20)")] string login)
 		{
@@ -1405,6 +1421,27 @@ namespace Tarla
 			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), depotId, itemId, sum);
 			sum = ((System.Nullable<int>)(result.GetParameterValue(2)));
 			return ((int)(result.ReturnValue));
+		}
+		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.FillBuyItemByCompany")]
+		public ISingleResult<BuyItemView> FillBuyItemByCompany([global::System.Data.Linq.Mapping.ParameterAttribute(Name="CompanyId", DbType="Int")] System.Nullable<int> companyId)
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), companyId);
+			return ((ISingleResult<BuyItemView>)(result.ReturnValue));
+		}
+		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.FillBuyItembyDate")]
+		public ISingleResult<BuyItemView> FillBuyItembyDate([global::System.Data.Linq.Mapping.ParameterAttribute(Name="StartDate", DbType="NVarChar(10)")] string startDate, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="EndDate", DbType="NVarChar(10)")] string endDate)
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), startDate, endDate);
+			return ((ISingleResult<BuyItemView>)(result.ReturnValue));
+		}
+		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.FillBuyDetail")]
+		public ISingleResult<BuyDetailView> FillBuyDetail([global::System.Data.Linq.Mapping.ParameterAttribute(Name="FactorId", DbType="Int")] System.Nullable<int> factorId)
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), factorId);
+			return ((ISingleResult<BuyDetailView>)(result.ReturnValue));
 		}
 	}
 	
@@ -8331,6 +8368,312 @@ namespace Tarla
 				if ((this._StockBalance != value))
 				{
 					this._StockBalance = value;
+				}
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.BuyItemView")]
+	public sealed partial class BuyItemView
+	{
+		
+		private int _FactorId;
+		
+		private string _FactorDate;
+		
+		private string _FactorNumber;
+		
+		private System.Nullable<int> _CompanyId;
+		
+		private string _CompanyName;
+		
+		private string _Chief;
+		
+		private string _Phone;
+		
+		private System.Nullable<int> _TotalPrice;
+		
+		private System.Nullable<int> _FinalPrice;
+		
+		public BuyItemView()
+		{
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_FactorId", DbType="Int NOT NULL")]
+		public int FactorId
+		{
+			get
+			{
+				return this._FactorId;
+			}
+			set
+			{
+				if ((this._FactorId != value))
+				{
+					this._FactorId = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_FactorDate", DbType="NVarChar(10)")]
+		public string FactorDate
+		{
+			get
+			{
+				return this._FactorDate;
+			}
+			set
+			{
+				if ((this._FactorDate != value))
+				{
+					this._FactorDate = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_FactorNumber", DbType="NVarChar(30)")]
+		public string FactorNumber
+		{
+			get
+			{
+				return this._FactorNumber;
+			}
+			set
+			{
+				if ((this._FactorNumber != value))
+				{
+					this._FactorNumber = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CompanyId", DbType="Int")]
+		public System.Nullable<int> CompanyId
+		{
+			get
+			{
+				return this._CompanyId;
+			}
+			set
+			{
+				if ((this._CompanyId != value))
+				{
+					this._CompanyId = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CompanyName", DbType="NVarChar(100)")]
+		public string CompanyName
+		{
+			get
+			{
+				return this._CompanyName;
+			}
+			set
+			{
+				if ((this._CompanyName != value))
+				{
+					this._CompanyName = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Chief", DbType="NVarChar(30)")]
+		public string Chief
+		{
+			get
+			{
+				return this._Chief;
+			}
+			set
+			{
+				if ((this._Chief != value))
+				{
+					this._Chief = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Phone", DbType="NVarChar(12)")]
+		public string Phone
+		{
+			get
+			{
+				return this._Phone;
+			}
+			set
+			{
+				if ((this._Phone != value))
+				{
+					this._Phone = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TotalPrice", DbType="Int")]
+		public System.Nullable<int> TotalPrice
+		{
+			get
+			{
+				return this._TotalPrice;
+			}
+			set
+			{
+				if ((this._TotalPrice != value))
+				{
+					this._TotalPrice = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_FinalPrice", DbType="Int")]
+		public System.Nullable<int> FinalPrice
+		{
+			get
+			{
+				return this._FinalPrice;
+			}
+			set
+			{
+				if ((this._FinalPrice != value))
+				{
+					this._FinalPrice = value;
+				}
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.BuyDetailView")]
+	public sealed partial class BuyDetailView
+	{
+		
+		private System.Nullable<int> _FactorId;
+		
+		private string _FactorDate;
+		
+		private string _ItemName;
+		
+		private string _Unit1;
+		
+		private string _Unit2;
+		
+		private System.Nullable<int> _Qty;
+		
+		private System.Nullable<int> _Price;
+		
+		public BuyDetailView()
+		{
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_FactorId", DbType="Int")]
+		public System.Nullable<int> FactorId
+		{
+			get
+			{
+				return this._FactorId;
+			}
+			set
+			{
+				if ((this._FactorId != value))
+				{
+					this._FactorId = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_FactorDate", DbType="NVarChar(10)")]
+		public string FactorDate
+		{
+			get
+			{
+				return this._FactorDate;
+			}
+			set
+			{
+				if ((this._FactorDate != value))
+				{
+					this._FactorDate = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ItemName", DbType="NVarChar(50)")]
+		public string ItemName
+		{
+			get
+			{
+				return this._ItemName;
+			}
+			set
+			{
+				if ((this._ItemName != value))
+				{
+					this._ItemName = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Unit1", DbType="NVarChar(20)")]
+		public string Unit1
+		{
+			get
+			{
+				return this._Unit1;
+			}
+			set
+			{
+				if ((this._Unit1 != value))
+				{
+					this._Unit1 = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Unit2", DbType="NVarChar(20)")]
+		public string Unit2
+		{
+			get
+			{
+				return this._Unit2;
+			}
+			set
+			{
+				if ((this._Unit2 != value))
+				{
+					this._Unit2 = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Qty", DbType="Int")]
+		public System.Nullable<int> Qty
+		{
+			get
+			{
+				return this._Qty;
+			}
+			set
+			{
+				if ((this._Qty != value))
+				{
+					this._Qty = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Price", DbType="Int")]
+		public System.Nullable<int> Price
+		{
+			get
+			{
+				return this._Price;
+			}
+			set
+			{
+				if ((this._Price != value))
+				{
+					this._Price = value;
 				}
 			}
 		}
