@@ -28,8 +28,8 @@ namespace Tarla.OperationForms
                 bsDetails.DataSource = db.GetInvoiceDetails(invoiceId);
                 for (int i = 0; i < dgvDetails.Rows.Count; i++)
                 {
-                    int _weight = Convert.ToInt32(dgvDetails.Rows[i].Cells[5].Value.ToString());
-                    int _price = Convert.ToInt32(dgvDetails.Rows[i].Cells[7].Value.ToString());
+                    int _weight = Convert.ToInt32(dgvDetails.Rows[i].Cells[6].Value.ToString());
+                    int _price = Convert.ToInt32(dgvDetails.Rows[i].Cells[9].Value.ToString());
                     totalWeight += _weight;
                     totalPrice += _weight * _price;
                 }
@@ -40,6 +40,11 @@ namespace Tarla.OperationForms
             {
                 MessageBoxFarsi.Show("ارتباط با سرور اطلاعاتی قطع شده است \n" + ex.Message, "خطا", MessageBoxFarsiButtons.OK, MessageBoxFarsiIcon.Error, MessageBoxFarsiDefaultButton.Button1);
             }
+        }
+
+        private void dgvDetails_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
+        {
+            dgvDetails.Rows[e.RowIndex].Cells["clmRow"].Value = e.RowIndex + 1;
         }
 
         private void btnExit_Click(object sender, EventArgs e)

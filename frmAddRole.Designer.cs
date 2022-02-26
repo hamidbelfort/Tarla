@@ -206,9 +206,9 @@
             // 
             // 
             this.labelX5.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelX5.Location = new System.Drawing.Point(231, 142);
+            this.labelX5.Location = new System.Drawing.Point(249, 142);
             this.labelX5.Name = "labelX5";
-            this.labelX5.Size = new System.Drawing.Size(155, 23);
+            this.labelX5.Size = new System.Drawing.Size(137, 23);
             this.labelX5.TabIndex = 8;
             this.labelX5.Text = "دسترسی به فاکتورها";
             this.labelX5.TextAlignment = System.Drawing.StringAlignment.Center;
@@ -221,7 +221,7 @@
             // 
             this.chkFactors.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.chkFactors.DataBindings.Add(new System.Windows.Forms.Binding("Checked", this.bsRoles, "FactorPermission", true));
-            this.chkFactors.Location = new System.Drawing.Point(172, 143);
+            this.chkFactors.Location = new System.Drawing.Point(190, 143);
             this.chkFactors.Name = "chkFactors";
             this.chkFactors.Size = new System.Drawing.Size(53, 23);
             this.chkFactors.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
@@ -238,9 +238,9 @@
             // 
             // 
             this.labelX4.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelX4.Location = new System.Drawing.Point(231, 113);
+            this.labelX4.Location = new System.Drawing.Point(249, 113);
             this.labelX4.Name = "labelX4";
-            this.labelX4.Size = new System.Drawing.Size(155, 23);
+            this.labelX4.Size = new System.Drawing.Size(137, 23);
             this.labelX4.TabIndex = 6;
             this.labelX4.Text = "دسترسی به حساب ها";
             this.labelX4.TextAlignment = System.Drawing.StringAlignment.Center;
@@ -253,7 +253,7 @@
             // 
             this.chkBank.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.chkBank.DataBindings.Add(new System.Windows.Forms.Binding("Checked", this.bsRoles, "BankPermission", true));
-            this.chkBank.Location = new System.Drawing.Point(172, 114);
+            this.chkBank.Location = new System.Drawing.Point(190, 114);
             this.chkBank.Name = "chkBank";
             this.chkBank.Size = new System.Drawing.Size(53, 23);
             this.chkBank.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
@@ -266,9 +266,9 @@
             // 
             // 
             this.labelX3.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelX3.Location = new System.Drawing.Point(231, 84);
+            this.labelX3.Location = new System.Drawing.Point(249, 84);
             this.labelX3.Name = "labelX3";
-            this.labelX3.Size = new System.Drawing.Size(155, 23);
+            this.labelX3.Size = new System.Drawing.Size(137, 23);
             this.labelX3.TabIndex = 4;
             this.labelX3.Text = "دسترسی به کاربران";
             this.labelX3.TextAlignment = System.Drawing.StringAlignment.Center;
@@ -281,7 +281,7 @@
             // 
             this.chkUsers.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.chkUsers.DataBindings.Add(new System.Windows.Forms.Binding("Checked", this.bsRoles, "UserPermission", true));
-            this.chkUsers.Location = new System.Drawing.Point(172, 85);
+            this.chkUsers.Location = new System.Drawing.Point(190, 85);
             this.chkUsers.Name = "chkUsers";
             this.chkUsers.Size = new System.Drawing.Size(53, 23);
             this.chkUsers.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
@@ -294,9 +294,9 @@
             // 
             // 
             this.labelX2.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelX2.Location = new System.Drawing.Point(231, 55);
+            this.labelX2.Location = new System.Drawing.Point(249, 55);
             this.labelX2.Name = "labelX2";
-            this.labelX2.Size = new System.Drawing.Size(155, 23);
+            this.labelX2.Size = new System.Drawing.Size(137, 23);
             this.labelX2.TabIndex = 2;
             this.labelX2.Text = "دسترسی به تنظیمات";
             this.labelX2.TextAlignment = System.Drawing.StringAlignment.Center;
@@ -309,7 +309,7 @@
             // 
             this.chkSetting.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.chkSetting.DataBindings.Add(new System.Windows.Forms.Binding("Checked", this.bsRoles, "SettingPermission", true));
-            this.chkSetting.Location = new System.Drawing.Point(172, 56);
+            this.chkSetting.Location = new System.Drawing.Point(190, 56);
             this.chkSetting.Name = "chkSetting";
             this.chkSetting.Size = new System.Drawing.Size(53, 23);
             this.chkSetting.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
@@ -322,9 +322,9 @@
             // 
             // 
             this.labelX1.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelX1.Location = new System.Drawing.Point(231, 17);
+            this.labelX1.Location = new System.Drawing.Point(249, 17);
             this.labelX1.Name = "labelX1";
-            this.labelX1.Size = new System.Drawing.Size(155, 23);
+            this.labelX1.Size = new System.Drawing.Size(137, 23);
             this.labelX1.TabIndex = 1;
             this.labelX1.Text = "نام نقش";
             this.labelX1.TextAlignment = System.Drawing.StringAlignment.Center;
@@ -340,7 +340,7 @@
             this.txtRoleName.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.bsRoles, "RoleName", true));
             this.txtRoleName.DisabledBackColor = System.Drawing.Color.White;
             this.txtRoleName.ForeColor = System.Drawing.Color.Black;
-            this.txtRoleName.Location = new System.Drawing.Point(3, 18);
+            this.txtRoleName.Location = new System.Drawing.Point(21, 17);
             this.txtRoleName.MaxLength = 50;
             this.txtRoleName.Name = "txtRoleName";
             this.txtRoleName.PreventEnterBeep = true;
@@ -361,6 +361,7 @@
             this.ClientSize = new System.Drawing.Size(420, 255);
             this.ControlBox = false;
             this.Controls.Add(this.panelEx1);
+            this.DoubleBuffered = true;
             this.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);

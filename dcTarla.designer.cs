@@ -1443,6 +1443,13 @@ namespace Tarla
 			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), factorId);
 			return ((ISingleResult<BuyDetailView>)(result.ReturnValue));
 		}
+		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.DeleteBuyFactor")]
+		public int DeleteBuyFactor([global::System.Data.Linq.Mapping.ParameterAttribute(Name="FactorId", DbType="Int")] System.Nullable<int> factorId)
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), factorId);
+			return ((int)(result.ReturnValue));
+		}
 	}
 	
 	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Roles")]

@@ -1136,4 +1136,8 @@
     <Parameter Name="FactorId" Parameter="factorId" Type="System.Int32" DbType="Int" />
     <ElementType IdRef="ID27" />
   </Function>
+  <Function Name="dbo.DeleteBuyFactor" Method="DeleteBuyFactor">
+    <Parameter Name="FactorId" Parameter="factorId" Type="System.Int32" DbType="Int" />
+    <Return Type="System.Int32" />
+  </Function>
 </Database>

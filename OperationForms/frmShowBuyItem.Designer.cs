@@ -35,6 +35,7 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.panelEx1 = new DevComponents.DotNetBar.PanelEx();
             this.groupPanel2 = new DevComponents.DotNetBar.Controls.GroupPanel();
+            this.btnShow = new DevComponents.DotNetBar.ButtonX();
             this.btnPrint = new DevComponents.DotNetBar.ButtonX();
             this.btnExit = new DevComponents.DotNetBar.ButtonX();
             this.btnDelete = new DevComponents.DotNetBar.ButtonX();
@@ -52,7 +53,6 @@
             this.mskDate1 = new DevComponents.DotNetBar.Controls.MaskedTextBoxAdv();
             this.btnAdd = new DevComponents.DotNetBar.ButtonX();
             this.dgvBuy = new DevComponents.DotNetBar.Controls.DataGridViewX();
-            this.bsBuy = new System.Windows.Forms.BindingSource(this.components);
             this.clmRow = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.factorIdDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.factorDateDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -63,6 +63,8 @@
             this.phoneDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.finalPriceDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.bsBuy = new System.Windows.Forms.BindingSource(this.components);
+            this.btnPrintFactor = new DevComponents.DotNetBar.ButtonX();
             this.panelEx1.SuspendLayout();
             this.groupPanel2.SuspendLayout();
             this.groupPanel1.SuspendLayout();
@@ -81,7 +83,7 @@
             this.panelEx1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelEx1.Location = new System.Drawing.Point(0, 0);
             this.panelEx1.Name = "panelEx1";
-            this.panelEx1.Size = new System.Drawing.Size(857, 587);
+            this.panelEx1.Size = new System.Drawing.Size(950, 587);
             this.panelEx1.Style.Alignment = System.Drawing.StringAlignment.Center;
             this.panelEx1.Style.BackColor1.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground;
             this.panelEx1.Style.Border = DevComponents.DotNetBar.eBorderType.SingleLine;
@@ -95,13 +97,15 @@
             this.groupPanel2.BackColor = System.Drawing.Color.White;
             this.groupPanel2.CanvasColor = System.Drawing.SystemColors.Control;
             this.groupPanel2.ColorSchemeStyle = DevComponents.DotNetBar.eDotNetBarStyle.Office2007;
+            this.groupPanel2.Controls.Add(this.btnPrintFactor);
+            this.groupPanel2.Controls.Add(this.btnShow);
             this.groupPanel2.Controls.Add(this.btnPrint);
             this.groupPanel2.Controls.Add(this.btnExit);
             this.groupPanel2.Controls.Add(this.btnDelete);
             this.groupPanel2.DisabledBackColor = System.Drawing.Color.Empty;
             this.groupPanel2.Location = new System.Drawing.Point(12, 541);
             this.groupPanel2.Name = "groupPanel2";
-            this.groupPanel2.Size = new System.Drawing.Size(833, 40);
+            this.groupPanel2.Size = new System.Drawing.Size(926, 40);
             // 
             // 
             // 
@@ -132,19 +136,35 @@
             this.groupPanel2.StyleMouseOver.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.groupPanel2.TabIndex = 1;
             // 
+            // btnShow
+            // 
+            this.btnShow.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
+            this.btnShow.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
+            this.btnShow.FocusCuesEnabled = false;
+            this.btnShow.Image = ((System.Drawing.Image)(resources.GetObject("btnShow.Image")));
+            this.btnShow.Location = new System.Drawing.Point(837, 2);
+            this.btnShow.Name = "btnShow";
+            this.btnShow.Shape = new DevComponents.DotNetBar.RoundRectangleShapeDescriptor(10, 4, 4, 10);
+            this.btnShow.Size = new System.Drawing.Size(80, 30);
+            this.btnShow.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.btnShow.TabIndex = 4;
+            this.btnShow.Text = " جزئیات";
+            this.btnShow.TextAlignment = DevComponents.DotNetBar.eButtonTextAlignment.Right;
+            this.btnShow.Click += new System.EventHandler(this.btnShow_Click);
+            // 
             // btnPrint
             // 
             this.btnPrint.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
             this.btnPrint.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
             this.btnPrint.FocusCuesEnabled = false;
             this.btnPrint.Image = ((System.Drawing.Image)(resources.GetObject("btnPrint.Image")));
-            this.btnPrint.Location = new System.Drawing.Point(185, 1);
+            this.btnPrint.Location = new System.Drawing.Point(731, 2);
             this.btnPrint.Name = "btnPrint";
             this.btnPrint.Shape = new DevComponents.DotNetBar.RoundRectangleShapeDescriptor(10, 4, 4, 10);
             this.btnPrint.Size = new System.Drawing.Size(100, 30);
             this.btnPrint.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.btnPrint.TabIndex = 1;
-            this.btnPrint.Text = " پیش نمایش";
+            this.btnPrint.Text = " چاپ لیست";
             this.btnPrint.TextAlignment = DevComponents.DotNetBar.eButtonTextAlignment.Right;
             this.btnPrint.Click += new System.EventHandler(this.btnPrint_Click);
             // 
@@ -183,7 +203,7 @@
             // 
             // groupPanel1
             // 
-            this.groupPanel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(239)))), ((int)(((byte)(239)))), ((int)(((byte)(242)))));
+            this.groupPanel1.BackColor = System.Drawing.Color.Transparent;
             this.groupPanel1.CanvasColor = System.Drawing.SystemColors.Control;
             this.groupPanel1.ColorSchemeStyle = DevComponents.DotNetBar.eDotNetBarStyle.Office2007;
             this.groupPanel1.Controls.Add(this.lblSumAmount);
@@ -201,7 +221,7 @@
             this.groupPanel1.DisabledBackColor = System.Drawing.Color.Empty;
             this.groupPanel1.Location = new System.Drawing.Point(12, 12);
             this.groupPanel1.Name = "groupPanel1";
-            this.groupPanel1.Size = new System.Drawing.Size(833, 523);
+            this.groupPanel1.Size = new System.Drawing.Size(926, 523);
             // 
             // 
             // 
@@ -265,7 +285,7 @@
             // rdoCompany
             // 
             this.rdoCompany.AutoSize = true;
-            this.rdoCompany.Location = new System.Drawing.Point(807, 57);
+            this.rdoCompany.Location = new System.Drawing.Point(896, 59);
             this.rdoCompany.Name = "rdoCompany";
             this.rdoCompany.Size = new System.Drawing.Size(14, 13);
             this.rdoCompany.TabIndex = 3;
@@ -276,7 +296,7 @@
             // rdoDate
             // 
             this.rdoDate.AutoSize = true;
-            this.rdoDate.Location = new System.Drawing.Point(807, 19);
+            this.rdoDate.Location = new System.Drawing.Point(896, 21);
             this.rdoDate.Name = "rdoDate";
             this.rdoDate.Size = new System.Drawing.Size(14, 13);
             this.rdoDate.TabIndex = 0;
@@ -291,7 +311,7 @@
             // 
             // 
             this.labelX3.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelX3.Location = new System.Drawing.Point(731, 52);
+            this.labelX3.Location = new System.Drawing.Point(820, 54);
             this.labelX3.Name = "labelX3";
             this.labelX3.Size = new System.Drawing.Size(65, 23);
             this.labelX3.TabIndex = 22;
@@ -307,7 +327,7 @@
             this.cmbCompany.ForeColor = System.Drawing.Color.Black;
             this.cmbCompany.FormattingEnabled = true;
             this.cmbCompany.ItemHeight = 17;
-            this.cmbCompany.Location = new System.Drawing.Point(459, 52);
+            this.cmbCompany.Location = new System.Drawing.Point(548, 54);
             this.cmbCompany.Name = "cmbCompany";
             this.cmbCompany.Size = new System.Drawing.Size(266, 23);
             this.cmbCompany.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
@@ -326,7 +346,7 @@
             // 
             // 
             this.labelX2.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelX2.Location = new System.Drawing.Point(471, 14);
+            this.labelX2.Location = new System.Drawing.Point(560, 16);
             this.labelX2.Name = "labelX2";
             this.labelX2.Size = new System.Drawing.Size(57, 23);
             this.labelX2.TabIndex = 11;
@@ -339,7 +359,7 @@
             // 
             // 
             this.labelX1.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelX1.Location = new System.Drawing.Point(731, 14);
+            this.labelX1.Location = new System.Drawing.Point(820, 16);
             this.labelX1.Name = "labelX1";
             this.labelX1.Size = new System.Drawing.Size(65, 23);
             this.labelX1.TabIndex = 12;
@@ -355,7 +375,7 @@
             this.mskDate2.ButtonClear.Visible = true;
             this.mskDate2.FocusHighlightColor = System.Drawing.Color.LightGray;
             this.mskDate2.FocusHighlightEnabled = true;
-            this.mskDate2.Location = new System.Drawing.Point(274, 14);
+            this.mskDate2.Location = new System.Drawing.Point(363, 16);
             this.mskDate2.Mask = "####/##/##";
             this.mskDate2.Name = "mskDate2";
             this.mskDate2.Size = new System.Drawing.Size(191, 21);
@@ -374,7 +394,7 @@
             this.mskDate1.ButtonClear.Visible = true;
             this.mskDate1.FocusHighlightColor = System.Drawing.Color.LightGray;
             this.mskDate1.FocusHighlightEnabled = true;
-            this.mskDate1.Location = new System.Drawing.Point(534, 16);
+            this.mskDate1.Location = new System.Drawing.Point(623, 18);
             this.mskDate1.Mask = "####/##/##";
             this.mskDate1.Name = "mskDate1";
             this.mskDate1.Size = new System.Drawing.Size(191, 21);
@@ -389,7 +409,7 @@
             this.btnAdd.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
             this.btnAdd.FocusCuesEnabled = false;
             this.btnAdd.Image = ((System.Drawing.Image)(resources.GetObject("btnAdd.Image")));
-            this.btnAdd.Location = new System.Drawing.Point(3, 16);
+            this.btnAdd.Location = new System.Drawing.Point(13, 16);
             this.btnAdd.Name = "btnAdd";
             this.btnAdd.Shape = new DevComponents.DotNetBar.RoundRectangleShapeDescriptor(10, 4, 4, 10);
             this.btnAdd.Size = new System.Drawing.Size(90, 30);
@@ -429,13 +449,9 @@
             this.dgvBuy.Location = new System.Drawing.Point(3, 101);
             this.dgvBuy.Name = "dgvBuy";
             this.dgvBuy.ReadOnly = true;
-            this.dgvBuy.Size = new System.Drawing.Size(821, 359);
+            this.dgvBuy.Size = new System.Drawing.Size(914, 359);
             this.dgvBuy.TabIndex = 6;
             this.dgvBuy.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dgvBuy_CellFormatting);
-            // 
-            // bsBuy
-            // 
-            this.bsBuy.DataSource = typeof(Tarla.BuyItemView);
             // 
             // clmRow
             // 
@@ -519,12 +535,31 @@
             this.finalPriceDataGridViewTextBoxColumn.ReadOnly = true;
             this.finalPriceDataGridViewTextBoxColumn.Width = 120;
             // 
+            // bsBuy
+            // 
+            this.bsBuy.DataSource = typeof(Tarla.BuyItemView);
+            // 
+            // btnPrintFactor
+            // 
+            this.btnPrintFactor.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
+            this.btnPrintFactor.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
+            this.btnPrintFactor.FocusCuesEnabled = false;
+            this.btnPrintFactor.Image = global::Tarla.Properties.Resources.print_icon;
+            this.btnPrintFactor.Location = new System.Drawing.Point(611, 3);
+            this.btnPrintFactor.Name = "btnPrintFactor";
+            this.btnPrintFactor.Shape = new DevComponents.DotNetBar.RoundRectangleShapeDescriptor(10, 4, 4, 10);
+            this.btnPrintFactor.Size = new System.Drawing.Size(114, 30);
+            this.btnPrintFactor.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.btnPrintFactor.TabIndex = 6;
+            this.btnPrintFactor.Text = " چاپ فاکتور";
+            this.btnPrintFactor.TextAlignment = DevComponents.DotNetBar.eButtonTextAlignment.Right;
+            // 
             // frmShowBuyItem
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.btnExit;
-            this.ClientSize = new System.Drawing.Size(857, 587);
+            this.ClientSize = new System.Drawing.Size(950, 587);
             this.Controls.Add(this.panelEx1);
             this.DoubleBuffered = true;
             this.Font = new System.Drawing.Font("Tahoma", 9.75F);
@@ -590,5 +625,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn phoneDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
         private System.Windows.Forms.DataGridViewTextBoxColumn finalPriceDataGridViewTextBoxColumn;
+        private DevComponents.DotNetBar.ButtonX btnShow;
+        private DevComponents.DotNetBar.ButtonX btnPrintFactor;
     }
 }

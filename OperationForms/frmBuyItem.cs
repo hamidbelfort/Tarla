@@ -353,6 +353,7 @@ namespace Tarla.OperationForms
                 cmbDepot.Enabled = !chkDefaultDepot.Checked;
                 txtDate.Text = pd.getShortDate();
                 db.GetDefaultDepot(ref depotId);
+                btnPrev.Enabled = false;
             }
             catch (Exception ex)
             {

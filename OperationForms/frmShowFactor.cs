@@ -45,7 +45,7 @@ namespace Tarla.OperationForms
         {
             try
             {
-                frmInvoiceDetails.invoiceId = (int)dgvFactor.CurrentRow.Cells[0].Value;
+                frmInvoiceDetails.invoiceId = (int)dgvFactor.CurrentRow.Cells[1].Value;
                 new frmInvoiceDetails().ShowDialog();
             }
             catch (Exception ex)
@@ -136,8 +136,8 @@ namespace Tarla.OperationForms
             sumTotalPrice = 0;
             for (int i = 0; i < dgvFactor.Rows.Count; i++)
             {
-                sumTotalPrice += (int)dgvFactor.Rows[i].Cells[7].Value;
-                sumNetSell += (int)dgvFactor.Rows[i].Cells[8].Value;
+                sumTotalPrice += (int)dgvFactor.Rows[i].Cells[8].Value;
+                sumNetSell += (int)dgvFactor.Rows[i].Cells[9].Value;
             }
             lblSumTotalPrice.Text = sumTotalPrice.ToString("N0");
             lblSumNetSell.Text = sumNetSell.ToString("N0");
@@ -185,13 +185,18 @@ namespace Tarla.OperationForms
             }
         }
 
+        private void dgvFactor_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
+        {
+            dgvFactor.Rows[e.RowIndex].Cells["clmRow"].Value = e.RowIndex + 1;
+        }
+
         private void btnDelete_Click(object sender, EventArgs e)
         {
             try
             {
                 if (MessageBoxFarsi.Show("آیا مطمئن به حذف این مورد هستید؟\n"+"هشدار:این عملیات غیرقابل برگشت است!", "تأیید حذف", MessageBoxFarsiButtons.YesNo, MessageBoxFarsiIcon.Question, MessageBoxFarsiDefaultButton.Button1) == DialogResult.Yes)
                 {
-                    db.DeleteInvoice((int)dgvFactor.CurrentRow.Cells[0].Value);
+                    db.DeleteInvoice((int)dgvFactor.CurrentRow.Cells[1].Value);
                     loadAgain(0, mskDate1.Text, mskDate2.Text);
                 }
             }
@@ -212,7 +217,7 @@ namespace Tarla.OperationForms
         {
             try
             {
-                frmAddNetSell.invoiceId = (int)dgvFactor.CurrentRow.Cells[0].Value;
+                frmAddNetSell.invoiceId = (int)dgvFactor.CurrentRow.Cells[1].Value;
                 new frmAddNetSell().ShowDialog();
             }
             catch (Exception ex)
@@ -228,7 +233,7 @@ namespace Tarla.OperationForms
                 StiReport report = new StiReport();
                 db.GetAddressSetting(ref settingCompany, ref settingsAddress, ref settingsPhone);
                 db.ExistsMessage(ref existsMessage);
-                invoiceId = (int)dgvFactor.CurrentRow.Cells[0].Value;
+                invoiceId = (int)dgvFactor.CurrentRow.Cells[1].Value;
 
 
                 report.Load("Reports/rptFactor.mrt");

@@ -44,6 +44,7 @@
             this.labelX1 = new DevComponents.DotNetBar.LabelX();
             this.dgvDetails = new DevComponents.DotNetBar.Controls.DataGridViewX();
             this.bsDetails = new System.Windows.Forms.BindingSource(this.components);
+            this.clmRow = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.detailIdDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.invoiceIdDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.productNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -71,7 +72,7 @@
             this.panelEx1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelEx1.Location = new System.Drawing.Point(0, 0);
             this.panelEx1.Name = "panelEx1";
-            this.panelEx1.Size = new System.Drawing.Size(830, 472);
+            this.panelEx1.Size = new System.Drawing.Size(865, 472);
             this.panelEx1.Style.Alignment = System.Drawing.StringAlignment.Center;
             this.panelEx1.Style.BackColor1.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground;
             this.panelEx1.Style.BackColor2.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground2;
@@ -91,7 +92,7 @@
             this.groupPanel2.DisabledBackColor = System.Drawing.Color.Empty;
             this.groupPanel2.Location = new System.Drawing.Point(12, 423);
             this.groupPanel2.Name = "groupPanel2";
-            this.groupPanel2.Size = new System.Drawing.Size(806, 40);
+            this.groupPanel2.Size = new System.Drawing.Size(841, 40);
             // 
             // 
             // 
@@ -153,7 +154,7 @@
             this.groupPanel1.DisabledBackColor = System.Drawing.Color.Empty;
             this.groupPanel1.Location = new System.Drawing.Point(12, 12);
             this.groupPanel1.Name = "groupPanel1";
-            this.groupPanel1.Size = new System.Drawing.Size(806, 405);
+            this.groupPanel1.Size = new System.Drawing.Size(841, 405);
             // 
             // 
             // 
@@ -243,6 +244,7 @@
             this.dgvDetails.AutoGenerateColumns = false;
             this.dgvDetails.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvDetails.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.clmRow,
             this.detailIdDataGridViewTextBoxColumn,
             this.invoiceIdDataGridViewTextBoxColumn,
             this.productNameDataGridViewTextBoxColumn,
@@ -265,12 +267,20 @@
             this.dgvDetails.Location = new System.Drawing.Point(3, 23);
             this.dgvDetails.Name = "dgvDetails";
             this.dgvDetails.ReadOnly = true;
-            this.dgvDetails.Size = new System.Drawing.Size(794, 344);
+            this.dgvDetails.Size = new System.Drawing.Size(829, 344);
             this.dgvDetails.TabIndex = 0;
+            this.dgvDetails.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dgvDetails_CellFormatting);
             // 
             // bsDetails
             // 
             this.bsDetails.DataSource = typeof(Tarla.F_DetailsView);
+            // 
+            // clmRow
+            // 
+            this.clmRow.HeaderText = "#";
+            this.clmRow.Name = "clmRow";
+            this.clmRow.ReadOnly = true;
+            this.clmRow.Width = 30;
             // 
             // detailIdDataGridViewTextBoxColumn
             // 
@@ -355,7 +365,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.btnExit;
-            this.ClientSize = new System.Drawing.Size(830, 472);
+            this.ClientSize = new System.Drawing.Size(865, 472);
             this.Controls.Add(this.panelEx1);
             this.DoubleBuffered = true;
             this.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
@@ -390,6 +400,7 @@
         private DevComponents.DotNetBar.LabelX lblTotalWeight;
         private DevComponents.DotNetBar.LabelX lblTotalPrice;
         private DevComponents.DotNetBar.LabelX labelX3;
+        private System.Windows.Forms.DataGridViewTextBoxColumn clmRow;
         private System.Windows.Forms.DataGridViewTextBoxColumn detailIdDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn invoiceIdDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn productNameDataGridViewTextBoxColumn;

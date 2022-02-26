@@ -82,7 +82,7 @@ namespace Tarla.OperationForms
             {
                 if (MessageBoxFarsi.Show("آیا مطمئن به حذف این مورد هستید؟", "تأیید حذف", MessageBoxFarsiButtons.YesNo, MessageBoxFarsiIcon.Question, MessageBoxFarsiDefaultButton.Button1) == DialogResult.Yes)
                 {
-                    //db.DeleteBuyItem((int)dgvBuy.CurrentRow.Cells[0].Value);
+                    db.DeleteBuyFactor((int)dgvBuy.CurrentRow.Cells[1].Value);
                     loadAgain(0, mskDate1.Text, mskDate2.Text);
                 }
             }
@@ -210,7 +210,8 @@ namespace Tarla.OperationForms
                     report.Load("Reports/rptBuyItemById.mrt");
                     report.Compile();
 
-                    report["companyId"] = mskDate1.Text;
+                    report["companyId"] = (int)cmbCompany.SelectedValue;
+                    report["companyName"] = cmbCompany.Text;
                     report["sumTotalPrice"] = sumPrice;
                 }
                 report.ShowWithRibbonGUI();
@@ -224,6 +225,13 @@ namespace Tarla.OperationForms
         private void dgvBuy_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
         {
             dgvBuy.Rows[e.RowIndex].Cells["clmRow"].Value = e.RowIndex + 1;
+        }
+
+        private void btnShow_Click(object sender, EventArgs e)
+        {
+            int factorId=(int)(dgvBuy.CurrentRow.Cells[1].Value);
+            frmBuyDetails.factorId = factorId;
+            new frmBuyDetails().ShowDialog();
         }
     }
 }
