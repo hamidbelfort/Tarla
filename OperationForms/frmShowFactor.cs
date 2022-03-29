@@ -95,7 +95,7 @@ namespace Tarla.OperationForms
         {
             try
             {
-                bsBuyer.DataSource = db.FillBuyer();
+                //bsBuyer.DataSource = db.FillBuyer();
                 if (date1!=string.Empty && date2!=string.Empty)
                 {
                     bsInvoiceView.DataSource = db.FilterFactorByDate(mskDate1.Text, mskDate2.Text);
@@ -165,7 +165,7 @@ namespace Tarla.OperationForms
                 else if (rdoBuyer.Checked)
                 {
                     int buyerId = (int)cmbBuyer.SelectedValue;
-                    db.GetBuyerNameAndPhone(buyerId, ref buyerName, ref buyerPhone);
+                    //db.GetBuyerNameAndPhone(buyerId, ref buyerName, ref buyerPhone);
                     report.Load("Reports/rptFactorListById.mrt");
                     report.Compile();
 

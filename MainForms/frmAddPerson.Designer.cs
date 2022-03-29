@@ -46,6 +46,8 @@
             this.txtName = new DevComponents.DotNetBar.Controls.TextBoxX();
             this.txtDesc = new DevComponents.DotNetBar.Controls.TextBoxX();
             this.labelX1 = new DevComponents.DotNetBar.LabelX();
+            this.txtOrigin = new DevComponents.DotNetBar.Controls.TextBoxX();
+            this.labelX5 = new DevComponents.DotNetBar.LabelX();
             ((System.ComponentModel.ISupportInitialize)(this.bsSeller)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bsBuyer)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bsReceiver)).BeginInit();
@@ -56,15 +58,15 @@
             // 
             // bsSeller
             // 
-            this.bsSeller.DataSource = typeof(Tarla.Seller);
+            //this.bsSeller.DataSource = typeof(Tarla.Seller);
             // 
             // bsBuyer
             // 
-            this.bsBuyer.DataSource = typeof(Tarla.Buyer);
+            //this.bsBuyer.DataSource = typeof(Tarla.Buyer);
             // 
             // bsReceiver
             // 
-            this.bsReceiver.DataSource = typeof(Tarla.Receiver);
+            //this.bsReceiver.DataSource = typeof(Tarla.Receiver);
             // 
             // errorProvider1
             // 
@@ -79,7 +81,7 @@
             this.groupPanel2.Controls.Add(this.btnExit);
             this.groupPanel2.Controls.Add(this.btnSave);
             this.groupPanel2.DisabledBackColor = System.Drawing.Color.Empty;
-            this.groupPanel2.Location = new System.Drawing.Point(12, 298);
+            this.groupPanel2.Location = new System.Drawing.Point(12, 336);
             this.groupPanel2.Name = "groupPanel2";
             this.groupPanel2.Size = new System.Drawing.Size(447, 40);
             // 
@@ -110,7 +112,7 @@
             // 
             // 
             this.groupPanel2.StyleMouseOver.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.groupPanel2.TabIndex = 9;
+            this.groupPanel2.TabIndex = 1;
             // 
             // btnExit
             // 
@@ -151,6 +153,8 @@
             // 
             this.groupPanel1.CanvasColor = System.Drawing.SystemColors.Control;
             this.groupPanel1.ColorSchemeStyle = DevComponents.DotNetBar.eDotNetBarStyle.Office2007;
+            this.groupPanel1.Controls.Add(this.txtOrigin);
+            this.groupPanel1.Controls.Add(this.labelX5);
             this.groupPanel1.Controls.Add(this.labelX4);
             this.groupPanel1.Controls.Add(this.txtPhone);
             this.groupPanel1.Controls.Add(this.txtAddress);
@@ -162,7 +166,7 @@
             this.groupPanel1.DisabledBackColor = System.Drawing.Color.Empty;
             this.groupPanel1.Location = new System.Drawing.Point(12, 12);
             this.groupPanel1.Name = "groupPanel1";
-            this.groupPanel1.Size = new System.Drawing.Size(447, 280);
+            this.groupPanel1.Size = new System.Drawing.Size(447, 318);
             // 
             // 
             // 
@@ -191,7 +195,7 @@
             // 
             // 
             this.groupPanel1.StyleMouseOver.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.groupPanel1.TabIndex = 8;
+            this.groupPanel1.TabIndex = 0;
             this.groupPanel1.Text = "ثبت مشخصات";
             // 
             // labelX4
@@ -201,7 +205,7 @@
             // 
             // 
             this.labelX4.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelX4.Location = new System.Drawing.Point(322, 137);
+            this.labelX4.Location = new System.Drawing.Point(322, 167);
             this.labelX4.Name = "labelX4";
             this.labelX4.Size = new System.Drawing.Size(115, 23);
             this.labelX4.TabIndex = 17;
@@ -287,14 +291,14 @@
             // 
             this.txtDesc.Border.Class = "TextBoxBorder";
             this.txtDesc.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.txtDesc.Location = new System.Drawing.Point(30, 138);
+            this.txtDesc.Location = new System.Drawing.Point(30, 167);
             this.txtDesc.MaxLength = 200;
             this.txtDesc.Multiline = true;
             this.txtDesc.Name = "txtDesc";
             this.txtDesc.PreventEnterBeep = true;
             this.txtDesc.ScrollBars = System.Windows.Forms.ScrollBars.Both;
             this.txtDesc.Size = new System.Drawing.Size(286, 105);
-            this.txtDesc.TabIndex = 3;
+            this.txtDesc.TabIndex = 4;
             // 
             // labelX1
             // 
@@ -309,13 +313,41 @@
             this.labelX1.TabIndex = 0;
             this.labelX1.Text = "آدرس";
             // 
+            // txtOrigin
+            // 
+            // 
+            // 
+            // 
+            this.txtOrigin.Border.Class = "TextBoxBorder";
+            this.txtOrigin.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.txtOrigin.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.bsReceiver, "F_Country", true));
+            this.txtOrigin.Location = new System.Drawing.Point(30, 138);
+            this.txtOrigin.MaxLength = 30;
+            this.txtOrigin.Name = "txtOrigin";
+            this.txtOrigin.PreventEnterBeep = true;
+            this.txtOrigin.Size = new System.Drawing.Size(286, 23);
+            this.txtOrigin.TabIndex = 3;
+            // 
+            // labelX5
+            // 
+            this.labelX5.BackColor = System.Drawing.Color.Transparent;
+            // 
+            // 
+            // 
+            this.labelX5.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.labelX5.Location = new System.Drawing.Point(322, 137);
+            this.labelX5.Name = "labelX5";
+            this.labelX5.Size = new System.Drawing.Size(115, 23);
+            this.labelX5.TabIndex = 20;
+            this.labelX5.Text = "کشور/شهر";
+            // 
             // frmAddPerson
             // 
             this.AcceptButton = this.btnSave;
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.btnExit;
-            this.ClientSize = new System.Drawing.Size(471, 351);
+            this.ClientSize = new System.Drawing.Size(471, 388);
             this.Controls.Add(this.groupPanel2);
             this.Controls.Add(this.groupPanel1);
             this.DoubleBuffered = true;
@@ -355,5 +387,7 @@
         private DevComponents.DotNetBar.Controls.TextBoxX txtName;
         private DevComponents.DotNetBar.Controls.TextBoxX txtDesc;
         private DevComponents.DotNetBar.LabelX labelX1;
+        private DevComponents.DotNetBar.Controls.TextBoxX txtOrigin;
+        private DevComponents.DotNetBar.LabelX labelX5;
     }
 }

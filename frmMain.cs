@@ -89,7 +89,7 @@ namespace Tarla
             btnCategory.Enabled = FactorPermission;
             btnItem.Enabled = FactorPermission;
             btnItemGroup.Enabled = FactorPermission;
-            btnPacking.Enabled = FactorPermission;
+            //btnPacking.Enabled = FactorPermission;
             lblFullname.Text = string.Format("کاربر جاری : {0}", Fullname);
             lblDate.Text = string.Format("تاریخ : {0}",pd.getShortDate());
             this.WindowState = FormWindowState.Maximized;
@@ -144,11 +144,7 @@ namespace Tarla
 
         private void btnBuyers_Click(object sender, EventArgs e)
         {
-            minimizeRibbon(true);
-            frmShowPerson.personType = 1;
-            frmShowPerson _frmChild = new frmShowPerson();
-            _frmChild.MdiParent = this;
-            _frmChild.Show();
+            
         }
 
         private void btnSellers_Click(object sender, EventArgs e)
@@ -201,10 +197,10 @@ namespace Tarla
 
         private void btnPacking_Click(object sender, EventArgs e)
         {
-            minimizeRibbon(true);
+            /*minimizeRibbon(true);
             frmShowPacking _frmChild = new frmShowPacking();
             _frmChild.MdiParent = this;
-            _frmChild.Show();
+            _frmChild.Show();*/
         }
 
         private void btnSell_Click(object sender, EventArgs e)
@@ -287,8 +283,13 @@ namespace Tarla
 
         private void btnFReceiver_Click(object sender, EventArgs e)
         {
-            minimizeRibbon(true);
+            /*minimizeRibbon(true);
             frmShowForiegnReceiver _frmChild = new frmShowForiegnReceiver();
+            _frmChild.MdiParent = this;
+            _frmChild.Show();*/
+            minimizeRibbon(true);
+            frmShowPerson.personType = 1;
+            frmShowPerson _frmChild = new frmShowPerson();
             _frmChild.MdiParent = this;
             _frmChild.Show();
         }

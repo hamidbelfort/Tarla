@@ -42,15 +42,6 @@ namespace Tarla
     partial void InsertProductGroup(ProductGroup instance);
     partial void UpdateProductGroup(ProductGroup instance);
     partial void DeleteProductGroup(ProductGroup instance);
-    partial void InsertSeller(Seller instance);
-    partial void UpdateSeller(Seller instance);
-    partial void DeleteSeller(Seller instance);
-    partial void InsertReceiver(Receiver instance);
-    partial void UpdateReceiver(Receiver instance);
-    partial void DeleteReceiver(Receiver instance);
-    partial void InsertBuyer(Buyer instance);
-    partial void UpdateBuyer(Buyer instance);
-    partial void DeleteBuyer(Buyer instance);
     partial void InsertCompany(Company instance);
     partial void UpdateCompany(Company instance);
     partial void DeleteCompany(Company instance);
@@ -72,9 +63,6 @@ namespace Tarla
     partial void InsertSystemLog(SystemLog instance);
     partial void UpdateSystemLog(SystemLog instance);
     partial void DeleteSystemLog(SystemLog instance);
-    partial void InsertForiegnReceiver(ForiegnReceiver instance);
-    partial void UpdateForiegnReceiver(ForiegnReceiver instance);
-    partial void DeleteForiegnReceiver(ForiegnReceiver instance);
     partial void InsertMessage(Message instance);
     partial void UpdateMessage(Message instance);
     partial void DeleteMessage(Message instance);
@@ -108,6 +96,9 @@ namespace Tarla
     partial void InsertDepot(Depot instance);
     partial void UpdateDepot(Depot instance);
     partial void DeleteDepot(Depot instance);
+    partial void InsertTruckType(TruckType instance);
+    partial void UpdateTruckType(TruckType instance);
+    partial void DeleteTruckType(TruckType instance);
     #endregion
 		
 		public dcTarlaDataContext() : 
@@ -172,30 +163,6 @@ namespace Tarla
 			}
 		}
 		
-		public System.Data.Linq.Table<Seller> Sellers
-		{
-			get
-			{
-				return this.GetTable<Seller>();
-			}
-		}
-		
-		public System.Data.Linq.Table<Receiver> Receivers
-		{
-			get
-			{
-				return this.GetTable<Receiver>();
-			}
-		}
-		
-		public System.Data.Linq.Table<Buyer> Buyers
-		{
-			get
-			{
-				return this.GetTable<Buyer>();
-			}
-		}
-		
 		public System.Data.Linq.Table<Company> Companies
 		{
 			get
@@ -249,14 +216,6 @@ namespace Tarla
 			get
 			{
 				return this.GetTable<SystemLog>();
-			}
-		}
-		
-		public System.Data.Linq.Table<ForiegnReceiver> ForiegnReceivers
-		{
-			get
-			{
-				return this.GetTable<ForiegnReceiver>();
 			}
 		}
 		
@@ -401,6 +360,14 @@ namespace Tarla
 			get
 			{
 				return this.GetTable<BuyDetailView>();
+			}
+		}
+		
+		public System.Data.Linq.Table<TruckType> TruckTypes
+		{
+			get
+			{
+				return this.GetTable<TruckType>();
 			}
 		}
 		
@@ -606,13 +573,6 @@ namespace Tarla
 			return ((ISingleResult<Product>)(result.ReturnValue));
 		}
 		
-		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.DeleteBuyer")]
-		public int DeleteBuyer([global::System.Data.Linq.Mapping.ParameterAttribute(Name="BuyerId", DbType="Int")] System.Nullable<int> buyerId)
-		{
-			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), buyerId);
-			return ((int)(result.ReturnValue));
-		}
-		
 		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.DeleteCompany")]
 		public int DeleteCompany([global::System.Data.Linq.Mapping.ParameterAttribute(Name="CompanyId", DbType="Int")] System.Nullable<int> companyId)
 		{
@@ -625,27 +585,6 @@ namespace Tarla
 		{
 			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), receiverId);
 			return ((int)(result.ReturnValue));
-		}
-		
-		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.DeleteSeller")]
-		public int DeleteSeller([global::System.Data.Linq.Mapping.ParameterAttribute(Name="SellerId", DbType="Int")] System.Nullable<int> sellerId)
-		{
-			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), sellerId);
-			return ((int)(result.ReturnValue));
-		}
-		
-		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.FillBuyer")]
-		public ISingleResult<Buyer> FillBuyer()
-		{
-			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())));
-			return ((ISingleResult<Buyer>)(result.ReturnValue));
-		}
-		
-		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.FillBuyerById")]
-		public ISingleResult<Buyer> FillBuyerById([global::System.Data.Linq.Mapping.ParameterAttribute(Name="BuyerId", DbType="Int")] System.Nullable<int> buyerId)
-		{
-			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), buyerId);
-			return ((ISingleResult<Buyer>)(result.ReturnValue));
 		}
 		
 		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.FillCompanyById")]
@@ -662,41 +601,6 @@ namespace Tarla
 			return ((ISingleResult<Company>)(result.ReturnValue));
 		}
 		
-		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.FillReceiver")]
-		public ISingleResult<Receiver> FillReceiver()
-		{
-			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())));
-			return ((ISingleResult<Receiver>)(result.ReturnValue));
-		}
-		
-		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.FillReceiverById")]
-		public ISingleResult<Receiver> FillReceiverById([global::System.Data.Linq.Mapping.ParameterAttribute(Name="ReceiverId", DbType="Int")] System.Nullable<int> receiverId)
-		{
-			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), receiverId);
-			return ((ISingleResult<Receiver>)(result.ReturnValue));
-		}
-		
-		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.FillSeller")]
-		public ISingleResult<Seller> FillSeller()
-		{
-			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())));
-			return ((ISingleResult<Seller>)(result.ReturnValue));
-		}
-		
-		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.FillSellerById")]
-		public ISingleResult<Seller> FillSellerById([global::System.Data.Linq.Mapping.ParameterAttribute(Name="SellerId", DbType="Int")] System.Nullable<int> sellerId)
-		{
-			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), sellerId);
-			return ((ISingleResult<Seller>)(result.ReturnValue));
-		}
-		
-		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.InsertBuyer")]
-		public int InsertBuyer([global::System.Data.Linq.Mapping.ParameterAttribute(Name="BuyerName", DbType="NVarChar(50)")] string buyerName, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="Phone", DbType="NVarChar(12)")] string phone, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="Address", DbType="NVarChar(200)")] string address, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="Description", DbType="NVarChar(MAX)")] string description)
-		{
-			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), buyerName, phone, address, description);
-			return ((int)(result.ReturnValue));
-		}
-		
 		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.InsertCompany")]
 		public int InsertCompany([global::System.Data.Linq.Mapping.ParameterAttribute(Name="CompanyName", DbType="NVarChar(100)")] string companyName, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="Chief", DbType="NVarChar(30)")] string chief, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="Phone", DbType="NVarChar(12)")] string phone, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="Address", DbType="NVarChar(MAX)")] string address)
 		{
@@ -704,45 +608,10 @@ namespace Tarla
 			return ((int)(result.ReturnValue));
 		}
 		
-		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.InsertReceiver")]
-		public int InsertReceiver([global::System.Data.Linq.Mapping.ParameterAttribute(Name="ReceiverName", DbType="NVarChar(50)")] string receiverName, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="Phone", DbType="NVarChar(12)")] string phone, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="Address", DbType="NVarChar(200)")] string address, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="Description", DbType="NVarChar(MAX)")] string description)
-		{
-			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), receiverName, phone, address, description);
-			return ((int)(result.ReturnValue));
-		}
-		
-		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.InsertSeller")]
-		public int InsertSeller([global::System.Data.Linq.Mapping.ParameterAttribute(Name="SellerName", DbType="NVarChar(50)")] string sellerName, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="Phone", DbType="NVarChar(12)")] string phone, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="Address", DbType="NVarChar(200)")] string address, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="Description", DbType="NVarChar(MAX)")] string description)
-		{
-			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), sellerName, phone, address, description);
-			return ((int)(result.ReturnValue));
-		}
-		
-		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.UpdateBuyer")]
-		public int UpdateBuyer([global::System.Data.Linq.Mapping.ParameterAttribute(Name="BuyerId", DbType="Int")] System.Nullable<int> buyerId, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="BuyerName", DbType="NVarChar(50)")] string buyerName, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="Phone", DbType="NVarChar(12)")] string phone, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="Address", DbType="NVarChar(200)")] string address, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="Description", DbType="NVarChar(MAX)")] string description)
-		{
-			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), buyerId, buyerName, phone, address, description);
-			return ((int)(result.ReturnValue));
-		}
-		
 		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.UpdateCompany")]
 		public int UpdateCompany([global::System.Data.Linq.Mapping.ParameterAttribute(Name="CompanyId", DbType="Int")] System.Nullable<int> companyId, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="CompanyName", DbType="NVarChar(100)")] string companyName, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="Chief", DbType="NVarChar(30)")] string chief, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="Phone", DbType="NVarChar(12)")] string phone, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="Address", DbType="NVarChar(MAX)")] string address)
 		{
 			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), companyId, companyName, chief, phone, address);
-			return ((int)(result.ReturnValue));
-		}
-		
-		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.UpdateReceiver")]
-		public int UpdateReceiver([global::System.Data.Linq.Mapping.ParameterAttribute(Name="ReceiverId", DbType="Int")] System.Nullable<int> receiverId, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="ReceiverName", DbType="NVarChar(50)")] string receiverName, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="Phone", DbType="NVarChar(12)")] string phone, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="Address", DbType="NVarChar(200)")] string address, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="Description", DbType="NVarChar(MAX)")] string description)
-		{
-			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), receiverId, receiverName, phone, address, description);
-			return ((int)(result.ReturnValue));
-		}
-		
-		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.UpdateSeller")]
-		public int UpdateSeller([global::System.Data.Linq.Mapping.ParameterAttribute(Name="SellerId", DbType="Int")] System.Nullable<int> sellerId, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="SellerName", DbType="NVarChar(50)")] string sellerName, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="Phone", DbType="NVarChar(12)")] string phone, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="Address", DbType="NVarChar(200)")] string address, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="Description", DbType="NVarChar(MAX)")] string description)
-		{
-			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), sellerId, sellerName, phone, address, description);
 			return ((int)(result.ReturnValue));
 		}
 		
@@ -962,41 +831,6 @@ namespace Tarla
 			return ((ISingleResult<Product>)(result.ReturnValue));
 		}
 		
-		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.DeleteForeignReceiver")]
-		public int DeleteForeignReceiver([global::System.Data.Linq.Mapping.ParameterAttribute(Name="F_ReceiverId", DbType="Int")] System.Nullable<int> f_ReceiverId)
-		{
-			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), f_ReceiverId);
-			return ((int)(result.ReturnValue));
-		}
-		
-		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.FillForeignReceiver")]
-		public ISingleResult<ForiegnReceiver> FillForeignReceiver()
-		{
-			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())));
-			return ((ISingleResult<ForiegnReceiver>)(result.ReturnValue));
-		}
-		
-		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.FillForeignReceiverById")]
-		public ISingleResult<ForiegnReceiver> FillForeignReceiverById([global::System.Data.Linq.Mapping.ParameterAttribute(Name="F_ReceiverId", DbType="Int")] System.Nullable<int> f_ReceiverId)
-		{
-			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), f_ReceiverId);
-			return ((ISingleResult<ForiegnReceiver>)(result.ReturnValue));
-		}
-		
-		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.InsertForeignReceiver")]
-		public int InsertForeignReceiver([global::System.Data.Linq.Mapping.ParameterAttribute(Name="Name", DbType="NVarChar(30)")] string name, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="Phone", DbType="NVarChar(10)")] string phone, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="Address", DbType="NVarChar(MAX)")] string address, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="Country", DbType="NVarChar(30)")] string country, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="Desc", DbType="NVarChar(MAX)")] string desc)
-		{
-			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), name, phone, address, country, desc);
-			return ((int)(result.ReturnValue));
-		}
-		
-		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.UpdateForeignReceiver")]
-		public int UpdateForeignReceiver([global::System.Data.Linq.Mapping.ParameterAttribute(Name="F_ReceiverId", DbType="Int")] System.Nullable<int> f_ReceiverId, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="Name", DbType="NVarChar(30)")] string name, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="Phone", DbType="NVarChar(10)")] string phone, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="Address", DbType="NVarChar(MAX)")] string address, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="Country", DbType="NVarChar(30)")] string country, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="Desc", DbType="NVarChar(MAX)")] string desc)
-		{
-			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), f_ReceiverId, name, phone, address, country, desc);
-			return ((int)(result.ReturnValue));
-		}
-		
 		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.DeleteInvoice")]
 		public int DeleteInvoice([global::System.Data.Linq.Mapping.ParameterAttribute(Name="InvoiceId", DbType="Int")] System.Nullable<int> invoiceId)
 		{
@@ -1052,16 +886,6 @@ namespace Tarla
 		{
 			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), messageText);
 			messageText = ((string)(result.GetParameterValue(0)));
-			return ((int)(result.ReturnValue));
-		}
-		
-		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.GetBalanceById")]
-		public int GetBalanceById([global::System.Data.Linq.Mapping.ParameterAttribute(Name="BuyerId", DbType="Int")] System.Nullable<int> buyerId, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="Paid", DbType="Int")] ref System.Nullable<int> paid, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="TotalPrice", DbType="Int")] ref System.Nullable<int> totalPrice, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="Amount", DbType="Int")] ref System.Nullable<int> amount)
-		{
-			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), buyerId, paid, totalPrice, amount);
-			paid = ((System.Nullable<int>)(result.GetParameterValue(1)));
-			totalPrice = ((System.Nullable<int>)(result.GetParameterValue(2)));
-			amount = ((System.Nullable<int>)(result.GetParameterValue(3)));
 			return ((int)(result.ReturnValue));
 		}
 		
@@ -1147,15 +971,6 @@ namespace Tarla
 			bank = ((System.Nullable<bool>)(result.GetParameterValue(2)));
 			user = ((System.Nullable<bool>)(result.GetParameterValue(3)));
 			factor = ((System.Nullable<bool>)(result.GetParameterValue(4)));
-			return ((int)(result.ReturnValue));
-		}
-		
-		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.GetBuyerNameAndPhone")]
-		public int GetBuyerNameAndPhone([global::System.Data.Linq.Mapping.ParameterAttribute(Name="BuyerId", DbType="Int")] System.Nullable<int> buyerId, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="BuyerName", DbType="NVarChar(50)")] ref string buyerName, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="BuyerPhone", DbType="NVarChar(12)")] ref string buyerPhone)
-		{
-			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), buyerId, buyerName, buyerPhone);
-			buyerName = ((string)(result.GetParameterValue(1)));
-			buyerPhone = ((string)(result.GetParameterValue(2)));
 			return ((int)(result.ReturnValue));
 		}
 		
@@ -1301,14 +1116,6 @@ namespace Tarla
 			return ((int)(result.ReturnValue));
 		}
 		
-		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.GetForiegnReceiverCountry")]
-		public int GetForiegnReceiverCountry([global::System.Data.Linq.Mapping.ParameterAttribute(Name="ReceiverId", DbType="Int")] System.Nullable<int> receiverId, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="Country", DbType="NVarChar(30)")] ref string country)
-		{
-			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), receiverId, country);
-			country = ((string)(result.GetParameterValue(1)));
-			return ((int)(result.ReturnValue));
-		}
-		
 		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.GetInvoiceDetails")]
 		public ISingleResult<F_DetailsView> GetInvoiceDetails([global::System.Data.Linq.Mapping.ParameterAttribute(Name="InvoiceId", DbType="Int")] System.Nullable<int> invoiceId)
 		{
@@ -1449,6 +1256,41 @@ namespace Tarla
 		{
 			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), factorId);
 			return ((int)(result.ReturnValue));
+		}
+		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.DeleteTruckType")]
+		public int DeleteTruckType([global::System.Data.Linq.Mapping.ParameterAttribute(Name="TruckTypeId", DbType="Int")] System.Nullable<int> truckTypeId)
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), truckTypeId);
+			return ((int)(result.ReturnValue));
+		}
+		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.InsertTruckType")]
+		public int InsertTruckType([global::System.Data.Linq.Mapping.ParameterAttribute(Name="TruckType", DbType="NVarChar(40)")] string truckType)
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), truckType);
+			return ((int)(result.ReturnValue));
+		}
+		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.UpdateTruckType")]
+		public int UpdateTruckType([global::System.Data.Linq.Mapping.ParameterAttribute(Name="TruckTypeId", DbType="Int")] System.Nullable<int> truckTypeId, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="TruckTypeName", DbType="NVarChar(40)")] string truckTypeName)
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), truckTypeId, truckTypeName);
+			return ((int)(result.ReturnValue));
+		}
+		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.FillTruckType")]
+		public ISingleResult<TruckType> FillTruckType()
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())));
+			return ((ISingleResult<TruckType>)(result.ReturnValue));
+		}
+		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.FillTruckTypeById")]
+		public ISingleResult<TruckType> FillTruckTypeById([global::System.Data.Linq.Mapping.ParameterAttribute(Name="TruckTypeId", DbType="Int")] System.Nullable<int> truckTypeId)
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), truckTypeId);
+			return ((ISingleResult<TruckType>)(result.ReturnValue));
 		}
 	}
 	
@@ -2175,592 +2017,6 @@ namespace Tarla
 		{
 			this.SendPropertyChanging();
 			entity.ProductGroup = null;
-		}
-	}
-	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Sellers")]
-	public sealed partial class Seller : INotifyPropertyChanging, INotifyPropertyChanged
-	{
-		
-		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
-		
-		private int _SellerId;
-		
-		private string _SellerName;
-		
-		private string _Phone;
-		
-		private string _Address;
-		
-		private string _Description;
-		
-		private EntitySet<InvoiceDetail> _InvoiceDetails;
-		
-    #region Extensibility Method Definitions
-    partial void OnLoaded();
-    partial void OnValidate(System.Data.Linq.ChangeAction action);
-    partial void OnCreated();
-    partial void OnSellerIdChanging(int value);
-    partial void OnSellerIdChanged();
-    partial void OnSellerNameChanging(string value);
-    partial void OnSellerNameChanged();
-    partial void OnPhoneChanging(string value);
-    partial void OnPhoneChanged();
-    partial void OnAddressChanging(string value);
-    partial void OnAddressChanged();
-    partial void OnDescriptionChanging(string value);
-    partial void OnDescriptionChanged();
-    #endregion
-		
-		public Seller()
-		{
-			this._InvoiceDetails = new EntitySet<InvoiceDetail>(new Action<InvoiceDetail>(this.attach_InvoiceDetails), new Action<InvoiceDetail>(this.detach_InvoiceDetails));
-			OnCreated();
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_SellerId", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
-		public int SellerId
-		{
-			get
-			{
-				return this._SellerId;
-			}
-			set
-			{
-				if ((this._SellerId != value))
-				{
-					this.OnSellerIdChanging(value);
-					this.SendPropertyChanging();
-					this._SellerId = value;
-					this.SendPropertyChanged("SellerId");
-					this.OnSellerIdChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_SellerName", DbType="NVarChar(50)")]
-		public string SellerName
-		{
-			get
-			{
-				return this._SellerName;
-			}
-			set
-			{
-				if ((this._SellerName != value))
-				{
-					this.OnSellerNameChanging(value);
-					this.SendPropertyChanging();
-					this._SellerName = value;
-					this.SendPropertyChanged("SellerName");
-					this.OnSellerNameChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Phone", DbType="NVarChar(12)")]
-		public string Phone
-		{
-			get
-			{
-				return this._Phone;
-			}
-			set
-			{
-				if ((this._Phone != value))
-				{
-					this.OnPhoneChanging(value);
-					this.SendPropertyChanging();
-					this._Phone = value;
-					this.SendPropertyChanged("Phone");
-					this.OnPhoneChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Address", DbType="NVarChar(200)")]
-		public string Address
-		{
-			get
-			{
-				return this._Address;
-			}
-			set
-			{
-				if ((this._Address != value))
-				{
-					this.OnAddressChanging(value);
-					this.SendPropertyChanging();
-					this._Address = value;
-					this.SendPropertyChanged("Address");
-					this.OnAddressChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Description", DbType="NVarChar(MAX)")]
-		public string Description
-		{
-			get
-			{
-				return this._Description;
-			}
-			set
-			{
-				if ((this._Description != value))
-				{
-					this.OnDescriptionChanging(value);
-					this.SendPropertyChanging();
-					this._Description = value;
-					this.SendPropertyChanged("Description");
-					this.OnDescriptionChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Seller_InvoiceDetail", Storage="_InvoiceDetails", ThisKey="SellerId", OtherKey="SellerId")]
-		public EntitySet<InvoiceDetail> InvoiceDetails
-		{
-			get
-			{
-				return this._InvoiceDetails;
-			}
-			set
-			{
-				this._InvoiceDetails.Assign(value);
-			}
-		}
-		
-		public event PropertyChangingEventHandler PropertyChanging;
-		
-		public event PropertyChangedEventHandler PropertyChanged;
-		
-		private void SendPropertyChanging()
-		{
-			if ((this.PropertyChanging != null))
-			{
-				this.PropertyChanging(this, emptyChangingEventArgs);
-			}
-		}
-		
-		private void SendPropertyChanged(String propertyName)
-		{
-			if ((this.PropertyChanged != null))
-			{
-				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-			}
-		}
-		
-		private void attach_InvoiceDetails(InvoiceDetail entity)
-		{
-			this.SendPropertyChanging();
-			entity.Seller = this;
-		}
-		
-		private void detach_InvoiceDetails(InvoiceDetail entity)
-		{
-			this.SendPropertyChanging();
-			entity.Seller = null;
-		}
-	}
-	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Receivers")]
-	public sealed partial class Receiver : INotifyPropertyChanging, INotifyPropertyChanged
-	{
-		
-		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
-		
-		private int _ReceiverId;
-		
-		private string _ReceiverName;
-		
-		private string _Phone;
-		
-		private string _Address;
-		
-		private string _Description;
-		
-		private EntitySet<Invoice> _Invoices;
-		
-    #region Extensibility Method Definitions
-    partial void OnLoaded();
-    partial void OnValidate(System.Data.Linq.ChangeAction action);
-    partial void OnCreated();
-    partial void OnReceiverIdChanging(int value);
-    partial void OnReceiverIdChanged();
-    partial void OnReceiverNameChanging(string value);
-    partial void OnReceiverNameChanged();
-    partial void OnPhoneChanging(string value);
-    partial void OnPhoneChanged();
-    partial void OnAddressChanging(string value);
-    partial void OnAddressChanged();
-    partial void OnDescriptionChanging(string value);
-    partial void OnDescriptionChanged();
-    #endregion
-		
-		public Receiver()
-		{
-			this._Invoices = new EntitySet<Invoice>(new Action<Invoice>(this.attach_Invoices), new Action<Invoice>(this.detach_Invoices));
-			OnCreated();
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ReceiverId", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
-		public int ReceiverId
-		{
-			get
-			{
-				return this._ReceiverId;
-			}
-			set
-			{
-				if ((this._ReceiverId != value))
-				{
-					this.OnReceiverIdChanging(value);
-					this.SendPropertyChanging();
-					this._ReceiverId = value;
-					this.SendPropertyChanged("ReceiverId");
-					this.OnReceiverIdChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ReceiverName", DbType="NVarChar(30)")]
-		public string ReceiverName
-		{
-			get
-			{
-				return this._ReceiverName;
-			}
-			set
-			{
-				if ((this._ReceiverName != value))
-				{
-					this.OnReceiverNameChanging(value);
-					this.SendPropertyChanging();
-					this._ReceiverName = value;
-					this.SendPropertyChanged("ReceiverName");
-					this.OnReceiverNameChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Phone", DbType="NVarChar(12)")]
-		public string Phone
-		{
-			get
-			{
-				return this._Phone;
-			}
-			set
-			{
-				if ((this._Phone != value))
-				{
-					this.OnPhoneChanging(value);
-					this.SendPropertyChanging();
-					this._Phone = value;
-					this.SendPropertyChanged("Phone");
-					this.OnPhoneChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Address", DbType="NVarChar(200)")]
-		public string Address
-		{
-			get
-			{
-				return this._Address;
-			}
-			set
-			{
-				if ((this._Address != value))
-				{
-					this.OnAddressChanging(value);
-					this.SendPropertyChanging();
-					this._Address = value;
-					this.SendPropertyChanged("Address");
-					this.OnAddressChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Description", DbType="NVarChar(MAX)")]
-		public string Description
-		{
-			get
-			{
-				return this._Description;
-			}
-			set
-			{
-				if ((this._Description != value))
-				{
-					this.OnDescriptionChanging(value);
-					this.SendPropertyChanging();
-					this._Description = value;
-					this.SendPropertyChanged("Description");
-					this.OnDescriptionChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Receiver_Invoice", Storage="_Invoices", ThisKey="ReceiverId", OtherKey="ReceiverId")]
-		public EntitySet<Invoice> Invoices
-		{
-			get
-			{
-				return this._Invoices;
-			}
-			set
-			{
-				this._Invoices.Assign(value);
-			}
-		}
-		
-		public event PropertyChangingEventHandler PropertyChanging;
-		
-		public event PropertyChangedEventHandler PropertyChanged;
-		
-		private void SendPropertyChanging()
-		{
-			if ((this.PropertyChanging != null))
-			{
-				this.PropertyChanging(this, emptyChangingEventArgs);
-			}
-		}
-		
-		private void SendPropertyChanged(String propertyName)
-		{
-			if ((this.PropertyChanged != null))
-			{
-				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-			}
-		}
-		
-		private void attach_Invoices(Invoice entity)
-		{
-			this.SendPropertyChanging();
-			entity.Receiver = this;
-		}
-		
-		private void detach_Invoices(Invoice entity)
-		{
-			this.SendPropertyChanging();
-			entity.Receiver = null;
-		}
-	}
-	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Buyers")]
-	public sealed partial class Buyer : INotifyPropertyChanging, INotifyPropertyChanged
-	{
-		
-		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
-		
-		private int _BuyerId;
-		
-		private string _BuyerName;
-		
-		private string _Phone;
-		
-		private string _Address;
-		
-		private string _Description;
-		
-		private EntitySet<Book> _Books;
-		
-		private EntitySet<Invoice> _Invoices;
-		
-    #region Extensibility Method Definitions
-    partial void OnLoaded();
-    partial void OnValidate(System.Data.Linq.ChangeAction action);
-    partial void OnCreated();
-    partial void OnBuyerIdChanging(int value);
-    partial void OnBuyerIdChanged();
-    partial void OnBuyerNameChanging(string value);
-    partial void OnBuyerNameChanged();
-    partial void OnPhoneChanging(string value);
-    partial void OnPhoneChanged();
-    partial void OnAddressChanging(string value);
-    partial void OnAddressChanged();
-    partial void OnDescriptionChanging(string value);
-    partial void OnDescriptionChanged();
-    #endregion
-		
-		public Buyer()
-		{
-			this._Books = new EntitySet<Book>(new Action<Book>(this.attach_Books), new Action<Book>(this.detach_Books));
-			this._Invoices = new EntitySet<Invoice>(new Action<Invoice>(this.attach_Invoices), new Action<Invoice>(this.detach_Invoices));
-			OnCreated();
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_BuyerId", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
-		public int BuyerId
-		{
-			get
-			{
-				return this._BuyerId;
-			}
-			set
-			{
-				if ((this._BuyerId != value))
-				{
-					this.OnBuyerIdChanging(value);
-					this.SendPropertyChanging();
-					this._BuyerId = value;
-					this.SendPropertyChanged("BuyerId");
-					this.OnBuyerIdChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_BuyerName", DbType="NVarChar(50)")]
-		public string BuyerName
-		{
-			get
-			{
-				return this._BuyerName;
-			}
-			set
-			{
-				if ((this._BuyerName != value))
-				{
-					this.OnBuyerNameChanging(value);
-					this.SendPropertyChanging();
-					this._BuyerName = value;
-					this.SendPropertyChanged("BuyerName");
-					this.OnBuyerNameChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Phone", DbType="NVarChar(12)")]
-		public string Phone
-		{
-			get
-			{
-				return this._Phone;
-			}
-			set
-			{
-				if ((this._Phone != value))
-				{
-					this.OnPhoneChanging(value);
-					this.SendPropertyChanging();
-					this._Phone = value;
-					this.SendPropertyChanged("Phone");
-					this.OnPhoneChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Address", DbType="NVarChar(200)")]
-		public string Address
-		{
-			get
-			{
-				return this._Address;
-			}
-			set
-			{
-				if ((this._Address != value))
-				{
-					this.OnAddressChanging(value);
-					this.SendPropertyChanging();
-					this._Address = value;
-					this.SendPropertyChanged("Address");
-					this.OnAddressChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Description", DbType="NVarChar(MAX)")]
-		public string Description
-		{
-			get
-			{
-				return this._Description;
-			}
-			set
-			{
-				if ((this._Description != value))
-				{
-					this.OnDescriptionChanging(value);
-					this.SendPropertyChanging();
-					this._Description = value;
-					this.SendPropertyChanged("Description");
-					this.OnDescriptionChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Buyer_Book", Storage="_Books", ThisKey="BuyerId", OtherKey="BuyerId")]
-		public EntitySet<Book> Books
-		{
-			get
-			{
-				return this._Books;
-			}
-			set
-			{
-				this._Books.Assign(value);
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Buyer_Invoice", Storage="_Invoices", ThisKey="BuyerId", OtherKey="BuyerId")]
-		public EntitySet<Invoice> Invoices
-		{
-			get
-			{
-				return this._Invoices;
-			}
-			set
-			{
-				this._Invoices.Assign(value);
-			}
-		}
-		
-		public event PropertyChangingEventHandler PropertyChanging;
-		
-		public event PropertyChangedEventHandler PropertyChanged;
-		
-		private void SendPropertyChanging()
-		{
-			if ((this.PropertyChanging != null))
-			{
-				this.PropertyChanging(this, emptyChangingEventArgs);
-			}
-		}
-		
-		private void SendPropertyChanged(String propertyName)
-		{
-			if ((this.PropertyChanged != null))
-			{
-				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-			}
-		}
-		
-		private void attach_Books(Book entity)
-		{
-			this.SendPropertyChanging();
-			entity.Buyer = this;
-		}
-		
-		private void detach_Books(Book entity)
-		{
-			this.SendPropertyChanging();
-			entity.Buyer = null;
-		}
-		
-		private void attach_Invoices(Invoice entity)
-		{
-			this.SendPropertyChanging();
-			entity.Buyer = this;
-		}
-		
-		private void detach_Invoices(Invoice entity)
-		{
-			this.SendPropertyChanging();
-			entity.Buyer = null;
 		}
 	}
 	
@@ -3911,216 +3167,6 @@ namespace Tarla
 		}
 	}
 	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.ForiegnReceivers")]
-	public sealed partial class ForiegnReceiver : INotifyPropertyChanging, INotifyPropertyChanged
-	{
-		
-		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
-		
-		private int _F_ReceiverId;
-		
-		private string _F_ReceiverName;
-		
-		private string _F_Phone;
-		
-		private string _F_Address;
-		
-		private string _F_Country;
-		
-		private string _F_Description;
-		
-		private EntitySet<Invoice> _Invoices;
-		
-    #region Extensibility Method Definitions
-    partial void OnLoaded();
-    partial void OnValidate(System.Data.Linq.ChangeAction action);
-    partial void OnCreated();
-    partial void OnF_ReceiverIdChanging(int value);
-    partial void OnF_ReceiverIdChanged();
-    partial void OnF_ReceiverNameChanging(string value);
-    partial void OnF_ReceiverNameChanged();
-    partial void OnF_PhoneChanging(string value);
-    partial void OnF_PhoneChanged();
-    partial void OnF_AddressChanging(string value);
-    partial void OnF_AddressChanged();
-    partial void OnF_CountryChanging(string value);
-    partial void OnF_CountryChanged();
-    partial void OnF_DescriptionChanging(string value);
-    partial void OnF_DescriptionChanged();
-    #endregion
-		
-		public ForiegnReceiver()
-		{
-			this._Invoices = new EntitySet<Invoice>(new Action<Invoice>(this.attach_Invoices), new Action<Invoice>(this.detach_Invoices));
-			OnCreated();
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_F_ReceiverId", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
-		public int F_ReceiverId
-		{
-			get
-			{
-				return this._F_ReceiverId;
-			}
-			set
-			{
-				if ((this._F_ReceiverId != value))
-				{
-					this.OnF_ReceiverIdChanging(value);
-					this.SendPropertyChanging();
-					this._F_ReceiverId = value;
-					this.SendPropertyChanged("F_ReceiverId");
-					this.OnF_ReceiverIdChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_F_ReceiverName", DbType="NVarChar(30)")]
-		public string F_ReceiverName
-		{
-			get
-			{
-				return this._F_ReceiverName;
-			}
-			set
-			{
-				if ((this._F_ReceiverName != value))
-				{
-					this.OnF_ReceiverNameChanging(value);
-					this.SendPropertyChanging();
-					this._F_ReceiverName = value;
-					this.SendPropertyChanged("F_ReceiverName");
-					this.OnF_ReceiverNameChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_F_Phone", DbType="NVarChar(12)")]
-		public string F_Phone
-		{
-			get
-			{
-				return this._F_Phone;
-			}
-			set
-			{
-				if ((this._F_Phone != value))
-				{
-					this.OnF_PhoneChanging(value);
-					this.SendPropertyChanging();
-					this._F_Phone = value;
-					this.SendPropertyChanged("F_Phone");
-					this.OnF_PhoneChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_F_Address", DbType="NVarChar(MAX)")]
-		public string F_Address
-		{
-			get
-			{
-				return this._F_Address;
-			}
-			set
-			{
-				if ((this._F_Address != value))
-				{
-					this.OnF_AddressChanging(value);
-					this.SendPropertyChanging();
-					this._F_Address = value;
-					this.SendPropertyChanged("F_Address");
-					this.OnF_AddressChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_F_Country", DbType="NVarChar(30)")]
-		public string F_Country
-		{
-			get
-			{
-				return this._F_Country;
-			}
-			set
-			{
-				if ((this._F_Country != value))
-				{
-					this.OnF_CountryChanging(value);
-					this.SendPropertyChanging();
-					this._F_Country = value;
-					this.SendPropertyChanged("F_Country");
-					this.OnF_CountryChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_F_Description", DbType="NVarChar(MAX)")]
-		public string F_Description
-		{
-			get
-			{
-				return this._F_Description;
-			}
-			set
-			{
-				if ((this._F_Description != value))
-				{
-					this.OnF_DescriptionChanging(value);
-					this.SendPropertyChanging();
-					this._F_Description = value;
-					this.SendPropertyChanged("F_Description");
-					this.OnF_DescriptionChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="ForiegnReceiver_Invoice", Storage="_Invoices", ThisKey="F_ReceiverId", OtherKey="F_ReceiverId")]
-		public EntitySet<Invoice> Invoices
-		{
-			get
-			{
-				return this._Invoices;
-			}
-			set
-			{
-				this._Invoices.Assign(value);
-			}
-		}
-		
-		public event PropertyChangingEventHandler PropertyChanging;
-		
-		public event PropertyChangedEventHandler PropertyChanged;
-		
-		private void SendPropertyChanging()
-		{
-			if ((this.PropertyChanging != null))
-			{
-				this.PropertyChanging(this, emptyChangingEventArgs);
-			}
-		}
-		
-		private void SendPropertyChanged(String propertyName)
-		{
-			if ((this.PropertyChanged != null))
-			{
-				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-			}
-		}
-		
-		private void attach_Invoices(Invoice entity)
-		{
-			this.SendPropertyChanging();
-			entity.ForiegnReceiver = this;
-		}
-		
-		private void detach_Invoices(Invoice entity)
-		{
-			this.SendPropertyChanging();
-			entity.ForiegnReceiver = null;
-		}
-	}
-	
 	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.FactorView")]
 	public sealed partial class FactorView
 	{
@@ -4400,8 +3446,6 @@ namespace Tarla
 		
 		private EntityRef<Bank> _Bank;
 		
-		private EntityRef<Buyer> _Buyer;
-		
 		private EntityRef<PayType> _PayType;
 		
     #region Extensibility Method Definitions
@@ -4427,7 +3471,6 @@ namespace Tarla
 		public Book()
 		{
 			this._Bank = default(EntityRef<Bank>);
-			this._Buyer = default(EntityRef<Buyer>);
 			this._PayType = default(EntityRef<PayType>);
 			OnCreated();
 		}
@@ -4483,10 +3526,6 @@ namespace Tarla
 			{
 				if ((this._BuyerId != value))
 				{
-					if (this._Buyer.HasLoadedOrAssignedValue)
-					{
-						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
-					}
 					this.OnBuyerIdChanging(value);
 					this.SendPropertyChanging();
 					this._BuyerId = value;
@@ -4614,40 +3653,6 @@ namespace Tarla
 						this._BankId = default(Nullable<int>);
 					}
 					this.SendPropertyChanged("Bank");
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Buyer_Book", Storage="_Buyer", ThisKey="BuyerId", OtherKey="BuyerId", IsForeignKey=true)]
-		public Buyer Buyer
-		{
-			get
-			{
-				return this._Buyer.Entity;
-			}
-			set
-			{
-				Buyer previousValue = this._Buyer.Entity;
-				if (((previousValue != value) 
-							|| (this._Buyer.HasLoadedOrAssignedValue == false)))
-				{
-					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._Buyer.Entity = null;
-						previousValue.Books.Remove(this);
-					}
-					this._Buyer.Entity = value;
-					if ((value != null))
-					{
-						value.Books.Add(this);
-						this._BuyerId = value.BuyerId;
-					}
-					else
-					{
-						this._BuyerId = default(Nullable<int>);
-					}
-					this.SendPropertyChanged("Buyer");
 				}
 			}
 		}
@@ -5669,8 +4674,6 @@ namespace Tarla
 		
 		private EntityRef<Product> _Product;
 		
-		private EntityRef<Seller> _Seller;
-		
 		private EntityRef<Invoice> _Invoice;
 		
     #region Extensibility Method Definitions
@@ -5703,7 +4706,6 @@ namespace Tarla
 		{
 			this._ProductPacking = default(EntityRef<ProductPacking>);
 			this._Product = default(EntityRef<Product>);
-			this._Seller = default(EntityRef<Seller>);
 			this._Invoice = default(EntityRef<Invoice>);
 			OnCreated();
 		}
@@ -5787,10 +4789,6 @@ namespace Tarla
 			{
 				if ((this._SellerId != value))
 				{
-					if (this._Seller.HasLoadedOrAssignedValue)
-					{
-						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
-					}
 					this.OnSellerIdChanging(value);
 					this.SendPropertyChanging();
 					this._SellerId = value;
@@ -5988,40 +4986,6 @@ namespace Tarla
 						this._ProductId = default(Nullable<int>);
 					}
 					this.SendPropertyChanged("Product");
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Seller_InvoiceDetail", Storage="_Seller", ThisKey="SellerId", OtherKey="SellerId", IsForeignKey=true)]
-		public Seller Seller
-		{
-			get
-			{
-				return this._Seller.Entity;
-			}
-			set
-			{
-				Seller previousValue = this._Seller.Entity;
-				if (((previousValue != value) 
-							|| (this._Seller.HasLoadedOrAssignedValue == false)))
-				{
-					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._Seller.Entity = null;
-						previousValue.InvoiceDetails.Remove(this);
-					}
-					this._Seller.Entity = value;
-					if ((value != null))
-					{
-						value.InvoiceDetails.Add(this);
-						this._SellerId = value.SellerId;
-					}
-					else
-					{
-						this._SellerId = default(Nullable<int>);
-					}
-					this.SendPropertyChanged("Seller");
 				}
 			}
 		}
@@ -6339,13 +5303,7 @@ namespace Tarla
 		
 		private EntitySet<InvoiceDetail> _InvoiceDetails;
 		
-		private EntityRef<Buyer> _Buyer;
-		
 		private EntityRef<Driver> _Driver;
-		
-		private EntityRef<ForiegnReceiver> _ForiegnReceiver;
-		
-		private EntityRef<Receiver> _Receiver;
 		
     #region Extensibility Method Definitions
     partial void OnLoaded();
@@ -6396,10 +5354,7 @@ namespace Tarla
 		public Invoice()
 		{
 			this._InvoiceDetails = new EntitySet<InvoiceDetail>(new Action<InvoiceDetail>(this.attach_InvoiceDetails), new Action<InvoiceDetail>(this.detach_InvoiceDetails));
-			this._Buyer = default(EntityRef<Buyer>);
 			this._Driver = default(EntityRef<Driver>);
-			this._ForiegnReceiver = default(EntityRef<ForiegnReceiver>);
-			this._Receiver = default(EntityRef<Receiver>);
 			OnCreated();
 		}
 		
@@ -6454,10 +5409,6 @@ namespace Tarla
 			{
 				if ((this._BuyerId != value))
 				{
-					if (this._Buyer.HasLoadedOrAssignedValue)
-					{
-						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
-					}
 					this.OnBuyerIdChanging(value);
 					this.SendPropertyChanging();
 					this._BuyerId = value;
@@ -6642,10 +5593,6 @@ namespace Tarla
 			{
 				if ((this._ReceiverId != value))
 				{
-					if (this._Receiver.HasLoadedOrAssignedValue)
-					{
-						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
-					}
 					this.OnReceiverIdChanging(value);
 					this.SendPropertyChanging();
 					this._ReceiverId = value;
@@ -6666,10 +5613,6 @@ namespace Tarla
 			{
 				if ((this._F_ReceiverId != value))
 				{
-					if (this._ForiegnReceiver.HasLoadedOrAssignedValue)
-					{
-						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
-					}
 					this.OnF_ReceiverIdChanging(value);
 					this.SendPropertyChanging();
 					this._F_ReceiverId = value;
@@ -6832,40 +5775,6 @@ namespace Tarla
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Buyer_Invoice", Storage="_Buyer", ThisKey="BuyerId", OtherKey="BuyerId", IsForeignKey=true)]
-		public Buyer Buyer
-		{
-			get
-			{
-				return this._Buyer.Entity;
-			}
-			set
-			{
-				Buyer previousValue = this._Buyer.Entity;
-				if (((previousValue != value) 
-							|| (this._Buyer.HasLoadedOrAssignedValue == false)))
-				{
-					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._Buyer.Entity = null;
-						previousValue.Invoices.Remove(this);
-					}
-					this._Buyer.Entity = value;
-					if ((value != null))
-					{
-						value.Invoices.Add(this);
-						this._BuyerId = value.BuyerId;
-					}
-					else
-					{
-						this._BuyerId = default(Nullable<int>);
-					}
-					this.SendPropertyChanged("Buyer");
-				}
-			}
-		}
-		
 		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Driver_Invoice", Storage="_Driver", ThisKey="DriverId", OtherKey="DriverId", IsForeignKey=true)]
 		public Driver Driver
 		{
@@ -6896,74 +5805,6 @@ namespace Tarla
 						this._DriverId = default(Nullable<int>);
 					}
 					this.SendPropertyChanged("Driver");
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="ForiegnReceiver_Invoice", Storage="_ForiegnReceiver", ThisKey="F_ReceiverId", OtherKey="F_ReceiverId", IsForeignKey=true)]
-		public ForiegnReceiver ForiegnReceiver
-		{
-			get
-			{
-				return this._ForiegnReceiver.Entity;
-			}
-			set
-			{
-				ForiegnReceiver previousValue = this._ForiegnReceiver.Entity;
-				if (((previousValue != value) 
-							|| (this._ForiegnReceiver.HasLoadedOrAssignedValue == false)))
-				{
-					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._ForiegnReceiver.Entity = null;
-						previousValue.Invoices.Remove(this);
-					}
-					this._ForiegnReceiver.Entity = value;
-					if ((value != null))
-					{
-						value.Invoices.Add(this);
-						this._F_ReceiverId = value.F_ReceiverId;
-					}
-					else
-					{
-						this._F_ReceiverId = default(Nullable<int>);
-					}
-					this.SendPropertyChanged("ForiegnReceiver");
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Receiver_Invoice", Storage="_Receiver", ThisKey="ReceiverId", OtherKey="ReceiverId", IsForeignKey=true)]
-		public Receiver Receiver
-		{
-			get
-			{
-				return this._Receiver.Entity;
-			}
-			set
-			{
-				Receiver previousValue = this._Receiver.Entity;
-				if (((previousValue != value) 
-							|| (this._Receiver.HasLoadedOrAssignedValue == false)))
-				{
-					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._Receiver.Entity = null;
-						previousValue.Invoices.Remove(this);
-					}
-					this._Receiver.Entity = value;
-					if ((value != null))
-					{
-						value.Invoices.Add(this);
-						this._ReceiverId = value.ReceiverId;
-					}
-					else
-					{
-						this._ReceiverId = default(Nullable<int>);
-					}
-					this.SendPropertyChanged("Receiver");
 				}
 			}
 		}
@@ -8682,6 +7523,92 @@ namespace Tarla
 				{
 					this._Price = value;
 				}
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.TruckTypes")]
+	public sealed partial class TruckType : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _TruckTypeId;
+		
+		private string _TruckTypeName;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnTruckTypeIdChanging(int value);
+    partial void OnTruckTypeIdChanged();
+    partial void OnTruckTypeNameChanging(string value);
+    partial void OnTruckTypeNameChanged();
+    #endregion
+		
+		public TruckType()
+		{
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TruckTypeId", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public int TruckTypeId
+		{
+			get
+			{
+				return this._TruckTypeId;
+			}
+			set
+			{
+				if ((this._TruckTypeId != value))
+				{
+					this.OnTruckTypeIdChanging(value);
+					this.SendPropertyChanging();
+					this._TruckTypeId = value;
+					this.SendPropertyChanged("TruckTypeId");
+					this.OnTruckTypeIdChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TruckTypeName", DbType="NVarChar(40)")]
+		public string TruckTypeName
+		{
+			get
+			{
+				return this._TruckTypeName;
+			}
+			set
+			{
+				if ((this._TruckTypeName != value))
+				{
+					this.OnTruckTypeNameChanging(value);
+					this.SendPropertyChanging();
+					this._TruckTypeName = value;
+					this.SendPropertyChanged("TruckTypeName");
+					this.OnTruckTypeNameChanged();
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		private void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		private void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
 			}
 		}
 	}

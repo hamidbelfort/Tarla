@@ -43,19 +43,19 @@ namespace Tarla.MainForms
                         case 1: //buyer
                             groupPanel1.Text = "ثبت مشخصات مشتری";
                             Text= "ثبت مشخصات مشتری";
-                            bsBuyer.DataSource = db.FillBuyerById(personId);
+                            //bsBuyer.DataSource = db.FillBuyerById(personId);
                             prepareForm(personType);
                             break;
                         case 2://seller
-                            groupPanel1.Text = "ثبت مشخصات فروشنده محصول";
-                            Text= "ثبت مشخصات فروشنده محصول";
-                            bsSeller.DataSource = db.FillSellerById(personId);
+                            groupPanel1.Text = "ثبت مشخصات کشاورز";
+                            Text= "ثبت مشخصات کشاورز";
+                            //bsSeller.DataSource = db.FillSellerById(personId);
                             prepareForm(personType);
                             break;
-                        case 3://receiver
-                            groupPanel1.Text = "ثبت مشخصات تحویل گیرنده بار";
-                            Text = "ثبت مشخصات تحویل گیرنده بار";
-                            bsReceiver.DataSource = db.FillReceiverById(personId);
+                        case 3://clearance
+                            groupPanel1.Text = "ثبت مشخصات ترخیص کار";
+                            Text = "ثبت مشخصات ترخیص کار";
+                            //bsReceiver.DataSource = db.FillReceiverById(personId);
                             prepareForm(personType);
                             break;
                     }
@@ -74,19 +74,19 @@ namespace Tarla.MainForms
             txtDesc.DataBindings.Clear();
             switch (target)
             {
-                case 1: //buyer
+                case 1: //receiver
                     txtName.DataBindings.Add(new Binding("Text", bsBuyer, "BuyerName"));
                     txtPhone.DataBindings.Add(new Binding("Text", bsBuyer, "Phone"));
                     txtAddress.DataBindings.Add(new Binding("Text", bsBuyer, "Address"));
                     txtDesc.DataBindings.Add(new Binding("Text", bsBuyer, "Description"));
                     break;
-                case 2://seller
+                case 2://farmer
                     txtName.DataBindings.Add(new Binding("Text", bsSeller, "SellerName"));
                     txtPhone.DataBindings.Add(new Binding("Text", bsSeller, "Phone"));
                     txtAddress.DataBindings.Add(new Binding("Text", bsSeller, "Address"));
                     txtDesc.DataBindings.Add(new Binding("Text", bsSeller, "Description"));
                     break;
-                case 3://receiver
+                case 3://clearance
                     txtName.DataBindings.Add(new Binding("Text", bsReceiver, "ReceiverName"));
                     txtPhone.DataBindings.Add(new Binding("Text", bsReceiver, "Phone"));
                     txtAddress.DataBindings.Add(new Binding("Text", bsReceiver, "Address"));
@@ -121,15 +121,15 @@ namespace Tarla.MainForms
                         {
                             case 1: //buyer
                                 bsBuyer.EndEdit();
-                                db.UpdateBuyer(personId, txtName.Text.Trim(), txtPhone.Text, txtAddress.Text, txtDesc.Text);
+                                //db.UpdateBuyer(personId, txtName.Text.Trim(), txtPhone.Text, txtAddress.Text, txtDesc.Text);
                                 break;
                             case 2://seller
                                 bsSeller.EndEdit();
-                                db.UpdateSeller(personId, txtName.Text.Trim(), txtPhone.Text, txtAddress.Text, txtDesc.Text);
+                                //db.UpdateSeller(personId, txtName.Text.Trim(), txtPhone.Text, txtAddress.Text, txtDesc.Text);
                                 break;
                             case 3://receiver
                                 bsReceiver.EndEdit();
-                                db.UpdateReceiver(personId, txtName.Text.Trim(), txtPhone.Text, txtAddress.Text, txtDesc.Text);
+                                //db.UpdateReceiver(personId, txtName.Text.Trim(), txtPhone.Text, txtAddress.Text, txtDesc.Text);
                                 break;
                         }
                     }
@@ -138,13 +138,13 @@ namespace Tarla.MainForms
                         switch (target)
                         {
                             case 1: //buyer
-                                db.InsertBuyer(txtName.Text.Trim(), txtPhone.Text, txtAddress.Text, txtDesc.Text);
+                                //db.InsertBuyer(txtName.Text.Trim(), txtPhone.Text, txtAddress.Text, txtDesc.Text);
                                 break;
                             case 2://seller
-                                db.InsertSeller(txtName.Text.Trim(), txtPhone.Text, txtAddress.Text, txtDesc.Text);
+                                //db.InsertSeller(txtName.Text.Trim(), txtPhone.Text, txtAddress.Text, txtDesc.Text);
                                 break;
                             case 3://receiver
-                                db.InsertReceiver(txtName.Text.Trim(), txtPhone.Text, txtAddress.Text, txtDesc.Text);
+                                //db.InsertReceiver(txtName.Text.Trim(), txtPhone.Text, txtAddress.Text, txtDesc.Text);
                                 break;
                         }
                         clearAll();

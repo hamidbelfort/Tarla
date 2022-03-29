@@ -333,7 +333,7 @@
             // 
             // bsBuyer
             // 
-            this.bsBuyer.DataSource = typeof(Tarla.Buyer);
+            //this.bsBuyer.DataSource = typeof(Tarla.Buyer);
             // 
             // labelX2
             // 

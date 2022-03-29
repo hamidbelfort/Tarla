@@ -29,19 +29,19 @@ namespace Tarla.MainForms
                 {
                     case 1: //buyer
                         Text = "نمایش لیست مشتریان";
-                        bsBuyer.DataSource = db.FillBuyer();
+                        //bsBuyer.DataSource = db.FillBuyer();
                         dgvBuyer.Visible = true;
                         checkData(dgvBuyer);
                         break;
                     case 2://seller
                         Text = "نمایش لیست فروشندگان محصول";
-                        bsSeller.DataSource = db.FillSeller();
+                        //bsSeller.DataSource = db.FillSeller();
                         dgvSeller.Visible = true;
                         checkData(dgvSeller);
                         break;
                     case 3://receiver
                         Text = "نمایش لیست تحویل گیرنده ها";
-                        bsReceiver.DataSource = db.FillReceiver();
+                        //bsReceiver.DataSource = db.FillReceiver();
                         dgvReceiver.Visible = true;
                         checkData(dgvReceiver);
                         break;
@@ -75,15 +75,15 @@ namespace Tarla.MainForms
                 {
                     case 1://buyer
 
-                        bsBuyer.DataSource = db.FillBuyer();
+                        //bsBuyer.DataSource = db.FillBuyer();
                         checkData(dgvBuyer);
                         break;
                     case 2://seller
-                        bsSeller.DataSource = db.FillSeller();
+                        //bsSeller.DataSource = db.FillSeller();
                         checkData(dgvSeller);
                         break;
                     case 3://receiver
-                        bsReceiver.DataSource = db.FillReceiver();
+                        //bsReceiver.DataSource = db.FillReceiver();
                         checkData(dgvReceiver);
                         break;
                 }
@@ -135,13 +135,13 @@ namespace Tarla.MainForms
                     switch (personType)
                     {
                         case 1://buyer
-                            db.DeleteBuyer((int)dgvBuyer.CurrentRow.Cells[0].Value);
+                            //db.DeleteBuyer((int)dgvBuyer.CurrentRow.Cells[0].Value);
                             break;
                         case 2://seller
-                            db.DeleteSeller((int)dgvSeller.CurrentRow.Cells[0].Value);
+                            //db.DeleteSeller((int)dgvSeller.CurrentRow.Cells[0].Value);
                             break;
                         case 3://receiver
-                            db.DeleteReceiver((int)dgvReceiver.CurrentRow.Cells[0].Value);
+                            //db.DeleteReceiver((int)dgvReceiver.CurrentRow.Cells[0].Value);
                             break;
                     }
                     loadAgain(personType);

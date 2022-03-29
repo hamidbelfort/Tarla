@@ -130,6 +130,7 @@
             this.btnSave.TabIndex = 0;
             this.btnSave.Text = "   ثـبت";
             this.btnSave.TextAlignment = DevComponents.DotNetBar.eButtonTextAlignment.Right;
+            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
             // groupPanel1
             // 

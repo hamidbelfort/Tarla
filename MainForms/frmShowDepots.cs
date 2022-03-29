@@ -72,7 +72,7 @@ namespace Tarla.MainForms
             {
                 frmAddDepot.IsEdit = true;
 
-                frmAddDepot.depotId = (int)dgvDepot.CurrentRow.Cells[0].Value;
+                frmAddDepot.depotId = (int)dgvDepot.CurrentRow.Cells[1].Value;
 
                 new frmAddDepot().ShowDialog();
 
@@ -91,7 +91,7 @@ namespace Tarla.MainForms
             {
                 if (MessageBoxFarsi.Show("آیا مطمئن به حذف این مورد هستید؟", "تأیید حذف", MessageBoxFarsiButtons.YesNo, MessageBoxFarsiIcon.Question, MessageBoxFarsiDefaultButton.Button1) == DialogResult.Yes)
                 {
-                    db.DeleteDepot((int)dgvDepot.CurrentRow.Cells[0].Value);
+                    db.DeleteDepot((int)dgvDepot.CurrentRow.Cells[1].Value);
                     loadAgain();
                 }
             }

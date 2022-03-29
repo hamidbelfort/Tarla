@@ -80,15 +80,15 @@
             // 
             // bsSeller
             // 
-            this.bsSeller.DataSource = typeof(Tarla.Seller);
+            //this.bsSeller.DataSource = typeof(Tarla.Seller);
             // 
             // bsReceiver
             // 
-            this.bsReceiver.DataSource = typeof(Tarla.Receiver);
+            //this.bsReceiver.DataSource = typeof(Tarla.Receiver);
             // 
             // bsBuyer
             // 
-            this.bsBuyer.DataSource = typeof(Tarla.Buyer);
+            //this.bsBuyer.DataSource = typeof(Tarla.Buyer);
             // 
             // groupPanel2
             // 

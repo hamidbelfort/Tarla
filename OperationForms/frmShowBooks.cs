@@ -85,7 +85,7 @@ namespace Tarla.OperationForms
         {
             try
             {
-                cmbBuyer.DataSource = db.FillBuyer();
+                //cmbBuyer.DataSource = db.FillBuyer();
                 if (date1 != string.Empty && date2 != string.Empty)
                 {
                     bsBook.DataSource = db.FilterBooksViewByDate(mskDate1.Text, mskDate2.Text);

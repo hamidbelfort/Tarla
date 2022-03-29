@@ -103,8 +103,11 @@ namespace Tarla.OperationForms
         {
             if (dgvFactor.Rows.Count>0)
             {
-                dgvFactor.Rows.RemoveAt(dgvFactor.CurrentRow.Index);
-                calculateTotalPrice();
+                if (MessageBoxFarsi.Show("آیا از حذف این سطر اطمینان دارید؟","حذف",MessageBoxFarsiButtons.YesNo,MessageBoxFarsiIcon.Question)==DialogResult.Yes)
+                {
+                    dgvFactor.Rows.RemoveAt(dgvFactor.CurrentRow.Index);
+                    calculateTotalPrice();
+                }
             }
         }
         private void calculateProfitLoss()
@@ -150,8 +153,11 @@ namespace Tarla.OperationForms
             {
                 for (int i = 0; i < dgvFactor.Rows.Count; i++)
                 {
-                    totalPrice += (Convert.ToInt32(dgvFactor.Rows[i].Cells["clmWeight"].Value.ToString())) * (Convert.ToInt32(dgvFactor.Rows[i].Cells["clmPrice"].Value.ToString()));
-                    totalWeight += (Convert.ToInt32(dgvFactor.Rows[i].Cells["clmWeight"].Value.ToString()) - Convert.ToInt32(dgvFactor.Rows[i].Cells["clmLoss"].Value.ToString()));
+                    int _weight = Convert.ToInt32(dgvFactor.Rows[i].Cells["clmWeight"].Value.ToString());
+                    int _price = Convert.ToInt32(dgvFactor.Rows[i].Cells["clmPrice"].Value.ToString());
+                    int _loss = Convert.ToInt32(dgvFactor.Rows[i].Cells["clmLoss"].Value.ToString());
+                    totalPrice += (_weight - _loss) * (_price);
+                    totalWeight += (_weight) - (_loss);
                 }
             }
             else
@@ -404,11 +410,11 @@ namespace Tarla.OperationForms
                         new frmAddPerson().ShowDialog();
                         refresh(1);
                         break;
-                    case "mnuFReceiver":
+                    /*case "mnuFReceiver":
                         frmAddForeignReceiver.IsEdit = false;
                         new frmAddForeignReceiver().ShowDialog();
                         refresh(4);
-                        break;
+                        break;*/
                     case "mnuProduct":
                         frmAddPacking.IsEdit = false;
                         new frmAddPacking().ShowDialog();
@@ -426,13 +432,13 @@ namespace Tarla.OperationForms
         {
             try
             {
-                bsBuyer.DataSource = db.FillBuyer();
-                bsPacking.DataSource = db.FillPacking();
+                //bsBuyer.DataSource = db.FillBuyer();
+                //bsPacking.DataSource = db.FillPacking();
                 bsProduct.DataSource = db.FillProducts();
-                bsReceiver.DataSource = db.FillReceiver();
-                bsSeller.DataSource = db.FillSeller();
+                //bsReceiver.DataSource = db.FillReceiver();
+                //bsSeller.DataSource = db.FillSeller();
                 bsDriver.DataSource = db.FillDrivers();
-                bsF_Receiver.DataSource = db.FillForeignReceiver();
+                //bsF_Receiver.DataSource = db.FillForeignReceiver();
             }
             catch (Exception ex)
             {
@@ -458,16 +464,16 @@ namespace Tarla.OperationForms
                 switch (whichOne)
                 {
                     case 1:
-                        bsBuyer.DataSource = db.FillBuyer();
+                        //bsBuyer.DataSource = db.FillBuyer();
                         break;
                     case 2:
-                        bsSeller.DataSource = db.FillSeller();
+                        //bsSeller.DataSource = db.FillSeller();
                         break;
                     case 3:
-                        bsReceiver.DataSource = db.FillReceiver();
+                        //bsReceiver.DataSource = db.FillReceiver();
                         break;
                     case 4:
-                        bsF_Receiver.DataSource = db.FillForeignReceiver();
+                        //bsF_Receiver.DataSource = db.FillForeignReceiver();
                         break;
                     case 5:
                         bsDriver.DataSource = db.FillDrivers();
@@ -520,6 +526,7 @@ namespace Tarla.OperationForms
             lblTotalPrice.Text = "0";
             dgvFactor.Rows.Clear();
             txtDate.Text = pd.getShortDate();
+            txtContainerNo.Text = string.Empty;
             txtDate.Focus();
         }
 
@@ -529,7 +536,7 @@ namespace Tarla.OperationForms
             {
                 int f_receiverId = (int)cmbDubaiReceiver.SelectedValue;
                 string f_country = string.Empty;
-                db.GetForiegnReceiverCountry(f_receiverId, ref f_country);
+                //db.GetForiegnReceiverCountry(f_receiverId, ref f_country);
                 lblCountry.Text = string.Format("کشور : {0}",f_country);
             }
             catch
@@ -537,6 +544,11 @@ namespace Tarla.OperationForms
                 lblLicensePlate.Text = "-خطا-";
                 //MessageBoxFarsi.Show("ارتباط با سرور اطلاعاتی قطع شده است \n" + ex.Message, "اخطار", MessageBoxFarsiButtons.OK, MessageBoxFarsiIcon.Error, MessageBoxFarsiDefaultButton.Button1);
             }
+        }
+
+        private void groupPanel3_Click(object sender, EventArgs e)
+        {
+
         }
 
         string message;

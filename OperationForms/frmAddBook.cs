@@ -32,7 +32,7 @@ namespace Tarla.OperationForms
             {
                 bsBank.DataSource = db.FillBank();
                 bsPayType.DataSource=db.FillPayType();
-                bsBuyer.DataSource = db.FillBuyer();
+                //bsBuyer.DataSource = db.FillBuyer();
                 txtDate.Text = pd.getShortDate();
                 if (IsEdit)
                 {

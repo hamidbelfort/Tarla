@@ -152,12 +152,6 @@
     <Compile Include="MainForms\frmAddDriver.Designer.cs">
       <DependentUpon>frmAddDriver.cs</DependentUpon>
     </Compile>
-    <Compile Include="MainForms\frmAddForeignReceiver.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="MainForms\frmAddForeignReceiver.Designer.cs">
-      <DependentUpon>frmAddForeignReceiver.cs</DependentUpon>
-    </Compile>
     <Compile Include="MainForms\frmAddMessage.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -169,6 +163,12 @@
     </Compile>
     <Compile Include="MainForms\frmAddPerson.Designer.cs">
       <DependentUpon>frmAddPerson.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MainForms\frmAddTruckType.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MainForms\frmAddTruckType.Designer.cs">
+      <DependentUpon>frmAddTruckType.cs</DependentUpon>
     </Compile>
     <Compile Include="MainForms\frmShowBank.cs">
       <SubType>Form</SubType>
@@ -236,12 +236,6 @@
     <Compile Include="MainForms\frmShowDriver.Designer.cs">
       <DependentUpon>frmShowDriver.cs</DependentUpon>
     </Compile>
-    <Compile Include="MainForms\frmShowForiegnReceiver.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="MainForms\frmShowForiegnReceiver.Designer.cs">
-      <DependentUpon>frmShowForiegnReceiver.cs</DependentUpon>
-    </Compile>
     <Compile Include="MainForms\frmShowGroups.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -283,6 +277,12 @@
     </Compile>
     <Compile Include="MainForms\frmShowProducts.Designer.cs">
       <DependentUpon>frmShowProducts.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MainForms\frmShowTruckTypes.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MainForms\frmShowTruckTypes.Designer.cs">
+      <DependentUpon>frmShowTruckTypes.cs</DependentUpon>
     </Compile>
     <Compile Include="MiscForms\frmAddUser.cs">
       <SubType>Form</SubType>
@@ -400,7 +400,7 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <None Include="DB_Backup\TarlaDB" />
+    <None Include="DB_Backup\TarlaDB.bak" />
     <None Include="dcTarla.dbml.layout">
       <DependentUpon>dcTarla.dbml</DependentUpon>
     </None>
@@ -428,14 +428,14 @@
     <EmbeddedResource Include="MainForms\frmAddDriver.resx">
       <DependentUpon>frmAddDriver.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="MainForms\frmAddForeignReceiver.resx">
-      <DependentUpon>frmAddForeignReceiver.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="MainForms\frmAddMessage.resx">
       <DependentUpon>frmAddMessage.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MainForms\frmAddPerson.resx">
       <DependentUpon>frmAddPerson.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MainForms\frmAddTruckType.resx">
+      <DependentUpon>frmAddTruckType.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MainForms\frmShowBank.resx">
       <DependentUpon>frmShowBank.cs</DependentUpon>
@@ -470,9 +470,6 @@
     <EmbeddedResource Include="MainForms\frmShowDriver.resx">
       <DependentUpon>frmShowDriver.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="MainForms\frmShowForiegnReceiver.resx">
-      <DependentUpon>frmShowForiegnReceiver.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="MainForms\frmShowGroups.resx">
       <DependentUpon>frmShowGroups.cs</DependentUpon>
     </EmbeddedResource>
@@ -493,6 +490,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="MainForms\frmShowProducts.resx">
       <DependentUpon>frmShowProducts.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MainForms\frmShowTruckTypes.resx">
+      <DependentUpon>frmShowTruckTypes.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MiscForms\frmAddUser.resx">
       <DependentUpon>frmAddUser.cs</DependentUpon>
@@ -570,14 +570,12 @@
     <None Include="Properties\DataSources\Book.datasource" />
     <None Include="Properties\DataSources\BooksView.datasource" />
     <None Include="Properties\DataSources\BuyDetailView.datasource" />
-    <None Include="Properties\DataSources\Buyer.datasource" />
     <None Include="Properties\DataSources\BuyItem.datasource" />
     <None Include="Properties\DataSources\BuyItemView.datasource" />
     <None Include="Properties\DataSources\Company.datasource" />
     <None Include="Properties\DataSources\Depot.datasource" />
     <None Include="Properties\DataSources\Driver.datasource" />
     <None Include="Properties\DataSources\FactorView.datasource" />
-    <None Include="Properties\DataSources\ForiegnReceiver.datasource" />
     <None Include="Properties\DataSources\F_DetailsView.datasource" />
     <None Include="Properties\DataSources\Item.datasource" />
     <None Include="Properties\DataSources\ItemGroup.datasource" />
@@ -587,11 +585,10 @@
     <None Include="Properties\DataSources\Product.datasource" />
     <None Include="Properties\DataSources\ProductGroup.datasource" />
     <None Include="Properties\DataSources\ProductPacking.datasource" />
-    <None Include="Properties\DataSources\Receiver.datasource" />
     <None Include="Properties\DataSources\Role.datasource" />
-    <None Include="Properties\DataSources\Seller.datasource" />
     <None Include="Properties\DataSources\Setting.datasource" />
     <None Include="Properties\DataSources\Stock.datasource" />
+    <None Include="Properties\DataSources\TruckType.datasource" />
     <None Include="Properties\DataSources\User.datasource" />
     <None Include="Properties\DataSources\ViewStock.datasource" />
     <None Include="Properties\Settings.settings">
