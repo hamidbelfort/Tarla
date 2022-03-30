@@ -80,9 +80,7 @@
             this.ribbonBar3 = new DevComponents.DotNetBar.RibbonBar();
             this.btnCompany = new DevComponents.DotNetBar.ButtonItem();
             this.ribbonBar2 = new DevComponents.DotNetBar.RibbonBar();
-            this.btnSellers = new DevComponents.DotNetBar.ButtonItem();
-            this.btnReceivers = new DevComponents.DotNetBar.ButtonItem();
-            this.btnLoadReceiver = new DevComponents.DotNetBar.ButtonItem();
+            this.btnPersons = new DevComponents.DotNetBar.ButtonItem();
             this.btnDriver = new DevComponents.DotNetBar.ButtonItem();
             this.ribbonBar1 = new DevComponents.DotNetBar.RibbonBar();
             this.btnCategory = new DevComponents.DotNetBar.ButtonItem();
@@ -667,7 +665,7 @@
             this.ribbonBar9.HorizontalItemAlignment = DevComponents.DotNetBar.eHorizontalItemsAlignment.Center;
             this.ribbonBar9.Items.AddRange(new DevComponents.DotNetBar.BaseItem[] {
             this.btnUsers});
-            this.ribbonBar9.Location = new System.Drawing.Point(781, 0);
+            this.ribbonBar9.Location = new System.Drawing.Point(636, 0);
             this.ribbonBar9.Name = "ribbonBar9";
             this.ribbonBar9.Size = new System.Drawing.Size(98, 127);
             this.ribbonBar9.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
@@ -709,7 +707,7 @@
             this.btnItem,
             this.btnItemGroup,
             this.btnDepot});
-            this.ribbonBar4.Location = new System.Drawing.Point(548, 0);
+            this.ribbonBar4.Location = new System.Drawing.Point(403, 0);
             this.ribbonBar4.Name = "ribbonBar4";
             this.ribbonBar4.Size = new System.Drawing.Size(233, 127);
             this.ribbonBar4.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
@@ -770,7 +768,7 @@
             this.ribbonBar3.DragDropSupport = true;
             this.ribbonBar3.Items.AddRange(new DevComponents.DotNetBar.BaseItem[] {
             this.btnCompany});
-            this.ribbonBar3.Location = new System.Drawing.Point(466, 0);
+            this.ribbonBar3.Location = new System.Drawing.Point(321, 0);
             this.ribbonBar3.Name = "ribbonBar3";
             this.ribbonBar3.Size = new System.Drawing.Size(82, 127);
             this.ribbonBar3.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
@@ -809,13 +807,11 @@
             this.ribbonBar2.Dock = System.Windows.Forms.DockStyle.Left;
             this.ribbonBar2.DragDropSupport = true;
             this.ribbonBar2.Items.AddRange(new DevComponents.DotNetBar.BaseItem[] {
-            this.btnSellers,
-            this.btnReceivers,
-            this.btnLoadReceiver,
+            this.btnPersons,
             this.btnDriver});
             this.ribbonBar2.Location = new System.Drawing.Point(158, 0);
             this.ribbonBar2.Name = "ribbonBar2";
-            this.ribbonBar2.Size = new System.Drawing.Size(308, 127);
+            this.ribbonBar2.Size = new System.Drawing.Size(163, 127);
             this.ribbonBar2.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.ribbonBar2.TabIndex = 1;
             this.ribbonBar2.Text = "اشخاص";
@@ -828,39 +824,17 @@
             // 
             this.ribbonBar2.TitleStyleMouseOver.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             // 
-            // btnSellers
+            // btnPersons
             // 
-            this.btnSellers.ButtonStyle = DevComponents.DotNetBar.eButtonStyle.ImageAndText;
-            this.btnSellers.Image = global::Tarla.Properties.Resources.seller;
-            this.btnSellers.ImageFixedSize = new System.Drawing.Size(64, 64);
-            this.btnSellers.ImagePosition = DevComponents.DotNetBar.eImagePosition.Top;
-            this.btnSellers.Name = "btnSellers";
-            this.btnSellers.SubItemsExpandWidth = 14;
-            this.btnSellers.Text = "کشاورز";
-            this.btnSellers.Tooltip = "فروشنده محصول";
-            this.btnSellers.Click += new System.EventHandler(this.btnSellers_Click);
-            // 
-            // btnReceivers
-            // 
-            this.btnReceivers.ButtonStyle = DevComponents.DotNetBar.eButtonStyle.ImageAndText;
-            this.btnReceivers.Image = global::Tarla.Properties.Resources.receiver;
-            this.btnReceivers.ImageFixedSize = new System.Drawing.Size(64, 64);
-            this.btnReceivers.ImagePosition = DevComponents.DotNetBar.eImagePosition.Top;
-            this.btnReceivers.Name = "btnReceivers";
-            this.btnReceivers.SubItemsExpandWidth = 14;
-            this.btnReceivers.Text = "ترخیص کار";
-            this.btnReceivers.Tooltip = "گیرنده بار";
-            this.btnReceivers.Click += new System.EventHandler(this.btnReceivers_Click);
-            // 
-            // btnLoadReceiver
-            // 
-            this.btnLoadReceiver.Image = global::Tarla.Properties.Resources.foreignreceiver;
-            this.btnLoadReceiver.ImageFixedSize = new System.Drawing.Size(64, 64);
-            this.btnLoadReceiver.ImagePosition = DevComponents.DotNetBar.eImagePosition.Top;
-            this.btnLoadReceiver.Name = "btnLoadReceiver";
-            this.btnLoadReceiver.SubItemsExpandWidth = 14;
-            this.btnLoadReceiver.Text = "گیرنده بار";
-            this.btnLoadReceiver.Click += new System.EventHandler(this.btnFReceiver_Click);
+            this.btnPersons.ButtonStyle = DevComponents.DotNetBar.eButtonStyle.ImageAndText;
+            this.btnPersons.Image = global::Tarla.Properties.Resources.Groups_Meeting_Light_icon;
+            this.btnPersons.ImageFixedSize = new System.Drawing.Size(64, 64);
+            this.btnPersons.ImagePosition = DevComponents.DotNetBar.eImagePosition.Top;
+            this.btnPersons.Name = "btnPersons";
+            this.btnPersons.SubItemsExpandWidth = 14;
+            this.btnPersons.Text = "اشخاص";
+            this.btnPersons.Tooltip = "فروشنده محصول";
+            this.btnPersons.Click += new System.EventHandler(this.btnPersons_Click);
             // 
             // btnDriver
             // 
@@ -1784,8 +1758,7 @@
         private DevComponents.DotNetBar.ButtonItem btnProduct;
         private DevComponents.DotNetBar.ButtonItem btnCategory;
         private DevComponents.DotNetBar.RibbonBar ribbonBar3;
-        private DevComponents.DotNetBar.ButtonItem btnSellers;
-        private DevComponents.DotNetBar.ButtonItem btnReceivers;
+        private DevComponents.DotNetBar.ButtonItem btnPersons;
         private DevComponents.DotNetBar.ButtonItem btnCompany;
         private DevComponents.DotNetBar.RibbonPanel ribbonPanel4;
         private DevComponents.DotNetBar.RibbonTabItem ribbonTabItem4;
@@ -1813,7 +1786,6 @@
         private DevComponents.DotNetBar.ButtonItem btnRoles;
         private DevComponents.DotNetBar.RibbonBar ribbonBar13;
         private DevComponents.DotNetBar.ButtonItem btnSettings;
-        private DevComponents.DotNetBar.ButtonItem btnLoadReceiver;
         private DevComponents.DotNetBar.RibbonBar ribbonBar14;
         private DevComponents.DotNetBar.ButtonItem btnMessages;
         private DevComponents.DotNetBar.RibbonBar ribbonBar15;

@@ -482,7 +482,7 @@ namespace Tarla.OperationForms
                         bsProduct.DataSource = db.FillProducts();
                         break;
                     case 7:
-                        bsPacking.DataSource = db.FillPacking();
+                        //bsPacking.DataSource = db.FillPacking();
                         break;
                 }
 

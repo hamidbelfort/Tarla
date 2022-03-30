@@ -99,6 +99,12 @@ namespace Tarla
     partial void InsertTruckType(TruckType instance);
     partial void UpdateTruckType(TruckType instance);
     partial void DeleteTruckType(TruckType instance);
+    partial void InsertPersonType(PersonType instance);
+    partial void UpdatePersonType(PersonType instance);
+    partial void DeletePersonType(PersonType instance);
+    partial void InsertPerson(Person instance);
+    partial void UpdatePerson(Person instance);
+    partial void DeletePerson(Person instance);
     #endregion
 		
 		public dcTarlaDataContext() : 
@@ -368,6 +374,22 @@ namespace Tarla
 			get
 			{
 				return this.GetTable<TruckType>();
+			}
+		}
+		
+		public System.Data.Linq.Table<PersonType> PersonTypes
+		{
+			get
+			{
+				return this.GetTable<PersonType>();
+			}
+		}
+		
+		public System.Data.Linq.Table<Person> Persons
+		{
+			get
+			{
+				return this.GetTable<Person>();
 			}
 		}
 		
@@ -1291,6 +1313,65 @@ namespace Tarla
 		{
 			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), truckTypeId);
 			return ((ISingleResult<TruckType>)(result.ReturnValue));
+		}
+		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.DeletePerson")]
+		public int DeletePerson([global::System.Data.Linq.Mapping.ParameterAttribute(Name="PersonId", DbType="Int")] System.Nullable<int> personId)
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), personId);
+			return ((int)(result.ReturnValue));
+		}
+		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.InsertPerson")]
+		public int InsertPerson([global::System.Data.Linq.Mapping.ParameterAttribute(Name="PersonTypeId", DbType="Int")] System.Nullable<int> personTypeId, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="PersonName", DbType="NVarChar(50)")] string personName, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="Phone", DbType="NVarChar(12)")] string phone, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="Address", DbType="NVarChar(200)")] string address, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="Origin", DbType="NVarChar(30)")] string origin, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="Description", DbType="NVarChar(MAX)")] string description)
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), personTypeId, personName, phone, address, origin, description);
+			return ((int)(result.ReturnValue));
+		}
+		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.UpdatePerson")]
+		public int UpdatePerson([global::System.Data.Linq.Mapping.ParameterAttribute(Name="PersonId", DbType="Int")] System.Nullable<int> personId, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="PersonTypeId", DbType="Int")] System.Nullable<int> personTypeId, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="PersonName", DbType="NVarChar(50)")] string personName, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="Phone", DbType="NVarChar(12)")] string phone, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="Address", DbType="NVarChar(200)")] string address, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="Origin", DbType="NVarChar(30)")] string origin, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="Description", DbType="NVarChar(MAX)")] string description)
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), personId, personTypeId, personName, phone, address, origin, description);
+			return ((int)(result.ReturnValue));
+		}
+		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.GetPersonOrigin")]
+		public int GetPersonOrigin([global::System.Data.Linq.Mapping.ParameterAttribute(Name="PersonId", DbType="Int")] System.Nullable<int> personId, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="Origin", DbType="NVarChar(30)")] ref string origin)
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), personId, origin);
+			origin = ((string)(result.GetParameterValue(1)));
+			return ((int)(result.ReturnValue));
+		}
+		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.GetPersonNameAndPhone")]
+		public int GetPersonNameAndPhone([global::System.Data.Linq.Mapping.ParameterAttribute(Name="PersonId", DbType="Int")] System.Nullable<int> personId, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="PersonName", DbType="NVarChar(50)")] ref string personName, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="PersonPhone", DbType="NVarChar(12)")] ref string personPhone)
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), personId, personName, personPhone);
+			personName = ((string)(result.GetParameterValue(1)));
+			personPhone = ((string)(result.GetParameterValue(2)));
+			return ((int)(result.ReturnValue));
+		}
+		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.FillPersons")]
+		public ISingleResult<Person> FillPersons()
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())));
+			return ((ISingleResult<Person>)(result.ReturnValue));
+		}
+		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.FillPersonsById")]
+		public ISingleResult<Person> FillPersonsById([global::System.Data.Linq.Mapping.ParameterAttribute(Name="PersonId", DbType="Int")] System.Nullable<int> personId)
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), personId);
+			return ((ISingleResult<Person>)(result.ReturnValue));
+		}
+		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.FillPersonsByType")]
+		public ISingleResult<Person> FillPersonsByType([global::System.Data.Linq.Mapping.ParameterAttribute(Name="PersonType", DbType="Int")] System.Nullable<int> personType)
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), personType);
+			return ((ISingleResult<Person>)(result.ReturnValue));
 		}
 	}
 	
@@ -7588,6 +7669,367 @@ namespace Tarla
 					this._TruckTypeName = value;
 					this.SendPropertyChanged("TruckTypeName");
 					this.OnTruckTypeNameChanged();
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		private void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		private void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.PersonTypes")]
+	public sealed partial class PersonType : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _PersonTypeId;
+		
+		private string _PersonTypeName;
+		
+		private EntitySet<Person> _Persons;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnPersonTypeIdChanging(int value);
+    partial void OnPersonTypeIdChanged();
+    partial void OnPersonTypeNameChanging(string value);
+    partial void OnPersonTypeNameChanged();
+    #endregion
+		
+		public PersonType()
+		{
+			this._Persons = new EntitySet<Person>(new Action<Person>(this.attach_Persons), new Action<Person>(this.detach_Persons));
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PersonTypeId", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public int PersonTypeId
+		{
+			get
+			{
+				return this._PersonTypeId;
+			}
+			set
+			{
+				if ((this._PersonTypeId != value))
+				{
+					this.OnPersonTypeIdChanging(value);
+					this.SendPropertyChanging();
+					this._PersonTypeId = value;
+					this.SendPropertyChanged("PersonTypeId");
+					this.OnPersonTypeIdChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PersonTypeName", DbType="NVarChar(50)")]
+		public string PersonTypeName
+		{
+			get
+			{
+				return this._PersonTypeName;
+			}
+			set
+			{
+				if ((this._PersonTypeName != value))
+				{
+					this.OnPersonTypeNameChanging(value);
+					this.SendPropertyChanging();
+					this._PersonTypeName = value;
+					this.SendPropertyChanged("PersonTypeName");
+					this.OnPersonTypeNameChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="PersonType_Person", Storage="_Persons", ThisKey="PersonTypeId", OtherKey="PersonTypeId")]
+		public EntitySet<Person> Persons
+		{
+			get
+			{
+				return this._Persons;
+			}
+			set
+			{
+				this._Persons.Assign(value);
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		private void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		private void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+		
+		private void attach_Persons(Person entity)
+		{
+			this.SendPropertyChanging();
+			entity.PersonType = this;
+		}
+		
+		private void detach_Persons(Person entity)
+		{
+			this.SendPropertyChanging();
+			entity.PersonType = null;
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Persons")]
+	public sealed partial class Person : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _PersonId;
+		
+		private System.Nullable<int> _PersonTypeId;
+		
+		private string _PersonName;
+		
+		private string _Phone;
+		
+		private string _Address;
+		
+		private string _Origin;
+		
+		private string _Description;
+		
+		private EntityRef<PersonType> _PersonType;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnPersonIdChanging(int value);
+    partial void OnPersonIdChanged();
+    partial void OnPersonTypeIdChanging(System.Nullable<int> value);
+    partial void OnPersonTypeIdChanged();
+    partial void OnPersonNameChanging(string value);
+    partial void OnPersonNameChanged();
+    partial void OnPhoneChanging(string value);
+    partial void OnPhoneChanged();
+    partial void OnAddressChanging(string value);
+    partial void OnAddressChanged();
+    partial void OnOriginChanging(string value);
+    partial void OnOriginChanged();
+    partial void OnDescriptionChanging(string value);
+    partial void OnDescriptionChanged();
+    #endregion
+		
+		public Person()
+		{
+			this._PersonType = default(EntityRef<PersonType>);
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PersonId", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public int PersonId
+		{
+			get
+			{
+				return this._PersonId;
+			}
+			set
+			{
+				if ((this._PersonId != value))
+				{
+					this.OnPersonIdChanging(value);
+					this.SendPropertyChanging();
+					this._PersonId = value;
+					this.SendPropertyChanged("PersonId");
+					this.OnPersonIdChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PersonTypeId", DbType="Int")]
+		public System.Nullable<int> PersonTypeId
+		{
+			get
+			{
+				return this._PersonTypeId;
+			}
+			set
+			{
+				if ((this._PersonTypeId != value))
+				{
+					if (this._PersonType.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.OnPersonTypeIdChanging(value);
+					this.SendPropertyChanging();
+					this._PersonTypeId = value;
+					this.SendPropertyChanged("PersonTypeId");
+					this.OnPersonTypeIdChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PersonName", DbType="NVarChar(50)")]
+		public string PersonName
+		{
+			get
+			{
+				return this._PersonName;
+			}
+			set
+			{
+				if ((this._PersonName != value))
+				{
+					this.OnPersonNameChanging(value);
+					this.SendPropertyChanging();
+					this._PersonName = value;
+					this.SendPropertyChanged("PersonName");
+					this.OnPersonNameChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Phone", DbType="NVarChar(12)")]
+		public string Phone
+		{
+			get
+			{
+				return this._Phone;
+			}
+			set
+			{
+				if ((this._Phone != value))
+				{
+					this.OnPhoneChanging(value);
+					this.SendPropertyChanging();
+					this._Phone = value;
+					this.SendPropertyChanged("Phone");
+					this.OnPhoneChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Address", DbType="NVarChar(200)")]
+		public string Address
+		{
+			get
+			{
+				return this._Address;
+			}
+			set
+			{
+				if ((this._Address != value))
+				{
+					this.OnAddressChanging(value);
+					this.SendPropertyChanging();
+					this._Address = value;
+					this.SendPropertyChanged("Address");
+					this.OnAddressChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Origin", DbType="NVarChar(30)")]
+		public string Origin
+		{
+			get
+			{
+				return this._Origin;
+			}
+			set
+			{
+				if ((this._Origin != value))
+				{
+					this.OnOriginChanging(value);
+					this.SendPropertyChanging();
+					this._Origin = value;
+					this.SendPropertyChanged("Origin");
+					this.OnOriginChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Description", DbType="NVarChar(MAX)")]
+		public string Description
+		{
+			get
+			{
+				return this._Description;
+			}
+			set
+			{
+				if ((this._Description != value))
+				{
+					this.OnDescriptionChanging(value);
+					this.SendPropertyChanging();
+					this._Description = value;
+					this.SendPropertyChanged("Description");
+					this.OnDescriptionChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="PersonType_Person", Storage="_PersonType", ThisKey="PersonTypeId", OtherKey="PersonTypeId", IsForeignKey=true)]
+		public PersonType PersonType
+		{
+			get
+			{
+				return this._PersonType.Entity;
+			}
+			set
+			{
+				PersonType previousValue = this._PersonType.Entity;
+				if (((previousValue != value) 
+							|| (this._PersonType.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._PersonType.Entity = null;
+						previousValue.Persons.Remove(this);
+					}
+					this._PersonType.Entity = value;
+					if ((value != null))
+					{
+						value.Persons.Add(this);
+						this._PersonTypeId = value.PersonTypeId;
+					}
+					else
+					{
+						this._PersonTypeId = default(Nullable<int>);
+					}
+					this.SendPropertyChanged("PersonType");
 				}
 			}
 		}

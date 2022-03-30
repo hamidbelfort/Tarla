@@ -351,6 +351,25 @@
       <Column Name="TruckTypeName" Type="System.String" DbType="NVarChar(40)" CanBeNull="true" />
     </Type>
   </Table>
+  <Table Name="dbo.PersonTypes" Member="PersonTypes">
+    <Type Name="PersonType" Modifier="Sealed">
+      <Column Name="PersonTypeId" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="PersonTypeName" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Association Name="PersonType_Person" Member="Persons" ThisKey="PersonTypeId" OtherKey="PersonTypeId" Type="Person" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Persons" Member="Persons">
+    <Type Name="Person" Id="ID25" Modifier="Sealed">
+      <Column Name="PersonId" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="PersonTypeId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="PersonName" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Phone" Type="System.String" DbType="NVarChar(12)" CanBeNull="true" />
+      <Column Name="Address" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="Origin" Type="System.String" DbType="NVarChar(30)" CanBeNull="true" />
+      <Column Name="Description" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Association Name="PersonType_Person" Member="PersonType" ThisKey="PersonTypeId" OtherKey="PersonTypeId" Type="PersonType" IsForeignKey="true" />
+    </Type>
+  </Table>
   <Function Name="dbo.InsertLog" Method="InsertLog">
     <Parameter Name="UserId" Parameter="userId" Type="System.Int32" DbType="Int" />
     <Parameter Name="Login" Parameter="login" Type="System.String" DbType="NVarChar(20)" />
@@ -998,5 +1017,50 @@
   <Function Name="dbo.FillTruckTypeById" Method="FillTruckTypeById">
     <Parameter Name="TruckTypeId" Parameter="truckTypeId" Type="System.Int32" DbType="Int" />
     <ElementType IdRef="ID24" />
+  </Function>
+  <Function Name="dbo.DeletePerson" Method="DeletePerson">
+    <Parameter Name="PersonId" Parameter="personId" Type="System.Int32" DbType="Int" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.InsertPerson" Method="InsertPerson">
+    <Parameter Name="PersonTypeId" Parameter="personTypeId" Type="System.Int32" DbType="Int" />
+    <Parameter Name="PersonName" Parameter="personName" Type="System.String" DbType="NVarChar(50)" />
+    <Parameter Name="Phone" Parameter="phone" Type="System.String" DbType="NVarChar(12)" />
+    <Parameter Name="Address" Parameter="address" Type="System.String" DbType="NVarChar(200)" />
+    <Parameter Name="Origin" Parameter="origin" Type="System.String" DbType="NVarChar(30)" />
+    <Parameter Name="Description" Parameter="description" Type="System.String" DbType="NVarChar(MAX)" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.UpdatePerson" Method="UpdatePerson">
+    <Parameter Name="PersonId" Parameter="personId" Type="System.Int32" DbType="Int" />
+    <Parameter Name="PersonTypeId" Parameter="personTypeId" Type="System.Int32" DbType="Int" />
+    <Parameter Name="PersonName" Parameter="personName" Type="System.String" DbType="NVarChar(50)" />
+    <Parameter Name="Phone" Parameter="phone" Type="System.String" DbType="NVarChar(12)" />
+    <Parameter Name="Address" Parameter="address" Type="System.String" DbType="NVarChar(200)" />
+    <Parameter Name="Origin" Parameter="origin" Type="System.String" DbType="NVarChar(30)" />
+    <Parameter Name="Description" Parameter="description" Type="System.String" DbType="NVarChar(MAX)" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.GetPersonOrigin" Method="GetPersonOrigin">
+    <Parameter Name="PersonId" Parameter="personId" Type="System.Int32" DbType="Int" />
+    <Parameter Name="Origin" Parameter="origin" Type="System.String" DbType="NVarChar(30)" Direction="InOut" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.GetPersonNameAndPhone" Method="GetPersonNameAndPhone">
+    <Parameter Name="PersonId" Parameter="personId" Type="System.Int32" DbType="Int" />
+    <Parameter Name="PersonName" Parameter="personName" Type="System.String" DbType="NVarChar(50)" Direction="InOut" />
+    <Parameter Name="PersonPhone" Parameter="personPhone" Type="System.String" DbType="NVarChar(12)" Direction="InOut" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.FillPersons" Method="FillPersons">
+    <ElementType IdRef="ID25" />
+  </Function>
+  <Function Name="dbo.FillPersonsById" Method="FillPersonsById">
+    <Parameter Name="PersonId" Parameter="personId" Type="System.Int32" DbType="Int" />
+    <ElementType IdRef="ID25" />
+  </Function>
+  <Function Name="dbo.FillPersonsByType" Method="FillPersonsByType">
+    <Parameter Name="PersonType" Parameter="personType" Type="System.Int32" DbType="Int" />
+    <ElementType IdRef="ID25" />
   </Function>
 </Database>

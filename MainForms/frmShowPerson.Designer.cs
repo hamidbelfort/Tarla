@@ -33,62 +33,40 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
-            this.bsSeller = new System.Windows.Forms.BindingSource(this.components);
-            this.bsReceiver = new System.Windows.Forms.BindingSource(this.components);
-            this.bsBuyer = new System.Windows.Forms.BindingSource(this.components);
+            this.bsPerson = new System.Windows.Forms.BindingSource(this.components);
             this.groupPanel2 = new DevComponents.DotNetBar.Controls.GroupPanel();
             this.btnEdit = new DevComponents.DotNetBar.ButtonX();
             this.btnExit = new DevComponents.DotNetBar.ButtonX();
             this.btnDelete = new DevComponents.DotNetBar.ButtonX();
             this.groupPanel1 = new DevComponents.DotNetBar.Controls.GroupPanel();
-            this.btnAdd = new DevComponents.DotNetBar.ButtonX();
-            this.dgvSeller = new DevComponents.DotNetBar.Controls.DataGridViewX();
-            this.sellerIdDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.sellerNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.phoneDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.addressDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.descriptionDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dgvReceiver = new DevComponents.DotNetBar.Controls.DataGridViewX();
-            this.receiverIdDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.receiverNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.phoneDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.addressDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.descriptionDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dgvBuyer = new DevComponents.DotNetBar.Controls.DataGridViewX();
-            this.buyerIdDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.buyerNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.phoneDataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.addressDataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.descriptionDataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cmbPersonType = new DevComponents.DotNetBar.Controls.ComboBoxEx();
+            this.comboItem1 = new DevComponents.Editors.ComboItem();
+            this.comboItem2 = new DevComponents.Editors.ComboItem();
+            this.comboItem3 = new DevComponents.Editors.ComboItem();
+            this.comboItem4 = new DevComponents.Editors.ComboItem();
+            this.labelX1 = new DevComponents.DotNetBar.LabelX();
             this.radialMenu = new DevComponents.DotNetBar.RadialMenu();
             this.mnuRefresh = new DevComponents.DotNetBar.RadialMenuItem();
-            ((System.ComponentModel.ISupportInitialize)(this.bsSeller)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.bsReceiver)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.bsBuyer)).BeginInit();
+            this.btnAdd = new DevComponents.DotNetBar.ButtonX();
+            this.dgvPerson = new DevComponents.DotNetBar.Controls.DataGridViewX();
+            this.clmRow = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.personIdDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.personTypeIdDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.personNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.originDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.personTypeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            ((System.ComponentModel.ISupportInitialize)(this.bsPerson)).BeginInit();
             this.groupPanel2.SuspendLayout();
             this.groupPanel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvSeller)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvReceiver)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvBuyer)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvPerson)).BeginInit();
             this.SuspendLayout();
             // 
-            // bsSeller
+            // bsPerson
             // 
-            //this.bsSeller.DataSource = typeof(Tarla.Seller);
-            // 
-            // bsReceiver
-            // 
-            //this.bsReceiver.DataSource = typeof(Tarla.Receiver);
-            // 
-            // bsBuyer
-            // 
-            //this.bsBuyer.DataSource = typeof(Tarla.Buyer);
+            this.bsPerson.DataSource = typeof(Tarla.Person);
             // 
             // groupPanel2
             // 
@@ -99,7 +77,7 @@
             this.groupPanel2.Controls.Add(this.btnExit);
             this.groupPanel2.Controls.Add(this.btnDelete);
             this.groupPanel2.DisabledBackColor = System.Drawing.Color.Empty;
-            this.groupPanel2.Location = new System.Drawing.Point(7, 468);
+            this.groupPanel2.Location = new System.Drawing.Point(7, 489);
             this.groupPanel2.Name = "groupPanel2";
             this.groupPanel2.Size = new System.Drawing.Size(911, 40);
             // 
@@ -186,15 +164,15 @@
             this.groupPanel1.BackColor = System.Drawing.Color.Transparent;
             this.groupPanel1.CanvasColor = System.Drawing.SystemColors.Control;
             this.groupPanel1.ColorSchemeStyle = DevComponents.DotNetBar.eDotNetBarStyle.Office2007;
+            this.groupPanel1.Controls.Add(this.cmbPersonType);
+            this.groupPanel1.Controls.Add(this.labelX1);
             this.groupPanel1.Controls.Add(this.radialMenu);
             this.groupPanel1.Controls.Add(this.btnAdd);
-            this.groupPanel1.Controls.Add(this.dgvSeller);
-            this.groupPanel1.Controls.Add(this.dgvReceiver);
-            this.groupPanel1.Controls.Add(this.dgvBuyer);
+            this.groupPanel1.Controls.Add(this.dgvPerson);
             this.groupPanel1.DisabledBackColor = System.Drawing.Color.Empty;
             this.groupPanel1.Location = new System.Drawing.Point(7, 11);
             this.groupPanel1.Name = "groupPanel1";
-            this.groupPanel1.Size = new System.Drawing.Size(911, 451);
+            this.groupPanel1.Size = new System.Drawing.Size(911, 477);
             // 
             // 
             // 
@@ -225,279 +203,55 @@
             this.groupPanel1.StyleMouseOver.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.groupPanel1.TabIndex = 0;
             // 
-            // btnAdd
+            // cmbPersonType
             // 
-            this.btnAdd.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
-            this.btnAdd.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
-            this.btnAdd.FocusCuesEnabled = false;
-            this.btnAdd.Image = ((System.Drawing.Image)(resources.GetObject("btnAdd.Image")));
-            this.btnAdd.Location = new System.Drawing.Point(3, 0);
-            this.btnAdd.Name = "btnAdd";
-            this.btnAdd.Shape = new DevComponents.DotNetBar.RoundRectangleShapeDescriptor(10, 4, 4, 10);
-            this.btnAdd.Size = new System.Drawing.Size(90, 30);
-            this.btnAdd.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.btnAdd.TabIndex = 0;
-            this.btnAdd.Text = "  جـدیـد";
-            this.btnAdd.TextAlignment = DevComponents.DotNetBar.eButtonTextAlignment.Right;
-            this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
+            this.cmbPersonType.DisplayMember = "Text";
+            this.cmbPersonType.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+            this.cmbPersonType.FormattingEnabled = true;
+            this.cmbPersonType.ItemHeight = 17;
+            this.cmbPersonType.Items.AddRange(new object[] {
+            this.comboItem1,
+            this.comboItem2,
+            this.comboItem3,
+            this.comboItem4});
+            this.cmbPersonType.Location = new System.Drawing.Point(549, 8);
+            this.cmbPersonType.Name = "cmbPersonType";
+            this.cmbPersonType.Size = new System.Drawing.Size(182, 23);
+            this.cmbPersonType.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.cmbPersonType.TabIndex = 4;
+            this.cmbPersonType.SelectedIndexChanged += new System.EventHandler(this.cmbPersonType_SelectedIndexChanged);
             // 
-            // dgvSeller
+            // comboItem1
             // 
-            this.dgvSeller.AllowUserToAddRows = false;
-            this.dgvSeller.AllowUserToDeleteRows = false;
-            this.dgvSeller.AutoGenerateColumns = false;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvSeller.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
-            this.dgvSeller.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvSeller.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.sellerIdDataGridViewTextBoxColumn,
-            this.sellerNameDataGridViewTextBoxColumn,
-            this.phoneDataGridViewTextBoxColumn,
-            this.addressDataGridViewTextBoxColumn,
-            this.descriptionDataGridViewTextBoxColumn});
-            this.dgvSeller.DataSource = this.bsSeller;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvSeller.DefaultCellStyle = dataGridViewCellStyle2;
-            this.dgvSeller.EnableHeadersVisualStyles = false;
-            this.dgvSeller.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(215)))), ((int)(((byte)(229)))));
-            this.dgvSeller.Location = new System.Drawing.Point(3, 36);
-            this.dgvSeller.Name = "dgvSeller";
-            this.dgvSeller.ReadOnly = true;
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
-            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvSeller.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
-            this.dgvSeller.Size = new System.Drawing.Size(899, 406);
-            this.dgvSeller.TabIndex = 1;
-            this.dgvSeller.Visible = false;
+            this.comboItem1.Text = "همه اشخاص";
+            this.comboItem1.Value = "0";
             // 
-            // sellerIdDataGridViewTextBoxColumn
+            // comboItem2
             // 
-            this.sellerIdDataGridViewTextBoxColumn.DataPropertyName = "SellerId";
-            this.sellerIdDataGridViewTextBoxColumn.HeaderText = "SellerId";
-            this.sellerIdDataGridViewTextBoxColumn.Name = "sellerIdDataGridViewTextBoxColumn";
-            this.sellerIdDataGridViewTextBoxColumn.ReadOnly = true;
-            this.sellerIdDataGridViewTextBoxColumn.Visible = false;
+            this.comboItem2.Text = "گیرنده بار";
+            this.comboItem2.Value = "1";
             // 
-            // sellerNameDataGridViewTextBoxColumn
+            // comboItem3
             // 
-            this.sellerNameDataGridViewTextBoxColumn.DataPropertyName = "SellerName";
-            this.sellerNameDataGridViewTextBoxColumn.HeaderText = "نام و نام خانوادگی";
-            this.sellerNameDataGridViewTextBoxColumn.Name = "sellerNameDataGridViewTextBoxColumn";
-            this.sellerNameDataGridViewTextBoxColumn.ReadOnly = true;
-            this.sellerNameDataGridViewTextBoxColumn.Width = 200;
+            this.comboItem3.Text = "کشاورز";
+            this.comboItem3.Value = "2";
             // 
-            // phoneDataGridViewTextBoxColumn
+            // comboItem4
             // 
-            this.phoneDataGridViewTextBoxColumn.DataPropertyName = "Phone";
-            this.phoneDataGridViewTextBoxColumn.HeaderText = "شماره تماس";
-            this.phoneDataGridViewTextBoxColumn.Name = "phoneDataGridViewTextBoxColumn";
-            this.phoneDataGridViewTextBoxColumn.ReadOnly = true;
-            this.phoneDataGridViewTextBoxColumn.Width = 150;
+            this.comboItem4.Text = "ترخیص کار";
+            this.comboItem4.Value = "3";
             // 
-            // addressDataGridViewTextBoxColumn
+            // labelX1
             // 
-            this.addressDataGridViewTextBoxColumn.DataPropertyName = "Address";
-            this.addressDataGridViewTextBoxColumn.HeaderText = "آدرس";
-            this.addressDataGridViewTextBoxColumn.Name = "addressDataGridViewTextBoxColumn";
-            this.addressDataGridViewTextBoxColumn.ReadOnly = true;
-            this.addressDataGridViewTextBoxColumn.Width = 200;
             // 
-            // descriptionDataGridViewTextBoxColumn
             // 
-            this.descriptionDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.descriptionDataGridViewTextBoxColumn.DataPropertyName = "Description";
-            this.descriptionDataGridViewTextBoxColumn.HeaderText = "توضیحات";
-            this.descriptionDataGridViewTextBoxColumn.Name = "descriptionDataGridViewTextBoxColumn";
-            this.descriptionDataGridViewTextBoxColumn.ReadOnly = true;
             // 
-            // dgvReceiver
-            // 
-            this.dgvReceiver.AllowUserToAddRows = false;
-            this.dgvReceiver.AllowUserToDeleteRows = false;
-            this.dgvReceiver.AutoGenerateColumns = false;
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
-            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvReceiver.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle4;
-            this.dgvReceiver.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvReceiver.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.receiverIdDataGridViewTextBoxColumn,
-            this.receiverNameDataGridViewTextBoxColumn,
-            this.phoneDataGridViewTextBoxColumn1,
-            this.addressDataGridViewTextBoxColumn1,
-            this.descriptionDataGridViewTextBoxColumn1});
-            this.dgvReceiver.DataSource = this.bsReceiver;
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle5.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
-            dataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvReceiver.DefaultCellStyle = dataGridViewCellStyle5;
-            this.dgvReceiver.EnableHeadersVisualStyles = false;
-            this.dgvReceiver.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(215)))), ((int)(((byte)(229)))));
-            this.dgvReceiver.Location = new System.Drawing.Point(3, 36);
-            this.dgvReceiver.Name = "dgvReceiver";
-            this.dgvReceiver.ReadOnly = true;
-            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle6.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
-            dataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvReceiver.RowHeadersDefaultCellStyle = dataGridViewCellStyle6;
-            this.dgvReceiver.Size = new System.Drawing.Size(899, 406);
-            this.dgvReceiver.TabIndex = 6;
-            this.dgvReceiver.Visible = false;
-            // 
-            // receiverIdDataGridViewTextBoxColumn
-            // 
-            this.receiverIdDataGridViewTextBoxColumn.DataPropertyName = "ReceiverId";
-            this.receiverIdDataGridViewTextBoxColumn.HeaderText = "ReceiverId";
-            this.receiverIdDataGridViewTextBoxColumn.Name = "receiverIdDataGridViewTextBoxColumn";
-            this.receiverIdDataGridViewTextBoxColumn.ReadOnly = true;
-            this.receiverIdDataGridViewTextBoxColumn.Visible = false;
-            // 
-            // receiverNameDataGridViewTextBoxColumn
-            // 
-            this.receiverNameDataGridViewTextBoxColumn.DataPropertyName = "ReceiverName";
-            this.receiverNameDataGridViewTextBoxColumn.HeaderText = "نام و نام خانوادگی";
-            this.receiverNameDataGridViewTextBoxColumn.Name = "receiverNameDataGridViewTextBoxColumn";
-            this.receiverNameDataGridViewTextBoxColumn.ReadOnly = true;
-            this.receiverNameDataGridViewTextBoxColumn.Width = 250;
-            // 
-            // phoneDataGridViewTextBoxColumn1
-            // 
-            this.phoneDataGridViewTextBoxColumn1.DataPropertyName = "Phone";
-            this.phoneDataGridViewTextBoxColumn1.HeaderText = "شماره تماس";
-            this.phoneDataGridViewTextBoxColumn1.Name = "phoneDataGridViewTextBoxColumn1";
-            this.phoneDataGridViewTextBoxColumn1.ReadOnly = true;
-            this.phoneDataGridViewTextBoxColumn1.Width = 150;
-            // 
-            // addressDataGridViewTextBoxColumn1
-            // 
-            this.addressDataGridViewTextBoxColumn1.DataPropertyName = "Address";
-            this.addressDataGridViewTextBoxColumn1.HeaderText = "آدرس";
-            this.addressDataGridViewTextBoxColumn1.Name = "addressDataGridViewTextBoxColumn1";
-            this.addressDataGridViewTextBoxColumn1.ReadOnly = true;
-            this.addressDataGridViewTextBoxColumn1.Width = 200;
-            // 
-            // descriptionDataGridViewTextBoxColumn1
-            // 
-            this.descriptionDataGridViewTextBoxColumn1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.descriptionDataGridViewTextBoxColumn1.DataPropertyName = "Description";
-            this.descriptionDataGridViewTextBoxColumn1.HeaderText = "توضیحات";
-            this.descriptionDataGridViewTextBoxColumn1.Name = "descriptionDataGridViewTextBoxColumn1";
-            this.descriptionDataGridViewTextBoxColumn1.ReadOnly = true;
-            // 
-            // dgvBuyer
-            // 
-            this.dgvBuyer.AllowUserToAddRows = false;
-            this.dgvBuyer.AllowUserToDeleteRows = false;
-            this.dgvBuyer.AutoGenerateColumns = false;
-            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle7.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle7.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
-            dataGridViewCellStyle7.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvBuyer.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle7;
-            this.dgvBuyer.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvBuyer.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.buyerIdDataGridViewTextBoxColumn,
-            this.buyerNameDataGridViewTextBoxColumn,
-            this.phoneDataGridViewTextBoxColumn2,
-            this.addressDataGridViewTextBoxColumn2,
-            this.descriptionDataGridViewTextBoxColumn2});
-            this.dgvBuyer.DataSource = this.bsBuyer;
-            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle8.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle8.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
-            dataGridViewCellStyle8.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvBuyer.DefaultCellStyle = dataGridViewCellStyle8;
-            this.dgvBuyer.EnableHeadersVisualStyles = false;
-            this.dgvBuyer.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(215)))), ((int)(((byte)(229)))));
-            this.dgvBuyer.Location = new System.Drawing.Point(3, 36);
-            this.dgvBuyer.Name = "dgvBuyer";
-            this.dgvBuyer.ReadOnly = true;
-            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle9.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle9.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
-            dataGridViewCellStyle9.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle9.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle9.SelectionForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle9.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvBuyer.RowHeadersDefaultCellStyle = dataGridViewCellStyle9;
-            this.dgvBuyer.Size = new System.Drawing.Size(899, 406);
-            this.dgvBuyer.TabIndex = 5;
-            this.dgvBuyer.Visible = false;
-            // 
-            // buyerIdDataGridViewTextBoxColumn
-            // 
-            this.buyerIdDataGridViewTextBoxColumn.DataPropertyName = "BuyerId";
-            this.buyerIdDataGridViewTextBoxColumn.HeaderText = "BuyerId";
-            this.buyerIdDataGridViewTextBoxColumn.Name = "buyerIdDataGridViewTextBoxColumn";
-            this.buyerIdDataGridViewTextBoxColumn.ReadOnly = true;
-            this.buyerIdDataGridViewTextBoxColumn.Visible = false;
-            // 
-            // buyerNameDataGridViewTextBoxColumn
-            // 
-            this.buyerNameDataGridViewTextBoxColumn.DataPropertyName = "BuyerName";
-            this.buyerNameDataGridViewTextBoxColumn.HeaderText = "نام و نام خانوادگی";
-            this.buyerNameDataGridViewTextBoxColumn.Name = "buyerNameDataGridViewTextBoxColumn";
-            this.buyerNameDataGridViewTextBoxColumn.ReadOnly = true;
-            this.buyerNameDataGridViewTextBoxColumn.Width = 250;
-            // 
-            // phoneDataGridViewTextBoxColumn2
-            // 
-            this.phoneDataGridViewTextBoxColumn2.DataPropertyName = "Phone";
-            this.phoneDataGridViewTextBoxColumn2.HeaderText = "شماره تماس";
-            this.phoneDataGridViewTextBoxColumn2.Name = "phoneDataGridViewTextBoxColumn2";
-            this.phoneDataGridViewTextBoxColumn2.ReadOnly = true;
-            this.phoneDataGridViewTextBoxColumn2.Width = 150;
-            // 
-            // addressDataGridViewTextBoxColumn2
-            // 
-            this.addressDataGridViewTextBoxColumn2.DataPropertyName = "Address";
-            this.addressDataGridViewTextBoxColumn2.HeaderText = "آدرس";
-            this.addressDataGridViewTextBoxColumn2.Name = "addressDataGridViewTextBoxColumn2";
-            this.addressDataGridViewTextBoxColumn2.ReadOnly = true;
-            this.addressDataGridViewTextBoxColumn2.Width = 200;
-            // 
-            // descriptionDataGridViewTextBoxColumn2
-            // 
-            this.descriptionDataGridViewTextBoxColumn2.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.descriptionDataGridViewTextBoxColumn2.DataPropertyName = "Description";
-            this.descriptionDataGridViewTextBoxColumn2.HeaderText = "توضیحات";
-            this.descriptionDataGridViewTextBoxColumn2.Name = "descriptionDataGridViewTextBoxColumn2";
-            this.descriptionDataGridViewTextBoxColumn2.ReadOnly = true;
+            this.labelX1.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.labelX1.Location = new System.Drawing.Point(737, 7);
+            this.labelX1.Name = "labelX1";
+            this.labelX1.Size = new System.Drawing.Size(102, 23);
+            this.labelX1.TabIndex = 3;
+            this.labelX1.Text = "فیلتر اشخاص";
             // 
             // radialMenu
             // 
@@ -522,12 +276,148 @@
             this.mnuRefresh.Symbol = "";
             this.mnuRefresh.Text = "تازه سازی";
             // 
+            // btnAdd
+            // 
+            this.btnAdd.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
+            this.btnAdd.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
+            this.btnAdd.FocusCuesEnabled = false;
+            this.btnAdd.Image = ((System.Drawing.Image)(resources.GetObject("btnAdd.Image")));
+            this.btnAdd.Location = new System.Drawing.Point(4, 8);
+            this.btnAdd.Name = "btnAdd";
+            this.btnAdd.Shape = new DevComponents.DotNetBar.RoundRectangleShapeDescriptor(10, 4, 4, 10);
+            this.btnAdd.Size = new System.Drawing.Size(90, 30);
+            this.btnAdd.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.btnAdd.TabIndex = 0;
+            this.btnAdd.Text = "  جـدیـد";
+            this.btnAdd.TextAlignment = DevComponents.DotNetBar.eButtonTextAlignment.Right;
+            this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
+            // 
+            // dgvPerson
+            // 
+            this.dgvPerson.AllowUserToAddRows = false;
+            this.dgvPerson.AllowUserToDeleteRows = false;
+            this.dgvPerson.AutoGenerateColumns = false;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvPerson.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            this.dgvPerson.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvPerson.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.clmRow,
+            this.personIdDataGridViewTextBoxColumn,
+            this.personTypeIdDataGridViewTextBoxColumn,
+            this.personNameDataGridViewTextBoxColumn,
+            this.dataGridViewTextBoxColumn1,
+            this.dataGridViewTextBoxColumn2,
+            this.originDataGridViewTextBoxColumn,
+            this.dataGridViewTextBoxColumn3,
+            this.personTypeDataGridViewTextBoxColumn});
+            this.dgvPerson.DataSource = this.bsPerson;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvPerson.DefaultCellStyle = dataGridViewCellStyle2;
+            this.dgvPerson.EnableHeadersVisualStyles = false;
+            this.dgvPerson.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(215)))), ((int)(((byte)(229)))));
+            this.dgvPerson.Location = new System.Drawing.Point(4, 62);
+            this.dgvPerson.Name = "dgvPerson";
+            this.dgvPerson.ReadOnly = true;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvPerson.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            this.dgvPerson.Size = new System.Drawing.Size(899, 406);
+            this.dgvPerson.TabIndex = 1;
+            this.dgvPerson.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dgvPerson_CellFormatting);
+            // 
+            // clmRow
+            // 
+            this.clmRow.HeaderText = "#";
+            this.clmRow.Name = "clmRow";
+            this.clmRow.ReadOnly = true;
+            this.clmRow.Width = 30;
+            // 
+            // personIdDataGridViewTextBoxColumn
+            // 
+            this.personIdDataGridViewTextBoxColumn.DataPropertyName = "PersonId";
+            this.personIdDataGridViewTextBoxColumn.HeaderText = "PersonId";
+            this.personIdDataGridViewTextBoxColumn.Name = "personIdDataGridViewTextBoxColumn";
+            this.personIdDataGridViewTextBoxColumn.ReadOnly = true;
+            this.personIdDataGridViewTextBoxColumn.Visible = false;
+            // 
+            // personTypeIdDataGridViewTextBoxColumn
+            // 
+            this.personTypeIdDataGridViewTextBoxColumn.DataPropertyName = "PersonTypeId";
+            this.personTypeIdDataGridViewTextBoxColumn.HeaderText = "PersonTypeId";
+            this.personTypeIdDataGridViewTextBoxColumn.Name = "personTypeIdDataGridViewTextBoxColumn";
+            this.personTypeIdDataGridViewTextBoxColumn.ReadOnly = true;
+            this.personTypeIdDataGridViewTextBoxColumn.Visible = false;
+            // 
+            // personNameDataGridViewTextBoxColumn
+            // 
+            this.personNameDataGridViewTextBoxColumn.DataPropertyName = "PersonName";
+            this.personNameDataGridViewTextBoxColumn.HeaderText = "نام و نام خانوادگی";
+            this.personNameDataGridViewTextBoxColumn.Name = "personNameDataGridViewTextBoxColumn";
+            this.personNameDataGridViewTextBoxColumn.ReadOnly = true;
+            this.personNameDataGridViewTextBoxColumn.Width = 150;
+            // 
+            // dataGridViewTextBoxColumn1
+            // 
+            this.dataGridViewTextBoxColumn1.DataPropertyName = "Phone";
+            this.dataGridViewTextBoxColumn1.HeaderText = "شماره تماس";
+            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
+            this.dataGridViewTextBoxColumn1.ReadOnly = true;
+            this.dataGridViewTextBoxColumn1.Width = 130;
+            // 
+            // dataGridViewTextBoxColumn2
+            // 
+            this.dataGridViewTextBoxColumn2.DataPropertyName = "Address";
+            this.dataGridViewTextBoxColumn2.HeaderText = "آدرس";
+            this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
+            this.dataGridViewTextBoxColumn2.ReadOnly = true;
+            this.dataGridViewTextBoxColumn2.Width = 150;
+            // 
+            // originDataGridViewTextBoxColumn
+            // 
+            this.originDataGridViewTextBoxColumn.DataPropertyName = "Origin";
+            this.originDataGridViewTextBoxColumn.HeaderText = "کشور/شهر";
+            this.originDataGridViewTextBoxColumn.Name = "originDataGridViewTextBoxColumn";
+            this.originDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn3
+            // 
+            this.dataGridViewTextBoxColumn3.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.dataGridViewTextBoxColumn3.DataPropertyName = "Description";
+            this.dataGridViewTextBoxColumn3.HeaderText = "توضیحات";
+            this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
+            this.dataGridViewTextBoxColumn3.ReadOnly = true;
+            // 
+            // personTypeDataGridViewTextBoxColumn
+            // 
+            this.personTypeDataGridViewTextBoxColumn.DataPropertyName = "PersonType";
+            this.personTypeDataGridViewTextBoxColumn.HeaderText = "PersonType";
+            this.personTypeDataGridViewTextBoxColumn.Name = "personTypeDataGridViewTextBoxColumn";
+            this.personTypeDataGridViewTextBoxColumn.ReadOnly = true;
+            this.personTypeDataGridViewTextBoxColumn.Visible = false;
+            // 
             // frmShowPerson
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.btnExit;
-            this.ClientSize = new System.Drawing.Size(925, 518);
+            this.ClientSize = new System.Drawing.Size(925, 536);
             this.Controls.Add(this.groupPanel2);
             this.Controls.Add(this.groupPanel1);
             this.DoubleBuffered = true;
@@ -539,42 +429,35 @@
             this.Name = "frmShowPerson";
             this.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Text = "نمایش لیست اشخاص";
             this.Load += new System.EventHandler(this.frmShowPerson_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.bsSeller)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.bsReceiver)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.bsBuyer)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bsPerson)).EndInit();
             this.groupPanel2.ResumeLayout(false);
             this.groupPanel1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dgvSeller)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvReceiver)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvBuyer)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvPerson)).EndInit();
             this.ResumeLayout(false);
 
         }
 
         #endregion
-        private System.Windows.Forms.BindingSource bsSeller;
-        private System.Windows.Forms.BindingSource bsReceiver;
-        private System.Windows.Forms.BindingSource bsBuyer;
+        private System.Windows.Forms.BindingSource bsPerson;
         private DevComponents.DotNetBar.Controls.GroupPanel groupPanel2;
         private DevComponents.DotNetBar.ButtonX btnEdit;
         private DevComponents.DotNetBar.ButtonX btnExit;
         private DevComponents.DotNetBar.ButtonX btnDelete;
         private DevComponents.DotNetBar.Controls.GroupPanel groupPanel1;
         private DevComponents.DotNetBar.ButtonX btnAdd;
-        private DevComponents.DotNetBar.Controls.DataGridViewX dgvSeller;
+        private DevComponents.DotNetBar.Controls.DataGridViewX dgvPerson;
         private System.Windows.Forms.DataGridViewTextBoxColumn sellerIdDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn sellerNameDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn phoneDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn addressDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn descriptionDataGridViewTextBoxColumn;
-        private DevComponents.DotNetBar.Controls.DataGridViewX dgvReceiver;
         private System.Windows.Forms.DataGridViewTextBoxColumn receiverIdDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn receiverNameDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn phoneDataGridViewTextBoxColumn1;
         private System.Windows.Forms.DataGridViewTextBoxColumn addressDataGridViewTextBoxColumn1;
         private System.Windows.Forms.DataGridViewTextBoxColumn descriptionDataGridViewTextBoxColumn1;
-        private DevComponents.DotNetBar.Controls.DataGridViewX dgvBuyer;
         private System.Windows.Forms.DataGridViewTextBoxColumn buyerIdDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn buyerNameDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn phoneDataGridViewTextBoxColumn2;
@@ -582,5 +465,20 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn descriptionDataGridViewTextBoxColumn2;
         private DevComponents.DotNetBar.RadialMenu radialMenu;
         private DevComponents.DotNetBar.RadialMenuItem mnuRefresh;
+        private System.Windows.Forms.DataGridViewTextBoxColumn clmRow;
+        private System.Windows.Forms.DataGridViewTextBoxColumn personIdDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn personTypeIdDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn personNameDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn originDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
+        private System.Windows.Forms.DataGridViewTextBoxColumn personTypeDataGridViewTextBoxColumn;
+        private DevComponents.DotNetBar.Controls.ComboBoxEx cmbPersonType;
+        private DevComponents.Editors.ComboItem comboItem1;
+        private DevComponents.Editors.ComboItem comboItem2;
+        private DevComponents.Editors.ComboItem comboItem3;
+        private DevComponents.DotNetBar.LabelX labelX1;
+        private DevComponents.Editors.ComboItem comboItem4;
     }
 }

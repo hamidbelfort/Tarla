@@ -40,25 +40,21 @@ namespace Tarla.MainForms
                 {
                     switch (personType)
                     {
-                        case 1: //buyer
-                            groupPanel1.Text = "ثبت مشخصات مشتری";
-                            Text= "ثبت مشخصات مشتری";
-                            //bsBuyer.DataSource = db.FillBuyerById(personId);
-                            prepareForm(personType);
+                        case 1: //Reciever
+                            groupPanel1.Text = "اطلاعات گیرنده بار";
+                            Text= "ثبت مشخصات گیرنده بار";
                             break;
-                        case 2://seller
-                            groupPanel1.Text = "ثبت مشخصات کشاورز";
+                        case 2://farmer
+                            groupPanel1.Text = "اطلاعات کشاورز";
                             Text= "ثبت مشخصات کشاورز";
-                            //bsSeller.DataSource = db.FillSellerById(personId);
-                            prepareForm(personType);
                             break;
                         case 3://clearance
-                            groupPanel1.Text = "ثبت مشخصات ترخیص کار";
+                            groupPanel1.Text = "اطلاعات ترخیص کار";
                             Text = "ثبت مشخصات ترخیص کار";
-                            //bsReceiver.DataSource = db.FillReceiverById(personId);
-                            prepareForm(personType);
                             break;
                     }
+                    bsPerson.DataSource = db.FillPersonsById(personId);
+                    cmbPersonType.SelectedIndex = personType - 1;
                 }
             }
             catch (Exception ex)
@@ -66,41 +62,15 @@ namespace Tarla.MainForms
                 MessageBoxFarsi.Show("ارتباط با سرور اطلاعاتی قطع شده است \n" + ex.Message, "خطا", MessageBoxFarsiButtons.OK, MessageBoxFarsiIcon.Error, MessageBoxFarsiDefaultButton.Button1);
             }
         }
-        private void prepareForm(int target)
-        {
-            txtName.DataBindings.Clear();
-            txtPhone.DataBindings.Clear();
-            txtAddress.DataBindings.Clear();
-            txtDesc.DataBindings.Clear();
-            switch (target)
-            {
-                case 1: //receiver
-                    txtName.DataBindings.Add(new Binding("Text", bsBuyer, "BuyerName"));
-                    txtPhone.DataBindings.Add(new Binding("Text", bsBuyer, "Phone"));
-                    txtAddress.DataBindings.Add(new Binding("Text", bsBuyer, "Address"));
-                    txtDesc.DataBindings.Add(new Binding("Text", bsBuyer, "Description"));
-                    break;
-                case 2://farmer
-                    txtName.DataBindings.Add(new Binding("Text", bsSeller, "SellerName"));
-                    txtPhone.DataBindings.Add(new Binding("Text", bsSeller, "Phone"));
-                    txtAddress.DataBindings.Add(new Binding("Text", bsSeller, "Address"));
-                    txtDesc.DataBindings.Add(new Binding("Text", bsSeller, "Description"));
-                    break;
-                case 3://clearance
-                    txtName.DataBindings.Add(new Binding("Text", bsReceiver, "ReceiverName"));
-                    txtPhone.DataBindings.Add(new Binding("Text", bsReceiver, "Phone"));
-                    txtAddress.DataBindings.Add(new Binding("Text", bsReceiver, "Address"));
-                    txtDesc.DataBindings.Add(new Binding("Text", bsReceiver, "Description"));
-                    break;
-            }
-        }
+
         private void clearAll()
         {
             txtName.Clear();
             txtAddress.Clear();
             txtDesc.Clear();
+            txtOrigin.Clear();
             txtPhone.Text = string.Empty;
-            txtName.Focus();
+            cmbPersonType.Focus();
         }
         private void performTransaction(int target)
         {
@@ -117,36 +87,12 @@ namespace Tarla.MainForms
                     errorProvider1.Clear();
                     if (IsEdit)
                     {
-                        switch (target)
-                        {
-                            case 1: //buyer
-                                bsBuyer.EndEdit();
-                                //db.UpdateBuyer(personId, txtName.Text.Trim(), txtPhone.Text, txtAddress.Text, txtDesc.Text);
-                                break;
-                            case 2://seller
-                                bsSeller.EndEdit();
-                                //db.UpdateSeller(personId, txtName.Text.Trim(), txtPhone.Text, txtAddress.Text, txtDesc.Text);
-                                break;
-                            case 3://receiver
-                                bsReceiver.EndEdit();
-                                //db.UpdateReceiver(personId, txtName.Text.Trim(), txtPhone.Text, txtAddress.Text, txtDesc.Text);
-                                break;
-                        }
+                        bsPerson.EndEdit();
+                        db.UpdatePerson(personId, personType, txtName.Text.Trim(), txtPhone.Text, txtAddress.Text, txtOrigin.Text.Trim(), txtDesc.Text);
                     }
                     else
                     {
-                        switch (target)
-                        {
-                            case 1: //buyer
-                                //db.InsertBuyer(txtName.Text.Trim(), txtPhone.Text, txtAddress.Text, txtDesc.Text);
-                                break;
-                            case 2://seller
-                                //db.InsertSeller(txtName.Text.Trim(), txtPhone.Text, txtAddress.Text, txtDesc.Text);
-                                break;
-                            case 3://receiver
-                                //db.InsertReceiver(txtName.Text.Trim(), txtPhone.Text, txtAddress.Text, txtDesc.Text);
-                                break;
-                        }
+                        db.InsertPerson(personType, txtName.Text.Trim(), txtPhone.Text, txtAddress.Text, txtOrigin.Text.Trim(), txtDesc.Text);
                         clearAll();
                     }
 
@@ -159,5 +105,73 @@ namespace Tarla.MainForms
             }
 
         }
+
+        private void cmbPersonType_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                personType = cmbPersonType.SelectedIndex + 1;
+            }
+            catch
+            {
+                personType = 1;
+            }
+        }
+        //**************************************************
+        /*private void prepareForm(int target)
+      {
+          txtName.DataBindings.Clear();
+          txtPhone.DataBindings.Clear();
+          txtAddress.DataBindings.Clear();
+          txtDesc.DataBindings.Clear();
+          switch (target)
+          {
+              case 1: //receiver
+                  txtName.DataBindings.Add(new Binding("Text", bsBuyer, "BuyerName"));
+                  txtPhone.DataBindings.Add(new Binding("Text", bsBuyer, "Phone"));
+                  txtAddress.DataBindings.Add(new Binding("Text", bsBuyer, "Address"));
+                  txtDesc.DataBindings.Add(new Binding("Text", bsBuyer, "Description"));
+                  break;
+              case 2://farmer
+                  txtName.DataBindings.Add(new Binding("Text", bsSeller, "SellerName"));
+                  txtPhone.DataBindings.Add(new Binding("Text", bsSeller, "Phone"));
+                  txtAddress.DataBindings.Add(new Binding("Text", bsSeller, "Address"));
+                  txtDesc.DataBindings.Add(new Binding("Text", bsSeller, "Description"));
+                  break;
+              case 3://clearance
+                  txtName.DataBindings.Add(new Binding("Text", bsReceiver, "ReceiverName"));
+                  txtPhone.DataBindings.Add(new Binding("Text", bsReceiver, "Phone"));
+                  txtAddress.DataBindings.Add(new Binding("Text", bsReceiver, "Address"));
+                  txtDesc.DataBindings.Add(new Binding("Text", bsReceiver, "Description"));
+                  break;
+          }
+      }*/
+        /*switch (target)
+                          {
+                              case 1: //buyer
+                                  bsBuyer.EndEdit();
+                                  //db.UpdateBuyer(personId, txtName.Text.Trim(), txtPhone.Text, txtAddress.Text, txtDesc.Text);
+                                  break;
+                              case 2://seller
+                                  bsSeller.EndEdit();
+                                  //db.UpdateSeller(personId, txtName.Text.Trim(), txtPhone.Text, txtAddress.Text, txtDesc.Text);
+                                  break;
+                              case 3://receiver
+                                  bsReceiver.EndEdit();
+                                  //db.UpdateReceiver(personId, txtName.Text.Trim(), txtPhone.Text, txtAddress.Text, txtDesc.Text);
+                                  break;
+                          }
+                          switch (target)
+                          {
+                              case 1: //buyer
+                                  //db.InsertBuyer(txtName.Text.Trim(), txtPhone.Text, txtAddress.Text, txtDesc.Text);
+                                  break;
+                              case 2://seller
+                                  //db.InsertSeller(txtName.Text.Trim(), txtPhone.Text, txtAddress.Text, txtDesc.Text);
+                                  break;
+                              case 3://receiver
+                                  //db.InsertReceiver(txtName.Text.Trim(), txtPhone.Text, txtAddress.Text, txtDesc.Text);
+                                  break;
+                          }*/
     }
 }

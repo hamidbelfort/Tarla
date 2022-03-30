@@ -582,6 +582,7 @@
     <None Include="Properties\DataSources\Log.datasource" />
     <None Include="Properties\DataSources\Message.datasource" />
     <None Include="Properties\DataSources\PayType.datasource" />
+    <None Include="Properties\DataSources\Person.datasource" />
     <None Include="Properties\DataSources\Product.datasource" />
     <None Include="Properties\DataSources\ProductGroup.datasource" />
     <None Include="Properties\DataSources\ProductPacking.datasource" />

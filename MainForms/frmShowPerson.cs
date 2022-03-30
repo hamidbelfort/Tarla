@@ -25,27 +25,7 @@ namespace Tarla.MainForms
         {
             try
             {
-                switch (personType)
-                {
-                    case 1: //buyer
-                        Text = "نمایش لیست مشتریان";
-                        //bsBuyer.DataSource = db.FillBuyer();
-                        dgvBuyer.Visible = true;
-                        checkData(dgvBuyer);
-                        break;
-                    case 2://seller
-                        Text = "نمایش لیست فروشندگان محصول";
-                        //bsSeller.DataSource = db.FillSeller();
-                        dgvSeller.Visible = true;
-                        checkData(dgvSeller);
-                        break;
-                    case 3://receiver
-                        Text = "نمایش لیست تحویل گیرنده ها";
-                        //bsReceiver.DataSource = db.FillReceiver();
-                        dgvReceiver.Visible = true;
-                        checkData(dgvReceiver);
-                        break;
-                }
+                loadAgain();
             }
             catch (Exception ex)
             {
@@ -67,27 +47,21 @@ namespace Tarla.MainForms
                 dgvTarget.Columns[0].Visible = false;
             }
         }
-        private void loadAgain(int bsTarget)
+        private void loadAgain()
         {
             try
             {
-                switch (bsTarget)
+                bsPerson.DataSource = db.FillPersons();
+                if (dgvPerson.Rows.Count == 0)
                 {
-                    case 1://buyer
-
-                        //bsBuyer.DataSource = db.FillBuyer();
-                        checkData(dgvBuyer);
-                        break;
-                    case 2://seller
-                        //bsSeller.DataSource = db.FillSeller();
-                        checkData(dgvSeller);
-                        break;
-                    case 3://receiver
-                        //bsReceiver.DataSource = db.FillReceiver();
-                        checkData(dgvReceiver);
-                        break;
+                    btnDelete.Enabled = false;
+                    btnEdit.Enabled = false;
                 }
-
+                else
+                {
+                    btnDelete.Enabled = true;
+                    btnEdit.Enabled = true;
+                }
             }
             catch (Exception ex)
             {
@@ -100,25 +74,12 @@ namespace Tarla.MainForms
             try
             {
                 frmAddPerson.IsEdit = true;
-                switch (personType)
-                {
-                    case 1://buyer
-                        frmAddPerson.personType = 1;
-                        frmAddPerson.personId = (int)dgvBuyer.CurrentRow.Cells[0].Value;
-                        break;
-                    case 2://seller
-                        frmAddPerson.personType = 2;
-                        frmAddPerson.personId = (int)dgvSeller.CurrentRow.Cells[0].Value;
-                        break;
-                    case 3://receiver
-                        frmAddPerson.personType = 3;
-                        frmAddPerson.personId = (int)dgvReceiver.CurrentRow.Cells[0].Value;
-                        break;
-                }
+                frmAddPerson.personType = (int)dgvPerson.CurrentRow.Cells[2].Value;
+                frmAddPerson.personId = (int)dgvPerson.CurrentRow.Cells[1].Value;
                 new frmAddPerson().ShowDialog();
 
                 db = new dcTarlaDataContext();
-                loadAgain(personType);
+                loadAgain();
             }
             catch (Exception ex)
             {
@@ -132,19 +93,8 @@ namespace Tarla.MainForms
             {
                 if (MessageBoxFarsi.Show("آیا مطمئن به حذف این مورد هستید؟", "تأیید حذف", MessageBoxFarsiButtons.YesNo, MessageBoxFarsiIcon.Question, MessageBoxFarsiDefaultButton.Button1) == DialogResult.Yes)
                 {
-                    switch (personType)
-                    {
-                        case 1://buyer
-                            //db.DeleteBuyer((int)dgvBuyer.CurrentRow.Cells[0].Value);
-                            break;
-                        case 2://seller
-                            //db.DeleteSeller((int)dgvSeller.CurrentRow.Cells[0].Value);
-                            break;
-                        case 3://receiver
-                            //db.DeleteReceiver((int)dgvReceiver.CurrentRow.Cells[0].Value);
-                            break;
-                    }
-                    loadAgain(personType);
+                    db.DeletePerson((int)dgvPerson.CurrentRow.Cells[1].Value);
+                    loadAgain();
                 }
             }
             catch (Exception ex)
@@ -160,7 +110,7 @@ namespace Tarla.MainForms
                 frmAddPerson.IsEdit = false;
                 frmAddPerson.personType = personType;
                 new frmAddPerson().ShowDialog();
-                loadAgain(personType);
+                loadAgain();
             }
             catch (Exception ex)
             {
@@ -181,10 +131,62 @@ namespace Tarla.MainForms
                 switch (item.Name)
                 {
                     case "mnuRefresh":
-                        loadAgain(personType);
+                        loadAgain();
                         break;
                 }
             }
+        }
+
+        private void cmbPersonType_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                switch (cmbPersonType.SelectedIndex)
+                {
+                    case 0:
+                        bsPerson.DataSource = db.FillPersons();
+                        break;
+                    case 1:
+                        loadByPersonType(1);
+                        break;
+                    case 2:
+                        loadByPersonType(2);
+                        break;
+                    case 3:
+                        loadByPersonType(3);
+                        break;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBoxFarsi.Show("ارتباط با سرور اطلاعاتی قطع شده است \n" + ex.Message, "خطا", MessageBoxFarsiButtons.OK, MessageBoxFarsiIcon.Error, MessageBoxFarsiDefaultButton.Button1);
+            }
+            
+        }
+        private void loadByPersonType(int personType)
+        {
+            try
+            {
+                bsPerson.DataSource = db.FillPersonsByType(personType);
+                if (dgvPerson.Rows.Count == 0)
+                {
+                    btnDelete.Enabled = false;
+                    btnEdit.Enabled = false;
+                }
+                else
+                {
+                    btnDelete.Enabled = true;
+                    btnEdit.Enabled = true;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBoxFarsi.Show("ارتباط با سرور اطلاعاتی قطع شده است \n" + ex.Message, "خطا", MessageBoxFarsiButtons.OK, MessageBoxFarsiIcon.Error, MessageBoxFarsiDefaultButton.Button1);
+            }
+        }
+        private void dgvPerson_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
+        {
+            dgvPerson.Rows[e.RowIndex].Cells["clmRow"].Value = e.RowIndex + 1;
         }
     }
 }

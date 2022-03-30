@@ -30,14 +30,14 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmAddPerson));
-            this.bsSeller = new System.Windows.Forms.BindingSource(this.components);
-            this.bsBuyer = new System.Windows.Forms.BindingSource(this.components);
-            this.bsReceiver = new System.Windows.Forms.BindingSource(this.components);
+            this.bsPerson = new System.Windows.Forms.BindingSource(this.components);
             this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
             this.groupPanel2 = new DevComponents.DotNetBar.Controls.GroupPanel();
             this.btnExit = new DevComponents.DotNetBar.ButtonX();
             this.btnSave = new DevComponents.DotNetBar.ButtonX();
             this.groupPanel1 = new DevComponents.DotNetBar.Controls.GroupPanel();
+            this.txtOrigin = new DevComponents.DotNetBar.Controls.TextBoxX();
+            this.labelX5 = new DevComponents.DotNetBar.LabelX();
             this.labelX4 = new DevComponents.DotNetBar.LabelX();
             this.txtPhone = new DevComponents.DotNetBar.Controls.MaskedTextBoxAdv();
             this.txtAddress = new DevComponents.DotNetBar.Controls.TextBoxX();
@@ -46,27 +46,17 @@
             this.txtName = new DevComponents.DotNetBar.Controls.TextBoxX();
             this.txtDesc = new DevComponents.DotNetBar.Controls.TextBoxX();
             this.labelX1 = new DevComponents.DotNetBar.LabelX();
-            this.txtOrigin = new DevComponents.DotNetBar.Controls.TextBoxX();
-            this.labelX5 = new DevComponents.DotNetBar.LabelX();
-            ((System.ComponentModel.ISupportInitialize)(this.bsSeller)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.bsBuyer)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.bsReceiver)).BeginInit();
+            this.labelX6 = new DevComponents.DotNetBar.LabelX();
+            this.cmbPersonType = new System.Windows.Forms.ComboBox();
+            ((System.ComponentModel.ISupportInitialize)(this.bsPerson)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             this.groupPanel2.SuspendLayout();
             this.groupPanel1.SuspendLayout();
             this.SuspendLayout();
             // 
-            // bsSeller
+            // bsPerson
             // 
-            //this.bsSeller.DataSource = typeof(Tarla.Seller);
-            // 
-            // bsBuyer
-            // 
-            //this.bsBuyer.DataSource = typeof(Tarla.Buyer);
-            // 
-            // bsReceiver
-            // 
-            //this.bsReceiver.DataSource = typeof(Tarla.Receiver);
+            this.bsPerson.DataSource = typeof(Tarla.Person);
             // 
             // errorProvider1
             // 
@@ -81,7 +71,7 @@
             this.groupPanel2.Controls.Add(this.btnExit);
             this.groupPanel2.Controls.Add(this.btnSave);
             this.groupPanel2.DisabledBackColor = System.Drawing.Color.Empty;
-            this.groupPanel2.Location = new System.Drawing.Point(12, 336);
+            this.groupPanel2.Location = new System.Drawing.Point(12, 348);
             this.groupPanel2.Name = "groupPanel2";
             this.groupPanel2.Size = new System.Drawing.Size(447, 40);
             // 
@@ -153,6 +143,8 @@
             // 
             this.groupPanel1.CanvasColor = System.Drawing.SystemColors.Control;
             this.groupPanel1.ColorSchemeStyle = DevComponents.DotNetBar.eDotNetBarStyle.Office2007;
+            this.groupPanel1.Controls.Add(this.cmbPersonType);
+            this.groupPanel1.Controls.Add(this.labelX6);
             this.groupPanel1.Controls.Add(this.txtOrigin);
             this.groupPanel1.Controls.Add(this.labelX5);
             this.groupPanel1.Controls.Add(this.labelX4);
@@ -166,7 +158,7 @@
             this.groupPanel1.DisabledBackColor = System.Drawing.Color.Empty;
             this.groupPanel1.Location = new System.Drawing.Point(12, 12);
             this.groupPanel1.Name = "groupPanel1";
-            this.groupPanel1.Size = new System.Drawing.Size(447, 318);
+            this.groupPanel1.Size = new System.Drawing.Size(447, 330);
             // 
             // 
             // 
@@ -198,6 +190,34 @@
             this.groupPanel1.TabIndex = 0;
             this.groupPanel1.Text = "ثبت مشخصات";
             // 
+            // txtOrigin
+            // 
+            // 
+            // 
+            // 
+            this.txtOrigin.Border.Class = "TextBoxBorder";
+            this.txtOrigin.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.txtOrigin.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.bsPerson, "Origin", true));
+            this.txtOrigin.Location = new System.Drawing.Point(30, 164);
+            this.txtOrigin.MaxLength = 30;
+            this.txtOrigin.Name = "txtOrigin";
+            this.txtOrigin.PreventEnterBeep = true;
+            this.txtOrigin.Size = new System.Drawing.Size(286, 23);
+            this.txtOrigin.TabIndex = 4;
+            // 
+            // labelX5
+            // 
+            this.labelX5.BackColor = System.Drawing.Color.Transparent;
+            // 
+            // 
+            // 
+            this.labelX5.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.labelX5.Location = new System.Drawing.Point(322, 163);
+            this.labelX5.Name = "labelX5";
+            this.labelX5.Size = new System.Drawing.Size(115, 23);
+            this.labelX5.TabIndex = 20;
+            this.labelX5.Text = "کشور/شهر";
+            // 
             // labelX4
             // 
             this.labelX4.BackColor = System.Drawing.Color.Transparent;
@@ -205,7 +225,7 @@
             // 
             // 
             this.labelX4.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelX4.Location = new System.Drawing.Point(322, 167);
+            this.labelX4.Location = new System.Drawing.Point(322, 193);
             this.labelX4.Name = "labelX4";
             this.labelX4.Size = new System.Drawing.Size(115, 23);
             this.labelX4.TabIndex = 17;
@@ -219,12 +239,13 @@
             this.txtPhone.BackgroundStyle.Class = "TextBoxBorder";
             this.txtPhone.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.txtPhone.ButtonClear.Visible = true;
-            this.txtPhone.Location = new System.Drawing.Point(126, 45);
+            this.txtPhone.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.bsPerson, "Phone", true));
+            this.txtPhone.Location = new System.Drawing.Point(126, 71);
             this.txtPhone.Mask = "000000000000";
             this.txtPhone.Name = "txtPhone";
             this.txtPhone.Size = new System.Drawing.Size(190, 22);
             this.txtPhone.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.txtPhone.TabIndex = 1;
+            this.txtPhone.TabIndex = 2;
             this.txtPhone.Text = "";
             // 
             // txtAddress
@@ -234,14 +255,15 @@
             // 
             this.txtAddress.Border.Class = "TextBoxBorder";
             this.txtAddress.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.txtAddress.Location = new System.Drawing.Point(30, 72);
+            this.txtAddress.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.bsPerson, "Address", true));
+            this.txtAddress.Location = new System.Drawing.Point(30, 98);
             this.txtAddress.MaxLength = 30;
             this.txtAddress.Multiline = true;
             this.txtAddress.Name = "txtAddress";
             this.txtAddress.PreventEnterBeep = true;
             this.txtAddress.ScrollBars = System.Windows.Forms.ScrollBars.Both;
             this.txtAddress.Size = new System.Drawing.Size(286, 60);
-            this.txtAddress.TabIndex = 2;
+            this.txtAddress.TabIndex = 3;
             // 
             // labelX3
             // 
@@ -250,7 +272,7 @@
             // 
             // 
             this.labelX3.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelX3.Location = new System.Drawing.Point(322, 15);
+            this.labelX3.Location = new System.Drawing.Point(322, 41);
             this.labelX3.Name = "labelX3";
             this.labelX3.Size = new System.Drawing.Size(115, 23);
             this.labelX3.TabIndex = 14;
@@ -263,7 +285,7 @@
             // 
             // 
             this.labelX2.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelX2.Location = new System.Drawing.Point(322, 45);
+            this.labelX2.Location = new System.Drawing.Point(322, 71);
             this.labelX2.Name = "labelX2";
             this.labelX2.Size = new System.Drawing.Size(115, 23);
             this.labelX2.TabIndex = 13;
@@ -276,12 +298,13 @@
             // 
             this.txtName.Border.Class = "TextBoxBorder";
             this.txtName.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.txtName.Location = new System.Drawing.Point(30, 16);
+            this.txtName.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.bsPerson, "PersonName", true));
+            this.txtName.Location = new System.Drawing.Point(30, 42);
             this.txtName.MaxLength = 30;
             this.txtName.Name = "txtName";
             this.txtName.PreventEnterBeep = true;
             this.txtName.Size = new System.Drawing.Size(286, 23);
-            this.txtName.TabIndex = 0;
+            this.txtName.TabIndex = 1;
             this.txtName.WatermarkText = "الزامی";
             // 
             // txtDesc
@@ -291,14 +314,15 @@
             // 
             this.txtDesc.Border.Class = "TextBoxBorder";
             this.txtDesc.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.txtDesc.Location = new System.Drawing.Point(30, 167);
+            this.txtDesc.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.bsPerson, "Description", true));
+            this.txtDesc.Location = new System.Drawing.Point(30, 193);
             this.txtDesc.MaxLength = 200;
             this.txtDesc.Multiline = true;
             this.txtDesc.Name = "txtDesc";
             this.txtDesc.PreventEnterBeep = true;
             this.txtDesc.ScrollBars = System.Windows.Forms.ScrollBars.Both;
             this.txtDesc.Size = new System.Drawing.Size(286, 105);
-            this.txtDesc.TabIndex = 4;
+            this.txtDesc.TabIndex = 5;
             // 
             // labelX1
             // 
@@ -307,39 +331,37 @@
             // 
             // 
             this.labelX1.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelX1.Location = new System.Drawing.Point(322, 71);
+            this.labelX1.Location = new System.Drawing.Point(322, 97);
             this.labelX1.Name = "labelX1";
             this.labelX1.Size = new System.Drawing.Size(115, 23);
             this.labelX1.TabIndex = 0;
             this.labelX1.Text = "آدرس";
             // 
-            // txtOrigin
+            // labelX6
+            // 
+            this.labelX6.BackColor = System.Drawing.Color.Transparent;
             // 
             // 
             // 
+            this.labelX6.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.labelX6.Location = new System.Drawing.Point(322, 12);
+            this.labelX6.Name = "labelX6";
+            this.labelX6.Size = new System.Drawing.Size(115, 23);
+            this.labelX6.TabIndex = 21;
+            this.labelX6.Text = "نام و نام خانوادگی";
             // 
-            this.txtOrigin.Border.Class = "TextBoxBorder";
-            this.txtOrigin.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.txtOrigin.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.bsReceiver, "F_Country", true));
-            this.txtOrigin.Location = new System.Drawing.Point(30, 138);
-            this.txtOrigin.MaxLength = 30;
-            this.txtOrigin.Name = "txtOrigin";
-            this.txtOrigin.PreventEnterBeep = true;
-            this.txtOrigin.Size = new System.Drawing.Size(286, 23);
-            this.txtOrigin.TabIndex = 3;
+            // cmbPersonType
             // 
-            // labelX5
-            // 
-            this.labelX5.BackColor = System.Drawing.Color.Transparent;
-            // 
-            // 
-            // 
-            this.labelX5.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelX5.Location = new System.Drawing.Point(322, 137);
-            this.labelX5.Name = "labelX5";
-            this.labelX5.Size = new System.Drawing.Size(115, 23);
-            this.labelX5.TabIndex = 20;
-            this.labelX5.Text = "کشور/شهر";
+            this.cmbPersonType.FormattingEnabled = true;
+            this.cmbPersonType.Items.AddRange(new object[] {
+            "گیرنده بار",
+            "کشاورز",
+            "ترخیص کار"});
+            this.cmbPersonType.Location = new System.Drawing.Point(126, 12);
+            this.cmbPersonType.Name = "cmbPersonType";
+            this.cmbPersonType.Size = new System.Drawing.Size(190, 24);
+            this.cmbPersonType.TabIndex = 0;
+            this.cmbPersonType.SelectedIndexChanged += new System.EventHandler(this.cmbPersonType_SelectedIndexChanged);
             // 
             // frmAddPerson
             // 
@@ -347,7 +369,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.btnExit;
-            this.ClientSize = new System.Drawing.Size(471, 388);
+            this.ClientSize = new System.Drawing.Size(471, 400);
             this.Controls.Add(this.groupPanel2);
             this.Controls.Add(this.groupPanel1);
             this.DoubleBuffered = true;
@@ -360,9 +382,7 @@
             this.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Load += new System.EventHandler(this.frmAddPerson_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.bsSeller)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.bsBuyer)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.bsReceiver)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bsPerson)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
             this.groupPanel2.ResumeLayout(false);
             this.groupPanel1.ResumeLayout(false);
@@ -371,9 +391,7 @@
         }
 
         #endregion
-        private System.Windows.Forms.BindingSource bsSeller;
-        private System.Windows.Forms.BindingSource bsBuyer;
-        private System.Windows.Forms.BindingSource bsReceiver;
+        private System.Windows.Forms.BindingSource bsPerson;
         private System.Windows.Forms.ErrorProvider errorProvider1;
         private DevComponents.DotNetBar.Controls.GroupPanel groupPanel2;
         private DevComponents.DotNetBar.ButtonX btnExit;
@@ -389,5 +407,7 @@
         private DevComponents.DotNetBar.LabelX labelX1;
         private DevComponents.DotNetBar.Controls.TextBoxX txtOrigin;
         private DevComponents.DotNetBar.LabelX labelX5;
+        private System.Windows.Forms.ComboBox cmbPersonType;
+        private DevComponents.DotNetBar.LabelX labelX6;
     }
 }

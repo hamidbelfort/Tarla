@@ -149,22 +149,11 @@ namespace Tarla
 
         private void btnSellers_Click(object sender, EventArgs e)
         {
-            minimizeRibbon(true);
-            frmShowPerson.personType = 2;
-            frmShowPerson _frmChild = new frmShowPerson();
-            _frmChild.MdiParent = this;
-            _frmChild.Show();
+            //farmer
+            
         }
 
-        private void btnReceivers_Click(object sender, EventArgs e)
-        {
-            minimizeRibbon(true);
-            frmShowPerson.personType = 3;
-            frmShowPerson _frmChild = new frmShowPerson();
-            _frmChild.MdiParent = this;
-            _frmChild.Show();
-        }
-
+        
         private void btnItem_Click(object sender, EventArgs e)
         {
             minimizeRibbon(true);
@@ -281,19 +270,6 @@ namespace Tarla
             _frmChild.Show();
         }
 
-        private void btnFReceiver_Click(object sender, EventArgs e)
-        {
-            /*minimizeRibbon(true);
-            frmShowForiegnReceiver _frmChild = new frmShowForiegnReceiver();
-            _frmChild.MdiParent = this;
-            _frmChild.Show();*/
-            minimizeRibbon(true);
-            frmShowPerson.personType = 1;
-            frmShowPerson _frmChild = new frmShowPerson();
-            _frmChild.MdiParent = this;
-            _frmChild.Show();
-        }
-
         private void btnMessages_Click(object sender, EventArgs e)
         {
             minimizeRibbon(true);
@@ -374,6 +350,14 @@ namespace Tarla
         {
             minimizeRibbon(true);
             frmMoveItem _frmChild = new frmMoveItem();
+            _frmChild.MdiParent = this;
+            _frmChild.Show();
+        }
+
+        private void btnPersons_Click(object sender, EventArgs e)
+        {
+            minimizeRibbon(true);
+            frmShowPerson _frmChild = new frmShowPerson();
             _frmChild.MdiParent = this;
             _frmChild.Show();
         }
