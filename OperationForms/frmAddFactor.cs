@@ -74,20 +74,19 @@ namespace Tarla.OperationForms
                             dgvFactor.Rows[index].Cells["clmWeight"].Value = intWeight.Value;
                             dgvFactor.Rows[index].Cells["clmPrice"].Value = intPrice.Value;
                             dgvFactor.Rows[index].Cells["clmSellerId"].Value = cmbSeller.SelectedValue;
-                            dgvFactor.Rows[index].Cells["clmPackingId"].Value = cmbPacking.SelectedValue;
+                            dgvFactor.Rows[index].Cells["clmPackingId"].Value = cmbItem.SelectedValue;
                             dgvFactor.Rows[index].Cells["clmLoss"].Value = intLoss.Value;
-                            dgvFactor.Rows[index].Cells["clmPackingName"].Value = cmbPacking.Text;
+                            dgvFactor.Rows[index].Cells["clmPackingName"].Value = cmbItem.Text;
                             dgvFactor.Rows[index].Cells["clmSellerName"].Value = cmbSeller.Text;
                         }
                         else
                         {
-                            dgvFactor.Rows.Add(cmbProduct.Text, intPrice.Text, intCount.Text, intWeight.Text, intLoss.Text, cmbSeller.Text, cmbPacking.Text, cmbProduct.SelectedValue, cmbSeller.SelectedValue, cmbPacking.SelectedValue);
-
+                            dgvFactor.Rows.Add(cmbProduct.Text, intPrice.Text, intCount.Text, intWeight.Text, intLoss.Text, cmbSeller.Text, cmbItem.Text, cmbProduct.SelectedValue, cmbSeller.SelectedValue, cmbItem.SelectedValue);
                         }
                     }
                     else
                     {
-                        dgvFactor.Rows.Add(cmbProduct.Text, intPrice.Text, intCount.Text, intWeight.Text, intLoss.Text, cmbSeller.Text, cmbPacking.Text, cmbProduct.SelectedValue, cmbSeller.SelectedValue, cmbPacking.SelectedValue);
+                        dgvFactor.Rows.Add(cmbProduct.Text, intPrice.Text, intCount.Text, intWeight.Text, intLoss.Text, cmbSeller.Text, cmbItem.Text, cmbProduct.SelectedValue, cmbSeller.SelectedValue, cmbItem.SelectedValue);
 
                     }
                     calculateTotalPrice();
@@ -546,11 +545,6 @@ namespace Tarla.OperationForms
             }
         }
 
-        private void groupPanel3_Click(object sender, EventArgs e)
-        {
-
-        }
-
         string message;
         public frmAddFactor()
         {
@@ -588,7 +582,7 @@ namespace Tarla.OperationForms
                     errorProvider1.Clear();
                     errorProvider1.SetError(cmbProduct, "محصول را انتخاب کنید");
                     errorProvider1.SetError(cmbSeller, "فروشنده را انتخاب کنید");
-                    errorProvider1.SetError(cmbPacking, "نوع بسته بندی را انتخاب کنید");
+                    errorProvider1.SetError(cmbItem, "نوع بسته بندی را انتخاب کنید");
                     cmbProduct.Focus();
                 }
                 else
