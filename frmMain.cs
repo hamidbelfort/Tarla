@@ -13,6 +13,7 @@ using Tarla.Classes;
 using Tarla.MainForms;
 using Tarla.MiscForms;
 using Tarla.OperationForms;
+using BehComponents;
 namespace Tarla
 {
     public partial class frmMain : DevComponents.DotNetBar.OfficeForm
@@ -25,9 +26,11 @@ namespace Tarla
         public static bool UserPermission = false;
         public static bool FactorPermission = false;
         public static string Fullname = "";
+        public static int fiscalYearId, fiscalYear;
         bool? roleExists;
         bool? userExists;
         bool? settingExists;
+        bool? fiscalYearExists;
         int? logId;
         double? fontSize;
         string themeName;
@@ -48,52 +51,71 @@ namespace Tarla
         }
         private void frmMain_Load(object sender, EventArgs e)
         {
-            db.ExistsRoles(ref roleExists);
-            if (roleExists==false)
+            try
             {
-                frmAddRole.ExitType = true;
-                frmAddRole.IsEdit = false;
-                new frmAddRole().ShowDialog();
-            }
-            db.ExistsUsers(ref userExists);
 
-            if (userExists == false)
-            {
-                frmAddUsers.ExitType = true;
-                frmAddUsers.IsEdit = false;
 
-                new frmAddUsers().ShowDialog();
+                db.ExistsRoles(ref roleExists);
+                if (roleExists == false)
+                {
+                    frmAddRole.ExitType = true;
+                    frmAddRole.IsEdit = false;
+                    new frmAddRole().ShowDialog();
+                }
+                db.ExistsFiscalYear(ref fiscalYearExists);
+                if (fiscalYearExists == false)
+                {
+                    frmAddFiscalYear.IsEdit = false;
+                    frmAddFiscalYear.autoExit = true;
+                    new frmAddFiscalYear().ShowDialog();
+                }
+                else
+                {
+                    db.ExistsUsers(ref userExists);
+                    if (userExists == false)
+                    {
+                        frmAddUsers.ExitType = true;
+                        frmAddUsers.IsEdit = false;
+
+                        new frmAddUsers().ShowDialog();
+                    }
+                    else
+                    {
+                        new frmLogin().ShowDialog();
+                    }
+                }
+                db.ExistsSetting(ref settingExists);
+                if (settingExists == false)
+                {
+                    frmSettings.ExitType = true;
+                    new frmSettings().ShowDialog();
+                    getThemSetting();
+                }
+                else
+                {
+                    getThemSetting();
+                }
+                btnBank.Enabled = BankPermission;
+                btnBook.Enabled = BankPermission;
+                btnSettings.Enabled = SettingPermission;
+                btnUsers.Enabled = UserPermission;
+                btnSell.Enabled = FactorPermission;
+                btnBuy.Enabled = FactorPermission;
+                btnProduct.Enabled = FactorPermission;
+                btnCategory.Enabled = FactorPermission;
+                btnItem.Enabled = FactorPermission;
+                btnItemGroup.Enabled = FactorPermission;
+                //btnPacking.Enabled = FactorPermission;
+                switchRibbon.Value = true;
+                lblFullname.Text = string.Format("کاربر جاری : {0}", Fullname);
+                lblDate.Text = string.Format("تاریخ : {0}", pd.getShortDate());
+                this.WindowState = FormWindowState.Maximized;
+                IsMdiContainer = true;
             }
-            else
+            catch (Exception ex)
             {
-                new frmLogin().ShowDialog();
+                MessageBoxFarsi.Show("ارتباط با سرور اطلاعاتی قطع شده است \n" + ex.Message, "اخطار", MessageBoxFarsiButtons.OK, MessageBoxFarsiIcon.Error, MessageBoxFarsiDefaultButton.Button1);
             }
-            db.ExistsSetting(ref settingExists);
-            if (settingExists==false)
-            {
-                frmSettings.ExitType = true;
-                new frmSettings().ShowDialog();
-                getThemSetting();
-            }
-            else
-            {
-                getThemSetting();
-            }
-            btnBank.Enabled = BankPermission;
-            btnBook.Enabled = BankPermission;
-            btnSettings.Enabled = SettingPermission;
-            btnUsers.Enabled = UserPermission;
-            btnSell.Enabled = FactorPermission;
-            btnBuy.Enabled = FactorPermission;
-            btnProduct.Enabled = FactorPermission;
-            btnCategory.Enabled = FactorPermission;
-            btnItem.Enabled = FactorPermission;
-            btnItemGroup.Enabled = FactorPermission;
-            //btnPacking.Enabled = FactorPermission;
-            lblFullname.Text = string.Format("کاربر جاری : {0}", Fullname);
-            lblDate.Text = string.Format("تاریخ : {0}",pd.getShortDate());
-            this.WindowState = FormWindowState.Maximized;
-            IsMdiContainer = true;
         }
         private void getThemSetting()
         {
@@ -103,7 +125,7 @@ namespace Tarla
                 db.GetWallpaper(ref wallpaper);
                 styleManager1.ManagerStyle = StyleTheme.getTheme(themeName);
                 this.Font = new Font("Tahoma", (float)fontSize, FontStyle.Regular);
-                if (wallpaper!=string.Empty)
+                if (wallpaper != string.Empty)
                 {
                     this.BackgroundImageLayout = ImageLayout.Stretch;
                     this.BackgroundImage = Image.FromFile(wallpaper);
@@ -144,16 +166,16 @@ namespace Tarla
 
         private void btnBuyers_Click(object sender, EventArgs e)
         {
-            
+
         }
 
         private void btnSellers_Click(object sender, EventArgs e)
         {
             //farmer
-            
+
         }
 
-        
+
         private void btnItem_Click(object sender, EventArgs e)
         {
             minimizeRibbon(true);
@@ -194,11 +216,13 @@ namespace Tarla
 
         private void btnSell_Click(object sender, EventArgs e)
         {
-            minimizeRibbon(true);
+            /*minimizeRibbon(true);
             frmAddFactor _frmChild = new frmAddFactor();
             _frmChild.MdiParent = this;
             _frmChild.Text = "ثبت حواله فروش";
-            _frmChild.Show();
+            _frmChild.Show();*/
+            frmAddFactor.fiscalYearId = fiscalYearId;
+            new frmAddFactor().Show();
         }
 
         private void buttonItem1_Click(object sender, EventArgs e)
@@ -350,6 +374,14 @@ namespace Tarla
         {
             minimizeRibbon(true);
             frmMoveItem _frmChild = new frmMoveItem();
+            _frmChild.MdiParent = this;
+            _frmChild.Show();
+        }
+
+        private void btnFiscalYear_Click(object sender, EventArgs e)
+        {
+            minimizeRibbon(true);
+            frmShowFiscalYears _frmChild = new frmShowFiscalYears();
             _frmChild.MdiParent = this;
             _frmChild.Show();
         }

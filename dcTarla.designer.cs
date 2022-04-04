@@ -75,15 +75,9 @@ namespace Tarla
     partial void InsertSetting(Setting instance);
     partial void UpdateSetting(Setting instance);
     partial void DeleteSetting(Setting instance);
-    partial void InsertInvoiceDetail(InvoiceDetail instance);
-    partial void UpdateInvoiceDetail(InvoiceDetail instance);
-    partial void DeleteInvoiceDetail(InvoiceDetail instance);
     partial void InsertDriver(Driver instance);
     partial void UpdateDriver(Driver instance);
     partial void DeleteDriver(Driver instance);
-    partial void InsertInvoice(Invoice instance);
-    partial void UpdateInvoice(Invoice instance);
-    partial void DeleteInvoice(Invoice instance);
     partial void InsertBuyDetail(BuyDetail instance);
     partial void UpdateBuyDetail(BuyDetail instance);
     partial void DeleteBuyDetail(BuyDetail instance);
@@ -105,6 +99,15 @@ namespace Tarla
     partial void InsertPerson(Person instance);
     partial void UpdatePerson(Person instance);
     partial void DeletePerson(Person instance);
+    partial void InsertInvoice(Invoice instance);
+    partial void UpdateInvoice(Invoice instance);
+    partial void DeleteInvoice(Invoice instance);
+    partial void InsertInvoiceDetail(InvoiceDetail instance);
+    partial void UpdateInvoiceDetail(InvoiceDetail instance);
+    partial void DeleteInvoiceDetail(InvoiceDetail instance);
+    partial void InsertFiscalYear(FiscalYear instance);
+    partial void UpdateFiscalYear(FiscalYear instance);
+    partial void DeleteFiscalYear(FiscalYear instance);
     #endregion
 		
 		public dcTarlaDataContext() : 
@@ -281,27 +284,11 @@ namespace Tarla
 			}
 		}
 		
-		public System.Data.Linq.Table<InvoiceDetail> InvoiceDetails
-		{
-			get
-			{
-				return this.GetTable<InvoiceDetail>();
-			}
-		}
-		
 		public System.Data.Linq.Table<Driver> Drivers
 		{
 			get
 			{
 				return this.GetTable<Driver>();
-			}
-		}
-		
-		public System.Data.Linq.Table<Invoice> Invoices
-		{
-			get
-			{
-				return this.GetTable<Invoice>();
 			}
 		}
 		
@@ -390,6 +377,30 @@ namespace Tarla
 			get
 			{
 				return this.GetTable<Person>();
+			}
+		}
+		
+		public System.Data.Linq.Table<Invoice> Invoices
+		{
+			get
+			{
+				return this.GetTable<Invoice>();
+			}
+		}
+		
+		public System.Data.Linq.Table<InvoiceDetail> InvoiceDetails
+		{
+			get
+			{
+				return this.GetTable<InvoiceDetail>();
+			}
+		}
+		
+		public System.Data.Linq.Table<FiscalYear> FiscalYears
+		{
+			get
+			{
+				return this.GetTable<FiscalYear>();
 			}
 		}
 		
@@ -766,41 +777,6 @@ namespace Tarla
 		public int UpdateLoginPass([global::System.Data.Linq.Mapping.ParameterAttribute(Name="Id", DbType="Int")] System.Nullable<int> id, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="Pass", DbType="NVarChar(20)")] string pass)
 		{
 			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), id, pass);
-			return ((int)(result.ReturnValue));
-		}
-		
-		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.DeletePacking")]
-		public int DeletePacking([global::System.Data.Linq.Mapping.ParameterAttribute(Name="PackingId", DbType="Int")] System.Nullable<int> packingId)
-		{
-			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), packingId);
-			return ((int)(result.ReturnValue));
-		}
-		
-		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.FillPacking")]
-		public ISingleResult<ProductPacking> FillPacking()
-		{
-			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())));
-			return ((ISingleResult<ProductPacking>)(result.ReturnValue));
-		}
-		
-		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.FillPackingById")]
-		public ISingleResult<ProductPacking> FillPackingById([global::System.Data.Linq.Mapping.ParameterAttribute(Name="PackingId", DbType="Int")] System.Nullable<int> packingId)
-		{
-			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), packingId);
-			return ((ISingleResult<ProductPacking>)(result.ReturnValue));
-		}
-		
-		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.InsertPacking")]
-		public int InsertPacking([global::System.Data.Linq.Mapping.ParameterAttribute(Name="PackingType", DbType="NVarChar(30)")] string packingType)
-		{
-			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), packingType);
-			return ((int)(result.ReturnValue));
-		}
-		
-		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.UpdatePacking")]
-		public int UpdatePacking([global::System.Data.Linq.Mapping.ParameterAttribute(Name="PackingId", DbType="Int")] System.Nullable<int> packingId, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="PackingType", DbType="NVarChar(30)")] string packingType)
-		{
-			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), packingId, packingType);
 			return ((int)(result.ReturnValue));
 		}
 		
@@ -1336,14 +1312,6 @@ namespace Tarla
 			return ((int)(result.ReturnValue));
 		}
 		
-		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.GetPersonOrigin")]
-		public int GetPersonOrigin([global::System.Data.Linq.Mapping.ParameterAttribute(Name="PersonId", DbType="Int")] System.Nullable<int> personId, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="Origin", DbType="NVarChar(30)")] ref string origin)
-		{
-			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), personId, origin);
-			origin = ((string)(result.GetParameterValue(1)));
-			return ((int)(result.ReturnValue));
-		}
-		
 		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.GetPersonNameAndPhone")]
 		public int GetPersonNameAndPhone([global::System.Data.Linq.Mapping.ParameterAttribute(Name="PersonId", DbType="Int")] System.Nullable<int> personId, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="PersonName", DbType="NVarChar(50)")] ref string personName, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="PersonPhone", DbType="NVarChar(12)")] ref string personPhone)
 		{
@@ -1372,6 +1340,89 @@ namespace Tarla
 		{
 			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), personType);
 			return ((ISingleResult<Person>)(result.ReturnValue));
+		}
+		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.CheckDuplicatePartNum")]
+		public int CheckDuplicatePartNum([global::System.Data.Linq.Mapping.ParameterAttribute(Name="FiscalYearId", DbType="Int")] System.Nullable<int> fiscalYearId, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="ReceiverId", DbType="Int")] System.Nullable<int> receiverId, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="IsDuplicate", DbType="Bit")] ref System.Nullable<bool> isDuplicate)
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), fiscalYearId, receiverId, isDuplicate);
+			isDuplicate = ((System.Nullable<bool>)(result.GetParameterValue(2)));
+			return ((int)(result.ReturnValue));
+		}
+		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.GetDepotBalance")]
+		public int GetDepotBalance([global::System.Data.Linq.Mapping.ParameterAttribute(Name="ItemId", DbType="Int")] System.Nullable<int> itemId, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="DepotId", DbType="Int")] System.Nullable<int> depotId, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="Balance", DbType="Int")] ref System.Nullable<int> balance)
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), itemId, depotId, balance);
+			balance = ((System.Nullable<int>)(result.GetParameterValue(2)));
+			return ((int)(result.ReturnValue));
+		}
+		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.GetMaxPartNumber")]
+		public int GetMaxPartNumber([global::System.Data.Linq.Mapping.ParameterAttribute(Name="FiscalYear", DbType="Int")] System.Nullable<int> fiscalYear, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="ReceiverId", DbType="Int")] System.Nullable<int> receiverId, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="PartNum", DbType="Int")] ref System.Nullable<int> partNum)
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), fiscalYear, receiverId, partNum);
+			partNum = ((System.Nullable<int>)(result.GetParameterValue(2)));
+			return ((int)(result.ReturnValue));
+		}
+		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.GetPersonOrigin")]
+		public int GetPersonOrigin([global::System.Data.Linq.Mapping.ParameterAttribute(Name="PersonId", DbType="Int")] System.Nullable<int> personId, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="Origin", DbType="NVarChar(30)")] ref string origin)
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), personId, origin);
+			origin = ((string)(result.GetParameterValue(1)));
+			return ((int)(result.ReturnValue));
+		}
+		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.DeleteFiscalYear")]
+		public int DeleteFiscalYear([global::System.Data.Linq.Mapping.ParameterAttribute(Name="FiscalYearId", DbType="Int")] System.Nullable<int> fiscalYearId)
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), fiscalYearId);
+			return ((int)(result.ReturnValue));
+		}
+		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.FillFiscalYear")]
+		public ISingleResult<FiscalYear> FillFiscalYear()
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())));
+			return ((ISingleResult<FiscalYear>)(result.ReturnValue));
+		}
+		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.FillFiscalYearById")]
+		public ISingleResult<FiscalYear> FillFiscalYearById([global::System.Data.Linq.Mapping.ParameterAttribute(Name="FiscalYearId", DbType="Int")] System.Nullable<int> fiscalYearId)
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), fiscalYearId);
+			return ((ISingleResult<FiscalYear>)(result.ReturnValue));
+		}
+		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.InsertFiscalYear")]
+		public int InsertFiscalYear([global::System.Data.Linq.Mapping.ParameterAttribute(Name="Year", DbType="Int")] System.Nullable<int> year)
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), year);
+			return ((int)(result.ReturnValue));
+		}
+		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.IsFiscalYearDuplicate")]
+		public int IsFiscalYearDuplicate([global::System.Data.Linq.Mapping.ParameterAttribute(Name="Year", DbType="Int")] System.Nullable<int> year, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="IsDuplicate", DbType="Bit")] ref System.Nullable<bool> isDuplicate)
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), year, isDuplicate);
+			isDuplicate = ((System.Nullable<bool>)(result.GetParameterValue(1)));
+			return ((int)(result.ReturnValue));
+		}
+		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.UpdateFiscalYear")]
+		public int UpdateFiscalYear([global::System.Data.Linq.Mapping.ParameterAttribute(Name="FiscalYearId", DbType="Int")] System.Nullable<int> fiscalYearId, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="Year", DbType="Int")] System.Nullable<int> year)
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), fiscalYearId, year);
+			return ((int)(result.ReturnValue));
+		}
+		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.ExistsFiscalYear")]
+		public int ExistsFiscalYear([global::System.Data.Linq.Mapping.ParameterAttribute(Name="Exists", DbType="Bit")] ref System.Nullable<bool> exists)
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), exists);
+			exists = ((System.Nullable<bool>)(result.GetParameterValue(0)));
+			return ((int)(result.ReturnValue));
 		}
 	}
 	
@@ -2467,6 +2518,8 @@ namespace Tarla
 		
 		private EntitySet<Stock> _Stocks;
 		
+		private EntitySet<InvoiceDetail> _InvoiceDetails;
+		
 		private EntityRef<ItemGroup> _ItemGroup;
 		
     #region Extensibility Method Definitions
@@ -2487,6 +2540,7 @@ namespace Tarla
 		{
 			this._BuyDetails = new EntitySet<BuyDetail>(new Action<BuyDetail>(this.attach_BuyDetails), new Action<BuyDetail>(this.detach_BuyDetails));
 			this._Stocks = new EntitySet<Stock>(new Action<Stock>(this.attach_Stocks), new Action<Stock>(this.detach_Stocks));
+			this._InvoiceDetails = new EntitySet<InvoiceDetail>(new Action<InvoiceDetail>(this.attach_InvoiceDetails), new Action<InvoiceDetail>(this.detach_InvoiceDetails));
 			this._ItemGroup = default(EntityRef<ItemGroup>);
 			OnCreated();
 		}
@@ -2601,6 +2655,19 @@ namespace Tarla
 			}
 		}
 		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Item_InvoiceDetail", Storage="_InvoiceDetails", ThisKey="ItemId", OtherKey="ItemId")]
+		public EntitySet<InvoiceDetail> InvoiceDetails
+		{
+			get
+			{
+				return this._InvoiceDetails;
+			}
+			set
+			{
+				this._InvoiceDetails.Assign(value);
+			}
+		}
+		
 		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="ItemGroup_Item", Storage="_ItemGroup", ThisKey="ItemGroupId", OtherKey="ItemGroupId", IsForeignKey=true)]
 		public ItemGroup ItemGroup
 		{
@@ -2674,6 +2741,18 @@ namespace Tarla
 		}
 		
 		private void detach_Stocks(Stock entity)
+		{
+			this.SendPropertyChanging();
+			entity.Item = null;
+		}
+		
+		private void attach_InvoiceDetails(InvoiceDetail entity)
+		{
+			this.SendPropertyChanging();
+			entity.Item = this;
+		}
+		
+		private void detach_InvoiceDetails(InvoiceDetail entity)
 		{
 			this.SendPropertyChanging();
 			entity.Item = null;
@@ -2824,8 +2903,6 @@ namespace Tarla
 		
 		private string _PackingType;
 		
-		private EntitySet<InvoiceDetail> _InvoiceDetails;
-		
     #region Extensibility Method Definitions
     partial void OnLoaded();
     partial void OnValidate(System.Data.Linq.ChangeAction action);
@@ -2838,7 +2915,6 @@ namespace Tarla
 		
 		public ProductPacking()
 		{
-			this._InvoiceDetails = new EntitySet<InvoiceDetail>(new Action<InvoiceDetail>(this.attach_InvoiceDetails), new Action<InvoiceDetail>(this.detach_InvoiceDetails));
 			OnCreated();
 		}
 		
@@ -2882,19 +2958,6 @@ namespace Tarla
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="ProductPacking_InvoiceDetail", Storage="_InvoiceDetails", ThisKey="PackingId", OtherKey="PackingId")]
-		public EntitySet<InvoiceDetail> InvoiceDetails
-		{
-			get
-			{
-				return this._InvoiceDetails;
-			}
-			set
-			{
-				this._InvoiceDetails.Assign(value);
-			}
-		}
-		
 		public event PropertyChangingEventHandler PropertyChanging;
 		
 		public event PropertyChangedEventHandler PropertyChanged;
@@ -2913,18 +2976,6 @@ namespace Tarla
 			{
 				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
 			}
-		}
-		
-		private void attach_InvoiceDetails(InvoiceDetail entity)
-		{
-			this.SendPropertyChanging();
-			entity.ProductPacking = this;
-		}
-		
-		private void detach_InvoiceDetails(InvoiceDetail entity)
-		{
-			this.SendPropertyChanging();
-			entity.ProductPacking = null;
 		}
 	}
 	
@@ -4725,407 +4776,6 @@ namespace Tarla
 		}
 	}
 	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.InvoiceDetails")]
-	public sealed partial class InvoiceDetail : INotifyPropertyChanging, INotifyPropertyChanged
-	{
-		
-		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
-		
-		private int _DetailId;
-		
-		private System.Nullable<int> _InvoiceId;
-		
-		private System.Nullable<int> _ProductId;
-		
-		private System.Nullable<int> _SellerId;
-		
-		private System.Nullable<int> _PackingId;
-		
-		private System.Nullable<int> _Weight;
-		
-		private System.Nullable<int> _Loss;
-		
-		private System.Nullable<int> _Qty;
-		
-		private System.Nullable<int> _Price;
-		
-		private System.Nullable<int> _NetWeight;
-		
-		private EntityRef<ProductPacking> _ProductPacking;
-		
-		private EntityRef<Product> _Product;
-		
-		private EntityRef<Invoice> _Invoice;
-		
-    #region Extensibility Method Definitions
-    partial void OnLoaded();
-    partial void OnValidate(System.Data.Linq.ChangeAction action);
-    partial void OnCreated();
-    partial void OnDetailIdChanging(int value);
-    partial void OnDetailIdChanged();
-    partial void OnInvoiceIdChanging(System.Nullable<int> value);
-    partial void OnInvoiceIdChanged();
-    partial void OnProductIdChanging(System.Nullable<int> value);
-    partial void OnProductIdChanged();
-    partial void OnSellerIdChanging(System.Nullable<int> value);
-    partial void OnSellerIdChanged();
-    partial void OnPackingIdChanging(System.Nullable<int> value);
-    partial void OnPackingIdChanged();
-    partial void OnWeightChanging(System.Nullable<int> value);
-    partial void OnWeightChanged();
-    partial void OnLossChanging(System.Nullable<int> value);
-    partial void OnLossChanged();
-    partial void OnQtyChanging(System.Nullable<int> value);
-    partial void OnQtyChanged();
-    partial void OnPriceChanging(System.Nullable<int> value);
-    partial void OnPriceChanged();
-    partial void OnNetWeightChanging(System.Nullable<int> value);
-    partial void OnNetWeightChanged();
-    #endregion
-		
-		public InvoiceDetail()
-		{
-			this._ProductPacking = default(EntityRef<ProductPacking>);
-			this._Product = default(EntityRef<Product>);
-			this._Invoice = default(EntityRef<Invoice>);
-			OnCreated();
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DetailId", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
-		public int DetailId
-		{
-			get
-			{
-				return this._DetailId;
-			}
-			set
-			{
-				if ((this._DetailId != value))
-				{
-					this.OnDetailIdChanging(value);
-					this.SendPropertyChanging();
-					this._DetailId = value;
-					this.SendPropertyChanged("DetailId");
-					this.OnDetailIdChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_InvoiceId", DbType="Int")]
-		public System.Nullable<int> InvoiceId
-		{
-			get
-			{
-				return this._InvoiceId;
-			}
-			set
-			{
-				if ((this._InvoiceId != value))
-				{
-					if (this._Invoice.HasLoadedOrAssignedValue)
-					{
-						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
-					}
-					this.OnInvoiceIdChanging(value);
-					this.SendPropertyChanging();
-					this._InvoiceId = value;
-					this.SendPropertyChanged("InvoiceId");
-					this.OnInvoiceIdChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ProductId", DbType="Int")]
-		public System.Nullable<int> ProductId
-		{
-			get
-			{
-				return this._ProductId;
-			}
-			set
-			{
-				if ((this._ProductId != value))
-				{
-					if (this._Product.HasLoadedOrAssignedValue)
-					{
-						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
-					}
-					this.OnProductIdChanging(value);
-					this.SendPropertyChanging();
-					this._ProductId = value;
-					this.SendPropertyChanged("ProductId");
-					this.OnProductIdChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_SellerId", DbType="Int")]
-		public System.Nullable<int> SellerId
-		{
-			get
-			{
-				return this._SellerId;
-			}
-			set
-			{
-				if ((this._SellerId != value))
-				{
-					this.OnSellerIdChanging(value);
-					this.SendPropertyChanging();
-					this._SellerId = value;
-					this.SendPropertyChanged("SellerId");
-					this.OnSellerIdChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PackingId", DbType="Int")]
-		public System.Nullable<int> PackingId
-		{
-			get
-			{
-				return this._PackingId;
-			}
-			set
-			{
-				if ((this._PackingId != value))
-				{
-					if (this._ProductPacking.HasLoadedOrAssignedValue)
-					{
-						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
-					}
-					this.OnPackingIdChanging(value);
-					this.SendPropertyChanging();
-					this._PackingId = value;
-					this.SendPropertyChanged("PackingId");
-					this.OnPackingIdChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Weight", DbType="Int")]
-		public System.Nullable<int> Weight
-		{
-			get
-			{
-				return this._Weight;
-			}
-			set
-			{
-				if ((this._Weight != value))
-				{
-					this.OnWeightChanging(value);
-					this.SendPropertyChanging();
-					this._Weight = value;
-					this.SendPropertyChanged("Weight");
-					this.OnWeightChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Loss", DbType="Int")]
-		public System.Nullable<int> Loss
-		{
-			get
-			{
-				return this._Loss;
-			}
-			set
-			{
-				if ((this._Loss != value))
-				{
-					this.OnLossChanging(value);
-					this.SendPropertyChanging();
-					this._Loss = value;
-					this.SendPropertyChanged("Loss");
-					this.OnLossChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Qty", DbType="Int")]
-		public System.Nullable<int> Qty
-		{
-			get
-			{
-				return this._Qty;
-			}
-			set
-			{
-				if ((this._Qty != value))
-				{
-					this.OnQtyChanging(value);
-					this.SendPropertyChanging();
-					this._Qty = value;
-					this.SendPropertyChanged("Qty");
-					this.OnQtyChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Price", DbType="Int")]
-		public System.Nullable<int> Price
-		{
-			get
-			{
-				return this._Price;
-			}
-			set
-			{
-				if ((this._Price != value))
-				{
-					this.OnPriceChanging(value);
-					this.SendPropertyChanging();
-					this._Price = value;
-					this.SendPropertyChanged("Price");
-					this.OnPriceChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_NetWeight", DbType="Int")]
-		public System.Nullable<int> NetWeight
-		{
-			get
-			{
-				return this._NetWeight;
-			}
-			set
-			{
-				if ((this._NetWeight != value))
-				{
-					this.OnNetWeightChanging(value);
-					this.SendPropertyChanging();
-					this._NetWeight = value;
-					this.SendPropertyChanged("NetWeight");
-					this.OnNetWeightChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="ProductPacking_InvoiceDetail", Storage="_ProductPacking", ThisKey="PackingId", OtherKey="PackingId", IsForeignKey=true)]
-		public ProductPacking ProductPacking
-		{
-			get
-			{
-				return this._ProductPacking.Entity;
-			}
-			set
-			{
-				ProductPacking previousValue = this._ProductPacking.Entity;
-				if (((previousValue != value) 
-							|| (this._ProductPacking.HasLoadedOrAssignedValue == false)))
-				{
-					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._ProductPacking.Entity = null;
-						previousValue.InvoiceDetails.Remove(this);
-					}
-					this._ProductPacking.Entity = value;
-					if ((value != null))
-					{
-						value.InvoiceDetails.Add(this);
-						this._PackingId = value.PackingId;
-					}
-					else
-					{
-						this._PackingId = default(Nullable<int>);
-					}
-					this.SendPropertyChanged("ProductPacking");
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Product_InvoiceDetail", Storage="_Product", ThisKey="ProductId", OtherKey="ProductId", IsForeignKey=true)]
-		public Product Product
-		{
-			get
-			{
-				return this._Product.Entity;
-			}
-			set
-			{
-				Product previousValue = this._Product.Entity;
-				if (((previousValue != value) 
-							|| (this._Product.HasLoadedOrAssignedValue == false)))
-				{
-					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._Product.Entity = null;
-						previousValue.InvoiceDetails.Remove(this);
-					}
-					this._Product.Entity = value;
-					if ((value != null))
-					{
-						value.InvoiceDetails.Add(this);
-						this._ProductId = value.ProductId;
-					}
-					else
-					{
-						this._ProductId = default(Nullable<int>);
-					}
-					this.SendPropertyChanged("Product");
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Invoice_InvoiceDetail", Storage="_Invoice", ThisKey="InvoiceId", OtherKey="InvoiceId", IsForeignKey=true)]
-		public Invoice Invoice
-		{
-			get
-			{
-				return this._Invoice.Entity;
-			}
-			set
-			{
-				Invoice previousValue = this._Invoice.Entity;
-				if (((previousValue != value) 
-							|| (this._Invoice.HasLoadedOrAssignedValue == false)))
-				{
-					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._Invoice.Entity = null;
-						previousValue.InvoiceDetails.Remove(this);
-					}
-					this._Invoice.Entity = value;
-					if ((value != null))
-					{
-						value.InvoiceDetails.Add(this);
-						this._InvoiceId = value.InvoiceId;
-					}
-					else
-					{
-						this._InvoiceId = default(Nullable<int>);
-					}
-					this.SendPropertyChanged("Invoice");
-				}
-			}
-		}
-		
-		public event PropertyChangingEventHandler PropertyChanging;
-		
-		public event PropertyChangedEventHandler PropertyChanged;
-		
-		private void SendPropertyChanging()
-		{
-			if ((this.PropertyChanging != null))
-			{
-				this.PropertyChanging(this, emptyChangingEventArgs);
-			}
-		}
-		
-		private void SendPropertyChanged(String propertyName)
-		{
-			if ((this.PropertyChanged != null))
-			{
-				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-			}
-		}
-	}
-	
 	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Drivers")]
 	public sealed partial class Driver : INotifyPropertyChanging, INotifyPropertyChanged
 	{
@@ -5333,593 +4983,6 @@ namespace Tarla
 		{
 			this.SendPropertyChanging();
 			entity.Driver = null;
-		}
-	}
-	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Invoice")]
-	public sealed partial class Invoice : INotifyPropertyChanging, INotifyPropertyChanged
-	{
-		
-		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
-		
-		private int _InvoiceId;
-		
-		private string _Date;
-		
-		private System.Nullable<int> _BuyerId;
-		
-		private System.Nullable<int> _DriverId;
-		
-		private System.Nullable<int> _TotalWeight;
-		
-		private System.Nullable<int> _WorkerCount;
-		
-		private System.Nullable<int> _WorkerCost;
-		
-		private System.Nullable<int> _TruckRental;
-		
-		private System.Nullable<int> _MiscCost;
-		
-		private string _WeightNote;
-		
-		private string _DockWeightNote;
-		
-		private System.Nullable<int> _ReceiverId;
-		
-		private System.Nullable<int> _F_ReceiverId;
-		
-		private System.Nullable<int> _Discount;
-		
-		private System.Nullable<int> _TotalPrice;
-		
-		private System.Nullable<int> _NetSell;
-		
-		private System.Nullable<int> _Paid;
-		
-		private System.Nullable<int> _Profit;
-		
-		private System.Nullable<int> _Loss;
-		
-		private string _Description;
-		
-		private EntitySet<InvoiceDetail> _InvoiceDetails;
-		
-		private EntityRef<Driver> _Driver;
-		
-    #region Extensibility Method Definitions
-    partial void OnLoaded();
-    partial void OnValidate(System.Data.Linq.ChangeAction action);
-    partial void OnCreated();
-    partial void OnInvoiceIdChanging(int value);
-    partial void OnInvoiceIdChanged();
-    partial void OnDateChanging(string value);
-    partial void OnDateChanged();
-    partial void OnBuyerIdChanging(System.Nullable<int> value);
-    partial void OnBuyerIdChanged();
-    partial void OnDriverIdChanging(System.Nullable<int> value);
-    partial void OnDriverIdChanged();
-    partial void OnTotalWeightChanging(System.Nullable<int> value);
-    partial void OnTotalWeightChanged();
-    partial void OnWorkerCountChanging(System.Nullable<int> value);
-    partial void OnWorkerCountChanged();
-    partial void OnWorkerCostChanging(System.Nullable<int> value);
-    partial void OnWorkerCostChanged();
-    partial void OnTruckRentalChanging(System.Nullable<int> value);
-    partial void OnTruckRentalChanged();
-    partial void OnMiscCostChanging(System.Nullable<int> value);
-    partial void OnMiscCostChanged();
-    partial void OnWeightNoteChanging(string value);
-    partial void OnWeightNoteChanged();
-    partial void OnDockWeightNoteChanging(string value);
-    partial void OnDockWeightNoteChanged();
-    partial void OnReceiverIdChanging(System.Nullable<int> value);
-    partial void OnReceiverIdChanged();
-    partial void OnF_ReceiverIdChanging(System.Nullable<int> value);
-    partial void OnF_ReceiverIdChanged();
-    partial void OnDiscountChanging(System.Nullable<int> value);
-    partial void OnDiscountChanged();
-    partial void OnTotalPriceChanging(System.Nullable<int> value);
-    partial void OnTotalPriceChanged();
-    partial void OnNetSellChanging(System.Nullable<int> value);
-    partial void OnNetSellChanged();
-    partial void OnPaidChanging(System.Nullable<int> value);
-    partial void OnPaidChanged();
-    partial void OnProfitChanging(System.Nullable<int> value);
-    partial void OnProfitChanged();
-    partial void OnLossChanging(System.Nullable<int> value);
-    partial void OnLossChanged();
-    partial void OnDescriptionChanging(string value);
-    partial void OnDescriptionChanged();
-    #endregion
-		
-		public Invoice()
-		{
-			this._InvoiceDetails = new EntitySet<InvoiceDetail>(new Action<InvoiceDetail>(this.attach_InvoiceDetails), new Action<InvoiceDetail>(this.detach_InvoiceDetails));
-			this._Driver = default(EntityRef<Driver>);
-			OnCreated();
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_InvoiceId", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
-		public int InvoiceId
-		{
-			get
-			{
-				return this._InvoiceId;
-			}
-			set
-			{
-				if ((this._InvoiceId != value))
-				{
-					this.OnInvoiceIdChanging(value);
-					this.SendPropertyChanging();
-					this._InvoiceId = value;
-					this.SendPropertyChanged("InvoiceId");
-					this.OnInvoiceIdChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Date", DbType="NVarChar(10)")]
-		public string Date
-		{
-			get
-			{
-				return this._Date;
-			}
-			set
-			{
-				if ((this._Date != value))
-				{
-					this.OnDateChanging(value);
-					this.SendPropertyChanging();
-					this._Date = value;
-					this.SendPropertyChanged("Date");
-					this.OnDateChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_BuyerId", DbType="Int")]
-		public System.Nullable<int> BuyerId
-		{
-			get
-			{
-				return this._BuyerId;
-			}
-			set
-			{
-				if ((this._BuyerId != value))
-				{
-					this.OnBuyerIdChanging(value);
-					this.SendPropertyChanging();
-					this._BuyerId = value;
-					this.SendPropertyChanged("BuyerId");
-					this.OnBuyerIdChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DriverId", DbType="Int")]
-		public System.Nullable<int> DriverId
-		{
-			get
-			{
-				return this._DriverId;
-			}
-			set
-			{
-				if ((this._DriverId != value))
-				{
-					if (this._Driver.HasLoadedOrAssignedValue)
-					{
-						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
-					}
-					this.OnDriverIdChanging(value);
-					this.SendPropertyChanging();
-					this._DriverId = value;
-					this.SendPropertyChanged("DriverId");
-					this.OnDriverIdChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TotalWeight", DbType="Int")]
-		public System.Nullable<int> TotalWeight
-		{
-			get
-			{
-				return this._TotalWeight;
-			}
-			set
-			{
-				if ((this._TotalWeight != value))
-				{
-					this.OnTotalWeightChanging(value);
-					this.SendPropertyChanging();
-					this._TotalWeight = value;
-					this.SendPropertyChanged("TotalWeight");
-					this.OnTotalWeightChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_WorkerCount", DbType="Int")]
-		public System.Nullable<int> WorkerCount
-		{
-			get
-			{
-				return this._WorkerCount;
-			}
-			set
-			{
-				if ((this._WorkerCount != value))
-				{
-					this.OnWorkerCountChanging(value);
-					this.SendPropertyChanging();
-					this._WorkerCount = value;
-					this.SendPropertyChanged("WorkerCount");
-					this.OnWorkerCountChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_WorkerCost", DbType="Int")]
-		public System.Nullable<int> WorkerCost
-		{
-			get
-			{
-				return this._WorkerCost;
-			}
-			set
-			{
-				if ((this._WorkerCost != value))
-				{
-					this.OnWorkerCostChanging(value);
-					this.SendPropertyChanging();
-					this._WorkerCost = value;
-					this.SendPropertyChanged("WorkerCost");
-					this.OnWorkerCostChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TruckRental", DbType="Int")]
-		public System.Nullable<int> TruckRental
-		{
-			get
-			{
-				return this._TruckRental;
-			}
-			set
-			{
-				if ((this._TruckRental != value))
-				{
-					this.OnTruckRentalChanging(value);
-					this.SendPropertyChanging();
-					this._TruckRental = value;
-					this.SendPropertyChanged("TruckRental");
-					this.OnTruckRentalChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MiscCost", DbType="Int")]
-		public System.Nullable<int> MiscCost
-		{
-			get
-			{
-				return this._MiscCost;
-			}
-			set
-			{
-				if ((this._MiscCost != value))
-				{
-					this.OnMiscCostChanging(value);
-					this.SendPropertyChanging();
-					this._MiscCost = value;
-					this.SendPropertyChanged("MiscCost");
-					this.OnMiscCostChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_WeightNote", DbType="NVarChar(20)")]
-		public string WeightNote
-		{
-			get
-			{
-				return this._WeightNote;
-			}
-			set
-			{
-				if ((this._WeightNote != value))
-				{
-					this.OnWeightNoteChanging(value);
-					this.SendPropertyChanging();
-					this._WeightNote = value;
-					this.SendPropertyChanged("WeightNote");
-					this.OnWeightNoteChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DockWeightNote", DbType="NVarChar(20)")]
-		public string DockWeightNote
-		{
-			get
-			{
-				return this._DockWeightNote;
-			}
-			set
-			{
-				if ((this._DockWeightNote != value))
-				{
-					this.OnDockWeightNoteChanging(value);
-					this.SendPropertyChanging();
-					this._DockWeightNote = value;
-					this.SendPropertyChanged("DockWeightNote");
-					this.OnDockWeightNoteChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ReceiverId", DbType="Int")]
-		public System.Nullable<int> ReceiverId
-		{
-			get
-			{
-				return this._ReceiverId;
-			}
-			set
-			{
-				if ((this._ReceiverId != value))
-				{
-					this.OnReceiverIdChanging(value);
-					this.SendPropertyChanging();
-					this._ReceiverId = value;
-					this.SendPropertyChanged("ReceiverId");
-					this.OnReceiverIdChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_F_ReceiverId", DbType="Int")]
-		public System.Nullable<int> F_ReceiverId
-		{
-			get
-			{
-				return this._F_ReceiverId;
-			}
-			set
-			{
-				if ((this._F_ReceiverId != value))
-				{
-					this.OnF_ReceiverIdChanging(value);
-					this.SendPropertyChanging();
-					this._F_ReceiverId = value;
-					this.SendPropertyChanged("F_ReceiverId");
-					this.OnF_ReceiverIdChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Discount", DbType="Int")]
-		public System.Nullable<int> Discount
-		{
-			get
-			{
-				return this._Discount;
-			}
-			set
-			{
-				if ((this._Discount != value))
-				{
-					this.OnDiscountChanging(value);
-					this.SendPropertyChanging();
-					this._Discount = value;
-					this.SendPropertyChanged("Discount");
-					this.OnDiscountChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TotalPrice", DbType="Int")]
-		public System.Nullable<int> TotalPrice
-		{
-			get
-			{
-				return this._TotalPrice;
-			}
-			set
-			{
-				if ((this._TotalPrice != value))
-				{
-					this.OnTotalPriceChanging(value);
-					this.SendPropertyChanging();
-					this._TotalPrice = value;
-					this.SendPropertyChanged("TotalPrice");
-					this.OnTotalPriceChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_NetSell", DbType="Int")]
-		public System.Nullable<int> NetSell
-		{
-			get
-			{
-				return this._NetSell;
-			}
-			set
-			{
-				if ((this._NetSell != value))
-				{
-					this.OnNetSellChanging(value);
-					this.SendPropertyChanging();
-					this._NetSell = value;
-					this.SendPropertyChanged("NetSell");
-					this.OnNetSellChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Paid", DbType="Int")]
-		public System.Nullable<int> Paid
-		{
-			get
-			{
-				return this._Paid;
-			}
-			set
-			{
-				if ((this._Paid != value))
-				{
-					this.OnPaidChanging(value);
-					this.SendPropertyChanging();
-					this._Paid = value;
-					this.SendPropertyChanged("Paid");
-					this.OnPaidChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Profit", DbType="Int")]
-		public System.Nullable<int> Profit
-		{
-			get
-			{
-				return this._Profit;
-			}
-			set
-			{
-				if ((this._Profit != value))
-				{
-					this.OnProfitChanging(value);
-					this.SendPropertyChanging();
-					this._Profit = value;
-					this.SendPropertyChanged("Profit");
-					this.OnProfitChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Loss", DbType="Int")]
-		public System.Nullable<int> Loss
-		{
-			get
-			{
-				return this._Loss;
-			}
-			set
-			{
-				if ((this._Loss != value))
-				{
-					this.OnLossChanging(value);
-					this.SendPropertyChanging();
-					this._Loss = value;
-					this.SendPropertyChanged("Loss");
-					this.OnLossChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Description", DbType="NVarChar(MAX)")]
-		public string Description
-		{
-			get
-			{
-				return this._Description;
-			}
-			set
-			{
-				if ((this._Description != value))
-				{
-					this.OnDescriptionChanging(value);
-					this.SendPropertyChanging();
-					this._Description = value;
-					this.SendPropertyChanged("Description");
-					this.OnDescriptionChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Invoice_InvoiceDetail", Storage="_InvoiceDetails", ThisKey="InvoiceId", OtherKey="InvoiceId")]
-		public EntitySet<InvoiceDetail> InvoiceDetails
-		{
-			get
-			{
-				return this._InvoiceDetails;
-			}
-			set
-			{
-				this._InvoiceDetails.Assign(value);
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Driver_Invoice", Storage="_Driver", ThisKey="DriverId", OtherKey="DriverId", IsForeignKey=true)]
-		public Driver Driver
-		{
-			get
-			{
-				return this._Driver.Entity;
-			}
-			set
-			{
-				Driver previousValue = this._Driver.Entity;
-				if (((previousValue != value) 
-							|| (this._Driver.HasLoadedOrAssignedValue == false)))
-				{
-					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._Driver.Entity = null;
-						previousValue.Invoices.Remove(this);
-					}
-					this._Driver.Entity = value;
-					if ((value != null))
-					{
-						value.Invoices.Add(this);
-						this._DriverId = value.DriverId;
-					}
-					else
-					{
-						this._DriverId = default(Nullable<int>);
-					}
-					this.SendPropertyChanged("Driver");
-				}
-			}
-		}
-		
-		public event PropertyChangingEventHandler PropertyChanging;
-		
-		public event PropertyChangedEventHandler PropertyChanged;
-		
-		private void SendPropertyChanging()
-		{
-			if ((this.PropertyChanging != null))
-			{
-				this.PropertyChanging(this, emptyChangingEventArgs);
-			}
-		}
-		
-		private void SendPropertyChanged(String propertyName)
-		{
-			if ((this.PropertyChanged != null))
-			{
-				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-			}
-		}
-		
-		private void attach_InvoiceDetails(InvoiceDetail entity)
-		{
-			this.SendPropertyChanging();
-			entity.Invoice = this;
-		}
-		
-		private void detach_InvoiceDetails(InvoiceDetail entity)
-		{
-			this.SendPropertyChanging();
-			entity.Invoice = null;
 		}
 	}
 	
@@ -7828,6 +6891,8 @@ namespace Tarla
 		
 		private string _Description;
 		
+		private EntitySet<InvoiceDetail> _InvoiceDetails;
+		
 		private EntityRef<PersonType> _PersonType;
 		
     #region Extensibility Method Definitions
@@ -7852,6 +6917,7 @@ namespace Tarla
 		
 		public Person()
 		{
+			this._InvoiceDetails = new EntitySet<InvoiceDetail>(new Action<InvoiceDetail>(this.attach_InvoiceDetails), new Action<InvoiceDetail>(this.detach_InvoiceDetails));
 			this._PersonType = default(EntityRef<PersonType>);
 			OnCreated();
 		}
@@ -8000,6 +7066,19 @@ namespace Tarla
 			}
 		}
 		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Person_InvoiceDetail", Storage="_InvoiceDetails", ThisKey="PersonId", OtherKey="FarmerId")]
+		public EntitySet<InvoiceDetail> InvoiceDetails
+		{
+			get
+			{
+				return this._InvoiceDetails;
+			}
+			set
+			{
+				this._InvoiceDetails.Assign(value);
+			}
+		}
+		
 		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="PersonType_Person", Storage="_PersonType", ThisKey="PersonTypeId", OtherKey="PersonTypeId", IsForeignKey=true)]
 		public PersonType PersonType
 		{
@@ -8047,6 +7126,1181 @@ namespace Tarla
 		}
 		
 		private void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+		
+		private void attach_InvoiceDetails(InvoiceDetail entity)
+		{
+			this.SendPropertyChanging();
+			entity.Person = this;
+		}
+		
+		private void detach_InvoiceDetails(InvoiceDetail entity)
+		{
+			this.SendPropertyChanging();
+			entity.Person = null;
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Invoice")]
+	public partial class Invoice : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _InvoiceId;
+		
+		private System.Nullable<int> _FiscalYearId;
+		
+		private System.Nullable<int> _PartNum;
+		
+		private string _Date;
+		
+		private System.Nullable<int> _ReceiverId;
+		
+		private System.Nullable<int> _ClearanceAgentId;
+		
+		private System.Nullable<int> _DriverId;
+		
+		private string _ContainerNo;
+		
+		private System.Nullable<int> _TotalWeight;
+		
+		private System.Nullable<int> _WorkerCount;
+		
+		private System.Nullable<int> _WorkerCost;
+		
+		private System.Nullable<int> _TruckRental;
+		
+		private System.Nullable<int> _MiscCost;
+		
+		private System.Nullable<int> _Discount;
+		
+		private string _DockWeightNote;
+		
+		private string _WeightNote;
+		
+		private System.Nullable<int> _TotalPrice;
+		
+		private System.Nullable<int> _NetSell;
+		
+		private System.Nullable<int> _Paid;
+		
+		private System.Nullable<int> _Profit;
+		
+		private System.Nullable<int> _Loss;
+		
+		private string _Description;
+		
+		private EntitySet<InvoiceDetail> _InvoiceDetails;
+		
+		private EntityRef<Driver> _Driver;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnInvoiceIdChanging(int value);
+    partial void OnInvoiceIdChanged();
+    partial void OnFiscalYearIdChanging(System.Nullable<int> value);
+    partial void OnFiscalYearIdChanged();
+    partial void OnPartNumChanging(System.Nullable<int> value);
+    partial void OnPartNumChanged();
+    partial void OnDateChanging(string value);
+    partial void OnDateChanged();
+    partial void OnReceiverIdChanging(System.Nullable<int> value);
+    partial void OnReceiverIdChanged();
+    partial void OnClearanceAgentIdChanging(System.Nullable<int> value);
+    partial void OnClearanceAgentIdChanged();
+    partial void OnDriverIdChanging(System.Nullable<int> value);
+    partial void OnDriverIdChanged();
+    partial void OnContainerNoChanging(string value);
+    partial void OnContainerNoChanged();
+    partial void OnTotalWeightChanging(System.Nullable<int> value);
+    partial void OnTotalWeightChanged();
+    partial void OnWorkerCountChanging(System.Nullable<int> value);
+    partial void OnWorkerCountChanged();
+    partial void OnWorkerCostChanging(System.Nullable<int> value);
+    partial void OnWorkerCostChanged();
+    partial void OnTruckRentalChanging(System.Nullable<int> value);
+    partial void OnTruckRentalChanged();
+    partial void OnMiscCostChanging(System.Nullable<int> value);
+    partial void OnMiscCostChanged();
+    partial void OnDiscountChanging(System.Nullable<int> value);
+    partial void OnDiscountChanged();
+    partial void OnDockWeightNoteChanging(string value);
+    partial void OnDockWeightNoteChanged();
+    partial void OnWeightNoteChanging(string value);
+    partial void OnWeightNoteChanged();
+    partial void OnTotalPriceChanging(System.Nullable<int> value);
+    partial void OnTotalPriceChanged();
+    partial void OnNetSellChanging(System.Nullable<int> value);
+    partial void OnNetSellChanged();
+    partial void OnPaidChanging(System.Nullable<int> value);
+    partial void OnPaidChanged();
+    partial void OnProfitChanging(System.Nullable<int> value);
+    partial void OnProfitChanged();
+    partial void OnLossChanging(System.Nullable<int> value);
+    partial void OnLossChanged();
+    partial void OnDescriptionChanging(string value);
+    partial void OnDescriptionChanged();
+    #endregion
+		
+		public Invoice()
+		{
+			this._InvoiceDetails = new EntitySet<InvoiceDetail>(new Action<InvoiceDetail>(this.attach_InvoiceDetails), new Action<InvoiceDetail>(this.detach_InvoiceDetails));
+			this._Driver = default(EntityRef<Driver>);
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_InvoiceId", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public int InvoiceId
+		{
+			get
+			{
+				return this._InvoiceId;
+			}
+			set
+			{
+				if ((this._InvoiceId != value))
+				{
+					this.OnInvoiceIdChanging(value);
+					this.SendPropertyChanging();
+					this._InvoiceId = value;
+					this.SendPropertyChanged("InvoiceId");
+					this.OnInvoiceIdChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_FiscalYearId", DbType="Int")]
+		public System.Nullable<int> FiscalYearId
+		{
+			get
+			{
+				return this._FiscalYearId;
+			}
+			set
+			{
+				if ((this._FiscalYearId != value))
+				{
+					this.OnFiscalYearIdChanging(value);
+					this.SendPropertyChanging();
+					this._FiscalYearId = value;
+					this.SendPropertyChanged("FiscalYearId");
+					this.OnFiscalYearIdChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PartNum", DbType="Int")]
+		public System.Nullable<int> PartNum
+		{
+			get
+			{
+				return this._PartNum;
+			}
+			set
+			{
+				if ((this._PartNum != value))
+				{
+					this.OnPartNumChanging(value);
+					this.SendPropertyChanging();
+					this._PartNum = value;
+					this.SendPropertyChanged("PartNum");
+					this.OnPartNumChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Date", DbType="NVarChar(10)")]
+		public string Date
+		{
+			get
+			{
+				return this._Date;
+			}
+			set
+			{
+				if ((this._Date != value))
+				{
+					this.OnDateChanging(value);
+					this.SendPropertyChanging();
+					this._Date = value;
+					this.SendPropertyChanged("Date");
+					this.OnDateChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ReceiverId", DbType="Int")]
+		public System.Nullable<int> ReceiverId
+		{
+			get
+			{
+				return this._ReceiverId;
+			}
+			set
+			{
+				if ((this._ReceiverId != value))
+				{
+					this.OnReceiverIdChanging(value);
+					this.SendPropertyChanging();
+					this._ReceiverId = value;
+					this.SendPropertyChanged("ReceiverId");
+					this.OnReceiverIdChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ClearanceAgentId", DbType="Int")]
+		public System.Nullable<int> ClearanceAgentId
+		{
+			get
+			{
+				return this._ClearanceAgentId;
+			}
+			set
+			{
+				if ((this._ClearanceAgentId != value))
+				{
+					this.OnClearanceAgentIdChanging(value);
+					this.SendPropertyChanging();
+					this._ClearanceAgentId = value;
+					this.SendPropertyChanged("ClearanceAgentId");
+					this.OnClearanceAgentIdChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DriverId", DbType="Int")]
+		public System.Nullable<int> DriverId
+		{
+			get
+			{
+				return this._DriverId;
+			}
+			set
+			{
+				if ((this._DriverId != value))
+				{
+					if (this._Driver.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.OnDriverIdChanging(value);
+					this.SendPropertyChanging();
+					this._DriverId = value;
+					this.SendPropertyChanged("DriverId");
+					this.OnDriverIdChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ContainerNo", DbType="NVarChar(15)")]
+		public string ContainerNo
+		{
+			get
+			{
+				return this._ContainerNo;
+			}
+			set
+			{
+				if ((this._ContainerNo != value))
+				{
+					this.OnContainerNoChanging(value);
+					this.SendPropertyChanging();
+					this._ContainerNo = value;
+					this.SendPropertyChanged("ContainerNo");
+					this.OnContainerNoChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TotalWeight", DbType="Int")]
+		public System.Nullable<int> TotalWeight
+		{
+			get
+			{
+				return this._TotalWeight;
+			}
+			set
+			{
+				if ((this._TotalWeight != value))
+				{
+					this.OnTotalWeightChanging(value);
+					this.SendPropertyChanging();
+					this._TotalWeight = value;
+					this.SendPropertyChanged("TotalWeight");
+					this.OnTotalWeightChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_WorkerCount", DbType="Int")]
+		public System.Nullable<int> WorkerCount
+		{
+			get
+			{
+				return this._WorkerCount;
+			}
+			set
+			{
+				if ((this._WorkerCount != value))
+				{
+					this.OnWorkerCountChanging(value);
+					this.SendPropertyChanging();
+					this._WorkerCount = value;
+					this.SendPropertyChanged("WorkerCount");
+					this.OnWorkerCountChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_WorkerCost", DbType="Int")]
+		public System.Nullable<int> WorkerCost
+		{
+			get
+			{
+				return this._WorkerCost;
+			}
+			set
+			{
+				if ((this._WorkerCost != value))
+				{
+					this.OnWorkerCostChanging(value);
+					this.SendPropertyChanging();
+					this._WorkerCost = value;
+					this.SendPropertyChanged("WorkerCost");
+					this.OnWorkerCostChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TruckRental", DbType="Int")]
+		public System.Nullable<int> TruckRental
+		{
+			get
+			{
+				return this._TruckRental;
+			}
+			set
+			{
+				if ((this._TruckRental != value))
+				{
+					this.OnTruckRentalChanging(value);
+					this.SendPropertyChanging();
+					this._TruckRental = value;
+					this.SendPropertyChanged("TruckRental");
+					this.OnTruckRentalChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MiscCost", DbType="Int")]
+		public System.Nullable<int> MiscCost
+		{
+			get
+			{
+				return this._MiscCost;
+			}
+			set
+			{
+				if ((this._MiscCost != value))
+				{
+					this.OnMiscCostChanging(value);
+					this.SendPropertyChanging();
+					this._MiscCost = value;
+					this.SendPropertyChanged("MiscCost");
+					this.OnMiscCostChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Discount", DbType="Int")]
+		public System.Nullable<int> Discount
+		{
+			get
+			{
+				return this._Discount;
+			}
+			set
+			{
+				if ((this._Discount != value))
+				{
+					this.OnDiscountChanging(value);
+					this.SendPropertyChanging();
+					this._Discount = value;
+					this.SendPropertyChanged("Discount");
+					this.OnDiscountChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DockWeightNote", DbType="NVarChar(20)")]
+		public string DockWeightNote
+		{
+			get
+			{
+				return this._DockWeightNote;
+			}
+			set
+			{
+				if ((this._DockWeightNote != value))
+				{
+					this.OnDockWeightNoteChanging(value);
+					this.SendPropertyChanging();
+					this._DockWeightNote = value;
+					this.SendPropertyChanged("DockWeightNote");
+					this.OnDockWeightNoteChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_WeightNote", DbType="NVarChar(20)")]
+		public string WeightNote
+		{
+			get
+			{
+				return this._WeightNote;
+			}
+			set
+			{
+				if ((this._WeightNote != value))
+				{
+					this.OnWeightNoteChanging(value);
+					this.SendPropertyChanging();
+					this._WeightNote = value;
+					this.SendPropertyChanged("WeightNote");
+					this.OnWeightNoteChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TotalPrice", DbType="Int")]
+		public System.Nullable<int> TotalPrice
+		{
+			get
+			{
+				return this._TotalPrice;
+			}
+			set
+			{
+				if ((this._TotalPrice != value))
+				{
+					this.OnTotalPriceChanging(value);
+					this.SendPropertyChanging();
+					this._TotalPrice = value;
+					this.SendPropertyChanged("TotalPrice");
+					this.OnTotalPriceChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_NetSell", DbType="Int")]
+		public System.Nullable<int> NetSell
+		{
+			get
+			{
+				return this._NetSell;
+			}
+			set
+			{
+				if ((this._NetSell != value))
+				{
+					this.OnNetSellChanging(value);
+					this.SendPropertyChanging();
+					this._NetSell = value;
+					this.SendPropertyChanged("NetSell");
+					this.OnNetSellChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Paid", DbType="Int")]
+		public System.Nullable<int> Paid
+		{
+			get
+			{
+				return this._Paid;
+			}
+			set
+			{
+				if ((this._Paid != value))
+				{
+					this.OnPaidChanging(value);
+					this.SendPropertyChanging();
+					this._Paid = value;
+					this.SendPropertyChanged("Paid");
+					this.OnPaidChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Profit", DbType="Int")]
+		public System.Nullable<int> Profit
+		{
+			get
+			{
+				return this._Profit;
+			}
+			set
+			{
+				if ((this._Profit != value))
+				{
+					this.OnProfitChanging(value);
+					this.SendPropertyChanging();
+					this._Profit = value;
+					this.SendPropertyChanged("Profit");
+					this.OnProfitChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Loss", DbType="Int")]
+		public System.Nullable<int> Loss
+		{
+			get
+			{
+				return this._Loss;
+			}
+			set
+			{
+				if ((this._Loss != value))
+				{
+					this.OnLossChanging(value);
+					this.SendPropertyChanging();
+					this._Loss = value;
+					this.SendPropertyChanged("Loss");
+					this.OnLossChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Description", DbType="NVarChar(MAX)")]
+		public string Description
+		{
+			get
+			{
+				return this._Description;
+			}
+			set
+			{
+				if ((this._Description != value))
+				{
+					this.OnDescriptionChanging(value);
+					this.SendPropertyChanging();
+					this._Description = value;
+					this.SendPropertyChanged("Description");
+					this.OnDescriptionChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Invoice_InvoiceDetail", Storage="_InvoiceDetails", ThisKey="InvoiceId", OtherKey="InvoiceId")]
+		public EntitySet<InvoiceDetail> InvoiceDetails
+		{
+			get
+			{
+				return this._InvoiceDetails;
+			}
+			set
+			{
+				this._InvoiceDetails.Assign(value);
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Driver_Invoice", Storage="_Driver", ThisKey="DriverId", OtherKey="DriverId", IsForeignKey=true)]
+		public Driver Driver
+		{
+			get
+			{
+				return this._Driver.Entity;
+			}
+			set
+			{
+				Driver previousValue = this._Driver.Entity;
+				if (((previousValue != value) 
+							|| (this._Driver.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._Driver.Entity = null;
+						previousValue.Invoices.Remove(this);
+					}
+					this._Driver.Entity = value;
+					if ((value != null))
+					{
+						value.Invoices.Add(this);
+						this._DriverId = value.DriverId;
+					}
+					else
+					{
+						this._DriverId = default(Nullable<int>);
+					}
+					this.SendPropertyChanged("Driver");
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+		
+		private void attach_InvoiceDetails(InvoiceDetail entity)
+		{
+			this.SendPropertyChanging();
+			entity.Invoice = this;
+		}
+		
+		private void detach_InvoiceDetails(InvoiceDetail entity)
+		{
+			this.SendPropertyChanging();
+			entity.Invoice = null;
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.InvoiceDetails")]
+	public partial class InvoiceDetail : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _DetailId;
+		
+		private System.Nullable<int> _InvoiceId;
+		
+		private System.Nullable<int> _ProductId;
+		
+		private System.Nullable<int> _FarmerId;
+		
+		private System.Nullable<int> _ItemId;
+		
+		private System.Nullable<int> _Weight;
+		
+		private System.Nullable<int> _Loss;
+		
+		private System.Nullable<int> _Qty;
+		
+		private System.Nullable<int> _Price;
+		
+		private System.Nullable<int> _NetWeight;
+		
+		private EntityRef<Invoice> _Invoice;
+		
+		private EntityRef<Item> _Item;
+		
+		private EntityRef<Person> _Person;
+		
+		private EntityRef<Product> _Product;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnDetailIdChanging(int value);
+    partial void OnDetailIdChanged();
+    partial void OnInvoiceIdChanging(System.Nullable<int> value);
+    partial void OnInvoiceIdChanged();
+    partial void OnProductIdChanging(System.Nullable<int> value);
+    partial void OnProductIdChanged();
+    partial void OnFarmerIdChanging(System.Nullable<int> value);
+    partial void OnFarmerIdChanged();
+    partial void OnItemIdChanging(System.Nullable<int> value);
+    partial void OnItemIdChanged();
+    partial void OnWeightChanging(System.Nullable<int> value);
+    partial void OnWeightChanged();
+    partial void OnLossChanging(System.Nullable<int> value);
+    partial void OnLossChanged();
+    partial void OnQtyChanging(System.Nullable<int> value);
+    partial void OnQtyChanged();
+    partial void OnPriceChanging(System.Nullable<int> value);
+    partial void OnPriceChanged();
+    partial void OnNetWeightChanging(System.Nullable<int> value);
+    partial void OnNetWeightChanged();
+    #endregion
+		
+		public InvoiceDetail()
+		{
+			this._Invoice = default(EntityRef<Invoice>);
+			this._Item = default(EntityRef<Item>);
+			this._Person = default(EntityRef<Person>);
+			this._Product = default(EntityRef<Product>);
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DetailId", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public int DetailId
+		{
+			get
+			{
+				return this._DetailId;
+			}
+			set
+			{
+				if ((this._DetailId != value))
+				{
+					this.OnDetailIdChanging(value);
+					this.SendPropertyChanging();
+					this._DetailId = value;
+					this.SendPropertyChanged("DetailId");
+					this.OnDetailIdChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_InvoiceId", DbType="Int")]
+		public System.Nullable<int> InvoiceId
+		{
+			get
+			{
+				return this._InvoiceId;
+			}
+			set
+			{
+				if ((this._InvoiceId != value))
+				{
+					if (this._Invoice.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.OnInvoiceIdChanging(value);
+					this.SendPropertyChanging();
+					this._InvoiceId = value;
+					this.SendPropertyChanged("InvoiceId");
+					this.OnInvoiceIdChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ProductId", DbType="Int")]
+		public System.Nullable<int> ProductId
+		{
+			get
+			{
+				return this._ProductId;
+			}
+			set
+			{
+				if ((this._ProductId != value))
+				{
+					if (this._Product.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.OnProductIdChanging(value);
+					this.SendPropertyChanging();
+					this._ProductId = value;
+					this.SendPropertyChanged("ProductId");
+					this.OnProductIdChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_FarmerId", DbType="Int")]
+		public System.Nullable<int> FarmerId
+		{
+			get
+			{
+				return this._FarmerId;
+			}
+			set
+			{
+				if ((this._FarmerId != value))
+				{
+					if (this._Person.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.OnFarmerIdChanging(value);
+					this.SendPropertyChanging();
+					this._FarmerId = value;
+					this.SendPropertyChanged("FarmerId");
+					this.OnFarmerIdChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ItemId", DbType="Int")]
+		public System.Nullable<int> ItemId
+		{
+			get
+			{
+				return this._ItemId;
+			}
+			set
+			{
+				if ((this._ItemId != value))
+				{
+					if (this._Item.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.OnItemIdChanging(value);
+					this.SendPropertyChanging();
+					this._ItemId = value;
+					this.SendPropertyChanged("ItemId");
+					this.OnItemIdChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Weight", DbType="Int")]
+		public System.Nullable<int> Weight
+		{
+			get
+			{
+				return this._Weight;
+			}
+			set
+			{
+				if ((this._Weight != value))
+				{
+					this.OnWeightChanging(value);
+					this.SendPropertyChanging();
+					this._Weight = value;
+					this.SendPropertyChanged("Weight");
+					this.OnWeightChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Loss", DbType="Int")]
+		public System.Nullable<int> Loss
+		{
+			get
+			{
+				return this._Loss;
+			}
+			set
+			{
+				if ((this._Loss != value))
+				{
+					this.OnLossChanging(value);
+					this.SendPropertyChanging();
+					this._Loss = value;
+					this.SendPropertyChanged("Loss");
+					this.OnLossChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Qty", DbType="Int")]
+		public System.Nullable<int> Qty
+		{
+			get
+			{
+				return this._Qty;
+			}
+			set
+			{
+				if ((this._Qty != value))
+				{
+					this.OnQtyChanging(value);
+					this.SendPropertyChanging();
+					this._Qty = value;
+					this.SendPropertyChanged("Qty");
+					this.OnQtyChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Price", DbType="Int")]
+		public System.Nullable<int> Price
+		{
+			get
+			{
+				return this._Price;
+			}
+			set
+			{
+				if ((this._Price != value))
+				{
+					this.OnPriceChanging(value);
+					this.SendPropertyChanging();
+					this._Price = value;
+					this.SendPropertyChanged("Price");
+					this.OnPriceChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_NetWeight", DbType="Int")]
+		public System.Nullable<int> NetWeight
+		{
+			get
+			{
+				return this._NetWeight;
+			}
+			set
+			{
+				if ((this._NetWeight != value))
+				{
+					this.OnNetWeightChanging(value);
+					this.SendPropertyChanging();
+					this._NetWeight = value;
+					this.SendPropertyChanged("NetWeight");
+					this.OnNetWeightChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Invoice_InvoiceDetail", Storage="_Invoice", ThisKey="InvoiceId", OtherKey="InvoiceId", IsForeignKey=true)]
+		public Invoice Invoice
+		{
+			get
+			{
+				return this._Invoice.Entity;
+			}
+			set
+			{
+				Invoice previousValue = this._Invoice.Entity;
+				if (((previousValue != value) 
+							|| (this._Invoice.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._Invoice.Entity = null;
+						previousValue.InvoiceDetails.Remove(this);
+					}
+					this._Invoice.Entity = value;
+					if ((value != null))
+					{
+						value.InvoiceDetails.Add(this);
+						this._InvoiceId = value.InvoiceId;
+					}
+					else
+					{
+						this._InvoiceId = default(Nullable<int>);
+					}
+					this.SendPropertyChanged("Invoice");
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Item_InvoiceDetail", Storage="_Item", ThisKey="ItemId", OtherKey="ItemId", IsForeignKey=true)]
+		public Item Item
+		{
+			get
+			{
+				return this._Item.Entity;
+			}
+			set
+			{
+				Item previousValue = this._Item.Entity;
+				if (((previousValue != value) 
+							|| (this._Item.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._Item.Entity = null;
+						previousValue.InvoiceDetails.Remove(this);
+					}
+					this._Item.Entity = value;
+					if ((value != null))
+					{
+						value.InvoiceDetails.Add(this);
+						this._ItemId = value.ItemId;
+					}
+					else
+					{
+						this._ItemId = default(Nullable<int>);
+					}
+					this.SendPropertyChanged("Item");
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Person_InvoiceDetail", Storage="_Person", ThisKey="FarmerId", OtherKey="PersonId", IsForeignKey=true)]
+		public Person Person
+		{
+			get
+			{
+				return this._Person.Entity;
+			}
+			set
+			{
+				Person previousValue = this._Person.Entity;
+				if (((previousValue != value) 
+							|| (this._Person.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._Person.Entity = null;
+						previousValue.InvoiceDetails.Remove(this);
+					}
+					this._Person.Entity = value;
+					if ((value != null))
+					{
+						value.InvoiceDetails.Add(this);
+						this._FarmerId = value.PersonId;
+					}
+					else
+					{
+						this._FarmerId = default(Nullable<int>);
+					}
+					this.SendPropertyChanged("Person");
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Product_InvoiceDetail", Storage="_Product", ThisKey="ProductId", OtherKey="ProductId", IsForeignKey=true)]
+		public Product Product
+		{
+			get
+			{
+				return this._Product.Entity;
+			}
+			set
+			{
+				Product previousValue = this._Product.Entity;
+				if (((previousValue != value) 
+							|| (this._Product.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._Product.Entity = null;
+						previousValue.InvoiceDetails.Remove(this);
+					}
+					this._Product.Entity = value;
+					if ((value != null))
+					{
+						value.InvoiceDetails.Add(this);
+						this._ProductId = value.ProductId;
+					}
+					else
+					{
+						this._ProductId = default(Nullable<int>);
+					}
+					this.SendPropertyChanged("Product");
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.FiscalYears")]
+	public partial class FiscalYear : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _FiscalYearId;
+		
+		private System.Nullable<int> _F_Year;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnFiscalYearIdChanging(int value);
+    partial void OnFiscalYearIdChanged();
+    partial void OnF_YearChanging(System.Nullable<int> value);
+    partial void OnF_YearChanged();
+    #endregion
+		
+		public FiscalYear()
+		{
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_FiscalYearId", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public int FiscalYearId
+		{
+			get
+			{
+				return this._FiscalYearId;
+			}
+			set
+			{
+				if ((this._FiscalYearId != value))
+				{
+					this.OnFiscalYearIdChanging(value);
+					this.SendPropertyChanging();
+					this._FiscalYearId = value;
+					this.SendPropertyChanged("FiscalYearId");
+					this.OnFiscalYearIdChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_F_Year", DbType="Int")]
+		public System.Nullable<int> F_Year
+		{
+			get
+			{
+				return this._F_Year;
+			}
+			set
+			{
+				if ((this._F_Year != value))
+				{
+					this.OnF_YearChanging(value);
+					this.SendPropertyChanging();
+					this._F_Year = value;
+					this.SendPropertyChanged("F_Year");
+					this.OnF_YearChanged();
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
 		{
 			if ((this.PropertyChanged != null))
 			{

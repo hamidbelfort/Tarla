@@ -18,5 +18,9 @@ namespace Tarla.Classes
         {
             return PC.GetYear(DateTime.Now).ToString("0000") + "/" + PC.GetMonth(DateTime.Now).ToString("00") + "/" + PC.GetDayOfMonth(DateTime.Now).ToString("00");
         }
+        public string getYear()
+        {
+            return PC.GetYear(DateTime.Now).ToString("0000");
+        }
     }
 }

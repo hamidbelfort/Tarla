@@ -38,23 +38,33 @@ namespace Tarla
             {
                 db.CheckUsersName(ref checkUsername, txtUsername.Text.Trim());
                 db.CheckUserPass(ref checkPass, txtPassword.Text.Trim());
+                errorProvider1.Clear();
                 if (checkUsername == true && checkPass == true)
                 {
-                    db.GetLoginId(ref userId, txtUsername.Text.Trim(), txtPassword.Text.Trim());
-                    db.GetLoginName(userId,ref userFullname);
-                    db.GetUserPermissions(userId, ref Setting, ref Bank, ref User, ref factor);
-                    frmMain.LoginId = (int)userId;
+                    if (cmbYear.SelectedIndex>=0)
+                    {
+                        db.GetLoginId(ref userId, txtUsername.Text.Trim(), txtPassword.Text.Trim());
+                        db.GetLoginName(userId, ref userFullname);
+                        db.GetUserPermissions(userId, ref Setting, ref Bank, ref User, ref factor);
+                        frmMain.LoginId = (int)userId;
 
-                    frmMain.BankPermission = (bool)Bank;
-                    frmMain.SettingPermission = (bool)Setting;
-                    frmMain.UserPermission = (bool)User;
-                    frmMain.FactorPermission = (bool)factor;
-                    frmMain.Fullname = userFullname;
-                    strToday = pd.getShortDateTime();
+                        frmMain.BankPermission = (bool)Bank;
+                        frmMain.SettingPermission = (bool)Setting;
+                        frmMain.UserPermission = (bool)User;
+                        frmMain.FactorPermission = (bool)factor;
+                        frmMain.Fullname = userFullname;
+                        frmMain.fiscalYearId = (int)cmbYear.SelectedValue;
+                        frmMain.fiscalYear = Convert.ToInt32(cmbYear.Text);
+                        strToday = pd.getShortDateTime();
 
-                    db.InsertLog(userId, strToday);
+                        db.InsertLog(userId, strToday);
 
-                    Close();
+                        Close();
+                    }
+                    else
+                    {
+                        errorProvider1.SetError(cmbYear, "سال مالی را انتخاب کنید");
+                    }
                 }
                 else
                 {
@@ -62,9 +72,9 @@ namespace Tarla
                     txtPassword.Focus();
                 }
             }
-            catch
+            catch (Exception ex)
             {
-                MessageBoxFarsi.Show("ارتباط با سرور اطلاعاتی قطع شده است", "اخطار", MessageBoxFarsiButtons.OK, MessageBoxFarsiIcon.Error, MessageBoxFarsiDefaultButton.Button1);
+                MessageBoxFarsi.Show("ارتباط با سرور اطلاعاتی قطع شده است \n" + ex.Message, "اخطار", MessageBoxFarsiButtons.OK, MessageBoxFarsiIcon.Error, MessageBoxFarsiDefaultButton.Button1);
             }
         }
 
@@ -80,6 +90,7 @@ namespace Tarla
         {
             //styleManager1.ManagerStyle = StyleTheme.getTheme(themeName);
             //this.Font = new Font("Tahoma", fontSize, FontStyle.Regular);
+            cmbYear.DataSource = db.FillFiscalYear();
         }
     }
 }

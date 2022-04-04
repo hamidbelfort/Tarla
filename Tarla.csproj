@@ -152,6 +152,12 @@
     <Compile Include="MainForms\frmAddDriver.Designer.cs">
       <DependentUpon>frmAddDriver.cs</DependentUpon>
     </Compile>
+    <Compile Include="MainForms\frmAddFiscalYear.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MainForms\frmAddFiscalYear.Designer.cs">
+      <DependentUpon>frmAddFiscalYear.cs</DependentUpon>
+    </Compile>
     <Compile Include="MainForms\frmAddMessage.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -200,12 +206,6 @@
     <Compile Include="MainForms\frmAddItemGroup.Designer.cs">
       <DependentUpon>frmAddItemGroup.cs</DependentUpon>
     </Compile>
-    <Compile Include="MainForms\frmAddPacking.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="MainForms\frmAddPacking.Designer.cs">
-      <DependentUpon>frmAddPacking.cs</DependentUpon>
-    </Compile>
     <Compile Include="MainForms\frmAddProduct.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -236,6 +236,12 @@
     <Compile Include="MainForms\frmShowDriver.Designer.cs">
       <DependentUpon>frmShowDriver.cs</DependentUpon>
     </Compile>
+    <Compile Include="MainForms\frmShowFiscalYears.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MainForms\frmShowFiscalYears.Designer.cs">
+      <DependentUpon>frmShowFiscalYears.cs</DependentUpon>
+    </Compile>
     <Compile Include="MainForms\frmShowGroups.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -259,12 +265,6 @@
     </Compile>
     <Compile Include="MainForms\frmShowMessage.Designer.cs">
       <DependentUpon>frmShowMessage.cs</DependentUpon>
-    </Compile>
-    <Compile Include="MainForms\frmShowPacking.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="MainForms\frmShowPacking.Designer.cs">
-      <DependentUpon>frmShowPacking.cs</DependentUpon>
     </Compile>
     <Compile Include="MainForms\frmShowPerson.cs">
       <SubType>Form</SubType>
@@ -428,6 +428,9 @@
     <EmbeddedResource Include="MainForms\frmAddDriver.resx">
       <DependentUpon>frmAddDriver.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="MainForms\frmAddFiscalYear.resx">
+      <DependentUpon>frmAddFiscalYear.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="MainForms\frmAddMessage.resx">
       <DependentUpon>frmAddMessage.cs</DependentUpon>
     </EmbeddedResource>
@@ -452,9 +455,6 @@
     <EmbeddedResource Include="MainForms\frmAddItemGroup.resx">
       <DependentUpon>frmAddItemGroup.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="MainForms\frmAddPacking.resx">
-      <DependentUpon>frmAddPacking.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="MainForms\frmAddProduct.resx">
       <DependentUpon>frmAddProduct.cs</DependentUpon>
     </EmbeddedResource>
@@ -470,6 +470,9 @@
     <EmbeddedResource Include="MainForms\frmShowDriver.resx">
       <DependentUpon>frmShowDriver.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="MainForms\frmShowFiscalYears.resx">
+      <DependentUpon>frmShowFiscalYears.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="MainForms\frmShowGroups.resx">
       <DependentUpon>frmShowGroups.cs</DependentUpon>
     </EmbeddedResource>
@@ -481,9 +484,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="MainForms\frmShowMessage.resx">
       <DependentUpon>frmShowMessage.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="MainForms\frmShowPacking.resx">
-      <DependentUpon>frmShowPacking.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MainForms\frmShowPerson.resx">
       <DependentUpon>frmShowPerson.cs</DependentUpon>
@@ -563,7 +563,6 @@
     </Compile>
     <None Include="dcTarla.dbml">
       <Generator>MSLinqToSQLGenerator</Generator>
-      <LastGenOutput>dcTarla.designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
     </None>
     <None Include="Properties\DataSources\Bank.datasource" />
@@ -576,6 +575,7 @@
     <None Include="Properties\DataSources\Depot.datasource" />
     <None Include="Properties\DataSources\Driver.datasource" />
     <None Include="Properties\DataSources\FactorView.datasource" />
+    <None Include="Properties\DataSources\FiscalYear.datasource" />
     <None Include="Properties\DataSources\F_DetailsView.datasource" />
     <None Include="Properties\DataSources\Item.datasource" />
     <None Include="Properties\DataSources\ItemGroup.datasource" />

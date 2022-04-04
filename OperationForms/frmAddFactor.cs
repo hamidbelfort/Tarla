@@ -16,6 +16,7 @@ namespace Tarla.OperationForms
     {
         dcTarlaDataContext db = new dcTarlaDataContext();
         PersianDate pd = new PersianDate();
+        public int fiscalYear;
         int totalPrice, totalWeight;
         int totalCost;
         int profit, loss;
@@ -25,9 +26,10 @@ namespace Tarla.OperationForms
         int miscCost;
         int truckRental;
         int? lastFactorId;
+        int? partNum;
         string settingCompany, settingsAddress, settingsPhone;
         bool? existsMessage;
-
+        public static int fiscalYearId;
         private void btnAdd_Click(object sender, EventArgs e)
         {
             try
@@ -63,7 +65,7 @@ namespace Tarla.OperationForms
                             int currentProduct = Convert.ToInt32(dgvFactor.Rows[i].Cells["clmProductId"].Value.ToString());
                             int currentSellerId = Convert.ToInt32(dgvFactor.Rows[i].Cells["clmSellerId"].Value.ToString());
                             if (currentProduct == Convert.ToInt32(cmbProduct.SelectedValue.ToString()) &&
-                                 currentSellerId == Convert.ToInt32(cmbSeller.SelectedValue.ToString()))
+                                 currentSellerId == Convert.ToInt32(cmbFarmer.SelectedValue.ToString()))
                             {
                                 index = i;
                             }
@@ -73,20 +75,20 @@ namespace Tarla.OperationForms
                             dgvFactor.Rows[index].Cells["clmQty"].Value = intCount.Value;
                             dgvFactor.Rows[index].Cells["clmWeight"].Value = intWeight.Value;
                             dgvFactor.Rows[index].Cells["clmPrice"].Value = intPrice.Value;
-                            dgvFactor.Rows[index].Cells["clmSellerId"].Value = cmbSeller.SelectedValue;
+                            dgvFactor.Rows[index].Cells["clmSellerId"].Value = cmbFarmer.SelectedValue;
                             dgvFactor.Rows[index].Cells["clmPackingId"].Value = cmbItem.SelectedValue;
                             dgvFactor.Rows[index].Cells["clmLoss"].Value = intLoss.Value;
                             dgvFactor.Rows[index].Cells["clmPackingName"].Value = cmbItem.Text;
-                            dgvFactor.Rows[index].Cells["clmSellerName"].Value = cmbSeller.Text;
+                            dgvFactor.Rows[index].Cells["clmSellerName"].Value = cmbFarmer.Text;
                         }
                         else
                         {
-                            dgvFactor.Rows.Add(cmbProduct.Text, intPrice.Text, intCount.Text, intWeight.Text, intLoss.Text, cmbSeller.Text, cmbItem.Text, cmbProduct.SelectedValue, cmbSeller.SelectedValue, cmbItem.SelectedValue);
+                            dgvFactor.Rows.Add(cmbProduct.Text, intPrice.Text, intCount.Text, intWeight.Text, intLoss.Text, cmbFarmer.Text, cmbItem.Text, cmbProduct.SelectedValue, cmbFarmer.SelectedValue, cmbItem.SelectedValue);
                         }
                     }
                     else
                     {
-                        dgvFactor.Rows.Add(cmbProduct.Text, intPrice.Text, intCount.Text, intWeight.Text, intLoss.Text, cmbSeller.Text, cmbItem.Text, cmbProduct.SelectedValue, cmbSeller.SelectedValue, cmbItem.SelectedValue);
+                        dgvFactor.Rows.Add(cmbProduct.Text, intPrice.Text, intCount.Text, intWeight.Text, intLoss.Text, cmbFarmer.Text, cmbItem.Text, cmbProduct.SelectedValue, cmbFarmer.SelectedValue, cmbItem.SelectedValue);
 
                     }
                     calculateTotalPrice();
@@ -245,10 +247,10 @@ namespace Tarla.OperationForms
                 if (MessageBoxFarsi.Show("آیا از ثبت و ذخیره اطلاعات فاکتور اطمینان دارید؟", "ذخیره فاکتور", MessageBoxFarsiButtons.YesNo, MessageBoxFarsiIcon.Information) == DialogResult.Yes)
                 {
                     totalWeight = Util.removeThousandSeprator(txtTotalWeight.Text);
-                    db.InsertInvoice(txtDate.Text, (int)cmbBuyer.SelectedValue,(int)cmbDriver.SelectedValue , totalWeight, intWorkersCount.Value,
+                    /*db.InsertInvoice(txtDate.Text, (int)cmbReceiver.SelectedValue,(int)cmbDriver.SelectedValue , totalWeight, intWorkersCount.Value,
                         intWorkerCost.Value, intTruckRental.Value, intMiscCost.Value, txtWeightNote.Text, txtDockWeightNote.Text,
-                        (int)cmbBandarReceiver.SelectedValue, (int)cmbDubaiReceiver.SelectedValue, intDiscount.Value, totalPrice, intNetSell.Value,
-                        intPaid.Value, int.Parse(txtProfit.Text), int.Parse(txtLoss.Text), txtDesc.Text);
+                        (int)cmbAgent.SelectedValue, (int)cmbDubaiReceiver.SelectedValue, intDiscount.Value, totalPrice, intNetSell.Value,
+                        intPaid.Value, int.Parse(txtProfit.Text), int.Parse(txtLoss.Text), txtDesc.Text);*/
                     db.GetMaxFactorId(ref lastFactorId);
                     for (int i = 0; i < dgvFactor.Rows.Count; i++)
                     {
@@ -415,15 +417,13 @@ namespace Tarla.OperationForms
                         refresh(4);
                         break;*/
                     case "mnuProduct":
-                        frmAddPacking.IsEdit = false;
-                        new frmAddPacking().ShowDialog();
-                        refresh(7);
-                        break;
-                    case "mnuPacking":
                         frmAddProduct.IsEdit = false;
                         new frmAddProduct().ShowDialog();
                         refresh(6);
                         break;
+                    case "mnuPacking":
+                        break;
+                        
                 }
             }
         }
@@ -431,13 +431,13 @@ namespace Tarla.OperationForms
         {
             try
             {
-                //bsBuyer.DataSource = db.FillBuyer();
-                //bsPacking.DataSource = db.FillPacking();
+                bsDepot.DataSource = db.FillDepot();
+                bsReceiver.DataSource = db.FillPersonsByType(1);//receiver
+                bsFarmer.DataSource = db.FillPersonsByType(2);//farmer
+                bsAgent.DataSource = db.FillPersonsByType(3);//agent
                 bsProduct.DataSource = db.FillProducts();
-                //bsReceiver.DataSource = db.FillReceiver();
-                //bsSeller.DataSource = db.FillSeller();
                 bsDriver.DataSource = db.FillDrivers();
-                //bsF_Receiver.DataSource = db.FillForeignReceiver();
+                
             }
             catch (Exception ex)
             {
@@ -520,7 +520,7 @@ namespace Tarla.OperationForms
             intMiscCost.Value = 0;
             intNetSell.Value = 0;
             intTruckRental.Value = 0;
-            lblCountry.Text = "---";
+            lblReceiverOrigin.Text = "---";
             lblLicensePlate.Text = "---";
             lblTotalPrice.Text = "0";
             dgvFactor.Rows.Clear();
@@ -529,18 +529,46 @@ namespace Tarla.OperationForms
             txtDate.Focus();
         }
 
-        private void cmbDubaiReceiver_SelectedIndexChanged(object sender, EventArgs e)
+        
+
+        private void chkPartNum_CheckedChanged(object sender, EventArgs e)
+        {
+            txtPartNo.ReadOnly = chkPartNum.Enabled;
+        }
+
+        private void cmbReceiver_SelectedIndexChanged(object sender, EventArgs e)
         {
             try
             {
-                int f_receiverId = (int)cmbDubaiReceiver.SelectedValue;
-                string f_country = string.Empty;
-                //db.GetForiegnReceiverCountry(f_receiverId, ref f_country);
-                lblCountry.Text = string.Format("کشور : {0}",f_country);
+                int personId = (int)cmbReceiver.SelectedValue;
+                string origin = string.Empty;
+                db.GetPersonOrigin(personId, ref origin);
+                lblReceiverOrigin.Text = string.Format("کشور/شهر : {0}", origin);
+                if (chkPartNum.Checked)
+                {
+                    db.GetMaxPartNumber(fiscalYearId,personId,ref partNum);
+                    txtPartNo.Text = (partNum + 1).ToString();
+                }
             }
             catch
             {
-                lblLicensePlate.Text = "-خطا-";
+                lblReceiverOrigin.Text = "-خطا-";
+                //MessageBoxFarsi.Show("ارتباط با سرور اطلاعاتی قطع شده است \n" + ex.Message, "اخطار", MessageBoxFarsiButtons.OK, MessageBoxFarsiIcon.Error, MessageBoxFarsiDefaultButton.Button1);
+            }
+        }
+
+        private void cmbAgent_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                int personId = (int)cmbReceiver.SelectedValue;
+                string origin = string.Empty;
+                db.GetPersonOrigin(personId, ref origin);
+                lblAgentOrigin.Text = string.Format("کشور/شهر : {0}", origin);
+            }
+            catch
+            {
+                lblAgentOrigin.Text = "-خطا-";
                 //MessageBoxFarsi.Show("ارتباط با سرور اطلاعاتی قطع شده است \n" + ex.Message, "اخطار", MessageBoxFarsiButtons.OK, MessageBoxFarsiIcon.Error, MessageBoxFarsiDefaultButton.Button1);
             }
         }
@@ -554,10 +582,10 @@ namespace Tarla.OperationForms
         {
             if (superTabControl1.SelectedTab == superTabItem1)
             {
-                if (cmbBuyer.Text == string.Empty)
+                if (cmbReceiver.Text == string.Empty)
                 {
-                    errorProvider1.SetError(cmbBuyer, "خریدار را انتخاب کنید");
-                    cmbBuyer.Focus();
+                    errorProvider1.SetError(cmbReceiver, "گیرنده بار را انتخاب کنید");
+                    cmbReceiver.Focus();
                 }
                 else if (cmbDriver.Text == string.Empty)
                 {
@@ -565,23 +593,17 @@ namespace Tarla.OperationForms
                     errorProvider1.SetError(cmbDriver, "راننده را انتخاب کنید");
                     cmbDriver.Focus();
                 }
-                else if (cmbBandarReceiver.Text == string.Empty)
+                else if (cmbAgent.Text == string.Empty)
                 {
                     errorProvider1.Clear();
-                    errorProvider1.SetError(cmbBandarReceiver, "گیرنده بندر را انتخاب کنید");
-                    cmbBandarReceiver.Focus();
-                }
-                else if (cmbDubaiReceiver.Text == string.Empty)
-                {
-                    errorProvider1.Clear();
-                    errorProvider1.SetError(cmbDubaiReceiver, "گیرنده دوبی را انتخاب کنید");
-                    cmbDubaiReceiver.Focus();
+                    errorProvider1.SetError(cmbAgent, "ترخیص کار را انتخاب کنید");
+                    cmbAgent.Focus();
                 }
                 else if (dgvFactor.Rows.Count == 0)
                 {
                     errorProvider1.Clear();
                     errorProvider1.SetError(cmbProduct, "محصول را انتخاب کنید");
-                    errorProvider1.SetError(cmbSeller, "فروشنده را انتخاب کنید");
+                    errorProvider1.SetError(cmbFarmer, "کشاورز را انتخاب کنید");
                     errorProvider1.SetError(cmbItem, "نوع بسته بندی را انتخاب کنید");
                     cmbProduct.Focus();
                 }
