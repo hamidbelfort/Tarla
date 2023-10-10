@@ -430,9 +430,6 @@
     <EmbeddedResource Include="MainForms\frmAddDriver.resx">
       <DependentUpon>frmAddDriver.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="MainForms\frmAddFiscalYear.resx">
-      <DependentUpon>frmAddFiscalYear.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="MainForms\frmAddMessage.resx">
       <DependentUpon>frmAddMessage.cs</DependentUpon>
     </EmbeddedResource>
@@ -474,6 +471,8 @@
     </EmbeddedResource>
     <EmbeddedResource Include="MainForms\frmShowFiscalYears.resx">
       <DependentUpon>frmShowFiscalYears.cs</DependentUpon>
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>frmShowFiscalYears1.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="MainForms\frmShowGroups.resx">
       <DependentUpon>frmShowGroups.cs</DependentUpon>
